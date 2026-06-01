@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactivo de ejemplo</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: -apple-system, system-ui, sans-serif;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    .card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      padding: 2rem 3rem;
+      border-radius: 1rem;
+      max-width: 32rem;
+    }
+    h1 { margin: 0 0 0.5rem; font-size: 1.8rem; }
+    p { margin: 0; line-height: 1.5; opacity: 0.92; }
+    code { background: rgba(0,0,0,0.25); padding: 0.1em 0.4em; border-radius: 0.25rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>👋 Interactivo de ejemplo</h1>
+    <p>Este HTML standalone se sirve desde <code>/public/interactivos/</code> y se embebe vía iframe en cualquier tema con el componente <code>&lt;Interactivo /&gt;</code>.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Modo oscuro activado por la clase `.dark` en <html> (controlado desde JS). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Tipografías: sans para texto, serif para títulos. */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Source Serif 4", "Source Serif Pro", ui-serif, Georgia, serif;
+}
+
+/* Animaciones suaves entre claro/oscuro. */
+html {
+  color-scheme: light dark;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: white;
+  color: rgb(15 23 42);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+html.dark body {
+  background-color: rgb(2 6 23);
+  color: rgb(226 232 240);
+}
+
+/* Headings con serif elegante. */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+/* Foco accesible. */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}

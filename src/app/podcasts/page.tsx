@@ -65,11 +65,22 @@ export default function PodcastsPage() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {listados.map((p) => (
-            <PodcastCard key={p.url + p.titulo} podcast={p} />
-          ))}
-        </div>
+        {listados.length === 0 ? (
+          <div className="mt-10 rounded-xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center dark:border-slate-700 dark:bg-slate-900/50">
+            <p className="font-serif text-lg text-slate-700 dark:text-slate-300">
+              Sin episodios todavía en esta plataforma.
+            </p>
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+              Probá con otro filtro o volvé más tarde.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {listados.map((p) => (
+              <PodcastCard key={p.url + p.titulo} podcast={p} />
+            ))}
+          </div>
+        )}
       </section>
     </>
   );

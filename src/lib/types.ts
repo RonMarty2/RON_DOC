@@ -16,6 +16,8 @@ export interface Recurso {
   tamanio?: string;
   /** Descripción corta opcional. */
   descripcion?: string;
+  /** Si es `true` muestra un visor embebido (iframe) colapsable. Por defecto `false`. */
+  embebido?: boolean;
 }
 
 export interface Interactivo {

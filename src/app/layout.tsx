@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { RegistroPWA } from "@/components/RegistroPWA";
 import { SITIO } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -12,6 +13,19 @@ export const metadata: Metadata = {
   },
   description: SITIO.descripcion,
   authors: [{ name: SITIO.autor }],
+  applicationName: "Ronald M.",
+  appleWebApp: {
+    capable: true,
+    title: "Ronald M.",
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    icon: [
+      { url: "icons/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "icons/apple-touch-icon.png", sizes: "180x180" }],
+  },
   openGraph: {
     title: SITIO.nombre,
     description: SITIO.descripcion,
@@ -19,6 +33,15 @@ export const metadata: Metadata = {
     locale: "es_BO",
     siteName: SITIO.nombre,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
+  ],
+  width: "device-width",
+  initialScale: 1,
 };
 
 // Script inline para aplicar el tema ANTES del primer pintado y evitar parpadeo.
@@ -47,6 +70,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <RegistroPWA />
         </ThemeProvider>
       </body>
     </html>

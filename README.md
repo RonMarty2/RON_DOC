@@ -109,9 +109,12 @@ recursos: [
     archivo: "/recursos/psicoestadistica/mi-archivo.pdf",
     tamanio: "1.2 MB",
     descripcion: "Material complementario.",
+    embebido: true,   // opcional: agrega botón "Previsualizar" con visor inline
   },
 ],
 ```
+
+> Si querés enlazar un PDF directamente desde el cuerpo del MDX (no como recurso), usá una ruta absoluta tipo `[descargar](/recursos/psicoestadistica/mi-archivo.pdf)`. Funciona en local; en GitHub Pages el `basePath` se aplica automáticamente al hacer build.
 
 ### 4. Embeber un **interactivo HTML**
 

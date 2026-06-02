@@ -149,6 +149,34 @@ Abrí `content/podcasts.ts` y añadí:
 }
 ```
 
+### 6. Agregar un **proyecto / app externa**
+
+Abrí `content/proyectos.ts` y añadí un objeto al array `PROYECTOS`:
+
+```ts
+{
+  slug: "mi-app",
+  titulo: "Mi App",
+  descripcion: "Qué hace en 1-2 oraciones.",
+  url: "https://mi-app.com/",
+  estado: "en-linea",       // "en-linea" | "beta" | "en-desarrollo" | "archivado"
+  icono: "🚀",
+  tags: ["estadística"],
+  anio: 2025,
+}
+```
+
+Aparecerá en `/proyectos` y los primeros 3 también en la home.
+
+### 7. Actualizar resumen de **tesis**
+
+Editá `content/tesis.ts`:
+- `TESIS_RESUMEN`: cantidad de tutorías, revisorías, año desde el que acompañás.
+- `AREAS_TESIS`: bloques temáticos con conteo y descripción.
+- `ENFOQUE_TUTORIA`: párrafos sobre cómo trabajás.
+
+La página `/tesis` **no muestra** nombres de estudiantes ni instituciones, sólo cifras agregadas y áreas. Pensado a propósito para no invadir privacidad.
+
 ---
 
 ## 🌐 Deploy a GitHub Pages

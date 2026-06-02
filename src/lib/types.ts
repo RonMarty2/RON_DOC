@@ -66,3 +66,37 @@ export interface Podcast {
   /** Duración legible opcional (ej. "32 min"). */
   duracion?: string;
 }
+
+/**
+ * Proyecto externo: una app, herramienta o sitio que mantenés en otro repo/dominio.
+ * El sitio sólo enlaza, no aloja nada.
+ */
+export interface Proyecto {
+  slug: string;
+  titulo: string;
+  /** Resumen para la tarjeta. */
+  descripcion: string;
+  /** URL pública del proyecto (se abre en nueva pestaña). */
+  url: string;
+  /** Estado del proyecto, para badge visual. */
+  estado: "en-linea" | "beta" | "en-desarrollo" | "archivado";
+  /** Emoji o símbolo corto. */
+  icono: string;
+  /** Tags cortos (ej. "estadística", "react", "PDF"). */
+  tags?: string[];
+  /** Año de lanzamiento o última actualización mayor (opcional). */
+  anio?: number;
+}
+
+/**
+ * Resumen agregado de tesis dirigidas/revisadas. No incluye datos personales
+ * de estudiantes ni de instituciones para respetar privacidad.
+ */
+export interface AreaTesis {
+  /** Nombre del área (ej. "Análisis financiero aplicado"). */
+  nombre: string;
+  /** Cantidad de tesis acompañadas en esa área. */
+  cantidad: number;
+  /** Descripción opcional del tipo de trabajos que se abordan. */
+  descripcion?: string;
+}

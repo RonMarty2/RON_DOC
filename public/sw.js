@@ -4,7 +4,7 @@
 //    si no hay red, servimos lo cacheado.
 //  - Estáticos (JS/CSS/imagenes/PDFs/HTMLs de interactivos): cache-first.
 
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE_PAGINAS = `ron-doc-paginas-${VERSION}`;
 const CACHE_ESTATICOS = `ron-doc-estaticos-${VERSION}`;
 
@@ -21,17 +21,25 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  // Limpia versiones viejas.
+  // Limpia versiones viejas y luego toma control de las pestañas abiertas.
   event.waitUntil(
-    caches.keys().then((claves) =>
-      Promise.all(
-        claves
-          .filter((k) => ![CACHE_PAGINAS, CACHE_ESTATICOS].includes(k))
-          .map((k) => caches.delete(k))
+    caches
+      .keys()
+      .then((claves) =>
+        Promise.all(
+          claves
+            .filter((k) => ![CACHE_PAGINAS, CACHE_ESTATICOS].includes(k))
+            .map((k) => caches.delete(k))
+        )
       )
-    )
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
+});
+
+// Permite al cliente forzar activación inmediata cuando hay un SW esperando.
+// El componente RegistroPWA envía este mensaje cuando detecta una versión nueva.
+self.addEventListener("message", (event) => {
+  if (event.data === "SKIP_WAITING") self.skipWaiting();
 });
 
 function esEstatico(url) {

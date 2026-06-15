@@ -53,6 +53,21 @@ export interface Materia {
   /** Emoji o símbolo corto para identificar visualmente la materia. */
   icono: string;
   temas: Tema[];
+  /** Herramientas/apps interactivas asociadas a la materia (opcional). */
+  herramientas?: HerramientaMateria[];
+}
+
+/**
+ * Herramienta interactiva (mini-app) ligada a una materia. A diferencia de un
+ * tema, no es contenido lineal sino una app con su propia ruta.
+ */
+export interface HerramientaMateria {
+  /** Path absoluto al que linkea la tarjeta (ej. "/aula-probabilidad"). */
+  href: string;
+  titulo: string;
+  descripcion: string;
+  /** Emoji o símbolo corto. */
+  icono: string;
 }
 
 export interface Podcast {

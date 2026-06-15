@@ -17,6 +17,15 @@ export const MATERIAS: Materia[] = [
       "Fundamentos de estadística aplicada a las ciencias del comportamiento: organización, descripción y análisis bivariado de datos.",
     color: "azul",
     icono: "📊",
+    herramientas: [
+      {
+        href: "/aula-probabilidad",
+        titulo: "Aula Interactiva de Probabilidad",
+        descripcion:
+          "Una clase magistral en vivo: 5 módulos que llevan a tus estudiantes desde la probabilidad simple hasta el Teorema de Bayes con simulaciones visuales.",
+        icono: "🎲",
+      },
+    ],
     temas: [
       {
         slug: "tipos-de-variables",

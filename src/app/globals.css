@@ -43,3 +43,13 @@ h1, h2, h3, h4 {
   outline-offset: 2px;
   border-radius: 0.25rem;
 }
+
+/* --- Animaciones aisladas de la herramienta Aula Interactiva de Probabilidad --- */
+@keyframes aulaParpadeo {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.55; transform: scale(1.15); }
+}
+.aula-probabilidad .aula-parpadea,
+.aula-parpadea {
+  animation: aulaParpadeo 1.1s ease-in-out infinite;
+}

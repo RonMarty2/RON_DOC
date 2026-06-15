@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import { MODULOS, type ModuloId } from "./modulos";
-import { ModuloStub } from "./ModuloStub";
+import { ModuloAula } from "./ModuloAula";
+import { ModuloUrna } from "./ModuloUrna";
+import { ModuloCondicional } from "./ModuloCondicional";
+import { ModuloMonty } from "./ModuloMonty";
+import { ModuloBayes } from "./ModuloBayes";
 
 /**
  * Contenedor principal de la herramienta "Aula Interactiva de Probabilidad".
  * Renderiza la navegación entre los 5 módulos (A-E) y el módulo activo.
- * Por ahora todos los módulos son stubs; en la Fase 2 se reemplazan por las
- * simulaciones reales.
  *
  * Aislamiento: todos los estilos específicos viven bajo la clase raíz
  * `aula-probabilidad` para evitar fugas al resto del sitio.
@@ -66,6 +68,9 @@ export function AulaProbabilidad() {
         <h2 className="mt-1 font-serif text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-slate-100">
           {meta.titulo}
         </h2>
+        <p className="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-400">
+          {meta.resumen}
+        </p>
       </header>
 
       {/* Cuerpo del módulo */}
@@ -73,7 +78,11 @@ export function AulaProbabilidad() {
         <h3 id={`modulo-${meta.id}`} className="sr-only">
           Módulo {meta.titulo}
         </h3>
-        <ModuloStub meta={meta} />
+        {activo === "aula" && <ModuloAula />}
+        {activo === "urna" && <ModuloUrna />}
+        {activo === "condicional" && <ModuloCondicional />}
+        {activo === "monty" && <ModuloMonty />}
+        {activo === "bayes" && <ModuloBayes />}
       </section>
     </div>
   );

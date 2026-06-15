@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AvatarMini } from "./AvatarMini";
 import { BarraSim } from "./BarraSim";
+import { VotacionSimulada } from "./VotacionSimulada";
 import {
   cumpleAleatorio,
   diaDelAnioATexto,
@@ -156,6 +157,24 @@ export function ModuloAula() {
           ))}
         </div>
       </div>
+
+      {/* Votación de clase (antes de revelar la simulación) */}
+      <VotacionSimulada
+        pregunta={`¿Creés que en un aula de ${tam} estudiantes habrá al menos dos con el mismo cumpleaños?`}
+        opciones={[
+          { id: "si", texto: "Sí, seguro", esCorrecta: tam >= 23 },
+          { id: "tal-vez", texto: "Tal vez, no estoy seguro/a" },
+          { id: "no", texto: "No, son demasiados días posibles" },
+          { id: "imposible", texto: "Imposible, son solo 30 personas" },
+        ]}
+        // La intuición típica subestima la probabilidad de coincidencia.
+        pesos={[0.12, 0.22, 0.46, 0.20]}
+        notaRevelacion={
+          tam >= 23
+            ? `La intuición es que es muy poco probable, pero con ${tam} estudiantes la probabilidad real ronda el ${(probabilidadTeoricaCumple(tam) * 100).toFixed(0)}%. Mirá el acumulador abajo.`
+            : `Con sólo ${tam} estudiantes la probabilidad es de ~${(probabilidadTeoricaCumple(tam) * 100).toFixed(0)}%. Probá subir el tamaño y volver a votar.`
+        }
+      />
 
       {/* Acumulador */}
       <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">

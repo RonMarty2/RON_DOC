@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { VotacionSimulada } from "./VotacionSimulada";
 
 interface CategoriaDot {
   total: number;
@@ -22,8 +23,6 @@ export function ModuloBayes() {
   const [prevalencia, setPrevalencia] = useState(0.05); // 5%
   const [sensibilidad, setSensibilidad] = useState(0.9); // 90%
   const [especificidad, setEspecificidad] = useState(0.9); // 90%
-  const [contestada, setContestada] = useState<null | number>(null);
-
   const stats = useMemo(() => {
     const enfermos = Math.round(1000 * prevalencia);
     const sanos = 1000 - enfermos;
@@ -58,7 +57,12 @@ export function ModuloBayes() {
   }
   while (dots.length < 1000) dots.push({ color: "bg-slate-300 dark:bg-slate-700", esDaniela: false });
 
-  const opciones = [10, 30, 50, 90];
+  // Determinar cuál de las opciones del quiz es la "correcta" según los sliders actuales.
+  const opcionesQuiz = [10, 30, 50, 90];
+  const vppPct = stats.vpp * 100;
+  const opcionCorrecta = opcionesQuiz.reduce((mejor, op) =>
+    Math.abs(op - vppPct) < Math.abs(mejor - vppPct) ? op : mejor
+  , opcionesQuiz[0]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -85,30 +89,20 @@ export function ModuloBayes() {
         </p>
       </article>
 
-      {/* Quiz preliminar */}
-      {contestada === null && (
-        <div className="rounded-2xl border border-amber-300 bg-amber-50 p-5 dark:border-amber-800 dark:bg-amber-950/30">
-          <p className="font-serif text-base font-semibold text-amber-900 dark:text-amber-200">
-            🎯 Antes de revelar: ¿cuál es tu intuición?
-          </p>
-          <p className="mt-1 text-sm text-amber-900/80 dark:text-amber-200/80">
-            Si el test es «90% preciso», ¿qué probabilidad tiene Daniela de
-            realmente tener depresión?
-          </p>
-          <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {opciones.map((op) => (
-              <button
-                key={op}
-                type="button"
-                onClick={() => setContestada(op)}
-                className="rounded-lg border-2 border-amber-300 bg-white px-3 py-3 font-serif text-2xl font-semibold text-amber-900 transition hover:border-amber-500 hover:bg-amber-100 dark:border-amber-700 dark:bg-slate-900 dark:text-amber-200 dark:hover:bg-amber-950/60"
-              >
-                ≈ {op}%
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* Votación de clase: el momento estelar */}
+      <VotacionSimulada
+        pregunta="Si el test es «90% preciso», ¿qué probabilidad tiene Daniela de realmente tener depresión?"
+        opciones={opcionesQuiz.map((op) => ({
+          id: String(op),
+          texto: `≈ ${op}%`,
+          esCorrecta: op === opcionCorrecta,
+        }))}
+        // La trampa: la mayoría vota 90% por la intuición errónea.
+        pesos={[0.05, 0.12, 0.23, 0.60]}
+        nDefecto={30}
+        notaRevelacion={`La intuición vota 90% por la trampa de invertir la condicional. Con los parámetros actuales, P(enfermo | positivo) = VP/(VP+FP) = ${vppPct.toFixed(0)}%. En un tamizaje masivo sobre población mayormente sana, la mayoría de los positivos son falsos positivos.`}
+      />
+
 
       {/* Sliders */}
       <div className="grid gap-4 rounded-2xl border border-slate-200 bg-white p-5 sm:grid-cols-3 dark:border-slate-800 dark:bg-slate-900">
@@ -197,24 +191,6 @@ export function ModuloBayes() {
           {stats.vp} verdaderos positivos sobre {stats.vp + stats.fp} positivos totales
         </p>
 
-        {contestada !== null && (
-          <div className="mt-5 rounded-xl bg-white px-4 py-3 text-sm dark:bg-slate-900">
-            <p className="text-slate-700 dark:text-slate-300">
-              Tu intuición: <span className="font-semibold tabular-nums">≈ {contestada}%</span>{" "}
-              · La probabilidad real:{" "}
-              <span className="font-semibold tabular-nums text-blue-700 dark:text-blue-300">
-                {(stats.vpp * 100).toFixed(0)}%
-              </span>
-            </p>
-            {contestada > stats.vpp * 100 + 10 && (
-              <p className="mt-1 text-amber-800 dark:text-amber-300">
-                Eso es la trampa: en un tamizaje sobre población mayormente
-                sana, la mayoría de los positivos son <strong>falsos positivos</strong>.
-                El test «90% preciso» no significa que un positivo signifique 90%.
-              </p>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );

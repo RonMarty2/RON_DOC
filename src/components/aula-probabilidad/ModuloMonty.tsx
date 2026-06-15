@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BarraSim } from "./BarraSim";
 import { entero, simularEnLotes } from "./aleatorio";
+import { VotacionSimulada } from "./VotacionSimulada";
 
 type Estado =
   | { fase: "elegir"; premio: number }
@@ -322,6 +323,18 @@ export function ModuloMonty() {
           Cambiando: {contador.cambiar.ganadas}/{contador.cambiar.jugadas}
         </div>
       )}
+
+      <VotacionSimulada
+        pregunta="¿Cambiás de puerta o te quedás con tu elección original?"
+        opciones={[
+          { id: "quedarse", texto: "Me quedo con mi puerta" },
+          { id: "cambiar", texto: "Cambio", esCorrecta: true },
+          { id: "da-igual", texto: "Da lo mismo, es 50/50" },
+        ]}
+        // La intuición típica dice "50/50" o "me quedo" — pocos eligen "cambiar".
+        pesos={[0.35, 0.20, 0.45]}
+        notaRevelacion="La intuición dice 50/50, pero cambiar gana ≈66.7% de las veces. La puerta que abrió el conductor te dio información: filtra entre las dos que NO elegiste. Mirá el acumulador abajo."
+      />
 
       <MontySimulador />
     </div>

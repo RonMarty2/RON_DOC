@@ -4,7 +4,7 @@
 //    si no hay red, servimos lo cacheado.
 //  - Estáticos (JS/CSS/imagenes/PDFs/HTMLs de interactivos): cache-first.
 
-const VERSION = "v3";
+const VERSION = "v4";
 const CACHE_PAGINAS = `ron-doc-paginas-${VERSION}`;
 const CACHE_ESTATICOS = `ron-doc-estaticos-${VERSION}`;
 

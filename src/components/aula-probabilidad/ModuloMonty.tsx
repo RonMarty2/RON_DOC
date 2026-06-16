@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { BarraSim } from "./BarraSim";
 import { entero, simularEnLotes } from "./aleatorio";
 import { VotacionSimulada } from "./VotacionSimulada";
+import { MiniHistoria } from "./narrativa";
 
 type Estado =
   | { fase: "elegir"; premio: number }
@@ -314,6 +315,14 @@ export function ModuloMonty() {
 
   return (
     <div className="flex flex-col gap-8">
+      <MiniHistoria titulo="El sesgo del statu quo">
+        Cuando ya tomamos una decisión, al cerebro le cuesta cambiarla aunque le
+        convenga: preferimos «quedarnos con lo nuestro» para no arrepentirnos si
+        sale mal. Por eso casi todos se quedan con su puerta… y por eso casi
+        todos pierden el doble de veces. Cambiar se siente arriesgado, pero los
+        números dicen lo contrario.
+      </MiniHistoria>
+
       <MontyManual onResultado={registrar} />
 
       {(contador.quedarse.jugadas > 0 || contador.cambiar.jugadas > 0) && (

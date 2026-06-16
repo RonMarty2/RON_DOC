@@ -22,7 +22,7 @@ export const MATERIAS: Materia[] = [
         href: "/aula-probabilidad",
         titulo: "Aula Interactiva de Probabilidad",
         descripcion:
-          "Una clase magistral en vivo: 5 módulos que llevan a tus estudiantes desde la probabilidad simple hasta el Teorema de Bayes con simulaciones visuales.",
+          "El caso «La duda de Andrea»: un grupo real de 60 estudiantes lleva a la clase desde los sesgos de la intuición hasta entender por qué el test positivo de Daniela significa 38% y no 90%.",
         icono: "🎲",
       },
     ],

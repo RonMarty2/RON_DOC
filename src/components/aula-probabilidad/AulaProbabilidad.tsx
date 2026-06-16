@@ -7,6 +7,7 @@ import { ModuloUrna } from "./ModuloUrna";
 import { ModuloCondicional } from "./ModuloCondicional";
 import { ModuloMonty } from "./ModuloMonty";
 import { ModuloBayes } from "./ModuloBayes";
+import { GuiaClase } from "./GuiaClase";
 
 /**
  * Contenedor principal de la herramienta "Aula Interactiva de Probabilidad".
@@ -59,6 +60,9 @@ export function AulaProbabilidad() {
           })}
         </ul>
       </nav>
+
+      {/* Guía rápida colapsable para usar en clase */}
+      <GuiaClase />
 
       {/* Encabezado del módulo activo */}
       <header className="mb-6">

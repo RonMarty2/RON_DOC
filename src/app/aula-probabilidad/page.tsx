@@ -5,7 +5,7 @@ import { construirMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = construirMetadata(
   "Aula Interactiva de Probabilidad",
-  "Una clase magistral en vivo: 5 módulos visuales que llevan desde la probabilidad simple hasta el Teorema de Bayes."
+  "Una clase magistral en vivo: del espacio muestral al Teorema de Bayes, con dados clásicos y un dataset real de 200 estudiantes tamizados en salud mental."
 );
 
 export default function AulaProbabilidadPage() {

@@ -4,29 +4,24 @@ import { useState } from "react";
 
 const PASOS = [
   {
-    titulo: "1 · Proyectá y arrancá por el Preludio",
+    titulo: "1 · Proyectá y arrancá por 2.1",
     detalle:
-      "Pantalla completa (F11). Empezá por «Las 3 puertas». La idea del preludio es que el aula se equivoque tres veces y acepte que su intuición falla — todavía sin fórmulas.",
+      "Pantalla completa (F11). Empezá por «Espacio muestral». Tirá el dado en vivo, después los dos dados, y recién ahí mostrá el espacio muestral del PHQ-9 (28 puntajes).",
   },
   {
-    titulo: "2 · Puertas → Cumpleaños → Moneda",
+    titulo: "2 · Siempre clásico → aplicado",
     detalle:
-      "En cada uno, lanzá la votación de clase ANTES de revelar. En Cumpleaños mostrá las 5 coincidencias reales del grupo de 60 y corré la simulación de 1000 aulas (nunca falla ante el público).",
+      "Cada módulo tiene la misma estructura: primero un ejemplo con dados/cartas/urnas (sin ruido psicológico), después el mismo concepto con el dataset real de 200 estudiantes (PTSMU).",
   },
   {
-    titulo: "3 · Cruzá el puente",
+    titulo: "3 · Elegí estudiantes reales en vivo",
     detalle:
-      "Al terminar la Moneda aparece el texto puente: «Tres veces les falló la intuición». Ahí pasás a la Construcción con el grupo real de Andrea.",
+      "Los botones \"elegir al azar\" sacan un estudiante de verdad del dataset — no está inventado en el momento. Los números que salen son los del dossier: sensibilidad 88%, VPP 51.2%.",
   },
   {
-    titulo: "4 · Simple → Condicional",
+    titulo: "4 · El corte de tamizaje es el hilo conductor",
     detalle:
-      "Urna: 8 de 60 tienen ánimo bajo = 13.3%, y la frecuencia converge ahí. Condicional: tocá «mostrar solo los que duermen mal» y mostrá el salto a 25%. «Saber algo cambió la probabilidad».",
-  },
-  {
-    titulo: "5 · Clímax: el positivo de Daniela (Bayes)",
-    detalle:
-      "Leé el caso en voz alta. Lanzá la votación «¿qué probabilidad real?» — la mayoría vota 90%. Revelá: de los 21 positivos, sólo 8 están mal = 38%. Daniela parpadea entre los falsos positivos. Cerrá con el mensaje ético.",
+      "El corte ≥10 en PHQ-9 y GAD-7 aparece desde el Módulo 1 y se reutiliza en todos los siguientes — tablas de contingencia, combinatoria (elegir 5 de 43 positivos) y Bayes.",
   },
 ];
 

@@ -1,9 +1,10 @@
 /**
- * Hilo narrativo "La duda de Andrea" + mini-historias de psicología.
- * Componentes de presentación reutilizados por los módulos.
+ * Componentes de presentación reutilizados por los módulos: el recuadro de
+ * "caso aplicado" (contexto PTSMU) y la mini-historia (nota conceptual o
+ * trampa común).
  */
 
-/** Recuadro de caso narrativo (Andrea / Daniela), tono humano. */
+/** Recuadro de caso aplicado a psicología (dataset PTSMU real). */
 export function RecuadroCaso({
   titulo,
   children,
@@ -14,7 +15,7 @@ export function RecuadroCaso({
   return (
     <article className="rounded-2xl border border-blue-200 bg-blue-50/50 p-5 dark:border-blue-900 dark:bg-blue-950/20 sm:p-6">
       <p className="font-mono text-xs font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
-        La duda de Andrea
+        Aplicado · Servicio de Tamizaje en Salud Mental (PTSMU)
       </p>
       <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
         {titulo}
@@ -26,7 +27,30 @@ export function RecuadroCaso({
   );
 }
 
-/** Recuadro de "mini-historia de psicología" (los sesgos del preludio). */
+/** Recuadro clásico (dados, cartas, urnas) — sin ruido psicológico, para fijar el concepto puro. */
+export function RecuadroClasico({
+  titulo,
+  children,
+}: {
+  titulo: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <article className="rounded-2xl border border-slate-200 bg-slate-50/60 p-5 dark:border-slate-800 dark:bg-slate-900/40 sm:p-6">
+      <p className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+        Ejemplo clásico
+      </p>
+      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+        {titulo}
+      </h4>
+      <div className="mt-3 space-y-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        {children}
+      </div>
+    </article>
+  );
+}
+
+/** Recuadro de nota conceptual o "¡cuidado! trampa común". */
 export function MiniHistoria({
   titulo,
   children,
@@ -43,20 +67,5 @@ export function MiniHistoria({
         {children}
       </div>
     </aside>
-  );
-}
-
-/** Texto puente entre el Preludio y la Construcción. */
-export function PuenteSecciones() {
-  return (
-    <div className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-center text-white sm:p-8">
-      <p className="font-serif text-lg font-semibold sm:text-xl">
-        Tres veces les falló la intuición.
-      </p>
-      <p className="mt-2 text-blue-100">
-        Ahora aprendamos a pensar la probabilidad bien, paso a paso — con un
-        grupo real de 60 estudiantes.
-      </p>
-    </div>
   );
 }

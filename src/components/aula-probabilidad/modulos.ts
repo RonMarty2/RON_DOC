@@ -1,104 +1,92 @@
 /**
  * Navegación de la herramienta "Aula Interactiva de Probabilidad".
  *
- * Se organiza en DOS partes:
- *  - PRELUDIO "Tu mente te engaña": enganche, sesgos, sin teoría.
- *  - CONSTRUCCIÓN: de lo simple a Bayes, con los 60 estudiantes reales.
+ * Sigue el temario real de Psicoestadística Inferencial — Unidad 2
+ * (Probabilidad y distribución de probabilidad). Fase 1: apartados 2.1 a 2.6
+ * (fundamentos + Teorema de Bayes). Fase 2 (2.7-2.9, distribuciones) se suma
+ * más adelante.
+ *
+ * Cada módulo sigue el mismo patrón: ejemplo clásico (dados, cartas, urnas)
+ * primero, para fijar el concepto sin ruido; después el mismo concepto
+ * aplicado al dataset real de 200 estudiantes (PTSMU: PHQ-9 + GAD-7 + Dx).
  *
  * Estilos aislados bajo la clase raíz `.aula-probabilidad`.
  */
 
 export type ModuloId =
-  | "puertas"
-  | "cumpleanios"
-  | "moneda"
-  | "urna"
-  | "condicional"
+  | "espacio-muestral"
+  | "tipos-probabilidad"
+  | "tablas-contingencia"
+  | "combinatoria"
+  | "reglas-basicas"
   | "bayes";
-
-export type Parte = "preludio" | "construccion";
 
 export interface ModuloMeta {
   id: ModuloId;
-  parte: Parte;
+  apartado: string;
   icono: string;
   titulo: string;
   subtitulo: string;
   resumen: string;
 }
 
-export const PARTES: Record<Parte, { etiqueta: string; descripcion: string }> = {
-  preludio: {
-    etiqueta: "Preludio · Tu mente te engaña",
-    descripcion:
-      "Tres demostraciones donde la intuición falla. El objetivo no es enseñar fórmulas todavía, sino instalar la duda: «no puedo confiar ciegamente en mi intuición».",
-  },
-  construccion: {
-    etiqueta: "Construcción · De lo simple a Bayes",
-    descripcion:
-      "Ahora sí, paso a paso, con un grupo real de 60 estudiantes (el caso de Andrea). Cada peldaño sube la dificultad hasta entender por qué el positivo de Daniela significa 38% y no 90%.",
-  },
-};
-
 export const MODULOS: ModuloMeta[] = [
-  // ---- PRELUDIO ----
   {
-    id: "puertas",
-    parte: "preludio",
-    icono: "🚪",
-    titulo: "Las 3 puertas",
-    subtitulo: "Monty Hall · sesgo del statu quo",
+    id: "espacio-muestral",
+    apartado: "2.1",
+    icono: "🎲",
+    titulo: "Espacio muestral",
+    subtitulo: "Experimento aleatorio, universo, suceso",
     resumen:
-      "¿Cambiás o te quedás? La mayoría se queda por miedo a cambiar. Simulación de 1000 partidas: cambiar gana el doble.",
+      "Tirá un dado, después dos. Del espacio muestral simple {1..6} al compuesto de 36 pares. Después: los 28 puntajes posibles del PHQ-9.",
   },
   {
-    id: "cumpleanios",
-    parte: "preludio",
-    icono: "🎂",
-    titulo: "Los cumpleaños",
-    subtitulo: "Coincidencias mágicas que son azar",
+    id: "tipos-probabilidad",
+    apartado: "2.2",
+    icono: "🔮",
+    titulo: "Tipos de probabilidad",
+    subtitulo: "Clásica, frecuentista, subjetiva",
     resumen:
-      "En este grupo real de 60 hay 5 fechas compartidas (¡una la comparten 4 personas!). Vemos premoniciones donde sólo hay probabilidad.",
+      "Un dado (clásica) vs. mil tiradas de moneda (frecuentista). Después: elegir un estudiante al azar vs. la prevalencia real observada en 200 casos.",
   },
   {
-    id: "moneda",
-    parte: "preludio",
-    icono: "🪙",
-    titulo: "La moneda con racha",
-    subtitulo: "La falacia del jugador",
+    id: "tablas-contingencia",
+    apartado: "2.3",
+    icono: "🔲",
+    titulo: "Tablas de contingencia",
+    subtitulo: "Conjunta, marginal, condicional",
     resumen:
-      "Salió cara 5 veces seguidas, ¿la próxima es sello? No: la moneda no tiene memoria. Sigue siendo 50%.",
-  },
-  // ---- CONSTRUCCIÓN ----
-  {
-    id: "urna",
-    parte: "construccion",
-    icono: "🎱",
-    titulo: "Probabilidad simple",
-    subtitulo: "Peldaño 1 · casos favorables / posibles",
-    resumen:
-      "De los 60 estudiantes, 8 tienen ánimo bajo: 8/60 = 13.3%. Extraemos al azar muchas veces y la frecuencia converge a ese valor.",
+      "Un dado cruzado por color. Después: PHQ-9 × diagnóstico confirmado — sensibilidad 88%, especificidad 88%, VPP apenas 51.2%.",
   },
   {
-    id: "condicional",
-    parte: "construccion",
-    icono: "🔎",
-    titulo: "Probabilidad condicional",
-    subtitulo: "Peldaño 2-3 · saber algo cambia la probabilidad",
+    id: "combinatoria",
+    apartado: "2.4",
+    icono: "🃏",
+    titulo: "Teoría combinatoria",
+    subtitulo: "Factorial, permutación, combinación",
     resumen:
-      "Filtramos el aula: de los 16 que duermen mal, 4 tienen ánimo bajo = 25%, frente al 13.3% general. La información cambia la probabilidad.",
+      "Manos de cartas: ¿importa el orden? Después: de 43 estudiantes positivos, ¿de cuántas formas se eligen 5 para entrevistar? 962,598.",
+  },
+  {
+    id: "reglas-basicas",
+    apartado: "2.5",
+    icono: "➕",
+    titulo: "Reglas básicas",
+    subtitulo: "Suma, producto, independencia",
+    resumen:
+      "Dados y monedas independientes. Después: P(depresión o ansiedad) = 23.5%, y por qué NO son independientes (comorbilidad).",
   },
   {
     id: "bayes",
-    parte: "construccion",
+    apartado: "2.6",
     icono: "🧪",
-    titulo: "El positivo de Daniela",
-    subtitulo: "Peldaño 4-5 · el clímax (Bayes)",
+    titulo: "Teorema de Bayes",
+    subtitulo: "El clímax: la falacia de la tasa base",
     resumen:
-      "Daniela dio positivo. ¿90% de probabilidad de estar mal? No: de los 21 positivos, sólo 8 tienen ánimo bajo. 8/21 = 38%.",
+      "Urnas con bolitas. Después: un test con 88% de sensibilidad, ¿90% de certeza si da positivo? No: 51.2%. La prevalencia es la mitad del cálculo.",
   },
 ];
 
-export function modulosDeParte(parte: Parte): ModuloMeta[] {
-  return MODULOS.filter((m) => m.parte === parte);
+export function moduloPorId(id: ModuloId): ModuloMeta {
+  return MODULOS.find((m) => m.id === id) ?? MODULOS[0];
 }

@@ -1,115 +1,258 @@
 /**
- * Dataset "La duda de Andrea" — 60 estudiantes de primer año.
+ * Dataset "PTSMU" — Programa de Tamizaje en Salud Mental Universitaria.
+ * 200 estudiantes tamizados con PHQ-9 (depresión) y GAD-7 (ansiedad),
+ * más diagnóstico confirmado por entrevista clínica (Dx_Confirmado).
  *
- * FUENTE ÚNICA DE VERDAD de toda la herramienta Aula Interactiva de
- * Probabilidad. Generado con semilla fija. NO modificar: los números
- * pedagógicos dependen de estos datos exactos.
+ * FUENTE ÚNICA DE VERDAD de la herramienta Aula Interactiva de Probabilidad.
+ * Generado con semilla fija para reproducir EXACTAMENTE los números del
+ * dossier de Psicoestadística Inferencial — Unidad 2 (Tema 2). NO modificar
+ * a mano: los ejemplos de cada módulo dependen de estos datos exactos.
  *
- * Verificado:
- *  - ánimo bajo real: 8/60 (13.3%)
- *  - duermen mal: 16
- *  - P(ánimo | duerme mal): 4/16 = 25%
- *  - test: VP=8, FP=13, FN=0, VN=39, total positivos=21
- *  - P(ánimo | test positivo): 8/21 = 38%
+ * Verificado contra el dossier:
+ *  - PHQ-9 positivo (≥10): 43/200 = 21.5%
+ *  - GAD-7 positivo (≥10): 21/200 = 10.5%
+ *  - Positivos en ambos: 17/200 = 8.5%
+ *  - Diagnóstico confirmado: 25/200 = 12.5% (prevalencia)
+ *  - Tabla PHQ-9 × Dx: VP=22 FP=21 FN=3 VN=154
+ *  - Sensibilidad = 22/25 = 88.0% · Especificidad = 154/175 = 88.0%
+ *  - VPP = P(Dx sí | positivo) = 22/43 = 51.2%
  */
 
 export interface Estudiante {
   id: number;
-  nombre: string;
-  /** Cumpleaños legible (ej. "14 feb"). */
-  cumple: string;
-  mes: number;
-  dia: number;
-  /** Atributo observable: duerme mal. */
-  duermeMal: boolean;
-  /** Estado real (oculto): tiene ánimo bajo. */
-  animoBajo: boolean;
-  /** Resultado del test rápido. */
-  testPositivo: boolean;
-  /** Daniela: sana pero con test positivo (falso positivo). El corazón del caso. */
-  esDaniela: boolean;
+  /** Puntaje PHQ-9 (depresión), rango 0–27. */
+  phq9: number;
+  /** Puntaje GAD-7 (ansiedad), rango 0–21. */
+  gad7: number;
+  /** Diagnóstico confirmado por entrevista clínica (criterio de referencia). */
+  dxConfirmado: boolean;
 }
 
+/** Corte de tamizaje usado en ambos cuestionarios. */
+export const CORTE_TAMIZAJE = 10;
+
 export const ESTUDIANTES: Estudiante[] = [
-  { id: 1, nombre: "Ana", cumple: "14 feb", mes: 2, dia: 14, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 2, nombre: "Bruno", cumple: "29 oct", mes: 10, dia: 29, duermeMal: true, animoBajo: true, testPositivo: true, esDaniela: false },
-  { id: 3, nombre: "Camila", cumple: "09 sep", mes: 9, dia: 9, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 4, nombre: "Diego", cumple: "30 oct", mes: 10, dia: 30, duermeMal: false, animoBajo: true, testPositivo: true, esDaniela: false },
-  { id: 5, nombre: "Elena", cumple: "17 sep", mes: 9, dia: 17, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 6, nombre: "Fabio", cumple: "08 oct", mes: 10, dia: 8, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 7, nombre: "Daniela", cumple: "31 ene", mes: 1, dia: 31, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: true },
-  { id: 8, nombre: "Hugo", cumple: "04 nov", mes: 11, dia: 4, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 9, nombre: "Isabel", cumple: "16 jul", mes: 7, dia: 16, duermeMal: true, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 10, nombre: "Joaquín", cumple: "28 abr", mes: 4, dia: 28, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 11, nombre: "Karen", cumple: "23 nov", mes: 11, dia: 23, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 12, nombre: "Luis", cumple: "23 ago", mes: 8, dia: 23, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 13, nombre: "Mariana", cumple: "09 sep", mes: 9, dia: 9, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 14, nombre: "Néstor", cumple: "10 nov", mes: 11, dia: 10, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 15, nombre: "Olivia", cumple: "17 nov", mes: 11, dia: 17, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 16, nombre: "Pedro", cumple: "14 jul", mes: 7, dia: 14, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 17, nombre: "Quena", cumple: "01 may", mes: 5, dia: 1, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 18, nombre: "Rosa", cumple: "29 nov", mes: 11, dia: 29, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 19, nombre: "Sergio", cumple: "26 ago", mes: 8, dia: 26, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 20, nombre: "Tania", cumple: "12 ago", mes: 8, dia: 12, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 21, nombre: "Ulises", cumple: "23 may", mes: 5, dia: 23, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 22, nombre: "Valeria", cumple: "25 sep", mes: 9, dia: 25, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 23, nombre: "Wilson", cumple: "18 jul", mes: 7, dia: 18, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 24, nombre: "Ximena", cumple: "27 ene", mes: 1, dia: 27, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 25, nombre: "Yamil", cumple: "30 ago", mes: 8, dia: 30, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 26, nombre: "Zoe", cumple: "23 ago", mes: 8, dia: 23, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 27, nombre: "Andrés", cumple: "09 sep", mes: 9, dia: 9, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 28, nombre: "Belén", cumple: "31 mar", mes: 3, dia: 31, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 29, nombre: "Carlos", cumple: "16 dic", mes: 12, dia: 16, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 30, nombre: "Daniela R.", cumple: "09 nov", mes: 11, dia: 9, duermeMal: false, animoBajo: true, testPositivo: true, esDaniela: false },
-  { id: 31, nombre: "Erika", cumple: "04 jun", mes: 6, dia: 4, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 32, nombre: "Franco", cumple: "05 jul", mes: 7, dia: 5, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 33, nombre: "Gloria", cumple: "03 ene", mes: 1, dia: 3, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 34, nombre: "Hernán", cumple: "18 oct", mes: 10, dia: 18, duermeMal: false, animoBajo: true, testPositivo: true, esDaniela: false },
-  { id: 35, nombre: "Inés", cumple: "20 feb", mes: 2, dia: 20, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 36, nombre: "Julio", cumple: "04 abr", mes: 4, dia: 4, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 37, nombre: "Karla", cumple: "09 sep", mes: 9, dia: 9, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 38, nombre: "Leo", cumple: "12 nov", mes: 11, dia: 12, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 39, nombre: "Mónica", cumple: "22 jun", mes: 6, dia: 22, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 40, nombre: "Nahuel", cumple: "23 ago", mes: 8, dia: 23, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 41, nombre: "Oscar", cumple: "18 mar", mes: 3, dia: 18, duermeMal: true, animoBajo: true, testPositivo: true, esDaniela: false },
-  { id: 42, nombre: "Paola", cumple: "05 oct", mes: 10, dia: 5, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 43, nombre: "Quintín", cumple: "17 dic", mes: 12, dia: 17, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 44, nombre: "Raúl", cumple: "22 jul", mes: 7, dia: 22, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 45, nombre: "Sofía", cumple: "26 mar", mes: 3, dia: 26, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 46, nombre: "Tomás", cumple: "10 oct", mes: 10, dia: 10, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 47, nombre: "Úrsula", cumple: "26 jul", mes: 7, dia: 26, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 48, nombre: "Víctor", cumple: "13 abr", mes: 4, dia: 13, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 49, nombre: "Wendy", cumple: "13 feb", mes: 2, dia: 13, duermeMal: false, animoBajo: true, testPositivo: true, esDaniela: false },
-  { id: 50, nombre: "Xavier", cumple: "27 ene", mes: 1, dia: 27, duermeMal: true, animoBajo: true, testPositivo: true, esDaniela: false },
-  { id: 51, nombre: "Yolanda", cumple: "30 jun", mes: 6, dia: 30, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 52, nombre: "Zacarías", cumple: "01 ene", mes: 1, dia: 1, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 53, nombre: "Abril", cumple: "22 jun", mes: 6, dia: 22, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 54, nombre: "Benjamín", cumple: "30 jun", mes: 6, dia: 30, duermeMal: true, animoBajo: true, testPositivo: true, esDaniela: false },
-  { id: 55, nombre: "Carmen", cumple: "19 ago", mes: 8, dia: 19, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 56, nombre: "David", cumple: "05 mar", mes: 3, dia: 5, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 57, nombre: "Estela", cumple: "14 abr", mes: 4, dia: 14, duermeMal: false, animoBajo: false, testPositivo: true, esDaniela: false },
-  { id: 58, nombre: "Felipe", cumple: "20 ago", mes: 8, dia: 20, duermeMal: true, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 59, nombre: "Gabriel", cumple: "03 dic", mes: 12, dia: 3, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
-  { id: 60, nombre: "Helena", cumple: "07 ene", mes: 1, dia: 7, duermeMal: false, animoBajo: false, testPositivo: false, esDaniela: false },
+  { id: 1, phq9: 0, gad7: 7, dxConfirmado: false },
+  { id: 2, phq9: 6, gad7: 2, dxConfirmado: false },
+  { id: 3, phq9: 1, gad7: 4, dxConfirmado: false },
+  { id: 4, phq9: 9, gad7: 4, dxConfirmado: false },
+  { id: 5, phq9: 2, gad7: 6, dxConfirmado: false },
+  { id: 6, phq9: 2, gad7: 8, dxConfirmado: false },
+  { id: 7, phq9: 4, gad7: 6, dxConfirmado: false },
+  { id: 8, phq9: 17, gad7: 6, dxConfirmado: false },
+  { id: 9, phq9: 4, gad7: 5, dxConfirmado: false },
+  { id: 10, phq9: 19, gad7: 18, dxConfirmado: true },
+  { id: 11, phq9: 19, gad7: 10, dxConfirmado: false },
+  { id: 12, phq9: 20, gad7: 11, dxConfirmado: false },
+  { id: 13, phq9: 5, gad7: 1, dxConfirmado: false },
+  { id: 14, phq9: 3, gad7: 5, dxConfirmado: false },
+  { id: 15, phq9: 3, gad7: 3, dxConfirmado: false },
+  { id: 16, phq9: 20, gad7: 11, dxConfirmado: false },
+  { id: 17, phq9: 2, gad7: 0, dxConfirmado: false },
+  { id: 18, phq9: 4, gad7: 8, dxConfirmado: false },
+  { id: 19, phq9: 7, gad7: 1, dxConfirmado: false },
+  { id: 20, phq9: 3, gad7: 0, dxConfirmado: false },
+  { id: 21, phq9: 6, gad7: 0, dxConfirmado: false },
+  { id: 22, phq9: 1, gad7: 1, dxConfirmado: false },
+  { id: 23, phq9: 3, gad7: 0, dxConfirmado: false },
+  { id: 24, phq9: 10, gad7: 0, dxConfirmado: false },
+  { id: 25, phq9: 0, gad7: 6, dxConfirmado: false },
+  { id: 26, phq9: 11, gad7: 1, dxConfirmado: false },
+  { id: 27, phq9: 15, gad7: 3, dxConfirmado: false },
+  { id: 28, phq9: 7, gad7: 5, dxConfirmado: false },
+  { id: 29, phq9: 3, gad7: 6, dxConfirmado: false },
+  { id: 30, phq9: 19, gad7: 13, dxConfirmado: true },
+  { id: 31, phq9: 0, gad7: 0, dxConfirmado: false },
+  { id: 32, phq9: 5, gad7: 3, dxConfirmado: false },
+  { id: 33, phq9: 15, gad7: 6, dxConfirmado: false },
+  { id: 34, phq9: 22, gad7: 0, dxConfirmado: false },
+  { id: 35, phq9: 0, gad7: 8, dxConfirmado: false },
+  { id: 36, phq9: 1, gad7: 5, dxConfirmado: false },
+  { id: 37, phq9: 4, gad7: 3, dxConfirmado: false },
+  { id: 38, phq9: 5, gad7: 7, dxConfirmado: false },
+  { id: 39, phq9: 19, gad7: 2, dxConfirmado: false },
+  { id: 40, phq9: 0, gad7: 8, dxConfirmado: false },
+  { id: 41, phq9: 17, gad7: 1, dxConfirmado: true },
+  { id: 42, phq9: 3, gad7: 7, dxConfirmado: false },
+  { id: 43, phq9: 4, gad7: 5, dxConfirmado: false },
+  { id: 44, phq9: 1, gad7: 2, dxConfirmado: false },
+  { id: 45, phq9: 0, gad7: 3, dxConfirmado: false },
+  { id: 46, phq9: 5, gad7: 0, dxConfirmado: false },
+  { id: 47, phq9: 2, gad7: 2, dxConfirmado: false },
+  { id: 48, phq9: 0, gad7: 0, dxConfirmado: false },
+  { id: 49, phq9: 5, gad7: 1, dxConfirmado: false },
+  { id: 50, phq9: 1, gad7: 2, dxConfirmado: false },
+  { id: 51, phq9: 3, gad7: 10, dxConfirmado: false },
+  { id: 52, phq9: 6, gad7: 4, dxConfirmado: false },
+  { id: 53, phq9: 0, gad7: 5, dxConfirmado: false },
+  { id: 54, phq9: 3, gad7: 1, dxConfirmado: false },
+  { id: 55, phq9: 1, gad7: 0, dxConfirmado: false },
+  { id: 56, phq9: 0, gad7: 3, dxConfirmado: false },
+  { id: 57, phq9: 0, gad7: 0, dxConfirmado: false },
+  { id: 58, phq9: 2, gad7: 0, dxConfirmado: false },
+  { id: 59, phq9: 1, gad7: 8, dxConfirmado: false },
+  { id: 60, phq9: 5, gad7: 3, dxConfirmado: false },
+  { id: 61, phq9: 0, gad7: 0, dxConfirmado: false },
+  { id: 62, phq9: 4, gad7: 1, dxConfirmado: false },
+  { id: 63, phq9: 0, gad7: 4, dxConfirmado: false },
+  { id: 64, phq9: 3, gad7: 3, dxConfirmado: false },
+  { id: 65, phq9: 0, gad7: 2, dxConfirmado: false },
+  { id: 66, phq9: 0, gad7: 3, dxConfirmado: false },
+  { id: 67, phq9: 0, gad7: 4, dxConfirmado: false },
+  { id: 68, phq9: 5, gad7: 6, dxConfirmado: false },
+  { id: 69, phq9: 1, gad7: 0, dxConfirmado: false },
+  { id: 70, phq9: 10, gad7: 13, dxConfirmado: true },
+  { id: 71, phq9: 4, gad7: 1, dxConfirmado: false },
+  { id: 72, phq9: 0, gad7: 3, dxConfirmado: false },
+  { id: 73, phq9: 2, gad7: 2, dxConfirmado: false },
+  { id: 74, phq9: 7, gad7: 1, dxConfirmado: false },
+  { id: 75, phq9: 13, gad7: 2, dxConfirmado: false },
+  { id: 76, phq9: 0, gad7: 2, dxConfirmado: false },
+  { id: 77, phq9: 1, gad7: 1, dxConfirmado: false },
+  { id: 78, phq9: 1, gad7: 0, dxConfirmado: false },
+  { id: 79, phq9: 3, gad7: 0, dxConfirmado: false },
+  { id: 80, phq9: 4, gad7: 0, dxConfirmado: false },
+  { id: 81, phq9: 6, gad7: 7, dxConfirmado: false },
+  { id: 82, phq9: 7, gad7: 4, dxConfirmado: false },
+  { id: 83, phq9: 4, gad7: 1, dxConfirmado: false },
+  { id: 84, phq9: 4, gad7: 7, dxConfirmado: false },
+  { id: 85, phq9: 3, gad7: 8, dxConfirmado: false },
+  { id: 86, phq9: 7, gad7: 2, dxConfirmado: false },
+  { id: 87, phq9: 14, gad7: 2, dxConfirmado: false },
+  { id: 88, phq9: 10, gad7: 2, dxConfirmado: true },
+  { id: 89, phq9: 4, gad7: 5, dxConfirmado: false },
+  { id: 90, phq9: 1, gad7: 1, dxConfirmado: false },
+  { id: 91, phq9: 7, gad7: 4, dxConfirmado: false },
+  { id: 92, phq9: 16, gad7: 0, dxConfirmado: true },
+  { id: 93, phq9: 2, gad7: 2, dxConfirmado: false },
+  { id: 94, phq9: 2, gad7: 6, dxConfirmado: false },
+  { id: 95, phq9: 0, gad7: 0, dxConfirmado: false },
+  { id: 96, phq9: 2, gad7: 0, dxConfirmado: false },
+  { id: 97, phq9: 3, gad7: 0, dxConfirmado: false },
+  { id: 98, phq9: 7, gad7: 1, dxConfirmado: false },
+  { id: 99, phq9: 11, gad7: 14, dxConfirmado: false },
+  { id: 100, phq9: 6, gad7: 2, dxConfirmado: false },
+  { id: 101, phq9: 1, gad7: 4, dxConfirmado: false },
+  { id: 102, phq9: 17, gad7: 1, dxConfirmado: true },
+  { id: 103, phq9: 1, gad7: 0, dxConfirmado: false },
+  { id: 104, phq9: 3, gad7: 1, dxConfirmado: false },
+  { id: 105, phq9: 8, gad7: 10, dxConfirmado: false },
+  { id: 106, phq9: 22, gad7: 2, dxConfirmado: true },
+  { id: 107, phq9: 4, gad7: 4, dxConfirmado: false },
+  { id: 108, phq9: 5, gad7: 17, dxConfirmado: true },
+  { id: 109, phq9: 16, gad7: 10, dxConfirmado: true },
+  { id: 110, phq9: 4, gad7: 0, dxConfirmado: false },
+  { id: 111, phq9: 14, gad7: 0, dxConfirmado: false },
+  { id: 112, phq9: 1, gad7: 0, dxConfirmado: false },
+  { id: 113, phq9: 1, gad7: 5, dxConfirmado: false },
+  { id: 114, phq9: 3, gad7: 8, dxConfirmado: false },
+  { id: 115, phq9: 4, gad7: 0, dxConfirmado: true },
+  { id: 116, phq9: 1, gad7: 7, dxConfirmado: false },
+  { id: 117, phq9: 18, gad7: 10, dxConfirmado: false },
+  { id: 118, phq9: 1, gad7: 1, dxConfirmado: false },
+  { id: 119, phq9: 1, gad7: 0, dxConfirmado: false },
+  { id: 120, phq9: 15, gad7: 5, dxConfirmado: true },
+  { id: 121, phq9: 11, gad7: 9, dxConfirmado: true },
+  { id: 122, phq9: 4, gad7: 7, dxConfirmado: false },
+  { id: 123, phq9: 3, gad7: 9, dxConfirmado: false },
+  { id: 124, phq9: 1, gad7: 6, dxConfirmado: false },
+  { id: 125, phq9: 11, gad7: 3, dxConfirmado: false },
+  { id: 126, phq9: 22, gad7: 11, dxConfirmado: true },
+  { id: 127, phq9: 14, gad7: 2, dxConfirmado: true },
+  { id: 128, phq9: 6, gad7: 6, dxConfirmado: false },
+  { id: 129, phq9: 18, gad7: 2, dxConfirmado: false },
+  { id: 130, phq9: 4, gad7: 2, dxConfirmado: false },
+  { id: 131, phq9: 3, gad7: 0, dxConfirmado: false },
+  { id: 132, phq9: 2, gad7: 1, dxConfirmado: false },
+  { id: 133, phq9: 4, gad7: 2, dxConfirmado: false },
+  { id: 134, phq9: 0, gad7: 4, dxConfirmado: false },
+  { id: 135, phq9: 3, gad7: 2, dxConfirmado: true },
+  { id: 136, phq9: 1, gad7: 2, dxConfirmado: false },
+  { id: 137, phq9: 2, gad7: 1, dxConfirmado: false },
+  { id: 138, phq9: 23, gad7: 0, dxConfirmado: false },
+  { id: 139, phq9: 26, gad7: 17, dxConfirmado: false },
+  { id: 140, phq9: 1, gad7: 3, dxConfirmado: false },
+  { id: 141, phq9: 0, gad7: 3, dxConfirmado: false },
+  { id: 142, phq9: 2, gad7: 3, dxConfirmado: false },
+  { id: 143, phq9: 0, gad7: 1, dxConfirmado: false },
+  { id: 144, phq9: 3, gad7: 0, dxConfirmado: false },
+  { id: 145, phq9: 20, gad7: 0, dxConfirmado: true },
+  { id: 146, phq9: 2, gad7: 5, dxConfirmado: false },
+  { id: 147, phq9: 2, gad7: 0, dxConfirmado: false },
+  { id: 148, phq9: 10, gad7: 5, dxConfirmado: true },
+  { id: 149, phq9: 1, gad7: 2, dxConfirmado: false },
+  { id: 150, phq9: 0, gad7: 0, dxConfirmado: false },
+  { id: 151, phq9: 2, gad7: 4, dxConfirmado: false },
+  { id: 152, phq9: 1, gad7: 1, dxConfirmado: false },
+  { id: 153, phq9: 0, gad7: 3, dxConfirmado: false },
+  { id: 154, phq9: 7, gad7: 1, dxConfirmado: false },
+  { id: 155, phq9: 6, gad7: 7, dxConfirmado: false },
+  { id: 156, phq9: 3, gad7: 2, dxConfirmado: false },
+  { id: 157, phq9: 1, gad7: 6, dxConfirmado: false },
+  { id: 158, phq9: 21, gad7: 11, dxConfirmado: false },
+  { id: 159, phq9: 3, gad7: 1, dxConfirmado: false },
+  { id: 160, phq9: 2, gad7: 1, dxConfirmado: false },
+  { id: 161, phq9: 4, gad7: 6, dxConfirmado: false },
+  { id: 162, phq9: 7, gad7: 7, dxConfirmado: false },
+  { id: 163, phq9: 0, gad7: 0, dxConfirmado: false },
+  { id: 164, phq9: 3, gad7: 6, dxConfirmado: false },
+  { id: 165, phq9: 3, gad7: 3, dxConfirmado: false },
+  { id: 166, phq9: 22, gad7: 15, dxConfirmado: false },
+  { id: 167, phq9: 6, gad7: 0, dxConfirmado: false },
+  { id: 168, phq9: 15, gad7: 0, dxConfirmado: true },
+  { id: 169, phq9: 0, gad7: 2, dxConfirmado: false },
+  { id: 170, phq9: 4, gad7: 0, dxConfirmado: false },
+  { id: 171, phq9: 3, gad7: 0, dxConfirmado: false },
+  { id: 172, phq9: 22, gad7: 13, dxConfirmado: true },
+  { id: 173, phq9: 5, gad7: 16, dxConfirmado: false },
+  { id: 174, phq9: 5, gad7: 0, dxConfirmado: false },
+  { id: 175, phq9: 8, gad7: 1, dxConfirmado: false },
+  { id: 176, phq9: 1, gad7: 1, dxConfirmado: false },
+  { id: 177, phq9: 1, gad7: 3, dxConfirmado: false },
+  { id: 178, phq9: 3, gad7: 5, dxConfirmado: false },
+  { id: 179, phq9: 19, gad7: 3, dxConfirmado: true },
+  { id: 180, phq9: 9, gad7: 3, dxConfirmado: false },
+  { id: 181, phq9: 2, gad7: 4, dxConfirmado: false },
+  { id: 182, phq9: 3, gad7: 0, dxConfirmado: false },
+  { id: 183, phq9: 1, gad7: 1, dxConfirmado: false },
+  { id: 184, phq9: 7, gad7: 1, dxConfirmado: false },
+  { id: 185, phq9: 1, gad7: 2, dxConfirmado: false },
+  { id: 186, phq9: 6, gad7: 3, dxConfirmado: false },
+  { id: 187, phq9: 23, gad7: 11, dxConfirmado: true },
+  { id: 188, phq9: 3, gad7: 3, dxConfirmado: false },
+  { id: 189, phq9: 1, gad7: 2, dxConfirmado: false },
+  { id: 190, phq9: 8, gad7: 0, dxConfirmado: false },
+  { id: 191, phq9: 4, gad7: 6, dxConfirmado: false },
+  { id: 192, phq9: 1, gad7: 1, dxConfirmado: false },
+  { id: 193, phq9: 4, gad7: 2, dxConfirmado: false },
+  { id: 194, phq9: 10, gad7: 1, dxConfirmado: true },
+  { id: 195, phq9: 5, gad7: 5, dxConfirmado: false },
+  { id: 196, phq9: 15, gad7: 10, dxConfirmado: true },
+  { id: 197, phq9: 2, gad7: 4, dxConfirmado: false },
+  { id: 198, phq9: 5, gad7: 1, dxConfirmado: false },
+  { id: 199, phq9: 11, gad7: 20, dxConfirmado: true },
+  { id: 200, phq9: 2, gad7: 1, dxConfirmado: false },
 ];
 
-/** Parámetros nominales del test rápido (los que dice el fabricante). */
-export const PARAMS_TEST = { sensibilidad: 0.9, especificidad: 0.8 };
-
 /**
- * Verdades pedagógicas que la herramienta DEBE reproducir exactamente.
+ * Verdades pedagógicas que la herramienta DEBE reproducir exactamente
+ * (calzan con el dossier de Psicoestadística Inferencial — Unidad 2).
  * Se usan en los asserts de `calculos.ts`.
  */
 export const VERDADES = {
-  total: 60,
-  animoBajoReal: 8,
-  duermenMal: 16,
-  pAnimoGeneral: 8 / 60,
-  pAnimoDadoDuermeMal: 4 / 16,
-  VP: 8,
-  FP: 13,
-  FN: 0,
-  VN: 39,
-  totalPositivos: 21,
-  pAnimoDadoPositivo: 8 / 21, // ≈ 0.381 → el golpe de Bayes
+  total: 200,
+  phq9Positivos: 43,
+  gad7Positivos: 21,
+  ambosPositivos: 17,
+  dxConfirmados: 25,
+  prevalencia: 25 / 200, // 12.5%
+  VP: 22,
+  FP: 21,
+  FN: 3,
+  VN: 154,
+  sensibilidad: 22 / 25, // 88.0%
+  especificidad: 154 / 175, // 88.0%
+  vpp: 22 / 43, // 51.2%
+  pUnion: 47 / 200, // P(PHQ+ ∪ GAD+) = 23.5%
+  pGad7DadoPhq9: 17 / 43, // 39.5% — comorbilidad
 };

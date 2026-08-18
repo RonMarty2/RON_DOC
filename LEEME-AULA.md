@@ -20,15 +20,13 @@ Si el navegador no se abre solo, entrá a mano a: `http://localhost:3000/aula-pr
 | **El contenedor** (arma la navegación) | `src/components/aula-probabilidad/AulaProbabilidad.tsx` |
 | **La página pública** (`/aula-probabilidad`) | `src/app/aula-probabilidad/page.tsx` |
 
-## Estado actual (Fase 1: apartados 2.1 a 2.6 del dossier)
+## Estado, decisiones y números de verdad
 
-- [x] Dataset PTSMU (200 estudiantes) — verificado contra el dossier
-- [x] 2.1 Espacio muestral
-- [ ] 2.2 Tipos de probabilidad
-- [ ] 2.3 Tablas de contingencia
-- [ ] 2.4 Teoría combinatoria
-- [ ] 2.5 Reglas básicas
-- [ ] 2.6 Teorema de Bayes
-- [ ] Fase 2: distribuciones (2.7 a 2.9) — pendiente
+Todo eso vive en la bitácora de la materia, no acá (para no tener el
+estado duplicado en dos archivos):
 
-Cada módulo se construye y se aprueba antes de pasar al siguiente.
+**`bitacoras/psicoestadistica-inferencial.md`**
+
+Cada materia/herramienta que se agregue al sitio (Estadística Descriptiva,
+Econometría, etc.) va a tener su propia bitácora en esa misma carpeta —
+es el lugar único para ver qué se decidió y por qué, para cada una.

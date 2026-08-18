@@ -5,7 +5,6 @@ import { MODULOS, type ModuloId } from "./modulos";
 import { verificarVerdades } from "./calculos";
 import { ModuloEspacioMuestral } from "./ModuloEspacioMuestral";
 import { ModuloProximamente } from "./ModuloProximamente";
-import { GuiaClase } from "./GuiaClase";
 
 /**
  * Contenedor principal de la herramienta "Aula Interactiva de Probabilidad".
@@ -61,9 +60,6 @@ export function AulaProbabilidad() {
           })}
         </div>
       </nav>
-
-      {/* Guía rápida colapsable para usar en clase */}
-      <GuiaClase />
 
       {/* Encabezado del módulo activo */}
       <header className="mb-6">

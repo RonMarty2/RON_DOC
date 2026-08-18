@@ -1,56 +1,34 @@
 /**
- * Componentes de presentación reutilizados por los módulos: el recuadro de
- * "caso aplicado" (contexto PTSMU) y la mini-historia (nota conceptual o
- * trampa común).
+ * Componentes de presentación reutilizados por los módulos.
+ *
+ * Patrón de libro: definir primero (Definicion, sin ejemplo todavía),
+ * ejemplificar después (siempre con un componente interactivo aparte).
  */
 
-/** Recuadro de caso aplicado a psicología (dataset PTSMU real). */
-export function RecuadroCaso({
-  titulo,
+/** Definición formal de un término — estilo libro, sin caja de color. */
+export function Definicion({
+  termino,
   children,
 }: {
-  titulo: string;
+  termino: string;
   children: React.ReactNode;
 }) {
   return (
-    <article className="rounded-2xl border border-blue-200 bg-blue-50/50 p-5 dark:border-blue-900 dark:bg-blue-950/20 sm:p-6">
-      <p className="font-mono text-xs font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
-        Aplicado · Servicio de Tamizaje en Salud Mental (PTSMU)
+    <div className="border-l-4 border-slate-800 pl-4 dark:border-slate-200">
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+        Definición
       </p>
-      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
-        {titulo}
-      </h4>
-      <div className="mt-3 space-y-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mt-0.5 font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        {termino}
+      </p>
+      <p className="mt-1 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
         {children}
-      </div>
-    </article>
+      </p>
+    </div>
   );
 }
 
-/** Recuadro clásico (dados, cartas, urnas) — sin ruido psicológico, para fijar el concepto puro. */
-export function RecuadroClasico({
-  titulo,
-  children,
-}: {
-  titulo: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <article className="rounded-2xl border border-slate-200 bg-slate-50/60 p-5 dark:border-slate-800 dark:bg-slate-900/40 sm:p-6">
-      <p className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-        Ejemplo clásico
-      </p>
-      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
-        {titulo}
-      </h4>
-      <div className="mt-3 space-y-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-        {children}
-      </div>
-    </article>
-  );
-}
-
-/** Recuadro de nota conceptual o "¡cuidado! trampa común". */
+/** Nota conceptual corta (distinción entre dos términos que se confunden). */
 export function MiniHistoria({
   titulo,
   children,

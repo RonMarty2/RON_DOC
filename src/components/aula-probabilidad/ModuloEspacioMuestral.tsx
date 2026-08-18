@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ESTUDIANTES } from "@content/aula-probabilidad/dataset";
 import { entero } from "./aleatorio";
-import { RecuadroClasico, RecuadroCaso, MiniHistoria } from "./narrativa";
+import { Definicion, MiniHistoria } from "./narrativa";
 import { BarraSim } from "./BarraSim";
 
 const CARAS_DADO = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
@@ -11,47 +11,42 @@ const CARAS_DADO = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
 /**
  * 2.1 — Espacio muestral, universo, suceso.
  *
- * Todo el módulo se construye tirada-por-tirada / estudiante-por-estudiante:
- * el resultado se anota en una tabla que crece en vivo y la probabilidad se
- * recalcula delante de la clase, nunca se muestra ya resuelta.
+ * Patrón de libro en todo el módulo: se define el término (corto, sin
+ * ejemplo) y recién después aparece el interactivo que lo ejemplifica.
  */
 export function ModuloEspacioMuestral() {
   return (
-    <div className="flex flex-col gap-8">
-      <RecuadroClasico titulo="Un dado: el espacio muestral más simple">
-        <p>
-          Un <strong>experimento aleatorio</strong> es cualquier procedimiento
-          cuyo resultado no se puede predecir con certeza, aunque conozcamos
-          de antemano todos los resultados posibles. El <strong>espacio
-          muestral (S)</strong> es exactamente ese conjunto de resultados
-          posibles: para un dado, S = {"{1, 2, 3, 4, 5, 6}"}. Vamos a
-          construirlo tirando de verdad, no a mirarlo ya hecho.
-        </p>
-      </RecuadroClasico>
+    <div className="flex flex-col gap-6">
+      <Definicion termino="Experimento aleatorio">
+        Un procedimiento cuyo resultado no se puede predecir con certeza,
+        aunque se conozcan de antemano todos los resultados posibles.
+      </Definicion>
+
+      <Definicion termino="Espacio muestral (S)">
+        El conjunto de todos los resultados posibles de un experimento
+        aleatorio. Para un dado: S = {"{1, 2, 3, 4, 5, 6}"}.
+      </Definicion>
 
       <UnDadoInteractivo />
 
       <MiniHistoria titulo="Universo ≠ espacio muestral">
-        El <strong>universo</strong> son las personas u objetos (ej. los
-        2,400 estudiantes de una universidad). El{" "}
-        <strong>espacio muestral</strong> son los resultados posibles de un
-        experimento hecho sobre ellos (ej. los 28 puntajes que puede dar un
-        test). Confundir el conjunto de personas con el conjunto de
-        resultados es el primer error del capítulo.
+        El universo son las personas u objetos (ej. 2,400 estudiantes). El
+        espacio muestral son los resultados posibles de un experimento hecho
+        sobre ellos (ej. los 28 puntajes de un test). No es lo mismo.
       </MiniHistoria>
+
+      <Definicion termino="Espacio muestral compuesto">
+        Cuando el experimento tiene varias partes (ej. dos dados), S es el
+        conjunto de todos los resultados combinados. Con dos dados: 36 pares
+        posibles.
+      </Definicion>
 
       <DosDadosInteractivo />
 
-      <RecuadroCaso titulo="El espacio muestral del PHQ-9: 28 puntajes posibles">
-        <p>
-          El PHQ-9 tiene 9 preguntas, cada una respondida de 0 a 3. El
-          experimento aleatorio es &quot;aplicar el PHQ-9 a un estudiante
-          elegido al azar&quot;: el espacio muestral es{" "}
-          <strong>S = {"{0, 1, 2, ..., 27}"}</strong>, 28 valores posibles.
-          Ahora tamizamos de verdad, uno por uno, con los 200 estudiantes
-          reales del servicio — igual que hicimos con el dado.
-        </p>
-      </RecuadroCaso>
+      <Definicion termino="Aplicado: el espacio muestral del PHQ-9">
+        El PHQ-9 tiene 9 preguntas de 0 a 3 puntos. Su espacio muestral es S ={" "}
+        {"{0, 1, ..., 27}"}, 28 valores posibles.
+      </Definicion>
 
       <TamizajeInteractivo />
     </div>
@@ -59,13 +54,14 @@ export function ModuloEspacioMuestral() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Un dado: tirada por tirada, con tabla de frecuencias en vivo        */
+/* Un dado: tirada por tirada + armador de sucesos                    */
 /* ------------------------------------------------------------------ */
 
 function UnDadoInteractivo() {
   const [historial, setHistorial] = useState<number[]>([]);
   const [caraVisible, setCaraVisible] = useState<number | null>(null);
   const [rodando, setRodando] = useState(false);
+  const [evento, setEvento] = useState<Set<number>>(new Set());
   const intervaloRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -104,6 +100,16 @@ function UnDadoInteractivo() {
     setHistorial([]);
     setCaraVisible(null);
     setRodando(false);
+    setEvento(new Set());
+  }
+
+  function toggleCara(cara: number) {
+    setEvento((prev) => {
+      const next = new Set(prev);
+      if (next.has(cara)) next.delete(cara);
+      else next.add(cara);
+      return next;
+    });
   }
 
   const total = historial.length;
@@ -114,12 +120,14 @@ function UnDadoInteractivo() {
   }, [historial]);
 
   const caraTop = total > 0 ? conteos.indexOf(Math.max(...conteos)) + 1 : null;
+  const vecesEvento = [...evento].reduce((s, cara) => s + conteos[cara - 1], 0);
+  const pctEvento = total > 0 ? (vecesEvento / total) * 100 : 0;
 
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-          Tirá el dado y mirá cómo se llena la tabla
+          Tirá el dado
         </h4>
         <div className="flex flex-wrap gap-2">
           <button
@@ -183,7 +191,6 @@ function UnDadoInteractivo() {
                   className="h-full rounded-full bg-blue-500 transition-[width] duration-200"
                   style={{ width: `${pct}%` }}
                 />
-                {/* marca del valor teórico 16.7% */}
                 <div
                   aria-hidden
                   className="absolute top-0 h-full w-0.5 bg-slate-900/40 dark:bg-slate-100/40"
@@ -199,24 +206,81 @@ function UnDadoInteractivo() {
         })}
       </div>
 
-      {/* Cálculo explícito, en vivo */}
       <div className="mt-5 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
         {total === 0 ? (
-          <p>Todavía no tiraste. Tirá el dado y la tabla se va a llenar sola.</p>
+          <p>Tirá el dado y la tabla se va a llenar sola.</p>
         ) : (
           <p>
             Van <strong className="tabular-nums">{total}</strong> tiradas. La
             cara <strong className="tabular-nums">{caraTop}</strong> salió más
-            veces (
-            <strong className="tabular-nums">
-              {conteos[(caraTop ?? 1) - 1]}
-            </strong>{" "}
-            de {total} = {((conteos[(caraTop ?? 1) - 1] / total) * 100).toFixed(1)}%). La
-            línea gris marca el valor teórico de cada cara:{" "}
-            <strong>1/6 ≈ 16.7%</strong>. Cuantas más tiradas, más se acercan
-            todas las barras a esa línea.
+            veces ({conteos[(caraTop ?? 1) - 1]} de {total} ={" "}
+            {((conteos[(caraTop ?? 1) - 1] / total) * 100).toFixed(1)}%). La
+            línea gris marca el valor teórico: <strong>1/6 ≈ 16.7%</strong>.
           </p>
         )}
+      </div>
+
+      {/* Definición + interactivo: punto muestral y suceso */}
+      <div className="mt-6 border-t border-slate-100 pt-5 dark:border-slate-800">
+        <Definicion termino="Punto muestral">
+          Cada resultado individual dentro del espacio muestral. El{" "}
+          {caraTop ?? "número"} que salió más seguido es un punto muestral de
+          S.
+        </Definicion>
+      </div>
+
+      <div className="mt-5">
+        <Definicion termino="Suceso o evento">
+          Cualquier subconjunto de S. Un solo punto es un{" "}
+          <strong>evento simple</strong>; varios puntos, un{" "}
+          <strong>evento compuesto</strong>.
+        </Definicion>
+      </div>
+
+      <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+        <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+          Armá tu propio evento — tocá las caras que quieras incluir:
+        </p>
+        <div className="mt-3 flex justify-center gap-2">
+          {[1, 2, 3, 4, 5, 6].map((cara) => (
+            <button
+              key={cara}
+              type="button"
+              onClick={() => toggleCara(cara)}
+              className={
+                "grid h-11 w-11 place-items-center rounded-lg border-2 text-2xl transition " +
+                (evento.has(cara)
+                  ? "border-emerald-600 bg-emerald-50 dark:bg-emerald-950/40"
+                  : "border-slate-200 dark:border-slate-700")
+              }
+            >
+              {CARAS_DADO[cara - 1]}
+            </button>
+          ))}
+        </div>
+        <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+          {evento.size === 0 ? (
+            <p>Todavía no armaste un evento. Tocá una o más caras.</p>
+          ) : (
+            <p>
+              Tu evento es{" "}
+              <strong>
+                {"{"}
+                {[...evento].sort((a, b) => a - b).join(", ")}
+                {"}"}
+              </strong>{" "}
+              —{" "}
+              <strong>
+                {evento.size === 1 ? "evento simple" : "evento compuesto"}
+              </strong>
+              . Ocurrió en{" "}
+              <strong className="tabular-nums">{vecesEvento}</strong> de{" "}
+              <strong className="tabular-nums">{total}</strong> tiradas ={" "}
+              <strong className="tabular-nums">{pctEvento.toFixed(1)}%</strong>
+              .
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -278,7 +342,7 @@ function DosDadosInteractivo() {
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-          Ahora dos dados a la vez
+          Tirá los dos dados
         </h4>
         <div className="flex flex-wrap gap-2">
           <button
@@ -299,7 +363,6 @@ function DosDadosInteractivo() {
         </div>
       </div>
 
-      {/* Los dos dados, uno junto al otro, igual que el dado solo */}
       <div className="mt-6 flex items-center justify-center gap-4">
         <div className="flex flex-col items-center gap-1">
           <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
@@ -320,36 +383,29 @@ function DosDadosInteractivo() {
         </div>
       </div>
 
-      <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
-        {ultimo ? (
-          <>
-            Este resultado es el par{" "}
-            <strong className="tabular-nums">
-              ({ultimo[0]}, {ultimo[1]})
-            </strong>
-            : Dado A = {ultimo[0]}, Dado B = {ultimo[1]}. Buscalo en la tabla:
-            fila {ultimo[0]}, columna {ultimo[1]}.
-          </>
-        ) : (
-          "Cada tirada da dos números: uno del dado A, otro del dado B. Juntos forman un punto de la tabla de abajo."
-        )}
-      </p>
+      {ultimo && (
+        <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
+          Par{" "}
+          <strong className="tabular-nums">
+            ({ultimo[0]}, {ultimo[1]})
+          </strong>{" "}
+          → fila {ultimo[0]}, columna {ultimo[1]} en la tabla.
+        </p>
+      )}
 
-      {/* Tabla de doble entrada, CON ejes rotulados */}
       <div className="mt-5 overflow-x-auto">
         <table className="mx-auto border-collapse text-center">
           <caption className="mb-2 text-xs text-slate-500 dark:text-slate-400">
-            Filas = resultado del Dado A · Columnas = resultado del Dado B
+            Filas = Dado A · Columnas = Dado B
           </caption>
           <thead>
             <tr>
               <th className="p-1" />
               {[1, 2, 3, 4, 5, 6].map((b) => (
-                <th
-                  key={b}
-                  className="p-1 text-lg text-amber-600 dark:text-amber-400"
-                >
-                  {CARAS_DADO[b - 1]}
+                <th key={b} className="p-1">
+                  <span className="grid h-7 w-7 place-items-center rounded-md bg-amber-100 text-base font-bold tabular-nums text-amber-700 dark:bg-amber-950/50 dark:text-amber-300">
+                    {b}
+                  </span>
                 </th>
               ))}
             </tr>
@@ -357,8 +413,10 @@ function DosDadosInteractivo() {
           <tbody>
             {[1, 2, 3, 4, 5, 6].map((a) => (
               <tr key={a}>
-                <th className="p-1 text-lg text-blue-600 dark:text-blue-400">
-                  {CARAS_DADO[a - 1]}
+                <th className="p-1">
+                  <span className="grid h-7 w-7 place-items-center rounded-md bg-blue-100 text-base font-bold tabular-nums text-blue-700 dark:bg-blue-950/50 dark:text-blue-300">
+                    {a}
+                  </span>
                 </th>
                 {[1, 2, 3, 4, 5, 6].map((b) => {
                   const c = conteos.get(`${a}-${b}`) ?? 0;
@@ -386,8 +444,8 @@ function DosDadosInteractivo() {
       </div>
       <p className="mt-3 text-center text-xs text-slate-500 dark:text-slate-500">
         {total === 0
-          ? "36 casillas posibles (6 filas × 6 columnas). Todavía vacías."
-          : `Van ${total} tiradas anotadas. Cada casilla es cuántas veces salió exactamente esa combinación.`}
+          ? "36 casillas posibles (6 × 6). Todavía vacías."
+          : `${total} tiradas anotadas. Cada casilla es cuántas veces salió esa combinación exacta.`}
       </p>
     </div>
   );
@@ -476,20 +534,15 @@ function TamizajeInteractivo() {
         </div>
       </div>
 
-      <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-400">
-        {ultimo ? (
-          <>
-            Último tamizado: estudiante #{ultimo.id}, PHQ-9 ={" "}
-            <strong className="tabular-nums">{ultimo.phq9}</strong>
-            {ultimo.phq9 >= 10 ? " (positivo)" : " (negativo)"}. Llevamos{" "}
-            <strong className="tabular-nums">{indice}</strong> de 200.
-          </>
-        ) : (
-          "Todavía no tamizaste a nadie. Cada estudiante real se agrega a la tabla de abajo."
-        )}
-      </p>
+      {ultimo && (
+        <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-400">
+          Estudiante #{ultimo.id}, PHQ-9 ={" "}
+          <strong className="tabular-nums">{ultimo.phq9}</strong>
+          {ultimo.phq9 >= 10 ? " (positivo)" : " (negativo)"}. Llevamos{" "}
+          <strong className="tabular-nums">{indice}</strong> de 200.
+        </p>
+      )}
 
-      {/* Histograma en vivo del espacio muestral 0-27 */}
       <div className="mt-5 flex flex-wrap justify-center gap-1">
         {Array.from({ length: 28 }, (_, v) => v).map((v) => {
           const c = conteosPorPuntaje[v];
@@ -525,12 +578,10 @@ function TamizajeInteractivo() {
         })}
       </div>
       <p className="mt-1 text-center text-xs text-slate-400 dark:text-slate-500">
-        Cada casilla es un puntaje posible (0 a 27). El número que aparece
-        adentro es cuántos estudiantes reales dieron exactamente ese
-        puntaje — naranja = zona de tamizaje positivo (≥10).
+        Naranja = zona de tamizaje positivo (≥10). El número en cada casilla
+        es cuántos estudiantes reales dieron ese puntaje exacto.
       </p>
 
-      {/* Cálculo de probabilidad EN VIVO */}
       <div className="mt-5">
         <BarraSim
           etiqueta="Proporción que tamiza positivo (PHQ-9 ≥ 10)"
@@ -544,16 +595,13 @@ function TamizajeInteractivo() {
           <p>Tamizá al primer estudiante y el cálculo va a aparecer aquí.</p>
         ) : (
           <p>
-            De los <strong className="tabular-nums">{indice}</strong>{" "}
-            estudiantes tamizados,{" "}
-            <strong className="tabular-nums">{positivos}</strong> dieron
-            positivo ={" "}
+            <strong className="tabular-nums">{positivos}</strong> de{" "}
+            <strong className="tabular-nums">{indice}</strong> dieron positivo
+            ={" "}
             <strong className="tabular-nums">
-              {positivos}/{indice} = {pctPositivo.toFixed(1)}%
+              {pctPositivo.toFixed(1)}%
             </strong>
-            . El valor real en las 200 fichas completas es{" "}
-            <strong>21.5%</strong> — mirá cómo tu número se acerca a medida
-            que tamizás más estudiantes.
+            . El valor real en las 200 fichas es <strong>21.5%</strong>.
           </p>
         )}
       </div>

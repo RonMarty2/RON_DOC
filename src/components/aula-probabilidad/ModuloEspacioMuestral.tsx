@@ -1,209 +1,512 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ESTUDIANTES } from "@content/aula-probabilidad/dataset";
 import { entero } from "./aleatorio";
 import { RecuadroClasico, RecuadroCaso, MiniHistoria } from "./narrativa";
+import { BarraSim } from "./BarraSim";
 
 const CARAS_DADO = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
 
 /**
  * 2.1 — Espacio muestral, universo, suceso.
- * Clásico: 1 dado → 2 dados (espacio compuesto). Aplicado: los 28 puntajes
- * posibles del PHQ-9, con un estudiante real elegido al azar dentro de ese
- * espacio.
+ *
+ * Todo el módulo se construye tirada-por-tirada / estudiante-por-estudiante:
+ * el resultado se anota en una tabla que crece en vivo y la probabilidad se
+ * recalcula delante de la clase, nunca se muestra ya resuelta.
  */
 export function ModuloEspacioMuestral() {
-  const [dado1, setDado1] = useState<number | null>(null);
-  const [par, setPar] = useState<[number, number] | null>(null);
-  const [estudianteId, setEstudianteId] = useState<number | null>(null);
-
-  const estudiante =
-    estudianteId != null ? ESTUDIANTES.find((e) => e.id === estudianteId) ?? null : null;
-
   return (
     <div className="flex flex-col gap-8">
       <RecuadroClasico titulo="Un dado: el espacio muestral más simple">
         <p>
           Un <strong>experimento aleatorio</strong> es cualquier procedimiento
           cuyo resultado no se puede predecir con certeza, aunque conozcamos
-          de antemano todos los resultados posibles. Tirar un dado es el
-          ejemplo de manual: no sabemos qué va a salir, pero sí sabemos el
-          conjunto completo de lo que puede salir — el{" "}
-          <strong>espacio muestral</strong>.
+          de antemano todos los resultados posibles. El <strong>espacio
+          muestral (S)</strong> es exactamente ese conjunto de resultados
+          posibles: para un dado, S = {"{1, 2, 3, 4, 5, 6}"}. Vamos a
+          construirlo tirando de verdad, no a mirarlo ya hecho.
         </p>
       </RecuadroClasico>
 
-      {/* 1 dado */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-            S = {"{1, 2, 3, 4, 5, 6}"}
-          </h4>
-          <button
-            type="button"
-            onClick={() => setDado1(entero(1, 6))}
-            className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
-          >
-            🎲 Tirar el dado
-          </button>
-        </div>
-        <div className="mt-5 flex flex-wrap justify-center gap-3">
-          {[1, 2, 3, 4, 5, 6].map((v) => (
-            <div
-              key={v}
-              className={
-                "grid h-14 w-14 place-items-center rounded-xl border-2 text-3xl transition sm:h-16 sm:w-16 " +
-                (dado1 === v
-                  ? "scale-110 border-blue-600 bg-blue-50 dark:bg-blue-950/40"
-                  : "border-slate-200 dark:border-slate-700")
-              }
-            >
-              {CARAS_DADO[v - 1]}
-            </div>
-          ))}
-        </div>
-        <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
-          {dado1 === null ? (
-            "Tirá el dado para ver un punto muestral."
-          ) : (
-            <>
-              Salió <strong className="tabular-nums">{dado1}</strong> — un{" "}
-              <em>punto muestral</em> dentro de S. &quot;Salió {dado1}&quot;
-              es un evento simple: contiene un único punto.
-            </>
-          )}
-        </p>
-      </div>
+      <UnDadoInteractivo />
 
       <MiniHistoria titulo="Universo ≠ espacio muestral">
         El <strong>universo</strong> son las personas u objetos (ej. los
         2,400 estudiantes de una universidad). El{" "}
         <strong>espacio muestral</strong> son los resultados posibles de un
         experimento hecho sobre ellos (ej. los 28 puntajes que puede dar un
-        test). No es lo mismo el conjunto de personas que el conjunto de
-        resultados — confundirlos es el primer error del capítulo.
+        test). Confundir el conjunto de personas con el conjunto de
+        resultados es el primer error del capítulo.
       </MiniHistoria>
 
-      {/* 2 dados */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-            Dos dados: espacio muestral compuesto
-          </h4>
-          <button
-            type="button"
-            onClick={() => setPar([entero(1, 6), entero(1, 6)])}
-            className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
-          >
-            🎲🎲 Tirar los dos dados
-          </button>
-        </div>
-        <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-400">
-          {par ? (
-            <>
-              Salió el par{" "}
-              <strong className="tabular-nums">
-                ({par[0]}, {par[1]})
-              </strong>{" "}
-              — un punto entre los 36 posibles.
-            </>
-          ) : (
-            "Cada tirada produce un par ordenado (dado A, dado B)."
-          )}
-        </p>
-        <div className="mx-auto mt-4 grid max-w-sm grid-cols-6 gap-1">
-          {Array.from({ length: 6 }, (_, i) => i + 1).flatMap((a) =>
-            Array.from({ length: 6 }, (_, j) => j + 1).map((b) => {
-              const activo = par !== null && par[0] === a && par[1] === b;
-              return (
-                <div
-                  key={`${a}-${b}`}
-                  className={
-                    "grid aspect-square place-items-center rounded-md border text-[10px] tabular-nums transition " +
-                    (activo
-                      ? "border-blue-600 bg-blue-600 font-semibold text-white"
-                      : "border-slate-200 text-slate-400 dark:border-slate-800 dark:text-slate-600")
-                  }
-                >
-                  {a},{b}
-                </div>
-              );
-            })
-          )}
-        </div>
-        <p className="mt-3 text-center text-xs text-slate-500 dark:text-slate-500">
-          36 resultados posibles = 6 × 6. Cada casilla es un punto muestral
-          distinto — el espacio muestral crece cuando el experimento se
-          repite.
-        </p>
-      </div>
+      <DosDadosInteractivo />
 
-      {/* Aplicado */}
       <RecuadroCaso titulo="El espacio muestral del PHQ-9: 28 puntajes posibles">
         <p>
           El PHQ-9 tiene 9 preguntas, cada una respondida de 0 a 3. El
           experimento aleatorio es &quot;aplicar el PHQ-9 a un estudiante
-          elegido al azar&quot;: no sabemos qué puntaje va a dar, pero sabemos
-          que el espacio muestral es exactamente{" "}
-          <strong>S = {"{0, 1, 2, ..., 27}"}</strong>, 28 valores posibles
-          (mínimo 9×0=0, máximo 9×3=27).
+          elegido al azar&quot;: el espacio muestral es{" "}
+          <strong>S = {"{0, 1, 2, ..., 27}"}</strong>, 28 valores posibles.
+          Ahora tamizamos de verdad, uno por uno, con los 200 estudiantes
+          reales del servicio — igual que hicimos con el dado.
         </p>
       </RecuadroCaso>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-            Elegí un estudiante real al azar
-          </h4>
+      <TamizajeInteractivo />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Un dado: tirada por tirada, con tabla de frecuencias en vivo        */
+/* ------------------------------------------------------------------ */
+
+function UnDadoInteractivo() {
+  const [historial, setHistorial] = useState<number[]>([]);
+  const [caraVisible, setCaraVisible] = useState<number | null>(null);
+  const [rodando, setRodando] = useState(false);
+  const intervaloRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
+    };
+  }, []);
+
+  function tirarUnaVez() {
+    if (rodando) return;
+    setRodando(true);
+    let vueltas = 0;
+    const totalVueltas = 8;
+    intervaloRef.current = window.setInterval(() => {
+      setCaraVisible(entero(1, 6));
+      vueltas++;
+      if (vueltas >= totalVueltas) {
+        if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
+        const resultadoFinal = entero(1, 6);
+        setCaraVisible(resultadoFinal);
+        setHistorial((h) => [...h, resultadoFinal]);
+        setRodando(false);
+      }
+    }, 70);
+  }
+
+  function tirarLote(n: number) {
+    if (rodando) return;
+    const nuevos = Array.from({ length: n }, () => entero(1, 6));
+    setHistorial((h) => [...h, ...nuevos]);
+    setCaraVisible(nuevos[nuevos.length - 1]);
+  }
+
+  function reset() {
+    if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
+    setHistorial([]);
+    setCaraVisible(null);
+    setRodando(false);
+  }
+
+  const total = historial.length;
+  const conteos = useMemo(() => {
+    const c = [0, 0, 0, 0, 0, 0];
+    for (const v of historial) c[v - 1]++;
+    return c;
+  }, [historial]);
+
+  const caraTop = total > 0 ? conteos.indexOf(Math.max(...conteos)) + 1 : null;
+
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          Tirá el dado y mirá cómo se llena la tabla
+        </h4>
+        <div className="flex flex-wrap gap-2">
           <button
             type="button"
-            onClick={() =>
-              setEstudianteId(ESTUDIANTES[entero(0, ESTUDIANTES.length - 1)].id)
-            }
-            className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
+            disabled={rodando}
+            onClick={tirarUnaVez}
+            className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            🧑‍🎓 Elegir estudiante
+            🎲 Tirar 1 vez
+          </button>
+          <button
+            type="button"
+            disabled={rodando}
+            onClick={() => tirarLote(10)}
+            className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
+          >
+            Tirar 10 más
+          </button>
+          <button
+            type="button"
+            disabled={rodando}
+            onClick={() => tirarLote(100)}
+            className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
+          >
+            Tirar 100 más
+          </button>
+          <button
+            type="button"
+            onClick={reset}
+            className="rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+          >
+            Reiniciar
           </button>
         </div>
-        <div className="mt-5 flex flex-wrap justify-center gap-1">
-          {Array.from({ length: 28 }, (_, v) => v).map((v) => {
-            const activo = estudiante?.phq9 === v;
-            const zonaPositiva = v >= 10;
+      </div>
+
+      {/* El dado "rodando" */}
+      <div className="mt-6 flex justify-center">
+        <div
+          className={
+            "grid h-20 w-20 place-items-center rounded-2xl border-2 border-blue-600 bg-blue-50 text-5xl shadow-sm transition-transform dark:bg-blue-950/40 " +
+            (rodando ? "scale-95" : "scale-100")
+          }
+        >
+          {caraVisible === null ? "🎲" : CARAS_DADO[caraVisible - 1]}
+        </div>
+      </div>
+
+      {/* Tabla de frecuencias EN VIVO */}
+      <div className="mt-6 flex flex-col gap-2">
+        {[1, 2, 3, 4, 5, 6].map((cara) => {
+          const c = conteos[cara - 1];
+          const pct = total > 0 ? (c / total) * 100 : 0;
+          return (
+            <div key={cara} className="flex items-center gap-3">
+              <span className="w-8 shrink-0 text-center text-2xl" aria-hidden>
+                {CARAS_DADO[cara - 1]}
+              </span>
+              <div className="relative h-4 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                <div
+                  className="h-full rounded-full bg-blue-500 transition-[width] duration-200"
+                  style={{ width: `${pct}%` }}
+                />
+                {/* marca del valor teórico 16.7% */}
+                <div
+                  aria-hidden
+                  className="absolute top-0 h-full w-0.5 bg-slate-900/40 dark:bg-slate-100/40"
+                  style={{ left: "16.666%" }}
+                  title="Valor teórico: 16.7%"
+                />
+              </div>
+              <span className="w-24 shrink-0 text-right text-xs tabular-nums text-slate-600 dark:text-slate-400">
+                {c} · {pct.toFixed(1)}%
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Cálculo explícito, en vivo */}
+      <div className="mt-5 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+        {total === 0 ? (
+          <p>Todavía no tiraste. Tirá el dado y la tabla se va a llenar sola.</p>
+        ) : (
+          <p>
+            Van <strong className="tabular-nums">{total}</strong> tiradas. La
+            cara <strong className="tabular-nums">{caraTop}</strong> salió más
+            veces (
+            <strong className="tabular-nums">
+              {conteos[(caraTop ?? 1) - 1]}
+            </strong>{" "}
+            de {total} = {((conteos[(caraTop ?? 1) - 1] / total) * 100).toFixed(1)}%). La
+            línea gris marca el valor teórico de cada cara:{" "}
+            <strong>1/6 ≈ 16.7%</strong>. Cuantas más tiradas, más se acercan
+            todas las barras a esa línea.
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Dos dados: espacio muestral compuesto, con mapa de calor en vivo    */
+/* ------------------------------------------------------------------ */
+
+function DosDadosInteractivo() {
+  const [historial, setHistorial] = useState<[number, number][]>([]);
+  const [ultimo, setUltimo] = useState<[number, number] | null>(null);
+
+  function tirar() {
+    const par: [number, number] = [entero(1, 6), entero(1, 6)];
+    setUltimo(par);
+    setHistorial((h) => [...h, par]);
+  }
+
+  function tirarLote(n: number) {
+    const nuevos: [number, number][] = Array.from({ length: n }, () => [
+      entero(1, 6),
+      entero(1, 6),
+    ]);
+    setHistorial((h) => [...h, ...nuevos]);
+    setUltimo(nuevos[nuevos.length - 1]);
+  }
+
+  function reset() {
+    setHistorial([]);
+    setUltimo(null);
+  }
+
+  const conteos = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const [a, b] of historial) {
+      const k = `${a}-${b}`;
+      m.set(k, (m.get(k) ?? 0) + 1);
+    }
+    return m;
+  }, [historial]);
+
+  const maxConteo = Math.max(1, ...conteos.values());
+  const total = historial.length;
+
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          Dos dados: 36 resultados posibles
+        </h4>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={tirar}
+            className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
+          >
+            🎲🎲 Tirar 1 vez
+          </button>
+          <button
+            type="button"
+            onClick={() => tirarLote(30)}
+            className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
+          >
+            Tirar 30 más
+          </button>
+          <button
+            type="button"
+            onClick={reset}
+            className="rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+          >
+            Reiniciar
+          </button>
+        </div>
+      </div>
+
+      <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-400">
+        {ultimo ? (
+          <>
+            Salió el par{" "}
+            <strong className="tabular-nums">
+              ({ultimo[0]}, {ultimo[1]})
+            </strong>
+            . Van <strong className="tabular-nums">{total}</strong> tiradas
+            anotadas en el mapa de abajo.
+          </>
+        ) : (
+          "Cada tirada produce un par ordenado (dado A, dado B) — anotamos cada uno en su casilla."
+        )}
+      </p>
+
+      <div className="mx-auto mt-4 grid max-w-sm grid-cols-6 gap-1">
+        {Array.from({ length: 6 }, (_, i) => i + 1).flatMap((a) =>
+          Array.from({ length: 6 }, (_, j) => j + 1).map((b) => {
+            const c = conteos.get(`${a}-${b}`) ?? 0;
+            const esUltimo = ultimo !== null && ultimo[0] === a && ultimo[1] === b;
+            const intensidad = c > 0 ? 0.15 + 0.75 * (c / maxConteo) : 0;
             return (
               <div
-                key={v}
+                key={`${a}-${b}`}
                 className={
-                  "grid h-9 w-9 place-items-center rounded-md border text-xs tabular-nums transition sm:h-10 sm:w-10 " +
-                  (activo
-                    ? "scale-110 border-blue-600 bg-blue-600 font-bold text-white"
-                    : zonaPositiva
-                      ? "border-slate-300 bg-slate-100 text-slate-500 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-400"
-                      : "border-slate-200 text-slate-400 dark:border-slate-800 dark:text-slate-600")
+                  "grid aspect-square place-items-center rounded-md border text-[10px] font-semibold tabular-nums transition " +
+                  (esUltimo
+                    ? "border-blue-600 ring-2 ring-blue-400"
+                    : "border-slate-200 dark:border-slate-800")
+                }
+                style={
+                  c > 0
+                    ? { backgroundColor: `rgba(37, 99, 235, ${intensidad})`, color: intensidad > 0.45 ? "white" : undefined }
+                    : undefined
                 }
               >
-                {v}
+                {c > 0 ? c : ""}
               </div>
             );
-          })}
+          })
+        )}
+      </div>
+      <p className="mt-3 text-center text-xs text-slate-500 dark:text-slate-500">
+        36 casillas posibles = 6 × 6. El número en cada casilla es cuántas
+        veces salió ese par exacto — el mapa se va oscureciendo donde más se
+        repite.
+      </p>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Aplicado: tamizaje estudiante por estudiante, con PHQ-9 en vivo     */
+/* ------------------------------------------------------------------ */
+
+function TamizajeInteractivo() {
+  const [ordenTamizaje] = useState<number[]>(() => {
+    const ids = ESTUDIANTES.map((e) => e.id);
+    for (let i = ids.length - 1; i > 0; i--) {
+      const j = entero(0, i);
+      [ids[i], ids[j]] = [ids[j], ids[i]];
+    }
+    return ids;
+  });
+  const [indice, setIndice] = useState(0);
+
+  const revelados = useMemo(
+    () =>
+      ordenTamizaje
+        .slice(0, indice)
+        .map((id) => ESTUDIANTES.find((e) => e.id === id)!),
+    [ordenTamizaje, indice]
+  );
+
+  const conteosPorPuntaje = useMemo(() => {
+    const c = Array(28).fill(0);
+    for (const e of revelados) c[e.phq9]++;
+    return c;
+  }, [revelados]);
+
+  const positivos = revelados.filter((e) => e.phq9 >= 10).length;
+  const pctPositivo = indice > 0 ? (positivos / indice) * 100 : 0;
+  const ultimo = indice > 0 ? revelados[revelados.length - 1] : null;
+  const maxConteoPuntaje = Math.max(1, ...conteosPorPuntaje);
+
+  function revelar(n: number) {
+    setIndice((i) => Math.min(ESTUDIANTES.length, i + n));
+  }
+
+  function reset() {
+    setIndice(0);
+  }
+
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          Tamizá estudiantes, uno por uno
+        </h4>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            disabled={indice >= ESTUDIANTES.length}
+            onClick={() => revelar(1)}
+            className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            🧑‍🎓 Tamizar 1 más
+          </button>
+          <button
+            type="button"
+            disabled={indice >= ESTUDIANTES.length}
+            onClick={() => revelar(20)}
+            className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
+          >
+            Tamizar 20 más
+          </button>
+          <button
+            type="button"
+            disabled={indice >= ESTUDIANTES.length}
+            onClick={() => revelar(200)}
+            className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
+          >
+            Tamizar todos (200)
+          </button>
+          <button
+            type="button"
+            onClick={reset}
+            className="rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+          >
+            Reiniciar
+          </button>
         </div>
-        <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
-          {estudiante ? (
-            <>
-              Estudiante #{estudiante.id}: puntaje PHQ-9 ={" "}
-              <strong className="tabular-nums">{estudiante.phq9}</strong>
-              {estudiante.phq9 >= 10
-                ? " — por encima del corte de tamizaje (10)."
-                : " — por debajo del corte de tamizaje (10)."}
-            </>
-          ) : (
-            "Elegí un estudiante para ver su puntaje real dentro del espacio muestral."
-          )}
-        </p>
-        <p className="mt-1 text-center text-xs text-slate-400 dark:text-slate-500">
-          Fondo gris = zona de tamizaje positivo (≥10). Ese corte lo vamos a
-          usar en todos los módulos siguientes.
-        </p>
+      </div>
+
+      <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-400">
+        {ultimo ? (
+          <>
+            Último tamizado: estudiante #{ultimo.id}, PHQ-9 ={" "}
+            <strong className="tabular-nums">{ultimo.phq9}</strong>
+            {ultimo.phq9 >= 10 ? " (positivo)" : " (negativo)"}. Llevamos{" "}
+            <strong className="tabular-nums">{indice}</strong> de 200.
+          </>
+        ) : (
+          "Todavía no tamizaste a nadie. Cada estudiante real se agrega a la tabla de abajo."
+        )}
+      </p>
+
+      {/* Histograma en vivo del espacio muestral 0-27 */}
+      <div className="mt-5 flex flex-wrap justify-center gap-1">
+        {Array.from({ length: 28 }, (_, v) => v).map((v) => {
+          const c = conteosPorPuntaje[v];
+          const zonaPositiva = v >= 10;
+          const esUltimo = ultimo?.phq9 === v;
+          const intensidad = c > 0 ? 0.2 + 0.7 * (c / maxConteoPuntaje) : 0;
+          return (
+            <div
+              key={v}
+              title={`Puntaje ${v}: ${c} estudiante(s)`}
+              className={
+                "grid h-9 w-9 place-items-center rounded-md border text-[11px] font-semibold tabular-nums transition sm:h-10 sm:w-10 " +
+                (esUltimo
+                  ? "scale-110 border-blue-600 ring-2 ring-blue-400"
+                  : zonaPositiva
+                    ? "border-slate-300 dark:border-slate-700"
+                    : "border-slate-200 dark:border-slate-800")
+              }
+              style={
+                c > 0
+                  ? {
+                      backgroundColor: zonaPositiva
+                        ? `rgba(217, 119, 6, ${intensidad})`
+                        : `rgba(37, 99, 235, ${intensidad})`,
+                      color: intensidad > 0.45 ? "white" : undefined,
+                    }
+                  : undefined
+              }
+            >
+              {c > 0 ? c : v}
+            </div>
+          );
+        })}
+      </div>
+      <p className="mt-1 text-center text-xs text-slate-400 dark:text-slate-500">
+        Cada casilla es un puntaje posible (0 a 27). El número que aparece
+        adentro es cuántos estudiantes reales dieron exactamente ese
+        puntaje — naranja = zona de tamizaje positivo (≥10).
+      </p>
+
+      {/* Cálculo de probabilidad EN VIVO */}
+      <div className="mt-5">
+        <BarraSim
+          etiqueta="Proporción que tamiza positivo (PHQ-9 ≥ 10)"
+          porcentaje={pctPositivo}
+          esperadoPct={21.5}
+          color="ambar"
+        />
+      </div>
+      <div className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+        {indice === 0 ? (
+          <p>Tamizá al primer estudiante y el cálculo va a aparecer aquí.</p>
+        ) : (
+          <p>
+            De los <strong className="tabular-nums">{indice}</strong>{" "}
+            estudiantes tamizados,{" "}
+            <strong className="tabular-nums">{positivos}</strong> dieron
+            positivo ={" "}
+            <strong className="tabular-nums">
+              {positivos}/{indice} = {pctPositivo.toFixed(1)}%
+            </strong>
+            . El valor real en las 200 fichas completas es{" "}
+            <strong>21.5%</strong> — mirá cómo tu número se acerca a medida
+            que tamizás más estudiantes.
+          </p>
+        )}
       </div>
     </div>
   );

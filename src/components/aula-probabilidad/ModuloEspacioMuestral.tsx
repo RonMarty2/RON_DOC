@@ -223,31 +223,44 @@ function UnDadoInteractivo() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Dos dados: espacio muestral compuesto, con mapa de calor en vivo    */
+/* Dos dados: espacio muestral compuesto, con tabla de doble entrada   */
 /* ------------------------------------------------------------------ */
 
 function DosDadosInteractivo() {
   const [historial, setHistorial] = useState<[number, number][]>([]);
   const [ultimo, setUltimo] = useState<[number, number] | null>(null);
+  const [rodando, setRodando] = useState(false);
+  const intervaloRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
+    };
+  }, []);
 
   function tirar() {
-    const par: [number, number] = [entero(1, 6), entero(1, 6)];
-    setUltimo(par);
-    setHistorial((h) => [...h, par]);
-  }
-
-  function tirarLote(n: number) {
-    const nuevos: [number, number][] = Array.from({ length: n }, () => [
-      entero(1, 6),
-      entero(1, 6),
-    ]);
-    setHistorial((h) => [...h, ...nuevos]);
-    setUltimo(nuevos[nuevos.length - 1]);
+    if (rodando) return;
+    setRodando(true);
+    let vueltas = 0;
+    const totalVueltas = 8;
+    intervaloRef.current = window.setInterval(() => {
+      setUltimo([entero(1, 6), entero(1, 6)]);
+      vueltas++;
+      if (vueltas >= totalVueltas) {
+        if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
+        const par: [number, number] = [entero(1, 6), entero(1, 6)];
+        setUltimo(par);
+        setHistorial((h) => [...h, par]);
+        setRodando(false);
+      }
+    }, 70);
   }
 
   function reset() {
+    if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
     setHistorial([]);
     setUltimo(null);
+    setRodando(false);
   }
 
   const conteos = useMemo(() => {
@@ -259,29 +272,22 @@ function DosDadosInteractivo() {
     return m;
   }, [historial]);
 
-  const maxConteo = Math.max(1, ...conteos.values());
   const total = historial.length;
 
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-          Dos dados: 36 resultados posibles
+          Ahora dos dados a la vez
         </h4>
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
+            disabled={rodando}
             onClick={tirar}
-            className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
+            className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            🎲🎲 Tirar 1 vez
-          </button>
-          <button
-            type="button"
-            onClick={() => tirarLote(30)}
-            className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
-          >
-            Tirar 30 más
+            🎲🎲 Tirar los dos
           </button>
           <button
             type="button"
@@ -293,52 +299,95 @@ function DosDadosInteractivo() {
         </div>
       </div>
 
-      <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-400">
+      {/* Los dos dados, uno junto al otro, igual que el dado solo */}
+      <div className="mt-6 flex items-center justify-center gap-4">
+        <div className="flex flex-col items-center gap-1">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+            Dado A
+          </span>
+          <div className="grid h-16 w-16 place-items-center rounded-2xl border-2 border-blue-600 bg-blue-50 text-4xl shadow-sm dark:bg-blue-950/40">
+            {ultimo === null ? "🎲" : CARAS_DADO[ultimo[0] - 1]}
+          </div>
+        </div>
+        <span className="text-xl font-semibold text-slate-400">+</span>
+        <div className="flex flex-col items-center gap-1">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+            Dado B
+          </span>
+          <div className="grid h-16 w-16 place-items-center rounded-2xl border-2 border-amber-500 bg-amber-50 text-4xl shadow-sm dark:bg-amber-950/30">
+            {ultimo === null ? "🎲" : CARAS_DADO[ultimo[1] - 1]}
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
         {ultimo ? (
           <>
-            Salió el par{" "}
+            Este resultado es el par{" "}
             <strong className="tabular-nums">
               ({ultimo[0]}, {ultimo[1]})
             </strong>
-            . Van <strong className="tabular-nums">{total}</strong> tiradas
-            anotadas en el mapa de abajo.
+            : Dado A = {ultimo[0]}, Dado B = {ultimo[1]}. Buscalo en la tabla:
+            fila {ultimo[0]}, columna {ultimo[1]}.
           </>
         ) : (
-          "Cada tirada produce un par ordenado (dado A, dado B) — anotamos cada uno en su casilla."
+          "Cada tirada da dos números: uno del dado A, otro del dado B. Juntos forman un punto de la tabla de abajo."
         )}
       </p>
 
-      <div className="mx-auto mt-4 grid max-w-sm grid-cols-6 gap-1">
-        {Array.from({ length: 6 }, (_, i) => i + 1).flatMap((a) =>
-          Array.from({ length: 6 }, (_, j) => j + 1).map((b) => {
-            const c = conteos.get(`${a}-${b}`) ?? 0;
-            const esUltimo = ultimo !== null && ultimo[0] === a && ultimo[1] === b;
-            const intensidad = c > 0 ? 0.15 + 0.75 * (c / maxConteo) : 0;
-            return (
-              <div
-                key={`${a}-${b}`}
-                className={
-                  "grid aspect-square place-items-center rounded-md border text-[10px] font-semibold tabular-nums transition " +
-                  (esUltimo
-                    ? "border-blue-600 ring-2 ring-blue-400"
-                    : "border-slate-200 dark:border-slate-800")
-                }
-                style={
-                  c > 0
-                    ? { backgroundColor: `rgba(37, 99, 235, ${intensidad})`, color: intensidad > 0.45 ? "white" : undefined }
-                    : undefined
-                }
-              >
-                {c > 0 ? c : ""}
-              </div>
-            );
-          })
-        )}
+      {/* Tabla de doble entrada, CON ejes rotulados */}
+      <div className="mt-5 overflow-x-auto">
+        <table className="mx-auto border-collapse text-center">
+          <caption className="mb-2 text-xs text-slate-500 dark:text-slate-400">
+            Filas = resultado del Dado A · Columnas = resultado del Dado B
+          </caption>
+          <thead>
+            <tr>
+              <th className="p-1" />
+              {[1, 2, 3, 4, 5, 6].map((b) => (
+                <th
+                  key={b}
+                  className="p-1 text-lg text-amber-600 dark:text-amber-400"
+                >
+                  {CARAS_DADO[b - 1]}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4, 5, 6].map((a) => (
+              <tr key={a}>
+                <th className="p-1 text-lg text-blue-600 dark:text-blue-400">
+                  {CARAS_DADO[a - 1]}
+                </th>
+                {[1, 2, 3, 4, 5, 6].map((b) => {
+                  const c = conteos.get(`${a}-${b}`) ?? 0;
+                  const esUltimo = ultimo !== null && ultimo[0] === a && ultimo[1] === b;
+                  return (
+                    <td
+                      key={b}
+                      className={
+                        "h-10 w-10 rounded-md border text-sm font-semibold tabular-nums transition sm:h-11 sm:w-11 " +
+                        (esUltimo
+                          ? "border-blue-600 bg-blue-600 text-white ring-2 ring-blue-400"
+                          : c > 0
+                            ? "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
+                            : "border-slate-200 text-slate-300 dark:border-slate-800 dark:text-slate-700")
+                      }
+                    >
+                      {c > 0 ? c : "·"}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <p className="mt-3 text-center text-xs text-slate-500 dark:text-slate-500">
-        36 casillas posibles = 6 × 6. El número en cada casilla es cuántas
-        veces salió ese par exacto — el mapa se va oscureciendo donde más se
-        repite.
+        {total === 0
+          ? "36 casillas posibles (6 filas × 6 columnas). Todavía vacías."
+          : `Van ${total} tiradas anotadas. Cada casilla es cuántas veces salió exactamente esa combinación.`}
       </p>
     </div>
   );

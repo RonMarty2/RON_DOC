@@ -11,21 +11,30 @@ import type { Materia } from "@/lib/types";
  */
 export const MATERIAS: Materia[] = [
   {
+    slug: "psicoestadistica-inferencial",
+    nombre: "Psicoestadística Inferencial",
+    descripcion:
+      "De la probabilidad a la inferencia: cómo se razona bajo incertidumbre en psicología, y por qué la intuición clínica falla justo donde más importa.",
+    color: "morado",
+    icono: "🎲",
+    herramientas: [
+      {
+        href: "/aula-probabilidad",
+        titulo: "Aula Interactiva de Probabilidad",
+        descripcion:
+          "Un test detecta el 88% de los casos reales y, aun así, la mitad de sus alarmas son falsas. La herramienta recorre la Unidad 2 completa —del espacio muestral al Teorema de Bayes— definiendo cada concepto y dejando que lo compruebes vos mismo sobre 200 fichas reales.",
+        icono: "🎲",
+      },
+    ],
+    temas: [],
+  },
+  {
     slug: "psicoestadistica",
     nombre: "Psicoestadística Descriptiva",
     descripcion:
       "Fundamentos de estadística aplicada a las ciencias del comportamiento: organización, descripción y análisis bivariado de datos.",
     color: "azul",
     icono: "📊",
-    herramientas: [
-      {
-        href: "/aula-probabilidad",
-        titulo: "Aula Interactiva de Probabilidad",
-        descripcion:
-          "El caso «La duda de Andrea»: un grupo real de 60 estudiantes lleva a la clase desde los sesgos de la intuición hasta entender por qué el test positivo de Daniela significa 38% y no 90%.",
-        icono: "🎲",
-      },
-    ],
     temas: [
       {
         slug: "tipos-de-variables",

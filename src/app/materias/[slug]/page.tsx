@@ -119,22 +119,24 @@ export default async function MateriaPage({
         </section>
       )}
 
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <h2 className="font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
-          Temas
-        </h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {materia.temas.map((tema, i) => (
-            <TemaCard
-              key={tema.slug}
-              tema={tema}
-              slugMateria={materia.slug}
-              color={materia.color}
-              numero={i + 1}
-            />
-          ))}
-        </div>
-      </section>
+      {materia.temas.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+            Temas
+          </h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {materia.temas.map((tema, i) => (
+              <TemaCard
+                key={tema.slug}
+                tema={tema}
+                slugMateria={materia.slug}
+                color={materia.color}
+                numero={i + 1}
+              />
+            ))}
+          </div>
+        </section>
+      )}
     </>
   );
 }

@@ -122,6 +122,14 @@ function UnDadoInteractivo() {
   const caraTop = total > 0 ? conteos.indexOf(Math.max(...conteos)) + 1 : null;
   const vecesEvento = [...evento].reduce((s, cara) => s + conteos[cara - 1], 0);
   const pctEvento = total > 0 ? (vecesEvento / total) * 100 : 0;
+  const nombreEvento =
+    evento.size === 0
+      ? "evento imposible"
+      : evento.size === 6
+        ? "evento seguro"
+        : evento.size === 1
+          ? "evento simple"
+          : "evento compuesto";
 
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
@@ -229,11 +237,19 @@ function UnDadoInteractivo() {
         </Definicion>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-5 flex flex-col gap-5">
         <Definicion termino="Suceso o evento">
           Cualquier subconjunto de S. Un solo punto es un{" "}
           <strong>evento simple</strong>; varios puntos, un{" "}
           <strong>evento compuesto</strong>.
+        </Definicion>
+
+        <Definicion termino="Evento seguro y evento imposible">
+          El <strong>evento seguro</strong> contiene todo el espacio muestral,
+          así que ocurre siempre: su probabilidad es 1. El{" "}
+          <strong>evento imposible</strong> no contiene ningún resultado y
+          nunca ocurre: su probabilidad es 0. Son los dos extremos de la
+          escala — ninguna probabilidad puede salirse de ahí.
         </Definicion>
       </div>
 
@@ -258,26 +274,42 @@ function UnDadoInteractivo() {
             </button>
           ))}
         </div>
+        <p className="mt-2 text-center text-xs text-slate-400 dark:text-slate-500">
+          Probá también los dos extremos: ninguna cara, y las seis.
+        </p>
         <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
-          {evento.size === 0 ? (
-            <p>Todavía no armaste un evento. Tocá una o más caras.</p>
-          ) : (
-            <p>
-              Tu evento es{" "}
-              <strong>
-                {"{"}
-                {[...evento].sort((a, b) => a - b).join(", ")}
-                {"}"}
-              </strong>{" "}
-              —{" "}
-              <strong>
-                {evento.size === 1 ? "evento simple" : "evento compuesto"}
-              </strong>
-              . Ocurrió en{" "}
-              <strong className="tabular-nums">{vecesEvento}</strong> de{" "}
-              <strong className="tabular-nums">{total}</strong> tiradas ={" "}
-              <strong className="tabular-nums">{pctEvento.toFixed(1)}%</strong>
-              .
+          <p>
+            Tu evento es{" "}
+            <strong>
+              {"{"}
+              {[...evento].sort((a, b) => a - b).join(", ")}
+              {"}"}
+            </strong>{" "}
+            — <strong>{nombreEvento}</strong>.{" "}
+            {total === 0 ? (
+              <>Tirá el dado arriba para ver con qué frecuencia ocurre.</>
+            ) : (
+              <>
+                Ocurrió en{" "}
+                <strong className="tabular-nums">{vecesEvento}</strong> de{" "}
+                <strong className="tabular-nums">{total}</strong> tiradas ={" "}
+                <strong className="tabular-nums">
+                  {pctEvento.toFixed(1)}%
+                </strong>
+                .
+              </>
+            )}
+          </p>
+          {evento.size === 0 && (
+            <p className="mt-2 text-slate-600 dark:text-slate-400">
+              Sin ninguna cara adentro, no hay resultado que lo haga ocurrir:
+              es el evento imposible, y su probabilidad es 0 por más que tires.
+            </p>
+          )}
+          {evento.size === 6 && (
+            <p className="mt-2 text-slate-600 dark:text-slate-400">
+              Con las seis caras adentro, cualquier resultado lo hace ocurrir:
+              es el evento seguro, y su probabilidad es 1 (100%).
             </p>
           )}
         </div>

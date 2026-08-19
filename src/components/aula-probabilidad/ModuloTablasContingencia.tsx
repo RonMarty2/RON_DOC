@@ -276,6 +276,25 @@ export function ModuloTablasContingencia({
         ]}
       />
 
+      <Comprueba
+        pregunta={`«El ${((t.VP / t.total) * 100).toFixed(1)}% de todos los estudiantes dio positivo Y tenía el diagnóstico.» ¿Qué tipo de probabilidad es ésa?`}
+        opciones={[
+          {
+            texto: "Conjunta",
+            esCorrecta: true,
+            porQue: `Habla de qué parte del TOTAL cumple las dos condiciones a la vez. El denominador es ${t.total}, el total general. La palabra clave es «de todos los estudiantes».`,
+          },
+          {
+            texto: "Condicional",
+            porQue: `Sería condicional si dijera «de los que dieron positivo…» o «de los que tenían el diagnóstico…», fijando un subgrupo primero. Acá no se fija ningún subgrupo: se mira el total.`,
+          },
+          {
+            texto: "Marginal",
+            porQue: `La marginal mira una sola variable e ignora la otra, por ejemplo «el ${((t.positivos / t.total) * 100).toFixed(1)}% dio positivo» sin mencionar el diagnóstico. Acá se mencionan las dos.`,
+          },
+        ]}
+      />
+
       <Trampa
         error={<>confundir <V>P</V>(<V>A</V>|<V>B</V>) con <V>P</V>(<V>B</V>|<V>A</V>)</>}
         porQue="las dos comparten numerador y se describen coloquialmente igual («la precisión del test»). Sólo cambia el denominador, y ese cambio es invisible si uno no mira la tabla."
@@ -286,6 +305,29 @@ export function ModuloTablasContingencia({
         error="usar el total general como denominador de una condicional"
         porQue="200 es el número más visible de la tabla, y aparece en las dos primeras preguntas."
         correccion="el denominador de una condicional es siempre el total marginal del evento ya conocido — la fila o la columna — nunca el total de la tabla."
+      />
+
+      <Comprueba
+        pregunta={`Dos servicios usan el MISMO cuestionario. En el primero, de ${t.positivos} positivos ${t.VP} tenían el diagnóstico. En el segundo, de 43 positivos 38 lo tenían. ¿Qué instrumento es mejor?`}
+        pista="Fijate qué mide el valor predictivo: ¿el test, o el test más la población?"
+        opciones={[
+          {
+            texto: "Ninguno: es el mismo instrumento, cambia la población",
+            esCorrecta: true,
+            porQue:
+              "El valor predictivo mezcla las propiedades del test con la frecuencia de la condición en esa población. Un mismo cuestionario da valores predictivos muy distintos según a quién se aplique. Para comparar instrumentos hay que mirar sensibilidad y especificidad, que sí son propiedades del test. Esto se cuantifica en 2.6.",
+          },
+          {
+            texto: "El segundo, porque su valor predictivo es mucho más alto",
+            porQue:
+              "Un valor predictivo más alto no implica un mejor instrumento. Si el segundo servicio atiende a gente que ya consultó por malestar, su población tiene mucha más prevalencia, y eso solo ya sube el valor predictivo sin que el test cambie en nada.",
+          },
+          {
+            texto: "El primero, porque tiene más casos analizados",
+            porQue:
+              "Los dos analizaron 43 positivos. Y aunque no fuera así, la cantidad de casos afecta la precisión de la estimación, no la calidad del instrumento.",
+          },
+        ]}
       />
 
       <Puente

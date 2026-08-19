@@ -218,6 +218,29 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         de la psicopatología.
       </div>
 
+      <Comprueba
+        pregunta="Dar positivo y dar negativo en el mismo cuestionario no pueden ocurrir juntos. ¿Son eventos independientes?"
+        pista="Independiente significa que saber uno no cambia la probabilidad del otro. Probá aplicar esa definición."
+        opciones={[
+          {
+            texto: "No: son mutuamente excluyentes, y eso los vuelve fuertemente dependientes",
+            esCorrecta: true,
+            porQue:
+              "Si sé que diste positivo, la probabilidad de que hayas dado negativo pasa a ser 0. Saber uno cambió el otro por completo — todo lo contrario de la independencia. Dos eventos excluyentes con probabilidad no nula siempre son dependientes.",
+          },
+          {
+            texto: "Sí: como no pueden ocurrir juntos, no se afectan entre sí",
+            porQue:
+              "Ésa es la confusión más común del apartado. «Excluyentes» se refiere a si pueden coexistir; «independientes», a si uno informa sobre el otro. Que no puedan coexistir es justamente la información más fuerte posible.",
+          },
+          {
+            texto: "Depende de la prevalencia",
+            porQue:
+              "La prevalencia no interviene: la relación entre un evento y su complemento es lógica, no empírica. Saber que ocurrió uno garantiza que el otro no, sea cual sea la población.",
+          },
+        ]}
+      />
+
       <Trampa
         error="multiplicar probabilidades sin verificar la independencia"
         porQue="la fórmula simplificada es más fácil de recordar y no exige datos adicionales."

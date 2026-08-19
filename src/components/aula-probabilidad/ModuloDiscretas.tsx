@@ -98,6 +98,28 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
         ]}
       />
 
+      <Comprueba
+        pregunta="Se van a revisar 6 fichas de un archivo de 43, y las fichas NO se devuelven al montón. ¿Por qué no sirve la binomial acá?"
+        opciones={[
+          {
+            texto: "Porque al no reponer, la probabilidad de éxito cambia en cada extracción",
+            esCorrecta: true,
+            porQue:
+              "La binomial exige que p sea constante en todos los ensayos. Si sacás una ficha incompleta, quedan menos incompletas entre menos fichas: la probabilidad de la siguiente ya es otra. Con una población de sólo 43 y una muestra de 6, esa diferencia importa de verdad.",
+          },
+          {
+            texto: "Porque 6 es un número muy chico de ensayos",
+            porQue:
+              "El tamaño de la muestra no es el problema: la binomial funciona igual con n = 6 que con n = 600. Lo que la descalifica es la ausencia de reposición.",
+          },
+          {
+            texto: "Porque las fichas no son éxito o fracaso",
+            porQue:
+              "Sí lo son: cada ficha está completa o incompleta, que es exactamente un resultado dicotómico. El problema no es la variable, sino cómo se extrae la muestra.",
+          },
+        ]}
+      />
+
       <Trampa
         error="usar binomial donde corresponde hipergeométrica"
         porQue="la binomial se enseña primero y su fórmula es más simple; además casi nunca se pregunta si hay reposición."

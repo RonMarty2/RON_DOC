@@ -111,6 +111,28 @@ export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
         ]}
       />
 
+      <Comprueba
+        pregunta="¿Por qué las fichas incluyen una columna con el diagnóstico confirmado por un profesional, si ya tienen el puntaje del cuestionario?"
+        opciones={[
+          {
+            texto: "Porque es la única forma de saber si el tamizaje acertó o se equivocó",
+            esCorrecta: true,
+            porQue:
+              "Sin una verdad contra la cual comparar, un instrumento no se puede evaluar. Esa columna es el criterio de referencia: permite contar cuántas veces el filtro dio la alarma correcta y cuántas se equivocó. Todo el capítulo se apoya en esa comparación.",
+          },
+          {
+            texto: "Para tener un dato de respaldo por si el cuestionario falla",
+            porQue:
+              "No es un respaldo: es la referencia. El cuestionario no «falla» y se reemplaza por la entrevista — el cuestionario decide a quién entrevistar, y la entrevista dice la verdad.",
+          },
+          {
+            texto: "Porque el cuestionario solo sirve para casos leves",
+            porQue:
+              "El cuestionario no distingue gravedad para decidir: aplica el mismo corte a todos. Su límite no es la gravedad del caso, sino que filtra en vez de diagnosticar.",
+          },
+        ]}
+      />
+
       <Trampa
         error="leer un resultado positivo como si fuera un diagnóstico"
         porQue="la palabra «positivo» suena a veredicto, y el número que acompaña al instrumento (88% de acierto) refuerza esa lectura."

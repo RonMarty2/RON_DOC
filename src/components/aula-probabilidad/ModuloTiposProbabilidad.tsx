@@ -185,6 +185,29 @@ export function ModuloTiposProbabilidad({
         ]}
       />
 
+      <Comprueba
+        pregunta="Querés calcular la probabilidad de que un estudiante saque MENOS de 27 puntos. Contar todos esos casos es tedioso. ¿Qué conviene hacer?"
+        pista="Pensá si es más fácil contar lo que pedís o lo contrario."
+        opciones={[
+          {
+            texto: "Calcular la probabilidad de sacar exactamente 27 y restarla de 1",
+            esCorrecta: true,
+            porQue:
+              "«Menos de 27» y «exactamente 27» son complementarios: cubren todo el espacio muestral y no se solapan. Contar un solo caso y restarlo de 1 es muchísimo más rápido que contar 27. Para eso sirve la regla del complemento.",
+          },
+          {
+            texto: "Sumar las probabilidades de los 27 valores restantes",
+            porQue:
+              "Daría el resultado correcto, pero es exactamente el trabajo que la regla del complemento existe para evitar. Cuando el evento directo es más difícil de contar que su negación, conviene invertir.",
+          },
+          {
+            texto: "Usar probabilidad clásica: 27 casos favorables sobre 28 posibles",
+            porQue:
+              "Eso supondría que los 28 puntajes son equiprobables, y no lo son: hay muchísimos más estudiantes con puntajes bajos que con 27. La equiprobabilidad hay que justificarla, no asumirla.",
+          },
+        ]}
+      />
+
       <Trampa
         error="tratar la probabilidad clásica como si valiera siempre"
         porQue="es la primera que se enseña y su fórmula es la más simple, así que se aplica por reflejo — incluso cuando los resultados no son equiprobables."

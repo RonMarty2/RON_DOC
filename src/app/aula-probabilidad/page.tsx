@@ -5,7 +5,7 @@ import { construirMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = construirMetadata(
   "Aula Interactiva de Probabilidad",
-  "Una clase magistral en vivo: del espacio muestral al Teorema de Bayes, con dados clásicos y un dataset real de 200 estudiantes tamizados en salud mental."
+  "Unidad 2 de Psicoestadística Inferencial: del espacio muestral al Teorema de Bayes. Cada concepto se define y se comprueba sobre 200 fichas reales."
 );
 
 export default function AulaProbabilidadPage() {
@@ -20,10 +20,10 @@ export default function AulaProbabilidadPage() {
             </Link>
             <span className="mx-1.5">/</span>
             <Link
-              href="/materias/psicoestadistica"
+              href="/materias/psicoestadistica-inferencial"
               className="hover:underline"
             >
-              Psicoestadística Descriptiva
+              Psicoestadística Inferencial
             </Link>
           </nav>
           <div className="mt-4 flex items-start gap-4">
@@ -38,10 +38,11 @@ export default function AulaProbabilidadPage() {
                 Aula Interactiva de Probabilidad
               </h1>
               <p className="mt-3 max-w-2xl text-slate-700 dark:text-slate-300">
-                Una clase magistral en vivo. Tus estudiantes votan con su
-                intuición, se equivocan en grupo y descubren la verdad con
-                simulaciones visuales — desde la probabilidad simple hasta el
-                Teorema de Bayes.
+                Unidad 2 completa, del espacio muestral al Teorema de Bayes.
+                Cada concepto se define primero y se comprueba después: tirás
+                los dados, tamizás las fichas y ves el cálculo armarse solo.
+                Sirve tanto proyectada en clase como para estudiar por tu
+                cuenta.
               </p>
             </div>
           </div>

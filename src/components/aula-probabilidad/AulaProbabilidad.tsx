@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import { MODULOS, type ModuloId } from "./modulos";
 import { BLOQUES, ORDEN_BLOQUES } from "./bloques";
+
+/** Dónde se guarda el último apartado visitado, para retomarlo al volver. */
+const CLAVE_PROGRESO = "aula-probabilidad:ultimo-apartado";
 import { verificarVerdades } from "./calculos";
 import { ModuloMisterio } from "./ModuloMisterio";
 import { ModuloElCaso } from "./ModuloElCaso";
@@ -61,13 +64,53 @@ function CuerpoModulo({
 export function AulaProbabilidad() {
   const [activo, setActivo] = useState<ModuloId>("misterio");
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [retomado, setRetomado] = useState<ModuloId | null>(null);
+
+  // Al abrir, retomar donde se había quedado. Arranca siempre en "misterio"
+  // para que el HTML del servidor y el del navegador coincidan, y recién
+  // después salta al apartado guardado.
+  useEffect(() => {
+    try {
+      const guardado = window.localStorage.getItem(CLAVE_PROGRESO);
+      if (
+        guardado &&
+        guardado !== "misterio" &&
+        MODULOS.some((m) => m.id === guardado)
+      ) {
+        setActivo(guardado as ModuloId);
+        setRetomado(guardado as ModuloId);
+      }
+    } catch {
+      // Si el navegador bloquea el almacenamiento, simplemente empieza al inicio.
+    }
+  }, []);
   const meta = MODULOS.find((m) => m.id === activo) ?? MODULOS[0];
   const indiceActivo = MODULOS.findIndex((m) => m.id === activo);
   const acento = BLOQUES[meta.bloque];
 
   // Al cambiar de módulo, volver arriba (los módulos son largos).
+  /** Navega a un apartado, lo recuerda para la próxima vez y vuelve arriba. */
   function irA(destino: ModuloId) {
     setActivo(destino);
+    setMenuAbierto(false);
+    setRetomado(null);
+    try {
+      window.localStorage.setItem(CLAVE_PROGRESO, destino);
+    } catch {
+      // Sin almacenamiento disponible: se pierde el progreso, nada más.
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  /** Vuelve al principio y olvida el punto guardado. */
+  function empezarDeNuevo() {
+    setRetomado(null);
+    try {
+      window.localStorage.removeItem(CLAVE_PROGRESO);
+    } catch {
+      /* nada que hacer */
+    }
+    setActivo("misterio");
     setMenuAbierto(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -177,6 +220,26 @@ export function AulaProbabilidad() {
           </span>
         </div>
       </nav>
+
+      {/* Aviso de que se retomó donde se había quedado */}
+      {retomado && (
+        <div className="mb-6 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-800/60">
+          <span className="text-slate-700 dark:text-slate-300">
+            Retomaste donde habías quedado:{" "}
+            <strong>
+              {meta.apartado ? `${meta.apartado} ${meta.titulo}` : meta.titulo}
+            </strong>
+            .
+          </span>
+          <button
+            type="button"
+            onClick={empezarDeNuevo}
+            className="ml-auto shrink-0 rounded-full border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-blue-400 hover:text-blue-700 dark:border-slate-600 dark:text-slate-400 dark:hover:border-blue-600 dark:hover:text-blue-300"
+          >
+            Empezar desde el inicio
+          </button>
+        </div>
+      )}
 
       {/* Encabezado del módulo activo */}
       <header className="mb-6">

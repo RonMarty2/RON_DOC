@@ -36,6 +36,8 @@
 | 2026-08-19 | Componente **`Comprueba`**: 1–2 preguntas por apartado con corrección inmediata Y explicación de cada opción | Antes nadie producía nada: todo era «mirá cómo pasa». La recuperación activa es lo que fija el concepto, y sirve igual en clase que para quien estudia solo |
 | 2026-08-19 | **Bloques temáticos con color** (Antes de empezar · Fundamentos · Herramientas de cálculo · El clímax · Distribuciones) + barra de progreso + pasos numerados | La navegación eran 11 píldoras sueltas sin jerarquía; no se veía el recorrido |
 | 2026-08-19 | **Restaurada** la aproximación normal a la binomial en 2.9, con la corrección de continuidad explicada y comparada contra omitirla | Estaba en el dossier, se había perdido, y quedaba una trampa advirtiendo sobre un error de algo nunca enseñado |
+| 2026-08-19 | Subir la práctica de 1 a **2–3 preguntas por apartado** (22 en total) | Una sola pregunta por apartado era poco para cubrir los distintos errores típicos. 2.3 y 2.6 llevan tres por ser el núcleo conceptual |
+| 2026-08-19 | La tabla de esperanza y varianza de **2.7 pasa a ser interactiva**: los términos se calculan de a uno y la fila Σ se acumula a la vista | Era el único módulo con un cálculo mostrado ya resuelto. Ahora se ve que una Σ no es más que acumular un término por valor posible — y que mientras la suma de probabilidades no llegue a 1, falta un valor |
 
 ## Estado actual — Unidad 2 COMPLETA
 

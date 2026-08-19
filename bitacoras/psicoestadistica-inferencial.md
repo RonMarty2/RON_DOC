@@ -43,6 +43,7 @@
 | 2026-08-19 | **Navegación compacta en móvil**: una sola píldora con el apartado actual y un desplegable | En Android el menú ocupaba media pantalla antes de llegar al contenido |
 | 2026-08-19 | **`Termino` reposicionado con `position: fixed`**, y se cierra al desplazarse, al tocar fuera, al girar la pantalla o con Escape | En Android quedaba abierto al hacer scroll y se despegaba de la palabra |
 | 2026-08-19 | **Proyecto listo para Android Studio** con Capacitor: `npm run build:android` y `npm run android:abrir`; carpeta `android/` versionada; instrucciones en `LEEME-ANDROID.md` | El sitio se va a distribuir además como app nativa. El build de Android fuerza el prefijo de ruta vacío, porque dentro de la app no existe `/RON_DOC` |
+| 2026-08-19 | **Recordar el último apartado visitado** en el almacenamiento del navegador, con aviso al retomar y botón «empezar desde el inicio» | Para probar la herramienta había que navegar todo el recorrido cada vez. Arranca siempre en el preámbulo la primera vez (y así lo ve cualquier estudiante nuevo), pero al volver retoma donde se quedó |
 
 ## Estado actual — Unidad 2 COMPLETA
 

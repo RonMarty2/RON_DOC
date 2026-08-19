@@ -24,7 +24,10 @@ export type ModuloId =
   | "tablas-contingencia"
   | "combinatoria"
   | "reglas-basicas"
-  | "bayes";
+  | "bayes"
+  | "variables-aleatorias"
+  | "discretas"
+  | "normal";
 
 export interface ModuloMeta {
   id: ModuloId;
@@ -106,6 +109,33 @@ export const MODULOS: ModuloMeta[] = [
     subtitulo: "La respuesta al misterio",
     resumen:
       "Urnas con bolitas. Después: de dónde sale exactamente ese 51.2% que abrió el capítulo, y por qué la prevalencia es la mitad del cálculo.",
+  },
+  {
+    id: "variables-aleatorias",
+    apartado: "2.7",
+    icono: "📈",
+    titulo: "Variables aleatorias",
+    subtitulo: "Distribuciones, esperanza y varianza",
+    resumen:
+      "Hasta acá preguntamos por eventos sueltos. Ahora describimos el comportamiento completo de una variable de una sola vez, y lo resumimos en dos números.",
+  },
+  {
+    id: "discretas",
+    apartado: "2.8",
+    icono: "🎯",
+    titulo: "Distribuciones discretas",
+    subtitulo: "Binomial, Poisson e hipergeométrica",
+    resumen:
+      "Tres preguntas de planificación, tres procesos distintos, tres fórmulas distintas. Confundirlas produce números equivocados que parecen razonables.",
+  },
+  {
+    id: "normal",
+    apartado: "2.9",
+    icono: "🔔",
+    titulo: "Distribución normal",
+    subtitulo: "La campana y la puntuación z",
+    resumen:
+      "La curva que permite evaluar cualquier punto de corte sin volver a contar el archivo. Cierra el capítulo respondiendo dónde conviene poner el corte.",
   },
 ];
 

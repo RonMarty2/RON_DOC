@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ESTUDIANTES, CORTE_TAMIZAJE } from "@content/aula-probabilidad/dataset";
-import { Definicion, MiniHistoria } from "./narrativa";
+import { Definicion, MiniHistoria, Trampa, Puente } from "./narrativa";
 
 /** Los 9 ítems del PHQ-9 (formulación estándar en español). */
 const ITEMS_PHQ9 = [
@@ -33,7 +33,7 @@ const RESPUESTAS = [
  * NO se definen acá: van en 2.3, donde la tabla hace visible el
  * denominador de cada una.
  */
-export function ModuloElCaso() {
+export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
   return (
     <div className="flex flex-col gap-6">
       <Definicion termino="Tamizaje (o cribado)">
@@ -61,6 +61,27 @@ export function ModuloElCaso() {
       </Definicion>
 
       <LasFichas />
+
+      <Trampa
+        error="leer un resultado positivo como si fuera un diagnóstico"
+        porQue="la palabra «positivo» suena a veredicto, y el número que acompaña al instrumento (88% de acierto) refuerza esa lectura."
+        correccion="un tamizaje decide a quién revisar, no quién está enfermo. El diagnóstico lo hace después un profesional en entrevista — y por eso el archivo tiene esa columna aparte."
+      />
+
+      <Puente
+        etiquetaBoton="Ir a 2.1 · Espacio muestral"
+        onContinuar={onContinuar}
+      >
+        <p>
+          Ya sabemos qué mide el cuestionario, de dónde sale su puntaje y qué
+          contiene cada ficha. Con eso alcanza para empezar.
+        </p>
+        <p>
+          Pero antes de calcular una sola probabilidad hay que delimitar con
+          precisión de qué estamos hablando: qué es un experimento aleatorio,
+          cuáles son sus resultados posibles y qué es exactamente un evento.
+        </p>
+      </Puente>
     </div>
   );
 }

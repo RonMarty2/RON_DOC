@@ -6,7 +6,14 @@ import { verificarVerdades } from "./calculos";
 import { ModuloMisterio } from "./ModuloMisterio";
 import { ModuloElCaso } from "./ModuloElCaso";
 import { ModuloEspacioMuestral } from "./ModuloEspacioMuestral";
-import { ModuloProximamente } from "./ModuloProximamente";
+import { ModuloTiposProbabilidad } from "./ModuloTiposProbabilidad";
+import { ModuloTablasContingencia } from "./ModuloTablasContingencia";
+import { ModuloCombinatoria } from "./ModuloCombinatoria";
+import { ModuloReglasBasicas } from "./ModuloReglasBasicas";
+import { ModuloBayes } from "./ModuloBayes";
+import { ModuloVariablesAleatorias } from "./ModuloVariablesAleatorias";
+import { ModuloDiscretas } from "./ModuloDiscretas";
+import { ModuloNormal } from "./ModuloNormal";
 
 /** Módulos ya construidos; el resto muestra el placeholder. */
 function CuerpoModulo({
@@ -20,11 +27,25 @@ function CuerpoModulo({
     case "misterio":
       return <ModuloMisterio onContinuar={() => irA("el-caso")} />;
     case "el-caso":
-      return <ModuloElCaso />;
+      return <ModuloElCaso onContinuar={() => irA("espacio-muestral")} />;
     case "espacio-muestral":
-      return <ModuloEspacioMuestral />;
-    default:
-      return <ModuloProximamente meta={MODULOS.find((m) => m.id === id)!} />;
+      return <ModuloEspacioMuestral onContinuar={() => irA("tipos-probabilidad")} />;
+    case "tipos-probabilidad":
+      return <ModuloTiposProbabilidad onContinuar={() => irA("tablas-contingencia")} />;
+    case "tablas-contingencia":
+      return <ModuloTablasContingencia onContinuar={() => irA("combinatoria")} />;
+    case "combinatoria":
+      return <ModuloCombinatoria onContinuar={() => irA("reglas-basicas")} />;
+    case "reglas-basicas":
+      return <ModuloReglasBasicas onContinuar={() => irA("bayes")} />;
+    case "bayes":
+      return <ModuloBayes onContinuar={() => irA("variables-aleatorias")} />;
+    case "variables-aleatorias":
+      return <ModuloVariablesAleatorias onContinuar={() => irA("discretas")} />;
+    case "discretas":
+      return <ModuloDiscretas onContinuar={() => irA("normal")} />;
+    case "normal":
+      return <ModuloNormal onContinuar={() => irA("misterio")} />;
   }
 }
 

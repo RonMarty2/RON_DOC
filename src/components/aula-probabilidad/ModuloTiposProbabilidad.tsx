@@ -6,6 +6,8 @@ import { contar, phq9Positivo } from "./calculos";
 import { entero } from "./aleatorio";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   Frac,
   V,
   Trampa,
@@ -62,6 +64,21 @@ export function ModuloTiposProbabilidad({
         Cuando no hay razón para suponer que todos los resultados son iguales,
         se observa muchas veces y se toma la frecuencia relativa. Es la que
         usamos con las 200 fichas.
+        <Ejemplos titulo="Ver las tres, sobre la misma pregunta">
+          <Ejemplo caso="CLÁSICA — «hay 2.400 estudiantes, todos con la misma chance de ser elegidos»">
+            Sirve para elegir a alguien al azar de una lista, pero no para
+            saber si tiene depresión: nada garantiza que tenerla y no tenerla
+            sean igual de probables.
+          </Ejemplo>
+          <Ejemplo caso="FRECUENTISTA — «de 200 fichas, 25 tienen diagnóstico: 12,5%»">
+            Salió de contar casos observados. Es la que usamos en todo el
+            capítulo.
+          </Ejemplo>
+          <Ejemplo caso="SUBJETIVA — «el equipo clínico estima que ronda el 12%»">
+            Sin lista completa ni registros suficientes, un experto asigna un
+            número a partir de su criterio y de la literatura publicada.
+          </Ejemplo>
+        </Ejemplos>
       </Definicion>
 
       <Definicion termino="Probabilidad subjetiva">
@@ -333,7 +350,9 @@ function MonedaConvergente() {
           <p className="mt-1 text-slate-600 dark:text-slate-400">
             {tiradas === 0
               ? "Todavía sin datos. Tirá la moneda para empezar a estimarla."
-              : `${caras} caras en ${tiradas.toLocaleString("es")} tiradas. Sólo existe porque observamos.`}
+              : tiradas < 30
+                ? `${caras} caras en ${tiradas} ${tiradas === 1 ? "tirada" : "tiradas"}. Con tan pocas, este número salta muchísimo y todavía no dice nada: tirá 100 o 1.000 y mirá cómo se pega al 50%.`
+                : `${caras} caras en ${tiradas.toLocaleString("es")} tiradas. Sólo existe porque observamos — y cuantas más tiradas, más se acerca al valor clásico.`}
           </p>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { useState } from "react";
 import { tablaConfusion } from "./calculos";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   Frac,
   V,
   Trampa,
@@ -127,6 +129,22 @@ export function ModuloTablasContingencia({
         Una tabla que organiza el conteo conjunto de dos variables
         categóricas en filas y columnas. De ella se leen tres tipos de
         probabilidad, y se distinguen únicamente por el denominador.
+        <Ejemplos titulo="Ver otras tablas de contingencia">
+          <Ejemplo caso="Tratamiento (recibió / no recibió) × Mejoría (sí / no)">
+            La tabla clásica de un ensayo clínico.
+          </Ejemplo>
+          <Ejemplo caso="Turno (mañana / tarde) × Abandono (sí / no)">
+            Para ver si el horario de cursada se asocia con dejar la materia.
+          </Ejemplo>
+          <Ejemplo caso="Un dado: paridad (par / impar) × tamaño (≤3 / >3)">
+            No hace falta que sean personas: cualquier par de variables
+            categóricas se puede cruzar.
+          </Ejemplo>
+          <Ejemplo caso="La nuestra: tamizaje (+ / −) × diagnóstico (sí / no)">
+            Lo que dijo el test contra lo que era verdad. Las dos celdas de la
+            diagonal son aciertos; las otras dos, los dos tipos de error.
+          </Ejemplo>
+        </Ejemplos>
       </Definicion>
 
       <TablaInteractiva

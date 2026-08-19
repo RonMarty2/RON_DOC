@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { combinaciones, permutaciones, contar, phq9Positivo } from "./calculos";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   Frac,
   V,
   Trampa,
@@ -72,6 +74,26 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
         <Definicion termino="Combinación — el orden NO importa">
           Formas de seleccionar <V>r</V> elementos sin importar en qué orden
           queden. Cada grupo se cuenta una sola vez.
+          <Ejemplos titulo="Ver cuál corresponde en cada caso">
+            <Ejemplo caso="COMBINACIÓN — elegir 5 estudiantes para citar el mismo día">
+              Intercambiar dos no cambia nada: es el mismo grupo.
+            </Ejemplo>
+            <Ejemplo caso="COMBINACIÓN — repartir una mano de 5 cartas">
+              Tener el as antes o después no cambia la mano.
+            </Ejemplo>
+            <Ejemplo caso="COMBINACIÓN — armar un comité de 3 personas">
+              Sin cargos asignados, sólo importa quiénes lo integran.
+            </Ejemplo>
+            <Ejemplo caso="PERMUTACIÓN — asignar turnos de 9, 10 y 11 h">
+              Cambiar quién va primero produce otra asignación.
+            </Ejemplo>
+            <Ejemplo caso="PERMUTACIÓN — podio de oro, plata y bronce">
+              El orden es exactamente lo que se está decidiendo.
+            </Ejemplo>
+            <Ejemplo caso="PERMUTACIÓN — una clave de 4 dígitos sin repetir">
+              1234 y 4321 abren cosas distintas.
+            </Ejemplo>
+          </Ejemplos>
         </Definicion>
       </div>
 

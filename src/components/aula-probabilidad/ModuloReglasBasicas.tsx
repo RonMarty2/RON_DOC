@@ -5,6 +5,8 @@ import { ESTUDIANTES } from "@content/aula-probabilidad/dataset";
 import { contar, proporcion, condicional, phq9Positivo, gad7Positivo } from "./calculos";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   Frac,
   V,
   Trampa,
@@ -117,6 +119,23 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         Dos eventos son independientes cuando conocer uno{" "}
         <strong>no modifica</strong> la probabilidad del otro. Sólo en ese caso
         la regla se simplifica a multiplicar las dos probabilidades sueltas.
+        <Ejemplos titulo="Ver casos independientes y dependientes">
+          <Ejemplo caso="INDEPENDIENTES — dos tiradas de un dado">
+            Que la primera haya salido 6 no cambia en nada la segunda. El dado
+            no tiene memoria.
+          </Ejemplo>
+          <Ejemplo caso="INDEPENDIENTES — moneda y dado tirados juntos">
+            Saber que salió cara no dice nada sobre qué cara del dado salió.
+          </Ejemplo>
+          <Ejemplo caso="DEPENDIENTES — sacar dos cartas sin reponer">
+            Si la primera fue un as, quedan 3 ases en 51 cartas: la segunda
+            probabilidad cambió.
+          </Ejemplo>
+          <Ejemplo caso="DEPENDIENTES — depresión y ansiedad">
+            Es el caso de abajo: saber que alguien dio positivo en una
+            cuadruplica la probabilidad de la otra.
+          </Ejemplo>
+        </Ejemplos>
       </Definicion>
 
       <MiniHistoria titulo="Excluyentes ≠ independientes">

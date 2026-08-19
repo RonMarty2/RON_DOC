@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Aula de Probabilidad</string>
+    <string name="title_activity_main">Aula de Probabilidad</string>
+    <string name="package_name">bo.ronmartinez.aula</string>
+    <string name="custom_url_scheme">bo.ronmartinez.aula</string>
+</resources>

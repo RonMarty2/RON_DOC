@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Componentes de presentación compartidos por todos los módulos.
@@ -157,33 +157,137 @@ export function Termino({
   /** Definición breve, una o dos frases. */
   significa: React.ReactNode;
 }) {
+  const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
+  const botonRef = useRef<HTMLButtonElement>(null);
+
+  // Se cierra al desplazarse, al tocar fuera, al girar la pantalla o con Escape.
+  useEffect(() => {
+    if (!pos) return;
+    const cerrar = () => setPos(null);
+    const porTecla = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPos(null);
+    };
+    const porToque = (e: MouseEvent | TouchEvent) => {
+      if (!botonRef.current?.contains(e.target as Node)) setPos(null);
+    };
+    window.addEventListener("scroll", cerrar, true);
+    window.addEventListener("resize", cerrar);
+    window.addEventListener("keydown", porTecla);
+    document.addEventListener("mousedown", porToque);
+    document.addEventListener("touchstart", porToque);
+    return () => {
+      window.removeEventListener("scroll", cerrar, true);
+      window.removeEventListener("resize", cerrar);
+      window.removeEventListener("keydown", porTecla);
+      document.removeEventListener("mousedown", porToque);
+      document.removeEventListener("touchstart", porToque);
+    };
+  }, [pos]);
+
+  function alternar() {
+    if (pos) {
+      setPos(null);
+      return;
+    }
+    const r = botonRef.current?.getBoundingClientRect();
+    if (!r) return;
+    const ancho = Math.min(288, window.innerWidth - 24);
+    // Se centra bajo la palabra, pero sin salirse de la pantalla.
+    const left = Math.min(
+      Math.max(12, r.left + r.width / 2 - ancho / 2),
+      window.innerWidth - ancho - 12
+    );
+    // Si no entra abajo, se muestra arriba.
+    const abajo = window.innerHeight - r.bottom;
+    const top = abajo > 170 ? r.bottom + 8 : Math.max(12, r.top - 170);
+    setPos({ top, left });
+  }
+
+  return (
+    <>
+      <button
+        ref={botonRef}
+        type="button"
+        onClick={alternar}
+        aria-expanded={pos !== null}
+        className={
+          "cursor-help border-b-2 border-dotted font-medium transition " +
+          (pos
+            ? "border-blue-600 bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200"
+            : "border-blue-500 text-blue-700 hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-950/40")
+        }
+      >
+        {children}
+      </button>
+      {pos && (
+        <span
+          role="note"
+          style={{
+            position: "fixed",
+            top: pos.top,
+            left: pos.left,
+            width: Math.min(288, typeof window !== "undefined" ? window.innerWidth - 24 : 288),
+          }}
+          className="z-50 block rounded-xl border border-slate-200 bg-white p-3 text-left text-xs font-normal leading-relaxed text-slate-700 shadow-xl dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
+        >
+          {significa}
+        </span>
+      )}
+    </>
+  );
+}
+
+/**
+ * Ejemplos a pedido. Una definición sola no alcanza: el lector necesita ver
+ * casos concretos, pero mostrarlos todos de entrada satura la página. Con
+ * este botón los pide cuando los necesita.
+ */
+export function Ejemplos({
+  titulo = "Ver ejemplos",
+  children,
+}: {
+  titulo?: string;
+  children: React.ReactNode;
+}) {
   const [abierto, setAbierto] = useState(false);
   return (
-    <span className="relative inline-block">
+    <div className="mt-2">
       <button
         type="button"
         onClick={() => setAbierto((v) => !v)}
         aria-expanded={abierto}
-        className="cursor-help border-b-2 border-dotted border-blue-500 font-medium text-blue-700 transition hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-950/40"
+        className="rounded-full border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-blue-400 hover:text-blue-700 dark:border-slate-600 dark:text-slate-400 dark:hover:border-blue-600 dark:hover:text-blue-300"
       >
-        {children}
+        {abierto ? "Ocultar ejemplos" : titulo} {abierto ? "▲" : "▼"}
       </button>
       {abierto && (
-        <span
-          role="note"
-          className="absolute left-1/2 top-full z-30 mt-2 block w-64 -translate-x-1/2 rounded-xl border border-slate-200 bg-white p-3 text-left text-xs font-normal leading-relaxed text-slate-700 shadow-lg dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
-        >
-          {significa}
-          <button
-            type="button"
-            onClick={() => setAbierto(false)}
-            className="mt-2 block text-[10px] font-semibold uppercase tracking-wider text-slate-400 hover:text-slate-600"
-          >
-            cerrar
-          </button>
+        <div className="mt-2 flex flex-col gap-2 rounded-xl bg-slate-50 p-4 text-sm dark:bg-slate-800/60">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Una fila de ejemplo: el caso concreto y qué ilustra. */
+export function Ejemplo({
+  caso,
+  children,
+}: {
+  caso: React.ReactNode;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-0.5 border-l-2 border-slate-300 pl-3 dark:border-slate-600">
+      <span className="font-mono text-sm text-slate-800 dark:text-slate-200">
+        {caso}
+      </span>
+      {children && (
+        <span className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+          {children}
         </span>
       )}
-    </span>
+    </div>
   );
 }
 

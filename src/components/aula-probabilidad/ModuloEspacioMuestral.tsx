@@ -5,6 +5,8 @@ import { ESTUDIANTES } from "@content/aula-probabilidad/dataset";
 import { entero } from "./aleatorio";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   MiniHistoria,
   Trampa,
   Puente,
@@ -38,11 +40,43 @@ export function ModuloEspacioMuestral({
       <Definicion termino="Experimento aleatorio">
         Un procedimiento cuyo resultado no se puede predecir con certeza,
         aunque se conozcan de antemano todos los resultados posibles.
+        <Ejemplos>
+          <Ejemplo caso="Tirar un dado">
+            No sabés qué cara va a salir, pero sabés que va a ser una de seis.
+          </Ejemplo>
+          <Ejemplo caso="Aplicar el cuestionario a un estudiante al azar">
+            No sabés qué puntaje va a dar, pero sabés que estará entre 0 y 27.
+          </Ejemplo>
+          <Ejemplo caso="NO es aleatorio: medir el largo de una mesa">
+            El resultado está determinado de antemano. Si repetís la medición
+            obtenés lo mismo, salvo error de instrumento.
+          </Ejemplo>
+        </Ejemplos>
       </Definicion>
 
       <Definicion termino="Espacio muestral (S)">
         El conjunto de todos los resultados posibles de un experimento
         aleatorio. Para un dado: S = {"{1, 2, 3, 4, 5, 6}"}.
+        <Ejemplos titulo="Ver más espacios muestrales">
+          <Ejemplo caso={'Moneda:  S = {cara, sello}'}>
+            Dos resultados posibles.
+          </Ejemplo>
+          <Ejemplo caso={'Dado:  S = {1, 2, 3, 4, 5, 6}'}>
+            Seis resultados.
+          </Ejemplo>
+          <Ejemplo caso={'Dos monedas:  S = {CC, CS, SC, SS}'}>
+            Cuatro resultados. Ojo: CS y SC son distintos, porque importa cuál
+            moneda dio cada cosa.
+          </Ejemplo>
+          <Ejemplo caso={'Cuestionario:  S = {0, 1, 2, …, 27}'}>
+            Veintiocho resultados posibles.
+          </Ejemplo>
+          <Ejemplo caso={'Tamizaje:  S = {positivo, negativo}'}>
+            El MISMO experimento puede tener espacios muestrales distintos
+            según qué se registre. Si sólo anotás si superó el corte, hay dos
+            resultados; si anotás el puntaje, veintiocho.
+          </Ejemplo>
+        </Ejemplos>
       </Definicion>
 
       <UnDadoInteractivo />
@@ -308,14 +342,55 @@ function UnDadoInteractivo() {
 
       <div className="mt-5 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
         {total === 0 ? (
-          <p>Tirá el dado y la tabla se va a llenar sola.</p>
+          <p>
+            Todavía no tiraste. La línea gris de cada barra marca dónde
+            <em> debería</em> quedar cada cara si tirás muchas veces:{" "}
+            <strong>1/6 ≈ 16.7%</strong>.
+          </p>
+        ) : total < 30 ? (
+          <p>
+            Van sólo <strong className="tabular-nums">{total}</strong>{" "}
+            {total === 1 ? "tirada" : "tiradas"}: con tan pocas,{" "}
+            <strong>los porcentajes no significan nada todavía</strong>. Con
+            una sola tirada una cara marca 100% y las otras 0%; con dos,
+            50%/50%. No es que el dado esté cargado — es que hay muy pocos
+            datos. Fijate cuánto se despegan las barras de la línea gris:{" "}
+            {(() => {
+              const pcts = conteos.map((c) => (c / total) * 100);
+              const brecha = Math.max(...pcts) - Math.min(...pcts);
+              return (
+                <>
+                  hoy hay{" "}
+                  <strong className="tabular-nums">
+                    {brecha.toFixed(0)} puntos
+                  </strong>{" "}
+                  entre la cara que más salió y la que menos.
+                </>
+              );
+            })()}{" "}
+            Tirá 100 más y mirá qué pasa con esa brecha.
+          </p>
         ) : (
           <p>
-            Van <strong className="tabular-nums">{total}</strong> tiradas. La
-            cara <strong className="tabular-nums">{caraTop}</strong> salió más
-            veces ({conteos[(caraTop ?? 1) - 1]} de {total} ={" "}
-            {((conteos[(caraTop ?? 1) - 1] / total) * 100).toFixed(1)}%). La
-            línea gris marca el valor teórico: <strong>1/6 ≈ 16.7%</strong>.
+            Van <strong className="tabular-nums">{total}</strong> tiradas.
+            {(() => {
+              const pcts = conteos.map((c) => (c / total) * 100);
+              const brecha = Math.max(...pcts) - Math.min(...pcts);
+              return (
+                <>
+                  {" "}
+                  Ahora la brecha entre la cara que más salió y la que menos es
+                  de{" "}
+                  <strong className="tabular-nums">
+                    {brecha.toFixed(1)} puntos
+                  </strong>
+                  , y las seis barras se apretaron contra la línea gris del{" "}
+                  <strong>16.7%</strong>.
+                </>
+              );
+            })()}{" "}
+            Eso es lo único que la probabilidad promete: no predice una tirada,
+            predice el comportamiento a la larga.
           </p>
         )}
       </div>
@@ -323,9 +398,11 @@ function UnDadoInteractivo() {
       {/* Definición + interactivo: punto muestral y suceso */}
       <div className="mt-6 border-t border-slate-100 pt-5 dark:border-slate-800">
         <Definicion termino="Punto muestral">
-          Cada resultado individual dentro del espacio muestral. El{" "}
-          {caraTop ?? "número"} que salió más seguido es un punto muestral de
-          S.
+          Cada resultado individual dentro del espacio muestral. Cada vez que
+          tirás el dado obtenés exactamente un punto muestral.
+          {caraTop !== null && (
+            <> La última tirada te dio uno de los seis: {caraVisible}.</>
+          )}
         </Definicion>
       </div>
 
@@ -334,6 +411,26 @@ function UnDadoInteractivo() {
           Cualquier subconjunto de S. Un solo punto es un{" "}
           <strong>evento simple</strong>; varios puntos, un{" "}
           <strong>evento compuesto</strong>.
+          <Ejemplos titulo="Ver eventos del dado, con sus elementos">
+            <Ejemplo caso={'"Sale 4"  =  {4}'}>
+              Evento simple: un único punto muestral.
+            </Ejemplo>
+            <Ejemplo caso={'"Sale par"  =  {2, 4, 6}'}>
+              Evento compuesto: tres puntos. Cualquiera de los tres lo hace
+              ocurrir.
+            </Ejemplo>
+            <Ejemplo caso={'"Sale más de 4"  =  {5, 6}'}>
+              Evento compuesto de dos puntos.
+            </Ejemplo>
+            <Ejemplo caso={'"Sale menos de 3"  =  {1, 2}'}>
+              Otro compuesto. Fijate que se solapa con "sale par" en el 2.
+            </Ejemplo>
+            <Ejemplo caso={'"Sale primo"  =  {2, 3, 5}'}>
+              El enunciado suena a una sola condición, pero agrupa tres
+              resultados: lo que decide simple o compuesto es cuántos puntos
+              contiene, no cómo se lo enuncia.
+            </Ejemplo>
+          </Ejemplos>
         </Definicion>
 
         <Definicion termino="Evento seguro y evento imposible">
@@ -342,6 +439,26 @@ function UnDadoInteractivo() {
           <strong>evento imposible</strong> no contiene ningún resultado y
           nunca ocurre: su probabilidad es 0. Son los dos extremos de la
           escala — ninguna probabilidad puede salirse de ahí.
+          <Ejemplos titulo="Ver ejemplos de los dos extremos">
+            <Ejemplo caso={'SEGURO — "sale un número del 1 al 6"  =  {1,2,3,4,5,6}'}>
+              Contiene todo S. Pase lo que pase, ocurre. P = 1.
+            </Ejemplo>
+            <Ejemplo caso={'SEGURO — "el puntaje está entre 0 y 27"'}>
+              No puede fallar: son todos los valores que el cuestionario puede
+              devolver.
+            </Ejemplo>
+            <Ejemplo caso={'IMPOSIBLE — "sale 7"  =  { }'}>
+              El 7 no pertenece a S, así que el evento queda vacío. P = 0.
+            </Ejemplo>
+            <Ejemplo caso={'IMPOSIBLE — "el puntaje es 30"'}>
+              Está fuera del espacio muestral: nueve preguntas de 0 a 3 no
+              pueden pasar de 27.
+            </Ejemplo>
+            <Ejemplo caso={'IMPOSIBLE — "sale par Y sale impar a la vez"'}>
+              Ningún resultado cumple las dos cosas, así que el conjunto es
+              vacío. Probalo abajo dejando el evento sin ninguna cara marcada.
+            </Ejemplo>
+          </Ejemplos>
         </Definicion>
       </div>
 
@@ -717,6 +834,16 @@ function TamizajeInteractivo() {
       <div className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
         {indice === 0 ? (
           <p>Tamizá al primer estudiante y el cálculo va a aparecer aquí.</p>
+        ) : indice < 20 ? (
+          <p>
+            Van <strong className="tabular-nums">{indice}</strong> fichas y{" "}
+            <strong className="tabular-nums">{positivos}</strong> positivos, o
+            sea{" "}
+            <strong className="tabular-nums">{pctPositivo.toFixed(1)}%</strong>.
+            Pero con tan pocas fichas ese porcentaje salta con cada estudiante
+            nuevo: no lo tomes como estimación todavía. Tamizá 20 más y volvé a
+            mirarlo.
+          </p>
         ) : (
           <p>
             <strong className="tabular-nums">{positivos}</strong> de{" "}

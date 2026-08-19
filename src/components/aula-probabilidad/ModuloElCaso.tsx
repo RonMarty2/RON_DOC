@@ -2,7 +2,17 @@
 
 import { useState } from "react";
 import { ESTUDIANTES, CORTE_TAMIZAJE } from "@content/aula-probabilidad/dataset";
-import { Definicion, MiniHistoria, Trampa, Puente } from "./narrativa";
+import {
+  Definicion,
+  MiniHistoria,
+  Trampa,
+  Puente,
+  Termino,
+  Comprueba,
+  PasoTitulo,
+} from "./narrativa";
+
+const INSIGNIA = "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200";
 
 /** Los 9 ítems del PHQ-9 (formulación estándar en español). */
 const ITEMS_PHQ9 = [
@@ -36,6 +46,10 @@ const RESPUESTAS = [
 export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
   return (
     <div className="flex flex-col gap-6">
+      <PasoTitulo numero={1} insignia={INSIGNIA}>
+        Qué es un tamizaje
+      </PasoTitulo>
+
       <Definicion termino="Tamizaje (o cribado)">
         Una prueba rápida y barata que separa a quienes conviene evaluar a
         fondo de quienes probablemente no lo necesitan. No diagnostica:
@@ -52,15 +66,50 @@ export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
         normales y esperables</strong>, no un defecto.
       </MiniHistoria>
 
+      <PasoTitulo numero={2} insignia={INSIGNIA}>
+        De dónde sale el puntaje
+      </PasoTitulo>
+
       <ArmarPuntaje />
 
+      <PasoTitulo numero={3} insignia={INSIGNIA}>
+        Contra qué se compara
+      </PasoTitulo>
+
       <Definicion termino="Diagnóstico confirmado">
-        Lo que dictamina un profesional después de una entrevista clínica.
-        Es la mejor verdad disponible, y es contra ella que se juzga si el
-        tamizaje acertó o se equivocó.
+        Lo que dictamina un profesional después de una entrevista clínica. Es
+        lo que en investigación se llama{" "}
+        <Termino significa="La mejor verdad disponible contra la cual se juzga si un instrumento acertó o se equivocó. No es una verdad perfecta, pero es lo mejor que hay.">
+          criterio de referencia
+        </Termino>
+        .
       </Definicion>
 
+
+
       <LasFichas />
+
+      <Comprueba
+        pregunta="Un estudiante saca 14 puntos en el cuestionario. ¿Qué se puede afirmar con eso?"
+        opciones={[
+          {
+            texto: "Que conviene evaluarlo con una entrevista",
+            esCorrecta: true,
+            porQue:
+              "14 supera el corte de 10, así que el filtro lo marca. Eso es todo lo que dice: que vale la pena mirarlo con más detalle. Igual que el detector de metales, no decide nada por sí solo.",
+          },
+          {
+            texto: "Que tiene depresión",
+            porQue:
+              "Un tamizaje no diagnostica. De hecho, en este archivo casi la mitad de los que superan el corte no tienen el diagnóstico confirmado — algo que vamos a cuantificar exactamente en el apartado 2.3.",
+          },
+          {
+            texto: "Que tiene un 88% de probabilidad de tener depresión",
+            porQue:
+              "Ése es justamente el error que abre el capítulo. El 88% responde otra pregunta distinta, y confundirlas es el tema del apartado 2.6.",
+          },
+        ]}
+      />
 
       <Trampa
         error="leer un resultado positivo como si fuera un diagnóstico"

@@ -12,7 +12,20 @@ import {
   expedientesIncompletosEnPositivos,
   tasaDemandaSemanal,
 } from "./calculos";
-import { Definicion, Formula, Frac, V, Trampa, Puente } from "./narrativa";
+import {
+  Definicion,
+  Frac,
+  V,
+  Trampa,
+  Puente,
+  Desarrollo,
+  Termino,
+  Comprueba,
+  PasoTitulo,
+} from "./narrativa";
+
+const INSIGNIA = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300";
+const ACENTO = "border-emerald-300 text-emerald-700 dark:border-emerald-700 dark:text-emerald-400";
 
 type Tipo = "binomial" | "poisson" | "hipergeometrica";
 
@@ -39,12 +52,20 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
         Confundirlas produce números equivocados que parecen razonables.
       </p>
 
+      <PasoTitulo numero={1} insignia={INSIGNIA}>
+        El ladrillo común a las tres
+      </PasoTitulo>
+
       <Definicion termino="Ensayo de Bernoulli">
         Un experimento con exactamente dos resultados, llamados éxito y
         fracaso. <strong>Éxito no significa nada bueno</strong>: es sólo la
         etiqueta del resultado que se está contando. Acá, el éxito es dar
         positivo.
       </Definicion>
+
+      <PasoTitulo numero={2} insignia={INSIGNIA}>
+        Elegir la distribución correcta
+      </PasoTitulo>
 
       <Selector tipo={tipo} setTipo={setTipo} />
 
@@ -53,6 +74,29 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
       {tipo === "hipergeometrica" && (
         <Hipergeometrica N={positivos} K={incompletos} />
       )}
+
+      <Comprueba
+        pregunta="El servicio quiere saber cuántas llamadas de consulta va a recibir el martes. Sabe que en promedio recibe 3 por día. ¿Qué distribución corresponde?"
+        pista="Buscá si el enunciado da un número de intentos o una tasa por intervalo."
+        opciones={[
+          {
+            texto: "Poisson",
+            esCorrecta: true,
+            porQue:
+              "No hay un número fijo de intentos: nadie «intentó llamar» una cantidad determinada de veces. Hay un intervalo (un día) y una tasa media (3 por día). Ésa es exactamente la señal de Poisson: no existe un n natural en el enunciado.",
+          },
+          {
+            texto: "Binomial",
+            porQue:
+              "La binomial necesita un n fijo: «tamizamos a 20 estudiantes», «revisamos 15 fichas». Acá no hay tal número — es el reflejo de buscar n y p en todo problema de conteo, y es el error más común de este apartado.",
+          },
+          {
+            texto: "Hipergeométrica",
+            porQue:
+              "La hipergeométrica exige una población finita conocida de la que se extrae sin reponer, con N y K dados. Acá no hay ningún conjunto del que se esté sacando: hay eventos que llegan en el tiempo.",
+          },
+        ]}
+      />
 
       <Trampa
         error="usar binomial donde corresponde hipergeométrica"
@@ -263,29 +307,58 @@ function Binomial() {
         </div>
       </div>
 
-      <Formula
-        titulo="Binomial"
-        simbolos={
-          <>
-            <V>P</V>(<V>X</V> = <V>k</V>) = <V>C</V>(<V>n</V>,<V>k</V>) ·{" "}
-            <V>p</V><sup><V>k</V></sup> · (1 − <V>p</V>)<sup><V>n</V>−<V>k</V></sup>
-          </>
-        }
-        numeros={
-          <>
-            {combinaciones(n, k).toLocaleString("es")} × {p}
-            <sup>{k}</sup> × {(1 - p).toFixed(3)}
-            <sup>{n - k}</sup> = {prob.toFixed(4)}
-          </>
-        }
-        resultado={
-          <>
-            Con n = 20 y k = 5 da <strong>18.87%</strong>. Y fijate: con n = 2
-            las fórmulas rápidas dan E[X] = 0.43 y Var = 0.3376 — exactamente
-            los valores que calculamos término por término en 2.7.
-          </>
-        }
-        nota={<>C({n},{k}) es la combinación del apartado 2.4: cuenta de cuántas formas pueden ubicarse esos {k} éxitos entre los {n} ensayos.</>}
+      <Desarrollo
+        titulo="El cálculo, con n = 20 y k = 5"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>X</V> = 5) = <V>C</V>(20, 5) · (0,215)<sup>5</sup> · (0,785)<sup>15</sup>
+              </>
+            ),
+            explicacion:
+              "Tres piezas: de cuántas formas pueden ubicarse los 5 positivos entre los 20 estudiantes, por la probabilidad de que esos 5 den positivo, por la de que los otros 15 den negativo.",
+          },
+          {
+            expresion: (
+              <>
+                <V>C</V>(20, 5) =
+                <Frac arriba={<>20 × 19 × 18 × 17 × 16</>} abajo={<>5 × 4 × 3 × 2 × 1</>} />
+                =
+                <Frac arriba={<>1.860.480</>} abajo="120" /> = 15.504
+              </>
+            ),
+            explicacion:
+              "La combinación del apartado 2.4, con la misma cancelación de factoriales: expandimos 20! sólo hasta 15! y dividimos entre 5! = 120.",
+          },
+          {
+            expresion: (
+              <>
+                (0,215)<sup>5</sup> = 0,00045940   ·   (0,785)<sup>15</sup> = 0,02648774
+              </>
+            ),
+            explicacion:
+              "Las dos potencias por separado. La primera es la probabilidad de que 5 personas den positivo; la segunda, de que 15 den negativo. Ambas son números muy chicos porque exigen que muchas cosas pasen a la vez.",
+          },
+          {
+            expresion: (
+              <>= 15.504 × 0,00045940 × 0,02648774 = 0,1887</>
+            ),
+            explicacion:
+              "Multiplicamos las tres piezas. El resultado, 18,87%, es alto justamente porque hay 15.504 maneras distintas de que ocurra: cada una es improbable, pero hay muchísimas.",
+          },
+          {
+            expresion: (
+              <>
+                <V>E</V>[<V>X</V>] = <V>np</V> = 20 × 0,215 = 4,30    ·    Var = <V>np</V>(1−<V>p</V>) = 3,3755
+              </>
+            ),
+            explicacion:
+              "Las fórmulas rápidas evitan recorrer valor por valor. Comprobación: con n = 2 dan E[X] = 0,43 y Var = 0,3376 — exactamente lo que calculamos a mano en 2.7.",
+          },
+        ]}
       />
     </div>
   );
@@ -374,37 +447,50 @@ function Poisson({ lambda }: { lambda: number }) {
         </div>
       </div>
 
-      <Formula
-        titulo="Poisson"
-        simbolos={
-          <>
-            <V>P</V>(<V>X</V> = <V>k</V>) =
-            <Frac
-              arriba={<><V>e</V><sup>−λ</sup> λ<sup><V>k</V></sup></>}
-              abajo={<><V>k</V>!</>}
-            />
-          </>
-        }
-        numeros={
-          <>
-            <Frac
-              arriba={<>{Math.exp(-lambda).toFixed(8)} × {lambda}<sup>{k}</sup></>}
-              abajo={<>{k}!</>}
-            />
-            = {prob.toFixed(4)}
-          </>
-        }
-        resultado={
-          <>
-            Con λ = {lambda} y k = 8 da <strong>6.53%</strong>. Pero lo que
-            realmente le importa al servicio no es esa probabilidad exacta,
-            sino la de <em>superar</em> su capacidad:{" "}
-            <strong className="tabular-nums">{(pExceso * 100).toFixed(1)}%</strong>{" "}
-            de las semanas va a generar lista de espera. Como en Poisson la
-            varianza es igual al promedio, dotar de personal según el promedio
-            subestima sistemáticamente las semanas pico.
-          </>
-        }
+      <Desarrollo
+        titulo="El cálculo, con λ = 5 y k = 8"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>X</V> = 8) =
+                <Frac
+                  arriba={<><Termino significa="La constante de Euler, aproximadamente 2,71828. Aparece en Poisson porque la distribución surge de un proceso continuo en el tiempo; no hay que memorizarla, la trae cualquier calculadora.">e</Termino><sup>−5</sup> × 5<sup>8</sup></>}
+                  abajo={<>8!</>}
+                />
+              </>
+            ),
+            explicacion:
+              "Sustituimos λ = 5 (la tasa media semanal) y k = 8 (el valor que nos interesa). No hay n ni p: sólo la tasa.",
+          },
+          {
+            expresion: (
+              <>
+                e<sup>−5</sup> = 0,00673795   ·   5<sup>8</sup> = 390.625   ·   8! = 40.320
+              </>
+            ),
+            explicacion:
+              "Las tres piezas por separado. 8! = 40.320 es el mismo factorial del apartado 2.4, acá en el denominador.",
+          },
+          {
+            expresion: (
+              <>
+                =
+                <Frac arriba={<>0,00673795 × 390.625</>} abajo={<>40.320</>} />
+                =
+                <Frac arriba="2.632,01" abajo="40.320" />
+              </>
+            ),
+            explicacion: "Resolvemos el numerador y dejamos la división indicada.",
+          },
+          {
+            expresion: <>= 0,0653 = 6,53%</>,
+            explicacion:
+              "Hay un 6,53% de probabilidad de recibir exactamente 8 solicitudes en una semana dada. Pero lo que le importa al servicio no es ese valor exacto, sino la probabilidad de SUPERAR su capacidad — la suma de 9, 10, 11 y más.",
+          },
+        ]}
       />
     </div>
   );
@@ -498,33 +584,63 @@ function Hipergeometrica({ N, K }: { N: number; K: number }) {
         </p>
       </div>
 
-      <Formula
-        titulo="Hipergeométrica"
-        simbolos={
-          <>
-            <V>P</V>(<V>X</V> = <V>k</V>) =
-            <Frac
-              arriba={<><V>C</V>(<V>K</V>,<V>k</V>) · <V>C</V>(<V>N</V>−<V>K</V>, <V>n</V>−<V>k</V>)</>}
-              abajo={<><V>C</V>(<V>N</V>,<V>n</V>)</>}
-            />
-          </>
-        }
-        numeros={
-          <>
-            <Frac
-              arriba={<>{combinaciones(K, k).toLocaleString("es")} × {combinaciones(N - K, n - k).toLocaleString("es")}</>}
-              abajo={<>{combinaciones(N, n).toLocaleString("es")}</>}
-            />
-            = {prob.toFixed(4)}
-          </>
-        }
-        resultado={
-          <>
-            Auditando 6 expedientes se esperan {((6 * K) / N).toFixed(2)}{" "}
-            incompletos, y hay un <strong>27.39%</strong> de probabilidad de
-            encontrar exactamente 2.
-          </>
-        }
+      <Desarrollo
+        titulo="El cálculo, auditando 6 expedientes"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>X</V> = 2) =
+                <Frac
+                  arriba={<><V>C</V>(9, 2) · <V>C</V>(34, 4)</>}
+                  abajo={<><V>C</V>(43, 6)</>}
+                />
+              </>
+            ),
+            explicacion:
+              "Arriba: de cuántas formas se pueden elegir 2 incompletos entre los 9 que hay, por de cuántas formas se eligen los 4 completos restantes entre los 34 disponibles. Abajo: todas las auditorías posibles de 6 entre 43.",
+          },
+          {
+            expresion: (
+              <>
+                <V>C</V>(9, 2) =
+                <Frac arriba={<>9 × 8</>} abajo="2" /> = 36
+              </>
+            ),
+            explicacion: "Formas de elegir 2 expedientes incompletos entre los 9 que existen.",
+          },
+          {
+            expresion: (
+              <>
+                <V>C</V>(34, 4) =
+                <Frac arriba={<>34 × 33 × 32 × 31</>} abajo="24" /> = 46.376
+              </>
+            ),
+            explicacion: "Formas de completar la muestra con 4 expedientes de los 34 que sí están completos (43 − 9 = 34).",
+          },
+          {
+            expresion: (
+              <>
+                <V>C</V>(43, 6) = 6.096.454
+              </>
+            ),
+            explicacion: "Total de auditorías posibles de 6 expedientes entre los 43. Es el denominador: todos los casos posibles.",
+          },
+          {
+            expresion: (
+              <>
+                =
+                <Frac arriba={<>36 × 46.376</>} abajo={<>6.096.454</>} />
+                =
+                <Frac arriba="1.669.536" abajo="6.096.454" /> = 0,2739
+              </>
+            ),
+            explicacion:
+              "27,39%. Acá no se puede usar la binomial: al no reponer, cada expediente extraído cambia la composición de los 42 restantes, y con una población de sólo 43 esa diferencia sí importa.",
+          },
+        ]}
       />
     </div>
   );

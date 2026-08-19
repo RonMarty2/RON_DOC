@@ -2,7 +2,22 @@
 
 import { useState } from "react";
 import { tablaConfusion, modeloBayes } from "./calculos";
-import { Definicion, Formula, Frac, V, Trampa, Puente, MiniHistoria } from "./narrativa";
+import {
+  Definicion,
+  Frac,
+  V,
+  Trampa,
+  Puente,
+  MiniHistoria,
+  Desarrollo,
+  Termino,
+  Comprueba,
+  PasoTitulo,
+  FormulaAnotada,
+} from "./narrativa";
+
+const INSIGNIA = "bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300";
+const ACENTO = "border-amber-300 text-amber-700 dark:border-amber-700 dark:text-amber-400";
 
 /**
  * 2.6 — Teorema de Bayes.
@@ -33,24 +48,53 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         delante — que la enfermedad es rara.
       </p>
 
+      <PasoTitulo numero={1} insignia={INSIGNIA}>
+        Qué hace exactamente el teorema
+      </PasoTitulo>
+
       <Definicion termino="Teorema de Bayes">
         La herramienta que <strong>invierte</strong> una probabilidad
         condicional: pasa de <V>P</V>(evidencia | hipótesis), que es lo que
         reporta el instrumento, a <V>P</V>(hipótesis | evidencia), que es lo
-        que le importa a la persona evaluada.
+        que le importa a la persona evaluada. No es una regla nueva: se deduce
+        en dos líneas de la regla de la multiplicación de 2.5.
       </Definicion>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Definicion termino="Probabilidad previa">
+      <div className="grid gap-4 sm:grid-cols-3">
+        <Definicion termino="Previa (a priori)">
           Lo que creíamos <em>antes</em> de ver la evidencia. En diagnóstico es
-          la prevalencia: qué tan frecuente es la condición en la población que
-          se tamiza.
+          la{" "}
+          <Termino significa="Proporción de personas de la población que realmente tienen la condición. Es una propiedad de la población, no del test — y por eso no figura en el manual del instrumento.">
+            prevalencia
+          </Termino>
+          .
         </Definicion>
-        <Definicion termino="Probabilidad posterior">
+        <Definicion termino="Verosimilitud">
+          Qué tan probable sería observar esta evidencia <em>si</em> la
+          hipótesis fuera cierta. En diagnóstico es la{" "}
+          <Termino significa="De todas las personas que sí tienen la condición, qué proporción detecta el test. Se calculó en 2.3 como VP / (VP + FN).">
+            sensibilidad
+          </Termino>
+          .
+        </Definicion>
+        <Definicion termino="Posterior">
           La creencia ya <em>actualizada</em> con la evidencia. En diagnóstico
-          es el valor predictivo positivo.
+          es el valor predictivo positivo — el número que buscamos.
         </Definicion>
       </div>
+
+      <FormulaAnotada
+        titulo="Cada parte de la fórmula, con nombre"
+        partes={[
+          { expresion: <><V>P</V>(<V>D</V>|+)</>, etiqueta: "posterior", significa: "Lo que buscamos: probabilidad de tener el trastorno DADO que el test dio positivo.", color: "verde" },
+          { expresion: "=" },
+          { expresion: <><V>P</V>(+|<V>D</V>)</>, etiqueta: "verosimilitud", significa: "La sensibilidad del test: 88%. Es lo único que trae el manual del instrumento.", color: "azul" },
+          { expresion: "×" },
+          { expresion: <><V>P</V>(<V>D</V>)</>, etiqueta: "previa", significa: "La prevalencia: 12,5%. Éste es el dato que la intuición olvida, y el que decide el resultado.", color: "ambar" },
+          { expresion: "÷" },
+          { expresion: <><V>P</V>(+)</>, etiqueta: "evidencia total", significa: "Probabilidad de dar positivo por cualquier vía. Casi nunca viene dado: hay que construirlo sumando los dos caminos posibles.", color: "gris" },
+        ]}
+      />
 
       <Definicion termino="Probabilidad total">
         El denominador de Bayes casi nunca viene dado: hay que construirlo. La
@@ -59,74 +103,118 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         ponderados por sus probabilidades previas.
       </Definicion>
 
+      <PasoTitulo numero={2} insignia={INSIGNIA}>
+        Los dos caminos, contando personas
+      </PasoTitulo>
+
       <ArbolFrecuencias sens={sens} esp={esp} prev={prev} />
 
-      <Formula
-        titulo="Paso 1 — Probabilidad total de dar positivo"
-        simbolos={
-          <>
-            <V>P</V>(+) = <V>P</V>(+|<V>D</V>)·<V>P</V>(<V>D</V>) + <V>P</V>(+|
-            <V>D</V>
-            <sup>c</sup>)·<V>P</V>(<V>D</V>
-            <sup>c</sup>)
-          </>
-        }
-        numeros={
-          <>
-            ({sens.toFixed(3)})({prev.toFixed(3)}) + ({(1 - esp).toFixed(3)})(
-            {(1 - prev).toFixed(3)})
-            <br />= {(sens * prev).toFixed(3)} +{" "}
-            {((1 - esp) * (1 - prev)).toFixed(3)} = {pPos.toFixed(3)}
-          </>
-        }
-        resultado={
-          <>
-            Mirá de dónde salen los dos sumandos:{" "}
-            <strong className="tabular-nums">{(sens * prev).toFixed(3)}</strong>{" "}
-            viene de los verdaderos positivos y{" "}
-            <strong className="tabular-nums">
-              {((1 - esp) * (1 - prev)).toFixed(3)}
-            </strong>{" "}
-            de los falsos positivos. Son <strong>casi idénticos</strong>. Ahí
-            está todo el misterio.
-          </>
-        }
+      <PasoTitulo numero={3} insignia={INSIGNIA}>
+        El cálculo, línea por línea
+      </PasoTitulo>
+
+      <Desarrollo
+        titulo="Paso A — construir el denominador"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <V>P</V>(+) = <V>P</V>(+|<V>D</V>)·<V>P</V>(<V>D</V>) + <V>P</V>(+|<V>D</V><sup>c</sup>)·<V>P</V>(<V>D</V><sup>c</sup>)
+              </>
+            ),
+            explicacion:
+              "Dar positivo puede pasar por dos vías distintas: que la persona tenga el trastorno y el test acierte, o que esté sana y el test se equivoque. Sumamos las dos, cada una pesada por qué tan frecuente es esa población.",
+          },
+          {
+            expresion: <>Camino 1: ({sens.toFixed(3)}) × ({prev.toFixed(3)}) = {(sens * prev).toFixed(3)}</>,
+            explicacion:
+              "Verdaderos positivos: la sensibilidad (88%) multiplicada por la prevalencia (12,5%). Es la fracción de TODA la población que tiene el trastorno y además da positivo.",
+          },
+          {
+            expresion: (
+              <>
+                <V>P</V>(+|<V>D</V><sup>c</sup>) = 1 − {esp.toFixed(3)} = {(1 - esp).toFixed(3)}
+              </>
+            ),
+            explicacion:
+              "Antes del camino 2 falta un dato que no teníamos: qué probabilidad hay de dar positivo estando sano. Sale por la regla del complemento de 2.2, restándole la especificidad a 1.",
+          },
+          {
+            expresion: <>Camino 2: ({(1 - esp).toFixed(3)}) × ({(1 - prev).toFixed(3)}) = {((1 - esp) * (1 - prev)).toFixed(3)}</>,
+            explicacion:
+              "Falsos positivos: la tasa de falsa alarma (12%) por la proporción de gente sana (87,5%). Acá está la clave — hay tanta gente sana que sus pocas falsas alarmas suman muchísimo.",
+          },
+          {
+            expresion: <><V>P</V>(+) = {(sens * prev).toFixed(3)} + {((1 - esp) * (1 - prev)).toFixed(3)} = {pPos.toFixed(3)}</>,
+            explicacion:
+              "Los dos sumandos son casi idénticos: 0,110 contra 0,105. Casi la mitad de todos los positivos del sistema viene de personas sanas. Ése es el corazón del misterio.",
+          },
+        ]}
       />
 
-      <Formula
-        titulo="Paso 2 — Teorema de Bayes"
-        simbolos={
-          <>
-            <V>P</V>(<V>D</V>|+) =
-            <Frac
-              arriba={
-                <>
-                  <V>P</V>(+|<V>D</V>) · <V>P</V>(<V>D</V>)
-                </>
-              }
-              abajo={
-                <>
-                  <V>P</V>(+)
-                </>
-              }
-            />
-          </>
-        }
-        numeros={
-          <>
-            <Frac arriba={(sens * prev).toFixed(3)} abajo={pPos.toFixed(3)} /> ={" "}
-            {vpp.toFixed(3)}
-          </>
-        }
-        resultado={
-          <>
-            <strong className="tabular-nums">{(vpp * 100).toFixed(1)}%</strong>.
-            Comprobación contra el archivo: de los {t.positivos} que dieron
-            positivo, {t.VP} tenían diagnóstico confirmado — {t.VP}/
-            {t.positivos} = {t.vpp.toFixed(3)}. El teorema reproduce
-            exactamente el conteo directo.
-          </>
-        }
+      <Desarrollo
+        titulo="Paso B — aplicar el teorema"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>D</V>|+) =
+                <Frac
+                  arriba={<><V>P</V>(+|<V>D</V>) · <V>P</V>(<V>D</V>)</>}
+                  abajo={<><V>P</V>(+)</>}
+                />
+              </>
+            ),
+            explicacion:
+              "Arriba va el camino de los verdaderos positivos; abajo, todos los positivos juntos. Literalmente: de todo lo que dio positivo, ¿qué parte era real?",
+          },
+          {
+            expresion: (
+              <>
+                =
+                <Frac
+                  arriba={<>({sens.toFixed(3)}) × ({prev.toFixed(3)})</>}
+                  abajo={pPos.toFixed(3)}
+                />
+                =
+                <Frac arriba={(sens * prev).toFixed(3)} abajo={pPos.toFixed(3)} />
+              </>
+            ),
+            explicacion:
+              "Sustituimos: el numerador ya lo habíamos calculado como camino 1, y el denominador es el total que acabamos de construir.",
+          },
+          {
+            expresion: <>= {vpp.toFixed(3)} = {(vpp * 100).toFixed(1)}%</>,
+            explicacion: `Comprobación contra el archivo: de los ${t.positivos} estudiantes que dieron positivo, ${t.VP} tenían diagnóstico confirmado. ${t.VP}/${t.positivos} = ${t.vpp.toFixed(3)}. El teorema reproduce exactamente el conteo directo.`,
+          },
+        ]}
+      />
+
+      <Comprueba
+        pregunta="Un colega concluye: «el test acierta el 88% de las veces, así que si diste positivo tenés 88% de probabilidad de estar deprimido». ¿Dónde está el error?"
+        pista="Fijate qué condiciona cada número: qué se sabe ya, y qué se está preguntando."
+        opciones={[
+          {
+            texto: "Confunde P(positivo | trastorno) con P(trastorno | positivo)",
+            esCorrecta: true,
+            porQue:
+              "El 88% responde «de los que TIENEN el trastorno, ¿a cuántos detecto?» — parte de saber que la persona está enferma. Pero al recibir un resultado no sabemos eso: sabemos que dio positivo. La pregunta correcta condiciona al revés, y su respuesta es 51,2%. Es la falacia de la tasa base.",
+          },
+          {
+            texto: "El 88% está mal calculado",
+            porQue:
+              "El 88% es correcto: sale de 22/25 y coincide con el estudio original publicado. El problema no es el número, sino qué pregunta responde.",
+          },
+          {
+            texto: "Falta considerar la especificidad",
+            porQue:
+              "La especificidad sí interviene (a través de la tasa de falsos positivos), pero aunque la incluyera seguiría faltando lo esencial: la prevalencia. Sin ella no se puede calcular el valor predictivo, por más completo que sea el manual del test.",
+          },
+        ]}
       />
 
       <MiniHistoria titulo="Por qué la mitad de las alarmas son falsas">
@@ -137,9 +225,9 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         <strong>es la mitad del cálculo</strong>.
       </MiniHistoria>
 
-      <h4 className="mt-2 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+      <PasoTitulo numero={4} insignia={INSIGNIA}>
         El mismo test, distintas poblaciones
-      </h4>
+      </PasoTitulo>
       <p className="text-sm text-slate-700 dark:text-slate-300">
         Mové la prevalencia sin tocar el instrumento — sensibilidad y
         especificidad quedan fijas en 88%. El valor predictivo cambia

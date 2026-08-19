@@ -4,7 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import { ESTUDIANTES } from "@content/aula-probabilidad/dataset";
 import { contar, phq9Positivo } from "./calculos";
 import { entero } from "./aleatorio";
-import { Definicion, Formula, Frac, V, Trampa, Puente, MiniHistoria } from "./narrativa";
+import {
+  Definicion,
+  Frac,
+  V,
+  Trampa,
+  Puente,
+  MiniHistoria,
+  Desarrollo,
+  Termino,
+  Comprueba,
+  PasoTitulo,
+} from "./narrativa";
+
+const INSIGNIA = "bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300";
+const ACENTO = "border-blue-300 text-blue-700 dark:border-blue-700 dark:text-blue-300";
 import { BarraSim } from "./BarraSim";
 
 /**
@@ -31,10 +45,17 @@ export function ModuloTiposProbabilidad({
         entre sí — cada una resuelve el problema cuando las otras no pueden.
       </p>
 
+      <PasoTitulo numero={1} insignia={INSIGNIA}>
+        Las tres formas de conseguir el número
+      </PasoTitulo>
+
       <Definicion termino="Probabilidad clásica (a priori)">
-        Cuando todos los resultados posibles son igualmente probables, la
-        probabilidad se calcula antes de observar nada: casos favorables sobre
-        casos posibles. Es la del dado y la de la moneda.
+        Cuando todos los resultados posibles son{" "}
+        <Termino significa="Que todos tienen exactamente la misma chance de ocurrir. Un dado no cargado, una moneda equilibrada. Con personas y diagnósticos casi nunca se cumple.">
+          equiprobables
+        </Termino>
+        , la probabilidad se calcula antes de observar nada: casos favorables
+        sobre casos posibles. Es la del dado y la de la moneda.
       </Definicion>
 
       <Definicion termino="Probabilidad frecuentista (empírica)">
@@ -58,70 +79,110 @@ export function ModuloTiposProbabilidad({
         la barra fue hacia ella sola.
       </MiniHistoria>
 
-      <h4 className="mt-2 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+      <PasoTitulo numero={2} insignia={INSIGNIA}>
         Aplicado: la probabilidad de dar positivo
-      </h4>
+      </PasoTitulo>
       <p className="text-sm text-slate-700 dark:text-slate-300">
         Acá no hay simetría: nada garantiza que dar positivo y dar negativo
         sean igual de probables. Así que la calculamos por frecuencia, contando
         el archivo.
       </p>
 
-      <Formula
-        titulo="Probabilidad de un evento por frecuencia relativa"
-        simbolos={
-          <>
-            <V>P</V>(<V>A</V>) =
-            <Frac
-              arriba={<>casos favorables</>}
-              abajo={<>casos posibles</>}
-            />
-          </>
-        }
-        numeros={
-          <>
-            <V>P</V>(positivo) =
-            <Frac arriba={positivos} abajo={total} />= {p.toFixed(3)}
-          </>
-        }
-        resultado={
-          <>
-            El <strong className="tabular-nums">{(p * 100).toFixed(1)}%</strong>{" "}
-            de los estudiantes tamizados da positivo. Es una probabilidad
-            frecuentista: salió de contar, no de suponer.
-          </>
-        }
-        nota={
-          <>
-            {positivos} es la cantidad de fichas con puntaje ≥ 10; {total} es
-            el total de fichas del archivo.
-          </>
-        }
+      <Desarrollo
+        titulo="Cómo se obtiene ese número"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>A</V>) =
+                <Frac arriba={<>casos favorables</>} abajo={<>casos posibles</>} />
+              </>
+            ),
+            explicacion:
+              "Definimos el evento A = «dar positivo en el tamizaje». Como no hay simetría que justifique suponer nada, vamos a contar.",
+          },
+          {
+            expresion: (
+              <>
+                <V>P</V>(positivo) =
+                <Frac arriba={positivos} abajo={total} />
+              </>
+            ),
+            explicacion: `Contamos las fichas con puntaje mayor o igual a 10: son ${positivos}. El denominador es el total de fichas del archivo, ${total}.`,
+          },
+          {
+            expresion: <>= {p.toFixed(3)} = {(p * 100).toFixed(1)}%</>,
+            explicacion:
+              "Es una probabilidad frecuentista: salió de observar y contar, no de suponer que los resultados eran igual de probables.",
+          },
+        ]}
       />
+
+      <PasoTitulo numero={3} insignia={INSIGNIA}>
+        Las reglas que las tres deben respetar
+      </PasoTitulo>
 
       <Axiomas p={p} />
 
-      <Formula
-        titulo="Regla del complemento"
-        simbolos={
-          <>
-            <V>P</V>(<V>A</V>
-            <sup>c</sup>) = 1 − <V>P</V>(<V>A</V>)
-          </>
-        }
-        numeros={
-          <>
-            <V>P</V>(negativo) = 1 − {p.toFixed(3)} = {(1 - p).toFixed(3)}
-          </>
-        }
-        resultado={
-          <>
-            Sale directo del Axioma 3: un evento y su complemento son
-            mutuamente excluyentes y juntos cubren todo <V>S</V>, así que sus
-            probabilidades deben sumar 1. Sirve cada vez que contar lo
-            contrario es más fácil que contar lo directo.
-          </>
-        }
+      <Desarrollo
+        titulo="De los axiomas sale la regla del complemento"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>A</V>) + <V>P</V>(<V>A</V><sup>c</sup>) = <V>P</V>(<V>S</V>)
+              </>
+            ),
+            explicacion:
+              "Un evento y su complemento son mutuamente excluyentes (no pueden pasar juntos) y entre los dos cubren todo el espacio muestral. Por el Axioma 3, sus probabilidades se suman y dan el total.",
+          },
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>A</V>) + <V>P</V>(<V>A</V><sup>c</sup>) = 1
+              </>
+            ),
+            explicacion: "Y por el Axioma 2, la probabilidad del espacio muestral completo vale exactamente 1.",
+          },
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>A</V><sup>c</sup>) = 1 − <V>P</V>(<V>A</V>)
+              </>
+            ),
+            explicacion: "Despejando queda la regla del complemento. No es un principio nuevo: es una consecuencia de los dos axiomas anteriores.",
+          },
+          {
+            expresion: <><V>P</V>(negativo) = 1 − {p.toFixed(3)} = {(1 - p).toFixed(3)}</>,
+            explicacion: `Con nuestros datos: si el ${(p * 100).toFixed(1)}% da positivo, el ${((1 - p) * 100).toFixed(1)}% da negativo. Sirve cada vez que contar lo contrario resulta más fácil que contar lo directo.`,
+          },
+        ]}
+      />
+
+      <Comprueba
+        pregunta="El equipo clínico estima, por su experiencia y por la literatura, que la depresión ronda el 12% en la población estudiantil. ¿Qué tipo de probabilidad es ésa?"
+        opciones={[
+          {
+            texto: "Subjetiva",
+            esCorrecta: true,
+            porQue:
+              "No salió de contar casos observados ni de suponer simetría entre resultados: salió del criterio informado de un experto. Eso no la hace menos válida — es la única disponible cuando no hay ni lista completa ni registros suficientes.",
+          },
+          {
+            texto: "Frecuentista",
+            porQue:
+              "Sería frecuentista si hubieran contado cuántos casos aparecieron en registros reales, como hicimos con las 200 fichas. Acá no se contó: se estimó a partir de experiencia y literatura.",
+          },
+          {
+            texto: "Clásica",
+            porQue:
+              "La clásica exige que todos los resultados sean equiprobables por diseño, como las caras de un dado. Nada garantiza que tener o no tener depresión sean igual de probables.",
+          },
+        ]}
       />
 
       <Trampa

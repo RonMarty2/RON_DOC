@@ -10,7 +10,21 @@ import {
   tablaConfusion,
   contar,
 } from "./calculos";
-import { Definicion, Formula, Frac, V, Trampa, Puente, MiniHistoria } from "./narrativa";
+import {
+  Definicion,
+  Frac,
+  V,
+  Trampa,
+  Puente,
+  MiniHistoria,
+  Desarrollo,
+  Termino,
+  Comprueba,
+  PasoTitulo,
+} from "./narrativa";
+
+const INSIGNIA = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300";
+const ACENTO = "border-emerald-300 text-emerald-700 dark:border-emerald-700 dark:text-emerald-400";
 
 /**
  * 2.9 — Distribución normal.
@@ -34,6 +48,10 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         necesitan ayuda.
       </p>
 
+      <PasoTitulo numero={1} insignia={INSIGNIA}>
+        La campana
+      </PasoTitulo>
+
       <Definicion termino="Distribución normal">
         Una variable continua con forma de campana simétrica centrada en su
         media. Media, mediana y moda coinciden; el área total bajo la curva
@@ -44,11 +62,22 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
 
       <Campana media={media} desviacion={desviacion} />
 
+      <PasoTitulo numero={2} insignia={INSIGNIA}>
+        Estandarizar: hablar en desviaciones
+      </PasoTitulo>
+
       <Definicion termino="Estandarización y puntuación z">
         Cualquier variable normal se convierte en una{" "}
-        <strong>normal estándar</strong> restándole la media y dividiendo por
-        la desviación. El resultado, <V>z</V>, dice a cuántas desviaciones
-        estándar está el valor, con signo.
+        <strong>normal estándar</strong> restándole la{" "}
+        <Termino significa="Mu: el centro de la distribución, el promedio de todos los valores.">
+          media (µ)
+        </Termino>{" "}
+        y dividiendo por la{" "}
+        <Termino significa="Sigma: cuánto se alejan típicamente los valores del centro. Es la raíz de la varianza, así que vuelve a estar en las unidades originales del puntaje.">
+          desviación estándar (σ)
+        </Termino>
+        . El resultado, <V>z</V>, dice a cuántas desviaciones está el valor,
+        con signo: negativo si está por debajo del promedio.
       </Definicion>
 
       <MiniHistoria titulo="Por qué existe una sola tabla de Z">
@@ -59,77 +88,95 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         un valor se lea de inmediato como distancia respecto del promedio.
       </MiniHistoria>
 
-      <Formula
-        titulo="Puntuación z del punto de corte"
-        simbolos={
-          <>
-            <V>Z</V> =
-            <Frac
-              arriba={<><V>X</V> − µ</>}
-              abajo={<>σ</>}
-            />
-          </>
-        }
-        numeros={
-          <>
-            <Frac
-              arriba={<>10 − {media.toFixed(2)}</>}
-              abajo={desviacion.toFixed(2)}
-            />
-            = {puntuacionZ(10, media, desviacion).toFixed(2)}
-          </>
-        }
-        resultado={
-          <>
-            El corte de 10 está a{" "}
-            <strong className="tabular-nums">
-              {puntuacionZ(10, media, desviacion).toFixed(2)}
-            </strong>{" "}
-            desviaciones estándar por encima del promedio del grupo.
-          </>
-        }
-        nota={
-          <>
-            µ = {media.toFixed(2)} y σ = {desviacion.toFixed(2)} son la media y
-            la desviación de los {ESTUDIANTES.length} puntajes del archivo.
-          </>
-        }
+      <Desarrollo
+        titulo="Del puntaje al área bajo la curva"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <V>Z</V> =
+                <Frac arriba={<><V>X</V> − µ</>} abajo="σ" />
+              </>
+            ),
+            explicacion: `Primero convertimos el puntaje que nos interesa a desviaciones estándar. Del archivo salen µ = ${media.toFixed(2)} y σ = ${desviacion.toFixed(2)}.`,
+          },
+          {
+            expresion: (
+              <>
+                <V>Z</V> =
+                <Frac arriba={<>10 − {media.toFixed(2)}</>} abajo={desviacion.toFixed(2)} />
+                =
+                <Frac arriba={(10 - media).toFixed(2)} abajo={desviacion.toFixed(2)} />
+                = {puntuacionZ(10, media, desviacion).toFixed(2)}
+              </>
+            ),
+            explicacion: `El corte de 10 está a ${puntuacionZ(10, media, desviacion).toFixed(2)} desviaciones por encima del promedio del grupo. Ese único número ya no depende de la escala del cuestionario: por eso existe una sola tabla de Z.`,
+          },
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>Z</V> &lt; {puntuacionZ(10, media, desviacion).toFixed(2)}) = {normalAcumulada(puntuacionZ(10, media, desviacion)).toFixed(3)}
+              </>
+            ),
+            explicacion:
+              "La tabla de Z devuelve siempre el área a la IZQUIERDA: qué proporción queda por debajo. Pero nosotros queremos los que superan el corte, o sea la derecha.",
+          },
+          {
+            expresion: (
+              <>
+                <V>P</V>(<V>X</V> ≥ 10) = 1 − {normalAcumulada(puntuacionZ(10, media, desviacion)).toFixed(3)} = {(1 - normalAcumulada(puntuacionZ(10, media, desviacion))).toFixed(3)}
+              </>
+            ),
+            explicacion:
+              "Usamos la regla del complemento de 2.2: el área total vale 1, así que la derecha es 1 menos la izquierda.",
+          },
+          {
+            expresion: (
+              <>
+                Modelo: {((1 - normalAcumulada(puntuacionZ(10, media, desviacion))) * 100).toFixed(1)}%   ·   Contando: {contar((e) => e.phq9 >= 10)}/{ESTUDIANTES.length} = {((contar((e) => e.phq9 >= 10) / ESTUDIANTES.length) * 100).toFixed(1)}%
+              </>
+            ),
+            explicacion:
+              "Una diferencia de una milésima entre el modelo teórico y el conteo real. Eso es lo que autoriza a usar la curva para evaluar cortes que todavía no probamos, sin volver a contar el archivo cada vez.",
+          },
+        ]}
       />
 
-      <Formula
-        titulo="Del z al área — y de vuelta a los datos"
-        simbolos={
-          <>
-            <V>P</V>(<V>X</V> ≥ 10) = 1 − <V>P</V>(<V>Z</V> &lt; {puntuacionZ(10, media, desviacion).toFixed(2)})
-          </>
-        }
-        numeros={
-          <>
-            1 − {normalAcumulada(puntuacionZ(10, media, desviacion)).toFixed(3)} ={" "}
-            {(1 - normalAcumulada(puntuacionZ(10, media, desviacion))).toFixed(3)}
-          </>
-        }
-        resultado={
-          <>
-            El modelo teórico predice que el{" "}
-            <strong className="tabular-nums">
-              {((1 - normalAcumulada(puntuacionZ(10, media, desviacion))) * 100).toFixed(1)}%
-            </strong>{" "}
-            queda por encima del corte. Contando el archivo directamente:{" "}
-            <strong className="tabular-nums">
-              {contar((e) => e.phq9 >= 10)}/{ESTUDIANTES.length} ={" "}
-              {(contar((e) => e.phq9 >= 10) / ESTUDIANTES.length).toFixed(3)}
-            </strong>
-            . Una diferencia de una milésima — por eso podemos usar la curva
-            para evaluar cortes que todavía no probamos,{" "}
-            <strong>sin volver a contar el archivo cada vez</strong>.
-          </>
-        }
+      <PasoTitulo numero={3} insignia={INSIGNIA}>
+        El puente con las distribuciones discretas
+      </PasoTitulo>
+
+      <AproximacionNormal />
+
+      <Comprueba
+        pregunta={`Un puntaje de 15 en el cuestionario, en una distribución con µ = ${media.toFixed(2)} y σ = ${desviacion.toFixed(2)}. ¿Qué significa su z ≈ 1,87?`}
+        opciones={[
+          {
+            texto: "Que está casi dos desviaciones estándar por encima del promedio del grupo",
+            esCorrecta: true,
+            porQue:
+              "Eso es exactamente lo que mide z: distancia al promedio, medida en desviaciones estándar. Por la regla 68-95-99,7, estar a casi 2σ lo ubica entre el 5% más extremo del grupo.",
+          },
+          {
+            texto: "Que tiene 1,87 veces más síntomas que el promedio",
+            porQue:
+              "z no es una razón ni un múltiplo: es una distancia en unidades de desviación estándar. El puntaje 15 no es «1,87 veces» el promedio de 6,32 — de hecho sería 2,37 veces, un número distinto y sin interés estadístico.",
+          },
+          {
+            texto: "Que el 1,87% de los estudiantes tiene ese puntaje",
+            porQue:
+              "z no es un porcentaje. Para obtener una proporción hay que buscar el área bajo la curva correspondiente a ese z, que es el paso siguiente del cálculo.",
+          },
+        ]}
       />
 
-      <h4 className="mt-2 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+      <PasoTitulo numero={4} insignia={INSIGNIA}>
         La decisión, en tus manos
-      </h4>
+      </PasoTitulo>
+
+
       <p className="text-sm text-slate-700 dark:text-slate-300">
         Mové el punto de corte y mirá qué le pasa a todo lo que construimos
         desde el primer apartado. No hay una respuesta correcta: hay un
@@ -166,6 +213,100 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
           abre la Unidad 3.
         </p>
       </Puente>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Aproximación de la binomial por la normal (ejemplo del dossier)     */
+/* ------------------------------------------------------------------ */
+
+function AproximacionNormal() {
+  const n = 200;
+  const p = 0.215;
+  const capacidad = 49;
+  const mu = n * p;
+  const sigma = Math.sqrt(n * p * (1 - p));
+  const zCorr = (capacidad + 0.5 - mu) / sigma;
+  const zSinCorr = (capacidad - mu) / sigma;
+
+  return (
+    <div className="flex flex-col gap-4">
+      <p className="text-sm text-slate-700 dark:text-slate-300">
+        Las distribuciones de 2.8 y la normal no son mundos separados. Cuando
+        el número de ensayos de una binomial es grande, su forma se parece
+        tanto a una campana que puede calcularse con ella. De Moivre lo
+        demostró en 1733, medio siglo antes de que Gauss formalizara la normal.
+      </p>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+        <p className="text-sm text-slate-700 dark:text-slate-300">
+          <strong>El caso:</strong> el servicio tamiza a {n} estudiantes. ¿Qué
+          probabilidad hay de recibir {capacidad} derivaciones o menos, que es
+          el máximo que puede procesar en el mes? Calcularlo con la binomial
+          exacta exigiría sumar cincuenta términos, cada uno con su propio
+          coeficiente combinatorio.
+        </p>
+        <div className="mt-4 grid gap-2 sm:grid-cols-3 text-sm">
+          <div className="rounded-xl bg-slate-50 px-3 py-2 dark:bg-slate-800/60">
+            <p className="text-[10px] uppercase tracking-wider text-slate-500">µ = np</p>
+            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+              {mu.toFixed(1)}
+            </p>
+          </div>
+          <div className="rounded-xl bg-slate-50 px-3 py-2 dark:bg-slate-800/60">
+            <p className="text-[10px] uppercase tracking-wider text-slate-500">σ = √(np(1−p))</p>
+            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+              {sigma.toFixed(2)}
+            </p>
+          </div>
+          <div className="rounded-xl bg-emerald-50 px-3 py-2 dark:bg-emerald-950/30">
+            <p className="text-[10px] uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+              ¿np ≥ 5 y n(1−p) ≥ 5?
+            </p>
+            <p className="font-serif text-sm font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+              {mu.toFixed(0)} y {(n * (1 - p)).toFixed(0)} · se cumple
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <Desarrollo
+        titulo="Aproximar la binomial con la normal"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: <>µ = {n} × {p} = {mu.toFixed(1)}   ·   σ = √({n} × {p} × {(1 - p).toFixed(3)}) = {sigma.toFixed(2)}</>,
+            explicacion:
+              "Primero convertimos los parámetros de la binomial en los de una normal, con las fórmulas rápidas que ya usamos en 2.8.",
+          },
+          {
+            expresion: <>Verificar: <V>np</V> = {mu.toFixed(0)} ≥ 5  y  <V>n</V>(1−<V>p</V>) = {(n * (1 - p)).toFixed(0)} ≥ 5</>,
+            explicacion:
+              "La aproximación se degrada cuando la binomial es muy asimétrica. Estas dos condiciones garantizan que tenga forma suficientemente acampanada. Acá se cumplen holgadamente.",
+          },
+          {
+            expresion: (
+              <>
+                <V>Z</V> =
+                <Frac arriba={<>{capacidad} + 0,5 − {mu.toFixed(1)}</>} abajo={sigma.toFixed(2)} />
+                = {zCorr.toFixed(2)}
+              </>
+            ),
+            explicacion:
+              "Acá aparece la corrección de continuidad: sumamos 0,5 porque estamos aproximando una variable de conteo (que salta de 49 a 50) con una continua (que pasa por todos los valores intermedios). Como queremos incluir el 49, tomamos hasta 49,5.",
+          },
+          {
+            expresion: <><V>P</V>(<V>X</V> ≤ {capacidad}) = <V>P</V>(<V>Z</V> ≤ {zCorr.toFixed(2)}) = {normalAcumulada(zCorr).toFixed(3)}</>,
+            explicacion: `Hay un ${(normalAcumulada(zCorr) * 100).toFixed(1)}% de probabilidad de que las derivaciones queden dentro de la capacidad del servicio. Dicho al revés: aproximadamente una de cada siete veces el sistema se desborda. Un solo cálculo de z reemplazó cincuenta términos binomiales.`,
+          },
+          {
+            expresion: <>Sin la corrección daría <V>Z</V> = {zSinCorr.toFixed(2)} → {(normalAcumulada(zSinCorr) * 100).toFixed(1)}%</>,
+            explicacion: `Olvidar el 0,5 desplaza el resultado en ${Math.abs((normalAcumulada(zCorr) - normalAcumulada(zSinCorr)) * 100).toFixed(1)} puntos porcentuales. Con números chicos ese error se vuelve mucho mayor.`,
+          },
+        ]}
+      />
     </div>
   );
 }

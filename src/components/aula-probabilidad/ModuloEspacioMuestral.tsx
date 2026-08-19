@@ -3,7 +3,17 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ESTUDIANTES } from "@content/aula-probabilidad/dataset";
 import { entero } from "./aleatorio";
-import { Definicion, MiniHistoria, Trampa, Puente } from "./narrativa";
+import {
+  Definicion,
+  MiniHistoria,
+  Trampa,
+  Puente,
+  Termino,
+  Comprueba,
+  PasoTitulo,
+} from "./narrativa";
+
+const INSIGNIA = "bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300";
 import { BarraSim } from "./BarraSim";
 
 const CARAS_DADO = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
@@ -21,6 +31,10 @@ export function ModuloEspacioMuestral({
 }) {
   return (
     <div className="flex flex-col gap-6">
+      <PasoTitulo numero={1} insignia={INSIGNIA}>
+        El vocabulario base
+      </PasoTitulo>
+
       <Definicion termino="Experimento aleatorio">
         Un procedimiento cuyo resultado no se puede predecir con certeza,
         aunque se conozcan de antemano todos los resultados posibles.
@@ -39,6 +53,10 @@ export function ModuloEspacioMuestral({
         sobre ellos (ej. los 28 puntajes de un test). No es lo mismo.
       </MiniHistoria>
 
+      <PasoTitulo numero={2} insignia={INSIGNIA}>
+        Cuando el experimento tiene varias partes
+      </PasoTitulo>
+
       <Definicion termino="Espacio muestral compuesto">
         Cuando el experimento tiene varias partes (ej. dos dados), S es el
         conjunto de todos los resultados combinados. Con dos dados: 36 pares
@@ -47,12 +65,39 @@ export function ModuloEspacioMuestral({
 
       <DosDadosInteractivo />
 
+      <PasoTitulo numero={3} insignia={INSIGNIA}>
+        Aplicado al cuestionario
+      </PasoTitulo>
+
       <Definicion termino="Aplicado: el espacio muestral del PHQ-9">
         El PHQ-9 tiene 9 preguntas de 0 a 3 puntos. Su espacio muestral es S ={" "}
         {"{0, 1, ..., 27}"}, 28 valores posibles.
       </Definicion>
 
       <TamizajeInteractivo />
+
+      <Comprueba
+        pregunta="El servicio va a tamizar a los 2.400 estudiantes de la universidad con el cuestionario. ¿Cuál es el espacio muestral de ese experimento?"
+        pista="Preguntate qué se está listando: ¿personas, o resultados?"
+        opciones={[
+          {
+            texto: "Los 28 puntajes posibles, de 0 a 27",
+            esCorrecta: true,
+            porQue:
+              "El experimento es «aplicar el cuestionario a alguien», y sus resultados posibles son los puntajes. El espacio muestral siempre lista RESULTADOS, no personas.",
+          },
+          {
+            texto: "Los 2.400 estudiantes",
+            porQue:
+              "Ése es el universo o población: el conjunto de personas sobre las que queremos concluir. No es lo mismo que el conjunto de resultados posibles del experimento — confundirlos es el primer error del capítulo.",
+          },
+          {
+            texto: "Dar positivo o dar negativo",
+            porQue:
+              "Ésos son dos eventos (subconjuntos del espacio muestral), no el espacio muestral completo. «Dar positivo» agrupa 18 puntajes distintos, del 10 al 27.",
+          },
+        ]}
+      />
 
       <Trampa
         error="confundir el universo con el espacio muestral"

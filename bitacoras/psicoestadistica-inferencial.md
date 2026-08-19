@@ -3,7 +3,7 @@
 **Herramienta:** Aula Interactiva de Probabilidad (`/aula-probabilidad`)
 **Unidad del dossier:** Unidad 2 — Probabilidad y distribución de probabilidad
 **Fuente del material:** `TEMA 2 — DOSSIER.pdf` + `TEMA 2 — DIAPOSITIVAS.pdf` (subidos por el docente)
-**Última actualización:** 2026-08-19 (Unidad 2 completa)
+**Última actualización:** 2026-08-19 (Unidad 2 completa + revisión didáctica)
 
 ---
 
@@ -29,6 +29,13 @@
 | 2026-08-19 | **Mejora aplicada a todos los apartados: componente `Puente`** — qué queda abierto y hacia dónde sigue | Convierte una lista de temas sueltos en un hilo continuo. 2.9 cierra volviendo al misterio del inicio |
 | 2026-08-19 | 2.3 usa un selector de preguntas que ilumina numerador y denominador en la tabla 2×2 | Es la forma de que sensibilidad, especificidad y VPP dejen de confundirse: se ve que comparten numerador y cambian de denominador |
 | 2026-08-19 | 2.9 termina con un punto de corte movible que recalcula sensibilidad, especificidad, VPP, derivaciones, casos perdidos y falsas alarmas | Cierra el capítulo devolviendo la decisión al lector y reconectando todo lo construido desde 2.1 |
+| 2026-08-19 | **Auditoría didáctica** tras revisión del docente: se veía genérico, poco didáctico, con términos usados sin explicar y fórmulas sin desarrollo | Diagnóstico verificado por conteo: µ y σ aparecían 11 veces sin definirse; «corrección de continuidad» aparecía sólo dentro de una trampa, advirtiendo sobre un procedimiento nunca enseñado; el ejemplo de aproximación normal a la binomial se había perdido entero |
+| 2026-08-19 | Componente **`Desarrollo`**: la cuenta línea por línea, con explicación de cada movimiento, revelada de a un paso | Era el reclamo central: «fórmulas que se muestran pero no se ve el cálculo». Ej. en 2.4 faltaba justo el paso de expandir 43! sólo hasta 38! para cancelar |
+| 2026-08-19 | Componente **`FormulaAnotada`**: cada parte de la fórmula etiquetada y explicada | En Bayes se ve cuál término es la prevalencia, cuál la sensibilidad y cuál el denominador que hay que construir |
+| 2026-08-19 | Componente **`Termino`**: glosario en línea con subrayado punteado | Resuelve «hablas pero no explicas» sin interrumpir la lectura: µ, σ, Σ, e, equiprobable, criterio de referencia, etc. |
+| 2026-08-19 | Componente **`Comprueba`**: 1–2 preguntas por apartado con corrección inmediata Y explicación de cada opción | Antes nadie producía nada: todo era «mirá cómo pasa». La recuperación activa es lo que fija el concepto, y sirve igual en clase que para quien estudia solo |
+| 2026-08-19 | **Bloques temáticos con color** (Antes de empezar · Fundamentos · Herramientas de cálculo · El clímax · Distribuciones) + barra de progreso + pasos numerados | La navegación eran 11 píldoras sueltas sin jerarquía; no se veía el recorrido |
+| 2026-08-19 | **Restaurada** la aproximación normal a la binomial en 2.9, con la corrección de continuidad explicada y comparada contra omitirla | Estaba en el dossier, se había perdido, y quedaba una trampa advirtiendo sobre un error de algo nunca enseñado |
 
 ## Estado actual — Unidad 2 COMPLETA
 

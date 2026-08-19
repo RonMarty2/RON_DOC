@@ -245,33 +245,51 @@ function Barras({
   etiquetaX: string;
 }) {
   const max = Math.max(...valores.map((v) => v.prob), 1e-9);
+  // Con muchos valores las barras quedarían de pocos píxeles en un celular:
+  // se les da un ancho mínimo legible y el gráfico se desplaza en horizontal.
+  const muchas = valores.length > 14;
   return (
     <div>
-      <div className="flex items-end justify-center gap-1" style={{ height: 150 }}>
-        {valores.map((v) => (
-          <div key={v.k} className="flex flex-1 flex-col items-center justify-end gap-1">
+      <div className="-mx-1 overflow-x-auto px-1">
+        <div
+          className="flex items-end justify-center gap-1"
+          style={{ height: 150, minWidth: muchas ? valores.length * 22 : undefined }}
+        >
+          {valores.map((v) => (
             <div
-              className={
-                "w-full rounded-t transition-all " +
-                (v.k === destacado ? "bg-blue-600" : "bg-slate-300 dark:bg-slate-700")
-              }
-              style={{ height: `${Math.max(2, (v.prob / max) * 110)}px` }}
-              title={`P(X = ${v.k}) = ${v.prob.toFixed(4)}`}
-            />
-            <span
-              className={
-                "text-[10px] tabular-nums " +
-                (v.k === destacado
-                  ? "font-bold text-blue-700 dark:text-blue-300"
-                  : "text-slate-400")
-              }
+              key={v.k}
+              className="flex min-w-[18px] flex-1 flex-col items-center justify-end gap-1"
             >
-              {v.k}
-            </span>
-          </div>
-        ))}
+              <div
+                className={
+                  "w-full rounded-t transition-all " +
+                  (v.k === destacado ? "bg-blue-600" : "bg-slate-300 dark:bg-slate-700")
+                }
+                style={{ height: `${Math.max(2, (v.prob / max) * 110)}px` }}
+                title={`P(X = ${v.k}) = ${v.prob.toFixed(4)}`}
+              />
+              <span
+                className={
+                  "text-[11px] tabular-nums " +
+                  (v.k === destacado
+                    ? "font-bold text-blue-700 dark:text-blue-300"
+                    : "text-slate-400")
+                }
+              >
+                {v.k}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-      <p className="mt-1 text-center text-xs text-slate-400">{etiquetaX}</p>
+      <p className="mt-1 text-center text-xs text-slate-400">
+        {etiquetaX}
+        {muchas && (
+          <span className="ml-1 text-slate-300 dark:text-slate-600">
+            · deslizá para ver todo
+          </span>
+        )}
+      </p>
     </div>
   );
 }
@@ -309,16 +327,16 @@ function Binomial() {
           probabilidad de que exactamente <V>k</V> den positivo?
         </p>
         <div className="mt-4 flex flex-col gap-3">
-          <label className="flex items-center gap-3 text-sm">
-            <span className="w-28 shrink-0 font-mono text-slate-600 dark:text-slate-400">
+          <label className="flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-3">
+            <span className="font-mono sm:w-28 sm:shrink-0 text-slate-600 dark:text-slate-400">
               n = {n}
             </span>
             <input type="range" min={1} max={40} value={n}
               onChange={(e) => { const v = Number(e.target.value); setN(v); if (k > v) setK(v); }}
               className="h-2 flex-1 cursor-pointer accent-blue-600" />
           </label>
-          <label className="flex items-center gap-3 text-sm">
-            <span className="w-28 shrink-0 font-mono text-slate-600 dark:text-slate-400">
+          <label className="flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-3">
+            <span className="font-mono sm:w-28 sm:shrink-0 text-slate-600 dark:text-slate-400">
               k = {k}
             </span>
             <input type="range" min={0} max={n} value={k}
@@ -461,7 +479,7 @@ function Poisson({ lambda }: { lambda: number }) {
         </p>
 
         <label className="mt-5 flex items-center gap-3 text-sm">
-          <span className="w-32 shrink-0 font-mono text-slate-600 dark:text-slate-400">
+          <span className="font-mono sm:w-32 sm:shrink-0 text-slate-600 dark:text-slate-400">
             k = {k} solicitudes
           </span>
           <input type="range" min={0} max={15} value={k}
@@ -577,16 +595,16 @@ function Hipergeometrica({ N, K }: { N: number; K: number }) {
         </p>
 
         <div className="mt-4 flex flex-col gap-3">
-          <label className="flex items-center gap-3 text-sm">
-            <span className="w-32 shrink-0 font-mono text-slate-600 dark:text-slate-400">
+          <label className="flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-3">
+            <span className="font-mono sm:w-32 sm:shrink-0 text-slate-600 dark:text-slate-400">
               n = {n} auditados
             </span>
             <input type="range" min={1} max={12} value={n}
               onChange={(e) => { const v = Number(e.target.value); setN(v); if (k > Math.min(v, K)) setK(Math.min(v, K)); }}
               className="h-2 flex-1 cursor-pointer accent-blue-600" />
           </label>
-          <label className="flex items-center gap-3 text-sm">
-            <span className="w-32 shrink-0 font-mono text-slate-600 dark:text-slate-400">
+          <label className="flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-3">
+            <span className="font-mono sm:w-32 sm:shrink-0 text-slate-600 dark:text-slate-400">
               k = {k} incompletos
             </span>
             <input type="range" min={0} max={Math.min(n, K)} value={k}

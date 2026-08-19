@@ -41,8 +41,29 @@ export function RegistroPWA() {
     let regGuardada: ServiceWorkerRegistration | undefined;
     let onUpdateFound: (() => void) | undefined;
 
+    // Dentro de la app nativa (Capacitor) los archivos ya viajan empaquetados,
+    // así que el service worker no aporta nada y sí puede molestar: su caché
+    // sobrevive a la actualización de la app y serviría la versión anterior.
+    const enAppNativa =
+      typeof window !== "undefined" &&
+      ((window as { Capacitor?: unknown }).Capacitor !== undefined ||
+        window.location.protocol === "capacitor:");
+
     const productionConSW =
-      process.env.NODE_ENV === "production" && "serviceWorker" in navigator;
+      process.env.NODE_ENV === "production" &&
+      "serviceWorker" in navigator &&
+      !enAppNativa;
+
+    // Si quedó un service worker de una versión anterior instalado dentro de
+    // la app, se da de baja para que no siga respondiendo con caché vieja.
+    if (enAppNativa && "serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .getRegistrations()
+        .then((regs) => regs.forEach((r) => r.unregister()))
+        .catch(() => {
+          /* si falla, no hay nada que hacer */
+        });
+    }
 
     if (productionConSW) {
       navigator.serviceWorker.addEventListener(

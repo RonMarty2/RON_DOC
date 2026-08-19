@@ -397,7 +397,7 @@ function Enumerador() {
         propios ojos.
       </p>
 
-      <div className="mt-4 flex flex-wrap items-center gap-5">
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
         <label className="flex items-center gap-2 text-sm">
           <span className="font-mono text-slate-600 dark:text-slate-400">
             n = {n}
@@ -412,7 +412,7 @@ function Enumerador() {
               setN(v);
               if (r > v) setR(v);
             }}
-            className="h-2 w-28 cursor-pointer accent-indigo-600"
+            className="h-2 w-full min-w-[7rem] cursor-pointer accent-indigo-600 sm:w-28"
           />
         </label>
         <label className="flex items-center gap-2 text-sm">
@@ -425,7 +425,7 @@ function Enumerador() {
             max={Math.min(n, 3)}
             value={r}
             onChange={(e) => setR(Number(e.target.value))}
-            className="h-2 w-28 cursor-pointer accent-indigo-600"
+            className="h-2 w-full min-w-[7rem] cursor-pointer accent-indigo-600 sm:w-28"
           />
         </label>
         <button

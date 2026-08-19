@@ -437,10 +437,10 @@ function TablaInteractiva({
           <thead>
             <tr>
               <th />
-              <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-300">
+              <th className="px-1.5 py-2 font-semibold text-slate-700 sm:px-3 dark:text-slate-300">
                 Dx: sí
               </th>
-              <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-300">
+              <th className="px-1.5 py-2 font-semibold text-slate-700 sm:px-3 dark:text-slate-300">
                 Dx: no
               </th>
               <th className="px-3 py-2 text-xs font-medium text-slate-400">
@@ -450,17 +450,17 @@ function TablaInteractiva({
           </thead>
           <tbody>
             <tr>
-              <th className="px-3 py-2 text-right font-semibold text-slate-700 dark:text-slate-300">
+              <th className="px-1.5 py-2 text-right font-semibold text-slate-700 sm:px-3 dark:text-slate-300">
                 Test +
               </th>
               <td className="p-1">
-                <div className={"grid h-16 w-20 place-content-center rounded-lg border-2 transition " + estilo("VP")}>
+                <div className={"grid h-14 w-16 place-content-center rounded-lg border-2 transition sm:h-16 sm:w-20 " + estilo("VP")}>
                   <span className="font-serif text-2xl font-semibold tabular-nums">{t.VP}</span>
                   <span className="text-[10px] uppercase tracking-wider opacity-80">VP</span>
                 </div>
               </td>
               <td className="p-1">
-                <div className={"grid h-16 w-20 place-content-center rounded-lg border-2 transition " + estilo("FP")}>
+                <div className={"grid h-14 w-16 place-content-center rounded-lg border-2 transition sm:h-16 sm:w-20 " + estilo("FP")}>
                   <span className="font-serif text-2xl font-semibold tabular-nums">{t.FP}</span>
                   <span className="text-[10px] uppercase tracking-wider opacity-80">FP</span>
                 </div>
@@ -470,17 +470,17 @@ function TablaInteractiva({
               </td>
             </tr>
             <tr>
-              <th className="px-3 py-2 text-right font-semibold text-slate-700 dark:text-slate-300">
+              <th className="px-1.5 py-2 text-right font-semibold text-slate-700 sm:px-3 dark:text-slate-300">
                 Test −
               </th>
               <td className="p-1">
-                <div className={"grid h-16 w-20 place-content-center rounded-lg border-2 transition " + estilo("FN")}>
+                <div className={"grid h-14 w-16 place-content-center rounded-lg border-2 transition sm:h-16 sm:w-20 " + estilo("FN")}>
                   <span className="font-serif text-2xl font-semibold tabular-nums">{t.FN}</span>
                   <span className="text-[10px] uppercase tracking-wider opacity-80">FN</span>
                 </div>
               </td>
               <td className="p-1">
-                <div className={"grid h-16 w-20 place-content-center rounded-lg border-2 transition " + estilo("VN")}>
+                <div className={"grid h-14 w-16 place-content-center rounded-lg border-2 transition sm:h-16 sm:w-20 " + estilo("VN")}>
                   <span className="font-serif text-2xl font-semibold tabular-nums">{t.VN}</span>
                   <span className="text-[10px] uppercase tracking-wider opacity-80">VN</span>
                 </div>

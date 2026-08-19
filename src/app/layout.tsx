@@ -42,6 +42,9 @@ export const viewport: Viewport = {
   ],
   width: "device-width",
   initialScale: 1,
+  // Necesario para que el contenido llegue a los bordes en celulares con
+  // muesca cuando la app corre a pantalla completa.
+  viewportFit: "cover",
 };
 
 // Script inline para aplicar el tema ANTES del primer pintado y evitar parpadeo.

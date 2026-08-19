@@ -230,7 +230,7 @@ function ConstructorDistribucion({ p }: { p: number }) {
         probabilidad.
       </p>
 
-      <label className="mt-4 flex flex-wrap items-center gap-3 text-sm">
+      <label className="mt-4 flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
         <span className="font-mono text-slate-600 dark:text-slate-400">
           n = {n} estudiantes
         </span>
@@ -244,10 +244,14 @@ function ConstructorDistribucion({ p }: { p: number }) {
         />
       </label>
 
-      <div className="mt-5 flex items-end justify-center gap-1.5" style={{ height: 160 }}>
+      <div className="-mx-1 mt-5 overflow-x-auto px-1">
+      <div
+        className="flex items-end justify-center gap-1.5"
+        style={{ height: 160, minWidth: valores.length > 9 ? valores.length * 30 : undefined }}
+      >
         {valores.map((v) => (
-          <div key={v.k} className="flex flex-1 flex-col items-center justify-end gap-1">
-            <span className="text-[10px] tabular-nums text-slate-500 dark:text-slate-400">
+          <div key={v.k} className="flex min-w-[24px] flex-1 flex-col items-center justify-end gap-1">
+            <span className="text-[11px] tabular-nums text-slate-500 dark:text-slate-400">
               {(v.prob * 100).toFixed(1)}
             </span>
             <div
@@ -260,6 +264,7 @@ function ConstructorDistribucion({ p }: { p: number }) {
             </span>
           </div>
         ))}
+      </div>
       </div>
       <p className="mt-1 text-center text-xs text-slate-400">
         valores posibles de X (cantidad de positivos)
@@ -327,7 +332,7 @@ function TablaEsperanza({ p }: { p: number }) {
           <h5 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
             Armá la suma, término por término
           </h5>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {!completo && (
               <button
                 type="button"

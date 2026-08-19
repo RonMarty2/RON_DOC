@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ESTUDIANTES } from "@content/aula-probabilidad/dataset";
 import { entero } from "./aleatorio";
-import { Definicion, MiniHistoria } from "./narrativa";
+import { Definicion, MiniHistoria, Trampa, Puente } from "./narrativa";
 import { BarraSim } from "./BarraSim";
 
 const CARAS_DADO = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
@@ -14,7 +14,11 @@ const CARAS_DADO = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
  * Patrón de libro en todo el módulo: se define el término (corto, sin
  * ejemplo) y recién después aparece el interactivo que lo ejemplifica.
  */
-export function ModuloEspacioMuestral() {
+export function ModuloEspacioMuestral({
+  onContinuar,
+}: {
+  onContinuar: () => void;
+}) {
   return (
     <div className="flex flex-col gap-6">
       <Definicion termino="Experimento aleatorio">
@@ -49,6 +53,27 @@ export function ModuloEspacioMuestral() {
       </Definicion>
 
       <TamizajeInteractivo />
+
+      <Trampa
+        error="confundir el universo con el espacio muestral"
+        porQue="las dos palabras suenan a «todo lo que hay», y en los ejemplos sencillos casi coinciden."
+        correccion="preguntarse qué se está listando: si son personas u objetos, es el universo; si son resultados posibles del experimento, es el espacio muestral."
+      />
+
+      <Puente
+        etiquetaBoton="Ir a 2.2 · Tipos de probabilidad"
+        onContinuar={onContinuar}
+      >
+        <p>
+          Ya tenemos el vocabulario: experimento, espacio muestral, punto
+          muestral, evento. Sabemos delimitar de qué estamos hablando.
+        </p>
+        <p>
+          Falta lo principal: de dónde sale el <strong>número</strong> que
+          llamamos probabilidad. Y resulta que hay tres formas legítimas de
+          conseguirlo, que no compiten entre sí.
+        </p>
+      </Puente>
     </div>
   );
 }

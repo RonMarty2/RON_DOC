@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 /**
  * Componentes de presentación compartidos por todos los módulos.
  *
@@ -78,65 +82,6 @@ export function V({ children }: { children: React.ReactNode }) {
   return <span className="font-serif italic">{children}</span>;
 }
 
-/**
- * La fórmula en dos columnas: a la izquierda la notación simbólica, a la
- * derecha la misma fórmula con los datos reales sustituidos. Ver los dos
- * lados en paralelo es lo que evita que los símbolos queden como adorno.
- */
-export function Formula({
-  titulo,
-  simbolos,
-  numeros,
-  resultado,
-  nota,
-}: {
-  titulo?: string;
-  simbolos: React.ReactNode;
-  numeros: React.ReactNode;
-  /** Lectura del resultado, destacada abajo. */
-  resultado?: React.ReactNode;
-  /** Aclaración al pie (de dónde sale cada número). */
-  nota?: React.ReactNode;
-}) {
-  return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
-      {titulo && (
-        <p className="border-b border-slate-100 px-5 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:border-slate-800 dark:text-slate-500">
-          {titulo}
-        </p>
-      )}
-      <div className="grid divide-y divide-slate-100 sm:grid-cols-2 sm:divide-x sm:divide-y-0 dark:divide-slate-800">
-        <div className="px-5 py-4">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            En símbolos
-          </p>
-          <div className="mt-2 overflow-x-auto text-lg leading-loose text-slate-900 dark:text-slate-100">
-            {simbolos}
-          </div>
-        </div>
-        <div className="bg-blue-50/40 px-5 py-4 dark:bg-blue-950/20">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-            Con nuestros datos
-          </p>
-          <div className="mt-2 overflow-x-auto text-lg leading-loose tabular-nums text-slate-900 dark:text-slate-100">
-            {numeros}
-          </div>
-        </div>
-      </div>
-      {resultado && (
-        <p className="border-t border-slate-100 bg-slate-50 px-5 py-3 text-sm text-slate-700 dark:border-slate-800 dark:bg-slate-800/60 dark:text-slate-300">
-          {resultado}
-        </p>
-      )}
-      {nota && (
-        <p className="border-t border-slate-100 px-5 py-2.5 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-500">
-          {nota}
-        </p>
-      )}
-    </div>
-  );
-}
-
 /** El error común de este apartado: qué es, por qué ocurre y cómo corregirlo. */
 export function Trampa({
   error,
@@ -188,6 +133,386 @@ export function Puente({
       >
         {etiquetaBoton} →
       </button>
+    </div>
+  );
+}
+
+/* ================================================================== */
+/* MEJORAS DIDÁCTICAS                                                  */
+/* ================================================================== */
+
+/**
+ * Término con definición en línea. Subrayado punteado; al tocarlo despliega
+ * una nota breve sin sacar al lector de la página. Para símbolos y palabras
+ * que de otro modo quedarían usados pero nunca explicados (µ, σ, Σ,
+ * equiprobable, dicotómico…).
+ *
+ * No usar dentro de <Formula>, que recorta lo que se desborda.
+ */
+export function Termino({
+  children,
+  significa,
+}: {
+  children: React.ReactNode;
+  /** Definición breve, una o dos frases. */
+  significa: React.ReactNode;
+}) {
+  const [abierto, setAbierto] = useState(false);
+  return (
+    <span className="relative inline-block">
+      <button
+        type="button"
+        onClick={() => setAbierto((v) => !v)}
+        aria-expanded={abierto}
+        className="cursor-help border-b-2 border-dotted border-blue-500 font-medium text-blue-700 transition hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-950/40"
+      >
+        {children}
+      </button>
+      {abierto && (
+        <span
+          role="note"
+          className="absolute left-1/2 top-full z-30 mt-2 block w-64 -translate-x-1/2 rounded-xl border border-slate-200 bg-white p-3 text-left text-xs font-normal leading-relaxed text-slate-700 shadow-lg dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+        >
+          {significa}
+          <button
+            type="button"
+            onClick={() => setAbierto(false)}
+            className="mt-2 block text-[10px] font-semibold uppercase tracking-wider text-slate-400 hover:text-slate-600"
+          >
+            cerrar
+          </button>
+        </span>
+      )}
+    </span>
+  );
+}
+
+export interface PasoCalculo {
+  /** La línea de la cuenta tal como se escribiría en el pizarrón. */
+  expresion: React.ReactNode;
+  /** Qué se hizo en este paso y por qué. */
+  explicacion: React.ReactNode;
+}
+
+/**
+ * El desarrollo de una cuenta, línea por línea, con la explicación de cada
+ * movimiento. Se revela de a un paso para que el lector tenga que seguir el
+ * razonamiento en vez de mirar el resultado ya hecho.
+ */
+export function Desarrollo({
+  titulo = "Desarrollo paso a paso",
+  pasos,
+  acento = "text-blue-700 dark:text-blue-300",
+  insignia = "bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300",
+}: {
+  titulo?: string;
+  pasos: PasoCalculo[];
+  acento?: string;
+  insignia?: string;
+}) {
+  const [visibles, setVisibles] = useState(1);
+  const completo = visibles >= pasos.length;
+
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 px-5 py-2.5 dark:border-slate-800">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+          {titulo}
+        </p>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-[10px] tabular-nums text-slate-400">
+            {Math.min(visibles, pasos.length)} / {pasos.length}
+          </span>
+          {!completo && (
+            <button
+              type="button"
+              onClick={() => setVisibles(pasos.length)}
+              className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 transition hover:text-slate-600 dark:hover:text-slate-300"
+            >
+              Ver todo
+            </button>
+          )}
+          {completo && pasos.length > 1 && (
+            <button
+              type="button"
+              onClick={() => setVisibles(1)}
+              className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 transition hover:text-slate-600 dark:hover:text-slate-300"
+            >
+              Reiniciar
+            </button>
+          )}
+        </div>
+      </div>
+
+      <ol className="flex flex-col divide-y divide-slate-100 dark:divide-slate-800">
+        {pasos.slice(0, visibles).map((p, i) => (
+          <li key={i} className="flex gap-4 px-5 py-4">
+            <span
+              className={
+                "grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-bold tabular-nums " +
+                insignia
+              }
+            >
+              {i + 1}
+            </span>
+            <div className="min-w-0 flex-1">
+              <div className="overflow-x-auto text-lg leading-loose tabular-nums text-slate-900 dark:text-slate-100">
+                {p.expresion}
+              </div>
+              <p className="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                {p.explicacion}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      {!completo && (
+        <div className="border-t border-slate-100 px-5 py-3 dark:border-slate-800">
+          <button
+            type="button"
+            onClick={() => setVisibles((v) => v + 1)}
+            className={
+              "rounded-full border-2 px-4 py-2 text-sm font-semibold transition hover:bg-slate-50 dark:hover:bg-slate-800 " +
+              acento
+            }
+          >
+            Siguiente paso →
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export interface ParteFormula {
+  /** El trozo de fórmula. */
+  expresion: React.ReactNode;
+  /** Nombre de esa parte; se muestra como etiqueta arriba. */
+  etiqueta?: string;
+  /** Qué significa, en una línea. */
+  significa?: string;
+  color?: "azul" | "ambar" | "verde" | "gris";
+}
+
+const COLORES_PARTE = {
+  azul: {
+    caja: "bg-blue-100 text-blue-900 dark:bg-blue-950/60 dark:text-blue-200",
+    chip: "text-blue-700 dark:text-blue-300",
+  },
+  ambar: {
+    caja: "bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-200",
+    chip: "text-amber-700 dark:text-amber-400",
+  },
+  verde: {
+    caja: "bg-emerald-100 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-200",
+    chip: "text-emerald-700 dark:text-emerald-400",
+  },
+  gris: {
+    caja: "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200",
+    chip: "text-slate-500 dark:text-slate-400",
+  },
+};
+
+/**
+ * Una fórmula con cada parte etiquetada y explicada. Sirve para que la
+ * notación deje de ser un bloque opaco: se ve cuál trozo es la prevalencia,
+ * cuál la sensibilidad y cuál el denominador que hay que construir.
+ */
+export function FormulaAnotada({
+  titulo,
+  partes,
+}: {
+  titulo?: string;
+  /** Filas de la fórmula. Cada fila es una secuencia de partes. */
+  partes: ParteFormula[];
+}) {
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+      {titulo && (
+        <p className="border-b border-slate-100 px-5 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:border-slate-800 dark:text-slate-500">
+          {titulo}
+        </p>
+      )}
+      <div className="overflow-x-auto px-5 py-6">
+        <div className="flex flex-wrap items-end justify-center gap-x-2 gap-y-4">
+          {partes.map((p, i) => {
+            const c = COLORES_PARTE[p.color ?? "gris"];
+            return (
+              <span key={i} className="inline-flex flex-col items-center gap-1">
+                {p.etiqueta ? (
+                  <span
+                    className={
+                      "text-[10px] font-semibold uppercase tracking-wider " +
+                      c.chip
+                    }
+                  >
+                    {p.etiqueta}
+                  </span>
+                ) : (
+                  <span className="text-[10px]">&nbsp;</span>
+                )}
+                <span
+                  className={
+                    "rounded-lg px-2.5 py-1.5 text-lg leading-none " +
+                    (p.etiqueta ? c.caja : "text-slate-500 dark:text-slate-400")
+                  }
+                >
+                  {p.expresion}
+                </span>
+              </span>
+            );
+          })}
+        </div>
+      </div>
+      {partes.some((p) => p.significa) && (
+        <ul className="flex flex-col gap-1.5 border-t border-slate-100 px-5 py-4 text-sm dark:border-slate-800">
+          {partes
+            .filter((p) => p.significa)
+            .map((p, i) => {
+              const c = COLORES_PARTE[p.color ?? "gris"];
+              return (
+                <li key={i} className="flex gap-2">
+                  <span
+                    className={
+                      "shrink-0 rounded px-1.5 text-xs font-semibold " + c.caja
+                    }
+                  >
+                    {p.etiqueta}
+                  </span>
+                  <span className="text-slate-600 dark:text-slate-400">
+                    {p.significa}
+                  </span>
+                </li>
+              );
+            })}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export interface OpcionComprueba {
+  texto: React.ReactNode;
+  esCorrecta?: boolean;
+  /** Por qué está bien o mal. Se muestra al elegir. */
+  porQue: React.ReactNode;
+}
+
+/**
+ * Momento de práctica: el lector tiene que producir una respuesta y recibe
+ * corrección inmediata CON el razonamiento, no sólo un «bien» o «mal».
+ * Recuperar activamente lo aprendido es lo que fija el concepto.
+ */
+export function Comprueba({
+  pregunta,
+  opciones,
+  pista,
+}: {
+  pregunta: React.ReactNode;
+  opciones: OpcionComprueba[];
+  pista?: React.ReactNode;
+}) {
+  const [elegida, setElegida] = useState<number | null>(null);
+  const respondio = elegida !== null;
+  const acerto = respondio && opciones[elegida].esCorrecta === true;
+
+  return (
+    <div className="rounded-2xl border-2 border-slate-300 bg-slate-50/60 p-5 dark:border-slate-700 dark:bg-slate-900/60 sm:p-6">
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+        Comprobá si lo entendiste
+      </p>
+      <p className="mt-2 font-serif text-lg font-semibold leading-snug text-slate-900 dark:text-slate-100">
+        {pregunta}
+      </p>
+      {pista && !respondio && (
+        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+          {pista}
+        </p>
+      )}
+
+      <div className="mt-4 flex flex-col gap-2">
+        {opciones.map((o, i) => {
+          const esta = elegida === i;
+          const mostrarCorrecta = respondio && o.esCorrecta;
+          return (
+            <button
+              key={i}
+              type="button"
+              disabled={respondio}
+              onClick={() => setElegida(i)}
+              className={
+                "rounded-xl border-2 px-4 py-3 text-left text-sm transition disabled:cursor-default " +
+                (mostrarCorrecta
+                  ? "border-emerald-600 bg-emerald-50 text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-200"
+                  : esta
+                    ? "border-rose-400 bg-rose-50 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200"
+                    : "border-slate-200 bg-white text-slate-700 hover:border-blue-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300")
+              }
+            >
+              {mostrarCorrecta && <span aria-hidden>✓ </span>}
+              {esta && !o.esCorrecta && <span aria-hidden>✗ </span>}
+              {o.texto}
+            </button>
+          );
+        })}
+      </div>
+
+      {respondio && (
+        <div className="mt-4 flex flex-col gap-3">
+          <p
+            className={
+              "rounded-xl px-4 py-3 text-sm leading-relaxed " +
+              (acerto
+                ? "bg-emerald-100 text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-200"
+                : "bg-rose-100 text-rose-900 dark:bg-rose-950/40 dark:text-rose-200")
+            }
+          >
+            <strong>{acerto ? "Correcto. " : "No es ésa. "}</strong>
+            {opciones[elegida].porQue}
+          </p>
+          {!acerto && (
+            <p className="rounded-xl bg-emerald-50 px-4 py-3 text-sm leading-relaxed text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200">
+              <strong>La correcta era: </strong>
+              {opciones.find((o) => o.esCorrecta)?.porQue}
+            </p>
+          )}
+          <button
+            type="button"
+            onClick={() => setElegida(null)}
+            className="self-start text-xs font-semibold uppercase tracking-wider text-slate-400 transition hover:text-slate-600 dark:hover:text-slate-300"
+          >
+            Intentar de nuevo
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Encabezado numerado, para que se vea la estructura interna del apartado. */
+export function PasoTitulo({
+  numero,
+  children,
+  insignia = "bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300",
+}: {
+  numero: number;
+  children: React.ReactNode;
+  insignia?: string;
+}) {
+  return (
+    <div className="mt-2 flex items-center gap-3">
+      <span
+        className={
+          "grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-bold tabular-nums " +
+          insignia
+        }
+      >
+        {numero}
+      </span>
+      <h4 className="font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+        {children}
+      </h4>
     </div>
   );
 }

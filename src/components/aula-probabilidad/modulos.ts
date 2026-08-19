@@ -29,8 +29,12 @@ export type ModuloId =
   | "discretas"
   | "normal";
 
+import type { BloqueId } from "./bloques";
+
 export interface ModuloMeta {
   id: ModuloId;
+  /** Bloque temático al que pertenece; define su color de acento. */
+  bloque: BloqueId;
   /** Número del apartado en el dossier. Vacío en preámbulo y contexto. */
   apartado?: string;
   icono: string;
@@ -42,6 +46,7 @@ export interface ModuloMeta {
 export const MODULOS: ModuloMeta[] = [
   {
     id: "misterio",
+    bloque: "preambulo",
     icono: "🔍",
     titulo: "El misterio",
     subtitulo: "Antes de empezar",
@@ -50,6 +55,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "el-caso",
+    bloque: "preambulo",
     icono: "📋",
     titulo: "El caso",
     subtitulo: "De dónde salen los datos",
@@ -58,6 +64,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "espacio-muestral",
+    bloque: "fundamentos",
     apartado: "2.1",
     icono: "🎲",
     titulo: "Espacio muestral",
@@ -67,6 +74,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "tipos-probabilidad",
+    bloque: "fundamentos",
     apartado: "2.2",
     icono: "🔮",
     titulo: "Tipos de probabilidad",
@@ -76,6 +84,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "tablas-contingencia",
+    bloque: "calculo",
     apartado: "2.3",
     icono: "🔲",
     titulo: "Tablas de contingencia",
@@ -85,6 +94,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "combinatoria",
+    bloque: "calculo",
     apartado: "2.4",
     icono: "🃏",
     titulo: "Teoría combinatoria",
@@ -94,6 +104,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "reglas-basicas",
+    bloque: "calculo",
     apartado: "2.5",
     icono: "➕",
     titulo: "Reglas básicas",
@@ -103,6 +114,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "bayes",
+    bloque: "bayes",
     apartado: "2.6",
     icono: "🧪",
     titulo: "Teorema de Bayes",
@@ -112,6 +124,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "variables-aleatorias",
+    bloque: "distribuciones",
     apartado: "2.7",
     icono: "📈",
     titulo: "Variables aleatorias",
@@ -121,6 +134,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "discretas",
+    bloque: "distribuciones",
     apartado: "2.8",
     icono: "🎯",
     titulo: "Distribuciones discretas",
@@ -130,6 +144,7 @@ export const MODULOS: ModuloMeta[] = [
   },
   {
     id: "normal",
+    bloque: "distribuciones",
     apartado: "2.9",
     icono: "🔔",
     titulo: "Distribución normal",

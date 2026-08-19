@@ -2,7 +2,21 @@
 
 import { useState } from "react";
 import { tablaConfusion } from "./calculos";
-import { Definicion, Formula, Frac, V, Trampa, Puente, MiniHistoria } from "./narrativa";
+import {
+  Definicion,
+  Frac,
+  V,
+  Trampa,
+  Puente,
+  MiniHistoria,
+  Desarrollo,
+  Termino,
+  Comprueba,
+  PasoTitulo,
+} from "./narrativa";
+
+const INSIGNIA = "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300";
+const ACENTO = "border-indigo-300 text-indigo-700 dark:border-indigo-700 dark:text-indigo-300";
 
 type Celda = "VP" | "FP" | "FN" | "VN";
 
@@ -105,6 +119,10 @@ export function ModuloTablasContingencia({
         que cruzar lo que dijo el test contra lo que era verdad.
       </p>
 
+      <PasoTitulo numero={1} insignia={INSIGNIA}>
+        Cruzar lo que dijo el test contra lo que era verdad
+      </PasoTitulo>
+
       <Definicion termino="Tabla de contingencia">
         Una tabla que organiza el conteo conjunto de dos variables
         categóricas en filas y columnas. De ella se leen tres tipos de
@@ -121,6 +139,10 @@ export function ModuloTablasContingencia({
         denominador={denominador}
         resultado={resultado}
       />
+
+      <PasoTitulo numero={2} insignia={INSIGNIA}>
+        Tres probabilidades, tres denominadores
+      </PasoTitulo>
 
       <div className="grid gap-4 sm:grid-cols-3">
         <Definicion termino="Conjunta">
@@ -146,90 +168,112 @@ export function ModuloTablasContingencia({
         todo el apartado.
       </MiniHistoria>
 
-      <h4 className="mt-2 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
-        Los tres números, uno al lado del otro
-      </h4>
+      <PasoTitulo numero={3} insignia={INSIGNIA}>
+        Los tres números, calculados
+      </PasoTitulo>
 
-      <Formula
+      <Desarrollo
         titulo="Sensibilidad — la pregunta del instrumento"
-        simbolos={
-          <>
-            <V>P</V>(positivo | Dx sí) =
-            <Frac
-              arriba={<>VP</>}
-              abajo={
-                <>
-                  VP + FN
-                </>
-              }
-            />
-          </>
-        }
-        numeros={
-          <>
-            <Frac arriba={t.VP} abajo={t.dxSi} /> ={" "}
-            {(t.sensibilidad * 100).toFixed(1)}%
-          </>
-        }
-        resultado={
-          <>
-            De los {t.dxSi} estudiantes que sí tenían el diagnóstico, el test
-            detectó a {t.VP}. Es lo que se publica en el manual del
-            instrumento.
-          </>
-        }
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <Termino significa="De todas las personas que SÍ tienen la condición, qué proporción detecta el test. Es una propiedad del instrumento, y es lo que reportan los manuales.">
+                  Sensibilidad
+                </Termino>{" "}
+                = <V>P</V>(positivo | Dx sí)
+              </>
+            ),
+            explicacion:
+              "Ya sabemos que la persona tiene el diagnóstico. Esa condición conocida va al denominador: sólo miramos la columna «Dx: sí».",
+          },
+          {
+            expresion: (
+              <>
+                =
+                <Frac arriba={<>VP</>} abajo={<>VP + FN</>} />
+                =
+                <Frac arriba={t.VP} abajo={<>{t.VP} + {t.FN}</>} />
+              </>
+            ),
+            explicacion: `Arriba, los que el test detectó (${t.VP}). Abajo, todos los que tenían el diagnóstico: los detectados más los que se escaparon (${t.VP} + ${t.FN}).`,
+          },
+          {
+            expresion: (
+              <>
+                =
+                <Frac arriba={t.VP} abajo={t.dxSi} /> = {t.sensibilidad.toFixed(3)} ={" "}
+                {(t.sensibilidad * 100).toFixed(1)}%
+              </>
+            ),
+            explicacion:
+              "No es un número elegido para el ejercicio: es exactamente el 88% que reportaron Kroenke, Spitzer y Williams en el estudio de validación original de 2001.",
+          },
+        ]}
       />
 
-      <Formula
-        titulo="Especificidad — la otra cara del instrumento"
-        simbolos={
-          <>
-            <V>P</V>(negativo | Dx no) =
-            <Frac arriba={<>VN</>} abajo={<>VN + FP</>} />
-          </>
-        }
-        numeros={
-          <>
-            <Frac arriba={t.VN} abajo={t.dxNo} /> ={" "}
-            {(t.especificidad * 100).toFixed(1)}%
-          </>
-        }
-        resultado={
-          <>
-            De los {t.dxNo} que estaban sanos, el test descartó correctamente a{" "}
-            {t.VN}. Con el corte en 10, ambas cifras dan 88% — que es
-            exactamente lo que reportó el estudio original de 2001.
-          </>
-        }
-      />
-
-      <Formula
+      <Desarrollo
         titulo="Valor predictivo positivo — la pregunta del estudiante"
-        simbolos={
-          <>
-            <V>P</V>(Dx sí | positivo) =
-            <Frac arriba={<>VP</>} abajo={<>VP + FP</>} />
-          </>
-        }
-        numeros={
-          <>
-            <Frac arriba={t.VP} abajo={t.positivos} /> ={" "}
-            {(t.vpp * 100).toFixed(1)}%
-          </>
-        }
-        resultado={
-          <>
-            De los {t.positivos} que dieron positivo, sólo {t.VP} tenían
-            realmente el diagnóstico. <strong>Éste es el número del misterio</strong>{" "}
-            con el que abrimos el capítulo.
-          </>
-        }
-        nota={
-          <>
-            Sensibilidad y VPP tienen el mismo numerador ({t.VP}) y condicionan
-            en sentidos opuestos: {t.dxSi} contra {t.positivos}.
-          </>
-        }
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <Termino significa="De todos los que dieron positivo, qué proporción realmente tiene la condición. Depende de la población, no sólo del test.">
+                  VPP
+                </Termino>{" "}
+                = <V>P</V>(Dx sí | positivo)
+              </>
+            ),
+            explicacion:
+              "Ahora la condición conocida es otra: lo único que sabemos es que el test dio positivo. Así que el denominador cambia de columna a FILA.",
+          },
+          {
+            expresion: (
+              <>
+                =
+                <Frac arriba={<>VP</>} abajo={<>VP + FP</>} />
+                =
+                <Frac arriba={t.VP} abajo={<>{t.VP} + {t.FP}</>} />
+              </>
+            ),
+            explicacion: `Arriba va el MISMO número que en la sensibilidad (${t.VP}). Lo único que cambió es el denominador: ahora son los ${t.positivos} que dieron positivo, no los ${t.dxSi} que tenían el diagnóstico.`,
+          },
+          {
+            expresion: (
+              <>
+                =
+                <Frac arriba={t.VP} abajo={t.positivos} /> = {t.vpp.toFixed(3)} ={" "}
+                {(t.vpp * 100).toFixed(1)}%
+              </>
+            ),
+            explicacion:
+              "Mismo numerador, denominador distinto, resultado radicalmente distinto: 88% contra 51,2%. Éste es el número del misterio con el que abrimos el capítulo.",
+          },
+        ]}
+      />
+
+      <Comprueba
+        pregunta={`De los ${t.total} estudiantes, ${t.VN} dieron negativo y estaban efectivamente sanos. Si querés calcular la especificidad, ¿cuál es el denominador correcto?`}
+        pista="Preguntate qué condición se conoce de antemano en la definición de especificidad."
+        opciones={[
+          {
+            texto: `${t.dxNo} — todos los que NO tienen el diagnóstico`,
+            esCorrecta: true,
+            porQue: `La especificidad pregunta «de los sanos, ¿a cuántos descarté?». La condición conocida es estar sano, así que el denominador es esa columna completa: ${t.VN} descartados bien más ${t.FP} falsas alarmas = ${t.dxNo}.`,
+          },
+          {
+            texto: `${t.total} — el total de fichas`,
+            porQue: `Ése sería el denominador de una probabilidad conjunta o marginal. Usar el total general en una condicional es el segundo error más común del apartado: el ${t.total} es el número más visible de la tabla y por eso se cuela.`,
+          },
+          {
+            texto: `${t.negativos} — todos los que dieron negativo`,
+            porQue: `Ése es el denominador del valor predictivo NEGATIVO, que responde otra pregunta: «de los que dieron negativo, ¿cuántos estaban realmente sanos?». Condiciona por el resultado del test, no por el estado real.`,
+          },
+        ]}
       />
 
       <Trampa

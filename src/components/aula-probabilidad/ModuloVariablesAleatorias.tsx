@@ -2,7 +2,20 @@
 
 import { useMemo, useState } from "react";
 import { binomial, proporcion, phq9Positivo } from "./calculos";
-import { Definicion, Formula, V, Trampa, Puente, MiniHistoria } from "./narrativa";
+import {
+  Definicion,
+  V,
+  Trampa,
+  Puente,
+  MiniHistoria,
+  Desarrollo,
+  Termino,
+  Comprueba,
+  PasoTitulo,
+} from "./narrativa";
+
+const INSIGNIA = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300";
+const ACENTO = "border-emerald-300 text-emerald-700 dark:border-emerald-700 dark:text-emerald-400";
 
 /**
  * 2.7 — Variable aleatoria y distribución de probabilidad.
@@ -29,6 +42,10 @@ export function ModuloVariablesAleatorias({
         <strong>de una sola vez</strong>.
       </p>
 
+      <PasoTitulo numero={1} insignia={INSIGNIA}>
+        De eventos sueltos a variables completas
+      </PasoTitulo>
+
       <Definicion termino="Variable aleatoria">
         Una función que asigna un número a cada resultado de un experimento
         aleatorio. Se escribe con mayúscula (<V>X</V>) y sus valores posibles
@@ -52,6 +69,10 @@ export function ModuloVariablesAleatorias({
         aunque el instrumento lo redondee a milisegundos.
       </MiniHistoria>
 
+      <PasoTitulo numero={2} insignia={INSIGNIA}>
+        La distribución completa
+      </PasoTitulo>
+
       <Definicion termino="Distribución de probabilidad">
         La función que asigna una probabilidad a cada valor posible de la
         variable. En variables discretas se llama <strong>función de masa</strong>{" "}
@@ -61,18 +82,56 @@ export function ModuloVariablesAleatorias({
 
       <ConstructorDistribucion p={p} />
 
+      <PasoTitulo numero={3} insignia={INSIGNIA}>
+        Los dos números que resumen una distribución
+      </PasoTitulo>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <Definicion termino="Esperanza matemática E[X]">
           El promedio de los valores posibles, ponderado por sus
-          probabilidades. Es el centro de la distribución.
+          probabilidades. Se escribe con la letra{" "}
+          <Termino significa="Mu, la letra griega m. Se usa siempre para la media o el centro de una distribución teórica. Su equivalente en una muestra observada se escribe con x̄.">
+            µ
+          </Termino>{" "}
+          y se calcula con una{" "}
+          <Termino significa="Sigma mayúscula. Significa «sumá todo lo que viene a continuación, para cada valor posible». No es una operación nueva: es una forma corta de escribir una suma larga.">
+            Σ
+          </Termino>
+          .
         </Definicion>
         <Definicion termino="Varianza Var(X)">
           Cuánto se dispersan los valores alrededor de la esperanza. Cada
-          desvío al cuadrado, ponderado por su probabilidad.
+          desvío al cuadrado, ponderado por su probabilidad. Se escribe{" "}
+          <Termino significa="Sigma minúscula al cuadrado. La varianza está en unidades al cuadrado; su raíz, σ, es la desviación estándar, que vuelve a las unidades originales.">
+            σ²
+          </Termino>
+          .
         </Definicion>
       </div>
 
       <TablaEsperanza p={p} />
+
+      <Comprueba
+        pregunta="Un cálculo da E[X] = 0,43 estudiantes positivos. Un colega dice que el resultado está mal porque no existe media persona. ¿Tiene razón?"
+        opciones={[
+          {
+            texto: "No: la esperanza es un promedio de largo plazo, no una predicción de un caso",
+            esCorrecta: true,
+            porQue:
+              "Significa que si repitieras el experimento muchísimas veces —elegir dos estudiantes al azar una y otra vez— el promedio de positivos por repetición tendería a 0,43. Es el mismo tipo de abstracción que «2,3 hijos por familia»: nadie tiene 2,3 hijos.",
+          },
+          {
+            texto: "Sí: hay que redondear a 0 estudiantes",
+            porQue:
+              "Redondear destruye información. La esperanza se usa después en otros cálculos (como la varianza), y redondearla propagaría el error. El valor fraccionario es el correcto.",
+          },
+          {
+            texto: "Sí: significa que el cálculo tiene un error aritmético",
+            porQue:
+              "El cálculo está bien: sumamos cada valor posible por su probabilidad y verificamos que las probabilidades den 1. Que el resultado no sea entero es esperable, no un síntoma de error.",
+          },
+        ]}
+      />
 
       <Trampa
         error="esperar que la esperanza sea un valor observable"
@@ -246,44 +305,71 @@ function TablaEsperanza({ p }: { p: number }) {
         </div>
       </div>
 
-      <Formula
-        titulo="Esperanza matemática"
-        simbolos={
-          <>
-            <V>E</V>[<V>X</V>] = µ = Σ <V>x</V> · <V>P</V>(<V>X</V> = <V>x</V>)
-          </>
-        }
-        numeros={
-          <>
-            (0)({filas[0].prob.toFixed(4)}) + (1)({filas[1].prob.toFixed(4)}) +
-            (2)({filas[2].prob.toFixed(4)}) = {esperanza.toFixed(4)}
-          </>
-        }
-        resultado={
-          <>
-            Al evaluar dos estudiantes al azar se esperan, en promedio,{" "}
-            <strong className="tabular-nums">{esperanza.toFixed(2)}</strong>{" "}
-            positivos. Guardá este número: en el apartado siguiente vamos a
-            comprobar que coincide exactamente con <V>n</V>·<V>p</V>, la fórmula
-            rápida de la binomial.
-          </>
-        }
+      <Desarrollo
+        titulo="Esperanza matemática, término por término"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                <V>E</V>[<V>X</V>] = µ = Σ <V>x</V> · <V>P</V>(<V>X</V> = <V>x</V>)
+              </>
+            ),
+            explicacion:
+              "Se recorre cada valor posible, se lo multiplica por su probabilidad, y se suman todos esos productos. No es un promedio común: cada valor pesa según qué tan probable es.",
+          },
+          {
+            expresion: (
+              <>
+                = (0)({filas[0].prob.toFixed(4)}) + (1)({filas[1].prob.toFixed(4)}) + (2)({filas[2].prob.toFixed(4)})
+              </>
+            ),
+            explicacion:
+              "Sustituimos los tres valores posibles de X con sus probabilidades. Fijate que el término de x = 0 aporta cero: multiplicar por cero anula ese sumando, por más probable que sea.",
+          },
+          {
+            expresion: (
+              <>
+                = 0 + {filas[1].aporteE.toFixed(4)} + {filas[2].aporteE.toFixed(4)} = {esperanza.toFixed(4)}
+              </>
+            ),
+            explicacion:
+              "Al evaluar dos estudiantes al azar se esperan, en promedio, 0,43 positivos. Nunca vas a observar 0,43 personas: es un promedio de largo plazo. Guardá el número — en 2.8 vamos a comprobar que coincide con n·p.",
+          },
+        ]}
       />
 
-      <Formula
-        titulo="Varianza"
-        simbolos={
-          <>
-            Var(<V>X</V>) = σ² = Σ (<V>x</V> − µ)² · <V>P</V>(<V>X</V> = <V>x</V>)
-          </>
-        }
-        numeros={<>{filasVar.map((f) => f.aporteVar.toFixed(4)).join(" + ")} = {varianza.toFixed(4)}</>}
-        resultado={
-          <>
-            Y este también va a coincidir con la fórmula rápida{" "}
-            <V>n</V>·<V>p</V>·(1 − <V>p</V>) del apartado siguiente.
-          </>
-        }
+      <Desarrollo
+        titulo="Varianza, término por término"
+        insignia={INSIGNIA}
+        acento={ACENTO}
+        pasos={[
+          {
+            expresion: (
+              <>
+                Var(<V>X</V>) = σ² = Σ (<V>x</V> − µ)² · <V>P</V>(<V>X</V> = <V>x</V>)
+              </>
+            ),
+            explicacion:
+              "Para cada valor: qué tan lejos está de la media, elevado al cuadrado (para que los desvíos negativos no se cancelen con los positivos), y ponderado por su probabilidad.",
+          },
+          {
+            expresion: (
+              <>
+                = ({filasVar.map((f) => `(${f.k} − ${esperanza.toFixed(2)})²`).join(" + ")})…
+              </>
+            ),
+            explicacion: `Primero calculamos cada desvío al cuadrado: ${filasVar.map((f) => f.desvio.toFixed(4)).join(", ")}. Ninguno puede ser negativo, justamente por el cuadrado.`,
+          },
+          {
+            expresion: (
+              <>= {filasVar.map((f) => f.aporteVar.toFixed(4)).join(" + ")} = {varianza.toFixed(4)}</>
+            ),
+            explicacion:
+              "Cada desvío al cuadrado multiplicado por su probabilidad, y todo sumado. En 2.8 vamos a ver que la fórmula rápida n·p·(1−p) da exactamente este mismo número, sin recorrer valor por valor.",
+          },
+        ]}
       />
     </div>
   );

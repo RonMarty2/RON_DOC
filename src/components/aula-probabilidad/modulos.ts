@@ -16,6 +16,8 @@
  * Estilos aislados bajo la clase raíz `.aula-probabilidad`.
  */
 
+import type { BloqueId } from "./bloques";
+
 export type ModuloId =
   | "misterio"
   | "el-caso"
@@ -28,8 +30,6 @@ export type ModuloId =
   | "variables-aleatorias"
   | "discretas"
   | "normal";
-
-import type { BloqueId } from "./bloques";
 
 export interface ModuloMeta {
   id: ModuloId;

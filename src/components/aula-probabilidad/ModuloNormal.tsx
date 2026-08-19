@@ -185,6 +185,29 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
 
       <SelectorDeCorte media={media} desviacion={desviacion} />
 
+      <Comprueba
+        pregunta="El comité propone bajar el punto de corte de 10 a 5 para «no dejar pasar a nadie». ¿Qué se gana y qué se pierde?"
+        pista="Mové el deslizador de arriba hasta 5 y comparalo con 10 antes de responder."
+        opciones={[
+          {
+            texto: "Se pierden menos casos reales, pero se disparan las falsas alarmas y cae el valor predictivo",
+            esCorrecta: true,
+            porQue:
+              "Bajar el corte convierte casos perdidos en detectados —eso es lo que se gana— pero al mismo tiempo convierte descartados correctos en falsas alarmas. El servicio termina con muchas más derivaciones, y cada positivo significa menos. Es un intercambio, no una mejora.",
+          },
+          {
+            texto: "Se gana en todo: el test se vuelve más preciso",
+            porQue:
+              "Ningún movimiento del corte mejora las dos direcciones a la vez. Los dos tipos de error están en celdas distintas de la tabla, y reducir uno siempre aumenta el otro. Por eso la decisión no la resuelve la estadística.",
+          },
+          {
+            texto: "No cambia nada, porque la sensibilidad es una propiedad fija del cuestionario",
+            porQue:
+              "La sensibilidad y la especificidad NO son fijas: dependen de dónde se ponga el corte. El 88% de ambas corresponde específicamente al corte en 10, y se mueve apenas lo desplazás.",
+          },
+        ]}
+      />
+
       <Trampa
         error="omitir la corrección de continuidad al aproximar una binomial con la normal"
         porQue="se olvida que se está aproximando una variable de conteo (discreta) con una continua."

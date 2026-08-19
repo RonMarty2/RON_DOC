@@ -133,6 +133,28 @@ export function ModuloVariablesAleatorias({
         ]}
       />
 
+      <Comprueba
+        pregunta="Alguien te muestra una distribución donde las probabilidades de todos los valores posibles suman 0,87. ¿Qué se puede concluir?"
+        opciones={[
+          {
+            texto: "Que falta algún valor posible: la lista está incompleta",
+            esCorrecta: true,
+            porQue:
+              "Una distribución debe cubrir TODO el espacio muestral, y por el Axioma 2 esas probabilidades tienen que sumar exactamente 1. Si suman menos, hay resultados posibles que quedaron sin incluir. Verificar la suma es el control básico de cualquier distribución.",
+          },
+          {
+            texto: "Que el 13% restante corresponde a resultados imposibles",
+            porQue:
+              "Los resultados imposibles tienen probabilidad 0 y no aportan nada a la suma. Un faltante de 0,13 significa que hay resultados POSIBLES sin listar, no imposibles.",
+          },
+          {
+            texto: "Que es una distribución continua, no discreta",
+            porQue:
+              "En las continuas la condición también es que el área total bajo la curva valga 1. Ser continua no exime de sumar (o integrar) hasta 1.",
+          },
+        ]}
+      />
+
       <Trampa
         error="esperar que la esperanza sea un valor observable"
         porQue="el nombre sugiere «lo que se espera ver», y rechazamos por imposible un resultado como 0.43 estudiantes."
@@ -257,51 +279,167 @@ function ConstructorDistribucion({ p }: { p: number }) {
 
 function TablaEsperanza({ p }: { p: number }) {
   const n = 2;
-  const filas = Array.from({ length: n + 1 }, (_, k) => {
-    const prob = binomial(n, k, p);
-    return { k, prob, aporteE: k * prob };
-  });
+  const [revelados, setRevelados] = useState(0);
+
+  const filas = useMemo(() => {
+    const base = Array.from({ length: n + 1 }, (_, k) => {
+      const prob = binomial(n, k, p);
+      return { k, prob, aporteE: k * prob };
+    });
+    const esperanza = base.reduce((s, f) => s + f.aporteE, 0);
+    return base.map((f) => ({
+      ...f,
+      desvio: (f.k - esperanza) ** 2,
+      aporteVar: (f.k - esperanza) ** 2 * f.prob,
+    }));
+  }, [p]);
+
   const esperanza = filas.reduce((s, f) => s + f.aporteE, 0);
-  const filasVar = filas.map((f) => ({
-    ...f,
-    desvio: (f.k - esperanza) ** 2,
-    aporteVar: (f.k - esperanza) ** 2 * f.prob,
-  }));
-  const varianza = filasVar.reduce((s, f) => s + f.aporteVar, 0);
+  const varianza = filas.reduce((s, f) => s + f.aporteVar, 0);
+
+  // Sumas parciales: lo que llevamos acumulado hasta lo revelado
+  const parcialProb = filas.slice(0, revelados).reduce((s, f) => s + f.prob, 0);
+  const parcialE = filas.slice(0, revelados).reduce((s, f) => s + f.aporteE, 0);
+  const parcialVar = filas.slice(0, revelados).reduce((s, f) => s + f.aporteVar, 0);
+  const completo = revelados >= filas.length;
 
   return (
     <div className="flex flex-col gap-4">
       <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-          Término por término, con n = 2
-        </h4>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h5 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+            Armá la suma, término por término
+          </h5>
+          <div className="flex gap-2">
+            {!completo && (
+              <button
+                type="button"
+                onClick={() => setRevelados((r) => r + 1)}
+                className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+              >
+                {revelados === 0
+                  ? "Calcular el primer término"
+                  : `Calcular x = ${revelados}`}
+              </button>
+            )}
+            {revelados > 0 && (
+              <button
+                type="button"
+                onClick={() => setRevelados(0)}
+                className="rounded-full border border-slate-200 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              >
+                Reiniciar
+              </button>
+            )}
+          </div>
+        </div>
+
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+          La Σ no es magia: es sumar un término por cada valor posible de{" "}
+          <V>X</V>. Con <V>n</V> = 2 hay tres términos. Calculalos uno por uno y
+          mirá cómo se acumula el total.
+        </p>
+
         <div className="mt-4 overflow-x-auto">
           <table className="w-full border-collapse text-sm">
             <thead>
               <tr className="border-b border-slate-200 text-left dark:border-slate-700">
                 <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">x</th>
-                <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">P(X = x)</th>
-                <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">x · P(X = x)</th>
-                <th className="py-2 font-semibold text-slate-700 dark:text-slate-300">(x − µ)² · P(X = x)</th>
+                <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">
+                  P(X = x)
+                </th>
+                <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">
+                  x · P(X = x)
+                </th>
+                <th className="py-2 font-semibold text-slate-700 dark:text-slate-300">
+                  (x − µ)² · P(X = x)
+                </th>
               </tr>
             </thead>
             <tbody className="tabular-nums text-slate-600 dark:text-slate-400">
-              {filasVar.map((f) => (
-                <tr key={f.k} className="border-b border-slate-100 dark:border-slate-800">
-                  <td className="py-2 pr-4 font-semibold text-slate-800 dark:text-slate-200">{f.k}</td>
-                  <td className="py-2 pr-4">{f.prob.toFixed(4)}</td>
-                  <td className="py-2 pr-4">{f.aporteE.toFixed(4)}</td>
-                  <td className="py-2">{f.aporteVar.toFixed(4)}</td>
-                </tr>
-              ))}
+              {filas.map((f, i) => {
+                const visible = i < revelados;
+                const recienSalido = i === revelados - 1;
+                return (
+                  <tr
+                    key={f.k}
+                    className={
+                      "border-b border-slate-100 transition dark:border-slate-800 " +
+                      (recienSalido ? "bg-emerald-50 dark:bg-emerald-950/30" : "")
+                    }
+                  >
+                    <td className="py-2 pr-4 font-semibold text-slate-800 dark:text-slate-200">
+                      {f.k}
+                    </td>
+                    <td className="py-2 pr-4">
+                      {visible ? f.prob.toFixed(4) : "—"}
+                    </td>
+                    <td className="py-2 pr-4">
+                      {visible ? (
+                        <>
+                          <span className="text-slate-400">
+                            {f.k} × {f.prob.toFixed(4)} =
+                          </span>{" "}
+                          <strong className="text-slate-800 dark:text-slate-200">
+                            {f.aporteE.toFixed(4)}
+                          </strong>
+                        </>
+                      ) : (
+                        "—"
+                      )}
+                    </td>
+                    <td className="py-2">
+                      {visible ? (
+                        <>
+                          <span className="text-slate-400">
+                            {f.desvio.toFixed(4)} × {f.prob.toFixed(4)} =
+                          </span>{" "}
+                          <strong className="text-slate-800 dark:text-slate-200">
+                            {f.aporteVar.toFixed(4)}
+                          </strong>
+                        </>
+                      ) : (
+                        "—"
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
               <tr className="font-semibold text-slate-900 dark:text-slate-100">
                 <td className="py-2 pr-4">Σ</td>
-                <td className="py-2 pr-4">{filas.reduce((s, f) => s + f.prob, 0).toFixed(4)}</td>
-                <td className="py-2 pr-4">{esperanza.toFixed(4)}</td>
-                <td className="py-2">{varianza.toFixed(4)}</td>
+                <td className="py-2 pr-4">{parcialProb.toFixed(4)}</td>
+                <td className="py-2 pr-4">{parcialE.toFixed(4)}</td>
+                <td className="py-2">{parcialVar.toFixed(4)}</td>
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+          {revelados === 0 ? (
+            <p>
+              Todavía no calculaste ningún término. La fila Σ está en cero
+              porque no hay nada sumado.
+            </p>
+          ) : !completo ? (
+            <p>
+              Llevás <strong>{revelados}</strong> de {filas.length} términos.
+              Las probabilidades suman{" "}
+              <strong className="tabular-nums">{parcialProb.toFixed(4)}</strong>{" "}
+              — todavía no llegan a 1, así que falta al menos un valor posible.
+            </p>
+          ) : (
+            <p>
+              Las probabilidades suman{" "}
+              <strong className="tabular-nums">{parcialProb.toFixed(4)}</strong>
+              : cumple la condición de la definición. Y la columna del medio dio{" "}
+              <strong className="tabular-nums">{esperanza.toFixed(4)}</strong>,
+              que es la esperanza; la última dio{" "}
+              <strong className="tabular-nums">{varianza.toFixed(4)}</strong>,
+              la varianza. Eso es todo lo que hace una Σ: acumular un término
+              por valor.
+            </p>
+          )}
         </div>
       </div>
 
@@ -357,14 +495,14 @@ function TablaEsperanza({ p }: { p: number }) {
           {
             expresion: (
               <>
-                = ({filasVar.map((f) => `(${f.k} − ${esperanza.toFixed(2)})²`).join(" + ")})…
+                = ({filas.map((f) => `(${f.k} − ${esperanza.toFixed(2)})²`).join(" + ")})…
               </>
             ),
-            explicacion: `Primero calculamos cada desvío al cuadrado: ${filasVar.map((f) => f.desvio.toFixed(4)).join(", ")}. Ninguno puede ser negativo, justamente por el cuadrado.`,
+            explicacion: `Primero calculamos cada desvío al cuadrado: ${filas.map((f) => f.desvio.toFixed(4)).join(", ")}. Ninguno puede ser negativo, justamente por el cuadrado.`,
           },
           {
             expresion: (
-              <>= {filasVar.map((f) => f.aporteVar.toFixed(4)).join(" + ")} = {varianza.toFixed(4)}</>
+              <>= {filas.map((f) => f.aporteVar.toFixed(4)).join(" + ")} = {varianza.toFixed(4)}</>
             ),
             explicacion:
               "Cada desvío al cuadrado multiplicado por su probabilidad, y todo sumado. En 2.8 vamos a ver que la fórmula rápida n·p·(1−p) da exactamente este mismo número, sin recorrer valor por valor.",

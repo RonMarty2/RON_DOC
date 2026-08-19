@@ -246,6 +246,28 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         <strong>El instrumento no mejora ni empeora: cambia la población.</strong>
       </div>
 
+      <Comprueba
+        pregunta="El servicio decide tamizar sólo a estudiantes que ya pidieron ayuda por malestar, donde la prevalencia ronda el 40%. Usa el MISMO cuestionario. ¿Qué pasa con el valor predictivo positivo?"
+        opciones={[
+          {
+            texto: "Sube mucho, aunque el instrumento no cambió en nada",
+            esCorrecta: true,
+            porQue:
+              "El valor predictivo depende de la prevalencia tanto como del test. Al tamizar una población donde la condición es tres veces más frecuente, un positivo pasa a significar algo muy distinto: cerca del 85% en lugar del 51%. El cuestionario es idéntico; lo que cambió es a quién se aplica.",
+          },
+          {
+            texto: "Se mantiene igual, porque el test es el mismo",
+            porQue:
+              "La sensibilidad y la especificidad sí se mantienen: son propiedades del instrumento. Pero el valor predictivo no es una propiedad del instrumento — mezcla el test con la población, y por eso se mueve.",
+          },
+          {
+            texto: "Baja, porque hay más casos posibles de confundir",
+            porQue:
+              "Al revés: con más enfermos en la población, los verdaderos positivos crecen y los falsos positivos disminuyen (hay menos gente sana disponible para generar falsas alarmas). El numerador sube y el denominador baja.",
+          },
+        ]}
+      />
+
       <Trampa
         error="la falacia de la tasa base — igualar P(D|+) con P(+|D)"
         porQue="ambas se describen coloquialmente como «la precisión del test», pero condicionan en direcciones opuestas. Y la prevalencia no figura en el manual del instrumento, así que se olvida."
@@ -256,6 +278,28 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         error="omitir la prevalencia porque no viene en el manual"
         porQue="los manuales técnicos reportan sensibilidad y especificidad, que son propiedades del test. La prevalencia es una propiedad de la población y hay que buscarla aparte."
         correccion="sin un valor de prevalencia de la población donde se va a aplicar, el valor predictivo simplemente no se puede calcular — y sin él, un resultado positivo no se puede interpretar."
+      />
+
+      <Comprueba
+        pregunta="En el cálculo, los dos sumandos del denominador dieron 0,110 y 0,105. ¿Qué representa cada uno y por qué importa que sean parecidos?"
+        opciones={[
+          {
+            texto: "Verdaderos y falsos positivos: como son casi iguales, la mitad de las alarmas viene de gente sana",
+            esCorrecta: true,
+            porQue:
+              "0,110 son los enfermos detectados y 0,105 los sanos con falsa alarma. Que sean casi idénticos es todo el misterio: hay siete veces más gente sana que enferma, así que aunque cada sana tenga poca chance de falsa alarma, en conjunto generan casi tantas alarmas como los enfermos reales.",
+          },
+          {
+            texto: "Sensibilidad y especificidad: son parecidos porque ambas valen 88%",
+            porQue:
+              "La sensibilidad y la especificidad son 0,880 cada una, no 0,110 y 0,105. Esos dos números son el producto de cada tasa por el tamaño de su población — ahí está la clave que la intuición se saltea.",
+          },
+          {
+            texto: "Los positivos y los negativos del tamizaje",
+            porQue:
+              "Los negativos no entran en este denominador: P(+) suma únicamente las dos formas de LLEGAR a un positivo. Los negativos quedan afuera del cálculo del valor predictivo positivo.",
+          },
+        ]}
       />
 
       <Puente etiquetaBoton="Ir a 2.7 · Variables aleatorias" onContinuar={onContinuar}>

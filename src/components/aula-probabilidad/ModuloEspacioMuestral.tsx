@@ -99,6 +99,28 @@ export function ModuloEspacioMuestral({
         ]}
       />
 
+      <Comprueba
+        pregunta="En el dado, el evento «sacar un número par» es {2, 4, 6}. ¿Qué tipo de evento es?"
+        opciones={[
+          {
+            texto: "Compuesto: agrupa varios puntos muestrales",
+            esCorrecta: true,
+            porQue:
+              "Contiene tres resultados distintos, y cualquiera de los tres lo hace ocurrir. Un evento es simple sólo cuando contiene un único punto muestral, como «sacar exactamente 4».",
+          },
+          {
+            texto: "Simple, porque describe una sola condición",
+            porQue:
+              "Lo que define simple o compuesto no es cómo se enuncia el evento, sino cuántos resultados contiene. «Ser par» suena a una sola cosa, pero abarca tres resultados del espacio muestral.",
+          },
+          {
+            texto: "Seguro, porque siempre puede salir un par",
+            porQue:
+              "El evento seguro es el que ocurre SIEMPRE, o sea el que contiene las seis caras. Con {2, 4, 6} puede perfectamente salir un impar y el evento no ocurre.",
+          },
+        ]}
+      />
+
       <Trampa
         error="confundir el universo con el espacio muestral"
         porQue="las dos palabras suenan a «todo lo que hay», y en los ejemplos sencillos casi coinciden."

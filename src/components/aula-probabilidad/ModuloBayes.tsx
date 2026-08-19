@@ -4,6 +4,8 @@ import { useState } from "react";
 import { tablaConfusion, modeloBayes } from "./calculos";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   Frac,
   V,
   Trampa,
@@ -80,6 +82,24 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         <Definicion termino="Posterior">
           La creencia ya <em>actualizada</em> con la evidencia. En diagnóstico
           es el valor predictivo positivo — el número que buscamos.
+          <Ejemplos titulo="Ver el mismo esquema en otros contextos">
+            <Ejemplo caso="Previa 1% · evidencia: test positivo · posterior 16%">
+              El problema original de Kahneman y Tversky. Casi todos responden
+              95%.
+            </Ejemplo>
+            <Ejemplo caso="Previa 12,5% · evidencia: cuestionario positivo · posterior 51,2%">
+              Nuestro caso: el del misterio con el que abrió el capítulo.
+            </Ejemplo>
+            <Ejemplo caso="Previa 40% · evidencia: mismo cuestionario · posterior ≈85%">
+              Idéntico instrumento, población distinta. Probalo con el
+              deslizador de abajo.
+            </Ejemplo>
+            <Ejemplo caso="Fuera de la clínica: un antivirus marca un archivo">
+              Si casi ningún archivo tiene virus, la mayoría de las alarmas
+              serán falsas por más bueno que sea el antivirus. Es la misma
+              matemática.
+            </Ejemplo>
+          </Ejemplos>
         </Definicion>
       </div>
 

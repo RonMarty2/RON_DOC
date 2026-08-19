@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ESTUDIANTES, CORTE_TAMIZAJE } from "@content/aula-probabilidad/dataset";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   MiniHistoria,
   Trampa,
   Puente,
@@ -54,6 +56,22 @@ export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
         Una prueba rápida y barata que separa a quienes conviene evaluar a
         fondo de quienes probablemente no lo necesitan. No diagnostica:
         filtra.
+        <Ejemplos titulo="Ver otros tamizajes conocidos">
+          <Ejemplo caso="El detector de metales del aeropuerto">
+            Suena para llaves y monedas. No dice que lleves un arma: dice a
+            quién revisar a mano.
+          </Ejemplo>
+          <Ejemplo caso="El test de embarazo casero">
+            Filtra rápido y barato; la confirmación la hace un profesional.
+          </Ejemplo>
+          <Ejemplo caso="La mamografía de rutina">
+            Marca imágenes sospechosas. El diagnóstico lo da la biopsia.
+          </Ejemplo>
+          <Ejemplo caso="Nuestro cuestionario de 9 preguntas">
+            Marca a quién conviene entrevistar. La entrevista clínica
+            diagnostica.
+          </Ejemplo>
+        </Ejemplos>
       </Definicion>
 
       <MiniHistoria titulo="Es el detector de metales del aeropuerto">

@@ -14,6 +14,8 @@ import {
 } from "./calculos";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   Frac,
   V,
   Trampa,
@@ -61,6 +63,26 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
         fracaso. <strong>Éxito no significa nada bueno</strong>: es sólo la
         etiqueta del resultado que se está contando. Acá, el éxito es dar
         positivo.
+        <Ejemplos titulo="Ver cuál distribución va en cada caso">
+          <Ejemplo caso="BINOMIAL — «tamizamos 20 estudiantes, ¿cuántos dan positivo?»">
+            Hay un número fijo de intentos (20) y cada uno sale positivo o no.
+          </Ejemplo>
+          <Ejemplo caso="BINOMIAL — «lanzo 10 monedas, ¿cuántas caras?»">
+            Mismo patrón: n fijo, dos resultados, p constante.
+          </Ejemplo>
+          <Ejemplo caso="POISSON — «¿cuántas solicitudes llegan esta semana?»">
+            No hay intentos: hay un intervalo de tiempo y una tasa media.
+          </Ejemplo>
+          <Ejemplo caso="POISSON — «¿cuántos errores tipográficos por página?»">
+            Eventos que aparecen a cierto ritmo sobre un espacio.
+          </Ejemplo>
+          <Ejemplo caso="HIPERGEOMÉTRICA — «audito 6 de 43 fichas, sin reponer»">
+            Población finita conocida, y cada extracción cambia lo que queda.
+          </Ejemplo>
+          <Ejemplo caso="HIPERGEOMÉTRICA — «saco 5 cartas de un mazo de 52»">
+            El mazo se va achicando: no hay reposición.
+          </Ejemplo>
+        </Ejemplos>
       </Definicion>
 
       <PasoTitulo numero={2} insignia={INSIGNIA}>

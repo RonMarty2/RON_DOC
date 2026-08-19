@@ -12,6 +12,8 @@ import {
 } from "./calculos";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   Frac,
   V,
   Trampa,
@@ -58,6 +60,22 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         vale 1; y aproximadamente el 68% de los casos cae a menos de una
         desviación estándar de la media, el 95% a menos de dos y el 99.7% a
         menos de tres.
+        <Ejemplos titulo="Ver variables que se comportan así">
+          <Ejemplo caso="Puntajes de CI:  µ = 100, σ = 15">
+            Construidos a propósito con esos parámetros, para que un valor se
+            lea de inmediato como distancia al promedio.
+          </Ejemplo>
+          <Ejemplo caso="Altura de adultos de un mismo sexo">
+            La mayoría cerca del promedio, pocos en los extremos.
+          </Ejemplo>
+          <Ejemplo caso="Errores de medición de un instrumento">
+            El caso que estudiaba Gauss cuando la formalizó, midiendo astros.
+          </Ejemplo>
+          <Ejemplo caso="Nuestro cuestionario:  µ = 6,32, σ = 4,64">
+            No es perfectamente normal, pero la aproximación reproduce el
+            conteo real con una diferencia de una milésima.
+          </Ejemplo>
+        </Ejemplos>
       </Definicion>
 
       <Campana media={media} desviacion={desviacion} />

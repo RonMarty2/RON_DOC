@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { binomial, proporcion, phq9Positivo } from "./calculos";
 import {
   Definicion,
+  Ejemplos,
+  Ejemplo,
   V,
   Trampa,
   Puente,
@@ -56,6 +58,21 @@ export function ModuloVariablesAleatorias({
         <Definicion termino="Discreta">
           Toma un número contable de valores, normalmente enteros. El puntaje
           del cuestionario (28 valores) o la cantidad de positivos en un grupo.
+          <Ejemplos titulo="Ver discretas y continuas">
+            <Ejemplo caso="DISCRETA — cantidad de positivos en un curso">
+              0, 1, 2… no existe «2,5 estudiantes positivos».
+            </Ejemplo>
+            <Ejemplo caso="DISCRETA — puntaje del cuestionario">
+              28 valores contables, del 0 al 27.
+            </Ejemplo>
+            <Ejemplo caso="CONTINUA — tiempo de reacción">
+              Entre 340 y 341 ms hay infinitos valores posibles, aunque el
+              aparato redondee.
+            </Ejemplo>
+            <Ejemplo caso="CONTINUA — peso, altura, temperatura">
+              Siempre se puede meter un valor entre otros dos.
+            </Ejemplo>
+          </Ejemplos>
         </Definicion>
         <Definicion termino="Continua">
           Puede tomar cualquier valor dentro de un intervalo. Un tiempo de

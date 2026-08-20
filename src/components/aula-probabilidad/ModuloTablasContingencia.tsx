@@ -10,6 +10,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   MiniHistoria,
   Desarrollo,
   Termino,
@@ -121,6 +124,15 @@ export function ModuloTablasContingencia({
         que cruzar lo que dijo el test contra lo que era verdad.
       </p>
 
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "Cruzar test contra verdad",
+          "Tres probabilidades, tres denominadores",
+          "Los tres números, calculados",
+        ]}
+      />
+
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         Cruzar lo que dijo el test contra lo que era verdad
       </PasoTitulo>
@@ -161,6 +173,11 @@ export function ModuloTablasContingencia({
         </Ejemplos>
       </Definicion>
 
+      <Hilo>
+        Elegí cada pregunta de la lista y mirá qué parte de la tabla se
+        enciende. Prestá atención a una sola cosa: qué cambia entre una y otra.
+      </Hilo>
+
       <TablaInteractiva
         t={t}
         pregunta={p}
@@ -171,6 +188,30 @@ export function ModuloTablasContingencia({
         denominador={denominador}
         resultado={resultado}
       />
+
+      <Cierre>
+        <p>
+          Si probaste las cinco preguntas habrás notado algo: el numerador
+          muchas veces es <strong>la misma celda</strong>. Lo que cambia de una
+          pregunta a otra es qué se toma como denominador — a veces las 200
+          fichas, a veces sólo una columna, a veces sólo una fila.
+        </p>
+        <p>
+          Ese es todo el contenido del apartado, y conviene decirlo antes de
+          ponerle nombres técnicos: <strong>lo que distingue a los tres tipos
+          de probabilidad es el denominador, no el numerador</strong>. Por eso
+          dos preguntas que suenan casi iguales pueden dar números muy
+          distintos, y por eso hay que traducir siempre la pregunta a palabras
+          antes de escribir la fracción.
+        </p>
+        <p>
+          La regla práctica es simple: <strong>lo que ya se sabe va al
+          denominador</strong>. Si ya sabemos que la persona tiene el
+          diagnóstico, el denominador son los que lo tienen. Si lo único que
+          sabemos es que dio positivo, el denominador son los que dieron
+          positivo.
+        </p>
+      </Cierre>
 
       <PasoTitulo numero={2} insignia={INSIGNIA}>
         Tres probabilidades, tres denominadores

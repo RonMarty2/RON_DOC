@@ -9,6 +9,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   MiniHistoria,
   Desarrollo,
   Termino,
@@ -43,6 +46,15 @@ export function ModuloVariablesAleatorias({
         Necesitamos describir el comportamiento completo de la variable{" "}
         <strong>de una sola vez</strong>.
       </p>
+
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "De eventos a variables",
+          "La distribución completa",
+          "Los dos números que la resumen",
+        ]}
+      />
 
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         De eventos sueltos a variables completas
@@ -97,7 +109,33 @@ export function ModuloVariablesAleatorias({
         todas juntas sumen exactamente 1.
       </Definicion>
 
+      <Hilo>
+        Mové el número de estudiantes y mirá cómo cambia la forma completa de
+        la distribución, no un valor suelto.
+      </Hilo>
+
       <ConstructorDistribucion p={p} />
+
+      <Cierre>
+        <p>
+          Fijate en dos cosas. La primera: las barras{" "}
+          <strong>siempre suman 1</strong>, sin importar cuántos estudiantes
+          elijas. No es casualidad, es la condición que define una
+          distribución: los valores posibles tienen que cubrir todo lo que puede
+          pasar.
+        </p>
+        <p>
+          La segunda: al aumentar <em>n</em> la distribución se corre a la
+          derecha y se ensancha. Con más estudiantes es razonable esperar más
+          positivos, y también hay más variedad de resultados posibles. Toda esa
+          información está en el dibujo completo, no en un número aislado.
+        </p>
+        <p>
+          Eso es lo que gana una distribución frente a una probabilidad suelta:{" "}
+          <strong>describe el comportamiento entero de la variable de una sola
+          vez</strong>, en lugar de responder una pregunta a la vez.
+        </p>
+      </Cierre>
 
       <PasoTitulo numero={3} insignia={INSIGNIA}>
         Los dos números que resumen una distribución
@@ -150,6 +188,19 @@ export function ModuloVariablesAleatorias({
         ]}
       />
 
+
+      <Trampa
+        error="esperar que la esperanza sea un valor observable"
+        porQue="el nombre sugiere «lo que se espera ver», y rechazamos por imposible un resultado como 0.43 estudiantes."
+        correccion="la esperanza es un promedio ponderado de largo plazo, no una predicción de un caso individual. Es el mismo tipo de abstracción que «2.3 hijos por familia»."
+      />
+
+      <Trampa
+        error="leer P(X = x) = 0 en una variable continua como imposibilidad"
+        porQue="en variables discretas, probabilidad cero sí significa que el evento no puede ocurrir."
+        correccion="en variables continuas sólo los intervalos tienen probabilidad no nula; el valor exacto siempre da cero. Toda pregunta sobre una variable continua se formula sobre un rango."
+      />
+
       <Comprueba
         pregunta="Alguien te muestra una distribución donde las probabilidades de todos los valores posibles suman 0,87. ¿Qué se puede concluir?"
         opciones={[
@@ -170,18 +221,6 @@ export function ModuloVariablesAleatorias({
               "En las continuas la condición también es que el área total bajo la curva valga 1. Ser continua no exime de sumar (o integrar) hasta 1.",
           },
         ]}
-      />
-
-      <Trampa
-        error="esperar que la esperanza sea un valor observable"
-        porQue="el nombre sugiere «lo que se espera ver», y rechazamos por imposible un resultado como 0.43 estudiantes."
-        correccion="la esperanza es un promedio ponderado de largo plazo, no una predicción de un caso individual. Es el mismo tipo de abstracción que «2.3 hijos por familia»."
-      />
-
-      <Trampa
-        error="leer P(X = x) = 0 en una variable continua como imposibilidad"
-        porQue="en variables discretas, probabilidad cero sí significa que el evento no puede ocurrir."
-        correccion="en variables continuas sólo los intervalos tienen probabilidad no nula; el valor exacto siempre da cero. Toda pregunta sobre una variable continua se formula sobre un rango."
       />
 
       <Puente etiquetaBoton="Ir a 2.8 · Distribuciones discretas" onContinuar={onContinuar}>

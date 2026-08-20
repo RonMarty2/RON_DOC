@@ -10,6 +10,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   MiniHistoria,
   Desarrollo,
   Termino,
@@ -49,6 +52,16 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         resultado del test, las personas se olvidaban de un dato que tenían
         delante — que la enfermedad es rara.
       </p>
+
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "Qué hace el teorema",
+          "Los dos caminos",
+          "El cálculo, línea por línea",
+          "Distintas poblaciones",
+        ]}
+      />
 
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         Qué hace exactamente el teorema
@@ -127,7 +140,36 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         Los dos caminos, contando personas
       </PasoTitulo>
 
+      <Hilo>
+        La fórmula viene enseguida, pero primero conviene ver el problema con
+        personas en vez de con decimales. Con 1.000 estudiantes se cuenta, no
+        se calcula.
+      </Hilo>
+
       <ArbolFrecuencias sens={sens} esp={esp} prev={prev} />
+
+      <Cierre>
+        <p>
+          Mirá las dos cajas naranjas: los verdaderos positivos y las falsas
+          alarmas son <strong>casi la misma cantidad de personas</strong>. Ese
+          es el corazón de todo el capítulo, y contado así no tiene ningún
+          misterio.
+        </p>
+        <p>
+          La razón es puramente aritmética. Hay siete veces más gente sana que
+          enferma. Aunque cada persona sana tenga apenas un 12% de chance de dar
+          falsa alarma, ese 12% aplicado a un grupo enorme produce casi tantas
+          alarmas como el 88% aplicado a un grupo chico.{" "}
+          <strong>Un porcentaje chico de un número grande puede superar a un
+          porcentaje grande de un número chico.</strong>
+        </p>
+        <p>
+          Por eso la prevalencia no es un dato de contexto que se pueda omitir:
+          es literalmente la mitad del cálculo. Y por eso la intuición falla —
+          al recibir un resultado positivo, la atención se va al 88% del
+          instrumento y nadie se acuerda de cuánta gente sana hay detrás.
+        </p>
+      </Cierre>
 
       <PasoTitulo numero={3} insignia={INSIGNIA}>
         El cálculo, línea por línea
@@ -254,7 +296,36 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         radicalmente.
       </p>
 
+      <Hilo>
+        Ahora movelo vos. Sensibilidad y especificidad quedan fijas en 88%: el
+        instrumento no cambia en ningún momento. Lo único que cambia es a quién
+        se le aplica.
+      </Hilo>
+
       <DeslizadorPrevalencia sens={sens} esp={esp} />
+
+      <Cierre>
+        <p>
+          El mismo cuestionario, sin modificar una sola pregunta, pasa de ser
+          casi inútil a ser bastante confiable. Con una prevalencia del 2% un
+          positivo es casi seguramente una falsa alarma; con 50%, casi
+          seguramente un caso real.
+        </p>
+        <p>
+          De acá sale una consecuencia práctica que vale la pena decir en voz
+          alta: <strong>un test validado en un contexto clínico no se puede
+          trasladar sin más a un tamizaje masivo</strong>. En el consultorio
+          llega gente que ya sospecha algo, así que la prevalencia es alta y el
+          positivo significa mucho. Tamizando a toda la universidad la
+          prevalencia es baja y el mismo positivo significa poco.
+        </p>
+        <p>
+          Y cambia también cómo hay que comunicar el resultado. Decirle a un
+          estudiante «diste positivo» cuando eso significa 51% no es lo mismo
+          que decírselo cuando significa 88%, aunque el papel que recibe sea
+          idéntico.
+        </p>
+      </Cierre>
 
       <div className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200">
         <strong>La consecuencia práctica:</strong> si el servicio tamiza a toda

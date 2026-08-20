@@ -14,6 +14,9 @@ import {
   MiniHistoria,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   Termino,
   Comprueba,
   PasoTitulo,
@@ -53,6 +56,15 @@ const RESPUESTAS = [
 export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
   return (
     <div className="flex flex-col gap-6">
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "Qué es un tamizaje",
+          "De dónde sale el puntaje",
+          "Contra qué se compara",
+        ]}
+      />
+
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         Qué es un tamizaje
       </PasoTitulo>
@@ -92,6 +104,11 @@ export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
       <PasoTitulo numero={2} insignia={INSIGNIA}>
         De dónde sale el puntaje
       </PasoTitulo>
+
+      <Hilo>
+        Antes de armar un puntaje conviene ver de dónde sale su estructura, y
+        para eso sirve algo que ya conocés.
+      </Hilo>
 
       <AnalogiaDados />
 
@@ -136,6 +153,13 @@ export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
         ]}
       />
 
+
+      <Trampa
+        error="leer un resultado positivo como si fuera un diagnóstico"
+        porQue="la palabra «positivo» suena a veredicto, y el número que acompaña al instrumento (88% de acierto) refuerza esa lectura."
+        correccion="un tamizaje decide a quién revisar, no quién está enfermo. El diagnóstico lo hace después un profesional en entrevista — y por eso el archivo tiene esa columna aparte."
+      />
+
       <Comprueba
         pregunta="¿Por qué las fichas incluyen una columna con el diagnóstico confirmado por un profesional, si ya tienen el puntaje del cuestionario?"
         opciones={[
@@ -156,12 +180,6 @@ export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
               "El cuestionario no distingue gravedad para decidir: aplica el mismo corte a todos. Su límite no es la gravedad del caso, sino que filtra en vez de diagnosticar.",
           },
         ]}
-      />
-
-      <Trampa
-        error="leer un resultado positivo como si fuera un diagnóstico"
-        porQue="la palabra «positivo» suena a veredicto, y el número que acompaña al instrumento (88% de acierto) refuerza esa lectura."
-        correccion="un tamizaje decide a quién revisar, no quién está enfermo. El diagnóstico lo hace después un profesional en entrevista — y por eso el archivo tiene esa columna aparte."
       />
 
       <Puente
@@ -492,6 +510,12 @@ function LasFichas() {
       </MiniHistoria>
 
       <ElOtroArchivo />
+
+      <Hilo>
+        Ya sabés qué mide el cuestionario, cómo se arma su puntaje y qué hay en
+        cada ficha. Falta lo principal, que es lo que hace que todo esto sea un
+        capítulo de probabilidad y no de psicometría.
+      </Hilo>
 
       <PuenteALaProbabilidad />
     </div>

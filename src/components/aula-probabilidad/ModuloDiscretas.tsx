@@ -20,6 +20,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   Desarrollo,
   Termino,
   Comprueba,
@@ -53,6 +56,14 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
         tres procesos generadores distintos, tres distribuciones distintas.
         Confundirlas produce números equivocados que parecen razonables.
       </p>
+
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "El ladrillo común",
+          "Elegir la distribución correcta",
+        ]}
+      />
 
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         El ladrillo común a las tres
@@ -89,7 +100,33 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
         Elegir la distribución correcta
       </PasoTitulo>
 
+      <Hilo>
+        Antes de mirar cualquier fórmula, la pregunta correcta es otra: cómo se
+        generaron los conteos. Esa pregunta —y no la variable— es la que elige
+        la herramienta.
+      </Hilo>
+
       <Selector tipo={tipo} setTipo={setTipo} />
+
+      <Cierre>
+        <p>
+          Las tres preguntas del servicio parecen la misma —«cuántos van a
+          ser»— pero se generan de formas distintas. En una hay un número fijo
+          de intentos; en otra hay un ritmo en el tiempo sin intentos; en la
+          tercera se saca de un montón que se va achicando.
+        </p>
+        <p>
+          Por eso la señal para reconocerlas no está en el resultado sino en el
+          enunciado: <strong>si dice cuántos intentos hay, es binomial; si da
+          una tasa por intervalo, es Poisson; si da una población finita de la
+          que se extrae sin reponer, es hipergeométrica</strong>.
+        </p>
+        <p>
+          Elegir mal no da un error evidente: da un número que parece
+          razonable. Ese es el peligro, y es la razón por la que este apartado
+          empieza por la pregunta y no por las fórmulas.
+        </p>
+      </Cierre>
 
       {tipo === "binomial" && <Binomial />}
       {tipo === "poisson" && <Poisson lambda={lambda} />}
@@ -120,6 +157,19 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
         ]}
       />
 
+
+      <Trampa
+        error="usar binomial donde corresponde hipergeométrica"
+        porQue="la binomial se enseña primero y su fórmula es más simple; además casi nunca se pregunta si hay reposición."
+        correccion={`preguntar si hay reposición y comparar el tamaño de la muestra con el de la población. Auditar 6 expedientes de ${positivos} es una fracción apreciable: cada uno que sacás cambia lo que queda.`}
+      />
+
+      <Trampa
+        error="buscar un «n» en un problema de Poisson"
+        porQue="es el reflejo de identificar n y p en todo problema de conteo."
+        correccion="si el enunciado da una tasa media por intervalo de tiempo o espacio, y no un número de ensayos, es Poisson. La señal es que no existe un n natural en el enunciado."
+      />
+
       <Comprueba
         pregunta="Se van a revisar 6 fichas de un archivo de 43, y las fichas NO se devuelven al montón. ¿Por qué no sirve la binomial acá?"
         opciones={[
@@ -140,18 +190,6 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
               "Sí lo son: cada ficha está completa o incompleta, que es exactamente un resultado dicotómico. El problema no es la variable, sino cómo se extrae la muestra.",
           },
         ]}
-      />
-
-      <Trampa
-        error="usar binomial donde corresponde hipergeométrica"
-        porQue="la binomial se enseña primero y su fórmula es más simple; además casi nunca se pregunta si hay reposición."
-        correccion={`preguntar si hay reposición y comparar el tamaño de la muestra con el de la población. Auditar 6 expedientes de ${positivos} es una fracción apreciable: cada uno que sacás cambia lo que queda.`}
-      />
-
-      <Trampa
-        error="buscar un «n» en un problema de Poisson"
-        porQue="es el reflejo de identificar n y p en todo problema de conteo."
-        correccion="si el enunciado da una tasa media por intervalo de tiempo o espacio, y no un número de ensayos, es Poisson. La señal es que no existe un n natural en el enunciado."
       />
 
       <Puente etiquetaBoton="Ir a 2.9 · Distribución normal" onContinuar={onContinuar}>

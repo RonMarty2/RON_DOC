@@ -18,6 +18,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   MiniHistoria,
   Desarrollo,
   Termino,
@@ -50,6 +53,16 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         necesitan ayuda.
       </p>
 
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "La campana",
+          "Estandarizar",
+          "Puente con las discretas",
+          "La decisión, en tus manos",
+        ]}
+      />
+
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         La campana
       </PasoTitulo>
@@ -78,7 +91,30 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         </Ejemplos>
       </Definicion>
 
+      <Hilo>
+        Antes de estandarizar nada, conviene mirar la curva y entender qué
+        representa el área que queda debajo.
+      </Hilo>
+
       <Campana media={media} desviacion={desviacion} />
+
+      <Cierre>
+        <p>
+          Lo primero que hay que fijar es qué representa la probabilidad acá,
+          porque cambia respecto de todo lo anterior:{" "}
+          <strong>no es la altura de la curva, es el área debajo</strong>. En
+          las distribuciones del apartado anterior la probabilidad era
+          directamente la altura de una barra; en una variable continua un
+          punto exacto tiene probabilidad cero, y sólo los intervalos tienen
+          área.
+        </p>
+        <p>
+          La regla 68–95–99,7 es la consecuencia práctica más útil. Basta con
+          saber la media y la desviación para ubicar cualquier puntaje: si está
+          a menos de una desviación, es de lo más común; si pasa de dos, ya está
+          entre el 5% más extremo del grupo.
+        </p>
+      </Cierre>
 
       <PasoTitulo numero={2} insignia={INSIGNIA}>
         Estandarizar: hablar en desviaciones
@@ -201,7 +237,47 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         intercambio.
       </p>
 
+      <Hilo>
+        Esto cierra el capítulo. Mové el corte y mirá qué le pasa, al mismo
+        tiempo, a todo lo que fuimos construyendo desde el primer apartado.
+      </Hilo>
+
       <SelectorDeCorte media={media} desviacion={desviacion} />
+
+      <Cierre>
+        <p>
+          Ninguna posición del corte mejora las dos direcciones a la vez. Al
+          bajarlo, casos que antes se escapaban pasan a detectarse — pero
+          también descartes correctos se convierten en falsas alarmas. Al
+          subirlo pasa exactamente lo contrario.
+        </p>
+        <p>
+          La razón es que los dos tipos de error están en{" "}
+          <strong>celdas distintas de la tabla</strong>, y mover el corte
+          traslada fichas de una celda a otra. No hay forma de vaciar las dos
+          celdas de error al mismo tiempo. Es un intercambio, no una mejora.
+        </p>
+        <p>
+          Y acá termina lo que la estadística puede decidir. Cuál de los dos
+          errores es más grave —dejar a alguien sin ayuda, o citar a alguien que
+          estaba bien— depende de la capacidad del servicio, de los recursos y
+          de una posición ética.{" "}
+          <strong>Esa parte no la resuelve ninguna fórmula.</strong>
+        </p>
+      </Cierre>
+
+
+      <Trampa
+        error="omitir la corrección de continuidad al aproximar una binomial con la normal"
+        porQue="se olvida que se está aproximando una variable de conteo (discreta) con una continua."
+        correccion="sumar o restar 0.5 al valor discreto según si el límite se incluye o no. Para P(X ≤ 49) se usa 49.5, no 49."
+      />
+
+      <Trampa
+        error="usar la aproximación normal con n pequeño o p extremo"
+        porQue="la aproximación se degrada cuando la binomial es muy asimétrica."
+        correccion="verificar que n·p y n·(1−p) superen ambos el valor 5 antes de usarla."
+      />
 
       <Comprueba
         pregunta="El comité propone bajar el punto de corte de 10 a 5 para «no dejar pasar a nadie». ¿Qué se gana y qué se pierde?"
@@ -224,18 +300,6 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
               "La sensibilidad y la especificidad NO son fijas: dependen de dónde se ponga el corte. El 88% de ambas corresponde específicamente al corte en 10, y se mueve apenas lo desplazás.",
           },
         ]}
-      />
-
-      <Trampa
-        error="omitir la corrección de continuidad al aproximar una binomial con la normal"
-        porQue="se olvida que se está aproximando una variable de conteo (discreta) con una continua."
-        correccion="sumar o restar 0.5 al valor discreto según si el límite se incluye o no. Para P(X ≤ 49) se usa 49.5, no 49."
-      />
-
-      <Trampa
-        error="usar la aproximación normal con n pequeño o p extremo"
-        porQue="la aproximación se degrada cuando la binomial es muy asimétrica."
-        correccion="verificar que n·p y n·(1−p) superen ambos el valor 5 antes de usarla."
       />
 
       <Puente etiquetaBoton="Volver al misterio del inicio" onContinuar={onContinuar}>

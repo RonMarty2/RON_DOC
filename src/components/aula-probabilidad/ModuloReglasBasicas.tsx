@@ -11,6 +11,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   MiniHistoria,
   Desarrollo,
   Termino,
@@ -52,6 +55,15 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         la regla de la suma.
       </p>
 
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "Cuándo se suman",
+          "Cuándo se multiplican",
+          "¿Son independientes?",
+        ]}
+      />
+
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         Cuándo se suman las probabilidades
       </PasoTitulo>
@@ -61,6 +73,11 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         <strong>alguno</strong> de los dos es la suma de sus probabilidades
         menos la de la intersección, que si no quedaría contada dos veces.
       </Definicion>
+
+      <Hilo>
+        Antes de la fórmula, mirá el dibujo: dos círculos que se solapan, y la
+        zona del medio que pertenece a los dos a la vez.
+      </Hilo>
 
       <VennInteractivo
         soloA={soloA}
@@ -155,7 +172,35 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         contra lo que realmente hay en el archivo.
       </p>
 
+      <Hilo>
+        La independencia también se ve en el dibujo, y es la forma más rápida
+        de entenderla: no se trata de si los círculos se tocan, sino de{" "}
+        <strong>cuánto</strong> se pisan comparado con lo que cabría esperar.
+      </Hilo>
+
       <VennIndependencia />
+
+      <Cierre>
+        <p>
+          Los dos círculos tienen siempre el mismo tamaño, porque las cantidades
+          de positivos no cambian: 43 en depresión y 21 en ansiedad. Lo único
+          que cambia entre las dos vistas es <strong>cuánto se superponen</strong>.
+        </p>
+        <p>
+          En la vista «si fueran independientes», la proporción de ansiedad
+          dentro del círculo azul es prácticamente la misma que en toda la
+          población. Eso es exactamente lo que significa ser independientes:
+          entrar al círculo de depresión <strong>no cambiaría nada</strong> de
+          lo que sabemos sobre la ansiedad.
+        </p>
+        <p>
+          En la vista real, en cambio, la proporción dentro del círculo azul se
+          dispara. Saber que alguien dio positivo en depresión{" "}
+          <strong>sí cambia</strong>, y mucho, lo que se espera de su ansiedad.
+          Por eso no son independientes, y por eso multiplicar sus
+          probabilidades daría un número equivocado.
+        </p>
+      </Cierre>
 
       <ComparacionIndependencia
         esperado={esperadoIndep}
@@ -239,6 +284,13 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         de la psicopatología.
       </div>
 
+
+      <Trampa
+        error="multiplicar probabilidades sin verificar la independencia"
+        porQue="la fórmula simplificada es más fácil de recordar y no exige datos adicionales."
+        correccion={`comparar siempre P(B|A) con P(B) antes de simplificar. Acá habría predicho ${esperadoIndep.toFixed(1)} casos dobles donde hay ${ambos}: un error de casi cuatro veces. En psicología, dos variables clínicas rara vez son independientes.`}
+      />
+
       <Comprueba
         pregunta="Dar positivo y dar negativo en el mismo cuestionario no pueden ocurrir juntos. ¿Son eventos independientes?"
         pista="Independiente significa que saber uno no cambia la probabilidad del otro. Probá aplicar esa definición."
@@ -260,12 +312,6 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
               "La prevalencia no interviene: la relación entre un evento y su complemento es lógica, no empírica. Saber que ocurrió uno garantiza que el otro no, sea cual sea la población.",
           },
         ]}
-      />
-
-      <Trampa
-        error="multiplicar probabilidades sin verificar la independencia"
-        porQue="la fórmula simplificada es más fácil de recordar y no exige datos adicionales."
-        correccion={`comparar siempre P(B|A) con P(B) antes de simplificar. Acá habría predicho ${esperadoIndep.toFixed(1)} casos dobles donde hay ${ambos}: un error de casi cuatro veces. En psicología, dos variables clínicas rara vez son independientes.`}
       />
 
       <Puente etiquetaBoton="Ir a 2.6 · Teorema de Bayes" onContinuar={onContinuar}>

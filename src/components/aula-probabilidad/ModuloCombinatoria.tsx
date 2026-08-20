@@ -10,6 +10,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   MiniHistoria,
   Desarrollo,
   Termino,
@@ -45,6 +48,16 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
         son muchísimos, hace falta un criterio, porque enumerar es imposible.
       </p>
 
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "El factorial",
+          "¿Importa el orden?",
+          "Elegir 5 entre 43",
+          "Y si el orden importara",
+        ]}
+      />
+
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         El ladrillo de base: el factorial
       </PasoTitulo>
@@ -59,7 +72,26 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
         .
       </Definicion>
 
+      <Hilo>
+        Movelo y mirá el número. Lo interesante no es cuánto vale, sino la
+        velocidad a la que crece.
+      </Hilo>
+
       <FactorialCreciente />
+
+      <Cierre>
+        <p>
+          Con 5 elementos hay 120 ordenamientos, algo que todavía se podría
+          listar a mano si hiciera falta. Con 10 son más de tres millones y
+          medio. Con 20, más de dos trillones.
+        </p>
+        <p>
+          Ese crecimiento es la razón de existir de todo el apartado.{" "}
+          <strong>Enumerar deja de ser una opción muy rápido</strong>, así que
+          hace falta una forma de contar posibilidades sin escribirlas una por
+          una. Eso es exactamente lo que hacen las dos fórmulas que vienen.
+        </p>
+      </Cierre>
 
       <PasoTitulo numero={2} insignia={INSIGNIA}>
         La única pregunta que decide: ¿importa el orden?
@@ -97,7 +129,35 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
         </Definicion>
       </div>
 
+      <Hilo>
+        Con un conjunto chico todavía se pueden listar todas las
+        posibilidades, así que aprovechemos para ver la diferencia con los
+        propios ojos antes de confiar en una fórmula.
+      </Hilo>
+
       <Enumerador />
+
+      <Cierre>
+        <p>
+          Con el orden apagado, cada grupo aparece una sola vez: está AB pero no
+          BA, porque son el mismo grupo escrito distinto. Con el orden
+          encendido aparecen los dos, porque A→B y B→A son asignaciones
+          distintas.
+        </p>
+        <p>
+          De ahí sale la relación entre las dos fórmulas. Cada grupo de{" "}
+          <em>r</em> elementos se puede escribir de <em>r</em>! maneras, así que
+          la permutación cuenta cada grupo <em>r</em>! veces.{" "}
+          <strong>La combinación es la permutación dividida entre esas
+          repeticiones</strong> — no son dos ideas distintas, es la misma con y
+          sin las repeticiones.
+        </p>
+        <p>
+          Y la pregunta que decide cuál usar no está en la fórmula sino en el
+          problema: si intercambiar dos seleccionados cambia el resultado
+          práctico, el orden importa.
+        </p>
+      </Cierre>
 
       <MiniHistoria titulo="Una sale de la otra">
         Todo grupo de <V>r</V> elementos admite <V>r</V>! ordenamientos
@@ -241,6 +301,19 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
         ]}
       />
 
+
+      <Trampa
+        error="usar permutación cuando el orden no importa"
+        porQue="la permutación suele enseñarse primero y queda como reflejo; además su fórmula es más corta. Reportar 115.511.760 grupos posibles en lugar de 962.598 infla el resultado 120 veces."
+        correccion="aplicar la prueba de intercambio: si permutar dos seleccionados da el mismo resultado práctico, es combinación."
+      />
+
+      <Trampa
+        error="intentar calcular los factoriales completos"
+        porQue="se aplica la fórmula literalmente, sin simplificar. 43! no entra en una calculadora común y no hace ninguna falta."
+        correccion="expandir sólo el factorial mayor hasta el punto donde se cancela con el del denominador, como hicimos en el paso 2 del desarrollo."
+      />
+
       <Comprueba
         pregunta={`¿Por qué P(43,5) = ${pr.toLocaleString("es")} es exactamente 120 veces mayor que C(43,5) = ${c.toLocaleString("es")}?`}
         opciones={[
@@ -261,18 +334,6 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
               "Las dos usan 43! arriba. La diferencia está abajo: la combinación divide además entre r! = 5! = 120, y eso es exactamente el factor entre ambas.",
           },
         ]}
-      />
-
-      <Trampa
-        error="usar permutación cuando el orden no importa"
-        porQue="la permutación suele enseñarse primero y queda como reflejo; además su fórmula es más corta. Reportar 115.511.760 grupos posibles en lugar de 962.598 infla el resultado 120 veces."
-        correccion="aplicar la prueba de intercambio: si permutar dos seleccionados da el mismo resultado práctico, es combinación."
-      />
-
-      <Trampa
-        error="intentar calcular los factoriales completos"
-        porQue="se aplica la fórmula literalmente, sin simplificar. 43! no entra en una calculadora común y no hace ninguna falta."
-        correccion="expandir sólo el factorial mayor hasta el punto donde se cancela con el del denominador, como hicimos en el paso 2 del desarrollo."
       />
 
       <Puente etiquetaBoton="Ir a 2.5 · Reglas básicas" onContinuar={onContinuar}>

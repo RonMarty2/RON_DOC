@@ -260,15 +260,16 @@ function MonedaConvergente() {
   const [caras, setCaras] = useState(0);
   const [tiradas, setTiradas] = useState(0);
   const [ultima, setUltima] = useState<"cara" | "sello" | null>(null);
-  const animRef = useRef<number | null>(null);
+  const [girando, setGirando] = useState(false);
+  const girandoRef = useRef(false);
+  const limpiarRef = useRef<(() => void) | null>(null);
 
-  useEffect(() => {
-    return () => {
-      if (animRef.current !== null) cancelAnimationFrame(animRef.current);
-    };
-  }, []);
+  useEffect(() => () => limpiarRef.current?.(), []);
 
   function tirar(n: number) {
+    if (girandoRef.current) return;
+
+    // El resultado se calcula ya; la animación es sólo presentación.
     let c = 0;
     let ultimaTirada: "cara" | "sello" = "cara";
     for (let i = 0; i < n; i++) {
@@ -276,12 +277,56 @@ function MonedaConvergente() {
       if (esCara) c++;
       ultimaTirada = esCara ? "cara" : "sello";
     }
-    setCaras((x) => x + c);
-    setTiradas((x) => x + n);
-    setUltima(ultimaTirada);
+
+    const aplicar = () => {
+      setCaras((x) => x + c);
+      setTiradas((x) => x + n);
+      setUltima(ultimaTirada);
+    };
+
+    // Con una sola tirada se anima el giro; con lotes grandes no tendría
+    // sentido hacer esperar.
+    if (n > 1) {
+      aplicar();
+      return;
+    }
+
+    girandoRef.current = true;
+    setGirando(true);
+    let vueltas = 0;
+    let terminado = false;
+
+    const finalizar = () => {
+      if (terminado) return;
+      terminado = true;
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+      limpiarRef.current = null;
+      aplicar();
+      girandoRef.current = false;
+      setGirando(false);
+    };
+
+    const id = window.setInterval(() => {
+      vueltas++;
+      if (vueltas >= 6) finalizar();
+      else setUltima(entero(0, 1) === 0 ? "cara" : "sello");
+    }, 70);
+
+    // Red de seguridad por si el navegador pausa los temporizadores.
+    const seguro = window.setTimeout(finalizar, 1200);
+
+    limpiarRef.current = () => {
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+    };
   }
 
   function reset() {
+    limpiarRef.current?.();
+    limpiarRef.current = null;
+    girandoRef.current = false;
+    setGirando(false);
     setCaras(0);
     setTiradas(0);
     setUltima(null);
@@ -300,8 +345,9 @@ function MonedaConvergente() {
             <button
               key={n}
               type="button"
+              disabled={girando}
               onClick={() => tirar(n)}
-              className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
+              className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
             >
               Tirar {n.toLocaleString("es")}
             </button>
@@ -317,7 +363,12 @@ function MonedaConvergente() {
       </div>
 
       <div className="mt-5 flex justify-center">
-        <div className="grid h-16 w-16 place-items-center rounded-full border-2 border-amber-500 bg-amber-50 text-2xl font-semibold text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
+        <div
+          className={
+            "grid h-16 w-16 place-items-center rounded-full border-2 border-amber-500 bg-amber-50 text-2xl font-semibold text-amber-700 transition-transform duration-100 dark:bg-amber-950/30 dark:text-amber-300 " +
+            (girando ? "scale-90" : "scale-100")
+          }
+        >
           {ultima === null ? "?" : ultima === "cara" ? "C" : "S"}
         </div>
       </div>

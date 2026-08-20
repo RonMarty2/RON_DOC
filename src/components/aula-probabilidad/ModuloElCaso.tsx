@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ESTUDIANTES,
   CORTE_TAMIZAJE,
   DEMANDA_SEMANAL,
 } from "@content/aula-probabilidad/dataset";
+import { entero } from "./aleatorio";
 import {
   Definicion,
   Ejemplos,
@@ -91,6 +92,8 @@ export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
       <PasoTitulo numero={2} insignia={INSIGNIA}>
         De dónde sale el puntaje
       </PasoTitulo>
+
+      <AnalogiaDados />
 
       <ArmarPuntaje />
 
@@ -792,6 +795,188 @@ function ElOtroArchivo() {
         que llegan con el tiempo. Esa diferencia va a decidir qué herramienta
         corresponde usar, en el apartado 2.8.
       </p>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* La analogía: cada pregunta es un dado de cuatro caras               */
+/* ------------------------------------------------------------------ */
+
+const OPCIONES_DADO = [
+  { valor: 0, texto: "Ningún día" },
+  { valor: 1, texto: "Varios días" },
+  { valor: 2, texto: "Más de la mitad" },
+  { valor: 3, texto: "Casi todos los días" },
+];
+
+/**
+ * El puente entre los dados del apartado 2.1 y el cuestionario. Responder el
+ * cuestionario ES tirar nueve dados de cuatro caras y sumar: la misma
+ * maquinaria, otro contexto. Con esta analogía el rango 0–27 deja de ser un
+ * dato que hay que memorizar.
+ */
+function AnalogiaDados() {
+  const [tirados, setTirados] = useState<number[] | null>(null);
+  const [girando, setGirando] = useState(false);
+  const girandoRef = useRef(false);
+  const limpiarRef = useRef<(() => void) | null>(null);
+
+  useEffect(() => () => limpiarRef.current?.(), []);
+
+  function tirarNueve() {
+    if (girandoRef.current) return;
+    girandoRef.current = true;
+    setGirando(true);
+
+    const final = Array.from({ length: 9 }, () => entero(0, 3));
+    let vueltas = 0;
+    let terminado = false;
+
+    const finalizar = () => {
+      if (terminado) return;
+      terminado = true;
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+      limpiarRef.current = null;
+      setTirados(final);
+      girandoRef.current = false;
+      setGirando(false);
+    };
+
+    const id = window.setInterval(() => {
+      vueltas++;
+      if (vueltas >= 8) finalizar();
+      else setTirados(Array.from({ length: 9 }, () => entero(0, 3)));
+    }, 70);
+    const seguro = window.setTimeout(finalizar, 1500);
+    limpiarRef.current = () => {
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+    };
+  }
+
+  const suma = tirados ? tirados.reduce((s, v) => s + v, 0) : null;
+
+  return (
+    <div className="rounded-2xl border-2 border-slate-300 bg-slate-50/60 p-5 dark:border-slate-600 dark:bg-slate-900/60 sm:p-6">
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+        La analogía que conecta todo
+      </p>
+      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+        Cada pregunta es un dado. Cada opción, una cara.
+      </h4>
+
+      <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        Un dado común tiene <strong>seis caras</strong> y al tirarlo sale una.
+        Cada pregunta del cuestionario tiene <strong>cuatro opciones</strong> y
+        al responderla sale una. Es la misma estructura: un experimento con un
+        conjunto conocido de resultados posibles.
+      </p>
+
+      {/* El dado de cuatro caras */}
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Un dado común
+          </p>
+          <p className="mt-2 text-2xl">⚀ ⚁ ⚂ ⚃ ⚄ ⚅</p>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            6 caras · sale 1, 2, 3, 4, 5 o 6
+          </p>
+        </div>
+        <div className="rounded-xl border border-blue-300 bg-blue-50/50 p-4 dark:border-blue-700 dark:bg-blue-950/30">
+          <p className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            Una pregunta del cuestionario
+          </p>
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {OPCIONES_DADO.map((o) => (
+              <span
+                key={o.valor}
+                className="rounded-md bg-white px-2 py-1 text-xs dark:bg-slate-800"
+              >
+                <strong className="tabular-nums">{o.valor}</strong>{" "}
+                <span className="text-slate-500 dark:text-slate-400">
+                  {o.texto}
+                </span>
+              </span>
+            ))}
+          </div>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            4 caras · sale 0, 1, 2 o 3
+          </p>
+        </div>
+      </div>
+
+      <p className="mt-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        Y el cuestionario tiene nueve preguntas, así que responderlo es{" "}
+        <strong>tirar nueve dados de cuatro caras y sumar lo que salga</strong>.
+        Probalo:
+      </p>
+
+      <button
+        type="button"
+        disabled={girando}
+        onClick={tirarNueve}
+        className="mt-3 rounded-full bg-slate-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-600 dark:hover:bg-slate-500"
+      >
+        🎲 Tirar los nueve dados
+      </button>
+
+      <div className="mt-4 flex flex-wrap justify-center gap-1.5">
+        {Array.from({ length: 9 }, (_, i) => {
+          const v = tirados?.[i];
+          return (
+            <div
+              key={i}
+              className={
+                "grid h-11 w-11 place-content-center rounded-lg border-2 text-center transition " +
+                (v === undefined
+                  ? "border-dashed border-slate-300 dark:border-slate-600"
+                  : "border-blue-500 bg-blue-50 dark:bg-blue-950/40")
+              }
+            >
+              <span className="font-serif text-lg font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+                {v ?? "?"}
+              </span>
+              <span className="text-[9px] text-slate-400">P{i + 1}</span>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-4 rounded-xl bg-white px-4 py-3 text-sm dark:bg-slate-900">
+        {suma === null ? (
+          <p className="text-slate-600 dark:text-slate-400">
+            Tirá los nueve y mirá cuánto suman. El mínimo posible es 9 × 0 ={" "}
+            <strong>0</strong>; el máximo, 9 × 3 = <strong>27</strong>. De ahí
+            sale el rango del cuestionario — no hay que memorizarlo.
+          </p>
+        ) : (
+          <>
+            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+              {tirados!.join(" + ")} = {suma}
+            </p>
+            <p className="mt-1 leading-relaxed text-slate-600 dark:text-slate-400">
+              Ese {suma} es un puntaje posible del cuestionario, igual que un 4
+              es un resultado posible de un dado.{" "}
+              {suma >= CORTE_TAMIZAJE
+                ? `Como ${suma} llega al corte de ${CORTE_TAMIZAJE}, esta persona quedaría marcada para entrevistar.`
+                : `Como ${suma} no llega al corte de ${CORTE_TAMIZAJE}, esta persona pasaría sin marcarse.`}
+            </p>
+          </>
+        )}
+      </div>
+
+      <MiniHistoria titulo="Dónde se rompe la analogía">
+        En un dado las seis caras son <strong>igual de probables</strong>. En
+        el cuestionario no: mucha gente responde 0 y poca responde 3, así que
+        las cuatro caras están cargadas de forma desigual. Por eso la
+        probabilidad del cuestionario <strong>no se puede calcular contando
+        caras</strong> — hay que contar personas, y eso es exactamente la
+        diferencia entre las dos primeras formas de probabilidad del apartado
+        2.2.
+      </MiniHistoria>
     </div>
   );
 }

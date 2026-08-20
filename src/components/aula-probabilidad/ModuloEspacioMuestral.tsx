@@ -147,9 +147,11 @@ export function ModuloEspacioMuestral({
       <UnDadoInteractivo />
 
       <MiniHistoria titulo="Universo ≠ espacio muestral">
-        El universo son las personas u objetos (ej. 2,400 estudiantes). El
-        espacio muestral son los resultados posibles de un experimento hecho
-        sobre ellos (ej. los 28 puntajes de un test). No es lo mismo.
+        El universo son las personas: los 2.400 estudiantes de la universidad
+        del caso, o las 200 que respondieron el cuestionario. El espacio
+        muestral son los <strong>resultados posibles</strong> del experimento
+        que se les hace: los 28 puntajes que puede devolver el cuestionario.
+        Personas de un lado, resultados del otro. No es lo mismo.
       </MiniHistoria>
 
       <PasoTitulo numero={2} insignia={INSIGNIA}>
@@ -176,19 +178,19 @@ export function ModuloEspacioMuestral({
       <TamizajeInteractivo />
 
       <Comprueba
-        pregunta="El servicio va a tamizar a los 2.400 estudiantes de la universidad con el cuestionario. ¿Cuál es el espacio muestral de ese experimento?"
+        pregunta="Tomamos una de las 200 fichas al azar y miramos su puntaje del cuestionario. ¿Cuál es el espacio muestral de ese experimento?"
         pista="Preguntate qué se está listando: ¿personas, o resultados?"
         opciones={[
           {
             texto: "Los 28 puntajes posibles, de 0 a 27",
             esCorrecta: true,
             porQue:
-              "El experimento es «aplicar el cuestionario a alguien», y sus resultados posibles son los puntajes. El espacio muestral siempre lista RESULTADOS, no personas.",
+              "El experimento es «mirar el puntaje de alguien», y sus resultados posibles son los puntajes. El espacio muestral siempre lista RESULTADOS, no personas. Ojo: son 28 valores posibles aunque las fichas sean 200 — varias fichas comparten el mismo puntaje.",
           },
           {
-            texto: "Los 2.400 estudiantes",
+            texto: "Las 200 fichas",
             porQue:
-              "Ése es el universo o población: el conjunto de personas sobre las que queremos concluir. No es lo mismo que el conjunto de resultados posibles del experimento — confundirlos es el primer error del capítulo.",
+              "Ése es el universo del que sacamos la ficha: el conjunto de personas. No es lo mismo que el conjunto de resultados posibles del experimento — confundirlos es el primer error del capítulo.",
           },
           {
             texto: "Dar positivo o dar negativo",

@@ -1,7 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ESTUDIANTES, CORTE_TAMIZAJE } from "@content/aula-probabilidad/dataset";
+import {
+  ESTUDIANTES,
+  CORTE_TAMIZAJE,
+  DEMANDA_SEMANAL,
+} from "@content/aula-probabilidad/dataset";
 import {
   Definicion,
   Ejemplos,
@@ -358,6 +362,8 @@ function LasFichas() {
 
   return (
     <div className="flex flex-col gap-4">
+      <DeDondeSalenLas200 />
+
       <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
@@ -372,11 +378,11 @@ function LasFichas() {
           </button>
         </div>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-          Cada uno de los {total} estudiantes tiene una ficha con tres datos.
-          Así se lee la del estudiante #{f.id}:
+          Cada uno de los {total} estudiantes tiene una ficha con cuatro
+          datos. Así se lee la del estudiante #{f.id}:
         </p>
 
-        {/* Los tres datos, explicados en palabras */}
+        {/* Los cuatro datos, explicados en palabras */}
         <div className="mt-4 flex flex-col gap-3">
           <FilaFicha
             titulo="Puntaje de depresión"
@@ -401,6 +407,17 @@ function LasFichas() {
                 : `${f.gad7} no llega al corte de ${CORTE_TAMIZAJE}. Reportó algunos síntomas, pero no los suficientes para que el filtro lo marque.`
             }
             positivo={dioPositivoAns}
+          />
+          <FilaFicha
+            titulo="Expediente"
+            valor={f.expedienteCompleto ? "OK" : "!"}
+            rango="completo o incompleto"
+            lectura={
+              f.expedienteCompleto
+                ? "El legajo administrativo de este estudiante está completo: no le falta ningún dato ni firma."
+                : "A este legajo le falta algún dato. No afecta al cuestionario, pero sí complica el seguimiento — y en el apartado 2.8 vamos a auditar justamente cuántos expedientes incompletos hay."
+            }
+            positivo={!f.expedienteCompleto}
           />
           <FilaFicha
             titulo="Diagnóstico confirmado"
@@ -470,6 +487,8 @@ function LasFichas() {
         otro? Esa pregunta se llama <strong>independencia</strong>, y la vamos a
         resolver en el apartado 2.5.
       </MiniHistoria>
+
+      <ElOtroArchivo />
 
       <PuenteALaProbabilidad />
     </div>
@@ -663,6 +682,115 @@ function PuenteALaProbabilidad() {
         pregunta se complica — cuando hay que cruzar dos variables, cuando hay
         demasiadas combinaciones para contarlas a mano, y cuando la pregunta se
         da vuelta y ya no se puede contar directo.
+      </p>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* De dónde salen las 200: universidad contra fichas                   */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Los dos números del caso —2.400 y 200— tienen que quedar claros de entrada.
+ * Uno es la universidad entera; el otro, los que efectivamente respondieron el
+ * cuestionario. Confundirlos arruina todo lo que viene, y la distinción es
+ * justamente la de universo contra muestra.
+ */
+function DeDondeSalenLas200() {
+  const total = ESTUDIANTES.length;
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        Dos números que no hay que mezclar
+      </h4>
+
+      <div className="mt-4 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
+        <div className="flex-1 rounded-xl border-2 border-slate-300 p-4 text-center dark:border-slate-600">
+          <p className="font-serif text-3xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            2.400
+          </p>
+          <p className="mt-1 text-sm font-semibold text-slate-700 dark:text-slate-300">
+            estudiantes tiene la universidad
+          </p>
+          <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+            Es la población completa sobre la que al servicio le gustaría
+            concluir algo. No los conoce a todos.
+          </p>
+        </div>
+
+        <div className="flex items-center justify-center px-2 text-slate-400">
+          <span className="text-2xl">→</span>
+        </div>
+
+        <div className="flex-1 rounded-xl border-2 border-blue-500 bg-blue-50/50 p-4 text-center dark:bg-blue-950/30">
+          <p className="font-serif text-3xl font-semibold tabular-nums text-blue-700 dark:text-blue-300">
+            {total}
+          </p>
+          <p className="mt-1 text-sm font-semibold text-slate-700 dark:text-slate-300">
+            respondieron el cuestionario
+          </p>
+          <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+            Y además fueron entrevistados por un profesional. Son{" "}
+            <strong>las {total} fichas que tenemos</strong>, y de acá sale cada
+            número del capítulo.
+          </p>
+        </div>
+      </div>
+
+      <p className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+        Cada vez que en esta herramienta veas un porcentaje, sale de contar
+        entre esas <strong>{total} fichas</strong> — nunca entre las 2.400. Los
+        2.400 aparecen sólo cuando la pregunta es sobre la universidad entera, y
+        en ese caso se dice explícitamente.
+      </p>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* El segundo archivo: cuánta gente pide atención cada semana          */
+/* ------------------------------------------------------------------ */
+
+/**
+ * La demanda semanal es el segundo conjunto de datos del caso y se usa recién
+ * en 2.8 (Poisson). Se presenta acá para que no aparezca de la nada.
+ */
+function ElOtroArchivo() {
+  const total = DEMANDA_SEMANAL.reduce((s, x) => s + x, 0);
+  const semanas = DEMANDA_SEMANAL.length;
+  const maximo = Math.max(...DEMANDA_SEMANAL);
+
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        Y hay un segundo archivo, mucho más chico
+      </h4>
+      <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+        Además de las fichas, el servicio anota cuántas personas piden atención
+        cada semana. Son {semanas} semanas seguidas, {total} solicitudes en
+        total. No dice nada de quién pidió: sólo cuántos.
+      </p>
+
+      <div className="mt-4 flex items-end gap-1" style={{ height: 70 }}>
+        {DEMANDA_SEMANAL.map((v, i) => (
+          <div
+            key={i}
+            title={`Semana ${i + 1}: ${v} solicitudes`}
+            className="w-full flex-1 rounded-t bg-slate-300 dark:bg-slate-600"
+            style={{ height: `${(v / maximo) * 60}px` }}
+          />
+        ))}
+      </div>
+      <p className="mt-1 text-center text-xs text-slate-400">
+        las {semanas} semanas, una barra cada una
+      </p>
+
+      <p className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+        Estos datos son de otra naturaleza: no hay un número fijo de intentos
+        como en el cuestionario, hay un <strong>ritmo</strong> de solicitudes
+        que llegan con el tiempo. Esa diferencia va a decidir qué herramienta
+        corresponde usar, en el apartado 2.8.
       </p>
     </div>
   );

@@ -382,7 +382,7 @@ function Campana({ media, desviacion }: { media: number; desviacion: number }) {
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
           La regla 68 – 95 – 99.7
         </h4>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {[1, 2, 3].map((b) => (
             <button
               key={b}

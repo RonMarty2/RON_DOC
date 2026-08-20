@@ -44,6 +44,12 @@
 | 2026-08-19 | **`Termino` reposicionado con `position: fixed`**, y se cierra al desplazarse, al tocar fuera, al girar la pantalla o con Escape | En Android quedaba abierto al hacer scroll y se despegaba de la palabra |
 | 2026-08-19 | **Proyecto listo para Android Studio** con Capacitor: `npm run build:android` y `npm run android:abrir`; carpeta `android/` versionada; instrucciones en `LEEME-ANDROID.md` | El sitio se va a distribuir además como app nativa. El build de Android fuerza el prefijo de ruta vacío, porque dentro de la app no existe `/RON_DOC` |
 | 2026-08-19 | **Recordar el último apartado visitado** en el almacenamiento del navegador, con aviso al retomar y botón «empezar desde el inicio» | Para probar la herramienta había que navegar todo el recorrido cada vez. Arranca siempre en el preámbulo la primera vez (y así lo ve cualquier estudiante nuevo), pero al volver retoma donde se quedó |
+| 2026-08-19 | **Auditoría de responsividad** para Android: se revisaron los 11 apartados buscando anchos fijos, tablas sin desplazamiento, grillas no responsivas y objetivos táctiles chicos | La herramienta se va a usar en celular y como app nativa, no sólo en proyector |
+| 2026-08-19 | Las **barras de distribución** (2.7 y 2.8) tenían `flex-1` sin mínimo: con n = 40 quedaban de 7,8 px en una pantalla de 360 px, ilegibles. Ahora tienen ancho mínimo y el gráfico se desplaza en horizontal | Era el peor problema de la auditoría: el gráfico principal de dos apartados quedaba inutilizable en celular |
+| 2026-08-19 | Etiquetas de deslizador (`w-28`/`w-32`) **apiladas sobre el control en móvil** | Se comían un tercio del ancho y dejaban el deslizador sin recorrido útil |
+| 2026-08-19 | Tabla 2×2 de 2.3 con celdas más chicas en móvil; fila de frecuencias del dado más angosta; botoneras con ajuste de línea | Ajustes para que nada quede al borde del desbordamiento en 360 px |
+| 2026-08-19 | **Service worker desactivado dentro de la app nativa**, y se da de baja si quedó uno de una versión anterior | Dentro de la app los archivos ya viajan empaquetados: el service worker no aporta nada y su caché sobrevive a la actualización, con lo que serviría la versión vieja del contenido |
+| 2026-08-19 | `viewportFit: "cover"` en el viewport | Para que el contenido llegue a los bordes en celulares con muesca |
 
 ## Estado actual — Unidad 2 COMPLETA
 

@@ -199,7 +199,7 @@ function ArmarPuntaje() {
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
           Respondé el cuestionario y mirá cómo se arma el puntaje
         </h4>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => preset(0)}

@@ -317,7 +317,7 @@ function UnDadoInteractivo() {
           const pct = total > 0 ? (c / total) * 100 : 0;
           return (
             <div key={cara} className="flex items-center gap-3">
-              <span className="w-8 shrink-0 text-center text-2xl" aria-hidden>
+              <span className="w-6 shrink-0 text-center text-xl sm:w-8 sm:text-2xl" aria-hidden>
                 {CARAS_DADO[cara - 1]}
               </span>
               <div className="relative h-4 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
@@ -332,7 +332,7 @@ function UnDadoInteractivo() {
                   title="Valor teórico: 16.7%"
                 />
               </div>
-              <span className="w-24 shrink-0 text-right text-xs tabular-nums text-slate-600 dark:text-slate-400">
+              <span className="w-16 shrink-0 text-right text-xs tabular-nums text-slate-600 sm:w-24 dark:text-slate-400">
                 {c} · {pct.toFixed(1)}%
               </span>
             </div>

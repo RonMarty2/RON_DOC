@@ -308,7 +308,7 @@ function VennInteractivo({
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
           Los dos cuestionarios, en un diagrama
         </h4>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => setModo("union")}

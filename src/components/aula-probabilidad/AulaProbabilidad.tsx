@@ -9,6 +9,7 @@ const CLAVE_PROGRESO = "aula-probabilidad:ultimo-apartado";
 import { verificarVerdades } from "./calculos";
 import { ModuloMisterio } from "./ModuloMisterio";
 import { ModuloElCaso } from "./ModuloElCaso";
+import { PanelDelCaso } from "./PanelDelCaso";
 import { ModuloEspacioMuestral } from "./ModuloEspacioMuestral";
 import { ModuloTiposProbabilidad } from "./ModuloTiposProbabilidad";
 import { ModuloTablasContingencia } from "./ModuloTablasContingencia";
@@ -267,6 +268,9 @@ export function AulaProbabilidad() {
         </h3>
         <CuerpoModulo id={activo} irA={irA} />
       </section>
+
+      {/* Los datos del caso, a un toque desde cualquier apartado */}
+      <PanelDelCaso />
     </div>
   );
 }

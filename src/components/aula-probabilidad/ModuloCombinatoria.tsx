@@ -241,6 +241,19 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
         ]}
       />
 
+
+      <Trampa
+        error="usar permutación cuando el orden no importa"
+        porQue="la permutación suele enseñarse primero y queda como reflejo; además su fórmula es más corta. Reportar 115.511.760 grupos posibles en lugar de 962.598 infla el resultado 120 veces."
+        correccion="aplicar la prueba de intercambio: si permutar dos seleccionados da el mismo resultado práctico, es combinación."
+      />
+
+      <Trampa
+        error="intentar calcular los factoriales completos"
+        porQue="se aplica la fórmula literalmente, sin simplificar. 43! no entra en una calculadora común y no hace ninguna falta."
+        correccion="expandir sólo el factorial mayor hasta el punto donde se cancela con el del denominador, como hicimos en el paso 2 del desarrollo."
+      />
+
       <Comprueba
         pregunta={`¿Por qué P(43,5) = ${pr.toLocaleString("es")} es exactamente 120 veces mayor que C(43,5) = ${c.toLocaleString("es")}?`}
         opciones={[
@@ -261,18 +274,6 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
               "Las dos usan 43! arriba. La diferencia está abajo: la combinación divide además entre r! = 5! = 120, y eso es exactamente el factor entre ambas.",
           },
         ]}
-      />
-
-      <Trampa
-        error="usar permutación cuando el orden no importa"
-        porQue="la permutación suele enseñarse primero y queda como reflejo; además su fórmula es más corta. Reportar 115.511.760 grupos posibles en lugar de 962.598 infla el resultado 120 veces."
-        correccion="aplicar la prueba de intercambio: si permutar dos seleccionados da el mismo resultado práctico, es combinación."
-      />
-
-      <Trampa
-        error="intentar calcular los factoriales completos"
-        porQue="se aplica la fórmula literalmente, sin simplificar. 43! no entra en una calculadora común y no hace ninguna falta."
-        correccion="expandir sólo el factorial mayor hasta el punto donde se cancela con el del denominador, como hicimos en el paso 2 del desarrollo."
       />
 
       <Puente etiquetaBoton="Ir a 2.5 · Reglas básicas" onContinuar={onContinuar}>

@@ -605,7 +605,10 @@ export function PasoTitulo({
   insignia?: string;
 }) {
   return (
-    <div className="mt-2 flex items-center gap-3">
+    <div
+      id={`paso-${numero}`}
+      className="mt-2 flex scroll-mt-40 items-center gap-3"
+    >
       <span
         className={
           "grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-bold tabular-nums " +
@@ -617,6 +620,92 @@ export function PasoTitulo({
       <h4 className="font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
         {children}
       </h4>
+    </div>
+  );
+}
+
+/**
+ * El hilo entre bloques. Una frase corta que dice por qué lo que sigue viene
+ * después de lo anterior.
+ *
+ * Existe porque, dando clase, la herramienta entregaba las piezas —definición,
+ * interactivo, fórmula— pero no la explicación que las une, y ese hilo había
+ * que inventarlo hablando. Se ve liviano a propósito: es narración, no otra
+ * caja de contenido.
+ */
+export function Hilo({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="flex gap-3 border-l-2 border-slate-300 py-1 pl-4 text-[15px] leading-relaxed text-slate-600 italic dark:border-slate-600 dark:text-slate-400">
+      {children}
+    </p>
+  );
+}
+
+/**
+ * Índice del apartado: los pasos numerados, para saltar dentro sin
+ * desplazarse a ciegas. En un apartado largo, dando clase, es la diferencia
+ * entre encontrar la parte que se busca o perder el hilo delante de todos.
+ */
+export function IndiceApartado({
+  pasos,
+  insignia = "bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300",
+}: {
+  pasos: string[];
+  insignia?: string;
+}) {
+  if (pasos.length === 0) return null;
+  return (
+    <nav
+      aria-label="Contenido del apartado"
+      className="rounded-2xl border border-slate-200 bg-slate-50/60 p-4 dark:border-slate-800 dark:bg-slate-900/60"
+    >
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+        En este apartado
+      </p>
+      <ol className="mt-2 flex flex-wrap gap-2">
+        {pasos.map((p, i) => (
+          <li key={p}>
+            <a
+              href={`#paso-${i + 1}`}
+              className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:border-blue-400 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-300"
+            >
+              <span
+                className={
+                  "grid h-5 w-5 place-items-center rounded-full text-[10px] font-bold tabular-nums " +
+                  insignia
+                }
+              >
+                {i + 1}
+              </span>
+              {p}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+/**
+ * La conclusión de un interactivo, escrita. Dice en palabras qué se acaba de
+ * ver y por qué importa, para que el apartado se pueda leer de corrido sin
+ * tener que reconstruir la explicación desde los componentes.
+ */
+export function Cierre({
+  titulo = "Lo que acabás de ver",
+  children,
+}: {
+  titulo?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-2xl border-l-4 border-slate-800 bg-slate-50/60 py-4 pl-5 pr-4 dark:border-slate-200 dark:bg-slate-900/60">
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+        {titulo}
+      </p>
+      <div className="mt-2 space-y-2 text-[15px] leading-relaxed text-slate-700 dark:text-slate-300">
+        {children}
+      </div>
     </div>
   );
 }

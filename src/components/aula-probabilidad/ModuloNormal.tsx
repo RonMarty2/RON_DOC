@@ -203,6 +203,19 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
 
       <SelectorDeCorte media={media} desviacion={desviacion} />
 
+
+      <Trampa
+        error="omitir la corrección de continuidad al aproximar una binomial con la normal"
+        porQue="se olvida que se está aproximando una variable de conteo (discreta) con una continua."
+        correccion="sumar o restar 0.5 al valor discreto según si el límite se incluye o no. Para P(X ≤ 49) se usa 49.5, no 49."
+      />
+
+      <Trampa
+        error="usar la aproximación normal con n pequeño o p extremo"
+        porQue="la aproximación se degrada cuando la binomial es muy asimétrica."
+        correccion="verificar que n·p y n·(1−p) superen ambos el valor 5 antes de usarla."
+      />
+
       <Comprueba
         pregunta="El comité propone bajar el punto de corte de 10 a 5 para «no dejar pasar a nadie». ¿Qué se gana y qué se pierde?"
         pista="Mové el deslizador de arriba hasta 5 y comparalo con 10 antes de responder."
@@ -224,18 +237,6 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
               "La sensibilidad y la especificidad NO son fijas: dependen de dónde se ponga el corte. El 88% de ambas corresponde específicamente al corte en 10, y se mueve apenas lo desplazás.",
           },
         ]}
-      />
-
-      <Trampa
-        error="omitir la corrección de continuidad al aproximar una binomial con la normal"
-        porQue="se olvida que se está aproximando una variable de conteo (discreta) con una continua."
-        correccion="sumar o restar 0.5 al valor discreto según si el límite se incluye o no. Para P(X ≤ 49) se usa 49.5, no 49."
-      />
-
-      <Trampa
-        error="usar la aproximación normal con n pequeño o p extremo"
-        porQue="la aproximación se degrada cuando la binomial es muy asimétrica."
-        correccion="verificar que n·p y n·(1−p) superen ambos el valor 5 antes de usarla."
       />
 
       <Puente etiquetaBoton="Volver al misterio del inicio" onContinuar={onContinuar}>

@@ -136,6 +136,13 @@ export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
         ]}
       />
 
+
+      <Trampa
+        error="leer un resultado positivo como si fuera un diagnóstico"
+        porQue="la palabra «positivo» suena a veredicto, y el número que acompaña al instrumento (88% de acierto) refuerza esa lectura."
+        correccion="un tamizaje decide a quién revisar, no quién está enfermo. El diagnóstico lo hace después un profesional en entrevista — y por eso el archivo tiene esa columna aparte."
+      />
+
       <Comprueba
         pregunta="¿Por qué las fichas incluyen una columna con el diagnóstico confirmado por un profesional, si ya tienen el puntaje del cuestionario?"
         opciones={[
@@ -156,12 +163,6 @@ export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
               "El cuestionario no distingue gravedad para decidir: aplica el mismo corte a todos. Su límite no es la gravedad del caso, sino que filtra en vez de diagnosticar.",
           },
         ]}
-      />
-
-      <Trampa
-        error="leer un resultado positivo como si fuera un diagnóstico"
-        porQue="la palabra «positivo» suena a veredicto, y el número que acompaña al instrumento (88% de acierto) refuerza esa lectura."
-        correccion="un tamizaje decide a quién revisar, no quién está enfermo. El diagnóstico lo hace después un profesional en entrevista — y por eso el archivo tiene esa columna aparte."
       />
 
       <Puente

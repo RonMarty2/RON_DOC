@@ -239,6 +239,13 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         de la psicopatología.
       </div>
 
+
+      <Trampa
+        error="multiplicar probabilidades sin verificar la independencia"
+        porQue="la fórmula simplificada es más fácil de recordar y no exige datos adicionales."
+        correccion={`comparar siempre P(B|A) con P(B) antes de simplificar. Acá habría predicho ${esperadoIndep.toFixed(1)} casos dobles donde hay ${ambos}: un error de casi cuatro veces. En psicología, dos variables clínicas rara vez son independientes.`}
+      />
+
       <Comprueba
         pregunta="Dar positivo y dar negativo en el mismo cuestionario no pueden ocurrir juntos. ¿Son eventos independientes?"
         pista="Independiente significa que saber uno no cambia la probabilidad del otro. Probá aplicar esa definición."
@@ -260,12 +267,6 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
               "La prevalencia no interviene: la relación entre un evento y su complemento es lógica, no empírica. Saber que ocurrió uno garantiza que el otro no, sea cual sea la población.",
           },
         ]}
-      />
-
-      <Trampa
-        error="multiplicar probabilidades sin verificar la independencia"
-        porQue="la fórmula simplificada es más fácil de recordar y no exige datos adicionales."
-        correccion={`comparar siempre P(B|A) con P(B) antes de simplificar. Acá habría predicho ${esperadoIndep.toFixed(1)} casos dobles donde hay ${ambos}: un error de casi cuatro veces. En psicología, dos variables clínicas rara vez son independientes.`}
       />
 
       <Puente etiquetaBoton="Ir a 2.6 · Teorema de Bayes" onContinuar={onContinuar}>

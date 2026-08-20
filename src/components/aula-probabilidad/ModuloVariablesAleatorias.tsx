@@ -150,6 +150,19 @@ export function ModuloVariablesAleatorias({
         ]}
       />
 
+
+      <Trampa
+        error="esperar que la esperanza sea un valor observable"
+        porQue="el nombre sugiere «lo que se espera ver», y rechazamos por imposible un resultado como 0.43 estudiantes."
+        correccion="la esperanza es un promedio ponderado de largo plazo, no una predicción de un caso individual. Es el mismo tipo de abstracción que «2.3 hijos por familia»."
+      />
+
+      <Trampa
+        error="leer P(X = x) = 0 en una variable continua como imposibilidad"
+        porQue="en variables discretas, probabilidad cero sí significa que el evento no puede ocurrir."
+        correccion="en variables continuas sólo los intervalos tienen probabilidad no nula; el valor exacto siempre da cero. Toda pregunta sobre una variable continua se formula sobre un rango."
+      />
+
       <Comprueba
         pregunta="Alguien te muestra una distribución donde las probabilidades de todos los valores posibles suman 0,87. ¿Qué se puede concluir?"
         opciones={[
@@ -170,18 +183,6 @@ export function ModuloVariablesAleatorias({
               "En las continuas la condición también es que el área total bajo la curva valga 1. Ser continua no exime de sumar (o integrar) hasta 1.",
           },
         ]}
-      />
-
-      <Trampa
-        error="esperar que la esperanza sea un valor observable"
-        porQue="el nombre sugiere «lo que se espera ver», y rechazamos por imposible un resultado como 0.43 estudiantes."
-        correccion="la esperanza es un promedio ponderado de largo plazo, no una predicción de un caso individual. Es el mismo tipo de abstracción que «2.3 hijos por familia»."
-      />
-
-      <Trampa
-        error="leer P(X = x) = 0 en una variable continua como imposibilidad"
-        porQue="en variables discretas, probabilidad cero sí significa que el evento no puede ocurrir."
-        correccion="en variables continuas sólo los intervalos tienen probabilidad no nula; el valor exacto siempre da cero. Toda pregunta sobre una variable continua se formula sobre un rango."
       />
 
       <Puente etiquetaBoton="Ir a 2.8 · Distribuciones discretas" onContinuar={onContinuar}>

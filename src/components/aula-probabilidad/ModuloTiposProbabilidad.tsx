@@ -205,6 +205,13 @@ export function ModuloTiposProbabilidad({
         ]}
       />
 
+
+      <Trampa
+        error="tratar la probabilidad clásica como si valiera siempre"
+        porQue="es la primera que se enseña y su fórmula es la más simple, así que se aplica por reflejo — incluso cuando los resultados no son equiprobables."
+        correccion="antes de dividir favorables sobre posibles, preguntarse si hay alguna razón para que todos los resultados tengan la misma chance. Con personas y diagnósticos, casi nunca la hay: ahí corresponde contar."
+      />
+
       <Comprueba
         pregunta="Querés calcular la probabilidad de que un estudiante saque MENOS de 27 puntos. Contar todos esos casos es tedioso. ¿Qué conviene hacer?"
         pista="Pensá si es más fácil contar lo que pedís o lo contrario."
@@ -226,12 +233,6 @@ export function ModuloTiposProbabilidad({
               "Eso supondría que los 28 puntajes son equiprobables, y no lo son: hay muchísimos más estudiantes con puntajes bajos que con 27. La equiprobabilidad hay que justificarla, no asumirla.",
           },
         ]}
-      />
-
-      <Trampa
-        error="tratar la probabilidad clásica como si valiera siempre"
-        porQue="es la primera que se enseña y su fórmula es la más simple, así que se aplica por reflejo — incluso cuando los resultados no son equiprobables."
-        correccion="antes de dividir favorables sobre posibles, preguntarse si hay alguna razón para que todos los resultados tengan la misma chance. Con personas y diagnósticos, casi nunca la hay: ahí corresponde contar."
       />
 
       <Puente

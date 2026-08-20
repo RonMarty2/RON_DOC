@@ -10,6 +10,9 @@ import {
   MiniHistoria,
   Trampa,
   Puente,
+  Hilo,
+  IndiceApartado,
+  Cierre,
   Termino,
   Comprueba,
   PasoTitulo,
@@ -98,6 +101,25 @@ export function ModuloEspacioMuestral({
 }) {
   return (
     <div className="flex flex-col gap-6">
+      <p className="text-[15px] leading-relaxed text-slate-700 dark:text-slate-300">
+        Antes de calcular una sola probabilidad hay que delimitar con precisión
+        de qué estamos hablando. Suena a formalismo, pero no lo es: la mayoría
+        de los errores de este capítulo no vienen de equivocarse en una cuenta,
+        sino de haber definido mal qué se estaba contando. Este apartado fija
+        seis términos que se van a usar hasta el final, y los fija con dados
+        antes de llevarlos al cuestionario, porque con dados se ven de un
+        vistazo.
+      </p>
+
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "El vocabulario base",
+          "Varias partes a la vez",
+          "Aplicado al cuestionario",
+        ]}
+      />
+
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         El vocabulario base
       </PasoTitulo>
@@ -144,7 +166,35 @@ export function ModuloEspacioMuestral({
         </Ejemplos>
       </Definicion>
 
+      <Hilo>
+        Dicho así suena abstracto. Tirá el dado unas cuantas veces y mirá qué
+        pasa: cada tirada te da un resultado de ese conjunto, y ninguna te
+        deja adivinar la siguiente.
+      </Hilo>
+
       <UnDadoInteractivo />
+
+      <Cierre>
+          <p>
+            Con pocas tiradas las seis barras están desparejas y da la impresión
+            de que el dado favorece a alguna cara. No es así: lo único que pasa
+            es que hay pocos datos. A medida que tirás más, las seis barras se
+            van apretando contra la línea del 16,7%, que es 1 dividido 6.
+          </p>
+          <p>
+            Eso es exactamente lo que promete la probabilidad, y conviene decirlo
+            con todas las letras porque es la fuente de casi todos los
+            malentendidos: <strong>no predice una tirada, predice el
+            comportamiento a la larga</strong>. Saber que la probabilidad de un
+            6 es 1/6 no te dice nada sobre la próxima tirada. Te dice que si
+            tirás muchísimas veces, alrededor de una de cada seis va a ser un 6.
+          </p>
+          <p>
+            Guardá esta idea: en el apartado 2.2 va a reaparecer con nombre
+            propio, cuando distingamos la probabilidad que se calcula sin
+            observar nada de la que sale de observar muchas veces.
+          </p>
+      </Cierre>
 
       <MiniHistoria titulo="Universo ≠ espacio muestral">
         El universo son las personas: los 2.400 estudiantes de la universidad
@@ -153,6 +203,12 @@ export function ModuloEspacioMuestral({
         que se les hace: los 28 puntajes que puede devolver el cuestionario.
         Personas de un lado, resultados del otro. No es lo mismo.
       </MiniHistoria>
+
+      <Hilo>
+        Hasta acá el experimento era uno solo: tirar un dado. Pero muchos
+        experimentos tienen varias partes, y ahí el conjunto de resultados
+        posibles crece rápido.
+      </Hilo>
 
       <PasoTitulo numero={2} insignia={INSIGNIA}>
         Cuando el experimento tiene varias partes
@@ -164,7 +220,41 @@ export function ModuloEspacioMuestral({
         posibles.
       </Definicion>
 
+      <Hilo>
+        Tirá los dos y buscá dónde cae cada resultado en la tabla. Fijate que
+        el par (2, 5) y el par (5, 2) son casillas distintas.
+      </Hilo>
+
       <DosDadosInteractivo />
+
+      <Cierre>
+          <p>
+            Con un dado había 6 resultados posibles. Con dos hay 36, y no es
+            casualidad: por cada uno de los 6 resultados del primero, el segundo
+            puede dar cualquiera de sus 6. Seis por seis, treinta y seis. Ese
+            razonamiento tiene nombre —<strong>principio multiplicativo</strong>—
+            y es la base de todo el apartado 2.4.
+          </p>
+          <p>
+            Hay algo más que conviene señalar, porque después va a importar: en
+            esta tabla el par (2, 5) y el par (5, 2) son <strong>casillas
+            distintas</strong>. Los dos dados suman 7 en ambos casos, pero como
+            resultados del experimento no son el mismo. Que el orden importe o
+            no importe es una decisión que cambia el conteo, y en 2.4 va a ser
+            la pregunta central.
+          </p>
+          <p>
+            Fijate también que las 36 casillas siguen siendo un espacio muestral
+            común y corriente: un conjunto de resultados posibles. Lo único que
+            cambió es que cada resultado ahora tiene dos partes.
+          </p>
+      </Cierre>
+
+      <Hilo>
+        Todo esto valía para dados. Ahora lo mismo, pero con el cuestionario
+        del caso: el experimento es mirar el puntaje de una ficha, y el
+        conjunto de resultados posibles son los 28 puntajes.
+      </Hilo>
 
       <PasoTitulo numero={3} insignia={INSIGNIA}>
         Aplicado al cuestionario
@@ -174,6 +264,11 @@ export function ModuloEspacioMuestral({
         El PHQ-9 tiene 9 preguntas de 0 a 3 puntos. Su espacio muestral es S ={" "}
         {"{0, 1, ..., 27}"}, 28 valores posibles.
       </Definicion>
+
+      <Hilo>
+        Tamizá fichas de a una y mirá cómo se va llenando el histograma. Cada
+        ficha aporta su puntaje a una de las 28 barras.
+      </Hilo>
 
       <TamizajeInteractivo />
 
@@ -200,6 +295,37 @@ export function ModuloEspacioMuestral({
         ]}
       />
 
+
+      <Trampa
+        error="confundir el universo con el espacio muestral"
+        porQue="las dos palabras suenan a «todo lo que hay», y en los ejemplos sencillos casi coinciden."
+        correccion="preguntarse qué se está listando: si son personas u objetos, es el universo; si son resultados posibles del experimento, es el espacio muestral."
+      />
+
+      <Cierre>
+          <p>
+            El histograma se llena igual que la tabla del dado, pero con una
+            diferencia que hay que subrayar: <strong>las 28 barras no crecen
+            parejo</strong>. Las de puntajes bajos se disparan y las altas quedan
+            casi vacías. Con el dado, en cambio, las seis barras tendían todas al
+            mismo valor.
+          </p>
+          <p>
+            Esa diferencia no es un detalle: significa que los 28 resultados
+            posibles <strong>no son igualmente probables</strong>. Y si no son
+            igualmente probables, la probabilidad de sacar un puntaje
+            determinado no se puede calcular dividiendo 1 entre 28. Hay que
+            contar cuántas personas lo sacaron.
+          </p>
+          <p>
+            Ahí está la razón de fondo por la que trabajamos con 200 fichas
+            reales en vez de razonar en abstracto. Y es también el motivo por el
+            que el apartado siguiente empieza distinguiendo tres formas
+            distintas de conseguir una probabilidad: cuál corresponde depende
+            justamente de si los resultados son equiprobables o no.
+          </p>
+      </Cierre>
+
       <Comprueba
         pregunta="En el dado, el evento «sacar un número par» es {2, 4, 6}. ¿Qué tipo de evento es?"
         opciones={[
@@ -220,12 +346,6 @@ export function ModuloEspacioMuestral({
               "El evento seguro es el que ocurre SIEMPRE, o sea el que contiene las seis caras. Con {2, 4, 6} puede perfectamente salir un impar y el evento no ocurre.",
           },
         ]}
-      />
-
-      <Trampa
-        error="confundir el universo con el espacio muestral"
-        porQue="las dos palabras suenan a «todo lo que hay», y en los ejemplos sencillos casi coinciden."
-        correccion="preguntarse qué se está listando: si son personas u objetos, es el universo; si son resultados posibles del experimento, es el espacio muestral."
       />
 
       <Puente

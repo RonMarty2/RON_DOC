@@ -120,6 +120,19 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
         ]}
       />
 
+
+      <Trampa
+        error="usar binomial donde corresponde hipergeométrica"
+        porQue="la binomial se enseña primero y su fórmula es más simple; además casi nunca se pregunta si hay reposición."
+        correccion={`preguntar si hay reposición y comparar el tamaño de la muestra con el de la población. Auditar 6 expedientes de ${positivos} es una fracción apreciable: cada uno que sacás cambia lo que queda.`}
+      />
+
+      <Trampa
+        error="buscar un «n» en un problema de Poisson"
+        porQue="es el reflejo de identificar n y p en todo problema de conteo."
+        correccion="si el enunciado da una tasa media por intervalo de tiempo o espacio, y no un número de ensayos, es Poisson. La señal es que no existe un n natural en el enunciado."
+      />
+
       <Comprueba
         pregunta="Se van a revisar 6 fichas de un archivo de 43, y las fichas NO se devuelven al montón. ¿Por qué no sirve la binomial acá?"
         opciones={[
@@ -140,18 +153,6 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
               "Sí lo son: cada ficha está completa o incompleta, que es exactamente un resultado dicotómico. El problema no es la variable, sino cómo se extrae la muestra.",
           },
         ]}
-      />
-
-      <Trampa
-        error="usar binomial donde corresponde hipergeométrica"
-        porQue="la binomial se enseña primero y su fórmula es más simple; además casi nunca se pregunta si hay reposición."
-        correccion={`preguntar si hay reposición y comparar el tamaño de la muestra con el de la población. Auditar 6 expedientes de ${positivos} es una fracción apreciable: cada uno que sacás cambia lo que queda.`}
-      />
-
-      <Trampa
-        error="buscar un «n» en un problema de Poisson"
-        porQue="es el reflejo de identificar n y p en todo problema de conteo."
-        correccion="si el enunciado da una tasa media por intervalo de tiempo o espacio, y no un número de ensayos, es Poisson. La señal es que no existe un n natural en el enunciado."
       />
 
       <Puente etiquetaBoton="Ir a 2.9 · Distribución normal" onContinuar={onContinuar}>

@@ -20,6 +20,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   Desarrollo,
   Termino,
   Comprueba,
@@ -53,6 +56,14 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
         tres procesos generadores distintos, tres distribuciones distintas.
         Confundirlas produce números equivocados que parecen razonables.
       </p>
+
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "El ladrillo común",
+          "Elegir la distribución correcta",
+        ]}
+      />
 
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         El ladrillo común a las tres
@@ -89,7 +100,33 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
         Elegir la distribución correcta
       </PasoTitulo>
 
+      <Hilo>
+        Antes de mirar cualquier fórmula, la pregunta correcta es otra: cómo se
+        generaron los conteos. Esa pregunta —y no la variable— es la que elige
+        la herramienta.
+      </Hilo>
+
       <Selector tipo={tipo} setTipo={setTipo} />
+
+      <Cierre>
+        <p>
+          Las tres preguntas del servicio parecen la misma —«cuántos van a
+          ser»— pero se generan de formas distintas. En una hay un número fijo
+          de intentos; en otra hay un ritmo en el tiempo sin intentos; en la
+          tercera se saca de un montón que se va achicando.
+        </p>
+        <p>
+          Por eso la señal para reconocerlas no está en el resultado sino en el
+          enunciado: <strong>si dice cuántos intentos hay, es binomial; si da
+          una tasa por intervalo, es Poisson; si da una población finita de la
+          que se extrae sin reponer, es hipergeométrica</strong>.
+        </p>
+        <p>
+          Elegir mal no da un error evidente: da un número que parece
+          razonable. Ese es el peligro, y es la razón por la que este apartado
+          empieza por la pregunta y no por las fórmulas.
+        </p>
+      </Cierre>
 
       {tipo === "binomial" && <Binomial />}
       {tipo === "poisson" && <Poisson lambda={lambda} />}

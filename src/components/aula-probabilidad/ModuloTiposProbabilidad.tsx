@@ -12,6 +12,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   MiniHistoria,
   Desarrollo,
   Termino,
@@ -46,6 +49,15 @@ export function ModuloTiposProbabilidad({
         probabilidad. Hay tres formas legítimas de conseguirlo, y no compiten
         entre sí — cada una resuelve el problema cuando las otras no pueden.
       </p>
+
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "Las tres formas de conseguir el número",
+          "Aplicado: la probabilidad de dar positivo",
+          "Las reglas que las tres deben respetar",
+        ]}
+      />
 
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         Las tres formas de conseguir el número
@@ -88,7 +100,34 @@ export function ModuloTiposProbabilidad({
         clínica antes de aplicar cualquier test.
       </Definicion>
 
+      <Hilo>
+        Las dos primeras no son rivales: cuando el experimento es simétrico
+        terminan coincidiendo. Tirá la moneda y comprobalo.
+      </Hilo>
+
       <MonedaConvergente />
+
+      <Cierre>
+        <p>
+          La línea del 50% nunca se movió: esa es la probabilidad clásica, y se
+          conoce sin tirar la moneda ni una sola vez, porque hay dos resultados
+          y ninguna razón para preferir uno. La barra, en cambio, sólo existe
+          porque observamos, y al principio salta muchísimo.
+        </p>
+        <p>
+          Lo importante es qué pasa al aumentar las tiradas:{" "}
+          <strong>la barra va hacia la línea sola</strong>. Nadie la empuja. Con
+          experimentos simétricos las dos formas de calcular la probabilidad
+          convergen al mismo número, y por eso da lo mismo cuál usar.
+        </p>
+        <p>
+          El problema aparece cuando <strong>no hay simetría</strong>. Con el
+          cuestionario no existe ninguna razón para suponer que dar positivo y
+          dar negativo sean igual de probables, así que la primera forma no
+          sirve: no hay «caras» que contar. Sólo queda observar y contar
+          personas, que es lo que hacemos a continuación.
+        </p>
+      </Cierre>
 
       <MiniHistoria titulo="Las dos primeras terminan coincidiendo">
         Si el experimento es simétrico, la frecuencia observada se acerca a la

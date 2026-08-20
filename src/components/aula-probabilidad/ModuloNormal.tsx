@@ -18,6 +18,9 @@ import {
   V,
   Trampa,
   Puente,
+  Hilo,
+  Cierre,
+  IndiceApartado,
   MiniHistoria,
   Desarrollo,
   Termino,
@@ -50,6 +53,16 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         necesitan ayuda.
       </p>
 
+      <IndiceApartado
+        insignia={INSIGNIA}
+        pasos={[
+          "La campana",
+          "Estandarizar",
+          "Puente con las discretas",
+          "La decisión, en tus manos",
+        ]}
+      />
+
       <PasoTitulo numero={1} insignia={INSIGNIA}>
         La campana
       </PasoTitulo>
@@ -78,7 +91,30 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         </Ejemplos>
       </Definicion>
 
+      <Hilo>
+        Antes de estandarizar nada, conviene mirar la curva y entender qué
+        representa el área que queda debajo.
+      </Hilo>
+
       <Campana media={media} desviacion={desviacion} />
+
+      <Cierre>
+        <p>
+          Lo primero que hay que fijar es qué representa la probabilidad acá,
+          porque cambia respecto de todo lo anterior:{" "}
+          <strong>no es la altura de la curva, es el área debajo</strong>. En
+          las distribuciones del apartado anterior la probabilidad era
+          directamente la altura de una barra; en una variable continua un
+          punto exacto tiene probabilidad cero, y sólo los intervalos tienen
+          área.
+        </p>
+        <p>
+          La regla 68–95–99,7 es la consecuencia práctica más útil. Basta con
+          saber la media y la desviación para ubicar cualquier puntaje: si está
+          a menos de una desviación, es de lo más común; si pasa de dos, ya está
+          entre el 5% más extremo del grupo.
+        </p>
+      </Cierre>
 
       <PasoTitulo numero={2} insignia={INSIGNIA}>
         Estandarizar: hablar en desviaciones
@@ -201,7 +237,34 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         intercambio.
       </p>
 
+      <Hilo>
+        Esto cierra el capítulo. Mové el corte y mirá qué le pasa, al mismo
+        tiempo, a todo lo que fuimos construyendo desde el primer apartado.
+      </Hilo>
+
       <SelectorDeCorte media={media} desviacion={desviacion} />
+
+      <Cierre>
+        <p>
+          Ninguna posición del corte mejora las dos direcciones a la vez. Al
+          bajarlo, casos que antes se escapaban pasan a detectarse — pero
+          también descartes correctos se convierten en falsas alarmas. Al
+          subirlo pasa exactamente lo contrario.
+        </p>
+        <p>
+          La razón es que los dos tipos de error están en{" "}
+          <strong>celdas distintas de la tabla</strong>, y mover el corte
+          traslada fichas de una celda a otra. No hay forma de vaciar las dos
+          celdas de error al mismo tiempo. Es un intercambio, no una mejora.
+        </p>
+        <p>
+          Y acá termina lo que la estadística puede decidir. Cuál de los dos
+          errores es más grave —dejar a alguien sin ayuda, o citar a alguien que
+          estaba bien— depende de la capacidad del servicio, de los recursos y
+          de una posición ética.{" "}
+          <strong>Esa parte no la resuelve ninguna fórmula.</strong>
+        </p>
+      </Cierre>
 
 
       <Trampa

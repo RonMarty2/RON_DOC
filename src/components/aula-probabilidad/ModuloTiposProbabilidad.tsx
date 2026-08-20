@@ -65,9 +65,10 @@ export function ModuloTiposProbabilidad({
         se observa muchas veces y se toma la frecuencia relativa. Es la que
         usamos con las 200 fichas.
         <Ejemplos titulo="Ver las tres, sobre la misma pregunta">
-          <Ejemplo caso="CLÁSICA — «hay 2.400 estudiantes, todos con la misma chance de ser elegidos»">
-            Sirve para elegir a alguien al azar de una lista, pero no para
-            saber si tiene depresión: nada garantiza que tenerla y no tenerla
+          <Ejemplo caso="CLÁSICA — «sorteamos una de las 200 fichas: cada una tiene la misma chance»">
+            Acá sí vale, porque el sorteo garantiza la equiprobabilidad por
+            diseño: 1/200 para cada ficha. Pero no sirve para saber si esa
+            persona tiene depresión — nada garantiza que tenerla y no tenerla
             sean igual de probables.
           </Ejemplo>
           <Ejemplo caso="FRECUENTISTA — «de 200 fichas, 25 tienen diagnóstico: 12,5%»">

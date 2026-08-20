@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ESTUDIANTES, CORTE_TAMIZAJE } from "@content/aula-probabilidad/dataset";
 import {
   Definicion,
@@ -322,73 +322,348 @@ function ArmarPuntaje() {
 
 function LasFichas() {
   const total = ESTUDIANTES.length;
-  const ejemplo = ESTUDIANTES[0];
+  const [indice, setIndice] = useState(0);
+  const f = ESTUDIANTES[indice];
+
+  const dioPositivoDep = f.phq9 >= CORTE_TAMIZAJE;
+  const dioPositivoAns = f.gad7 >= CORTE_TAMIZAJE;
+
+  function otraFicha() {
+    setIndice((i) => (i + 1) % total);
+  }
+
+  // Fichas elegidas para que se vean los cuatro casos posibles.
+  const interesantes = useMemo(() => {
+    const buscar = (pred: (e: (typeof ESTUDIANTES)[number]) => boolean) =>
+      ESTUDIANTES.findIndex(pred);
+    return [
+      {
+        etiqueta: "Acertó: positivo y sí lo tenía",
+        i: buscar((e) => e.phq9 >= CORTE_TAMIZAJE && e.dxConfirmado),
+      },
+      {
+        etiqueta: "Falsa alarma: positivo pero sano",
+        i: buscar((e) => e.phq9 >= CORTE_TAMIZAJE && !e.dxConfirmado),
+      },
+      {
+        etiqueta: "Se escapó: negativo pero sí lo tenía",
+        i: buscar((e) => e.phq9 < CORTE_TAMIZAJE && e.dxConfirmado),
+      },
+      {
+        etiqueta: "Acertó: negativo y sano",
+        i: buscar((e) => e.phq9 < CORTE_TAMIZAJE && !e.dxConfirmado),
+      },
+    ].filter((x) => x.i >= 0);
+  }, []);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-        Las {total} fichas con las que vamos a trabajar
-      </h4>
-      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-        Todos los números de este capítulo salen de estas fichas: {total}{" "}
-        estudiantes que respondieron dos cuestionarios y que además fueron
-        entrevistados por un profesional. Cada ficha tiene tres datos:
-      </p>
+    <div className="flex flex-col gap-4">
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+            Mirá una ficha por dentro
+          </h4>
+          <button
+            type="button"
+            onClick={otraFicha}
+            className="rounded-full bg-slate-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 dark:bg-slate-600 dark:hover:bg-slate-500"
+          >
+            Ver otra ficha →
+          </button>
+        </div>
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+          Cada uno de los {total} estudiantes tiene una ficha con tres datos.
+          Así se lee la del estudiante #{f.id}:
+        </p>
 
-      <div className="mt-4 overflow-x-auto">
-        <table className="w-full border-collapse text-left text-sm">
-          <thead>
-            <tr className="border-b border-slate-200 dark:border-slate-700">
-              <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">
-                Dato
-              </th>
-              <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">
-                Qué contiene
-              </th>
-              <th className="py-2 font-semibold text-slate-700 dark:text-slate-300">
-                Ficha #{ejemplo.id}
-              </th>
-            </tr>
-          </thead>
-          <tbody className="text-slate-600 dark:text-slate-400">
-            <tr className="border-b border-slate-100 dark:border-slate-800">
-              <td className="py-2.5 pr-4 font-medium text-slate-800 dark:text-slate-200">
-                Puntaje de depresión
-              </td>
-              <td className="py-2.5 pr-4">
-                El cuestionario de 9 preguntas. De 0 a 27.
-              </td>
-              <td className="py-2.5 tabular-nums">{ejemplo.phq9}</td>
-            </tr>
-            <tr className="border-b border-slate-100 dark:border-slate-800">
-              <td className="py-2.5 pr-4 font-medium text-slate-800 dark:text-slate-200">
-                Puntaje de ansiedad
-              </td>
-              <td className="py-2.5 pr-4">
-                Un cuestionario hermano, de 7 preguntas. De 0 a 21.
-              </td>
-              <td className="py-2.5 tabular-nums">{ejemplo.gad7}</td>
-            </tr>
-            <tr>
-              <td className="py-2.5 pr-4 font-medium text-slate-800 dark:text-slate-200">
-                Diagnóstico confirmado
-              </td>
-              <td className="py-2.5 pr-4">
-                Lo que dictaminó el profesional en la entrevista.
-              </td>
-              <td className="py-2.5">{ejemplo.dxConfirmado ? "Sí" : "No"}</td>
-            </tr>
-          </tbody>
-        </table>
+        {/* Los tres datos, explicados en palabras */}
+        <div className="mt-4 flex flex-col gap-3">
+          <FilaFicha
+            titulo="Puntaje de depresión"
+            valor={f.phq9}
+            rango="de 0 a 27"
+            lectura={
+              f.phq9 === 0
+                ? "Cero significa que no reportó ningún síntoma, ningún día. Es el puntaje más bajo posible."
+                : dioPositivoDep
+                  ? `${f.phq9} está por encima del corte de ${CORTE_TAMIZAJE}: el filtro lo marca para entrevistar.`
+                  : `${f.phq9} está por debajo del corte de ${CORTE_TAMIZAJE}: el filtro lo deja pasar sin marcarlo.`
+            }
+            positivo={dioPositivoDep}
+          />
+          <FilaFicha
+            titulo="Puntaje de ansiedad"
+            valor={f.gad7}
+            rango="de 0 a 21"
+            lectura={
+              dioPositivoAns
+                ? `${f.gad7} supera el corte de ${CORTE_TAMIZAJE}: también da positivo en ansiedad.`
+                : `${f.gad7} no llega al corte de ${CORTE_TAMIZAJE}. Reportó algunos síntomas, pero no los suficientes para que el filtro lo marque.`
+            }
+            positivo={dioPositivoAns}
+          />
+          <FilaFicha
+            titulo="Diagnóstico confirmado"
+            valor={f.dxConfirmado ? "Sí" : "No"}
+            rango="lo dijo un profesional"
+            lectura={
+              f.dxConfirmado
+                ? "Después de entrevistarlo, el profesional confirmó que sí tiene el trastorno. Ésta es la verdad contra la que juzgamos al cuestionario."
+                : "Después de entrevistarlo, el profesional determinó que no tiene el trastorno."
+            }
+            positivo={f.dxConfirmado}
+          />
+        </div>
+
+        {/* Veredicto de esta ficha */}
+        <div
+          className={
+            "mt-4 rounded-xl px-4 py-3 text-sm " +
+            (dioPositivoDep === f.dxConfirmado
+              ? "bg-emerald-50 text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200"
+              : "bg-rose-50 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200")
+          }
+        >
+          <strong>
+            {dioPositivoDep && f.dxConfirmado && "El cuestionario acertó. "}
+            {dioPositivoDep && !f.dxConfirmado && "Falsa alarma. "}
+            {!dioPositivoDep && f.dxConfirmado && "Se le escapó. "}
+            {!dioPositivoDep && !f.dxConfirmado && "El cuestionario acertó. "}
+          </strong>
+          {dioPositivoDep && f.dxConfirmado &&
+            "Lo marcó, y efectivamente tenía el trastorno."}
+          {dioPositivoDep && !f.dxConfirmado &&
+            "Lo marcó para entrevistar, pero el profesional determinó que estaba sano. Una entrevista que se podría haber evitado."}
+          {!dioPositivoDep && f.dxConfirmado &&
+            "No lo marcó, pero sí tenía el trastorno. Se fue con un resultado negativo cuando necesitaba ayuda."}
+          {!dioPositivoDep && !f.dxConfirmado &&
+            "No lo marcó, y efectivamente estaba sano."}
+        </div>
+
+        {/* Atajos a los cuatro casos posibles */}
+        <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          Saltá directo a cada caso posible
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {interesantes.map((x) => (
+            <button
+              key={x.etiqueta}
+              type="button"
+              onClick={() => setIndice(x.i)}
+              className={
+                "rounded-full border px-3 py-1.5 text-xs font-medium transition " +
+                (indice === x.i
+                  ? "border-slate-700 bg-slate-700 text-white dark:border-slate-500 dark:bg-slate-600"
+                  : "border-slate-200 text-slate-600 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400")
+              }
+            >
+              {x.etiqueta}
+            </button>
+          ))}
+        </div>
       </div>
 
       <MiniHistoria titulo="Por qué hay dos cuestionarios y no uno">
         Tener depresión y ansiedad medidas en las mismas personas permite
-        hacerse una pregunta que la probabilidad sí puede responder: si
-        alguien da positivo en uno, ¿cambia eso la chance de que dé positivo
-        en el otro? Esa pregunta se llama <strong>independencia</strong>, y la
-        vamos a resolver en el apartado 2.5.
+        hacerse una pregunta que la probabilidad sí puede responder: si alguien
+        da positivo en uno, ¿cambia eso la chance de que dé positivo en el
+        otro? Esa pregunta se llama <strong>independencia</strong>, y la vamos a
+        resolver en el apartado 2.5.
       </MiniHistoria>
+
+      <PuenteALaProbabilidad />
+    </div>
+  );
+}
+
+/** Una fila de la ficha: el dato, su valor, y qué significa ese valor. */
+function FilaFicha({
+  titulo,
+  valor,
+  rango,
+  lectura,
+  positivo,
+}: {
+  titulo: string;
+  valor: number | string;
+  rango: string;
+  lectura: string;
+  positivo: boolean;
+}) {
+  return (
+    <div className="flex gap-3 rounded-xl bg-slate-50 p-3 dark:bg-slate-800/60">
+      <div
+        className={
+          "grid h-14 w-14 shrink-0 place-content-center rounded-xl text-center " +
+          (positivo
+            ? "bg-amber-200 text-amber-900 dark:bg-amber-900/60 dark:text-amber-100"
+            : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200")
+        }
+      >
+        <span className="font-serif text-2xl font-semibold tabular-nums">
+          {valor}
+        </span>
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+          {titulo}{" "}
+          <span className="font-normal text-slate-400">({rango})</span>
+        </p>
+        <p className="mt-0.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          {lectura}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* El puente: qué tiene que ver todo esto con probabilidad             */
+/* ------------------------------------------------------------------ */
+
+interface PreguntaConteo {
+  id: string;
+  pregunta: string;
+  /** Fichas que forman el universo de la pregunta (el denominador). */
+  universo: (e: (typeof ESTUDIANTES)[number]) => boolean;
+  /** Fichas que además cumplen lo que se pregunta (el numerador). */
+  cumple: (e: (typeof ESTUDIANTES)[number]) => boolean;
+  cierre: string;
+}
+
+const PREGUNTAS_CONTEO: PreguntaConteo[] = [
+  {
+    id: "positivo",
+    pregunta: "Si elijo un estudiante al azar, ¿qué chance hay de que dé positivo?",
+    universo: () => true,
+    cumple: (e) => e.phq9 >= CORTE_TAMIZAJE,
+    cierre:
+      "Contamos cuántas fichas superan el corte, sobre el total. Eso —y nada más que eso— es una probabilidad.",
+  },
+  {
+    id: "diagnostico",
+    pregunta: "¿Y de que realmente tenga el trastorno?",
+    universo: () => true,
+    cumple: (e) => e.dxConfirmado,
+    cierre:
+      "Mismo procedimiento, otra pregunta. Este número tiene nombre propio: se llama prevalencia, y va a ser decisivo en el apartado 2.6.",
+  },
+  {
+    id: "vpp",
+    pregunta:
+      "De los que dieron positivo, ¿cuántos lo tenían de verdad?",
+    universo: (e) => e.phq9 >= CORTE_TAMIZAJE,
+    cumple: (e) => e.phq9 >= CORTE_TAMIZAJE && e.dxConfirmado,
+    cierre:
+      "Acá cambió el denominador: ya no son las 200 fichas, son sólo las que dieron positivo. Y fijate el resultado — es exactamente el número del misterio con el que abrimos.",
+  },
+];
+
+function PuenteALaProbabilidad() {
+  const [activa, setActiva] = useState<string | null>(null);
+  const p = PREGUNTAS_CONTEO.find((q) => q.id === activa) ?? null;
+
+  const { den, num } = useMemo(() => {
+    if (!p) return { den: ESTUDIANTES.length, num: 0 };
+    const enUniverso = ESTUDIANTES.filter(p.universo);
+    return {
+      den: enUniverso.length,
+      num: enUniverso.filter(p.cumple).length,
+    };
+  }, [p]);
+
+  const pct = den > 0 ? (num / den) * 100 : 0;
+
+  return (
+    <div className="rounded-2xl border-2 border-blue-300 bg-blue-50/40 p-5 dark:border-blue-800 dark:bg-blue-950/20 sm:p-6">
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+        Lo importante
+      </p>
+      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+        ¿Y qué tiene que ver todo esto con probabilidad?
+      </h4>
+      <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        Todo. Estas {ESTUDIANTES.length} fichas son{" "}
+        <strong>lo único que tenemos</strong>, y cada pregunta de probabilidad
+        de este capítulo se responde <strong>contándolas</strong>. Elegir una
+        ficha al azar es el experimento; contar cuántas cumplen algo es la
+        probabilidad. Tocá una pregunta y mirá el conteo:
+      </p>
+
+      <div className="mt-4 flex flex-col gap-2">
+        {PREGUNTAS_CONTEO.map((q) => (
+          <button
+            key={q.id}
+            type="button"
+            onClick={() => setActiva(activa === q.id ? null : q.id)}
+            aria-pressed={activa === q.id}
+            className={
+              "rounded-xl border-2 px-4 py-3 text-left text-sm transition " +
+              (activa === q.id
+                ? "border-blue-600 bg-white font-medium text-slate-900 dark:bg-slate-900 dark:text-slate-100"
+                : "border-transparent bg-white/70 text-slate-700 hover:border-blue-300 dark:bg-slate-900/60 dark:text-slate-300")
+            }
+          >
+            {q.pregunta}
+          </button>
+        ))}
+      </div>
+
+      {/* Las 200 fichas, iluminadas según la pregunta */}
+      <div className="mt-5 flex flex-wrap gap-[3px]">
+        {ESTUDIANTES.map((e) => {
+          const fuera = p ? !p.universo(e) : false;
+          const marcada = p ? p.cumple(e) : false;
+          return (
+            <span
+              key={e.id}
+              title={`Ficha #${e.id}`}
+              className={
+                "h-3 w-3 rounded-[2px] transition " +
+                (marcada
+                  ? "bg-blue-600"
+                  : fuera
+                    ? "bg-slate-200 opacity-30 dark:bg-slate-700"
+                    : "bg-slate-300 dark:bg-slate-600")
+              }
+            />
+          );
+        })}
+      </div>
+
+      <div className="mt-4 rounded-xl bg-white px-4 py-3 dark:bg-slate-900">
+        {!p ? (
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            Cada cuadradito es un estudiante. Elegí una pregunta arriba y se
+            van a marcar los que cumplen.
+          </p>
+        ) : (
+          <>
+            <p className="font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100 sm:text-3xl">
+              {num} / {den} = {pct.toFixed(1)}%
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              <strong className="text-slate-800 dark:text-slate-200">
+                {num}
+              </strong>{" "}
+              fichas marcadas de{" "}
+              <strong className="text-slate-800 dark:text-slate-200">
+                {den}
+              </strong>{" "}
+              posibles. {p.cierre}
+            </p>
+          </>
+        )}
+      </div>
+
+      <p className="mt-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        Eso es todo lo que hace la probabilidad:{" "}
+        <strong>contar casos favorables entre casos posibles</strong>. Lo que
+        viene en el resto del capítulo es aprender a hacer ese conteo cuando la
+        pregunta se complica — cuando hay que cruzar dos variables, cuando hay
+        demasiadas combinaciones para contarlas a mano, y cuando la pregunta se
+        da vuelta y ya no se puede contar directo.
+      </p>
     </div>
   );
 }

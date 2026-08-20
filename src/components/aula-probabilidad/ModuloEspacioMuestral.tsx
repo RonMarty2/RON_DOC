@@ -21,6 +21,71 @@ import { BarraSim } from "./BarraSim";
 const CARAS_DADO = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
 
 /**
+ * Propiedades con nombre sobre las caras del dado. Sirven para describir un
+ * evento por lo que SIGNIFICA y no sólo por sus elementos: {2,4,6} no es «dos,
+ * cuatro y seis», es «los números pares».
+ */
+const PROPIEDADES: { nombre: string; caras: number[] }[] = [
+  { nombre: "par", caras: [2, 4, 6] },
+  { nombre: "impar", caras: [1, 3, 5] },
+  { nombre: "primo", caras: [2, 3, 5] },
+  { nombre: "múltiplo de 3", caras: [3, 6] },
+  { nombre: "mayor que 3", caras: [4, 5, 6] },
+  { nombre: "menor que 3", caras: [1, 2] },
+  { nombre: "mayor o igual que 5", caras: [5, 6] },
+  { nombre: "menor o igual que 4", caras: [1, 2, 3, 4] },
+  { nombre: "menor que 4", caras: [1, 2, 3] },
+  { nombre: "cuadrado perfecto", caras: [1, 4] },
+  { nombre: "divisor de 6", caras: [1, 2, 3, 6] },
+  { nombre: "divisor de 4", caras: [1, 2, 4] },
+  { nombre: "que no es primo", caras: [1, 4, 6] },
+  { nombre: "extremo (1 o 6)", caras: [1, 6] },
+];
+
+/**
+ * Busca la forma más corta de describir un evento con propiedades: primero
+ * con una sola, después combinando dos, después tres. Devuelve null cuando el
+ * conjunto no responde a ninguna propiedad simple — que también es un caso
+ * que vale la pena mostrar.
+ */
+function describirEvento(evento: Set<number>): string | null {
+  if (evento.size === 0) return null;
+  // El conjunto completo no se describe con una propiedad: es todo S.
+  if (evento.size === 6) return null;
+
+  const iguales = (a: Set<number>, b: Set<number>) =>
+    a.size === b.size && [...a].every((x) => b.has(x));
+
+  // Sólo sirven las propiedades que contienen a todo el evento.
+  const candidatas = PROPIEDADES.filter((p) =>
+    [...evento].every((c) => p.caras.includes(c))
+  );
+
+  for (let k = 1; k <= 3; k++) {
+    const combinar = (desde: number, elegidas: typeof candidatas): string | null => {
+      if (elegidas.length === k) {
+        const inter = new Set(
+          [1, 2, 3, 4, 5, 6].filter((c) =>
+            elegidas.every((p) => p.caras.includes(c))
+          )
+        );
+        return iguales(inter, evento)
+          ? elegidas.map((p) => p.nombre).join(" y ")
+          : null;
+      }
+      for (let i = desde; i < candidatas.length; i++) {
+        const r = combinar(i + 1, [...elegidas, candidatas[i]]);
+        if (r) return r;
+      }
+      return null;
+    };
+    const r = combinar(0, []);
+    if (r) return r;
+  }
+  return null;
+}
+
+/**
  * 2.1 — Espacio muestral, universo, suceso.
  *
  * Patrón de libro en todo el módulo: se define el término (corto, sin
@@ -248,6 +313,7 @@ function UnDadoInteractivo() {
   const caraTop = total > 0 ? conteos.indexOf(Math.max(...conteos)) + 1 : null;
   const vecesEvento = [...evento].reduce((s, cara) => s + conteos[cara - 1], 0);
   const pctEvento = total > 0 ? (vecesEvento / total) * 100 : 0;
+  const descripcion = describirEvento(evento);
   const nombreEvento =
     evento.size === 0
       ? "evento imposible"
@@ -483,9 +549,25 @@ function UnDadoInteractivo() {
             </button>
           ))}
         </div>
-        <p className="mt-2 text-center text-xs text-slate-400 dark:text-slate-500">
-          Probá también los dos extremos: ninguna cara, y las seis.
-        </p>
+        <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+          <span className="text-xs text-slate-400">Probá:</span>
+          {[
+            { etiqueta: "los pares", caras: [2, 4, 6] },
+            { etiqueta: "los primos", caras: [2, 3, 5] },
+            { etiqueta: "sólo el 6", caras: [6] },
+            { etiqueta: "ninguna", caras: [] },
+            { etiqueta: "las seis", caras: [1, 2, 3, 4, 5, 6] },
+          ].map((s) => (
+            <button
+              key={s.etiqueta}
+              type="button"
+              onClick={() => setEvento(new Set(s.caras))}
+              className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-slate-700 dark:text-slate-400 dark:hover:border-emerald-600 dark:hover:text-emerald-300"
+            >
+              {s.etiqueta}
+            </button>
+          ))}
+        </div>
         <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
           <p>
             Tu evento es{" "}
@@ -493,7 +575,24 @@ function UnDadoInteractivo() {
               {"{"}
               {[...evento].sort((a, b) => a - b).join(", ")}
               {"}"}
-            </strong>{" "}
+            </strong>
+            {evento.size === 6 ? (
+              <>
+                , o sea{" "}
+                <strong className="text-emerald-700 dark:text-emerald-300">
+                  «sale cualquier número»
+                </strong>
+              </>
+            ) : (
+              descripcion && (
+                <>
+                  , o sea{" "}
+                  <strong className="text-emerald-700 dark:text-emerald-300">
+                    «sale un número {descripcion}»
+                  </strong>
+                </>
+              )
+            )}{" "}
             — <strong>{nombreEvento}</strong>.{" "}
             {total === 0 ? (
               <>Tirá el dado arriba para ver con qué frecuencia ocurre.</>
@@ -519,6 +618,24 @@ function UnDadoInteractivo() {
             <p className="mt-2 text-slate-600 dark:text-slate-400">
               Con las seis caras adentro, cualquier resultado lo hace ocurrir:
               es el evento seguro, y su probabilidad es 1 (100%).
+            </p>
+          )}
+          {evento.size > 0 && evento.size < 6 && !descripcion && (
+            <p className="mt-2 text-slate-600 dark:text-slate-400">
+              Este conjunto no responde a ninguna propiedad simple: no son «los
+              pares», ni «los primos», ni «los mayores que 3». Cuando eso pasa,
+              la única forma de describir el evento es{" "}
+              <strong>enumerar sus elementos</strong> — y por eso la definición
+              dice que un evento es cualquier subconjunto, no sólo los que
+              tienen nombre bonito.
+            </p>
+          )}
+          {descripcion && evento.size < 6 && (
+            <p className="mt-2 text-slate-600 dark:text-slate-400">
+              Fijate que el mismo evento se puede escribir de dos formas: por{" "}
+              <strong>enumeración</strong> (la lista de caras) o por{" "}
+              <strong>comprensión</strong> (la propiedad que las une). Las dos
+              nombran exactamente el mismo subconjunto de S.
             </p>
           )}
         </div>
@@ -784,44 +901,80 @@ function TamizajeInteractivo() {
         </p>
       )}
 
-      <div className="mt-5 flex flex-wrap justify-center gap-1">
-        {Array.from({ length: 28 }, (_, v) => v).map((v) => {
-          const c = conteosPorPuntaje[v];
-          const zonaPositiva = v >= 10;
-          const esUltimo = ultimo?.phq9 === v;
-          const intensidad = c > 0 ? 0.2 + 0.7 * (c / maxConteoPuntaje) : 0;
-          return (
-            <div
-              key={v}
-              title={`Puntaje ${v}: ${c} estudiante(s)`}
-              className={
-                "grid h-9 w-9 place-items-center rounded-md border text-[11px] font-semibold tabular-nums transition sm:h-10 sm:w-10 " +
-                (esUltimo
-                  ? "scale-110 border-blue-600 ring-2 ring-blue-400"
-                  : zonaPositiva
-                    ? "border-slate-300 dark:border-slate-700"
-                    : "border-slate-200 dark:border-slate-800")
-              }
-              style={
-                c > 0
-                  ? {
-                      backgroundColor: zonaPositiva
-                        ? `rgba(217, 119, 6, ${intensidad})`
-                        : `rgba(37, 99, 235, ${intensidad})`,
-                      color: intensidad > 0.45 ? "white" : undefined,
+      {/* Histograma: una barra por puntaje posible, altura = cuántos lo sacaron */}
+      <div className="mt-5 -mx-1 overflow-x-auto px-1">
+        <div className="flex items-end gap-[3px]" style={{ minWidth: 28 * 24 }}>
+          {Array.from({ length: 28 }, (_, v) => v).map((v) => {
+            const c = conteosPorPuntaje[v];
+            const zonaPositiva = v >= 10;
+            const esUltimo = ultimo?.phq9 === v;
+            const alto = maxConteoPuntaje > 0 ? (c / maxConteoPuntaje) * 110 : 0;
+            return (
+              <div
+                key={v}
+                title={`Puntaje ${v}: ${c} estudiante${c === 1 ? "" : "s"}`}
+                className="flex flex-1 flex-col items-center gap-1"
+              >
+                {/* cuántos estudiantes sacaron este puntaje */}
+                <span
+                  className={
+                    "text-[10px] tabular-nums " +
+                    (c > 0
+                      ? "font-bold text-slate-700 dark:text-slate-300"
+                      : "text-transparent")
+                  }
+                >
+                  {c > 0 ? c : "0"}
+                </span>
+                {/* la barra */}
+                <div className="flex h-[112px] w-full items-end">
+                  <div
+                    className={
+                      "w-full rounded-t transition-all " +
+                      (esUltimo
+                        ? "ring-2 ring-blue-500 "
+                        : "") +
+                      (c === 0
+                        ? "bg-slate-100 dark:bg-slate-800"
+                        : zonaPositiva
+                          ? "bg-amber-500"
+                          : "bg-blue-500")
                     }
-                  : undefined
-              }
-            >
-              {c > 0 ? c : v}
-            </div>
-          );
-        })}
+                    style={{ height: c === 0 ? 2 : Math.max(4, alto) }}
+                  />
+                </div>
+                {/* el puntaje */}
+                <span
+                  className={
+                    "text-[10px] tabular-nums " +
+                    (esUltimo
+                      ? "font-bold text-blue-700 dark:text-blue-300"
+                      : zonaPositiva
+                        ? "text-amber-600 dark:text-amber-500"
+                        : "text-slate-400")
+                  }
+                >
+                  {v}
+                </span>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <p className="mt-1 text-center text-xs text-slate-400 dark:text-slate-500">
-        Naranja = zona de tamizaje positivo (≥10). El número en cada casilla
-        es cuántos estudiantes reales dieron ese puntaje exacto.
-      </p>
+      <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+        <span>
+          <strong className="text-slate-700 dark:text-slate-300">Abajo</strong>{" "}
+          = puntaje posible (0 a 27)
+        </span>
+        <span>
+          <strong className="text-slate-700 dark:text-slate-300">Arriba</strong>{" "}
+          = cuántos estudiantes lo sacaron
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-sm bg-amber-500" />
+          zona positiva (≥ 10)
+        </span>
+      </div>
 
       <div className="mt-5">
         <BarraSim

@@ -144,6 +144,8 @@ export function ModuloTiposProbabilidad({
 
       <Axiomas p={p} />
 
+      <ComplementoVisual p={p} />
+
       <Desarrollo
         titulo="De los axiomas sale la regla del complemento"
         insignia={INSIGNIA}
@@ -156,7 +158,7 @@ export function ModuloTiposProbabilidad({
               </>
             ),
             explicacion:
-              "Un evento y su complemento son mutuamente excluyentes (no pueden pasar juntos) y entre los dos cubren todo el espacio muestral. Por el Axioma 3, sus probabilidades se suman y dan el total.",
+              "Es la barra de arriba escrita con símbolos: el trozo naranja más el azul dan la barra entera. Son excluyentes (ninguna ficha está en los dos) y entre los dos la cubren toda, así que por el Axioma 3 se suman.",
           },
           {
             expresion: (
@@ -417,33 +419,12 @@ function MonedaConvergente() {
 /* ------------------------------------------------------------------ */
 
 function Axiomas({ p }: { p: number }) {
-  const [abierto, setAbierto] = useState<number | null>(null);
-
-  const AXIOMAS = [
-    {
-      n: 1,
-      nombre: "No negatividad",
-      simbolo: "P(A) ≥ 0",
-      texto: "Ninguna probabilidad puede ser negativa. No existe el «menos 10% de riesgo».",
-      chequeo: `${p.toFixed(3)} ≥ 0 ✓`,
-    },
-    {
-      n: 2,
-      nombre: "Normalización",
-      simbolo: "P(S) = 1",
-      texto:
-        "El espacio muestral completo tiene probabilidad 1: algo tiene que ocurrir. Es el evento seguro de 2.1.",
-      chequeo: `${p.toFixed(3)} + ${(1 - p).toFixed(3)} = 1.000 ✓`,
-    },
-    {
-      n: 3,
-      nombre: "Aditividad",
-      simbolo: "P(A ∪ B) = P(A) + P(B)",
-      texto:
-        "Si dos eventos no pueden ocurrir a la vez, sus probabilidades se suman sin más. Ojo: sólo si son mutuamente excluyentes.",
-      chequeo: "dar positivo y dar negativo no pueden coexistir ✓",
-    },
-  ];
+  const [activo, setActivo] = useState<number | null>(null);
+  const total = ESTUDIANTES.length;
+  const positivos = contar(phq9Positivo);
+  const negativos = total - positivos;
+  const pctPos = p * 100;
+  const pctNeg = 100 - pctPos;
 
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
@@ -452,35 +433,258 @@ function Axiomas({ p }: { p: number }) {
       </h4>
       <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
         Las tres formas de arriba dan números distintos, pero todas tienen que
-        respetar las mismas tres reglas. Tocá cada una para verla comprobada
-        con nuestro propio dato.
+        respetar las mismas tres reglas. Acá están las {total} fichas puestas
+        en una sola barra: <strong>la barra entera es el espacio muestral</strong>,
+        y vale 1.
       </p>
-      <div className="mt-4 flex flex-col gap-2">
-        {AXIOMAS.map((a) => (
-          <button
-            key={a.n}
-            type="button"
-            onClick={() => setAbierto(abierto === a.n ? null : a.n)}
-            className="rounded-xl border border-slate-200 px-4 py-3 text-left transition hover:border-blue-300 dark:border-slate-700 dark:hover:border-blue-700"
+
+      {/* La barra del espacio muestral */}
+      <div className="mt-5">
+        <div className="flex h-14 overflow-hidden rounded-xl border-2 border-slate-300 dark:border-slate-600">
+          <div
+            className={
+              "flex items-center justify-center transition-all " +
+              (activo === 3 || activo === null
+                ? "bg-amber-500 text-white"
+                : "bg-amber-500/40 text-amber-900 dark:text-amber-100")
+            }
+            style={{ width: `${pctPos}%` }}
           >
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                Axioma {a.n} · {a.nombre}
-              </span>
-              <span className="font-mono text-sm text-blue-700 dark:text-blue-300">
-                {a.simbolo}
-              </span>
-            </div>
-            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-              {a.texto}
-            </p>
-            {abierto === a.n && (
-              <p className="mt-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-900 tabular-nums dark:bg-emerald-950/30 dark:text-emerald-200">
-                Con nuestros datos: {a.chequeo}
-              </p>
-            )}
-          </button>
-        ))}
+            <span className="text-xs font-bold tabular-nums">{positivos}</span>
+          </div>
+          <div
+            className={
+              "flex items-center justify-center transition-all " +
+              (activo === 3 || activo === null
+                ? "bg-blue-500 text-white"
+                : "bg-blue-500/40 text-blue-900 dark:text-blue-100")
+            }
+            style={{ width: `${pctNeg}%` }}
+          >
+            <span className="text-xs font-bold tabular-nums">{negativos}</span>
+          </div>
+        </div>
+        <div className="mt-1.5 flex justify-between text-xs">
+          <span className="text-amber-700 dark:text-amber-400">
+            positivos · {pctPos.toFixed(1)}%
+          </span>
+          <span className="text-blue-700 dark:text-blue-400">
+            negativos · {pctNeg.toFixed(1)}%
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-5 flex flex-col gap-2">
+        <AxiomaFila
+          n={1}
+          nombre="No negatividad"
+          simbolo="P(A) ≥ 0"
+          texto="Ninguna probabilidad puede ser negativa. No existe el «menos 10% de riesgo»."
+          activo={activo === 1}
+          onClick={() => setActivo(activo === 1 ? null : 1)}
+        >
+          <p className="text-sm text-slate-700 dark:text-slate-300">
+            Mirá la barra: un trozo puede ser grandísimo o achicarse hasta
+            desaparecer, pero <strong>no puede tener ancho negativo</strong>.
+            No hay forma de dibujarlo. Ese es todo el axioma.
+          </p>
+          <div className="mt-2 flex items-center gap-3">
+            <span className="text-xs text-slate-500">Válido:</span>
+            <div className="h-4 w-24 rounded bg-amber-500" />
+            <span className="text-xs tabular-nums text-slate-500">
+              0 ≤ {p.toFixed(3)} ≤ 1
+            </span>
+          </div>
+          <div className="mt-1.5 flex items-center gap-3 opacity-50">
+            <span className="text-xs text-slate-500">Imposible:</span>
+            <div className="h-4 w-0 rounded border border-dashed border-rose-400" />
+            <span className="text-xs text-rose-500">no se puede dibujar</span>
+          </div>
+        </AxiomaFila>
+
+        <AxiomaFila
+          n={2}
+          nombre="Normalización"
+          simbolo="P(S) = 1"
+          texto="El espacio muestral completo tiene probabilidad 1: algo tiene que ocurrir."
+          activo={activo === 2}
+          onClick={() => setActivo(activo === 2 ? null : 2)}
+        >
+          <p className="text-sm text-slate-700 dark:text-slate-300">
+            Los dos trozos de la barra llenan exactamente el ancho total, sin
+            dejar hueco ni desbordarse. Cada ficha del archivo está en uno de
+            los dos: no hay ninguna que no sea ni positiva ni negativa.
+          </p>
+          <p className="mt-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm tabular-nums text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200">
+            {positivos} + {negativos} = {total} fichas ·{" "}
+            {p.toFixed(3)} + {(1 - p).toFixed(3)} = 1.000
+          </p>
+        </AxiomaFila>
+
+        <AxiomaFila
+          n={3}
+          nombre="Aditividad"
+          simbolo="P(A ∪ B) = P(A) + P(B)"
+          texto="Si dos eventos no pueden ocurrir a la vez, sus probabilidades se suman sin más."
+          activo={activo === 3}
+          onClick={() => setActivo(activo === 3 ? null : 3)}
+        >
+          <p className="text-sm text-slate-700 dark:text-slate-300">
+            Los dos trozos <strong>no se pisan</strong>: ninguna ficha es
+            positiva y negativa a la vez. Por eso para saber cuántas hay entre
+            las dos alcanza con sumar los anchos, sin restar nada.
+          </p>
+          <p className="mt-2 rounded-lg bg-slate-100 px-3 py-2 text-sm text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+            Ojo: esto vale <strong>sólo</strong> cuando los eventos son
+            excluyentes. Cuando se solapan hay que restar la parte compartida,
+            y eso es exactamente lo que veremos en el apartado 2.5.
+          </p>
+        </AxiomaFila>
+      </div>
+    </div>
+  );
+}
+
+/** Una fila de axioma: título, símbolo, y su demostración desplegable. */
+function AxiomaFila({
+  n,
+  nombre,
+  simbolo,
+  texto,
+  activo,
+  onClick,
+  children,
+}: {
+  n: number;
+  nombre: string;
+  simbolo: string;
+  texto: string;
+  activo: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className={
+        "rounded-xl border-2 transition " +
+        (activo
+          ? "border-blue-500 bg-blue-50/40 dark:bg-blue-950/20"
+          : "border-slate-200 dark:border-slate-700")
+      }
+    >
+      <button
+        type="button"
+        onClick={onClick}
+        aria-expanded={activo}
+        className="w-full px-4 py-3 text-left"
+      >
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+            Axioma {n} · {nombre}
+          </span>
+          <span className="font-mono text-sm text-blue-700 dark:text-blue-300">
+            {simbolo}
+          </span>
+          <span className="ml-auto text-xs text-slate-400">
+            {activo ? "▲" : "▼ ver en la barra"}
+          </span>
+        </div>
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+          {texto}
+        </p>
+      </button>
+      {activo && (
+        <div className="border-t border-blue-200 px-4 py-3 dark:border-blue-900">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* El complemento, visto sobre las fichas                              */
+/* ------------------------------------------------------------------ */
+
+/**
+ * La regla del complemento en abstracto no dice nada. Acá se ve sobre las
+ * fichas reales: elegís un evento, y el complemento es literalmente todo lo
+ * que queda de la barra.
+ */
+function ComplementoVisual({ p }: { p: number }) {
+  const [verComplemento, setVerComplemento] = useState(false);
+  const total = ESTUDIANTES.length;
+  const positivos = contar(phq9Positivo);
+  const negativos = total - positivos;
+
+  const num = verComplemento ? negativos : positivos;
+  const prob = num / total;
+  const etiqueta = verComplemento ? "NO dar positivo" : "dar positivo";
+
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h5 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          El complemento es «todo lo demás»
+        </h5>
+        <button
+          type="button"
+          onClick={() => setVerComplemento((v) => !v)}
+          className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
+        >
+          {verComplemento ? "↩ Volver al evento A" : "Ver el complemento Aᶜ →"}
+        </button>
+      </div>
+
+      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Cada cuadradito es una ficha. Marcado = cumple el evento que estamos
+        mirando.
+      </p>
+
+      <div className="mt-4 flex flex-wrap gap-[3px]">
+        {ESTUDIANTES.map((e) => {
+          const esPositivo = phq9Positivo(e);
+          const marcado = verComplemento ? !esPositivo : esPositivo;
+          return (
+            <span
+              key={e.id}
+              className={
+                "h-3 w-3 rounded-[2px] transition " +
+                (marcado
+                  ? verComplemento
+                    ? "bg-blue-600"
+                    : "bg-amber-500"
+                  : "bg-slate-200 dark:bg-slate-700")
+              }
+            />
+          );
+        })}
+      </div>
+
+      <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 dark:bg-slate-800/60">
+        <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+          P({etiqueta}) = {num}/{total} = {prob.toFixed(3)}
+        </p>
+        <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          {verComplemento ? (
+            <>
+              Se dieron vuelta exactamente los mismos cuadraditos: los que
+              antes estaban marcados ahora no, y viceversa. Ningún cuadradito
+              quedó marcado en las dos vistas, y ninguno quedó sin marcar en
+              las dos. Por eso{" "}
+              <strong className="tabular-nums">
+                {p.toFixed(3)} + {prob.toFixed(3)} = 1.000
+              </strong>{" "}
+              — y por eso alcanza con calcular uno para conocer el otro.
+            </>
+          ) : (
+            <>
+              Éste es el evento A. Tocá el botón y mirá qué pasa con los
+              cuadraditos: el complemento no es «otro evento parecido», es{" "}
+              <strong>exactamente todo lo que A deja afuera</strong>.
+            </>
+          )}
+        </p>
       </div>
     </div>
   );

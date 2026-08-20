@@ -129,20 +129,34 @@ export function ModuloTablasContingencia({
         Una tabla que organiza el conteo conjunto de dos variables
         categóricas en filas y columnas. De ella se leen tres tipos de
         probabilidad, y se distinguen únicamente por el denominador.
-        <Ejemplos titulo="Ver otras tablas de contingencia">
-          <Ejemplo caso="Tratamiento (recibió / no recibió) × Mejoría (sí / no)">
-            La tabla clásica de un ensayo clínico.
+        <Ejemplos titulo="Ver un ejemplo numérico completo, con otros datos">
+          <Ejemplo caso="Un ensayo clínico con 100 pacientes">
+            50 recibieron el tratamiento y 50 no. Mejoraron 40 de los tratados
+            y 15 de los no tratados. La tabla queda así:
           </Ejemplo>
-          <Ejemplo caso="Turno (mañana / tarde) × Abandono (sí / no)">
-            Para ver si el horario de cursada se asocia con dejar la materia.
+          <Ejemplo caso={"                Mejoró   No mejoró   Total"}>
+            {"Tratados          40         10        50"}
+            <br />
+            {"No tratados       15         35        50"}
+            <br />
+            {"Total             55         45       100"}
           </Ejemplo>
-          <Ejemplo caso="Un dado: paridad (par / impar) × tamaño (≤3 / >3)">
-            No hace falta que sean personas: cualquier par de variables
-            categóricas se puede cruzar.
+          <Ejemplo caso="CONJUNTA — P(tratado ∩ mejoró) = 40/100 = 40%">
+            Denominador: el total general. «De todos los pacientes, ¿qué parte
+            recibió tratamiento Y mejoró?»
           </Ejemplo>
-          <Ejemplo caso="La nuestra: tamizaje (+ / −) × diagnóstico (sí / no)">
-            Lo que dijo el test contra lo que era verdad. Las dos celdas de la
-            diagonal son aciertos; las otras dos, los dos tipos de error.
+          <Ejemplo caso="MARGINAL — P(mejoró) = 55/100 = 55%">
+            Denominador: el total general otra vez, pero ignorando si recibió
+            tratamiento o no. Se lee en el margen de la tabla.
+          </Ejemplo>
+          <Ejemplo caso="CONDICIONAL — P(mejoró | tratado) = 40/50 = 80%">
+            Denominador: sólo los 50 tratados. Ya sabemos que la persona
+            recibió tratamiento, así que el resto de la tabla no cuenta.
+          </Ejemplo>
+          <Ejemplo caso="CONDICIONAL al revés — P(tratado | mejoró) = 40/55 = 73%">
+            Mismo numerador (40), otro denominador (55 en vez de 50), otro
+            resultado. Cambiar de qué lado se condiciona cambia el número — es
+            exactamente el error que veremos abajo con sensibilidad y VPP.
           </Ejemplo>
         </Ejemplos>
       </Definicion>

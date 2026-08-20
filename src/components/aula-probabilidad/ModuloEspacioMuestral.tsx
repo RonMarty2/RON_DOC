@@ -255,41 +255,63 @@ function UnDadoInteractivo() {
   const [caraVisible, setCaraVisible] = useState<number | null>(null);
   const [rodando, setRodando] = useState(false);
   const [evento, setEvento] = useState<Set<number>>(new Set());
-  const intervaloRef = useRef<number | null>(null);
+  // El guard va en un ref, no en el estado: setState es asíncrono y dos toques
+  // seguidos pasarían los dos, arrancando dos animaciones a la vez.
+  const rodandoRef = useRef(false);
+  const limpiarRef = useRef<(() => void) | null>(null);
 
-  useEffect(() => {
-    return () => {
-      if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
-    };
-  }, []);
+  useEffect(() => () => limpiarRef.current?.(), []);
 
   function tirarUnaVez() {
-    if (rodando) return;
+    if (rodandoRef.current) return;
+    rodandoRef.current = true;
     setRodando(true);
+
+    // El resultado se decide ya: si el navegador pausa la animación (pestaña
+    // en segundo plano, o la app de Android minimizada), el valor no se pierde.
+    const resultadoFinal = entero(1, 6);
     let vueltas = 0;
-    const totalVueltas = 8;
-    intervaloRef.current = window.setInterval(() => {
-      setCaraVisible(entero(1, 6));
+    let terminado = false;
+
+    const finalizar = () => {
+      if (terminado) return;
+      terminado = true;
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+      limpiarRef.current = null;
+      setCaraVisible(resultadoFinal);
+      setHistorial((h) => [...h, resultadoFinal]);
+      rodandoRef.current = false;
+      setRodando(false);
+    };
+
+    const id = window.setInterval(() => {
       vueltas++;
-      if (vueltas >= totalVueltas) {
-        if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
-        const resultadoFinal = entero(1, 6);
-        setCaraVisible(resultadoFinal);
-        setHistorial((h) => [...h, resultadoFinal]);
-        setRodando(false);
-      }
+      if (vueltas >= 8) finalizar();
+      else setCaraVisible(entero(1, 6));
     }, 70);
+
+    // Red de seguridad: pase lo que pase con el intervalo, a los 1,5 s la
+    // tirada se cierra y los botones vuelven a habilitarse.
+    const seguro = window.setTimeout(finalizar, 1500);
+
+    limpiarRef.current = () => {
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+    };
   }
 
   function tirarLote(n: number) {
-    if (rodando) return;
+    if (rodandoRef.current) return;
     const nuevos = Array.from({ length: n }, () => entero(1, 6));
     setHistorial((h) => [...h, ...nuevos]);
     setCaraVisible(nuevos[nuevos.length - 1]);
   }
 
   function reset() {
-    if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
+    limpiarRef.current?.();
+    limpiarRef.current = null;
+    rodandoRef.current = false;
     setHistorial([]);
     setCaraVisible(null);
     setRodando(false);
@@ -654,34 +676,50 @@ function DosDadosInteractivo() {
   const [historial, setHistorial] = useState<[number, number][]>([]);
   const [ultimo, setUltimo] = useState<[number, number] | null>(null);
   const [rodando, setRodando] = useState(false);
-  const intervaloRef = useRef<number | null>(null);
+  const rodandoRef = useRef(false);
+  const limpiarRef = useRef<(() => void) | null>(null);
 
-  useEffect(() => {
-    return () => {
-      if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
-    };
-  }, []);
+  useEffect(() => () => limpiarRef.current?.(), []);
 
   function tirar() {
-    if (rodando) return;
+    if (rodandoRef.current) return;
+    rodandoRef.current = true;
     setRodando(true);
+
+    const par: [number, number] = [entero(1, 6), entero(1, 6)];
     let vueltas = 0;
-    const totalVueltas = 8;
-    intervaloRef.current = window.setInterval(() => {
-      setUltimo([entero(1, 6), entero(1, 6)]);
+    let terminado = false;
+
+    const finalizar = () => {
+      if (terminado) return;
+      terminado = true;
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+      limpiarRef.current = null;
+      setUltimo(par);
+      setHistorial((h) => [...h, par]);
+      rodandoRef.current = false;
+      setRodando(false);
+    };
+
+    const id = window.setInterval(() => {
       vueltas++;
-      if (vueltas >= totalVueltas) {
-        if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
-        const par: [number, number] = [entero(1, 6), entero(1, 6)];
-        setUltimo(par);
-        setHistorial((h) => [...h, par]);
-        setRodando(false);
-      }
+      if (vueltas >= 8) finalizar();
+      else setUltimo([entero(1, 6), entero(1, 6)]);
     }, 70);
+
+    const seguro = window.setTimeout(finalizar, 1500);
+
+    limpiarRef.current = () => {
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+    };
   }
 
   function reset() {
-    if (intervaloRef.current !== null) window.clearInterval(intervaloRef.current);
+    limpiarRef.current?.();
+    limpiarRef.current = null;
+    rodandoRef.current = false;
     setHistorial([]);
     setUltimo(null);
     setRodando(false);

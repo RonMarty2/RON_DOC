@@ -155,6 +155,8 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         contra lo que realmente hay en el archivo.
       </p>
 
+      <VennIndependencia />
+
       <ComparacionIndependencia
         esperado={esperadoIndep}
         observado={ambos}
@@ -473,6 +475,162 @@ function ComparacionIndependencia({
           equivocado que parecía perfectamente razonable.
         </p>
       )}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Independencia vista en el diagrama de Venn                          */
+/* ------------------------------------------------------------------ */
+
+/**
+ * La independencia se entiende mucho mejor mirando el solapamiento: cuánto de
+ * B cae dentro de A comparado con cuánto de B hay en total. Este componente
+ * pone lado a lado el caso real y el hipotético independiente, con las mismas
+ * probabilidades marginales, para que la diferencia sea la del dibujo.
+ */
+function VennIndependencia() {
+  const [modo, setModo] = useState<"real" | "independiente">("real");
+  const total = ESTUDIANTES.length;
+
+  const a = contar(phq9Positivo);
+  const b = contar(gad7Positivo);
+  const ambosReal = contar((e) => phq9Positivo(e) && gad7Positivo(e));
+  const ambosIndep = Math.round((a / total) * (b / total) * total);
+
+  const ambos = modo === "real" ? ambosReal : ambosIndep;
+  const soloA = a - ambos;
+  const soloB = b - ambos;
+
+  // P(B|A) contra P(B): si coinciden, son independientes.
+  const pB = b / total;
+  const pBdadoA = a > 0 ? ambos / a : 0;
+
+  // El radio del círculo B se mantiene; lo que cambia es cuánto se solapa.
+  const cx1 = 130;
+  const r = 68;
+  // Distancia entre centros: a más solapamiento, más cerca.
+  const solape = ambos / Math.min(a, b);
+  const cx2 = cx1 + r * 2 - solape * r * 1.35;
+
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          La independencia, vista en el solapamiento
+        </h4>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => setModo("real")}
+            className={
+              "rounded-full px-3 py-1.5 text-sm font-semibold transition " +
+              (modo === "real"
+                ? "bg-rose-600 text-white"
+                : "border border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-300")
+            }
+          >
+            Lo que hay
+          </button>
+          <button
+            type="button"
+            onClick={() => setModo("independiente")}
+            className={
+              "rounded-full px-3 py-1.5 text-sm font-semibold transition " +
+              (modo === "independiente"
+                ? "bg-slate-600 text-white"
+                : "border border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-300")
+            }
+          >
+            Si fueran independientes
+          </button>
+        </div>
+      </div>
+
+      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        Los dos círculos tienen <strong>siempre el mismo tamaño</strong>: {a}{" "}
+        positivos en depresión y {b} en ansiedad. Lo único que cambia entre las
+        dos vistas es <strong>cuánto se pisan</strong>.
+      </p>
+
+      <svg viewBox="0 0 360 190" className="mx-auto mt-4 w-full max-w-md" role="img" aria-label="Solapamiento entre depresión y ansiedad">
+        <rect x="1" y="1" width="358" height="188" rx="10" className="fill-slate-50 stroke-slate-200 dark:fill-slate-800/40 dark:stroke-slate-700" />
+        <circle cx={cx1} cy="95" r={r} className="fill-blue-500/30 stroke-blue-600" strokeWidth="2" />
+        <circle cx={cx2} cy="95" r={r} className="fill-amber-500/30 stroke-amber-600" strokeWidth="2" />
+        <text x={cx1 - r / 2} y="100" textAnchor="middle" className="fill-slate-900 text-base font-semibold dark:fill-slate-100">{soloA}</text>
+        <text x={(cx1 + cx2) / 2} y="100" textAnchor="middle" className="fill-slate-900 text-lg font-bold dark:fill-slate-100">{ambos}</text>
+        <text x={cx2 + r / 2} y="100" textAnchor="middle" className="fill-slate-900 text-base font-semibold dark:fill-slate-100">{soloB}</text>
+        <text x={cx1} y="28" textAnchor="middle" className="fill-blue-700 text-xs font-semibold dark:fill-blue-300">Depresión + ({a})</text>
+        <text x={cx2} y="176" textAnchor="middle" className="fill-amber-700 text-xs font-semibold dark:fill-amber-400">Ansiedad + ({b})</text>
+      </svg>
+
+      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-xl bg-slate-50 px-4 py-3 dark:bg-slate-800/60">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            Ansiedad en la población general
+          </p>
+          <p className="font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            {(pB * 100).toFixed(1)}%
+          </p>
+          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+            P(B) = {b}/{total}
+          </p>
+        </div>
+        <div
+          className={
+            "rounded-xl px-4 py-3 " +
+            (modo === "real"
+              ? "bg-rose-50 dark:bg-rose-950/30"
+              : "bg-slate-50 dark:bg-slate-800/60")
+          }
+        >
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            Ansiedad dentro del círculo azul
+          </p>
+          <p
+            className={
+              "font-serif text-2xl font-semibold tabular-nums " +
+              (modo === "real"
+                ? "text-rose-700 dark:text-rose-400"
+                : "text-slate-900 dark:text-slate-100")
+            }
+          >
+            {(pBdadoA * 100).toFixed(1)}%
+          </p>
+          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+            P(B | A) = {ambos}/{a}
+          </p>
+        </div>
+      </div>
+
+      <div
+        className={
+          "mt-3 rounded-xl px-4 py-3 text-sm leading-relaxed " +
+          (modo === "real"
+            ? "bg-rose-100 text-rose-900 dark:bg-rose-950/40 dark:text-rose-200"
+            : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300")
+        }
+      >
+        {modo === "real" ? (
+          <>
+            <strong>Se pisan mucho más de lo que deberían.</strong> Mirá los
+            dos números: en la población general el {(pB * 100).toFixed(1)}%
+            tiene ansiedad, pero <em>dentro</em> del círculo azul es el{" "}
+            {(pBdadoA * 100).toFixed(1)}%. Entrar al círculo de depresión{" "}
+            <strong>cambia</strong> la chance de tener ansiedad, y eso es
+            justamente lo contrario de ser independientes.
+          </>
+        ) : (
+          <>
+            <strong>Así se verían si fueran independientes.</strong> Los dos
+            números coinciden: dentro del círculo azul hay la misma proporción
+            de ansiedad que en toda la población. Entrar al círculo{" "}
+            <strong>no cambiaría nada</strong> — saber que alguien dio positivo
+            en depresión no diría absolutamente nada sobre su ansiedad. Tocá
+            «Lo que hay» y mirá cuánto más se pisan en realidad.
+          </>
+        )}
+      </div>
     </div>
   );
 }

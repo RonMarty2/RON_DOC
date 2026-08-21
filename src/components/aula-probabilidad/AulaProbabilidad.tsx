@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { MODULOS, type ModuloId } from "./modulos";
-import { BLOQUES, ORDEN_BLOQUES } from "./bloques";
+import { BLOQUES } from "./bloques";
+import { RielApartados, MenuApartados } from "./NavegacionApartados";
 
 /** Dónde se guarda el último apartado visitado, para retomarlo al volver. */
 const CLAVE_PROGRESO = "aula-probabilidad:ultimo-apartado";
@@ -64,7 +65,6 @@ function CuerpoModulo({
  */
 export function AulaProbabilidad() {
   const [activo, setActivo] = useState<ModuloId>("misterio");
-  const [menuAbierto, setMenuAbierto] = useState(false);
   const [retomado, setRetomado] = useState<ModuloId | null>(null);
 
   // Al abrir, retomar donde se había quedado. Arranca siempre en "misterio"
@@ -93,7 +93,6 @@ export function AulaProbabilidad() {
   /** Navega a un apartado, lo recuerda para la próxima vez y vuelve arriba. */
   function irA(destino: ModuloId) {
     setActivo(destino);
-    setMenuAbierto(false);
     setRetomado(null);
     try {
       window.localStorage.setItem(CLAVE_PROGRESO, destino);
@@ -112,7 +111,6 @@ export function AulaProbabilidad() {
       /* nada que hacer */
     }
     setActivo("misterio");
-    setMenuAbierto(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -129,98 +127,11 @@ export function AulaProbabilidad() {
 
   return (
     <div className="aula-probabilidad">
-      {/* Navegación: compacta en móvil, desplegada en pantallas grandes */}
-      <nav
-        aria-label="Secciones de la herramienta"
-        className="sticky top-16 z-20 -mx-4 mb-8 border-b border-slate-200 bg-white/95 px-4 py-2.5 backdrop-blur sm:-mx-6 sm:px-6 sm:py-3 dark:border-slate-800 dark:bg-slate-950/95"
-      >
-        {/* Barra compacta: sólo visible en móvil */}
-        <div className="flex items-center gap-3 sm:hidden">
-          <button
-            type="button"
-            onClick={() => setMenuAbierto((v) => !v)}
-            aria-expanded={menuAbierto}
-            className={
-              "flex min-w-0 flex-1 items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium " +
-              acento.activo
-            }
-          >
-            <span aria-hidden>{meta.icono}</span>
-            <span className="truncate">
-              {meta.apartado ? `${meta.apartado} ${meta.titulo}` : meta.titulo}
-            </span>
-            <span aria-hidden className="ml-auto text-xs">
-              {menuAbierto ? "▲" : "▼"}
-            </span>
-          </button>
-          <span className="shrink-0 font-mono text-[10px] tabular-nums text-slate-400">
-            {indiceActivo + 1}/{MODULOS.length}
-          </span>
-        </div>
-
-        {/* Lista completa: siempre en pantallas grandes, desplegable en móvil */}
-        <div className={(menuAbierto ? "mt-3 " : "hidden ") + "sm:mt-0 sm:block"}>
-          <div className="flex flex-wrap items-start gap-x-5 gap-y-3">
-            {ORDEN_BLOQUES.map((bloqueId) => {
-              const b = BLOQUES[bloqueId];
-              const delBloque = MODULOS.filter((m) => m.bloque === bloqueId);
-              const bloqueActivo = delBloque.some((m) => m.id === activo);
-              return (
-                <div key={bloqueId} className="flex flex-col gap-1.5">
-                  <div className="flex items-center gap-1.5">
-                    <span className={"h-1 w-4 rounded-full " + b.barra} />
-                    <span
-                      className={
-                        "font-mono text-[9px] font-semibold uppercase tracking-widest transition " +
-                        (bloqueActivo ? b.texto : "text-slate-400 dark:text-slate-600")
-                      }
-                    >
-                      {b.etiqueta}
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {delBloque.map((m) => (
-                      <button
-                        key={m.id}
-                        type="button"
-                        onClick={() => irA(m.id)}
-                        aria-pressed={m.id === activo}
-                        className={
-                          "flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition sm:text-sm " +
-                          (m.id === activo ? b.activo : b.inactivo)
-                        }
-                      >
-                        <span aria-hidden>{m.icono}</span>
-                        <span className="whitespace-nowrap">
-                          {m.apartado ? `${m.apartado} ${m.titulo}` : m.titulo}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Progreso del recorrido */}
-        <div className="mt-2.5 hidden items-center gap-2 sm:flex">
-          <div className="flex h-1.5 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
-            {MODULOS.map((m, i) => (
-              <span
-                key={m.id}
-                className={
-                  "h-full flex-1 transition " +
-                  (i <= indiceActivo ? BLOQUES[m.bloque].barra : "bg-transparent")
-                }
-              />
-            ))}
-          </div>
-          <span className="font-mono text-[10px] tabular-nums text-slate-400">
-            {indiceActivo + 1} / {MODULOS.length}
-          </span>
-        </div>
-      </nav>
+      {/* Navegación: riel a la derecha cuando hay margen, botón flotante si no.
+          Antes era una barra pegajosa de cuatro filas que seguía al lector
+          durante todo el desplazamiento. */}
+      <RielApartados activo={activo} irA={irA} indiceActivo={indiceActivo} />
+      <MenuApartados activo={activo} irA={irA} indiceActivo={indiceActivo} />
 
       {/* Aviso de que se retomó donde se había quedado */}
       {retomado && (

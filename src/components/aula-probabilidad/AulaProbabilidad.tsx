@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MODULOS, type ModuloId } from "./modulos";
 import { BLOQUES } from "./bloques";
-import { RielApartados, MenuApartados } from "./NavegacionApartados";
+import {
+  RielApartados,
+  MenuApartados,
+  useHuecoRiel,
+} from "./NavegacionApartados";
 
 /** Dónde se guarda el último apartado visitado, para retomarlo al volver. */
 const CLAVE_PROGRESO = "aula-probabilidad:ultimo-apartado";
@@ -67,6 +71,13 @@ export function AulaProbabilidad() {
   const [activo, setActivo] = useState<ModuloId>("misterio");
   const [retomado, setRetomado] = useState<ModuloId | null>(null);
 
+  // La navegación no se decide con un punto de corte de ancho de ventana sino
+  // midiendo el margen que sobra al costado de esta columna: con zoom, con
+  // letra grande o en una ventana angosta el riel simplemente no entra y manda
+  // el botón flotante.
+  const columna = useRef<HTMLDivElement>(null);
+  const hueco = useHuecoRiel(columna);
+
   // Al abrir, retomar donde se había quedado. Arranca siempre en "misterio"
   // para que el HTML del servidor y el del navegador coincidan, y recién
   // después salta al apartado guardado.
@@ -126,12 +137,22 @@ export function AulaProbabilidad() {
   }, []);
 
   return (
-    <div className="aula-probabilidad">
-      {/* Navegación: riel a la derecha cuando hay margen, botón flotante si no.
-          Antes era una barra pegajosa de cuatro filas que seguía al lector
-          durante todo el desplazamiento. */}
-      <RielApartados activo={activo} irA={irA} indiceActivo={indiceActivo} />
-      <MenuApartados activo={activo} irA={irA} indiceActivo={indiceActivo} />
+    <div className="aula-probabilidad" ref={columna}>
+      {/* Navegación: riel a la derecha sólo si el margen medido lo admite;
+          si no, botón flotante. Antes era una barra pegajosa de cuatro filas
+          que seguía al lector durante todo el desplazamiento. */}
+      <RielApartados
+        activo={activo}
+        irA={irA}
+        indiceActivo={indiceActivo}
+        hueco={hueco}
+      />
+      <MenuApartados
+        activo={activo}
+        irA={irA}
+        indiceActivo={indiceActivo}
+        visible={hueco === null}
+      />
 
       {/* Aviso de que se retomó donde se había quedado */}
       {retomado && (

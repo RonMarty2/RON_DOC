@@ -1,22 +1,118 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type RefObject } from "react";
+import { createPortal } from "react-dom";
 import { MODULOS, type ModuloId } from "./modulos";
 import { BLOQUES, ORDEN_BLOQUES } from "./bloques";
 
 /**
- * La navegación entre apartados, en dos formas según el ancho.
+ * La navegación entre apartados, en dos formas según el espacio REAL.
  *
- * Antes era una barra pegajosa de cuatro filas que seguía al lector durante
- * todo el desplazamiento: en una pantalla de portátil se comía cerca del 15%
- * del alto útil, de forma permanente. Ahora:
+ * Historia del componente:
  *
- *  - En pantallas anchas (desde 1440px) es un riel vertical a la derecha, en
- *    el margen que el contenido no usa. No roba alto y siempre se ve dónde
- *    está uno.
- *  - Más angosto, no hay nada fijo: el menú se abre desde un botón flotante
- *    y se cierra al elegir.
+ *  1. Era una barra pegajosa de cuatro filas que seguía al lector durante todo
+ *     el desplazamiento: en un portátil se comía cerca del 15% del alto útil.
+ *  2. Pasó a ser un riel vertical a la derecha, pero decidido por un punto de
+ *     corte fijo (`min-[1440px]`). Ese punto de corte mira el ancho de la
+ *     ventana, NO el margen que sobra al costado del texto: al hacer zoom (o
+ *     al agrandar la letra del navegador) el riel seguía apareciendo aunque ya
+ *     no cupiera, y se veía cortado contra el borde.
+ *  3. Ahora el riel se MIDE, no se adivina. `useHuecoRiel` compara el borde
+ *     derecho de la columna de contenido con el ancho útil de la ventana; si
+ *     el hueco que sobra no alcanza para un riel legible, el riel no existe y
+ *     manda el botón flotante. El umbral está en `em`, así que también se
+ *     adapta cuando el navegador agranda sólo el texto.
+ *
+ * Además el riel y el menú se dibujan con `createPortal` sobre `document.body`:
+ * así su posición no depende de ningún ancestro (un `transform` o un
+ * `backdrop-filter` en cualquier contenedor cambiaría el marco de referencia de
+ * `position: fixed` y volvería a descuadrarlo).
  */
+
+/** Hueco disponible a la derecha del contenido, ya en píxeles concretos. */
+export interface HuecoRiel {
+  /** Distancia desde el borde izquierdo de la ventana. */
+  izquierda: number;
+  /** Ancho que puede ocupar el riel sin tocar nada. */
+  ancho: number;
+}
+
+/** Mínimo para que las etiquetas se lean sin cortarse (en `em`, no en px). */
+const ANCHO_MINIMO_EM = 14.5;
+/** No tiene sentido que crezca más: es un índice, no una columna de texto. */
+const ANCHO_MAXIMO_EM = 18;
+/** Aire entre el contenido y el riel, y entre el riel y el borde. */
+const SEPARACION_EM = 1.25;
+
+/**
+ * Mide el margen libre a la derecha de `refContenido` y devuelve dónde entra
+ * el riel — o `null` si no entra. Se recalcula al redimensionar, al hacer
+ * zoom, al cambiar el tamaño de letra y al cambiar de apartado (el alto del
+ * contenido cambia, aparece o desaparece la barra de desplazamiento y con ella
+ * el ancho útil).
+ */
+export function useHuecoRiel(
+  refContenido: RefObject<HTMLElement | null>
+): HuecoRiel | null {
+  const [hueco, setHueco] = useState<HuecoRiel | null>(null);
+
+  useEffect(() => {
+    const contenido = refContenido.current;
+    if (!contenido || typeof ResizeObserver === "undefined") return;
+
+    // Firma del último valor aplicado: evita `setState` en cada píxel de
+    // arrastre y corta cualquier riesgo de bucle con el ResizeObserver.
+    let ultimaFirma = "";
+
+    const medir = () => {
+      const raiz =
+        parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      const separacion = SEPARACION_EM * raiz;
+      const minimo = ANCHO_MINIMO_EM * raiz;
+      const maximo = ANCHO_MAXIMO_EM * raiz;
+
+      const caja = contenido.getBoundingClientRect();
+      // `clientWidth` del documento excluye la barra de desplazamiento; usar
+      // `innerWidth` dejaría el riel medio tapado por ella.
+      const anchoUtil = document.documentElement.clientWidth;
+      const libre = anchoUtil - caja.right - separacion * 2;
+
+      // El riel se centra en el hueco: si sobra espacio no queda pegado al
+      // texto ni al borde, que es lo que lo hacía ver «cortado».
+      const anchoRiel = Math.min(libre, maximo);
+      const siguiente: HuecoRiel | null =
+        libre >= minimo
+          ? {
+              izquierda: Math.round(
+                caja.right + separacion + (libre - anchoRiel) / 2
+              ),
+              ancho: Math.round(anchoRiel),
+            }
+          : null;
+
+      const firma = siguiente ? `${siguiente.izquierda}:${siguiente.ancho}` : "";
+      if (firma === ultimaFirma) return;
+      ultimaFirma = firma;
+      setHueco(siguiente);
+    };
+
+    medir();
+
+    const observador = new ResizeObserver(medir);
+    observador.observe(contenido);
+    observador.observe(document.documentElement);
+    window.addEventListener("resize", medir);
+    window.visualViewport?.addEventListener("resize", medir);
+
+    return () => {
+      observador.disconnect();
+      window.removeEventListener("resize", medir);
+      window.visualViewport?.removeEventListener("resize", medir);
+    };
+  }, [refContenido]);
+
+  return hueco;
+}
 
 /** Lista de apartados agrupada por bloque. Se usa en el riel y en el panel. */
 function ListaApartados({
@@ -37,7 +133,7 @@ function ListaApartados({
         return (
           <div key={bloqueId}>
             <div className="mb-1 flex items-center gap-1.5">
-              <span className={"h-1 w-3 rounded-full " + b.barra} />
+              <span className={"h-1 w-3 shrink-0 rounded-full " + b.barra} />
               <span
                 className={
                   "font-mono text-[9px] font-semibold uppercase tracking-widest transition " +
@@ -60,7 +156,7 @@ function ListaApartados({
                       compacta
                         ? "flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition " +
                           (esActivo ? b.activo : b.inactivo)
-                        : "flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-[13px] leading-tight transition " +
+                        : "flex w-full items-start gap-2 rounded-lg px-2 py-1.5 text-left text-[13px] leading-tight transition " +
                           (esActivo
                             ? "bg-slate-100 font-semibold text-slate-900 dark:bg-slate-800 dark:text-slate-100"
                             : "text-slate-500 hover:bg-slate-50 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-slate-200")
@@ -69,7 +165,15 @@ function ListaApartados({
                     <span aria-hidden className="shrink-0">
                       {m.icono}
                     </span>
-                    <span className={compacta ? "whitespace-nowrap" : ""}>
+                    {/* `min-w-0` + salto de línea: si el hueco se angosta, la
+                        etiqueta se parte en dos renglones en vez de cortarse. */}
+                    <span
+                      className={
+                        compacta
+                          ? "whitespace-nowrap"
+                          : "min-w-0 flex-1 break-words"
+                      }
+                    >
                       {m.apartado ? `${m.apartado} ${m.titulo}` : m.titulo}
                     </span>
                   </button>
@@ -83,49 +187,72 @@ function ListaApartados({
   );
 }
 
-/** Riel vertical fijo a la derecha. Sólo en pantallas con margen de sobra. */
+/**
+ * Riel vertical a la derecha. Sólo se dibuja cuando `hueco` no es `null`, es
+ * decir cuando la medición confirmó que entra completo.
+ */
 export function RielApartados({
   activo,
   irA,
   indiceActivo,
+  hueco,
 }: {
   activo: ModuloId;
   irA: (id: ModuloId) => void;
   indiceActivo: number;
+  hueco: HuecoRiel | null;
 }) {
-  return (
+  if (!hueco) return null;
+
+  return createPortal(
     <nav
       aria-label="Apartados"
-      className="pointer-events-none fixed inset-y-0 right-0 z-20 hidden w-[15rem] items-center pr-5 min-[1440px]:flex"
+      style={{ left: hueco.izquierda, width: hueco.ancho }}
+      className="pointer-events-none fixed inset-y-0 z-20 flex items-center"
     >
-      <div className="pointer-events-auto max-h-[80vh] w-full overflow-y-auto rounded-2xl border border-slate-200 bg-white/95 p-3 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/95">
-        <div className="mb-2 flex items-baseline justify-between">
+      <div className="pointer-events-auto max-h-[76vh] w-full overflow-y-auto rounded-2xl border border-slate-200 bg-white/95 p-3 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/95">
+        <div className="mb-2 flex items-baseline justify-between gap-2">
           <span className="font-mono text-[9px] font-semibold uppercase tracking-widest text-slate-400">
             Recorrido
           </span>
-          <span className="font-mono text-[10px] tabular-nums text-slate-400">
+          <span className="shrink-0 font-mono text-[10px] tabular-nums text-slate-400">
             {indiceActivo + 1}/{MODULOS.length}
           </span>
         </div>
         <ListaApartados activo={activo} irA={irA} />
       </div>
-    </nav>
+    </nav>,
+    document.body
   );
 }
 
-/** Botón flotante + panel, para cuando no hay margen para el riel. */
+/**
+ * Botón flotante + panel. Es la forma por defecto: aparece siempre que el riel
+ * no quepa, incluido el primer render del servidor (donde todavía no hay nada
+ * medido) y cualquier nivel de zoom.
+ */
 export function MenuApartados({
   activo,
   irA,
   indiceActivo,
+  visible,
 }: {
   activo: ModuloId;
   irA: (id: ModuloId) => void;
   indiceActivo: number;
+  visible: boolean;
 }) {
   const [abierto, setAbierto] = useState(false);
+  const [montado, setMontado] = useState(false);
   const meta = MODULOS.find((m) => m.id === activo) ?? MODULOS[0];
   const acento = BLOQUES[meta.bloque];
+
+  useEffect(() => setMontado(true), []);
+
+  // Si el riel toma el relevo mientras el panel estaba abierto, cerrarlo.
+  useEffect(() => {
+    if (!visible) setAbierto(false);
+  }, [visible]);
 
   useEffect(() => {
     if (!abierto) return;
@@ -141,14 +268,16 @@ export function MenuApartados({
     setAbierto(false);
   }
 
-  return (
-    <div className="min-[1440px]:hidden">
+  if (!visible || !montado) return null;
+
+  return createPortal(
+    <>
       <button
         type="button"
         onClick={() => setAbierto((v) => !v)}
         aria-expanded={abierto}
         className={
-          "fixed bottom-4 left-4 z-40 flex max-w-[60vw] items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold shadow-lg transition " +
+          "fixed bottom-4 left-4 z-40 flex max-w-[min(60vw,20rem)] items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold shadow-lg transition " +
           acento.activo
         }
       >
@@ -160,6 +289,7 @@ export function MenuApartados({
           stroke="currentColor"
           strokeWidth="2.2"
           strokeLinecap="round"
+          className="shrink-0"
           aria-hidden
         >
           <path d="M4 6h16M4 12h16M4 18h16" />
@@ -181,7 +311,7 @@ export function MenuApartados({
           />
           <nav
             aria-label="Apartados"
-            className="fixed bottom-0 left-0 right-0 z-50 max-h-[75vh] overflow-y-auto rounded-t-2xl border-t border-slate-200 bg-white p-5 shadow-2xl sm:bottom-20 sm:left-4 sm:right-auto sm:w-72 sm:rounded-2xl sm:border dark:border-slate-700 dark:bg-slate-900"
+            className="fixed bottom-0 left-0 right-0 z-50 max-h-[75vh] overflow-y-auto rounded-t-2xl border-t border-slate-200 bg-white p-5 shadow-2xl sm:bottom-20 sm:left-4 sm:right-auto sm:w-[min(18rem,calc(100vw-2rem))] sm:rounded-2xl sm:border dark:border-slate-700 dark:bg-slate-900"
           >
             <div className="mb-3 flex items-center justify-between">
               <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400">
@@ -199,6 +329,7 @@ export function MenuApartados({
           </nav>
         </>
       )}
-    </div>
+    </>,
+    document.body
   );
 }

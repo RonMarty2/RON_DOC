@@ -67,6 +67,10 @@
 | 2026-08-19 | Tabla 2×2 de 2.3 con celdas más chicas en móvil; fila de frecuencias del dado más angosta; botoneras con ajuste de línea | Ajustes para que nada quede al borde del desbordamiento en 360 px |
 | 2026-08-19 | **Service worker desactivado dentro de la app nativa**, y se da de baja si quedó uno de una versión anterior | Dentro de la app los archivos ya viajan empaquetados: el service worker no aporta nada y su caché sobrevive a la actualización, con lo que serviría la versión vieja del contenido |
 | 2026-08-19 | `viewportFit: "cover"` en el viewport | Para que el contenido llegue a los bordes en celulares con muesca |
+| 2026-08-21 | **El riel de apartados ya no se decide con un punto de corte de ancho de ventana (`min-[1440px]`) sino midiendo el margen real** que sobra al costado de la columna de texto (`useHuecoRiel`). Si el hueco no alcanza para un riel legible, el riel no se dibuja y manda el botón flotante | «Se ve mal si alguien hace zoom, no es responsivo autoajustable». El punto de corte miraba la ventana, no el margen: a 1440 px el margen es de 208 px y el riel pedía 240, así que se dibujaba cortado contra el borde |
+| 2026-08-21 | El umbral del riel está en `em` (14,5 em), no en píxeles, y el riel se **centra** en el hueco | Así también se adapta cuando el navegador agranda sólo el texto: con la letra grande la columna de contenido crece, el margen se achica y el riel se retira solo |
+| 2026-08-21 | El riel y el menú flotante se dibujan con `createPortal` sobre `document.body` | `position: fixed` cambia de marco de referencia si cualquier contenedor tiene `transform` o `backdrop-filter`; en el portal la posición no depende de ningún ancestro |
+| 2026-08-21 | **Desbordamiento horizontal de TODO el sitio en celular, corregido en el encabezado**: las cinco secciones más el nombre piden unos 570 px y una pantalla Android típica tiene 360. Ahora los enlaces viven en una tira que se desplaza sola | Medido: `scrollWidth` 516 contra 360 de ancho útil, en todas las páginas. Era la causa de fondo de la sensación de «no es responsivo»: la página entera se corría en horizontal |
 
 ## Estado actual — Unidad 2 COMPLETA
 

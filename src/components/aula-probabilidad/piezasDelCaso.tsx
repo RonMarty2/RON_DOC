@@ -1,28 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   ESTUDIANTES,
   CORTE_TAMIZAJE,
   DEMANDA_SEMANAL,
 } from "@content/aula-probabilidad/dataset";
 import { entero } from "./aleatorio";
-import {
-  Definicion,
-  Ejemplos,
-  Ejemplo,
-  MiniHistoria,
-  Trampa,
-  Puente,
-  Hilo,
-  Cierre,
-  IndiceApartado,
-  Termino,
-  Comprueba,
-  PasoTitulo,
-} from "./narrativa";
-
-const INSIGNIA = "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200";
+import { MiniHistoria } from "./narrativa";
 
 /** Los 9 ítems del PHQ-9 (formulación estándar en español). */
 const ITEMS_PHQ9 = [
@@ -45,166 +30,29 @@ const RESPUESTAS = [
 ];
 
 /**
- * Contexto — "El caso".
+ * Piezas del caso — los objetos con los que se construye el capítulo.
  *
- * Dos ideas concretas en vez de cinco términos abstractos: qué es un
- * tamizaje (con la analogía del detector de metales) y cómo se arma un
- * puntaje (armándolo uno mismo). Sensibilidad, especificidad y prevalencia
- * NO se definen acá: van en 2.3, donde la tabla hace visible el
- * denominador de cada una.
+ * Antes vivían todas dentro de un único módulo «El caso» que las mostraba
+ * de golpe, con los cinco datos del archivo presentados antes de que
+ * existiera la definición de experimento aleatorio. Cuatro de los cinco
+ * llegaban entre dos y siete apartados antes de hacer falta.
+ *
+ * Ahora son piezas sueltas, y cada apartado monta la que le toca:
+ *
+ *   - `AnalogiaDados`      una pregunta del cuestionario = un dado de 4 caras
+ *   - `ArmarPuntaje`       nueve preguntas = el puntaje de 0 a 27
+ *   - `LasFichas`          el explorador de fichas, que CRECE: se le pasa
+ *                          qué campos ya fueron presentados
+ *   - `DeDondeSalenLas200` 2.400 respuestas contra 200 fichas
+ *   - `PuenteALaProbabilidad` de contar a preguntar
+ *   - `ElOtroArchivo`      expediente y demanda semanal (van en 2.8)
  */
-export function ModuloElCaso({ onContinuar }: { onContinuar: () => void }) {
-  return (
-    <div className="flex flex-col gap-6">
-      <IndiceApartado
-        insignia={INSIGNIA}
-        pasos={[
-          "Qué es un tamizaje",
-          "De dónde sale el puntaje",
-          "Contra qué se compara",
-        ]}
-      />
-
-      <PasoTitulo numero={1} insignia={INSIGNIA}>
-        Qué es un tamizaje
-      </PasoTitulo>
-
-      <Definicion termino="Tamizaje (o cribado)">
-        Una prueba rápida y barata que separa a quienes conviene evaluar a
-        fondo de quienes probablemente no lo necesitan. No diagnostica:
-        filtra.
-        <Ejemplos titulo="Ver otros tamizajes conocidos">
-          <Ejemplo caso="El detector de metales del aeropuerto">
-            Suena para llaves y monedas. No dice que lleves un arma: dice a
-            quién revisar a mano.
-          </Ejemplo>
-          <Ejemplo caso="El test de embarazo casero">
-            Filtra rápido y barato; la confirmación la hace un profesional.
-          </Ejemplo>
-          <Ejemplo caso="La mamografía de rutina">
-            Marca imágenes sospechosas. El diagnóstico lo da la biopsia.
-          </Ejemplo>
-          <Ejemplo caso="Nuestro cuestionario de 9 preguntas">
-            Marca a quién conviene entrevistar. La entrevista clínica
-            diagnostica.
-          </Ejemplo>
-        </Ejemplos>
-      </Definicion>
-
-      <MiniHistoria titulo="Es el detector de metales del aeropuerto">
-        El detector suena para muchísima gente: llaves, monedas, el cinturón.
-        Después un guardia revisa a mano y decide. El detector nunca dijo que
-        llevaras un arma — solo dijo <strong>a quién vale la pena revisar</strong>.
-        Por eso está regulado para sonar de más: prefiere una molestia
-        innecesaria antes que dejar pasar algo grave. Un tamizaje en salud
-        mental funciona igual, y por eso <strong>las falsas alarmas son
-        normales y esperables</strong>, no un defecto.
-      </MiniHistoria>
-
-      <PasoTitulo numero={2} insignia={INSIGNIA}>
-        De dónde sale el puntaje
-      </PasoTitulo>
-
-      <Hilo>
-        Antes de armar un puntaje conviene ver de dónde sale su estructura, y
-        para eso sirve algo que ya conocés.
-      </Hilo>
-
-      <AnalogiaDados />
-
-      <ArmarPuntaje />
-
-      <PasoTitulo numero={3} insignia={INSIGNIA}>
-        Contra qué se compara
-      </PasoTitulo>
-
-      <Definicion termino="Diagnóstico confirmado">
-        Lo que dictamina un profesional después de una entrevista clínica. Es
-        lo que en investigación se llama{" "}
-        <Termino significa="La mejor verdad disponible contra la cual se juzga si un instrumento acertó o se equivocó. No es una verdad perfecta, pero es lo mejor que hay.">
-          criterio de referencia
-        </Termino>
-        .
-      </Definicion>
-
-
-
-      <LasFichas />
-
-      <Comprueba
-        pregunta="Un estudiante saca 14 puntos en el cuestionario. ¿Qué se puede afirmar con eso?"
-        opciones={[
-          {
-            texto: "Que conviene evaluarlo con una entrevista",
-            esCorrecta: true,
-            porQue:
-              "14 supera el corte de 10, así que el filtro lo marca. Eso es todo lo que dice: que vale la pena mirarlo con más detalle. Igual que el detector de metales, no decide nada por sí solo.",
-          },
-          {
-            texto: "Que tiene depresión",
-            porQue:
-              "Un tamizaje no diagnostica. De hecho, en este archivo casi la mitad de los que superan el corte no tienen el diagnóstico confirmado — algo que vamos a cuantificar exactamente en el apartado 2.3.",
-          },
-          {
-            texto: "Que tiene un 88% de probabilidad de tener depresión",
-            porQue:
-              "Ése es justamente el error que abre el capítulo. El 88% responde otra pregunta distinta, y confundirlas es el tema del apartado 2.6.",
-          },
-        ]}
-      />
-
-
-      <Trampa
-        error="leer un resultado positivo como si fuera un diagnóstico"
-        porQue="la palabra «positivo» suena a veredicto, y el número que acompaña al instrumento (88% de acierto) refuerza esa lectura."
-        correccion="un tamizaje decide a quién revisar, no quién está enfermo. El diagnóstico lo hace después un profesional en entrevista — y por eso el archivo tiene esa columna aparte."
-      />
-
-      <Comprueba
-        pregunta="¿Por qué las fichas incluyen una columna con el diagnóstico confirmado por un profesional, si ya tienen el puntaje del cuestionario?"
-        opciones={[
-          {
-            texto: "Porque es la única forma de saber si el tamizaje acertó o se equivocó",
-            esCorrecta: true,
-            porQue:
-              "Sin una verdad contra la cual comparar, un instrumento no se puede evaluar. Esa columna es el criterio de referencia: permite contar cuántas veces el filtro dio la alarma correcta y cuántas se equivocó. Todo el capítulo se apoya en esa comparación.",
-          },
-          {
-            texto: "Para tener un dato de respaldo por si el cuestionario falla",
-            porQue:
-              "No es un respaldo: es la referencia. El cuestionario no «falla» y se reemplaza por la entrevista — el cuestionario decide a quién entrevistar, y la entrevista dice la verdad.",
-          },
-          {
-            texto: "Porque el cuestionario solo sirve para casos leves",
-            porQue:
-              "El cuestionario no distingue gravedad para decidir: aplica el mismo corte a todos. Su límite no es la gravedad del caso, sino que filtra en vez de diagnosticar.",
-          },
-        ]}
-      />
-
-      <Puente
-        etiquetaBoton="Ir a 2.1 · Espacio muestral"
-        onContinuar={onContinuar}
-      >
-        <p>
-          Ya sabemos qué mide el cuestionario, de dónde sale su puntaje y qué
-          contiene cada ficha. Con eso alcanza para empezar.
-        </p>
-        <p>
-          Pero antes de calcular una sola probabilidad hay que delimitar con
-          precisión de qué estamos hablando: qué es un experimento aleatorio,
-          cuáles son sus resultados posibles y qué es exactamente un evento.
-        </p>
-      </Puente>
-    </div>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /* Armar un puntaje: de dónde sale el rango 0 a 27                     */
 /* ------------------------------------------------------------------ */
 
-function ArmarPuntaje() {
+export function ArmarPuntaje() {
   const [respuestas, setRespuestas] = useState<number[]>(() => Array(9).fill(0));
 
   const total = respuestas.reduce((s, v) => s + v, 0);
@@ -345,13 +193,39 @@ function ArmarPuntaje() {
 /* Las 200 fichas del servicio                                         */
 /* ------------------------------------------------------------------ */
 
-function LasFichas() {
+/** Qué campos de la ficha ya fueron presentados y se pueden mostrar. */
+export type CampoFicha = "phq9" | "dx" | "gad7" | "expediente";
+
+/**
+ * El explorador de fichas, que CRECE con el capítulo.
+ *
+ * Antes mostraba los cuatro campos a la vez, en el segundo módulo: se veía
+ * el diagnóstico confirmado dos apartados antes de que hiciera falta, el
+ * GAD-7 cuatro antes y el expediente siete antes. Ahora cada apartado le
+ * pasa sólo los campos que ya presentó, así que la misma ficha se va
+ * llenando a medida que el lector avanza — y eso mismo enseña que el dato
+ * no estaba escondido: todavía no se necesitaba.
+ */
+export function LasFichas({
+  campos,
+  titulo = "Mirá una ficha por dentro",
+  intro,
+}: {
+  campos: CampoFicha[];
+  titulo?: string;
+  intro?: ReactNode;
+}) {
   const total = ESTUDIANTES.length;
   const [indice, setIndice] = useState(0);
   const f = ESTUDIANTES[indice];
+  const muestra = (c: CampoFicha) => campos.includes(c);
 
   const dioPositivoDep = f.phq9 >= CORTE_TAMIZAJE;
   const dioPositivoAns = f.gad7 >= CORTE_TAMIZAJE;
+
+  // El veredicto («acertó», «falsa alarma») compara el puntaje contra el
+  // diagnóstico: no se puede mostrar antes de haber presentado ese campo.
+  const hayVeredicto = muestra("phq9") && muestra("dx");
 
   function otraFicha() {
     setIndice((i) => (i + 1) % total);
@@ -381,30 +255,36 @@ function LasFichas() {
     ].filter((x) => x.i >= 0);
   }, []);
 
+  const cuantos = campos.length;
+
   return (
-    <div className="flex flex-col gap-4">
-      <DeDondeSalenLas200 />
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          {titulo}
+        </h4>
+        <button
+          type="button"
+          onClick={otraFicha}
+          className="rounded-full bg-slate-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 dark:bg-slate-600 dark:hover:bg-slate-500"
+        >
+          Ver otra ficha →
+        </button>
+      </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-            Mirá una ficha por dentro
-          </h4>
-          <button
-            type="button"
-            onClick={otraFicha}
-            className="rounded-full bg-slate-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 dark:bg-slate-600 dark:hover:bg-slate-500"
-          >
-            Ver otra ficha →
-          </button>
-        </div>
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-          Cada uno de los {total} estudiantes tiene una ficha con cuatro
-          datos. Así se lee la del estudiante #{f.id}:
-        </p>
+      <div className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        {intro ?? (
+          <p>
+            Así se lee la ficha del estudiante #{f.id}
+            {cuantos === 1
+              ? ", que por ahora tiene un solo dato."
+              : `, que a esta altura del capítulo tiene ${cuantos} datos.`}
+          </p>
+        )}
+      </div>
 
-        {/* Los cuatro datos, explicados en palabras */}
-        <div className="mt-4 flex flex-col gap-3">
+      <div className="mt-4 flex flex-col gap-3">
+        {muestra("phq9") && (
           <FilaFicha
             titulo="Puntaje de depresión"
             valor={f.phq9}
@@ -418,28 +298,9 @@ function LasFichas() {
             }
             positivo={dioPositivoDep}
           />
-          <FilaFicha
-            titulo="Puntaje de ansiedad"
-            valor={f.gad7}
-            rango="de 0 a 21"
-            lectura={
-              dioPositivoAns
-                ? `${f.gad7} supera el corte de ${CORTE_TAMIZAJE}: también da positivo en ansiedad.`
-                : `${f.gad7} no llega al corte de ${CORTE_TAMIZAJE}. Reportó algunos síntomas, pero no los suficientes para que el filtro lo marque.`
-            }
-            positivo={dioPositivoAns}
-          />
-          <FilaFicha
-            titulo="Expediente"
-            valor={f.expedienteCompleto ? "OK" : "!"}
-            rango="completo o incompleto"
-            lectura={
-              f.expedienteCompleto
-                ? "El legajo administrativo de este estudiante está completo: no le falta ningún dato ni firma."
-                : "A este legajo le falta algún dato. No afecta al cuestionario, pero sí complica el seguimiento — y en el apartado 2.8 vamos a auditar justamente cuántos expedientes incompletos hay."
-            }
-            positivo={!f.expedienteCompleto}
-          />
+        )}
+
+        {muestra("dx") && (
           <FilaFicha
             titulo="Diagnóstico confirmado"
             valor={f.dxConfirmado ? "Sí" : "No"}
@@ -451,73 +312,85 @@ function LasFichas() {
             }
             positivo={f.dxConfirmado}
           />
-        </div>
+        )}
 
-        {/* Veredicto de esta ficha */}
-        <div
-          className={
-            "mt-4 rounded-xl px-4 py-3 text-sm " +
-            (dioPositivoDep === f.dxConfirmado
-              ? "bg-emerald-50 text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200"
-              : "bg-rose-50 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200")
-          }
-        >
-          <strong>
-            {dioPositivoDep && f.dxConfirmado && "El cuestionario acertó. "}
-            {dioPositivoDep && !f.dxConfirmado && "Falsa alarma. "}
-            {!dioPositivoDep && f.dxConfirmado && "Se le escapó. "}
-            {!dioPositivoDep && !f.dxConfirmado && "El cuestionario acertó. "}
-          </strong>
-          {dioPositivoDep && f.dxConfirmado &&
-            "Lo marcó, y efectivamente tenía el trastorno."}
-          {dioPositivoDep && !f.dxConfirmado &&
-            "Lo marcó para entrevistar, pero el profesional determinó que estaba sano. Una entrevista que se podría haber evitado."}
-          {!dioPositivoDep && f.dxConfirmado &&
-            "No lo marcó, pero sí tenía el trastorno. Se fue con un resultado negativo cuando necesitaba ayuda."}
-          {!dioPositivoDep && !f.dxConfirmado &&
-            "No lo marcó, y efectivamente estaba sano."}
-        </div>
+        {muestra("gad7") && (
+          <FilaFicha
+            titulo="Puntaje de ansiedad"
+            valor={f.gad7}
+            rango="de 0 a 21"
+            lectura={
+              dioPositivoAns
+                ? `${f.gad7} supera el corte de ${CORTE_TAMIZAJE}: también da positivo en ansiedad.`
+                : `${f.gad7} no llega al corte de ${CORTE_TAMIZAJE}. Reportó algunos síntomas, pero no los suficientes para que el filtro lo marque.`
+            }
+            positivo={dioPositivoAns}
+          />
+        )}
 
-        {/* Atajos a los cuatro casos posibles */}
-        <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
-          Saltá directo a cada caso posible
-        </p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {interesantes.map((x) => (
-            <button
-              key={x.etiqueta}
-              type="button"
-              onClick={() => setIndice(x.i)}
-              className={
-                "rounded-full border px-3 py-1.5 text-xs font-medium transition " +
-                (indice === x.i
-                  ? "border-slate-700 bg-slate-700 text-white dark:border-slate-500 dark:bg-slate-600"
-                  : "border-slate-200 text-slate-600 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400")
-              }
-            >
-              {x.etiqueta}
-            </button>
-          ))}
-        </div>
+        {muestra("expediente") && (
+          <FilaFicha
+            titulo="Expediente"
+            valor={f.expedienteCompleto ? "OK" : "!"}
+            rango="completo o incompleto"
+            lectura={
+              f.expedienteCompleto
+                ? "El legajo administrativo de este estudiante está completo: no le falta ningún dato ni firma."
+                : "A este legajo le falta algún dato. No afecta al cuestionario, pero sí complica el seguimiento del caso."
+            }
+            positivo={!f.expedienteCompleto}
+          />
+        )}
       </div>
 
-      <MiniHistoria titulo="Por qué hay dos cuestionarios y no uno">
-        Tener depresión y ansiedad medidas en las mismas personas permite
-        hacerse una pregunta que la probabilidad sí puede responder: si alguien
-        da positivo en uno, ¿cambia eso la chance de que dé positivo en el
-        otro? Esa pregunta se llama <strong>independencia</strong>, y la vamos a
-        resolver en el apartado 2.5.
-      </MiniHistoria>
+      {hayVeredicto && (
+        <>
+          <div
+            className={
+              "mt-4 rounded-xl px-4 py-3 text-sm " +
+              (dioPositivoDep === f.dxConfirmado
+                ? "bg-emerald-50 text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200"
+                : "bg-rose-50 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200")
+            }
+          >
+            <strong>
+              {dioPositivoDep && f.dxConfirmado && "El cuestionario acertó. "}
+              {dioPositivoDep && !f.dxConfirmado && "Falsa alarma. "}
+              {!dioPositivoDep && f.dxConfirmado && "Se le escapó. "}
+              {!dioPositivoDep && !f.dxConfirmado && "El cuestionario acertó. "}
+            </strong>
+            {dioPositivoDep && f.dxConfirmado &&
+              "Lo marcó, y efectivamente tenía el trastorno."}
+            {dioPositivoDep && !f.dxConfirmado &&
+              "Lo marcó para entrevistar, pero el profesional determinó que estaba sano. Una entrevista que se podría haber evitado."}
+            {!dioPositivoDep && f.dxConfirmado &&
+              "No lo marcó, pero sí tenía el trastorno. Se fue con un resultado negativo cuando necesitaba ayuda."}
+            {!dioPositivoDep && !f.dxConfirmado &&
+              "No lo marcó, y efectivamente estaba sano."}
+          </div>
 
-      <ElOtroArchivo />
-
-      <Hilo>
-        Ya sabés qué mide el cuestionario, cómo se arma su puntaje y qué hay en
-        cada ficha. Falta lo principal, que es lo que hace que todo esto sea un
-        capítulo de probabilidad y no de psicometría.
-      </Hilo>
-
-      <PuenteALaProbabilidad />
+          <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Saltá directo a cada caso posible
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {interesantes.map((x) => (
+              <button
+                key={x.etiqueta}
+                type="button"
+                onClick={() => setIndice(x.i)}
+                className={
+                  "rounded-full border px-3 py-1.5 text-xs font-medium transition " +
+                  (indice === x.i
+                    ? "border-slate-700 bg-slate-700 text-white dark:border-slate-500 dark:bg-slate-600"
+                    : "border-slate-200 text-slate-600 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400")
+                }
+              >
+                {x.etiqueta}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -577,6 +450,13 @@ interface PreguntaConteo {
   cierre: string;
 }
 
+/**
+ * Las tres preguntas son del mismo tipo —contar y dividir— pero cambian el
+ * universo, que es justamente lo que hay que ver. Antes las dos últimas
+ * usaban el diagnóstico confirmado y una de ellas calculaba el valor
+ * predictivo positivo: o sea, la respuesta del apartado 2.6, revelada en el
+ * preámbulo. Ahora las tres se contestan con el único dato ya presentado.
+ */
 const PREGUNTAS_CONTEO: PreguntaConteo[] = [
   {
     id: "positivo",
@@ -587,25 +467,24 @@ const PREGUNTAS_CONTEO: PreguntaConteo[] = [
       "Contamos cuántas fichas superan el corte, sobre el total. Eso —y nada más que eso— es una probabilidad.",
   },
   {
-    id: "diagnostico",
-    pregunta: "¿Y de que realmente tenga el trastorno?",
+    id: "bajo",
+    pregunta: "¿Y de que saque menos de 5?",
     universo: () => true,
-    cumple: (e) => e.dxConfirmado,
+    cumple: (e) => e.phq9 < 5,
     cierre:
-      "Mismo procedimiento, otra pregunta. Este número tiene nombre propio: se llama prevalencia, y va a ser decisivo en el apartado 2.6.",
+      "Mismo procedimiento, otra pregunta: cambió lo que contamos, pero el total sigue siendo las 200 fichas. Fijate que da bastante más que la anterior — la mayoría de los estudiantes puntúa bajo.",
   },
   {
-    id: "vpp",
-    pregunta:
-      "De los que dieron positivo, ¿cuántos lo tenían de verdad?",
+    id: "graves",
+    pregunta: "Entre los que dieron positivo, ¿cuántos llegan a 15 o más?",
     universo: (e) => e.phq9 >= CORTE_TAMIZAJE,
-    cumple: (e) => e.phq9 >= CORTE_TAMIZAJE && e.dxConfirmado,
+    cumple: (e) => e.phq9 >= 15,
     cierre:
-      "Acá cambió el denominador: ya no son las 200 fichas, son sólo las que dieron positivo. Y fijate el resultado — es exactamente el número del misterio con el que abrimos.",
+      "Acá cambió el denominador: ya no son las 200 fichas, son sólo las que dieron positivo. Cambiar el universo de la pregunta cambia el resultado aunque el numerador se cuente igual — y esa distinción, que parece un detalle, es el corazón de los apartados 2.3 y 2.6.",
   },
 ];
 
-function PuenteALaProbabilidad() {
+export function PuenteALaProbabilidad() {
   const [activa, setActiva] = useState<string | null>(null);
   const p = PREGUNTAS_CONTEO.find((q) => q.id === activa) ?? null;
 
@@ -724,7 +603,7 @@ function PuenteALaProbabilidad() {
  * cuestionario. Confundirlos arruina todo lo que viene, y la distinción es
  * justamente la de universo contra muestra.
  */
-function DeDondeSalenLas200() {
+export function DeDondeSalenLas200() {
   const total = ESTUDIANTES.length;
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
@@ -783,7 +662,7 @@ function DeDondeSalenLas200() {
  * La demanda semanal es el segundo conjunto de datos del caso y se usa recién
  * en 2.8 (Poisson). Se presenta acá para que no aparezca de la nada.
  */
-function ElOtroArchivo() {
+export function ElOtroArchivo() {
   const total = DEMANDA_SEMANAL.reduce((s, x) => s + x, 0);
   const semanas = DEMANDA_SEMANAL.length;
   const maximo = Math.max(...DEMANDA_SEMANAL);
@@ -840,7 +719,17 @@ const OPCIONES_DADO = [
  * maquinaria, otro contexto. Con esta analogía el rango 0–27 deja de ser un
  * dato que hay que memorizar.
  */
-function AnalogiaDados() {
+/**
+ * La analogía dado ↔ pregunta, construida peldaño a peldaño.
+ *
+ * Antes saltaba de «una pregunta es un dado de cuatro caras» directo a
+ * «tirá las nueve y sumá». Ese salto se comía el peldaño del medio, que es
+ * donde se entiende de dónde sale un puntaje: con una pregunta el resultado
+ * va de 0 a 3, con dos de 0 a 6, con nueve de 0 a 27. Ahora el lector elige
+ * cuántas preguntas tirar y ve crecer el rango.
+ */
+export function AnalogiaDados() {
+  const [cuantas, setCuantas] = useState(1);
   const [tirados, setTirados] = useState<number[] | null>(null);
   const [girando, setGirando] = useState(false);
   const girandoRef = useRef(false);
@@ -848,12 +737,19 @@ function AnalogiaDados() {
 
   useEffect(() => () => limpiarRef.current?.(), []);
 
-  function tirarNueve() {
+  function elegir(n: number) {
+    if (girandoRef.current) return;
+    setCuantas(n);
+    setTirados(null);
+  }
+
+  function tirar() {
     if (girandoRef.current) return;
     girandoRef.current = true;
     setGirando(true);
 
-    const final = Array.from({ length: 9 }, () => entero(0, 3));
+    const n = cuantas;
+    const final = Array.from({ length: n }, () => entero(0, 3));
     let vueltas = 0;
     let terminado = false;
 
@@ -871,7 +767,7 @@ function AnalogiaDados() {
     const id = window.setInterval(() => {
       vueltas++;
       if (vueltas >= 8) finalizar();
-      else setTirados(Array.from({ length: 9 }, () => entero(0, 3)));
+      else setTirados(Array.from({ length: n }, () => entero(0, 3)));
     }, 70);
     const seguro = window.setTimeout(finalizar, 1500);
     limpiarRef.current = () => {
@@ -881,6 +777,13 @@ function AnalogiaDados() {
   }
 
   const suma = tirados ? tirados.reduce((s, v) => s + v, 0) : null;
+  const maximo = cuantas * 3;
+
+  const PELDANOS = [
+    { n: 1, etiqueta: "1 pregunta" },
+    { n: 2, etiqueta: "2 preguntas" },
+    { n: 9, etiqueta: "las 9 preguntas" },
+  ];
 
   return (
     <div className="rounded-2xl border-2 border-slate-300 bg-slate-50/60 p-5 dark:border-slate-600 dark:bg-slate-900/60 sm:p-6">
@@ -898,7 +801,6 @@ function AnalogiaDados() {
         conjunto conocido de resultados posibles.
       </p>
 
-      {/* El dado de cuatro caras */}
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
           <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
@@ -932,23 +834,50 @@ function AnalogiaDados() {
         </div>
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-        Y el cuestionario tiene nueve preguntas, así que responderlo es{" "}
-        <strong>tirar nueve dados de cuatro caras y sumar lo que salga</strong>.
-        Probalo:
+      {/* La escalera: de una pregunta a nueve, un peldaño por vez */}
+      <p className="mt-6 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        Empezá tirando <strong>una sola</strong> pregunta. Después sumá otra, y
+        después las nueve. Fijate qué le pasa al resultado posible cada vez que
+        agregás una:
+      </p>
+
+      <div className="mt-3 flex flex-wrap gap-2">
+        {PELDANOS.map((p) => (
+          <button
+            key={p.n}
+            type="button"
+            onClick={() => elegir(p.n)}
+            aria-pressed={cuantas === p.n}
+            className={
+              "rounded-full border px-3.5 py-1.5 text-sm font-medium transition " +
+              (cuantas === p.n
+                ? "border-blue-600 bg-blue-600 text-white"
+                : "border-slate-300 text-slate-600 hover:border-blue-400 dark:border-slate-600 dark:text-slate-400")
+            }
+          >
+            {p.etiqueta}
+          </button>
+        ))}
+      </div>
+
+      <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
+        Con {cuantas === 1 ? "una pregunta" : `${cuantas} preguntas`} el total
+        puede ir de <strong className="tabular-nums">0</strong> a{" "}
+        <strong className="tabular-nums">{maximo}</strong> ({cuantas} × 3 ={" "}
+        {maximo}).
       </p>
 
       <button
         type="button"
         disabled={girando}
-        onClick={tirarNueve}
-        className="mt-3 rounded-full bg-slate-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-600 dark:hover:bg-slate-500"
+        onClick={tirar}
+        className="mt-3 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:opacity-50"
       >
-        🎲 Tirar los nueve dados
+        🎲 {cuantas === 1 ? "Tirar la pregunta" : `Tirar las ${cuantas}`}
       </button>
 
-      <div className="mt-4 flex flex-wrap justify-center gap-1.5">
-        {Array.from({ length: 9 }, (_, i) => {
+      <div className="mt-4 flex flex-wrap gap-2">
+        {Array.from({ length: cuantas }, (_, i) => {
           const v = tirados?.[i];
           return (
             <div
@@ -960,7 +889,7 @@ function AnalogiaDados() {
                   : "border-blue-500 bg-blue-50 dark:bg-blue-950/40")
               }
             >
-              <span className="font-serif text-lg font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+              <span className="text-lg font-semibold tabular-nums text-slate-900 dark:text-slate-100">
                 {v ?? "?"}
               </span>
               <span className="text-[9px] text-slate-400">P{i + 1}</span>
@@ -969,24 +898,40 @@ function AnalogiaDados() {
         })}
       </div>
 
-      <div className="mt-4 rounded-xl bg-white px-4 py-3 text-sm dark:bg-slate-900">
+      <div className="mt-4 rounded-xl bg-white px-4 py-3 dark:bg-slate-900">
         {suma === null ? (
-          <p className="text-slate-600 dark:text-slate-400">
-            Tirá los nueve y mirá cuánto suman. El mínimo posible es 9 × 0 ={" "}
-            <strong>0</strong>; el máximo, 9 × 3 = <strong>27</strong>. De ahí
-            sale el rango del cuestionario — no hay que memorizarlo.
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            Tirá y mirá cuánto sale. Todavía no hay nada que calcular: sólo
+            estamos viendo qué resultados puede dar el instrumento.
           </p>
         ) : (
           <>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="font-mono text-base tabular-nums text-slate-900 dark:text-slate-100">
               {tirados!.join(" + ")} = {suma}
             </p>
-            <p className="mt-1 leading-relaxed text-slate-600 dark:text-slate-400">
-              Ese {suma} es un puntaje posible del cuestionario, igual que un 4
-              es un resultado posible de un dado.{" "}
-              {suma >= CORTE_TAMIZAJE
-                ? `Como ${suma} llega al corte de ${CORTE_TAMIZAJE}, esta persona quedaría marcada para entrevistar.`
-                : `Como ${suma} no llega al corte de ${CORTE_TAMIZAJE}, esta persona pasaría sin marcarse.`}
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+              {cuantas === 1 && (
+                <>
+                  Con una sola pregunta, el «puntaje» es el número que salió.
+                  Puede ser 0, 1, 2 o 3 — nada más. Agregá una segunda y mirá
+                  cómo se abre el abanico.
+                </>
+              )}
+              {cuantas === 2 && (
+                <>
+                  Con dos preguntas ya hay sumas que se pueden lograr de varias
+                  maneras: un total de 3 sale con 0+3, 1+2, 2+1 o 3+0, mientras
+                  que un 6 sale de una sola forma. Ésa es la primera pista de
+                  todo el capítulo.
+                </>
+              )}
+              {cuantas === 9 && (
+                <>
+                  Ese {suma} es un puntaje posible del cuestionario completo,
+                  igual que un 4 es un resultado posible de un dado. El rango 0
+                  a 27 no hay que memorizarlo: sale de 9 × 3.
+                </>
+              )}
             </p>
           </>
         )}

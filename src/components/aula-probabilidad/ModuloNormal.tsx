@@ -302,7 +302,7 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
         ]}
       />
 
-      <Puente etiquetaBoton="Volver al misterio del inicio" onContinuar={onContinuar}>
+      <Puente etiquetaBoton="Volver al principio" onContinuar={onContinuar}>
         <p>
           Con esto cerramos la Unidad 2 completa: definimos la probabilidad y su
           vocabulario, la calculamos con tablas cruzadas y conteo combinatorio,

@@ -28,6 +28,7 @@ import {
   Comprueba,
   PasoTitulo,
 } from "./narrativa";
+import { LasFichas, ElOtroArchivo } from "./piezasDelCaso";
 
 const INSIGNIA = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300";
 const ACENTO = "border-emerald-300 text-emerald-700 dark:border-emerald-700 dark:text-emerald-400";
@@ -50,6 +51,36 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
 
   return (
     <div className="flex flex-col gap-6">
+      <div className="rounded-2xl border-2 border-emerald-300 bg-emerald-50/50 p-5 dark:border-emerald-800 dark:bg-emerald-950/20 sm:p-6">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
+          Los últimos datos del archivo
+        </p>
+        <h4 className="mt-1 font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          Dos datos administrativos que hasta ahora no hacían falta
+        </h4>
+        <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          Los apartados anteriores preguntaban por el instrumento: si acierta,
+          si dos medidas van juntas, qué chance hay de tal cosa. Éste pregunta
+          otra cosa — cómo <strong>organizar el trabajo</strong> del servicio —
+          y para eso hacen falta dos datos que el cuestionario no da.
+        </p>
+      </div>
+
+      <LasFichas
+        campos={["phq9", "expediente"]}
+        titulo="La ficha con el legajo administrativo"
+        intro={
+          <p>
+            Cada estudiante tiene además un legajo, que puede estar completo o
+            no. No afecta al cuestionario, pero sí al seguimiento: si falta un
+            dato, la entrevista se complica. En este apartado vamos a auditar
+            cuántos legajos incompletos hay entre los que dieron positivo.
+          </p>
+        }
+      />
+
+      <ElOtroArchivo />
+
       <p className="text-slate-700 dark:text-slate-300">
         El servicio tiene tres preguntas de planificación y las tres se
         responden contando — pero no con la misma herramienta. Tres preguntas,

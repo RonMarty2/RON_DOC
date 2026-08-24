@@ -12,7 +12,11 @@ import { tablaConfusion, resumenPhq9, contar, gad7Positivo } from "./calculos";
  * y 2.8, y así. Con este panel los números están siempre a un toque, sin
  * perder el lugar en el que uno está.
  */
-export function PanelDelCaso() {
+export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
+  // Índices en MODULOS: 0-1 preámbulo, 2 = 2.1 … 4 = 2.3, 6 = 2.5, 9 = 2.8, 10 = 2.9.
+  const veDiagnostico = indiceActivo >= 4;
+  const veAnsiedad = indiceActivo >= 6;
+  const veNormal = indiceActivo >= 10;
   const [abierto, setAbierto] = useState(false);
   const t = tablaConfusion();
   const { media, desviacion } = resumenPhq9();
@@ -68,83 +72,102 @@ export function PanelDelCaso() {
             <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
               Todo lo que hace falta recordar, sin salir de donde estás.
             </p>
+            {!veDiagnostico && (
+              <p className="mt-2 rounded-lg bg-slate-100 px-3 py-2 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+                Este panel crece con vos: por ahora muestra sólo los datos que
+                ya se presentaron. La tabla de 2×2 y los indicadores aparecen
+                en el apartado 2.3, cuando haya con qué calcularlos.
+              </p>
+            )}
 
             <Bloque titulo="El archivo">
               <Dato etiqueta="Fichas en total" valor={ESTUDIANTES.length} />
               <Dato etiqueta="Corte del tamizaje" valor={`≥ ${CORTE_TAMIZAJE}`} />
               <Dato etiqueta="Dan positivo en depresión" valor={t.positivos} />
-              <Dato etiqueta="Dan positivo en ansiedad" valor={gad} />
-              <Dato etiqueta="Positivos en ambos" valor={ambos} />
-              <Dato etiqueta="Con diagnóstico confirmado" valor={t.dxSi} />
+              {veAnsiedad && (
+                <>
+                  <Dato etiqueta="Dan positivo en ansiedad" valor={gad} />
+                  <Dato etiqueta="Positivos en ambos" valor={ambos} />
+                </>
+              )}
+              {veDiagnostico && (
+                <Dato etiqueta="Con diagnóstico confirmado" valor={t.dxSi} />
+              )}
             </Bloque>
 
-            <Bloque titulo="La tabla de 2×2 (apartado 2.3)">
-              <table className="w-full border-collapse text-center text-xs">
-                <thead>
-                  <tr className="text-slate-500 dark:text-slate-400">
-                    <th className="py-1" />
-                    <th className="py-1 font-medium">Dx sí</th>
-                    <th className="py-1 font-medium">Dx no</th>
-                  </tr>
-                </thead>
-                <tbody className="tabular-nums">
-                  <tr>
-                    <th className="py-1 text-right text-xs font-medium text-slate-500">
-                      Test +
-                    </th>
-                    <td className="rounded bg-emerald-100 py-1.5 font-bold text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200">
-                      {t.VP}
-                    </td>
-                    <td className="rounded bg-amber-100 py-1.5 font-bold text-amber-900 dark:bg-amber-950/50 dark:text-amber-200">
-                      {t.FP}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="py-1 text-right text-xs font-medium text-slate-500">
-                      Test −
-                    </th>
-                    <td className="rounded bg-rose-100 py-1.5 font-bold text-rose-900 dark:bg-rose-950/50 dark:text-rose-200">
-                      {t.FN}
-                    </td>
-                    <td className="rounded bg-emerald-100 py-1.5 font-bold text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200">
-                      {t.VN}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </Bloque>
+            {veDiagnostico && (
+              <>
+              <Bloque titulo="La tabla de 2×2 (apartado 2.3)">
+                <table className="w-full border-collapse text-center text-xs">
+                  <thead>
+                    <tr className="text-slate-500 dark:text-slate-400">
+                      <th className="py-1" />
+                      <th className="py-1 font-medium">Dx sí</th>
+                      <th className="py-1 font-medium">Dx no</th>
+                    </tr>
+                  </thead>
+                  <tbody className="tabular-nums">
+                    <tr>
+                      <th className="py-1 text-right text-xs font-medium text-slate-500">
+                        Test +
+                      </th>
+                      <td className="rounded bg-emerald-100 py-1.5 font-bold text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200">
+                        {t.VP}
+                      </td>
+                      <td className="rounded bg-amber-100 py-1.5 font-bold text-amber-900 dark:bg-amber-950/50 dark:text-amber-200">
+                        {t.FP}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="py-1 text-right text-xs font-medium text-slate-500">
+                        Test −
+                      </th>
+                      <td className="rounded bg-rose-100 py-1.5 font-bold text-rose-900 dark:bg-rose-950/50 dark:text-rose-200">
+                        {t.FN}
+                      </td>
+                      <td className="rounded bg-emerald-100 py-1.5 font-bold text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200">
+                        {t.VN}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </Bloque>
 
-            <Bloque titulo="Los tres indicadores (apartado 2.3)">
-              <Dato
-                etiqueta="Sensibilidad"
-                sub={`${t.VP}/${t.dxSi} · de los enfermos, a cuántos detecta`}
-                valor={`${(t.sensibilidad * 100).toFixed(1)}%`}
-              />
-              <Dato
-                etiqueta="Especificidad"
-                sub={`${t.VN}/${t.dxNo} · de los sanos, a cuántos descarta`}
-                valor={`${(t.especificidad * 100).toFixed(1)}%`}
-              />
-              <Dato
-                etiqueta="Valor predictivo (VPP)"
-                sub={`${t.VP}/${t.positivos} · de los positivos, cuántos lo tienen`}
-                valor={`${(t.vpp * 100).toFixed(1)}%`}
-                destacado
-              />
-              <Dato
-                etiqueta="Prevalencia"
-                sub={`${t.dxSi}/${t.total} · cuán frecuente es en la población`}
-                valor={`${(t.prevalencia * 100).toFixed(1)}%`}
-              />
-            </Bloque>
+              <Bloque titulo="Los tres indicadores (apartado 2.3)">
+                <Dato
+                  etiqueta="Sensibilidad"
+                  sub={`${t.VP}/${t.dxSi} · de los enfermos, a cuántos detecta`}
+                  valor={`${(t.sensibilidad * 100).toFixed(1)}%`}
+                />
+                <Dato
+                  etiqueta="Especificidad"
+                  sub={`${t.VN}/${t.dxNo} · de los sanos, a cuántos descarta`}
+                  valor={`${(t.especificidad * 100).toFixed(1)}%`}
+                />
+                <Dato
+                  etiqueta="Valor predictivo (VPP)"
+                  sub={`${t.VP}/${t.positivos} · de los positivos, cuántos lo tienen`}
+                  valor={`${(t.vpp * 100).toFixed(1)}%`}
+                  destacado
+                />
+                <Dato
+                  etiqueta="Prevalencia"
+                  sub={`${t.dxSi}/${t.total} · cuán frecuente es en la población`}
+                  valor={`${(t.prevalencia * 100).toFixed(1)}%`}
+                />
+              </Bloque>
+              </>
+            )}
 
-            <Bloque titulo="Para el apartado 2.9">
-              <Dato etiqueta="Media del puntaje (µ)" valor={media.toFixed(2)} />
-              <Dato
-                etiqueta="Desviación estándar (σ)"
-                valor={desviacion.toFixed(2)}
-              />
-            </Bloque>
+            {veNormal && (
+              <Bloque titulo="Para el apartado 2.9">
+                <Dato etiqueta="Media del puntaje (µ)" valor={media.toFixed(2)} />
+                <Dato
+                  etiqueta="Desviación estándar (σ)"
+                  valor={desviacion.toFixed(2)}
+                />
+              </Bloque>
+            )}
           </aside>
         </>
       )}

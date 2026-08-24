@@ -20,6 +20,7 @@ import {
   Comprueba,
   PasoTitulo,
 } from "./narrativa";
+import { LasFichas } from "./piezasDelCaso";
 
 const INSIGNIA = "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300";
 const ACENTO = "border-indigo-300 text-indigo-700 dark:border-indigo-700 dark:text-indigo-300";
@@ -48,6 +49,40 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
 
   return (
     <div className="flex flex-col gap-6">
+      <div className="rounded-2xl border-2 border-emerald-300 bg-emerald-50/50 p-5 dark:border-emerald-800 dark:bg-emerald-950/20 sm:p-6">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
+          Un dato nuevo en la ficha
+        </p>
+        <h4 className="mt-1 font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          El servicio pasa un segundo cuestionario
+        </h4>
+        <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          Además del cuestionario de depresión, a las mismas 200 personas se
+          les tomó uno de <strong>ansiedad</strong>: siete preguntas en vez de
+          nueve, así que su puntaje va de 0 a 21, con el mismo corte de 10.
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          Aparece recién ahora porque recién ahora hace falta. Todo lo
+          anterior se podía hacer con una sola medida por persona. Este
+          apartado, no: la pregunta que viene es{" "}
+          <strong>si dos cosas van juntas</strong>, y para eso hacen falta dos
+          cosas.
+        </p>
+      </div>
+
+      <LasFichas
+        campos={["phq9", "gad7"]}
+        titulo="La ficha con las dos medidas"
+        intro={
+          <p>
+            La misma ficha de siempre, mostrando ahora las dos mediciones lado
+            a lado. Pasá algunas y fijate si te parece que van juntas — al
+            final del apartado vamos a poder contestarlo con un número en vez
+            de con una impresión.
+          </p>
+        }
+      />
+
       <p className="text-slate-700 dark:text-slate-300">
         Dos círculos que se solapan sobre una hoja. Si sumás el área de cada
         uno por separado, la zona compartida queda contada dos veces y el total

@@ -8,8 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:android": "NEXT_PUBLIC_BASE_PATH= next build && npx cap sync android",
-    "android:abrir": "npx cap open android"
+    "build:android": "node scripts/construir-android.mjs",
+    "android:abrir": "npx cap open android",
+    "build:android:sync": "node scripts/construir-android.mjs --sync"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.0",

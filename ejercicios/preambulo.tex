@@ -1,0 +1,138 @@
+% =====================================================================
+%  Psicoestadística Inferencial — Unidad 2 (Probabilidad)
+%  Preámbulo común a todas las salidas.
+%
+%  Un solo código fuente produce cuatro documentos distintos, según dos
+%  interruptores que se fijan ANTES de \input{preambulo}:
+%
+%     \docentetrue    incluye la solución paso a paso
+%     \docentefalse   sólo enunciados (los estudiantes)
+%     \espaciotrue    deja espacio en blanco para resolver a mano
+%     \espaciofalse   compacto, para leer en pantalla
+%
+%  Así los enunciados nunca se desincronizan de sus soluciones.
+% =====================================================================
+
+% `lmodern` da tipografías vectoriales: sin esto microtype aborta la
+% compilación («auto expansion is only possible with scalable fonts»).
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-noquoting,es-nodecimaldot]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{lastpage}
+\usepackage{microtype}
+
+% --- Colores: los mismos bloques temáticos que la Aula interactiva ---
+\definecolor{tinta}{HTML}{0F172A}
+\definecolor{apagado}{HTML}{64748B}
+\definecolor{borde}{HTML}{CBD5E1}
+\definecolor{suave}{HTML}{F1F5F9}
+\definecolor{nivelcero}{HTML}{64748B}   % reconocer
+\definecolor{niveluno}{HTML}{2563EB}    % contar
+\definecolor{niveldos}{HTML}{4F46E5}    % una fórmula
+\definecolor{niveltres}{HTML}{D97706}   % datos reales
+\definecolor{nivelcuatro}{HTML}{059669} % decidir
+
+\color{tinta}
+
+% --- Encabezado y pie ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\footnotesize\textsc{Psicoestadística Inferencial}}
+\fancyhead[R]{\footnotesize\textsc{Unidad 2 · Probabilidad}}
+\fancyfoot[C]{\footnotesize\color{apagado}\thepage\ de \pageref{LastPage}}
+
+% --- Contadores ---
+\newcounter{numejercicio}
+\setcounter{numejercicio}{0}
+
+% --- Nombres de los cinco niveles ---
+\newcommand{\nombrenivel}[1]{%
+  \ifcase#1 Reconocer\or Contar\or Una fórmula\or Datos reales\or Decidir\fi}
+\newcommand{\colornivel}[1]{%
+  \ifcase#1 nivelcero\or niveluno\or niveldos\or niveltres\or nivelcuatro\fi}
+
+% =====================================================================
+%  \ejercicio{nivel}{enunciado}
+% =====================================================================
+\newcommand{\ejercicio}[2]{%
+  \stepcounter{numejercicio}%
+  \par\vspace{1.1em}%
+  \noindent
+  {\color{\colornivel{#1}}\textbf{\thenumejercicio.}}\quad
+  \raisebox{0.12em}{\footnotesize\colorbox{\colornivel{#1}}{\textcolor{white}{\bfseries\,N#1 · \nombrenivel{#1}\,}}}%
+  \par\vspace{0.35em}%
+  \noindent #2\par
+}
+
+% --- Espacio para resolver a mano (sólo si \espaciotrue) ---
+\newcommand{\espacioresolver}[1][3.2cm]{%
+  \ifespacio\vspace{#1}\fi}
+
+% =====================================================================
+%  \solucion{...}   paso a paso — sólo en la versión docente
+%  \respuesta{...}  resultado corto — va al final en la del estudiante
+% =====================================================================
+\newcommand{\solucion}[1]{%
+  \ifdocente
+    \par\vspace{0.4em}
+    \begin{tcolorbox}[
+      colback=suave, colframe=borde, boxrule=0.5pt, arc=3pt,
+      left=8pt, right=8pt, top=6pt, bottom=6pt, breakable]
+      {\footnotesize\textsc{\color{apagado}Solución}}\par\vspace{0.3em}#1
+    \end{tcolorbox}
+  \fi}
+
+% El resultado corto se acumula en una macro a medida que aparecen los
+% ejercicios, y se imprime al final como clave de respuestas. Se acumula en
+% memoria en vez de escribirse a un archivo auxiliar porque escribir expande
+% el contenido, y cualquier fórmula matemática de una respuesta se rompería.
+\usepackage{etoolbox}
+\newcommand{\claves}{}
+\newcommand{\respuesta}[1]{%
+  \edef\numactual{\thenumejercicio}%
+  \expandafter\gappto\expandafter\claves\expandafter{%
+    \expandafter\item\expandafter[\numactual.]}%
+  \gappto\claves{#1}%
+}
+
+\newcommand{\imprimirclave}{%
+  \ifdocente\else
+    \clearpage
+    \section*{Respuestas}
+    \noindent{\color{apagado}\small Sólo el resultado. El desarrollo se
+    trabaja en clase — si tu número no coincide, el error está en algún paso
+    intermedio y vale la pena encontrarlo antes de mirar la solución.}
+    \par\vspace{0.8em}
+    \begin{multicols}{2}\raggedright
+    \begin{description}[leftmargin=2.8em,style=sameline,itemsep=0.4em]
+      \claves
+    \end{description}
+    \end{multicols}
+  \fi}
+
+\usepackage{multicol}
+
+% --- Encabezado de apartado ---
+\newcommand{\apartado}[2]{%
+  \clearpage
+  \noindent{\color{apagado}\footnotesize\textsc{Apartado}}\par
+  \noindent{\LARGE\bfseries #1\quad #2}\par
+  \vspace{0.2em}\noindent\rule{\linewidth}{0.8pt}\par\vspace{0.3em}}
+
+% --- Nota al docente / recordatorio de fórmula ---
+\newcommand{\recordar}[1]{%
+  \par\vspace{0.3em}
+  \noindent\begin{tcolorbox}[
+    colback=white, colframe=borde, boxrule=0.5pt, arc=3pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt]
+    {\footnotesize #1}
+  \end{tcolorbox}}

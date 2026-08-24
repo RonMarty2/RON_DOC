@@ -1,0 +1,145 @@
+\apartado{2.9}{Distribución normal}
+
+\noindent\textit{La curva que permite evaluar cualquier punto de corte sin
+volver a contar el archivo. Cierra la unidad respondiendo dónde conviene
+ponerlo.}
+\recordar{%
+  Regla \textbf{68–95–99,7}: entre $\mu\pm\sigma$ cae el 68\% de los casos;
+  entre $\mu\pm 2\sigma$, el 95\%; entre $\mu\pm 3\sigma$, el 99,7\%.\\[0.3em]
+  \textbf{Puntuación $z$}: $z = \dfrac{x-\mu}{\sigma}$ — a cuántas
+  desviaciones estándar del promedio está el valor $x$.}
+
+\ejercicio{0}{%
+  Según la regla 68–95–99,7, ¿qué porcentaje de los casos cae entre
+  $\mu-\sigma$ y $\mu+\sigma$? ¿Y fuera de $\mu\pm 2\sigma$?}
+\espacioresolver[1.8cm]
+\respuesta{68\% dentro de $\mu\pm\sigma$; 5\% fuera de $\mu\pm 2\sigma$.}
+\solucion{%
+  Entre $\mu\pm\sigma$ cae el \textbf{68\%}.
+  \\[0.3em]
+  Fuera de $\mu\pm 2\sigma$ cae el $100-95 = \mathbf{5\%}$, repartido en las
+  dos colas: un 2,5\% de cada lado.}
+
+\ejercicio{1}{%
+  Un test de inteligencia tiene $\mu=100$ y $\sigma=15$.
+  ¿Entre qué dos valores cae el 68\% de la población? ¿Y el 95\%?}
+\espacioresolver[2.2cm]
+\respuesta{68\%: entre 85 y 115. 95\%: entre 70 y 130.}
+\solucion{%
+  68\%: $100 \pm 15$, o sea entre \textbf{85 y 115}.
+  \\[0.3em]
+  95\%: $100 \pm 2(15) = 100\pm 30$, o sea entre \textbf{70 y 130}.}
+
+\ejercicio{1}{%
+  Con el mismo test ($\mu=100$, $\sigma=15$), calculá la puntuación $z$ de
+  alguien que obtuvo 130. Interpretá el resultado en una frase.}
+\espacioresolver[2cm]
+\respuesta{$z=2$: está a 2 desviaciones estándar por encima del promedio.}
+\solucion{%
+  \[ z = \frac{130-100}{15} = \frac{30}{15} = 2 \]
+  Está a \textbf{2 desviaciones estándar por encima} del promedio. Por la
+  regla 68–95–99,7, sólo un 2,5\% de la población supera ese valor.}
+
+\ejercicio{2}{%
+  Con el mismo test, ¿qué puntaje bruto corresponde a $z=-1{,}5$?
+  ¿Y qué $z$ le corresponde a un puntaje de 92?}
+\espacioresolver[2.6cm]
+\respuesta{$z=-1{,}5 \rightarrow 77{,}5$; \; $x=92 \rightarrow z\approx -0{,}53$.}
+\solucion{%
+  Despejando $x$ de $z=\dfrac{x-\mu}{\sigma}$:
+  \[ x = \mu + z\sigma = 100 + (-1{,}5)(15) = 100 - 22{,}5 = 77{,}5 \]
+  \\[0.3em]
+  Y al revés:
+  \[ z = \frac{92-100}{15} = \frac{-8}{15} \approx -0{,}53 \]
+  \\[0.3em]
+  El signo dice de qué lado del promedio está; el valor absoluto, cuán lejos.}
+
+\ejercicio{2}{%
+  En una distribución normal con $\mu=50$ y $\sigma=10$, ¿qué proporción de
+  los casos supera el valor 70? Resolvelo con la regla 68–95–99,7, sin tabla.}
+\espacioresolver[2.6cm]
+\respuesta{$z=2$, así que aproximadamente el 2,5\%.}
+\solucion{%
+  \[ z = \frac{70-50}{10} = 2 \]
+  Fuera de $\mu\pm 2\sigma$ queda el 5\%, repartido en dos colas simétricas.
+  La cola de arriba se lleva la mitad: \textbf{2,5\%}.}
+
+\ejercicio{3}{%
+  En las 200 fichas, el puntaje de depresión tiene $\mu=6{,}32$ y
+  $\sigma=4{,}64$. El corte del tamizaje está en 10.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Calculá la puntuación $z$ del corte.
+    \item Usando la tabla normal, $P(Z \ge 0{,}79) \approx 0{,}214$.
+          ¿Qué significa ese número?
+    \item Compará con la proporción real de positivos del archivo ($43/200$).
+  \end{enumerate}}
+\espacioresolver[4.5cm]
+\respuesta{(a) $z\approx 0{,}79$. (b) 21,4\% superaría el corte según el
+modelo. (c) Real: 21,5\%. Casi idéntico.}
+\solucion{%
+  (a) \[ z = \frac{10-6{,}32}{4{,}64} = \frac{3{,}68}{4{,}64} \approx 0{,}79 \]
+  \\[0.3em]
+  (b) Significa que, si los puntajes siguieran una distribución normal, el
+  \textbf{21,4\%} de las personas superaría el corte de 10.
+  \\[0.3em]
+  (c) La proporción real es $\dfrac{43}{200} = 21{,}5\%$. La diferencia es de
+  una décima de punto porcentual.
+  \\[0.3em]
+  \textbf{Por qué importa}: el modelo normal reprodujo el dato real sin
+  contar ni una ficha. Eso es lo que lo hace útil — permite evaluar cualquier
+  corte, incluso uno que nunca se probó, usando sólo $\mu$ y $\sigma$.}
+
+\ejercicio{3}{%
+  Con los mismos $\mu=6{,}32$ y $\sigma=4{,}64$, calculá la puntuación $z$ si
+  el servicio moviera el corte a 8, y otra vez si lo moviera a 13.
+  ¿En cuál de los tres cortes (8, 10, 13) se marcaría a más gente?}
+\espacioresolver[3.4cm]
+\respuesta{Corte 8: $z\approx 0{,}36$. Corte 13: $z\approx 1{,}44$.
+Con 8 se marca a más gente.}
+\solucion{%
+  \[ z_{8} = \frac{8-6{,}32}{4{,}64} \approx 0{,}36 \qquad
+     z_{13} = \frac{13-6{,}32}{4{,}64} \approx 1{,}44 \]
+  \\[0.3em]
+  Cuanto más bajo el corte, menor el $z$ y mayor el área a la derecha: se
+  marca a más gente. Con corte 8 se marcaría aproximadamente al 36\% del
+  archivo; con 13, alrededor del 7,5\%.
+  \\[0.3em]
+  Fijate que no hizo falta volver a revisar ninguna ficha.}
+
+\ejercicio{4}{%
+  El servicio evalúa mover el corte. Con el corte en 10 tiene 88\% de
+  sensibilidad, 88\% de especificidad y un VPP del 51,2\%.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Si baja el corte a 8, ¿qué le pasa a la sensibilidad? ¿Y a la
+          especificidad? ¿Y al VPP?
+    \item Si lo sube a 13, ¿qué cambia?
+    \item El servicio tiene capacidad para 30 entrevistas al mes y tamiza 200
+          estudiantes. ¿Qué corte recomendarías, y qué estás sacrificando?
+  \end{enumerate}}
+\espacioresolver[6.5cm]
+\respuesta{(a) Sensibilidad sube, especificidad baja, VPP baja.
+(b) Al revés. (c) Respuesta abierta y argumentada.}
+\solucion{%
+  (a) Bajando el corte a 8 se marca a más gente: se escapan menos casos
+  (\textbf{sensibilidad sube}) pero hay más falsas alarmas
+  (\textbf{especificidad baja}), y como los nuevos marcados son en su mayoría
+  sanos, el \textbf{VPP baja}.
+  \\[0.3em]
+  (b) Subiéndolo a 13 pasa exactamente lo contrario: sensibilidad baja
+  (se escapan más casos), especificidad sube, VPP sube.
+  \\[0.3em]
+  \textbf{No existe un corte que mejore todo a la vez.} Todo corte es un
+  intercambio entre los dos errores.
+  \\[0.3em]
+  (c) Con corte 10 se marcan 43 de 200 y hay capacidad para 30: el servicio ya
+  está desbordado. Subir a 13 dejaría unos 15 marcados, que entran cómodos —
+  pero se perderían casos reales, y el falso negativo es el error más grave en
+  salud mental.
+  \\[0.3em]
+  Una respuesta defendible: mantener el corte en 10 y \textbf{priorizar} las
+  entrevistas por puntaje (primero los más altos), en vez de subir el corte.
+  Así no se descarta a nadie de antemano y se ordena la lista de espera por
+  gravedad. Otra: pedir más recursos con este cálculo como argumento.
+  \\[0.3em]
+  \textit{Lo que se evalúa acá no es el número, es que puedan nombrar qué
+  sacrifican con cada opción.}}

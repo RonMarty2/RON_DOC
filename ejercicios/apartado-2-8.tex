@@ -1,0 +1,162 @@
+\apartado{2.8}{Distribuciones discretas}
+
+\noindent\textit{Tres preguntas de planificación, tres procesos distintos,
+tres fórmulas distintas. Confundirlas produce números equivocados que parecen
+razonables.}
+\recordar{%
+  \textbf{Binomial} — $n$ intentos fijos, independientes, misma $p$:
+  $P(X=k)=\dbinom{n}{k}p^{k}(1-p)^{n-k}$.\\[0.3em]
+  \textbf{Poisson} — conteos en un intervalo, con tasa media $\lambda$:
+  $P(X=k)=\dfrac{e^{-\lambda}\lambda^{k}}{k!}$.\\[0.3em]
+  \textbf{Hipergeométrica} — extracción \emph{sin reposición} de un grupo
+  finito de $N$ con $K$ éxitos:
+  $P(X=k)=\dfrac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}}$.}
+
+\ejercicio{0}{%
+  ¿Qué es un \emph{ensayo de Bernoulli}? Dá dos ejemplos, uno con un objeto
+  cotidiano y otro del servicio de salud mental.}
+\espacioresolver[2.4cm]
+\respuesta{Un experimento con dos resultados posibles (éxito/fracaso).
+Ej.: tirar una moneda; que una ficha dé positivo o no.}
+\solucion{%
+  Un experimento con \textbf{exactamente dos resultados posibles}, que por
+  convención se llaman éxito y fracaso, con probabilidad $p$ y $1-p$.
+  \\[0.3em]
+  Cotidiano: tirar una moneda (cara/cruz). Del servicio: una ficha da positivo
+  o no da positivo.
+  \\[0.3em]
+  «Éxito» es sólo una etiqueta: acá el éxito es dar positivo en depresión, que
+  obviamente no es una buena noticia. Conviene aclararlo en clase porque
+  confunde.}
+
+\ejercicio{1}{%
+  Para cada situación, decidí si los intentos son \emph{independientes} y si
+  la probabilidad $p$ se mantiene constante.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Tirar una moneda 10 veces.
+    \item Sacar 3 cartas de una baraja sin devolverlas.
+    \item Tamizar a 20 estudiantes distintos elegidos al azar de toda la universidad.
+  \end{enumerate}}
+\espacioresolver[3cm]
+\respuesta{(a) sí y sí; (b) no y no; (c) sí y sí (aproximadamente).}
+\solucion{%
+  (a) \textbf{Sí}: la moneda no recuerda nada y $p=0{,}5$ siempre.
+  \\[0.3em]
+  (b) \textbf{No}: al sacar una carta sin devolverla cambia lo que queda, así
+  que $p$ cambia en cada extracción. Éste es el caso hipergeométrico.
+  \\[0.3em]
+  (c) \textbf{Sí, aproximadamente}: técnicamente se muestrea sin reposición,
+  pero la población es tan grande frente a 20 que $p$ prácticamente no se
+  mueve. Por eso se usa binomial.
+  \\[0.3em]
+  \textbf{La regla práctica}: si la muestra es menos del 10\% de la población,
+  la binomial es una buena aproximación aunque no haya reposición.}
+
+\ejercicio{1}{%
+  Se tira una moneda 5 veces. Calculá la probabilidad de obtener exactamente
+  2 caras, usando $\binom{5}{2}p^{2}(1-p)^{3}$ con $p=0{,}5$.}
+\espacioresolver[2.4cm]
+\respuesta{$10\times 0{,}25\times 0{,}125 = 0{,}3125$.}
+\solucion{%
+  \[ P(X=2)=\binom{5}{2}(0{,}5)^{2}(0{,}5)^{3}
+     = 10 \times 0{,}25 \times 0{,}125 = 0{,}3125 \]
+  \\[0.3em]
+  El $\binom{5}{2}=10$ cuenta de cuántas maneras pueden ubicarse las 2 caras
+  entre las 5 tiradas. Sin ese factor estarías calculando la probabilidad de
+  una secuencia concreta, no de «2 caras en cualquier orden».}
+
+\ejercicio{2}{%
+  En una población el 20\% de las personas da positivo en un tamizaje. Se
+  evalúan 10 personas. Calculá la probabilidad de que exactamente 3 den
+  positivo.}
+\espacioresolver[3cm]
+\respuesta{$\approx 0{,}2013$.}
+\solucion{%
+  \[ P(X=3)=\binom{10}{3}(0{,}2)^{3}(0{,}8)^{7}
+     = 120 \times 0{,}008 \times 0{,}2097 \approx 0{,}2013 \]
+  Alrededor del 20\%.
+  \\[0.3em]
+  $\binom{10}{3}=\dfrac{10\times 9\times 8}{3\times 2\times 1}=120$.}
+
+\ejercicio{2}{%
+  Un servicio recibe en promedio 3 consultas de urgencia por semana. Calculá
+  la probabilidad de recibir exactamente 2 en una semana dada.}
+\espacioresolver[2.6cm]
+\respuesta{$\approx 0{,}224$.}
+\solucion{%
+  Es Poisson, con $\lambda = 3$:
+  \[ P(X=2)=\frac{e^{-3}\,3^{2}}{2!}
+     = \frac{0{,}0498 \times 9}{2} \approx 0{,}224 \]
+  \\[0.3em]
+  Se usa Poisson y no binomial porque no hay un número fijo de «intentos»: no
+  se puede decir cuántas consultas \emph{no} ocurrieron. Sólo hay una tasa por
+  unidad de tiempo.}
+
+\ejercicio{3}{%
+  El servicio va a tamizar a 20 estudiantes nuevos. Sabe por su archivo que la
+  probabilidad de dar positivo es $p=0{,}215$.
+  Calculá la probabilidad de encontrar exactamente 5 positivos.}
+\espacioresolver[3.4cm]
+\respuesta{$\approx 0{,}1887$.}
+\solucion{%
+  \[ P(X=5)=\binom{20}{5}(0{,}215)^{5}(0{,}785)^{15} \]
+  $\binom{20}{5} = 15\,504$; $(0{,}215)^{5} \approx 0{,}000459$;
+  $(0{,}785)^{15} \approx 0{,}0265$.
+  \[ P(X=5) \approx 15\,504 \times 0{,}000459 \times 0{,}0265 \approx 0{,}1887 \]
+  \\[0.3em]
+  Casi el 19\%. Y recordá del apartado 2.7 que lo esperado eran $4{,}3$
+  positivos, así que 5 es un resultado de los más frecuentes.}
+
+\ejercicio{3}{%
+  Dos preguntas más del mismo servicio:
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Recibe en promedio 5 solicitudes de atención por semana.
+          ¿Probabilidad de recibir exactamente 8 en una semana?
+    \item De los 43 estudiantes positivos, 9 tienen el expediente incompleto.
+          Se auditan 6 al azar, sin reposición. ¿Probabilidad de que
+          exactamente 2 estén incompletos?
+  \end{enumerate}}
+\espacioresolver[5cm]
+\respuesta{(a) $\approx 0{,}0653$. (b) $\approx 0{,}2739$.}
+\solucion{%
+  (a) \textbf{Poisson}, $\lambda = 5$:
+  \[ P(X=8)=\frac{e^{-5}\,5^{8}}{8!}
+     = \frac{0{,}006738 \times 390\,625}{40\,320} \approx 0{,}0653 \]
+  \\[0.3em]
+  (b) \textbf{Hipergeométrica}, porque se audita sin reposición de un grupo
+  finito de 43: $N=43$, $K=9$, $n=6$, $k=2$.
+  \[ P(X=2)=\frac{\binom{9}{2}\binom{34}{4}}{\binom{43}{6}}
+     = \frac{36 \times 46\,376}{6\,096\,454} \approx 0{,}2739 \]
+  \\[0.3em]
+  Acá \emph{no} se puede usar binomial: 6 de 43 es el 14\% del grupo, muy por
+  encima del 10\%, así que la probabilidad cambia de manera apreciable en cada
+  extracción.}
+
+\ejercicio{4}{%
+  Para cada pregunta, decidí qué distribución corresponde —binomial, Poisson o
+  hipergeométrica— y justificá en una línea. No hace falta calcular.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item De 30 estudiantes tamizados esta semana, ¿cuántos darán positivo?
+    \item ¿Cuántas urgencias llegarán el próximo fin de semana?
+    \item De las 25 fichas con diagnóstico confirmado, se revisan 5 al azar:
+          ¿cuántas tendrán además ansiedad?
+    \item Un profesional atiende 12 primeras entrevistas: ¿en cuántas
+          confirmará el diagnóstico?
+  \end{enumerate}}
+\espacioresolver[5.5cm]
+\respuesta{(a) binomial; (b) Poisson; (c) hipergeométrica; (d) binomial.}
+\solucion{%
+  (a) \textbf{Binomial}: número fijo de intentos (30), misma $p$, y los
+  estudiantes vienen de una población grande.
+  \\[0.3em]
+  (b) \textbf{Poisson}: no hay número fijo de intentos, sólo una tasa por
+  unidad de tiempo. No se puede contar «cuántas urgencias no ocurrieron».
+  \\[0.3em]
+  (c) \textbf{Hipergeométrica}: se extrae sin reposición de un grupo finito y
+  chico (5 de 25 es el 20\%), así que $p$ cambia en cada extracción.
+  \\[0.3em]
+  (d) \textbf{Binomial}: 12 intentos fijos, cada uno confirma o no.
+  \\[0.3em]
+  \textbf{El árbol de decisión}: ¿hay un número fijo de intentos? Si no →
+  Poisson. Si sí, ¿el grupo del que extraés es chico y sin reposición? Si sí →
+  hipergeométrica. Si no → binomial.}

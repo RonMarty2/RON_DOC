@@ -1,0 +1,192 @@
+\apartado{2.3}{Tablas de contingencia}
+
+\noindent\textit{Cruzar lo que dijo el test contra lo que era verdad. De acá
+salen los tres números que todo el mundo confunde.}
+\recordar{%
+  \begin{center}\small
+  \begin{tabular}{@{}lccl@{}}
+  \toprule
+   & \textbf{Tiene el trastorno} & \textbf{No lo tiene} & \\
+  \midrule
+  \textbf{Test $+$} & VP & FP & \\
+  \textbf{Test $-$} & FN & VN & \\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+  $\text{Sensibilidad}=\dfrac{VP}{VP+FN}$ \quad
+  $\text{Especificidad}=\dfrac{VN}{VN+FP}$ \quad
+  $\text{VPP}=\dfrac{VP}{VP+FP}$\\[0.3em]
+  Las tres tienen el \emph{mismo} tipo de numerador y \emph{distinto}
+  denominador. Ahí está toda la diferencia.}
+
+\ejercicio{0}{%
+  Escribí con tus palabras qué significa cada sigla: VP, FP, FN, VN.
+  ¿Cuál de los dos errores te parece más grave en un tamizaje de depresión, y
+  por qué?}
+\espacioresolver[3.2cm]
+\respuesta{VP: positivo y lo tiene. FP: positivo y no lo tiene (falsa alarma).
+FN: negativo y sí lo tiene (caso perdido). VN: negativo y no lo tiene.}
+\solucion{%
+  \textbf{VP} (verdadero positivo): el test lo marcó y sí tenía el trastorno.\\
+  \textbf{FP} (falso positivo): lo marcó pero estaba sano — una falsa alarma.\\
+  \textbf{FN} (falso negativo): no lo marcó pero sí lo tenía — un caso perdido.\\
+  \textbf{VN} (verdadero negativo): no lo marcó y estaba sano.
+  \\[0.3em]
+  En un tamizaje de salud mental el FN suele considerarse más grave: una falsa
+  alarma cuesta una entrevista innecesaria, un caso perdido deja a alguien sin
+  ayuda. Por eso estos instrumentos se calibran para «sonar de más».
+  \\[0.3em]
+  \textit{No hay respuesta única}: lo que se busca es que puedan argumentar el
+  costo de cada error.}
+
+\ejercicio{1}{%
+  Una tabla de un estudio pequeño da: $VP=8$, $FP=5$, $FN=2$, $VN=35$.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuántas personas participaron en total?
+    \item ¿Cuántas tenían realmente el trastorno?
+    \item ¿Cuántas dieron positivo en el test?
+  \end{enumerate}}
+\espacioresolver[2.6cm]
+\respuesta{(a) 50. (b) 10. (c) 13.}
+\solucion{%
+  (a) $8+5+2+35 = 50$ personas.
+  \\[0.3em]
+  (b) Las que lo tenían son las de la primera columna: $VP+FN = 8+2 = 10$.
+  \\[0.3em]
+  (c) Las que dieron positivo son la primera fila: $VP+FP = 8+5 = 13$.
+  \\[0.3em]
+  \textbf{Fijate en la estructura}: la verdad se lee por \emph{columnas} y lo
+  que dijo el test por \emph{filas}. Confundir una con otra es el origen de
+  casi todos los errores que siguen.}
+
+\ejercicio{1}{%
+  Con la misma tabla ($VP=8$, $FP=5$, $FN=2$, $VN=35$), calculá la
+  probabilidad \emph{conjunta} de que una persona elegida al azar sea a la vez
+  positiva en el test y tenga el trastorno.}
+\espacioresolver[1.8cm]
+\respuesta{$8/50 = 0{,}16$.}
+\solucion{%
+  \[ P(\text{test}+ \cap \text{trastorno}) = \frac{VP}{\text{total}}
+     = \frac{8}{50} = 0{,}16 \]
+  Se llama \textbf{conjunta} porque exige las dos cosas a la vez, y su
+  denominador es el total general: no sabemos nada de la persona antes de
+  elegirla.}
+
+\ejercicio{2}{%
+  Con la misma tabla, calculá la \textbf{sensibilidad} y la
+  \textbf{especificidad}. Escribí en palabras qué mide cada una.}
+\espacioresolver[3cm]
+\respuesta{Sensibilidad $=8/10=0{,}80$; especificidad $=35/40=0{,}875$.}
+\solucion{%
+  \[ \text{Sensibilidad} = \frac{VP}{VP+FN} = \frac{8}{8+2} = \frac{8}{10} = 0{,}80 \]
+  De los que \emph{sí tenían} el trastorno, el test detectó al 80\%.
+  \\[0.3em]
+  \[ \text{Especificidad} = \frac{VN}{VN+FP} = \frac{35}{35+5} = \frac{35}{40} = 0{,}875 \]
+  De los que \emph{estaban sanos}, el test descartó correctamente al 87,5\%.
+  \\[0.3em]
+  Las dos miran \textbf{columnas}: parten de conocer la verdad y preguntan qué
+  hizo el test. Son propiedades del instrumento.}
+
+\ejercicio{2}{%
+  Con la misma tabla, calculá el \textbf{valor predictivo positivo} (VPP).
+  Compará el resultado con la sensibilidad del ejercicio anterior: ¿por qué
+  no dan lo mismo si el numerador es el mismo?}
+\espacioresolver[3cm]
+\respuesta{$VPP = 8/13 \approx 0{,}615$. Cambia el denominador: fila en vez de
+columna.}
+\solucion{%
+  \[ \text{VPP} = \frac{VP}{VP+FP} = \frac{8}{8+5} = \frac{8}{13} \approx 0{,}615 \]
+  \\[0.3em]
+  \textbf{Mismo numerador (8), distinto denominador.} La sensibilidad divide
+  por la \emph{columna} (los 10 que tenían el trastorno) y el VPP divide por la
+  \emph{fila} (los 13 que dieron positivo).
+  \\[0.3em]
+  Y son preguntas distintas: la sensibilidad es la pregunta del
+  \emph{instrumento} («si está enfermo, ¿lo detecto?»); el VPP es la pregunta
+  del \emph{paciente} («di positivo, ¿estoy enfermo?»). $80\%$ contra
+  $61{,}5\%$.}
+
+\ejercicio{3}{%
+  Sobre las 200 fichas del servicio, la tabla real es:
+  \begin{center}\small
+  \begin{tabular}{@{}lcc@{}}
+  \toprule
+   & \textbf{Dx sí} & \textbf{Dx no} \\
+  \midrule
+  \textbf{Test $+$} & 22 & 21 \\
+  \textbf{Test $-$} & 3  & 154 \\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+  Calculá sensibilidad, especificidad, VPP y prevalencia.}
+\espacioresolver[4.5cm]
+\respuesta{Sens. $=22/25=0{,}88$; espec. $=154/175=0{,}88$;
+VPP $=22/43\approx 0{,}512$; prevalencia $=25/200=0{,}125$.}
+\solucion{%
+  Primero los márgenes: con el trastorno $22+3=25$; sanos $21+154=175$;
+  positivos $22+21=43$; total $200$.
+  \[ \text{Sensibilidad}=\frac{22}{25}=0{,}88 \qquad
+     \text{Especificidad}=\frac{154}{175}=0{,}88 \]
+  \[ \text{VPP}=\frac{22}{43}\approx 0{,}512 \qquad
+     \text{Prevalencia}=\frac{25}{200}=0{,}125 \]
+  \\[0.3em]
+  \textbf{Acá está el corazón de la unidad.} El instrumento acierta el 88\%
+  por los dos lados —es bueno—, y sin embargo de cada 100 alarmas que da,
+  casi 49 son falsas. No es una contradicción: es lo que pasa cuando se busca
+  algo poco frecuente. El apartado 2.6 explica exactamente por qué.}
+
+\ejercicio{3}{%
+  Con la misma tabla de 200 fichas, calculá:
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item la probabilidad \emph{conjunta} de dar positivo y tener el trastorno;
+    \item la probabilidad \emph{marginal} de dar positivo;
+    \item la probabilidad \emph{condicional} de tener el trastorno dado que dio positivo.
+  \end{enumerate}
+  Identificá cuál de las tres es el VPP.}
+\espacioresolver[3.6cm]
+\respuesta{(a) $22/200=0{,}11$; (b) $43/200=0{,}215$; (c) $22/43\approx0{,}512$.
+La (c) es el VPP.}
+\solucion{%
+  (a) Conjunta: $\dfrac{22}{200} = 0{,}11$ — denominador: el total.
+  \\[0.3em]
+  (b) Marginal: $\dfrac{43}{200} = 0{,}215$ — denominador: el total, ignorando
+  la otra variable.
+  \\[0.3em]
+  (c) Condicional: $\dfrac{22}{43} \approx 0{,}512$ — denominador: sólo los que
+  dieron positivo.
+  \\[0.3em]
+  La \textbf{(c) es el VPP}. Condicionar significa exactamente eso: achicar el
+  universo de la pregunta a los que cumplen la condición. Fijate que las tres
+  tienen el mismo numerador y responden cosas distintas.}
+
+\ejercicio{4}{%
+  Un colega lee la ficha técnica del cuestionario y dice:
+  \begin{quote}\itshape
+  «Tiene 88\% de sensibilidad. Entonces, si un estudiante da positivo, tiene
+  88\% de probabilidad de estar deprimido. Yo le informo eso.»
+  \end{quote}
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Qué está confundiendo, exactamente?
+    \item ¿Cuál es el valor correcto para esa pregunta?
+    \item Escribí en dos o tres líneas cómo se lo informarías al estudiante.
+  \end{enumerate}}
+\espacioresolver[5cm]
+\respuesta{(a) Confunde $P(+\mid \text{enfermo})$ con $P(\text{enfermo}\mid +)$.
+(b) $22/43 \approx 51{,}2\%$. (c) Respuesta abierta.}
+\solucion{%
+  (a) Confunde \textbf{sensibilidad} con \textbf{valor predictivo positivo}, o
+  sea $P(+\mid\text{enfermo})$ con $P(\text{enfermo}\mid+)$. Son
+  probabilidades condicionales \emph{inversas}: misma información, distinto
+  denominador. Invertirlas se llama \emph{falacia de la tasa base}.
+  \\[0.3em]
+  (b) El valor correcto es el VPP: $\dfrac{22}{43} \approx 51{,}2\%$.
+  \\[0.3em]
+  (c) Algo del tipo: «Este cuestionario detecta a la mayoría de las personas
+  con depresión, y por eso está diseñado para marcar de más. Que hayas dado
+  positivo significa que conviene que hablemos con más detalle, no que tengas
+  el diagnóstico: aproximadamente la mitad de las personas que marcamos así no
+  lo tienen. Por eso el paso siguiente es una entrevista, no un tratamiento.»
+  \\[0.3em]
+  \textit{Nota}: el error del colega no es de aritmética ni de descuido. Lo
+  cometen médicos y psicólogos con años de experiencia — está documentado
+  desde los años setenta. Por eso vale la pena practicarlo hasta que suene mal.}

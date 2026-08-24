@@ -1,0 +1,149 @@
+\apartado{2.2}{Tipos de probabilidad}
+
+\noindent\textit{Tres maneras de asignar un número a lo incierto, y cuándo
+sirve cada una.}
+\recordar{%
+  \textbf{Clásica}: $P(A)=\dfrac{\text{casos favorables}}{\text{casos posibles}}$,
+  \emph{sólo} si todos los resultados son igualmente probables.\quad
+  \textbf{Frecuentista}: $P(A)\approx\dfrac{\text{veces que ocurrió}}{\text{veces que se observó}}$.\quad
+  \textbf{Subjetiva}: grado de creencia, sin conteo detrás.\\[0.3em]
+  Axiomas: $0\le P(A)\le 1$;\quad $P(S)=1$;\quad $P(A^{c}) = 1-P(A)$.}
+
+\ejercicio{0}{%
+  ¿Cuáles de estos números pueden ser una probabilidad? Marcá y justificá los
+  que no.
+  \[ -0{,}2 \qquad 0{,}5 \qquad 1{,}4 \qquad \tfrac{3}{4} \qquad 0 \qquad 1 \]}
+\espacioresolver[2cm]
+\respuesta{Válidos: $0{,}5$, $3/4$, $0$ y $1$. No: $-0{,}2$ y $1{,}4$.}
+\solucion{%
+  Válidos: $0{,}5$, $\tfrac{3}{4}$, $0$ y $1$.
+  \\[0.3em]
+  $-0{,}2$ no puede serlo porque ninguna probabilidad es negativa, y $1{,}4$
+  tampoco porque ninguna supera a 1. Son los dos primeros axiomas.
+  \\[0.3em]
+  Que $0$ y $1$ sí valgan no es un detalle: $0$ es el evento imposible y $1$
+  el evento seguro.}
+
+\ejercicio{1}{%
+  Se tira un dado. Calculá $P(\text{sale par})$ escribiendo explícitamente
+  cuántos casos favorables y cuántos posibles hay.}
+\espacioresolver[1.8cm]
+\respuesta{$3/6 = 0{,}5$.}
+\solucion{%
+  Favorables: $\{2,4,6\}$, o sea 3. Posibles: 6.
+  \[ P(\text{par}) = \frac{3}{6} = 0{,}5 \]
+  Acá la fórmula clásica es legítima porque las seis caras son igualmente
+  probables.}
+
+\ejercicio{1}{%
+  Una baraja española tiene 40 cartas y 10 son de oros.
+  Calculá $P(\text{oros})$ y $P(\text{no oros})$.}
+\espacioresolver[1.8cm]
+\respuesta{$P(\text{oros})=10/40=0{,}25$; $P(\text{no oros})=0{,}75$.}
+\solucion{%
+  $P(\text{oros}) = \dfrac{10}{40} = 0{,}25$.
+  \\[0.3em]
+  Para el complemento no hace falta volver a contar:
+  $P(\text{no oros}) = 1 - 0{,}25 = 0{,}75$.
+  \\[0.3em]
+  Usar el complemento en vez de recontar ahorra trabajo y evita errores. Va a
+  ser decisivo en el apartado 2.5.}
+
+\ejercicio{2}{%
+  Se tira una moneda 1000 veces y salen 512 caras.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuál es la probabilidad \emph{frecuentista} de cara?
+    \item ¿Cuál es la \emph{clásica}?
+    \item ¿Por qué no dan igual, y cuál usarías?
+  \end{enumerate}}
+\espacioresolver[3cm]
+\respuesta{(a) $0{,}512$. (b) $0{,}5$. (c) Difieren por azar; con una moneda
+simétrica se usa la clásica.}
+\solucion{%
+  (a) $512/1000 = 0{,}512$. \quad (b) $1/2 = 0{,}5$.
+  \\[0.3em]
+  (c) No dan igual por puro azar del muestreo: en 1000 tiradas casi nunca sale
+  exactamente 500. La diferencia de 12 tiradas es perfectamente normal.
+  \\[0.3em]
+  Con una moneda que sabemos simétrica conviene la clásica, porque la simetría
+  es información más confiable que 1000 tiradas. La frecuentista se vuelve
+  imprescindible justo cuando NO hay simetría — como en el cuestionario.}
+
+\ejercicio{2}{%
+  Se tira un dado. Calculá $P(\text{no sale 6})$ de dos maneras: contando
+  directamente y usando el complemento. Comprobá que coinciden.}
+\espacioresolver[2.2cm]
+\respuesta{$5/6 \approx 0{,}833$ por los dos caminos.}
+\solucion{%
+  \textbf{Contando}: los favorables son $\{1,2,3,4,5\}$, o sea 5.
+  $P = 5/6 \approx 0{,}833$.
+  \\[0.3em]
+  \textbf{Por complemento}: $P(\text{sale 6}) = 1/6$, entonces
+  $P(\text{no sale 6}) = 1 - \tfrac{1}{6} = \tfrac{5}{6} \approx 0{,}833$.
+  \\[0.3em]
+  Coinciden, como tienen que coincidir. Con un dado da igual qué camino tomar;
+  con 200 fichas y varias condiciones, el complemento ahorra muchísimo.}
+
+\ejercicio{3}{%
+  De las 200 fichas del servicio, 43 llegan al corte de 10 o más.
+  Se elige una ficha al azar.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Calculá $P(\text{dar positivo})$.
+    \item Calculá $P(\text{no dar positivo})$.
+    \item ¿Qué tipo de probabilidad estás usando, y por qué no la clásica?
+  \end{enumerate}}
+\espacioresolver[3.2cm]
+\respuesta{(a) $43/200 = 0{,}215$. (b) $0{,}785$. (c) Frecuentista.}
+\solucion{%
+  (a) $P = \dfrac{43}{200} = 0{,}215$, o sea $21{,}5\%$.
+  \\[0.3em]
+  (b) $P = 1 - 0{,}215 = 0{,}785$.
+  \\[0.3em]
+  (c) Es \textbf{frecuentista}: sale de contar lo que efectivamente ocurrió en
+  200 personas. No puede ser clásica porque los puntajes no son igualmente
+  probables — no hay ninguna simetría que garantice que sacar 3 sea tan
+  probable como sacar 20.}
+
+\ejercicio{3}{%
+  En el mismo archivo, 25 estudiantes tienen diagnóstico confirmado por un
+  profesional. Calculá la probabilidad de que una ficha elegida al azar
+  corresponda a alguien con el trastorno. Ese número tiene nombre propio:
+  ¿cuál?}
+\espacioresolver[2.2cm]
+\respuesta{$25/200 = 0{,}125$ (12,5\%). Se llama \emph{prevalencia}.}
+\solucion{%
+  $P = \dfrac{25}{200} = 0{,}125$, o sea $12{,}5\%$.
+  \\[0.3em]
+  Se llama \textbf{prevalencia}: qué proporción de la población tiene la
+  condición. Guardá bien este número — en el apartado 2.6 va a ser la mitad
+  del cálculo que explica por qué un test muy bueno puede dar tantas falsas
+  alarmas.}
+
+\ejercicio{4}{%
+  Clasificá cada afirmación como probabilidad \emph{clásica},
+  \emph{frecuentista} o \emph{subjetiva}, y justificá en una línea.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item «La probabilidad de sacar un as de una baraja de 40 es $4/40$.»
+    \item «En nuestro servicio, el 21,5\% de los tamizados da positivo.»
+    \item «Creo que este paciente tiene un 70\% de chances de adherir al tratamiento.»
+    \item «La probabilidad de que llueva mañana es del 30\%.»
+  \end{enumerate}}
+\espacioresolver[4cm]
+\respuesta{(a) clásica; (b) frecuentista; (c) subjetiva; (d) frecuentista
+(sobre registros históricos), aunque con componente de modelo.}
+\solucion{%
+  (a) \textbf{Clásica}: hay simetría — las 40 cartas son igualmente probables.
+  \\[0.3em]
+  (b) \textbf{Frecuentista}: sale de contar casos observados.
+  \\[0.3em]
+  (c) \textbf{Subjetiva}: es un juicio clínico. No hay conteo detrás, lo que
+  no la vuelve inútil: es información de un profesional con experiencia. Pero
+  no se puede verificar del mismo modo.
+  \\[0.3em]
+  (d) \textbf{Frecuentista} en el fondo: los servicios meteorológicos miran
+  cuántas veces llovió en días con condiciones parecidas. Suele confundirse
+  con subjetiva porque suena a opinión.
+  \\[0.3em]
+  \textit{Lo importante}: los tres tipos dan un número entre 0 y 1 y respetan
+  los mismos axiomas. Lo que cambia es de dónde sale el número — y por lo
+  tanto, cuánto podés confiar en él.}

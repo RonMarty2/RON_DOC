@@ -1,0 +1,159 @@
+\apartado{2.5}{Reglas básicas}
+
+\noindent\textit{Cuándo se suman las probabilidades y cuándo se multiplican.
+Y por qué suponer independencia sin verificarla produce números que parecen
+razonables y no lo son.}
+\recordar{%
+  \textbf{Suma}: $P(A\cup B) = P(A)+P(B)-P(A\cap B)$.
+  Si son mutuamente excluyentes, $P(A\cap B)=0$ y se suman sin más.\quad
+  \textbf{Producto}: $P(A\cap B) = P(A)\cdot P(B\mid A)$.
+  Si son independientes, $P(B\mid A)=P(B)$ y queda $P(A)\cdot P(B)$.\\[0.3em]
+  \textbf{Independencia} significa: saber que ocurrió $A$ no cambia la
+  probabilidad de $B$.}
+
+\ejercicio{0}{%
+  Explicá con tus palabras qué significa que dos eventos sean
+  \emph{mutuamente excluyentes}, y dá un ejemplo con un dado.}
+\espacioresolver[2.2cm]
+\respuesta{Que no pueden ocurrir a la vez. Ej.: «sale 2» y «sale 5».}
+\solucion{%
+  Significa que \textbf{no pueden ocurrir al mismo tiempo}: si ocurre uno, el
+  otro queda descartado. Formalmente, $P(A\cap B)=0$.
+  \\[0.3em]
+  Con un dado: «sale 2» y «sale 5» son mutuamente excluyentes. En cambio
+  «sale par» y «sale mayor que 3» \emph{no} lo son, porque el 4 y el 6
+  cumplen las dos cosas.
+  \\[0.3em]
+  \textbf{Cuidado}: mutuamente excluyente e independiente NO son lo mismo.
+  De hecho son casi opuestos — si son excluyentes, saber que ocurrió uno te
+  dice con certeza que el otro no ocurrió, o sea que se influyen al máximo.}
+
+\ejercicio{1}{%
+  Se tira un dado. Sea $A$ = «sale par» y $B$ = «sale mayor que 4».
+  Enumerá $A$, $B$ y $A\cap B$. Calculá $P(A)$, $P(B)$ y $P(A\cap B)$.}
+\espacioresolver[2.8cm]
+\respuesta{$A=\{2,4,6\}$, $B=\{5,6\}$, $A\cap B=\{6\}$;
+$P(A)=3/6$, $P(B)=2/6$, $P(A\cap B)=1/6$.}
+\solucion{%
+  $A=\{2,4,6\}$, $B=\{5,6\}$, $A\cap B=\{6\}$.
+  \[ P(A)=\tfrac{3}{6}=0{,}5 \qquad P(B)=\tfrac{2}{6}\approx 0{,}333
+     \qquad P(A\cap B)=\tfrac{1}{6}\approx 0{,}167 \]
+  El 6 es el único que cumple las dos condiciones, y por eso aparece en la
+  intersección.}
+
+\ejercicio{1}{%
+  Con los mismos $A$ y $B$, calculá $P(A\cup B)$ de dos maneras: enumerando
+  los elementos de $A\cup B$, y aplicando la regla de la suma.}
+\espacioresolver[2.6cm]
+\respuesta{$A\cup B=\{2,4,5,6\}$, $P=4/6\approx 0{,}667$ por los dos caminos.}
+\solucion{%
+  \textbf{Enumerando}: $A\cup B=\{2,4,5,6\}$, o sea 4 elementos.
+  $P=\tfrac{4}{6}\approx 0{,}667$.
+  \\[0.3em]
+  \textbf{Con la regla}:
+  \[ P(A\cup B)=P(A)+P(B)-P(A\cap B)=\tfrac{3}{6}+\tfrac{2}{6}-\tfrac{1}{6}
+     =\tfrac{4}{6} \]
+  \\[0.3em]
+  Si no restaras la intersección te daría $5/6$, contando el 6 dos veces. Ése
+  es el error más común de toda la unidad, y el diagrama de Venn lo hace
+  obvio: la zona compartida está en los dos círculos.}
+
+\ejercicio{2}{%
+  Se tiran dos monedas. Calculá $P(\text{dos caras})$ usando la regla del
+  producto, y verificá el resultado enumerando el espacio muestral.}
+\espacioresolver[2.4cm]
+\respuesta{$0{,}5\times 0{,}5 = 0{,}25$, y $1/4$ enumerando.}
+\solucion{%
+  Las dos monedas son independientes: el resultado de una no cambia nada
+  para la otra.
+  \[ P(CC) = P(C)\cdot P(C) = 0{,}5 \times 0{,}5 = 0{,}25 \]
+  \\[0.3em]
+  Enumerando: $S=\{CC,CX,XC,XX\}$ y sólo un caso sirve, $1/4=0{,}25$.
+  Coinciden.}
+
+\ejercicio{2}{%
+  Se tira un dado. Sea $A$ = «sale par» y $B$ = «sale mayor que 4».
+  Verificá si $A$ y $B$ son independientes comparando $P(A\cap B)$ con
+  $P(A)\cdot P(B)$.}
+\espacioresolver[2.8cm]
+\respuesta{$P(A\cap B)=1/6\approx 0{,}167$ y $P(A)P(B)=1/6\approx 0{,}167$:
+sí son independientes.}
+\solucion{%
+  \[ P(A)\cdot P(B) = \tfrac{3}{6}\times\tfrac{2}{6} = \tfrac{6}{36}
+     = \tfrac{1}{6} \approx 0{,}167 \]
+  \[ P(A\cap B) = \tfrac{1}{6} \approx 0{,}167 \]
+  Coinciden, así que $A$ y $B$ \textbf{son independientes}.
+  \\[0.3em]
+  Resultado poco intuitivo: uno esperaría que «ser par» y «ser mayor que 4»
+  se influyeran. La independencia no es cuestión de intuición — se verifica
+  con la cuenta.}
+
+\ejercicio{3}{%
+  En las 200 fichas: 43 dan positivo en depresión, 21 dan positivo en
+  ansiedad, y 17 dan positivo en las dos.
+  Calculá la probabilidad de que una ficha elegida al azar dé positivo
+  \textbf{en al menos uno} de los dos cuestionarios.}
+\espacioresolver[3cm]
+\respuesta{$47/200 = 0{,}235$.}
+\solucion{%
+  \[ P(D\cup A) = P(D)+P(A)-P(D\cap A)
+     = \frac{43}{200}+\frac{21}{200}-\frac{17}{200} = \frac{47}{200} = 0{,}235 \]
+  \\[0.3em]
+  En personas: $43+21-17 = 47$. Sin restar los 17 que están en los dos grupos
+  darías $64$, contándolos dos veces — y $64/200 = 0{,}32$, un $36\%$ de más.}
+
+\ejercicio{3}{%
+  ¿Son \textbf{independientes} dar positivo en depresión y dar positivo en
+  ansiedad?
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuántos casos con ambos positivos \emph{esperarías} si fueran independientes?
+    \item ¿Cuántos hay en realidad?
+    \item Calculá $P(\text{ansiedad}\mid\text{depresión})$ y compará con $P(\text{ansiedad})$.
+  \end{enumerate}}
+\espacioresolver[4cm]
+\respuesta{(a) $\approx 4{,}5$; (b) 17; (c) $17/43\approx 0{,}395$ contra
+$0{,}105$. No son independientes.}
+\solucion{%
+  (a) Bajo independencia:
+  $P(D)\cdot P(A)\times 200 = 0{,}215\times 0{,}105\times 200 \approx 4{,}5$
+  personas.
+  \\[0.3em]
+  (b) En realidad hay \textbf{17}, casi cuatro veces más.
+  \\[0.3em]
+  (c) $P(A\mid D)=\dfrac{17}{43}\approx 0{,}395$, contra $P(A)=0{,}105$.
+  \\[0.3em]
+  \textbf{Saber que alguien dio positivo en depresión casi cuadruplica la
+  probabilidad de que dé positivo en ansiedad.} Eso es exactamente lo
+  contrario de la independencia — y es un hallazgo clínico real: la depresión
+  y la ansiedad son altamente comórbidas.}
+
+\ejercicio{4}{%
+  Un investigador escribe en su informe:
+  \begin{quote}\itshape
+  «La probabilidad de dar positivo en depresión es 21,5\% y en ansiedad
+  10,5\%. Por lo tanto, la probabilidad de dar positivo en ambas es
+  $0{,}215 \times 0{,}105 = 2{,}3\%$.»
+  \end{quote}
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Qué supuso sin decirlo?
+    \item ¿Cuál es el valor real, y por cuánto se equivocó?
+    \item ¿Qué consecuencia práctica tendría ese error para planificar el servicio?
+  \end{enumerate}}
+\espacioresolver[5cm]
+\respuesta{(a) Supuso independencia. (b) Real $17/200 = 8{,}5\%$: subestimó
+casi 4 veces. (c) Respuesta abierta.}
+\solucion{%
+  (a) Supuso que los dos eventos son \textbf{independientes}, que es lo único
+  que autoriza a multiplicar las probabilidades sin más. No lo verificó.
+  \\[0.3em]
+  (b) El valor real es $\dfrac{17}{200} = 8{,}5\%$, contra el $2{,}3\%$ que
+  calculó: subestimó por un factor de casi 4.
+  \\[0.3em]
+  (c) Si el servicio planifica con $2{,}3\%$, espera unos 5 casos con
+  comorbilidad y aparecen 17. Esos casos suelen ser los más complejos y los
+  que más tiempo de atención requieren, así que el error no es sólo de
+  cálculo: deja al equipo sin recursos justo donde más hacen falta.
+  \\[0.3em]
+  \textbf{La regla}: multiplicar probabilidades sólo se puede si son
+  independientes, y la independencia se verifica, no se supone. En psicología
+  casi nada es independiente.}

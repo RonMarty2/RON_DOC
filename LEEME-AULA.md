@@ -15,8 +15,9 @@ Si el navegador no se abre solo, entrá a mano a: `http://localhost:3000/aula-pr
 |---|---|
 | **Los datos** (200 estudiantes, PHQ-9/GAD-7/diagnóstico) | `content/aula-probabilidad/dataset.ts` |
 | **Los cálculos** (sensibilidad, VPP, combinatoria, etc.) | `src/components/aula-probabilidad/calculos.ts` |
-| **La lista de módulos** (2.1 a 2.6) | `src/components/aula-probabilidad/modulos.ts` |
+| **La lista de módulos** (preámbulo + 2.1 a 2.9) | `src/components/aula-probabilidad/modulos.ts` |
 | **Cada módulo** (una pantalla del temario) | `src/components/aula-probabilidad/Modulo*.tsx` |
+| **Las piezas compartidas** (la ficha, el puntaje, la analogía del dado) | `src/components/aula-probabilidad/piezasDelCaso.tsx` |
 | **El contenedor** (arma la navegación) | `src/components/aula-probabilidad/AulaProbabilidad.tsx` |
 | **La página pública** (`/aula-probabilidad`) | `src/app/aula-probabilidad/page.tsx` |
 

@@ -19,6 +19,7 @@ import {
   Comprueba,
   PasoTitulo,
 } from "./narrativa";
+import { LasFichas } from "./piezasDelCaso";
 
 const INSIGNIA = "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300";
 const ACENTO = "border-indigo-300 text-indigo-700 dark:border-indigo-700 dark:text-indigo-300";
@@ -116,6 +117,92 @@ export function ModuloTablasContingencia({
 
   return (
     <div className="flex flex-col gap-6">
+      <PasoTitulo numero={1} insignia={INSIGNIA}>
+        La columna que faltaba
+      </PasoTitulo>
+
+      <p className="text-slate-700 dark:text-slate-300">
+        Hasta acá la ficha tenía un solo dato: el puntaje. Con eso alcanzó
+        para contar, para dividir y para hablar de eventos. Pero hay una
+        pregunta que con el puntaje solo <strong>no se puede contestar</strong>
+        : si el cuestionario acierta o no.
+      </p>
+
+      <p className="text-slate-700 dark:text-slate-300">
+        Para eso hace falta saber qué pasaba de verdad con cada estudiante, y
+        eso lo dice otra cosa, no el cuestionario. Acá aparece el segundo dato
+        de la ficha — y aparece ahora porque recién ahora hay algo que hacer
+        con él.
+      </p>
+
+      <Definicion termino="Tamizaje (o cribado)">
+        Una prueba rápida y barata que separa a quienes conviene evaluar a
+        fondo de quienes probablemente no lo necesitan. No diagnostica:
+        filtra. Es exactamente lo que viene haciendo el corte de 10 desde el
+        principio del capítulo, aunque todavía no lo hubiéramos nombrado.
+        <Ejemplos titulo="Ver otros tamizajes conocidos">
+          <Ejemplo caso="El detector de metales del aeropuerto">
+            Suena para llaves y monedas. No dice que lleves un arma: dice a
+            quién revisar a mano.
+          </Ejemplo>
+          <Ejemplo caso="El test de embarazo casero">
+            Filtra rápido y barato; la confirmación la hace un profesional.
+          </Ejemplo>
+          <Ejemplo caso="La mamografía de rutina">
+            Marca imágenes sospechosas. El diagnóstico lo da la biopsia.
+          </Ejemplo>
+          <Ejemplo caso="Nuestro cuestionario de 9 preguntas">
+            Marca a quién conviene entrevistar. La entrevista clínica
+            diagnostica.
+          </Ejemplo>
+        </Ejemplos>
+      </Definicion>
+
+      <MiniHistoria titulo="Es el detector de metales del aeropuerto">
+        El detector suena para muchísima gente: llaves, monedas, el cinturón.
+        Después un guardia revisa a mano y decide. El detector nunca dijo que
+        llevaras un arma — solo dijo <strong>a quién vale la pena revisar</strong>.
+        Por eso está regulado para sonar de más: prefiere una molestia
+        innecesaria antes que dejar pasar algo grave. Un tamizaje en salud
+        mental funciona igual, y por eso <strong>las falsas alarmas son
+        normales y esperables</strong>, no un defecto.
+      </MiniHistoria>
+
+      <Definicion termino="Diagnóstico confirmado">
+        Lo que dictamina un profesional después de una entrevista clínica. Es
+        lo que en investigación se llama{" "}
+        <Termino significa="La mejor verdad disponible contra la cual se juzga si un instrumento acertó o se equivocó. No es una verdad perfecta, pero es lo mejor que hay.">
+          criterio de referencia
+        </Termino>
+        .
+      </Definicion>
+
+      <LasFichas
+        campos={["phq9", "dx"]}
+        titulo="La misma ficha, ahora con dos datos"
+        intro={
+          <p>
+            Es el mismo explorador del preámbulo, con una columna más. Y con
+            esa columna sola ya se puede decir algo que antes era imposible:
+            si en esta ficha el cuestionario <strong>acertó</strong>, dio una{" "}
+            <strong>falsa alarma</strong> o <strong>se le escapó</strong> el
+            caso.
+          </p>
+        }
+      />
+
+      <Trampa
+        error="leer un resultado positivo como si fuera un diagnóstico"
+        porQue="la palabra «positivo» suena a veredicto, y el número que acompaña al instrumento (88% de acierto) refuerza esa lectura."
+        correccion="un tamizaje decide a quién revisar, no quién está enfermo. El diagnóstico lo hace después un profesional en entrevista — y por eso el archivo tiene esa columna aparte."
+      />
+
+      <Hilo>
+        Ahora hay dos datos por ficha, y cada uno puede ser sí o no. Eso da
+        cuatro combinaciones posibles, ni una más. Ordenarlas es todo lo que
+        hace una tabla de contingencia.
+      </Hilo>
+
       <p className="text-slate-700 dark:text-slate-300">
         Un tamizaje se puede equivocar de dos formas distintas, y no son igual
         de graves: puede marcar a alguien que está sano (<strong>falsa
@@ -127,13 +214,14 @@ export function ModuloTablasContingencia({
       <IndiceApartado
         insignia={INSIGNIA}
         pasos={[
+          "La columna que faltaba",
           "Cruzar test contra verdad",
           "Tres probabilidades, tres denominadores",
           "Los tres números, calculados",
         ]}
       />
 
-      <PasoTitulo numero={1} insignia={INSIGNIA}>
+      <PasoTitulo numero={2} insignia={INSIGNIA}>
         Cruzar lo que dijo el test contra lo que era verdad
       </PasoTitulo>
 
@@ -213,7 +301,7 @@ export function ModuloTablasContingencia({
         </p>
       </Cierre>
 
-      <PasoTitulo numero={2} insignia={INSIGNIA}>
+      <PasoTitulo numero={3} insignia={INSIGNIA}>
         Tres probabilidades, tres denominadores
       </PasoTitulo>
 
@@ -241,7 +329,7 @@ export function ModuloTablasContingencia({
         todo el apartado.
       </MiniHistoria>
 
-      <PasoTitulo numero={3} insignia={INSIGNIA}>
+      <PasoTitulo numero={4} insignia={INSIGNIA}>
         Los tres números, calculados
       </PasoTitulo>
 
@@ -324,7 +412,7 @@ export function ModuloTablasContingencia({
               </>
             ),
             explicacion:
-              "Mismo numerador, denominador distinto, resultado radicalmente distinto: 88% contra 51,2%. Éste es el número del misterio con el que abrimos el capítulo.",
+              "Mismo numerador, denominador distinto, resultado radicalmente distinto: 88% contra 51,2%. Éste es el número que promete el inicio del capítulo, y ya está acá: casi la mitad de las alarmas son falsas.",
           },
         ]}
       />

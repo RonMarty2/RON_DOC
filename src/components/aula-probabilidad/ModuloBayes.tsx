@@ -42,6 +42,23 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
 
   return (
     <div className="flex flex-col gap-6">
+      <div className="rounded-2xl border-2 border-amber-300 bg-amber-50/60 p-5 dark:border-amber-800 dark:bg-amber-950/20 sm:p-6">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400">
+          La promesa del inicio
+        </p>
+        <p className="mt-2 font-serif text-lg leading-snug text-slate-900 dark:text-slate-100">
+          «Hay un cuestionario que casi nunca falla y que, aun así, se equivoca
+          en casi la mitad de las alarmas que da.»
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          Eso quedó dicho al abrir el capítulo, sin un solo número, y desde
+          entonces fuiste juntando todo lo que hacía falta para entenderlo: qué
+          es una probabilidad, cómo se cuenta, qué cambia cuando cambia el
+          denominador, y por qué sensibilidad y valor predictivo no son lo
+          mismo. <strong>Este apartado es donde se paga esa promesa.</strong>
+        </p>
+      </div>
+
       <p className="text-slate-700 dark:text-slate-300">
         En los años setenta, Kahneman y Tversky le plantearon este problema a
         médicos, psicólogos y estadísticos entrenados: una enfermedad afecta al

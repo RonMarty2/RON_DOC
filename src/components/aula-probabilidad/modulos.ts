@@ -2,8 +2,9 @@
  * Navegación de la herramienta "Aula Interactiva de Probabilidad".
  *
  * Estructura:
- *  - Preámbulo ("El misterio"): engancha sin enseñar todavía.
- *  - Contexto ("El caso"): qué es un tamizaje y de dónde salen los datos.
+ *  - Preámbulo, en dos peldaños: el objeto crece de un dado a una pregunta,
+ *    de una pregunta a un puntaje, de un puntaje a una ficha y de una ficha
+ *    a un archivo de doscientas. Nada de vocabulario clínico todavía.
  *  - Temario real de Psicoestadística Inferencial — Unidad 2, apartados 2.1
  *    a 2.6 (fundamentos + Teorema de Bayes). Fase 2 (2.7-2.9,
  *    distribuciones) se suma más adelante.
@@ -19,8 +20,8 @@
 import type { BloqueId } from "./bloques";
 
 export type ModuloId =
-  | "misterio"
-  | "el-caso"
+  | "un-dado"
+  | "el-archivo"
   | "espacio-muestral"
   | "tipos-probabilidad"
   | "tablas-contingencia"
@@ -45,22 +46,22 @@ export interface ModuloMeta {
 
 export const MODULOS: ModuloMeta[] = [
   {
-    id: "misterio",
+    id: "un-dado",
     bloque: "preambulo",
-    icono: "🔍",
-    titulo: "El misterio",
-    subtitulo: "Antes de empezar",
+    icono: "🎲",
+    titulo: "Un dado y una pregunta",
+    subtitulo: "El objeto más simple",
     resumen:
-      "Un test que casi nunca falla, y sin embargo la mitad de sus alarmas son falsas. ¿Cómo puede ser?",
+      "Tirá un dado. Después mirá una pregunta del cuestionario: cuatro opciones, cuatro caras. Sumá dos preguntas, después las nueve, y ya tenés un puntaje.",
   },
   {
-    id: "el-caso",
+    id: "el-archivo",
     bloque: "preambulo",
-    icono: "📋",
-    titulo: "El caso",
-    subtitulo: "De dónde salen los datos",
+    icono: "🗂️",
+    titulo: "Una ficha y un archivo",
+    subtitulo: "De un puntaje a doscientos",
     resumen:
-      "Qué es un tamizaje, cómo se arma un puntaje y qué contienen las 200 fichas con las que vamos a trabajar todo el capítulo.",
+      "Un puntaje guardado es una ficha. Diez fichas se cuentan a mano y ya aparece la primera proporción. Doscientas ya no, y ahí empieza a hacer falta el método.",
   },
   {
     id: "espacio-muestral",

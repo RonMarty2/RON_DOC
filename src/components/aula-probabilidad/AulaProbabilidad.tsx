@@ -12,8 +12,8 @@ import {
 /** Dónde se guarda el último apartado visitado, para retomarlo al volver. */
 const CLAVE_PROGRESO = "aula-probabilidad:ultimo-apartado";
 import { verificarVerdades } from "./calculos";
-import { ModuloMisterio } from "./ModuloMisterio";
-import { ModuloElCaso } from "./ModuloElCaso";
+import { ModuloUnDado } from "./ModuloUnDado";
+import { ModuloElArchivo } from "./ModuloElArchivo";
 import { PanelDelCaso } from "./PanelDelCaso";
 import { ModuloEspacioMuestral } from "./ModuloEspacioMuestral";
 import { ModuloTiposProbabilidad } from "./ModuloTiposProbabilidad";
@@ -34,10 +34,10 @@ function CuerpoModulo({
   irA: (destino: ModuloId) => void;
 }) {
   switch (id) {
-    case "misterio":
-      return <ModuloMisterio onContinuar={() => irA("el-caso")} />;
-    case "el-caso":
-      return <ModuloElCaso onContinuar={() => irA("espacio-muestral")} />;
+    case "un-dado":
+      return <ModuloUnDado onContinuar={() => irA("el-archivo")} />;
+    case "el-archivo":
+      return <ModuloElArchivo onContinuar={() => irA("espacio-muestral")} />;
     case "espacio-muestral":
       return <ModuloEspacioMuestral onContinuar={() => irA("tipos-probabilidad")} />;
     case "tipos-probabilidad":
@@ -55,20 +55,21 @@ function CuerpoModulo({
     case "discretas":
       return <ModuloDiscretas onContinuar={() => irA("normal")} />;
     case "normal":
-      return <ModuloNormal onContinuar={() => irA("misterio")} />;
+      return <ModuloNormal onContinuar={() => irA("un-dado")} />;
   }
 }
 
 /**
  * Contenedor principal de la herramienta "Aula Interactiva de Probabilidad".
  *
- * Abre en el preámbulo ("El misterio"), sigue por el contexto ("El caso") y
- * después recorre el temario de Psicoestadística Inferencial — Unidad 2
- * (2.1 a 2.6 en esta fase). Todos los módulos se alimentan del mismo
- * dataset de 200 fichas. Estilos aislados bajo `.aula-probabilidad`.
+ * Abre por el objeto más simple (un dado), lo hace crecer hasta el archivo
+ * de 200 fichas y recién después entra al temario de Psicoestadística
+ * Inferencial — Unidad 2, apartados 2.1 a 2.9. Cada dato del archivo se
+ * revela en el apartado que lo necesita, no antes. Estilos aislados bajo
+ * `.aula-probabilidad`.
  */
 export function AulaProbabilidad() {
-  const [activo, setActivo] = useState<ModuloId>("misterio");
+  const [activo, setActivo] = useState<ModuloId>("un-dado");
   const [retomado, setRetomado] = useState<ModuloId | null>(null);
 
   // La navegación no se decide con un punto de corte de ancho de ventana sino
@@ -78,7 +79,7 @@ export function AulaProbabilidad() {
   const columna = useRef<HTMLDivElement>(null);
   const hueco = useHuecoRiel(columna);
 
-  // Al abrir, retomar donde se había quedado. Arranca siempre en "misterio"
+  // Al abrir, retomar donde se había quedado. Arranca siempre en "un-dado"
   // para que el HTML del servidor y el del navegador coincidan, y recién
   // después salta al apartado guardado.
   useEffect(() => {
@@ -86,7 +87,7 @@ export function AulaProbabilidad() {
       const guardado = window.localStorage.getItem(CLAVE_PROGRESO);
       if (
         guardado &&
-        guardado !== "misterio" &&
+        guardado !== "un-dado" &&
         MODULOS.some((m) => m.id === guardado)
       ) {
         setActivo(guardado as ModuloId);
@@ -121,7 +122,7 @@ export function AulaProbabilidad() {
     } catch {
       /* nada que hacer */
     }
-    setActivo("misterio");
+    setActivo("un-dado");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -202,7 +203,7 @@ export function AulaProbabilidad() {
       </section>
 
       {/* Los datos del caso, a un toque desde cualquier apartado */}
-      <PanelDelCaso />
+      <PanelDelCaso indiceActivo={indiceActivo} />
     </div>
   );
 }

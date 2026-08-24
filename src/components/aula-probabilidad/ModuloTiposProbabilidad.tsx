@@ -280,9 +280,10 @@ export function ModuloTiposProbabilidad({
       >
         <p>
           Ya podemos calcular la probabilidad de un evento suelto: dar
-          positivo, dar negativo. Pero el misterio del inicio no se trataba de
-          un evento, sino del cruce de dos: lo que dijo el test y lo que era
-          verdad.
+          positivo, dar negativo. Pero la promesa del inicio —un cuestionario
+          que casi nunca falla y que aun así se equivoca en casi la mitad de
+          sus alarmas— no se trata de un evento suelto, sino del cruce de dos:
+          lo que dijo el cuestionario y lo que era verdad.
         </p>
         <p>
           Para ver los dos a la vez hace falta cruzarlos en una tabla. Y de esa

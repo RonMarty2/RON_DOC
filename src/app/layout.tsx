@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { RegistroPWA } from "@/components/RegistroPWA";
 import { SITIO } from "@/lib/seo";
+import { conBase } from "@/lib/rutas";
 
 export const metadata: Metadata = {
   title: {
@@ -19,12 +20,15 @@ export const metadata: Metadata = {
     title: "Ronald M.",
     statusBarStyle: "black-translucent",
   },
+  // Rutas absolutas con basePath: relativas sólo funcionaban en la portada,
+  // porque con `trailingSlash` una página como /aula-probabilidad/ resolvía
+  // «icons/…» contra su propia carpeta y devolvía 404.
   icons: {
     icon: [
-      { url: "icons/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: conBase("/icons/favicon-32.png"), sizes: "32x32", type: "image/png" },
+      { url: conBase("/icons/icon-192.png"), sizes: "192x192", type: "image/png" },
     ],
-    apple: [{ url: "icons/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [{ url: conBase("/icons/apple-touch-icon.png"), sizes: "180x180" }],
   },
   openGraph: {
     title: SITIO.nombre,

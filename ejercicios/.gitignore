@@ -1,0 +1,6 @@
+# Archivos intermedios de LaTeX. Los PDF sí se versionan: son el entregable,
+# y así se puede descargar el cuadernillo del repositorio sin compilar nada.
+*.aux
+*.log
+*.out
+*.toc

@@ -1,0 +1,118 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.3cm,includeheadfoot]{geometry}
+\input{estilo-aula}
+\docentetrue
+\espaciofalse
+\begin{document}
+
+\apartado{2.4}{Teoría combinatoria}{calculo}
+\bajada{Contar sin enumerar. La única pregunta que hay que resolver antes de
+elegir la fórmula es: ¿importa el orden?}
+
+\definicion{Combinación}{%
+  Cuántos grupos distintos se pueden formar eligiendo $k$ elementos de $n$,
+  \emph{sin} que importe en qué orden se los eligió.}
+
+\minihistoria{Es elegir el equipo, no armar la fila}{%
+  Si elegís tres personas para un grupo focal, «Ana, Beto, Caro» es el mismo
+  grupo que «Caro, Ana, Beto»: una sola cosa. Si en cambio les asignás
+  moderador, relator y observador, cada orden es una asignación distinta. La
+  gente es la misma; lo que cambia es si el orden significa algo.}
+
+\ejercicio{1}{Tenés 5 fichas y querés elegir 2 para revisarlas.
+  \textbf{Antes de calcular nada, escribí acá cuántas parejas creés que
+  salen:} \underline{\hspace{2.5cm}}
+  \par\vspace{0.3em}
+  Ahora contalas enumerándolas todas. ¿Coincidió con lo que dijiste?}{Predecí primero}
+\renglones[3]
+\respuesta{10 parejas.}
+\solucion{%
+  Enumerando: 12, 13, 14, 15, 23, 24, 25, 34, 35, 45. Son \textbf{10}.
+  \par
+  Mucha gente arriesga 20, porque cuenta «5 opciones para la primera $\times$
+  4 para la segunda». Ese razonamiento cuenta la pareja 12 y la 21 como
+  distintas, y son la misma. Por eso hay que dividir por 2.}
+\enclase{Pedí que levanten la mano quienes dijeron 20 antes de mostrar la
+respuesta. Suele ser la mitad del curso, y esa mitad se acuerda del ejercicio
+por el resto del cuatrimestre.}
+
+\ejercicio{2}{Dos situaciones que parecen iguales. Resolvé las dos y explicá
+  qué cambió.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item De 6 estudiantes se eligen 2 para un grupo focal.
+    \item De 6 estudiantes se eligen 2: uno expone y el otro toma notas.
+  \end{enumerate}}{Dos casos casi iguales}
+\renglones[4]
+\respuesta{(a) $C(6,2)=15$; (b) $P(6,2)=30$. Cambió si el orden significa algo.}
+\solucion{%
+  (a) $C(6,2)=\dfrac{6!}{2!\,4!}=15$. \quad (b) $P(6,2)=\dfrac{6!}{4!}=30$.
+  \par
+  Las palabras cambian poquísimo —«un grupo focal» contra «uno expone y el
+  otro toma notas»— y el resultado se duplica. Lo que cambió es que en (b) los
+  dos lugares no son intercambiables.
+  \par
+  El factor exacto es $2!=2$: cada pareja se puede repartir en los dos roles
+  de dos maneras. En general $P(n,k)=C(n,k)\times k!$}
+
+\ejercicio{2}{Una estudiante resolvió así el ejercicio «¿cuántos grupos de 3
+  se pueden formar con 43 personas?»:
+  \begin{quote}\itshape
+  $43 \times 42 \times 41 = 74\,046$ grupos.
+  \end{quote}
+  El procedimiento tiene un error. \textbf{Señalá el paso exacto} donde se
+  equivoca, explicá por qué, y dá el resultado correcto.}{Encontrá el error}
+\renglones[4]
+\respuesta{Falta dividir por $3!=6$. El correcto es $12\,341$.}
+\solucion{%
+  El error no está en la multiplicación —$43\times 42\times 41$ está bien—
+  sino en \textbf{no dividir después}. Ese producto cuenta las
+  \emph{permutaciones}: considera que «Ana, Beto, Caro» y «Caro, Beto, Ana»
+  son grupos distintos, y son el mismo.
+  \par
+  Cada grupo de 3 aparece contado $3!=6$ veces, así que:
+  \[ C(43,3)=\frac{43\times 42\times 41}{3!}=\frac{74\,046}{6}=12\,341 \]}
+\enclase{Que digan en voz alta cuántas veces está contado cada grupo. Si
+pueden justificar el 6, entendieron la fórmula; si sólo dicen «hay que dividir
+por 3 factorial», la memorizaron.}
+
+\ejercicio{2}{El servicio quiere saber de cuántas maneras puede elegir a 4
+  estudiantes para entrevistar. \textbf{¿Alcanza con ese enunciado para
+  responder?} Si te parece que sí, calculá. Si te parece que no, escribí qué
+  dato falta y por qué sin él no se puede.}{¿Alcanzan los datos?}
+\renglones[3]
+\respuesta{No alcanza: falta saber de cuántos se elige, y si el orden importa.}
+\solucion{%
+  \textbf{No alcanza}, y faltan dos cosas:
+  \begin{enumerate}[label=\arabic*.,topsep=2pt,itemsep=1pt]
+    \item \textbf{De cuántos se elige.} No es lo mismo elegir 4 entre los 43
+      positivos que entre las 200 fichas.
+    \item \textbf{Si el orden importa.} Cuatro personas para un mismo grupo es
+      una combinación; cuatro personas para cuatro horarios distintos es una
+      permutación, y da 24 veces más.
+  \end{enumerate}
+  \par
+  Reconocer que un enunciado está incompleto es parte del trabajo: en la
+  práctica los pedidos llegan así, y operar igual con los números que
+  aparecen es de donde salen la mayoría de los errores en informes reales.}
+
+\formulaanotada{%
+  $\displaystyle C(n,k)=\binom{n}{k}=\frac{n!}{k!\,(n-k)!}$}{%
+  \item[$n$] el total de elementos disponibles.
+  \item[$k$] cuántos se eligen.
+  \item[$k!$] el divisor que agrupa los órdenes repetidos. Es lo único que
+    distingue esta fórmula de la permutación.}
+
+\trampa{multiplicar $n\times(n-1)\times\cdots$ y quedarse ahí}%
+  {es el razonamiento correcto para el primer paso, y el resultado parece
+   razonable: un número grande para un problema de contar}%
+  {ese producto cuenta órdenes, no grupos. Si el orden no importa, hay que
+   dividir por $k!$}
+
+\cierre{%
+  Los cuatro ejercicios eran combinatoria, pero ninguno se resolvía copiando
+  la fórmula: uno pedía arriesgar antes, otro comparar dos casos casi
+  iguales, otro revisar el trabajo de alguien más, y otro darse cuenta de que
+  faltaban datos. Ésas son las cuatro cosas que se hacen con la combinatoria
+  fuera de un examen.}
+
+\end{document}

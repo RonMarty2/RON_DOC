@@ -138,8 +138,10 @@ export function AulaProbabilidad() {
   }, []);
 
   return (
-    <div className="aula-probabilidad" ref={columna}>
-      {/* Navegación: riel a la derecha sólo si el margen medido lo admite;
+    <div className="aula-probabilidad pb-24" ref={columna}>
+      {/* `pb-24`: deja aire al final para que los botones flotantes (el menú de
+          apartados y los datos del caso) no tapen el último párrafo.
+          Navegación: riel a la derecha sólo si el margen medido lo admite;
           si no, botón flotante. Antes era una barra pegajosa de cuatro filas
           que seguía al lector durante todo el desplazamiento. */}
       <RielApartados

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { CORTE_TAMIZAJE, ESTUDIANTES } from "@content/aula-probabilidad/dataset";
 import { tablaConfusion, resumenPhq9, contar, gad7Positivo } from "./calculos";
+import { useOcultarAlBajar } from "./NavegacionApartados";
 
 /**
  * Los datos del caso, disponibles desde cualquier apartado.
@@ -18,6 +19,7 @@ export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
   const veAnsiedad = indiceActivo >= 6;
   const veNormal = indiceActivo >= 10;
   const [abierto, setAbierto] = useState(false);
+  const alaVista = useOcultarAlBajar();
   const t = tablaConfusion();
   const { media, desviacion } = resumenPhq9();
   const gad = contar(gad7Positivo);
@@ -40,7 +42,12 @@ export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
         type="button"
         onClick={() => setAbierto((v) => !v)}
         aria-expanded={abierto}
-        className="fixed bottom-4 right-4 z-40 flex items-center gap-2 rounded-full bg-slate-800 px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600"
+        className={
+          "abajo-seguro fixed right-4 z-40 flex items-center gap-2 rounded-full bg-slate-800 px-4 py-3 text-sm font-semibold text-white shadow-lg transition duration-200 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 " +
+          (alaVista || abierto
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-24 opacity-0")
+        }
       >
         <span aria-hidden>📌</span>
         <span className="hidden sm:inline">Datos del caso</span>
@@ -54,7 +61,7 @@ export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
             aria-hidden
           />
           <aside
-            className="fixed bottom-0 left-0 right-0 z-50 max-h-[80vh] overflow-y-auto rounded-t-2xl border-t border-slate-200 bg-white p-5 shadow-2xl sm:bottom-20 sm:left-auto sm:right-4 sm:max-h-[70vh] sm:w-96 sm:rounded-2xl sm:border dark:border-slate-700 dark:bg-slate-900"
+            className="pb-segura px-seguro fixed bottom-0 left-0 right-0 z-50 max-h-[80vh] overflow-y-auto rounded-t-2xl border-t border-slate-200 bg-white px-5 pt-5 shadow-2xl sm:bottom-20 sm:left-auto sm:right-4 sm:max-h-[70vh] sm:w-96 sm:rounded-2xl sm:border sm:pb-5 dark:border-slate-700 dark:bg-slate-900"
             aria-label="Datos del caso"
           >
             <div className="flex items-center justify-between">

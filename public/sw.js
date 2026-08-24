@@ -4,7 +4,7 @@
 //    si no hay red, servimos lo cacheado.
 //  - Estáticos (JS/CSS/imagenes/PDFs/HTMLs de interactivos): cache-first.
 
-const VERSION = "v4";
+const VERSION = "v5";
 const CACHE_PAGINAS = `ron-doc-paginas-${VERSION}`;
 const CACHE_ESTATICOS = `ron-doc-estaticos-${VERSION}`;
 
@@ -12,10 +12,23 @@ const CACHE_ESTATICOS = `ron-doc-estaticos-${VERSION}`;
 const SCOPE = new URL(self.registration?.scope ?? "./", self.location.origin)
   .pathname.replace(/\/$/, "");
 
+// Rutas que se guardan al instalar, sin esperar a que alguien las visite.
+// La Aula está acá porque es la herramienta que se usa proyectada en clase,
+// donde la conexión puede no existir: tiene que funcionar sin internet desde
+// la primera vez, no sólo después de haberla abierto con señal.
+const PRECARGA = ["/", "/aula-probabilidad/"];
+
 self.addEventListener("install", (event) => {
-  // Precache mínimo: el shell del sitio.
   event.waitUntil(
-    caches.open(CACHE_PAGINAS).then((cache) => cache.addAll([`${SCOPE}/`]))
+    caches.open(CACHE_PAGINAS).then((cache) =>
+      // `addAll` falla entera si una sola ruta falla; se piden de a una para
+      // que un 404 en cualquiera no deje al service worker sin instalar.
+      Promise.all(
+        PRECARGA.map((ruta) =>
+          cache.add(`${SCOPE}${ruta}`).catch(() => undefined)
+        )
+      )
+    )
   );
   self.skipWaiting();
 });

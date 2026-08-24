@@ -41,22 +41,39 @@ export function RegistroPWA() {
     let regGuardada: ServiceWorkerRegistration | undefined;
     let onUpdateFound: (() => void) | undefined;
 
-    // Dentro de la app nativa (Capacitor) los archivos ya viajan empaquetados,
-    // así que el service worker no aporta nada y sí puede molestar: su caché
-    // sobrevive a la actualización de la app y serviría la versión anterior.
     const enAppNativa =
       typeof window !== "undefined" &&
       ((window as { Capacitor?: unknown }).Capacitor !== undefined ||
         window.location.protocol === "capacitor:");
 
+    /*
+     * La app nativa puede estar en dos modos, y el service worker se comporta
+     * al revés en cada uno:
+     *
+     *  - Cargando los archivos EMPAQUETADOS (origen `capacitor:` o
+     *    `https://localhost`): el service worker no aporta nada —los archivos
+     *    ya están en el teléfono— y sí estorba, porque su caché sobrevive a la
+     *    actualización de la app y serviría la versión anterior. Se da de baja.
+     *
+     *  - Cargando el SITIO PUBLICADO (`server.url`, que es el modo actual): el
+     *    service worker es justamente lo que permite usarla sin internet
+     *    después de la primera apertura, y además es el mecanismo que trae las
+     *    versiones nuevas. Se registra igual que en el navegador.
+     */
+    const desdeArchivosEmpaquetados =
+      enAppNativa &&
+      (window.location.protocol === "capacitor:" ||
+        window.location.hostname === "localhost");
+
     const productionConSW =
       process.env.NODE_ENV === "production" &&
       "serviceWorker" in navigator &&
-      !enAppNativa;
+      !desdeArchivosEmpaquetados;
 
     // Si quedó un service worker de una versión anterior instalado dentro de
-    // la app, se da de baja para que no siga respondiendo con caché vieja.
-    if (enAppNativa && "serviceWorker" in navigator) {
+    // la app empaquetada, se da de baja para que no siga respondiendo con
+    // caché vieja.
+    if (desdeArchivosEmpaquetados && "serviceWorker" in navigator) {
       navigator.serviceWorker
         .getRegistrations()
         .then((regs) => regs.forEach((r) => r.unregister()))

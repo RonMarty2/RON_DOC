@@ -17,6 +17,10 @@
    Esto instala las dependencias. Sin esto el Gradle sync falla —y te lo va a
    decir con ese mismo mensaje, no con un error críptico.
 
+   > **Hace falta Node.js 22 o superior.** Comprobalo con `node -v`. Si tenés
+   > una versión más vieja, descargá la LTS de <https://nodejs.org> y **cerrá y
+   > volvé a abrir Android Studio** (si no, sigue usando la versión vieja).
+
 3. `File → Open` → elegí la subcarpeta **`RON_DOC/android`** → **Open**.
 
 4. Esperá el *Gradle sync* (la primera vez tarda varios minutos).
@@ -43,7 +47,8 @@ proyecto; si el sync te pide algo, te lo va a decir.
 | Mensaje | Qué hacer |
 |---|---|
 | «Falta instalar las dependencias del proyecto» | `npm install` en la carpeta RON_DOC (Alt+F12) |
-| `[Aula] AVISO: no se pudo compilar el sitio` | Instalá Node.js (nodejs.org). La app se instala igual, pero con el contenido anterior |
+| `The Capacitor CLI requires NodeJS >=22` | Actualizá Node desde nodejs.org y reiniciá Android Studio |
+| La compilación falla diciendo «La app no tiene contenido adentro» | Seguí las instrucciones del propio mensaje: `npm install` y `npm run build:android` |
 | La app se abre en blanco | Falta el contenido: `npm run build:android` y volvé a apretar ▶ |
 | No aparece el celular en la lista | Depuración USB activada, y aceptá el diálogo «¿Permitir depuración?» en el teléfono |
 

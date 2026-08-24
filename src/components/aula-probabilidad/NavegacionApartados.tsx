@@ -114,6 +114,43 @@ export function useHuecoRiel(
   return hueco;
 }
 
+/**
+ * Los botones flotantes se esconden mientras se baja y vuelven al subir o al
+ * detenerse.
+ *
+ * Flotar sobre el texto es el precio de no ocupar espacio fijo, y se hacía
+ * notar: el botón quedaba encima del párrafo que estabas leyendo. Así el
+ * lector recupera la pantalla completa mientras avanza, y los controles
+ * reaparecen apenas los busca (subir) o apenas deja de leer.
+ */
+export function useOcultarAlBajar(): boolean {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    let ultimo = window.scrollY;
+    let quieto: number | undefined;
+
+    const alDesplazar = () => {
+      const y = window.scrollY;
+      // Umbral de 4px: evita que el rebote del navegador lo dispare solo.
+      if (y > ultimo + 4 && y > 140) setVisible(false);
+      else if (y < ultimo - 4) setVisible(true);
+      ultimo = y;
+
+      window.clearTimeout(quieto);
+      quieto = window.setTimeout(() => setVisible(true), 900);
+    };
+
+    window.addEventListener("scroll", alDesplazar, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", alDesplazar);
+      window.clearTimeout(quieto);
+    };
+  }, []);
+
+  return visible;
+}
+
 /** Lista de apartados agrupada por bloque. Se usa en el riel y en el panel. */
 function ListaApartados({
   activo,
@@ -244,6 +281,7 @@ export function MenuApartados({
 }) {
   const [abierto, setAbierto] = useState(false);
   const [montado, setMontado] = useState(false);
+  const alaVista = useOcultarAlBajar();
   const meta = MODULOS.find((m) => m.id === activo) ?? MODULOS[0];
   const acento = BLOQUES[meta.bloque];
 
@@ -272,18 +310,25 @@ export function MenuApartados({
 
   return createPortal(
     <>
+      {/* Botón compacto. Antes mostraba el título completo del apartado y
+          quedaba tan ancho que tapaba el texto de la página; el número de
+          apartado alcanza para saber dónde estás. */}
       <button
         type="button"
         onClick={() => setAbierto((v) => !v)}
         aria-expanded={abierto}
+        aria-label={`Apartados. Estás en ${meta.titulo}, ${indiceActivo + 1} de ${MODULOS.length}`}
         className={
-          "fixed bottom-4 left-4 z-40 flex max-w-[min(60vw,20rem)] items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold shadow-lg transition " +
-          acento.activo
+          "abajo-seguro fixed left-4 z-40 flex items-center gap-2 rounded-full py-3 pl-4 pr-4 text-sm font-semibold shadow-lg transition duration-200 " +
+          (alaVista || abierto
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-24 opacity-0") +
+          " " + acento.activo
         }
       >
         <svg
-          width="14"
-          height="14"
+          width="16"
+          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -294,10 +339,7 @@ export function MenuApartados({
         >
           <path d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <span className="truncate">
-          {meta.apartado ? `${meta.apartado} ${meta.titulo}` : meta.titulo}
-        </span>
-        <span className="shrink-0 font-mono text-[10px] tabular-nums opacity-70">
+        <span className="font-mono text-xs tabular-nums">
           {indiceActivo + 1}/{MODULOS.length}
         </span>
       </button>
@@ -311,11 +353,11 @@ export function MenuApartados({
           />
           <nav
             aria-label="Apartados"
-            className="fixed bottom-0 left-0 right-0 z-50 max-h-[75vh] overflow-y-auto rounded-t-2xl border-t border-slate-200 bg-white p-5 shadow-2xl sm:bottom-20 sm:left-4 sm:right-auto sm:w-[min(18rem,calc(100vw-2rem))] sm:rounded-2xl sm:border dark:border-slate-700 dark:bg-slate-900"
+            className="pb-segura px-seguro fixed bottom-0 left-0 right-0 z-50 max-h-[80vh] overflow-y-auto rounded-t-2xl border-t border-slate-200 bg-white px-5 pt-4 shadow-2xl sm:bottom-20 sm:left-4 sm:right-auto sm:w-[min(18rem,calc(100vw-2rem))] sm:rounded-2xl sm:border sm:pb-4 dark:border-slate-700 dark:bg-slate-900"
           >
-            <div className="mb-3 flex items-center justify-between">
-              <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-                Recorrido
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <span className="min-w-0 truncate font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                Recorrido · {indiceActivo + 1} de {MODULOS.length}
               </span>
               <button
                 type="button"

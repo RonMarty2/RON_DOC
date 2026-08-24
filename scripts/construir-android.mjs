@@ -45,6 +45,32 @@ function correr(comando, args) {
   }
 }
 
+/*
+ * Capacitor 8 exige Node 22 o superior. Next se conforma con menos, así que sin
+ * este control el error aparecía DESPUÉS de compilar el sitio entero —más de un
+ * minuto perdido— y con la forma «[fatal] The Capacitor CLI requires NodeJS
+ * >=22.0.0», que no dice cómo arreglarlo en Windows.
+ */
+const NODE_MINIMO = 22;
+const versionActual = Number(process.versions.node.split(".")[0]);
+if (versionActual < NODE_MINIMO) {
+  console.error(`
+  Tu versión de Node.js es la ${process.versions.node} y hace falta la ${NODE_MINIMO} o superior.
+
+  Qué hacer:
+
+    1. Entrá a https://nodejs.org y descargá la versión LTS.
+       En Windows es un instalador .msi: siguiente, siguiente, listo.
+    2. CERRÁ Android Studio por completo y volvé a abrirlo.
+       Si no, sigue usando la versión vieja que tenía en memoria.
+    3. Verificá en la terminal (Alt+F12):   node -v
+    4. Volvé a apretar ▶ Run.
+
+  (Lo pide Capacitor, la herramienta que empaqueta el sitio como app.)
+`);
+  process.exit(1);
+}
+
 const sincronizar = process.argv.includes("--sync");
 
 console.log("→ Compilando el sitio (sin basePath, para la app)…");

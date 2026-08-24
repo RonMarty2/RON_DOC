@@ -2,4 +2,23 @@ include ':app'
 include ':capacitor-cordova-android-plugins'
 project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins/')
 
+/*
+ * Capacitor engancha su código nativo desde node_modules, que nunca se sube al
+ * repositorio. En un clon nuevo, sin `npm install`, el Gradle sync fallaba con
+ * un mensaje que no decía qué hacer. Este control lo dice.
+ */
+def capacitorNativo = new File(settingsDir, '../node_modules/@capacitor/android/capacitor')
+if (!capacitorNativo.exists()) {
+    throw new GradleException(
+        "\n\n" +
+        "  Falta instalar las dependencias del proyecto.\n\n" +
+        "  Abrí una terminal en la carpeta RON_DOC (en Android Studio: Alt+F12)\n" +
+        "  y ejecutá:\n\n" +
+        "      npm install\n\n" +
+        "  Después volvé a sincronizar (el botón «Try Again» de la barra amarilla,\n" +
+        "  o File > Sync Project with Gradle Files).\n\n" +
+        "  Hace falta tener Node.js instalado: https://nodejs.org\n"
+    )
+}
+
 apply from: 'capacitor.settings.gradle'

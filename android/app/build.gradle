@@ -42,6 +42,47 @@ dependencies {
     implementation project(':capacitor-cordova-android-plugins')
 }
 
+/*
+ * Compila el sitio y lo mete adentro de la app ANTES de empaquetarla.
+ *
+ * Sin esto había que acordarse de correr `npm run build:android` en una
+ * terminal antes de apretar ▶, y si te olvidabas la app se instalaba con el
+ * contenido viejo (o en blanco, en un clon nuevo) sin dar ningún error.
+ *
+ * Es "best effort" a propósito: si no encuentra Node, AVISA y sigue con el
+ * contenido que ya estuviera copiado, en vez de romperte la compilación.
+ * Para saltearlo del todo: ./gradlew assembleDebug -PsinSitioWeb
+ */
+tasks.register("construirSitioWeb") {
+    description = "Compila el sitio web y lo copia dentro de la app"
+    doLast {
+        if (project.hasProperty("sinSitioWeb")) {
+            println "[Aula] -PsinSitioWeb: se omite la compilación del sitio."
+            return
+        }
+        def raizProyecto = rootProject.projectDir.parentFile
+        def esWindows = System.getProperty("os.name").toLowerCase().contains("windows")
+        def nodo = esWindows ? "node.exe" : "node"
+        try {
+            providers.exec {
+                workingDir = raizProyecto
+                commandLine nodo, "scripts/construir-android.mjs"
+            }.standardOutput.asText.get().eachLine { println "[Aula] " + it }
+            println "[Aula] Contenido de la app actualizado."
+        } catch (Exception e) {
+            println "[Aula] ---------------------------------------------------------------"
+            println "[Aula] AVISO: no se pudo compilar el sitio automáticamente."
+            println "[Aula] Motivo: " + e.message
+            println "[Aula] Se va a instalar el contenido que ya estaba copiado."
+            println "[Aula] Para actualizarlo a mano, abrí la Terminal de Android Studio"
+            println "[Aula] (Alt+F12) y corré:   npm install  &&  npm run build:android"
+            println "[Aula] ---------------------------------------------------------------"
+        }
+    }
+}
+
+preBuild.dependsOn "construirSitioWeb"
+
 apply from: 'capacitor.build.gradle'
 
 try {

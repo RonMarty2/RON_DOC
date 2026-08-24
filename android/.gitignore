@@ -90,7 +90,13 @@ lint/tmp/
 *.hprof
 
 # Cordova plugins for Capacitor
-capacitor-cordova-android-plugins
+#
+# NO se ignora, a propósito. Capacitor la genera, pero `settings.gradle`,
+# `app/build.gradle` y `app/capacitor.build.gradle` —que sí están en el
+# repositorio— la referencian. Si se ignora, un clon nuevo ni siquiera puede
+# hacer el Gradle sync: falla con «Could not read script
+# .../cordova.variables.gradle as it does not exist».
+# capacitor-cordova-android-plugins
 
 # Copied web assets
 app/src/main/assets/public

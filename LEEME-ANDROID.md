@@ -54,12 +54,23 @@ proyecto; si el sync te pide algo, te lo va a decir.
 
 ## ¿Se actualiza sola en el celular?
 
-**No.** El contenido viaja adentro del APK: cada cambio requiere volver a
-instalar (Ctrl+T y ▶).
+**Sí.** La app carga desde el sitio publicado
+(`https://ronmarty2.github.io/RON_DOC`, configurado en `capacitor.config.ts`
+como `server.url`). Cuando se suben cambios a `main`, GitHub publica el sitio
+y la app los muestra la próxima vez que se abre. No hay que recompilar ni
+reinstalar.
 
-Si querés que se actualice sola, usá el sitio como **PWA**: abrilo en Chrome
-en el celular y elegí «Agregar a pantalla de inicio». Queda con su ícono,
-funciona sin internet y se actualiza sin hacer nada.
+Sin internet también funciona: el service worker guarda todo en el teléfono.
+**La única excepción es la primera apertura después de instalarla**, que sí
+necesita conexión — conviene abrirla una vez con WiFi antes de llevarla al
+aula.
+
+Sólo hay que volver a compilar e instalar cuando cambia la parte nativa: el
+ícono, el nombre, los permisos, la versión de Capacitor. Para el contenido de
+la Aula, nunca.
+
+Si alguna vez conviene volver al modelo anterior (todo adentro del APK),
+alcanza con comentar `url` en `capacitor.config.ts` y recompilar.
 
 ## Compilar un APK para repartir
 

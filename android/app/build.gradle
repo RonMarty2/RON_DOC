@@ -46,37 +46,75 @@ dependencies {
  * Compila el sitio y lo mete adentro de la app ANTES de empaquetarla.
  *
  * Sin esto había que acordarse de correr `npm run build:android` en una
- * terminal antes de apretar ▶, y si te olvidabas la app se instalaba con el
- * contenido viejo (o en blanco, en un clon nuevo) sin dar ningún error.
+ * terminal antes de apretar ▶. Si te olvidabas, la app se instalaba con el
+ * contenido viejo — o, en un clon nuevo, SIN NADA: se abría mostrando
+ * «net::ERR_CONNECTION_REFUSED» en https://localhost, que no le dice a nadie
+ * qué hacer. Por eso al final hay una verificación dura: si el contenido no
+ * quedó adentro, la compilación FALLA con instrucciones, en vez de instalar
+ * una app rota.
  *
- * Es "best effort" a propósito: si no encuentra Node, AVISA y sigue con el
- * contenido que ya estuviera copiado, en vez de romperte la compilación.
  * Para saltearlo del todo: ./gradlew assembleDebug -PsinSitioWeb
  */
 tasks.register("construirSitioWeb") {
     description = "Compila el sitio web y lo copia dentro de la app"
     doLast {
+        def indice = new File(projectDir, "src/main/assets/public/index.html")
+
         if (project.hasProperty("sinSitioWeb")) {
             println "[Aula] -PsinSitioWeb: se omite la compilación del sitio."
             return
         }
+
         def raizProyecto = rootProject.projectDir.parentFile
         def esWindows = System.getProperty("os.name").toLowerCase().contains("windows")
-        def nodo = esWindows ? "node.exe" : "node"
-        try {
-            providers.exec {
-                workingDir = raizProyecto
-                commandLine nodo, "scripts/construir-android.mjs"
-            }.standardOutput.asText.get().eachLine { println "[Aula] " + it }
+
+        // Node puede no estar en el PATH que hereda Gradle aunque sí esté en la
+        // terminal (pasa seguido en Windows). Se prueban varias formas.
+        def intentos = esWindows
+            ? [["cmd", "/c", "node", "scripts/construir-android.mjs"],
+               ["node.exe", "scripts/construir-android.mjs"],
+               ["node", "scripts/construir-android.mjs"]]
+            : [["node", "scripts/construir-android.mjs"],
+               ["/usr/bin/env", "node", "scripts/construir-android.mjs"]]
+
+        def compilo = false
+        def ultimoMotivo = "no se encontró Node"
+        for (comando in intentos) {
+            try {
+                providers.exec {
+                    workingDir = raizProyecto
+                    commandLine comando
+                }.standardOutput.asText.get().eachLine { println "[Aula] " + it }
+                compilo = true
+                break
+            } catch (Exception e) {
+                ultimoMotivo = e.message
+            }
+        }
+
+        if (compilo) {
             println "[Aula] Contenido de la app actualizado."
-        } catch (Exception e) {
-            println "[Aula] ---------------------------------------------------------------"
-            println "[Aula] AVISO: no se pudo compilar el sitio automáticamente."
-            println "[Aula] Motivo: " + e.message
-            println "[Aula] Se va a instalar el contenido que ya estaba copiado."
-            println "[Aula] Para actualizarlo a mano, abrí la Terminal de Android Studio"
-            println "[Aula] (Alt+F12) y corré:   npm install  &&  npm run build:android"
-            println "[Aula] ---------------------------------------------------------------"
+        } else {
+            println "[Aula] AVISO: no se pudo compilar el sitio (" + ultimoMotivo + ")."
+            println "[Aula] Se intenta continuar con el contenido que ya estuviera copiado."
+        }
+
+        // Verificación dura. Una app sin esto se instala igual y se abre en
+        // blanco: mejor que falle acá, donde se puede explicar por qué.
+        if (!indice.exists()) {
+            throw new GradleException(
+                "\n\n" +
+                "  La app no tiene contenido adentro y se instalaría en blanco\n" +
+                "  (net::ERR_CONNECTION_REFUSED en https://localhost).\n\n" +
+                "  Falta generar el sitio. Abrí la Terminal de Android Studio (Alt+F12),\n" +
+                "  posicionate en la carpeta RON_DOC —no en RON_DOC\\android— y ejecutá:\n\n" +
+                "      npm install\n" +
+                "      npm run build:android\n\n" +
+                "  Después volvé a apretar ▶ Run.\n\n" +
+                "  Motivo por el que no se pudo hacer solo: " + ultimoMotivo + "\n" +
+                "  (normalmente es que Node.js no está instalado, o no está en el PATH\n" +
+                "  que hereda Android Studio. Se descarga de https://nodejs.org)\n"
+            )
         }
     }
 }

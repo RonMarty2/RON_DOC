@@ -1,0 +1,164 @@
+\apartado{2.1}{Espacio muestral}
+
+\noindent\textit{Qué puede pasar, escrito con precisión. Antes de calcular
+ninguna probabilidad hay que poder enumerar los resultados posibles.}
+\recordar{%
+  \textbf{Experimento aleatorio}: se puede repetir, se conocen los resultados
+  posibles, pero no cuál va a salir.\quad
+  \textbf{Espacio muestral} ($S$): el conjunto de TODOS los resultados
+  posibles.\quad
+  \textbf{Evento}: cualquier subconjunto de $S$.}
+
+% ---------------------------------------------------------------- N0
+\ejercicio{0}{%
+  De estas tres situaciones, marcá cuál es un experimento aleatorio y cuál no,
+  y explicá en una línea por qué.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Tirar una moneda.
+    \item Medir la altura de una pared con una cinta métrica.
+    \item Elegir al azar una ficha entre las 200 del servicio.
+  \end{enumerate}}
+\espacioresolver[2.4cm]
+\respuesta{(a) y (c) sí; (b) no, el resultado no cambia al repetirlo.}
+\solucion{%
+  (a) y (c) son aleatorios: se pueden repetir y no se sabe de antemano qué va
+  a salir. (b) no lo es — la pared mide siempre lo mismo; que el instrumento
+  tenga error de medición no convierte al experimento en aleatorio.
+  \\[0.3em]
+  \textit{Por qué importa}: toda la unidad se apoya en esta distinción. Si el
+  resultado no puede variar, no hay nada que calcular.}
+
+% ---------------------------------------------------------------- N1
+\ejercicio{1}{%
+  Escribí el espacio muestral $S$ de tirar un dado común una vez.
+  ¿Cuántos elementos tiene?}
+\espacioresolver[1.8cm]
+\respuesta{$S=\{1,2,3,4,5,6\}$, con 6 elementos.}
+\solucion{%
+  $S=\{1,2,3,4,5,6\}$. Tiene $6$ elementos.
+  \\[0.3em]
+  Notá que se escribe con llaves y que el orden no importa: $S$ es un
+  conjunto, no una lista.}
+
+\ejercicio{1}{%
+  Sobre el mismo dado, sea $A$ el evento «sale un número par».
+  Enumerá $A$ y enumerá su complemento $A^{c}$.
+  ¿Cuántos elementos tiene cada uno?}
+\espacioresolver[2.2cm]
+\respuesta{$A=\{2,4,6\}$ (3 elementos); $A^{c}=\{1,3,5\}$ (3 elementos).}
+\solucion{%
+  $A=\{2,4,6\}$, con 3 elementos.
+  $A^{c}=\{1,3,5\}$, con 3 elementos.
+  \\[0.3em]
+  Se cumple lo que siempre se cumple: $|A| + |A^{c}| = |S|$, o sea
+  $3+3=6$. El complemento es «todo lo que está en $S$ y no está en $A$»,
+  nunca algo de afuera.}
+
+% ---------------------------------------------------------------- N2
+\ejercicio{2}{%
+  Se tiran \textbf{dos monedas} a la vez. Escribí el espacio muestral
+  completo (usá C para cara y X para cruz). Después escribí el evento
+  $B$ = «sale al menos una cara» y contá sus elementos.}
+\espacioresolver[2.8cm]
+\respuesta{$S=\{CC,CX,XC,XX\}$ (4 elementos); $B=\{CC,CX,XC\}$ (3 elementos).}
+\solucion{%
+  $S=\{CC,\,CX,\,XC,\,XX\}$: $2\times 2 = 4$ resultados.
+  \\[0.3em]
+  $B=\{CC,\,CX,\,XC\}$, con 3 elementos.
+  \\[0.3em]
+  \textbf{El error frecuente} es escribir $S=\{CC,CX,XX\}$ con 3 elementos,
+  juntando $CX$ y $XC$. Son resultados distintos: importa cuál moneda salió
+  cara. Si se los junta, después las probabilidades salen mal.}
+
+\ejercicio{2}{%
+  Se tiran \textbf{dos dados}. ¿Cuántos elementos tiene el espacio muestral?
+  ¿Cuántos de esos resultados suman exactamente 7? Enumeralos.}
+\espacioresolver[2.8cm]
+\respuesta{36 elementos; 6 suman 7: $(1,6)$, $(2,5)$, $(3,4)$, $(4,3)$, $(5,2)$, $(6,1)$.}
+\solucion{%
+  Cada dado tiene 6 caras y son independientes, así que
+  $|S| = 6 \times 6 = 36$.
+  \\[0.3em]
+  Los que suman 7 son
+  $(1,6)$, $(2,5)$, $(3,4)$, $(4,3)$, $(5,2)$, $(6,1)$: \textbf{6 resultados}.
+  \\[0.3em]
+  Igual que con las monedas, $(1,6)$ y $(6,1)$ son distintos. Por eso el 7 es
+  la suma más probable de dos dados: es la que se puede lograr de más maneras.}
+
+% ---------------------------------------------------------------- N3
+\ejercicio{3}{%
+  El cuestionario del servicio tiene \textbf{9 preguntas} y cada una se
+  responde con 0, 1, 2 o 3.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuántas formas distintas hay de \emph{responder} el cuestionario?
+    \item ¿Cuántos \emph{puntajes} distintos puede dar?
+  \end{enumerate}
+  Explicá por qué los dos números no coinciden.}
+\espacioresolver[3.2cm]
+\respuesta{(a) $4^{9}=262\,144$ formas. (b) 28 puntajes (de 0 a 27).}
+\solucion{%
+  (a) Cada pregunta tiene 4 opciones y hay 9 preguntas:
+  $4^{9} = 262\,144$ formas de responder.
+  \\[0.3em]
+  (b) El puntaje va del mínimo $9\times 0 = 0$ al máximo $9 \times 3 = 27$,
+  y puede tomar cualquier valor entero intermedio: $28$ puntajes posibles.
+  \\[0.3em]
+  \textbf{Por qué difieren}: muchísimas formas de responder dan el mismo
+  puntaje. Un total de 1 se logra de 9 maneras (un 1 en cualquiera de las
+  nueve preguntas); un total de 0, de una sola. El puntaje \emph{resume} la
+  respuesta y al resumir pierde información. Es exactamente lo que pasa con
+  dos dados y su suma.}
+
+\ejercicio{3}{%
+  Se elige una ficha al azar entre las \textbf{200} del servicio. Considerá
+  el evento $P$ = «el puntaje llega al corte de 10 o más».
+  Sabiendo que 43 fichas cumplen esa condición:
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuántos puntos muestrales tiene $S$?
+    \item ¿Cuántos tiene $P$? ¿Y $P^{c}$?
+  \end{enumerate}}
+\espacioresolver[2.6cm]
+\respuesta{(a) 200. (b) $|P|=43$ y $|P^{c}|=157$.}
+\solucion{%
+  (a) $|S| = 200$: cada ficha es un punto muestral, porque el experimento es
+  «elegir una ficha».
+  \\[0.3em]
+  (b) $|P| = 43$ y $|P^{c}| = 200 - 43 = 157$.
+  \\[0.3em]
+  \textbf{Cuidado con el espacio muestral}: acá $S$ tiene 200 elementos (las
+  personas), no 28 (los puntajes). El experimento define el espacio muestral,
+  no la variable que se mide. Si el experimento fuera «anotar un puntaje
+  posible», $S$ tendría 28 elementos — y serían dos preguntas distintas.}
+
+% ---------------------------------------------------------------- N4
+\ejercicio{4}{%
+  Un estudiante razona así:
+  \begin{quote}\itshape
+  «El cuestionario da puntajes de 0 a 27, o sea 28 resultados posibles.
+  Entonces la probabilidad de que alguien saque exactamente 14 es
+  $1/28 = 0{,}036$.»
+  \end{quote}
+  El razonamiento tiene un error de fondo. Identificalo, explicá por qué está
+  mal, y decí qué haría falta para responder bien esa pregunta.}
+\espacioresolver[4.5cm]
+\respuesta{%
+  Supone que los 28 puntajes son igualmente probables, y no lo son. Habría
+  que contar cuántas de las 200 fichas sacaron 14.}
+\solucion{%
+  \textbf{El error}: aplicar la definición clásica de probabilidad
+  ($\text{casos favorables}/\text{casos posibles}$) a un espacio muestral
+  cuyos resultados \textbf{no son igualmente probables}.
+  \\[0.3em]
+  Esa fórmula sólo vale cuando hay simetría — las 6 caras de un dado, las 2 de
+  una moneda. Los puntajes del cuestionario no tienen ninguna simetría: sacar
+  0 es frecuente y sacar 27 es rarísimo, porque un 27 exige responder 3 en las
+  nueve preguntas y un 0 exige responder 0 en las nueve, pero además hay
+  muchísimas combinaciones que dan puntajes intermedios y muy pocas personas
+  con síntomas extremos.
+  \\[0.3em]
+  \textbf{Qué haría falta}: contar. Mirar cuántas de las 200 fichas sacaron
+  exactamente 14 y dividir por 200. Eso es probabilidad \emph{frecuentista},
+  y es el tema del apartado 2.2.
+  \\[0.3em]
+  \textit{Nota para el aula}: este error es la razón de fondo por la que el
+  apartado 2.2 existe. Vale la pena dejar que lo cometan antes de corregirlo.}

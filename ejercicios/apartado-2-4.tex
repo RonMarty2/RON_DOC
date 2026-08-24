@@ -1,0 +1,128 @@
+\apartado{2.4}{Teoría combinatoria}
+
+\noindent\textit{Contar sin enumerar. La única pregunta que hay que resolver
+antes de elegir la fórmula es: ¿importa el orden?}
+\recordar{%
+  $n! = n\cdot(n-1)\cdots 2\cdot 1$, y $0!=1$.\quad
+  \textbf{Permutación} (importa el orden):
+  $P(n,k)=\dfrac{n!}{(n-k)!}$.\quad
+  \textbf{Combinación} (no importa):
+  $C(n,k)=\dbinom{n}{k}=\dfrac{n!}{k!\,(n-k)!}$.\\[0.3em]
+  Siempre $C(n,k) \le P(n,k)$: agrupar los órdenes reduce la cuenta.}
+
+\ejercicio{0}{%
+  Calculá $4!$ y $0!$. Escribí el desarrollo de $4!$, no sólo el resultado.}
+\espacioresolver[1.6cm]
+\respuesta{$4! = 24$; $0! = 1$.}
+\solucion{%
+  $4! = 4\times 3\times 2\times 1 = 24$.
+  \\[0.3em]
+  $0! = 1$ por definición. Suena arbitrario, pero es lo que hace que las
+  fórmulas funcionen: hay exactamente \emph{una} manera de no elegir nada.}
+
+\ejercicio{1}{%
+  Tenés 3 fichas marcadas A, B y C. ¿De cuántas maneras distintas podés
+  ordenarlas en fila? Enumeralas todas y comprobá que coincide con $3!$.}
+\espacioresolver[2.4cm]
+\respuesta{$3!=6$: ABC, ACB, BAC, BCA, CAB, CBA.}
+\solucion{%
+  $3! = 3\times 2\times 1 = 6$, y son:
+  ABC, ACB, BAC, BCA, CAB, CBA.
+  \\[0.3em]
+  El razonamiento detrás del factorial: para el primer lugar hay 3 opciones,
+  para el segundo quedan 2, para el tercero 1. $3\times 2\times 1$.}
+
+\ejercicio{1}{%
+  En un grupo de 5 estudiantes hay que formar parejas para un trabajo.
+  ¿Cuántas parejas distintas se pueden formar?}
+\espacioresolver[2cm]
+\respuesta{$C(5,2)=10$.}
+\solucion{%
+  El orden no importa: la pareja «Ana y Beto» es la misma que «Beto y Ana».
+  Entonces es combinación:
+  \[ C(5,2) = \frac{5!}{2!\,3!} = \frac{120}{2\times 6} = 10 \]}
+
+\ejercicio{2}{%
+  De 5 estudiantes hay que elegir 3 para tres roles distintos: quien expone,
+  quien toma notas y quien coordina. ¿Cuántas asignaciones distintas hay?}
+\espacioresolver[2.2cm]
+\respuesta{$P(5,3)=60$.}
+\solucion{%
+  Acá el orden \textbf{sí} importa: no es lo mismo que Ana exponga y Beto
+  coordine que al revés. Es permutación:
+  \[ P(5,3) = \frac{5!}{(5-3)!} = \frac{120}{2} = 60 \]
+  O directamente: $5 \times 4 \times 3 = 60$.}
+
+\ejercicio{2}{%
+  Calculá $C(6,2)$ y $P(6,2)$. ¿Cuántas veces más grande es la permutación?
+  Explicá por qué es exactamente ese factor.}
+\espacioresolver[2.6cm]
+\respuesta{$C(6,2)=15$, $P(6,2)=30$. La permutación es $2!=2$ veces más grande.}
+\solucion{%
+  \[ C(6,2)=\frac{6!}{2!\,4!}=15 \qquad P(6,2)=\frac{6!}{4!}=30 \]
+  La permutación es exactamente $2$ veces más grande, y ese 2 es $2!$: cada
+  grupo de 2 personas se puede ordenar de $2!=2$ maneras.
+  \\[0.3em]
+  En general $P(n,k) = C(n,k)\times k!$. Ésa es toda la diferencia entre las
+  dos fórmulas, y saberlo evita memorizarlas por separado.}
+
+\ejercicio{3}{%
+  De los \textbf{43 estudiantes} que dieron positivo en el tamizaje, el
+  servicio quiere elegir a 5 para una entrevista de profundización. El orden
+  en que se los elige no importa. ¿De cuántas maneras distintas puede
+  formarse ese grupo?}
+\espacioresolver[3cm]
+\respuesta{$C(43,5) = 962\,598$.}
+\solucion{%
+  El orden no importa: es un grupo, no una fila.
+  \[ C(43,5) = \frac{43!}{5!\,38!}
+     = \frac{43\times 42\times 41\times 40\times 39}{5\times 4\times 3\times 2\times 1}
+     = \frac{115\,511\,760}{120} = 962\,598 \]
+  \\[0.3em]
+  \textbf{Truco de cálculo}: no calcules $43!$ — es un número astronómico.
+  Alcanza con multiplicar los 5 factores de arriba y dividir por $5!$.}
+
+\ejercicio{3}{%
+  El mismo servicio ahora quiere \textbf{agendar} a 5 de esos 43 estudiantes
+  en cinco horarios distintos del lunes. ¿De cuántas maneras puede hacerlo?
+  Compará con el resultado anterior y explicá la diferencia.}
+\espacioresolver[3cm]
+\respuesta{$P(43,5) = 115\,511\,760$, que es $5! = 120$ veces mayor.}
+\solucion{%
+  Ahora el orden importa, porque cada persona queda en un horario distinto:
+  \[ P(43,5) = 43\times 42\times 41\times 40\times 39 = 115\,511\,760 \]
+  \\[0.3em]
+  Es exactamente $120$ veces el resultado anterior, y $120 = 5!$: cada grupo
+  de 5 personas se puede repartir en los cinco horarios de $5!$ maneras.
+  \\[0.3em]
+  \textbf{La misma gente, dos preguntas distintas.} Elegir a quiénes entrevistar
+  es una combinación; decidir además cuándo, una permutación.}
+
+\ejercicio{4}{%
+  Para cada situación, decidí si hay que usar combinación o permutación, y
+  calculá el resultado. Justificá la elección en una línea.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Elegir 3 de los 43 positivos para un grupo focal.
+    \item Elegir 3 de los 43 y asignarles los roles de moderador, relator y observador.
+    \item Elegir un comité de 2 personas entre 6 docentes.
+    \item Elegir presidente y secretario entre 6 docentes.
+  \end{enumerate}}
+\espacioresolver[5cm]
+\respuesta{(a) $C(43,3)=12\,341$; (b) $P(43,3)=74\,046$;
+(c) $C(6,2)=15$; (d) $P(6,2)=30$.}
+\solucion{%
+  (a) \textbf{Combinación}: en un grupo focal todos cumplen el mismo papel.
+  $C(43,3)=\dfrac{43\times42\times41}{6}=12\,341$.
+  \\[0.3em]
+  (b) \textbf{Permutación}: los roles son distintos.
+  $P(43,3)=43\times42\times41=74\,046$.
+  \\[0.3em]
+  (c) \textbf{Combinación}: los dos miembros del comité son intercambiables.
+  $C(6,2)=15$.
+  \\[0.3em]
+  (d) \textbf{Permutación}: presidente y secretario no son lo mismo.
+  $P(6,2)=30$.
+  \\[0.3em]
+  \textbf{La pregunta que resuelve todo}: si intercambio dos de los elegidos,
+  ¿cambia el resultado? Si cambia, importa el orden (permutación). Si no
+  cambia, no importa (combinación). Nada más que eso.}

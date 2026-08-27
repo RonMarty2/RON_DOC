@@ -1,0 +1,170 @@
+\apartado{}{Mezcla}{preambulo}
+\bajada{Acá no se dice de qué apartado es cada ejercicio. Ésa es toda la
+dificultad, y es la que van a enfrentar en un parcial y en el trabajo: nadie
+les va a avisar qué herramienta usar.}
+
+\minihistoria{Por qué esta sección existe}{%
+  Resolver ocho ejercicios seguidos de combinatoria no prueba que entendieron
+  combinatoria: prueba que reconocieron el molde de la página anterior.\par
+  Si acá elegís bien la herramienta, aprendiste. Si te trabás, no significa que
+  no sepas — significa que hasta ahora el enunciado te venía diciendo la mitad
+  de la respuesta.}
+
+\ejercicio{4}{En una investigación se aplicaron 5 pruebas a cada participante y
+  el equipo quiere contrabalancear el orden. Tienen 40 participantes.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuántos órdenes posibles existen?
+    \item ¿Alcanzan los 40 participantes para un contrabalanceo completo?
+    \item Si no alcanzan, ¿qué proponés?
+  \end{enumerate}}{}
+\renglones[6]
+\respuesta{(a) $5!=120$. (b) No: harían falta 120. (c) Respuesta abierta
+(cuadrado latino de 5 secuencias, 8 participantes por secuencia).}
+\solucion{%
+  (a) $5! = 120$ órdenes.
+  \par
+  (b) \textbf{No alcanzan.} Para el contrabalanceo completo harían falta 120
+  participantes, o un múltiplo.
+  \par
+  (c) Lo estándar es un \textbf{cuadrado latino}: elegir 5 secuencias en las
+  que cada prueba aparezca exactamente una vez en cada posición, y asignar 8
+  participantes a cada una. Se pierde información sobre interacciones entre
+  órdenes, pero se controla el efecto de posición, que es lo que importa.}
+
+\ejercicio{3}{Un servicio atendió a 180 personas el año pasado. De ellas, 54
+  presentaron sintomatología ansiosa y 36 sintomatología depresiva; 18
+  presentaron las dos. ¿Qué probabilidad hay de que una persona elegida al azar
+  de ese grupo presente al menos una de las dos?}{}
+\renglones[4]
+\respuesta{$72/180 = 0{,}40$.}
+\solucion{%
+  \[ P(A\cup D)=P(A)+P(D)-P(A\cap D)
+     =\frac{54}{180}+\frac{36}{180}-\frac{18}{180}=\frac{72}{180}=0{,}40 \]
+  \par
+  En personas: $54+36-18=72$. Sin restar los 18 que están en los dos grupos
+  darías 90, contándolos dos veces — un 25\% de más.
+  \par
+  \textit{Es del apartado 2.5, que todavía no vimos en este cuaderno. Si te
+  salió igual razonando con el diagrama, es buena señal: la regla de la suma
+  es un dibujo antes que una fórmula.}}
+
+\ejercicio{2}{Dos psicólogos codifican 80 registros de observación y coinciden
+  en 60. Cada uno marca «conducta presente» en el 50\% de los casos.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuál es el acuerdo observado?
+    \item ¿Cuánto se esperaría por azar?
+    \item ¿Es mejor o peor acuerdo que el del ejercicio de las 50 entrevistas
+      ($P_o=0{,}80$, $P_e=0{,}58$)?
+  \end{enumerate}}{}
+\renglones[6]
+\respuesta{(a) $75\%$. (b) $50\%$. (c) Mejor: $\kappa=0{,}50$ contra $0{,}52$…
+en realidad casi igual.}
+\solucion{%
+  (a) $60/80 = 0{,}75 = 75\%$.
+  \par
+  (b) Cada uno dice «sí» la mitad de las veces:
+  $0{,}5\times 0{,}5 + 0{,}5\times 0{,}5 = 0{,}50$.
+  \par
+  (c) $\kappa = \dfrac{0{,}75-0{,}50}{1-0{,}50} = \dfrac{0{,}25}{0{,}50}
+  = 0{,}50$, contra $0{,}52$ del otro caso.
+  \par
+  \textbf{Lo interesante}: el acuerdo crudo es menor ($75\%$ contra $80\%$) y
+  sin embargo el kappa es prácticamente el mismo. Porque acá la categoría es
+  frecuente —la mitad de los casos— y el azar regala mucho menos. Comparar
+  porcentajes de acuerdo entre estudios con categorías de distinta frecuencia
+  no significa nada.}
+
+\ejercicio{2}{Un test de screening de consumo problemático tiene 6 ítems, cada
+  uno con 3 opciones. ¿Cuántas formas distintas hay de responderlo? ¿Y cuántos
+  puntajes distintos puede dar, si cada opción vale 0, 1 o 2?}{}
+\renglones[4]
+\respuesta{$3^{6}=729$ formas; 13 puntajes (de 0 a 12).}
+\solucion{%
+  Formas de responder: $3^{6} = 729$.
+  \par
+  Puntajes: de $6\times 0 = 0$ a $6\times 2 = 12$, o sea \textbf{13} puntajes
+  posibles.
+  \par
+  Es el mismo par de preguntas del apartado 2.1 con otros números, y sirve para
+  lo mismo: 729 formas distintas se comprimen en 13 puntajes, así que muchísimas
+  personas con perfiles distintos van a compartir el mismo total.}
+
+\ejercicio{3}{En una muestra de 300 adolescentes, un tamizaje de riesgo
+  suicida dio positivo en 24 casos. De esos 24, la entrevista confirmó riesgo
+  en 9. Además, entre los 276 que dieron negativo, la entrevista detectó riesgo
+  en 3 que se habían escapado.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Armá la tabla de $2\times 2$.
+    \item Calculá sensibilidad, especificidad y VPP.
+    \item ¿Cuál de los tres le informarías a un adolescente que dio positivo?
+  \end{enumerate}}{}
+\renglones[8]
+\respuesta{$VP=9$, $FP=15$, $FN=3$, $VN=273$. Sens.\ $=9/12=0{,}75$;
+espec.\ $=273/288\approx 0{,}948$; VPP $=9/24=0{,}375$. Se informa el VPP.}
+\solucion{%
+  (a) Con riesgo real: $9+3=12$. Sin riesgo: $300-12=288$.
+  \begin{center}\small
+  \begin{tabular}{@{}lccc@{}}
+  \toprule
+   & \textbf{Riesgo sí} & \textbf{Riesgo no} & \textbf{Total}\\
+  \midrule
+  \textbf{Test $+$} & 9 & 15 & 24\\
+  \textbf{Test $-$} & 3 & 273 & 276\\
+  \textbf{Total} & 12 & 288 & 300\\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+  \par
+  (b) Sensibilidad $=\dfrac{9}{12}=0{,}75$; \;
+  especificidad $=\dfrac{273}{288}\approx 0{,}948$; \;
+  VPP $=\dfrac{9}{24}=0{,}375$.
+  \par
+  (c) El \textbf{VPP}: es la única que responde «di positivo, ¿qué significa
+  para mí?». Y da $37{,}5\%$ — menos de la mitad.
+  \par
+  \textbf{Y sin embargo el instrumento sirve.} Con riesgo suicida, un falso
+  negativo es catastrófico y una falsa alarma cuesta una conversación. Un VPP
+  bajo es el precio deliberado de una sensibilidad alta, y en este caso es un
+  precio que vale la pena pagar. Que un número sea bajo no lo vuelve un
+  problema: hay que preguntarse qué se compró con él.}
+\enclase{Este ejercicio junta 2.3 completo y obliga a construir la tabla desde
+un texto, que es como llegan los datos en la realidad. Si sólo hacen uno de la
+mezcla, que sea éste.}
+
+\ejercicio{1}{De 250 pacientes atendidos, 75 no completaron el tratamiento.
+  ¿Qué probabilidad hay de que un paciente elegido al azar lo haya completado?
+  ¿Qué tipo de probabilidad es?}{}
+\renglones[3]
+\respuesta{$175/250 = 0{,}70$. Frecuentista.}
+\solucion{%
+  $P(\text{completó}) = \dfrac{250-75}{250} = \dfrac{175}{250} = 0{,}70$, o por
+  complemento: $1 - \dfrac{75}{250} = 1-0{,}30 = 0{,}70$.
+  \par
+  Es \textbf{frecuentista}: sale de contar lo observado.}
+
+\ejercicio{4}{Un equipo de investigación tiene 12 participantes y quiere
+  formar 3 grupos de 4 para una intervención grupal. Un integrante propone
+  calcular $C(12,4) = 495$ y dice que ésas son las formas posibles de armar los
+  grupos.
+  \textbf{¿Está bien?} Explicá qué cuenta realmente el 495, y si alcanza para
+  responder la pregunta que se hicieron.}{}
+\renglones[6]
+\respuesta{No alcanza: 495 cuenta sólo las formas de armar \emph{el primer}
+grupo de 4, no los tres grupos completos.}
+\solucion{%
+  El $C(12,4)=495$ está bien calculado, pero cuenta \textbf{una sola cosa}: de
+  cuántas maneras se elige el primer grupo de 4 entre los 12.
+  \par
+  Para los tres grupos hay que seguir: elegido el primero quedan 8, y
+  $C(8,4)=70$; los 4 restantes forman el tercero sin elección. Eso da
+  $495\times 70 = 34\,650$.
+  \par
+  Y todavía falta un detalle: si los tres grupos son \emph{intercambiables}
+  —ninguno tiene un rol distinto— cada repartición quedó contada $3!=6$ veces,
+  así que serían $34\,650/6 = 5\,775$.
+  \par
+  \textbf{Lo importante no es el número}, es que la primera respuesta parecía
+  completa y respondía menos de un tercio de la pregunta. Cuando un problema
+  tiene varias etapas, un solo $C(n,k)$ casi nunca alcanza.}
+\enclase{Es el ejercicio más difícil del cuaderno. No esperes que lo resuelvan
+entero: alcanza con que detecten que 495 no puede ser la respuesta completa.}

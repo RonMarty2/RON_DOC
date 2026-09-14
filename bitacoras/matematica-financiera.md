@@ -1,6 +1,6 @@
 # Bitácora — Matemática Financiera
 
-**Estado:** cuatro láminas en borrador, **sin enlazar** y con `noindex`. Ninguna sale todavía del dossier de Ronald: están armadas con definiciones estándar y esperan su revisión.
+**Estado:** las cinco láminas del temario de `content/materias.ts` están en borrador, **sin enlazar** y con `noindex`. Ninguna sale todavía del dossier de Ronald: están armadas con definiciones estándar y esperan su revisión.
 **Última actualización:** 2026-09-14
 
 ---
@@ -13,8 +13,15 @@
 | Cuotas iguales: cuánto valen hoy y al final (anualidades) | `/anualidades` | 11 | `src/lib/finanzas/anualidades.ts` |
 | Tres formas de devolver un préstamo | `/amortizacion` | 10 | `src/lib/simpro/calculo-financiero.ts` (`calcularAmortizacionGenerica`) |
 | Bonos: precio, rendimiento y duración | `/bonos` | 12 | `src/lib/finanzas/bonos.ts` |
+| Depreciaciones: cuatro formas de repartir una pérdida | `/depreciaciones` | 11 | `src/lib/finanzas/depreciacion.ts` (el lineal, con el motor de SIMPRO) |
 
-Encadenadas con el pie de la tarjeta, en el orden del programa: interés compuesto → anualidades → amortización → bonos.
+Encadenadas con el pie de la tarjeta, en el orden del programa: interés compuesto → anualidades → amortización → bonos → depreciaciones.
+
+### Depreciaciones
+
+Gancho (¿cuánto cuesta cada año?) → depreciar es repartir (C, S, n, valor en libros) → lineal → suma de dígitos → porcentaje fijo sobre el saldo → por qué acelerar (tabla de valor en libros) → fondo de amortización, el método financiero (una anualidad con VF conocido) → los cuatro lado a lado, todos suman 45.000 → **Ojo:** olvidar el salvamento → laboratorio (costo, salvamento, vida, tasa del fondo, método) → práctica.
+
+"Porcentaje fijo" usa $d = 1 - (S/C)^{1/n}$, que termina exacto en el salvamento. Si el dossier usa "doble saldo decreciente" ($2/n$), hay que agregarlo: no llega exacto al salvamento y se ajusta el último año.
 
 ### Bonos
 
@@ -50,6 +57,8 @@ Orden elegido: del sistema más simple de calcular al más complejo (americano �
 | $N$ | nominal de un bono |
 | $c$ | tasa de cupón (el cupón es $R = N \cdot c$) |
 | $D$ | duración de Macaulay |
+| $S$ | valor de salvamento |
+| $d$ | tasa del porcentaje fijo |
 | $i$ | tasa por período · tasa efectiva anual |
 | $n$ | número de períodos |
 | $j$ | tasa nominal anual |
@@ -69,6 +78,8 @@ La cuota era $C$ en la lámina de amortización y chocaba con el capital de la d
 - Práctica: juntar Bs 10.000 en 4 años al 8%: cuota **2.219,21** (distractores 3.019,21 = cuota de VP; 2.054,82 = anticipada).
 - Bono Bs 1.000, cupón 8%, 5 años, mercado 10%: cupones hoy **303,26**, nominal hoy **620,92**, precio **924,18**. Al 6% **1.084,25**, al 8% **1.000**, al 12% **855,81**. Duración **4,28** años (modificada 3,89). Al 11%: **889,12**, cae **3,79%** (aproximación 3,89%). Sin cupón: duración **5** exacta.
 - Práctica: bono cupón 6%, 3 años, mercado 8%: **948,46** (distractores 793,83 = sólo nominal; 1.180 = sin descontar).
+- Máquina Bs 50.000, salvamento 5.000, 5 años: lineal **9.000**/año; dígitos **15.000, 12.000, 9.000, 6.000, 3.000**; porcentaje fijo $d$ = **36,90%** (año 1 **18.452,13**, año 2 **11.642,51**); fondo al 8%: depósito **7.670,54**, depreciación del año 5 **10.435,69**. Todos acumulan **45.000**.
+- Práctica: vehículo 80.000, salvamento 8.000, 4 años, dígitos, año 2: **21.600** (distractores 18.000 lineal; 28.800 año 1; 24.000 sin salvamento).
 
 ## Decisiones
 
@@ -82,8 +93,10 @@ La cuota era $C$ en la lámina de amortización y chocaba con el capital de la d
 | 2026-09-14 | La cuota se llama $R$ en todas las láminas | $C$ ya era el capital en interés compuesto |
 | 2026-09-14 | En bonos el cupón también es $R$ y se presenta como anualidad | Así la lámina se apoya entera en la anterior, en vez de introducir una letra nueva |
 | 2026-09-14 | Duración de Macaulay mostrada como "cuánto esperas tu dinero" con el peso de cada pago, y la modificada sólo como herramienta de sensibilidad | La definición con sumatoria sola no dice nada; el peso del nominal (73%) explica por qué dura casi el plazo |
+| 2026-09-14 | Depreciaciones con cuatro métodos: tres contables y el fondo de amortización | El tema dice "métodos contables y financieros"; el fondo conecta con anualidades y es el único que carga más al final |
+| 2026-09-14 | El lineal usa `calcularDepreciacionAnual` de SIMPRO con la base C − S | SIMPRO deprecia sin salvamento; pasándole la base, el cálculo es el mismo y queda probado contra el motor |
 
 ## Pendiente
 
 - Revisión de Ronald y "publícala" (agregar como herramientas de `matematica-financiera` en `content/materias.ts` y quitar `robots` de cada `page.tsx`).
-- Depreciaciones (ver `BITACORA.md` §7).
+- Preparar la página de la materia para mostrar las cinco láminas en orden (ver `BITACORA.md` §7).

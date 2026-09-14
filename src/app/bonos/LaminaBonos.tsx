@@ -322,6 +322,7 @@ export function LaminaBonos() {
       volver={{ href: "/", titulo: "Inicio" }}
       diapositivas={diapositivas}
       necesitasAntes={{ href: "/anualidades", titulo: "Cuotas iguales: cuánto valen hoy y al final" }}
+      teAbrePuertaA={{ href: "/depreciaciones", titulo: "Depreciaciones: cuatro formas de repartir una pérdida" }}
     />
   );
 }

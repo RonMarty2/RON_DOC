@@ -43,6 +43,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | **Lámina Cuotas iguales (anualidades)** | `/anualidades` | **Borrador sin enlazar**: espera revisión de Ronald |
 | **Lámina Tres formas de devolver un préstamo** | `/amortizacion` | **Borrador sin enlazar**: espera revisión de Ronald |
 | **Lámina Bonos: precio, rendimiento y duración** | `/bonos` | **Borrador sin enlazar**: espera revisión de Ronald |
+| **Lámina Depreciaciones** | `/depreciaciones` | **Borrador sin enlazar**: espera revisión de Ronald |
 | Muestra del formato (Bayes) | `/muestra` | Sin enlazar, sólo referencia del formato |
 | Otras 4 materias | — | "En preparación" en la portada: falta el dossier de cada una |
 | Podcasts, tesis | `/podcasts`, `/tesis` | Ocultos (404) hasta que `content/podcasts.ts` o `content/tesis.ts` tengan datos reales |
@@ -88,18 +89,18 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - `6e9ca79` Lámina `/interes-compuesto` con `src/lib/finanzas/interes.ts` y sus pruebas; ajustes de alto en `/amortizacion`; esta bitácora y `bitacoras/matematica-financiera.md`.
 - `a7dc21e` El deploy corre `npm test` antes de compilar. `sitemap.xml` generado sólo con lo publicado (`src/app/sitemap.ts`); sin `robots.txt`, porque bajo `/RON_DOC/` los buscadores no lo leen.
 - `5e1d43e` Lámina `/anualidades` con `src/lib/finanzas/anualidades.ts` y pruebas (103 en total, una contra la cuota francesa de SIMPRO). Cadena interés compuesto → anualidades → amortización. La cuota pasa a llamarse $R$ en todas las láminas.
-- *(este commit)* Lámina `/bonos` con `src/lib/finanzas/bonos.ts` (precio, rendimiento al vencimiento por bisección, duración de Macaulay y modificada) y pruebas (110 en total). Pie de las láminas en un solo renglón.
+- `6c99ee2` Lámina `/bonos` con `src/lib/finanzas/bonos.ts` (precio, rendimiento al vencimiento por bisección, duración de Macaulay y modificada) y pruebas (110 en total). Pie de las láminas en un solo renglón.
+- *(este commit)* Lámina `/depreciaciones` con `src/lib/finanzas/depreciacion.ts` (lineal con el motor de SIMPRO, suma de dígitos, porcentaje fijo, fondo de amortización) y pruebas (121 en total). Con esto están las cinco láminas del temario de Matemática Financiera.
 
 ## 7. Qué sigue
 
 **Se puede hacer sin Ronald** (en este orden):
 
-1. Lámina de **depreciaciones** (lineal del motor de SIMPRO + suma de dígitos y saldo decreciente propios). Cierra el temario de Matemática Financiera de `content/materias.ts`.
-2. Preparar la publicación de Matemática Financiera para el día que Ronald diga "publícalas": su página de materia tiene que mostrar las láminas en orden (hoy `HerramientaCard` dice "Aula interactiva" fijo y la portada muestra una tarjeta grande por herramienta).
+1. Preparar la publicación de Matemática Financiera para el día que Ronald diga "publícalas": su página de materia tiene que mostrar las cinco láminas en orden (hoy `HerramientaCard` dice "Aula interactiva" fijo y la portada muestra una tarjeta grande por herramienta).
 
 **Necesita a Ronald:**
 
-- Revisar `/interes-compuesto`, `/anualidades`, `/amortizacion` y `/bonos` (notación, ejemplos, orden) y decir "publícalas".
+- Revisar `/interes-compuesto`, `/anualidades`, `/amortizacion`, `/bonos` y `/depreciaciones` (notación, ejemplos, orden) y decir "publícalas".
 - Pasar el dossier de la próxima materia.
 - Probar una lámina proyectada en clase.
 - Recompilar la app Android en Android Studio.

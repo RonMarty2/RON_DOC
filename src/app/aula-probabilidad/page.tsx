@@ -5,51 +5,33 @@ import { construirMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = construirMetadata(
   "Aula Interactiva de Probabilidad",
-  "Unidad 2 de Psicoestadística Inferencial: del espacio muestral al Teorema de Bayes. Cada concepto se define y se comprueba sobre 200 fichas reales."
+  "Unidad 2 de Psicoestadística Inferencial: del espacio muestral a la distribución normal. Cada concepto se define y se comprueba sobre 200 fichas reales."
 );
 
 export default function AulaProbabilidadPage() {
   return (
     <>
-      {/* Hero con acento azul (color de Psicoestadística) */}
-      <section className="border-b border-blue-200 bg-gradient-to-b from-blue-50/70 to-white dark:border-blue-900 dark:from-blue-950/30 dark:to-slate-950">
+      <section className="border-b border-borde">
         <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-          <nav className="text-sm text-slate-600 dark:text-slate-400">
-            <Link href="/" className="hover:underline">
-              Inicio
-            </Link>
-            <span className="mx-1.5">/</span>
-            <Link
-              href="/materias/psicoestadistica-inferencial"
-              className="hover:underline"
-            >
+          <nav className="text-sm font-semibold text-acento">
+            <Link href="/#aulas" className="hover:text-acento-hover">Aulas</Link>
+            <span className="mx-1.5 text-tinta-tenue">/</span>
+            <Link href="/materias/psicoestadistica-inferencial" className="hover:text-acento-hover">
               Psicoestadística Inferencial
             </Link>
           </nav>
-          <div className="mt-4 flex items-start gap-4">
-            <span className="text-4xl" aria-hidden>
-              🎲
-            </span>
-            <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
-                Herramienta interactiva
-              </p>
-              <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl dark:text-slate-100">
-                Aula Interactiva de Probabilidad
-              </h1>
-              <p className="mt-3 max-w-2xl text-slate-700 dark:text-slate-300">
-                Unidad 2 completa, del espacio muestral al Teorema de Bayes.
-                Cada concepto se define primero y se comprueba después: tiras
-                los dados, tamizas las fichas y ves el cálculo armarse solo.
-                Sirve tanto proyectada en clase como para estudiar por tu
-                cuenta.
-              </p>
-            </div>
-          </div>
+          <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-acento">Aula interactiva · Unidad 2</p>
+          <h1 className="mt-2 font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
+            Aula Interactiva de Probabilidad
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-tinta-media">
+            Cada concepto se define primero y se comprueba después: tiras los dados, tamizas las
+            fichas y ves el cálculo armarse solo. Sirve tanto proyectada en clase como para estudiar
+            por tu cuenta.
+          </p>
         </div>
       </section>
 
-      {/* Herramienta */}
       <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
         <AulaProbabilidad />
       </section>

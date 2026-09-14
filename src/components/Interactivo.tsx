@@ -50,15 +50,15 @@ export function Interactivo({
   return (
     <figure
       ref={contenedorRef}
-      className="my-8 flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 fullscreen:rounded-none fullscreen:border-0"
+      className="my-8 flex flex-col overflow-hidden rounded-xl border border-borde bg-tarjeta shadow-sm fullscreen:rounded-none fullscreen:border-0"
     >
-      <figcaption className="flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-3 dark:border-slate-800">
+      <figcaption className="flex items-center justify-between gap-3 border-b border-borde px-4 py-3">
         <div>
-          <p className="font-serif text-sm font-semibold text-slate-900 dark:text-slate-100">
-            ⚡ {titulo}
+          <p className="font-serif text-sm font-semibold text-tinta">
+            {titulo}
           </p>
           {descripcion && (
-            <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
+            <p className="mt-0.5 text-xs text-tinta-media">
               {descripcion}
             </p>
           )}
@@ -68,7 +68,7 @@ export function Interactivo({
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md border border-slate-200 px-2 py-1 text-xs text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-md border border-borde px-2 py-1 text-xs text-tinta-media transition hover:bg-papel-suave"
             title="Abrir en pestaña nueva"
           >
             ↗ Nueva pestaña
@@ -76,7 +76,7 @@ export function Interactivo({
           <button
             type="button"
             onClick={alternarFullscreen}
-            className="rounded-md border border-slate-200 px-2 py-1 text-xs text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-md border border-borde px-2 py-1 text-xs text-tinta-media transition hover:bg-papel-suave"
             title="Pantalla completa"
           >
             {enFullscreen ? "⤡ Salir" : "⛶ Pantalla completa"}
@@ -87,7 +87,7 @@ export function Interactivo({
         src={url}
         title={titulo}
         loading="lazy"
-        className="block w-full flex-1 bg-white dark:bg-slate-950"
+        className="block w-full flex-1 bg-tarjeta"
         style={{ height: enFullscreen ? "100%" : altoResponsivo, border: 0 }}
         // Sandbox conservador: permite scripts y formularios pero no ventana padre.
         sandbox="allow-scripts allow-forms allow-popups allow-same-origin"

@@ -15,14 +15,14 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Ronald Martínez Jiménez · Sitio académico",
     short_name: "Ronald M.",
     description:
-      "Material académico universitario: Psicoestadística, Administración Financiera, Econometría II y Matemática Financiera.",
+      "Material interactivo de las materias del Mgr. Ronald Martínez Jiménez: cada concepto se define, se ve funcionar y se comprueba.",
     lang: "es-BO",
     start_url: ".",
     scope: ".",
     display: "standalone",
     orientation: "portrait",
-    background_color: "#0f172a",
-    theme_color: "#0f172a",
+    background_color: "#faf7f0",
+    theme_color: "#faf7f0",
     icons: [
       {
         src: conBase("/icons/icon-192.png"),

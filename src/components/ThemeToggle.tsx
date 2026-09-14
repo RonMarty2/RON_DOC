@@ -11,7 +11,7 @@ export function ThemeToggle() {
       type="button"
       onClick={alternar}
       aria-label={esOscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-borde bg-tarjeta text-tinta-media transition hover:bg-papel-suave"
     >
       <span aria-hidden className="text-base">
         {esOscuro ? "☀️" : "🌙"}

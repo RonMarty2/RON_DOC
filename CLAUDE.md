@@ -10,8 +10,8 @@ No saltearlo aunque el pedido de la sesión parezca no tener relación: un arreg
 
 **El aula de las materias que dicta Ronald: un libro interactivo por materia**, con el mismo espíritu que el Aula de Probabilidad (`/aula-probabilidad`), el aspecto visual de Axiom y el motor financiero de SimuladorPRO adentro.
 
-- Lo personal (podcasts, tesis, sobre mí) es secundario.
-- **No se publica nada con `[CONTENIDO PENDIENTE]`.** Una materia sin material real no aparece, en vez de mostrar una plantilla vacía.
+- Lo personal es secundario: podcasts y tesis aparecen solos cuando `content/podcasts.ts` o `content/tesis.ts` tienen datos reales. "Sobre mí" se eliminó el 14-sep porque era todo relleno; si Ronald quiere una bio, se escribe con él.
+- **No se publica nada con `[CONTENIDO PENDIENTE]`.** Lo decide `src/lib/publicado.ts`: un tema se publica cuando su MDX deja de tener esa marca, una materia cuando tiene herramienta o temas publicados; el resto da 404 y en la portada sólo se nombra como "en preparación".
 - Axiom y SimuladorPRO aparecen como proyectos, con sus enlaces reales.
 
 ## Idioma: tuteo, nunca voseo (decidido el 2026-09-14)

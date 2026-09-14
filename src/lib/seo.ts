@@ -5,7 +5,7 @@ export const SITIO = {
   nombre: "Ronald Martínez Jiménez · Sitio académico",
   autor: "Mgr. Ronald Martínez Jiménez",
   descripcion:
-    "Material académico universitario: Psicoestadística Descriptiva, Administración Financiera, Econometría II y Matemática Financiera.",
+    "Material interactivo de las materias que dicta el Mgr. Ronald Martínez Jiménez en Cochabamba: cada concepto se define, se ve funcionar y se comprueba con datos reales.",
   url: "https://ronmarty2.github.io/RON_DOC", // se actualiza si cambia el repo
 };
 
@@ -16,7 +16,8 @@ export function construirMetadata(
   const desc = descripcion ?? SITIO.descripcion;
   const tituloCompleto = `${titulo} · ${SITIO.nombre}`;
   return {
-    title: tituloCompleto,
+    // Sólo el título: la plantilla de layout.tsx ya le agrega el nombre del sitio.
+    title: titulo,
     description: desc,
     authors: [{ name: SITIO.autor }],
     openGraph: {

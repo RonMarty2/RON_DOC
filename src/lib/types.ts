@@ -5,8 +5,6 @@
  * El sitio se genera estáticamente leyendo estos archivos al hacer `next build`.
  */
 
-export type ColorAcento = "azul" | "verde" | "morado" | "naranja";
-
 export interface Recurso {
   /** Título visible (ej. "Resumen de la unidad 1"). */
   titulo: string;
@@ -48,10 +46,6 @@ export interface Materia {
   slug: string;
   nombre: string;
   descripcion: string;
-  /** Color de acento de la materia, mapea a clases Tailwind preestablecidas. */
-  color: ColorAcento;
-  /** Emoji o símbolo corto para identificar visualmente la materia. */
-  icono: string;
   temas: Tema[];
   /** Herramientas/apps interactivas asociadas a la materia (opcional). */
   herramientas?: HerramientaMateria[];
@@ -66,8 +60,8 @@ export interface HerramientaMateria {
   href: string;
   titulo: string;
   descripcion: string;
-  /** Emoji o símbolo corto. */
-  icono: string;
+  /** Qué trae, en frases cortas y verificables (se listan en la portada). */
+  destacados?: string[];
 }
 
 export interface Podcast {
@@ -95,8 +89,6 @@ export interface Proyecto {
   url: string;
   /** Estado del proyecto, para badge visual. */
   estado: "en-linea" | "beta" | "en-desarrollo" | "archivado";
-  /** Emoji o símbolo corto. */
-  icono: string;
   /** Tags cortos (ej. "estadística", "react", "PDF"). */
   tags?: string[];
   /** Año de lanzamiento o última actualización mayor (opcional). */

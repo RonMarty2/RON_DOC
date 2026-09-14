@@ -23,21 +23,21 @@ export function Recurso({
   const [visible, setVisible] = useState(false);
 
   return (
-    <div className="rounded-lg border border-slate-200 bg-white transition hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700">
+    <div className="rounded-lg border border-borde bg-tarjeta transition hover:border-borde-fuerte">
       <div className="flex items-center gap-4 p-4">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-slate-100 text-lg dark:bg-slate-800">
-          📄
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-acento/10 text-[10px] font-bold text-acento">
+          PDF
         </div>
         <div className="min-w-0 flex-1">
-          <p className="truncate font-medium text-slate-900 dark:text-slate-100">
+          <p className="truncate font-medium text-tinta">
             {titulo}
           </p>
           {descripcion && (
-            <p className="mt-0.5 truncate text-sm text-slate-600 dark:text-slate-400">
+            <p className="mt-0.5 truncate text-sm text-tinta-media">
               {descripcion}
             </p>
           )}
-          <p className="mt-0.5 truncate text-xs text-slate-500 dark:text-slate-500">
+          <p className="mt-0.5 truncate text-xs text-tinta-tenue dark:text-tinta-tenue">
             {nombreArchivo}
             {tamanio ? ` · ${tamanio}` : ""}
           </p>
@@ -48,7 +48,7 @@ export function Recurso({
               type="button"
               onClick={() => setVisible((v) => !v)}
               aria-expanded={visible}
-              className="hidden rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-700 transition hover:bg-slate-50 sm:inline-block dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="hidden rounded-md border border-borde px-3 py-1.5 text-sm text-tinta-media transition hover:bg-papel-suave sm:inline-block"
             >
               {visible ? "Ocultar" : "Previsualizar"}
             </button>
@@ -57,14 +57,14 @@ export function Recurso({
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md border border-slate-200 px-3 py-1.5 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-md border border-borde px-3 py-1.5 text-sm text-tinta-media transition hover:bg-papel-suave"
           >
             Ver
           </a>
           <a
             href={url}
             download={nombreArchivo}
-            className="rounded-md bg-slate-900 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+            className="rounded-md bg-acento px-3 py-1.5 text-sm font-semibold text-acento-texto transition hover:bg-acento-hover"
           >
             Descargar
           </a>
@@ -72,7 +72,7 @@ export function Recurso({
       </div>
 
       {embebido && visible && (
-        <div className="border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950">
+        <div className="border-t border-borde bg-papel-suave">
           <iframe
             src={url}
             title={titulo}

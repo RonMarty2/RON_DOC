@@ -6,8 +6,9 @@ import type { Materia } from "@/lib/types";
  * Aquí defines TODAS las materias y sus temas. El sitio se genera a partir
  * de este archivo + los MDX en content/temas/[slug-materia]/[archivoMdx].mdx.
  *
- * Para agregar una materia: añade un objeto al array.
- * Para agregar un tema: añade una entrada a la lista `temas` y crea su archivo MDX.
+ * Un tema se publica recién cuando su MDX deja de decir [CONTENIDO PENDIENTE],
+ * y una materia cuando tiene una herramienta o algún tema publicado
+ * (src/lib/publicado.ts). Hasta entonces sólo se nombra como "en preparación".
  */
 export const MATERIAS: Materia[] = [
   {
@@ -15,15 +16,18 @@ export const MATERIAS: Materia[] = [
     nombre: "Psicoestadística Inferencial",
     descripcion:
       "De la probabilidad a la inferencia: cómo se razona bajo incertidumbre en psicología, y por qué la intuición clínica falla justo donde más importa.",
-    color: "morado",
-    icono: "🎲",
     herramientas: [
       {
         href: "/aula-probabilidad",
         titulo: "Aula Interactiva de Probabilidad",
         descripcion:
-          "Un test detecta el 88% de los casos reales y, aun así, la mitad de sus alarmas son falsas. La herramienta recorre la Unidad 2 completa —del espacio muestral al Teorema de Bayes— definiendo cada concepto y dejando que lo compruebes tú mismo sobre 200 fichas reales.",
-        icono: "🎲",
+          "Un cuestionario detecta el 88% de los casos reales y, aun así, la mitad de sus alarmas son falsas. El Aula recorre la Unidad 2 completa para que puedas calcular por qué.",
+        destacados: [
+          "11 apartados, del espacio muestral a la distribución normal",
+          "200 fichas reales de estudiantes, con PHQ-9, GAD-7 y diagnóstico confirmado",
+          "Preguntas de práctica con corrección y explicación de cada opción",
+          "Sigue funcionando sin internet después de abrirla una vez",
+        ],
       },
     ],
     temas: [],
@@ -33,8 +37,6 @@ export const MATERIAS: Materia[] = [
     nombre: "Psicoestadística Descriptiva",
     descripcion:
       "Fundamentos de estadística aplicada a las ciencias del comportamiento: organización, descripción y análisis bivariado de datos.",
-    color: "azul",
-    icono: "📊",
     temas: [
       {
         slug: "tipos-de-variables",
@@ -96,8 +98,6 @@ export const MATERIAS: Materia[] = [
     nombre: "Administración Financiera",
     descripcion:
       "Análisis de estados financieros, ratios, sistema Du Pont y flujos de fondos para la toma de decisiones empresariales.",
-    color: "verde",
-    icono: "💹",
     temas: [
       {
         slug: "introduccion-estados-financieros",
@@ -141,8 +141,6 @@ export const MATERIAS: Materia[] = [
     nombre: "Econometría II",
     descripcion:
       "Modelos de series de tiempo, no estacionariedad, multivariados y datos de panel.",
-    color: "morado",
-    icono: "📈",
     temas: [
       {
         slug: "metodologia-box-jenkins",
@@ -179,8 +177,6 @@ export const MATERIAS: Materia[] = [
     nombre: "Matemática Financiera",
     descripcion:
       "Herramientas cuantitativas para la evaluación de operaciones financieras a lo largo del tiempo.",
-    color: "naranja",
-    icono: "💰",
     temas: [
       {
         slug: "interes-compuesto-inflacion",

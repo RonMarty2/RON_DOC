@@ -1,8 +1,6 @@
-"use client";
-
+// Sin "use client" a propósito: usado desde el servidor, la fórmula llega armada y KaTeX no viaja al navegador.
 import katex from "katex";
 import "katex/dist/katex.min.css";
-import { useMemo } from "react";
 
 type Segmento = {
   tipo: "texto" | "inline" | "display";
@@ -19,7 +17,7 @@ export function MathText({
   className?: string;
   block?: boolean;
 }) {
-  const segmentos = useMemo(() => parsearMath(children ?? ""), [children]);
+  const segmentos = parsearMath(children ?? "");
   const Envoltorio = block ? "div" : "span";
 
   return (

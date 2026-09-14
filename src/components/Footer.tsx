@@ -1,31 +1,12 @@
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-slate-200 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-950/40">
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2">
-          <div>
-            <p className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-              Mgr. Ronald Martínez Jiménez
-            </p>
-            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-              Docente universitario · Cochabamba, Bolivia
-            </p>
-            <p className="mt-3 max-w-md text-sm text-slate-600 dark:text-slate-400">
-              Material académico, casos de estudio y componentes interactivos para
-              las materias de Psicoestadística, Administración Financiera, Econometría
-              y Matemática Financiera.
-            </p>
-          </div>
-          <div className="text-sm text-slate-600 dark:text-slate-400 sm:text-right">
-            <p>
-              © {new Date().getFullYear()} Ronald Martínez Jiménez. Todos los derechos
-              reservados.
-            </p>
-            <p className="mt-1">
-              Construido con Next.js y publicado en GitHub Pages.
-            </p>
-          </div>
+    <footer className="border-t border-borde bg-papel-suave">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-6 px-4 py-10 sm:px-6 lg:px-8">
+        <div>
+          <p className="font-serif text-lg font-semibold">Mgr. Ronald Martínez Jiménez</p>
+          <p className="mt-1 text-sm text-tinta-tenue">Docente universitario · Cochabamba, Bolivia</p>
         </div>
+        <p className="text-sm text-tinta-tenue">© {new Date().getFullYear()} Ronald Martínez Jiménez</p>
       </div>
     </footer>
   );

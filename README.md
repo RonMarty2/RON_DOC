@@ -2,14 +2,14 @@
 
 Sitio web estático construido con **Next.js 15 (App Router) + TypeScript + Tailwind CSS v4**, exportado a HTML y publicado en **GitHub Pages** vía GitHub Actions.
 
-Contiene el material de las cuatro materias que dicto:
+Es el aula de las materias que dicto: un libro interactivo por materia. Hoy está publicada el **Aula Interactiva de Probabilidad** (Psicoestadística Inferencial); Psicoestadística Descriptiva, Administración Financiera, Econometría II y Matemática Financiera aparecen como "en preparación".
 
-- 📊 Psicoestadística Descriptiva
-- 💹 Administración Financiera
-- 📈 Econometría II
-- 💰 Matemática Financiera
+**Regla de publicación** (`src/lib/publicado.ts`): el sitio muestra sólo lo que tiene contenido real.
 
-Más una sección de **podcasts** (links a iVoox y YouTube) y una página **Sobre mí**.
+- Un **tema** se publica cuando su MDX deja de decir `[CONTENIDO PENDIENTE]`.
+- Una **materia** se publica cuando tiene una herramienta o algún tema publicado.
+- **Podcasts** y **tesis** aparecen en el menú cuando sus listas tienen datos.
+- Lo que no cumple da 404 en vez de mostrar una plantilla vacía.
 
 ---
 
@@ -71,14 +71,12 @@ public/
   slug: "mi-nueva-materia",
   nombre: "Mi Nueva Materia",
   descripcion: "Una breve descripción.",
-  color: "azul",       // "azul" | "verde" | "morado" | "naranja"
-  icono: "📘",
   temas: [],
 }
 ```
 
 3. Creá la carpeta `content/temas/mi-nueva-materia/`.
-4. Listo: la materia aparecerá en la home y tendrá su propia página.
+4. La materia aparece en la home como "en preparación"; pasa a tener su propia página cuando publica su primer tema o herramienta.
 
 ### 2. Agregar un **tema** a una materia
 
@@ -160,13 +158,12 @@ Abrí `content/proyectos.ts` y añadí un objeto al array `PROYECTOS`:
   descripcion: "Qué hace en 1-2 oraciones.",
   url: "https://mi-app.com/",
   estado: "en-linea",       // "en-linea" | "beta" | "en-desarrollo" | "archivado"
-  icono: "🚀",
   tags: ["estadística"],
   anio: 2025,
 }
 ```
 
-Aparecerá en `/proyectos` y los primeros 3 también en la home.
+Aparecerá en `/proyectos` y en la home.
 
 ### 7. Actualizar resumen de **tesis**
 
@@ -175,7 +172,7 @@ Editá `content/tesis.ts`:
 - `AREAS_TESIS`: bloques temáticos con conteo y descripción.
 - `ENFOQUE_TUTORIA`: párrafos sobre cómo trabajás.
 
-La página `/tesis` **no muestra** nombres de estudiantes ni instituciones, sólo cifras agregadas y áreas. Pensado a propósito para no invadir privacidad.
+La página `/tesis` **no muestra** nombres de estudiantes ni instituciones, sólo cifras agregadas y áreas. Pensado a propósito para no invadir privacidad. Mientras tutorías y revisorías sumen 0, la página no se publica.
 
 ---
 
@@ -208,7 +205,7 @@ Después: **Settings → Pages → Source = GitHub Actions** (una sola vez).
 
 ## 🎨 Personalización
 
-- **Colores de acento por materia**: ya están mapeados en `src/lib/colores.ts` (azul, verde, morado, naranja). Si necesitás otro, agregalo ahí.
-- **Tipografías**: Inter (sans) y Source Serif (serif). Definidas en `src/app/globals.css` vía `@theme`.
+- **Colores**: paleta de Axiom (papel, tinta y acento terracota) como variables en `src/app/globals.css`, con su versión oscura. Se usan con clases como `bg-papel`, `text-tinta`, `text-acento`.
+- **Tipografías**: Atkinson Hyperlegible (texto) y Crimson Pro (títulos), cargadas en `src/app/layout.tsx`.
 - **Modo claro/oscuro**: toggle en el header; persistido en localStorage.
 - **SEO**: cada página define su `Metadata` con `construirMetadata()` (`src/lib/seo.ts`).

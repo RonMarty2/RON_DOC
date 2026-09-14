@@ -4,40 +4,26 @@ import type { Proyecto } from "@/lib/types";
  * Lista de proyectos/apps personales enlazados desde este sitio.
  *
  * Cada entrada apunta a una URL externa; el sitio no aloja nada de la app.
- * Para agregar uno: sumá un objeto al array.
+ * Para agregar uno: suma un objeto al array.
  */
 export const PROYECTOS: Proyecto[] = [
   {
-    slug: "simulador-examenes-ingreso",
-    titulo: "Simulador de exámenes de ingreso",
+    slug: "axiom",
+    titulo: "AXIOM",
     descripcion:
-      "[CONTENIDO PENDIENTE] Plataforma para practicar exámenes de admisión universitaria con corrección automática y estadísticas de desempeño.",
-    url: "https://ejemplo.com/simulador",
+      "Preparación para el examen de admisión de la UMSS: lecciones animadas, láminas de repaso y un simulador que replica el examen real.",
+    url: "https://axiom-simulador.vercel.app",
     estado: "en-linea",
-    icono: "🎯",
-    tags: ["evaluación", "admisión"],
-    anio: 2025,
+    tags: ["admisión", "UMSS", "matemática"],
   },
   {
-    slug: "generador-proyectos-grado",
-    titulo: "Generador de proyectos de grado",
+    slug: "simpro",
+    titulo: "SIMPRO",
     descripcion:
-      "[CONTENIDO PENDIENTE] Asistente que ayuda a estructurar la propuesta inicial de un trabajo de grado a partir de un tema y campo de estudio.",
-    url: "https://ejemplo.com/generador",
-    estado: "beta",
-    icono: "📝",
-    tags: ["metodología", "redacción"],
-    anio: 2025,
-  },
-  {
-    slug: "calculadora-financiera",
-    titulo: "[CONTENIDO PENDIENTE] Otra app",
-    descripcion:
-      "Reemplaza esta entrada en content/proyectos.ts por otra app real que quieras enlazar.",
-    url: "https://ejemplo.com/",
-    estado: "en-desarrollo",
-    icono: "💡",
-    tags: ["placeholder"],
+      "Simulador de proyectos de inversión: el estudiante arma su proyecto en 9 etapas y lo enfrenta durante 5 años a eventos económicos de Bolivia.",
+    url: "https://simulador-pro-seven.vercel.app",
+    estado: "en-linea",
+    tags: ["evaluación de proyectos", "finanzas"],
   },
 ];
 
@@ -46,24 +32,8 @@ export const ESTADOS_PROYECTO: Record<
   Proyecto["estado"],
   { label: string; clase: string }
 > = {
-  "en-linea": {
-    label: "En línea",
-    clase:
-      "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-300 dark:border-emerald-800",
-  },
-  beta: {
-    label: "Beta",
-    clase:
-      "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/30 dark:text-amber-300 dark:border-amber-800",
-  },
-  "en-desarrollo": {
-    label: "En desarrollo",
-    clase:
-      "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/30 dark:text-blue-300 dark:border-blue-800",
-  },
-  archivado: {
-    label: "Archivado",
-    clase:
-      "bg-slate-100 text-slate-600 border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700",
-  },
+  "en-linea": { label: "En línea", clase: "border-ok/40 bg-ok/10 text-ok" },
+  beta: { label: "Beta", clase: "border-aviso/40 bg-aviso/10 text-aviso" },
+  "en-desarrollo": { label: "En desarrollo", clase: "border-acento/40 bg-acento/10 text-acento" },
+  archivado: { label: "Archivado", clase: "border-borde bg-papel-suave text-tinta-tenue" },
 };

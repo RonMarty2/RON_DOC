@@ -58,7 +58,7 @@ function BarrasCuotas({ resultado }: { resultado: ResultadoAmortizacionGenerica 
     <div
       role="img"
       aria-label={resultado.cuotas.map((c) => `Año ${c.periodo}: cuota ${bs(c.cuota)}, interés ${bs(c.interes)}`).join("; ")}
-      className="flex h-[10em] items-stretch gap-[0.45em]"
+      className="flex h-[9em] items-stretch gap-[0.45em]"
     >
       {resultado.cuotas.map((c) => (
         <div key={c.periodo} className="flex min-w-0 flex-1 flex-col items-center">
@@ -79,10 +79,10 @@ function BarrasCuotas({ resultado }: { resultado: ResultadoAmortizacionGenerica 
 }
 
 function TablaAmortizacion({ resultado }: { resultado: ResultadoAmortizacionGenerica }) {
-  const celda = "px-[0.45em] py-[0.35em] text-right tabular-nums";
+  const celda = "px-[0.3em] py-[0.35em] text-right tabular-nums";
   return (
     <div className="overflow-x-auto">
-      <table className="w-full min-w-[18em] border-collapse text-[0.78em]">
+      <table className="w-full border-collapse text-[0.74em]">
         <thead>
           <tr className="border-b border-borde-fuerte text-tinta-tenue">
             <th className={`${celda} text-left font-semibold`}>Año</th>
@@ -247,7 +247,7 @@ const diapositivas: LaminaDiapositiva[] = [
     etiqueta: "Forma 2 · Alemán: el mismo capital cada año",
     contenido: (
       <div className="flex flex-col gap-[0.8em]">
-        <p>Divides la deuda en cinco partes iguales y devuelves una por año. Como la deuda baja, el interés también baja.</p>
+        <p>Devuelves la deuda en 5 partes iguales. Como la deuda baja, el interés también.</p>
         <BarrasCuotas resultado={ALEMAN} />
         <Leyenda />
         <div className="rounded-[0.75em] bg-papel-suave px-[0.9em] py-[0.7em]">
@@ -285,7 +285,7 @@ const diapositivas: LaminaDiapositiva[] = [
     etiqueta: `¿De dónde sale Bs ${bs(FRANCES.cuotas[0].cuota)}?`,
     contenido: (
       <div className="flex flex-col gap-[0.6em]">
-        <p>Es la cuota que, repetida cinco veces, devuelve el préstamo con todos sus intereses.</p>
+        <p>La cuota que, repetida 5 veces, devuelve el préstamo con sus intereses.</p>
         <MathText block>{"$$C = P \\cdot \\frac{i}{1 - (1+i)^{-n}}$$"}</MathText>
         <div>
           <FilaRol rol="Lo que te prestaron" conocido="$P$" nuevo="$10.000$" />
@@ -293,16 +293,15 @@ const diapositivas: LaminaDiapositiva[] = [
           <FilaRol rol="Cuántas cuotas" conocido="$n$" nuevo={`$${ANIOS}$`} ultimo />
         </div>
         <div className="rounded-[0.75em] bg-papel-suave px-[0.9em] py-[0.7em]">
-          <LineaEjemplo glosa="" eq={`$C = 10.000 \\cdot \\dfrac{0{,}10}{1 - 1{,}1^{-${ANIOS}}}$`} />
+          <LineaEjemplo
+            glosa="Ojo: $i$ es la tasa por período (mensual: $0{,}10 \div 12$)"
+            eq={`$C = 10.000 \\cdot \\dfrac{0{,}10}{1 - 1{,}1^{-${ANIOS}}}$`}
+          />
           <LineaEjemplo
             glosa=""
             eq={`$C = \\dfrac{1.000}{${(1 - Math.pow(1 + TASA, -ANIOS)).toFixed(6).replace(".", "{,}")}} \\approx ${tex(FRANCES.cuotas[0].cuota)}$`}
           />
         </div>
-        <p className="text-[0.87em] text-tinta-media">
-          Ojo con <MathText>{"$i$"}</MathText>: es la tasa de cada período. Si las cuotas fueran
-          mensuales, sería <MathText>{"$0{,}10 \\div 12$"}</MathText> y <MathText>{"$n$"}</MathText> contaría meses.
-        </p>
       </div>
     ),
   },
@@ -365,6 +364,7 @@ export function LaminaAmortizacion() {
       titulo="Tres formas de devolver un préstamo"
       volver={{ href: "/", titulo: "Inicio" }}
       diapositivas={diapositivas}
+      necesitasAntes={{ href: "/interes-compuesto", titulo: "Interés compuesto e inflación" }}
     />
   );
 }

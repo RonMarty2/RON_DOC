@@ -212,9 +212,10 @@ export function LaminaShell({
         </div>
 
         {(necesitasAntes || teAbrePuertaA) && (
-          <footer className="mx-auto flex max-w-3xl flex-wrap justify-center gap-x-8 gap-y-2 px-4 pt-3">
+          // Lado a lado y recortados: en dos renglones el pie le quitaba alto a la tarjeta en celular.
+          <footer className="mx-auto flex max-w-3xl justify-center gap-6 px-4 pt-3">
             {necesitasAntes && <EnlacePie etiqueta="Necesitas antes" enlace={necesitasAntes} />}
-            {teAbrePuertaA && <EnlacePie etiqueta="Te abre la puerta a" enlace={teAbrePuertaA} />}
+            {teAbrePuertaA && <EnlacePie etiqueta="Te abre la puerta a" enlace={teAbrePuertaA} alinear="derecha" />}
           </footer>
         )}
       </div>
@@ -222,11 +223,11 @@ export function LaminaShell({
   );
 }
 
-function EnlacePie({ etiqueta, enlace }: { etiqueta: string; enlace: LaminaEnlace }) {
+function EnlacePie({ etiqueta, enlace, alinear }: { etiqueta: string; enlace: LaminaEnlace; alinear?: "derecha" }) {
   return (
-    <Link href={enlace.href} className="flex flex-col text-xs">
+    <Link href={enlace.href} title={enlace.titulo} className={`flex min-w-0 flex-col text-xs ${alinear === "derecha" ? "text-right" : ""}`}>
       <span className="text-[9.5px] font-bold uppercase tracking-[0.12em] text-tinta-tenue">{etiqueta}</span>
-      <span className="font-medium text-acento hover:text-acento-hover">{enlace.titulo}</span>
+      <span className="truncate font-medium text-acento hover:text-acento-hover">{enlace.titulo}</span>
     </Link>
   );
 }

@@ -1,6 +1,6 @@
 # Bitácora — Matemática Financiera
 
-**Estado:** tres láminas en borrador, **sin enlazar** y con `noindex`. Ninguna sale todavía del dossier de Ronald: están armadas con definiciones estándar y esperan su revisión.
+**Estado:** cuatro láminas en borrador, **sin enlazar** y con `noindex`. Ninguna sale todavía del dossier de Ronald: están armadas con definiciones estándar y esperan su revisión.
 **Última actualización:** 2026-09-14
 
 ---
@@ -12,8 +12,15 @@
 | Interés compuesto e inflación | `/interes-compuesto` | 12 | `src/lib/finanzas/interes.ts` |
 | Cuotas iguales: cuánto valen hoy y al final (anualidades) | `/anualidades` | 11 | `src/lib/finanzas/anualidades.ts` |
 | Tres formas de devolver un préstamo | `/amortizacion` | 10 | `src/lib/simpro/calculo-financiero.ts` (`calcularAmortizacionGenerica`) |
+| Bonos: precio, rendimiento y duración | `/bonos` | 12 | `src/lib/finanzas/bonos.ts` |
 
-Encadenadas con el pie de la tarjeta: interés compuesto → anualidades → amortización.
+Encadenadas con el pie de la tarjeta, en el orden del programa: interés compuesto → anualidades → amortización → bonos.
+
+### Bonos
+
+Gancho (¿pagarías Bs 1.000?) → un bono son dos cosas conocidas (anualidad de cupones + un monto) → cupones a hoy → nominal a hoy → el precio es la suma (bajo la par) → si sube la tasa baja el precio → rendimiento al vencimiento, probando tasas → duración de Macaulay con el peso de cada pago → para qué sirve: sensibilidad aproximada vs recalculada → **Ojo:** creer que rinde el cupón → laboratorio (cupón, mercado, años: precio, par, duración, caída si sube 1 punto) → práctica.
+
+El rendimiento al vencimiento se busca por bisección (`rendimientoAlVencimiento`): no tiene fórmula cerrada, y así lo dice la lámina.
 
 ### Cuotas iguales (anualidades)
 
@@ -40,6 +47,9 @@ Orden elegido: del sistema más simple de calcular al más complejo (americano �
 | $P$ | préstamo |
 | $M$ | monto al final |
 | $\text{VF}$, $\text{VP}$ | valor futuro, valor presente |
+| $N$ | nominal de un bono |
+| $c$ | tasa de cupón (el cupón es $R = N \cdot c$) |
+| $D$ | duración de Macaulay |
 | $i$ | tasa por período · tasa efectiva anual |
 | $n$ | número de períodos |
 | $j$ | tasa nominal anual |
@@ -57,6 +67,8 @@ La cuota era $C$ en la lámina de amortización y chocaba con el capital de la d
 - Práctica: alemán 6.000 / 10% / 3 años, segunda cuota **2.400**; depósito 5.000 al 8% semestral 2 años **5.849,29**.
 - Bs 1.000 por año, 5 años, 10%: VF **6.105,10**, VP **3.790,79**; anticipada VF **6.715,61**, VP **4.169,87**. Cuota para Bs 10.000 de VP: **2.637,97** (igual a la francesa).
 - Práctica: juntar Bs 10.000 en 4 años al 8%: cuota **2.219,21** (distractores 3.019,21 = cuota de VP; 2.054,82 = anticipada).
+- Bono Bs 1.000, cupón 8%, 5 años, mercado 10%: cupones hoy **303,26**, nominal hoy **620,92**, precio **924,18**. Al 6% **1.084,25**, al 8% **1.000**, al 12% **855,81**. Duración **4,28** años (modificada 3,89). Al 11%: **889,12**, cae **3,79%** (aproximación 3,89%). Sin cupón: duración **5** exacta.
+- Práctica: bono cupón 6%, 3 años, mercado 8%: **948,46** (distractores 793,83 = sólo nominal; 1.180 = sin descontar).
 
 ## Decisiones
 
@@ -68,8 +80,10 @@ La cuota era $C$ en la lámina de amortización y chocaba con el capital de la d
 | 2026-09-14 | En la tabla del francés se quitó la columna "Queda" | Repetía el "Debes" de la fila siguiente y obligaba a desplazar de costado en celular |
 | 2026-09-14 | Tercera lámina: anualidades, entre interés compuesto y amortización | Es el puente: la cuota francesa es la cuota de una anualidad cuyo VP es el préstamo |
 | 2026-09-14 | La cuota se llama $R$ en todas las láminas | $C$ ya era el capital en interés compuesto |
+| 2026-09-14 | En bonos el cupón también es $R$ y se presenta como anualidad | Así la lámina se apoya entera en la anterior, en vez de introducir una letra nueva |
+| 2026-09-14 | Duración de Macaulay mostrada como "cuánto esperas tu dinero" con el peso de cada pago, y la modificada sólo como herramienta de sensibilidad | La definición con sumatoria sola no dice nada; el peso del nominal (73%) explica por qué dura casi el plazo |
 
 ## Pendiente
 
 - Revisión de Ronald y "publícala" (agregar como herramientas de `matematica-financiera` en `content/materias.ts` y quitar `robots` de cada `page.tsx`).
-- Bonos y depreciaciones (ver `BITACORA.md` §7).
+- Depreciaciones (ver `BITACORA.md` §7).

@@ -365,6 +365,7 @@ export function LaminaAmortizacion() {
       volver={{ href: "/", titulo: "Inicio" }}
       diapositivas={diapositivas}
       necesitasAntes={{ href: "/anualidades", titulo: "Cuotas iguales: cuánto valen hoy y al final" }}
+      teAbrePuertaA={{ href: "/bonos", titulo: "Bonos: precio, rendimiento y duración" }}
     />
   );
 }

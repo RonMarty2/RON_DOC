@@ -83,16 +83,15 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - `7f1d3a7` Portada nueva y regla de publicación; proyectos reales; "Sobre mí" fuera; título de pestaña sin duplicar.
 - `aad4dd6` Motor financiero de SIMPRO copiado con sus 87 pruebas; lámina `/amortizacion`.
 - `fc05ce2` Borrados los HTML de relleno de `public/interactivos`; revisión de Axiom (6 commits del banco de exámenes, nada que traer).
-- *(este commit)* Lámina `/interes-compuesto` con `src/lib/finanzas/interes.ts` y sus pruebas; ajustes de alto en `/amortizacion`; esta bitácora y `bitacoras/matematica-financiera.md`.
+- `6e9ca79` Lámina `/interes-compuesto` con `src/lib/finanzas/interes.ts` y sus pruebas; ajustes de alto en `/amortizacion`; esta bitácora y `bitacoras/matematica-financiera.md`.
+- *(este commit)* El deploy corre `npm test` antes de compilar. `sitemap.xml` generado sólo con lo publicado (`src/app/sitemap.ts`); sin `robots.txt`, porque bajo `/RON_DOC/` los buscadores no lo leen.
 
 ## 7. Qué sigue
 
 **Se puede hacer sin Ronald** (en este orden):
 
 1. Lámina **Anualidades** (valor presente y futuro de cuotas iguales), para cerrar la cadena interés compuesto → anualidades → amortización. Fórmulas en `src/lib/finanzas/`.
-2. `sitemap.xml` y `robots.txt` para GitHub Pages, sólo con lo publicado.
-3. Correr `npm test` en el workflow de deploy antes de compilar, para no publicar con el motor roto.
-4. Láminas de **bonos** (precio como valor presente) y **depreciaciones** (lineal del motor + otros métodos).
+2. Láminas de **bonos** (precio como valor presente) y **depreciaciones** (lineal del motor + otros métodos).
 
 **Necesita a Ronald:**
 

@@ -39,7 +39,7 @@ export default function TesisPage() {
         </div>
         {total === 0 && (
           <p className="mt-4 text-center text-sm text-slate-500 dark:text-slate-500">
-            (Actualizá <code>content/tesis.ts</code> con tus cifras reales.)
+            (Actualiza <code>content/tesis.ts</code> con tus cifras reales.)
           </p>
         )}
       </section>

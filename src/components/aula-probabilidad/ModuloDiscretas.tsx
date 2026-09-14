@@ -167,7 +167,7 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
 
       <Comprueba
         pregunta="El servicio quiere saber cuántas llamadas de consulta va a recibir el martes. Sabe que en promedio recibe 3 por día. ¿Qué distribución corresponde?"
-        pista="Buscá si el enunciado da un número de intentos o una tasa por intervalo."
+        pista="Busca si el enunciado da un número de intentos o una tasa por intervalo."
         opciones={[
           {
             texto: "Poisson",
@@ -192,7 +192,7 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
       <Trampa
         error="usar binomial donde corresponde hipergeométrica"
         porQue="la binomial se enseña primero y su fórmula es más simple; además casi nunca se pregunta si hay reposición."
-        correccion={`preguntar si hay reposición y comparar el tamaño de la muestra con el de la población. Auditar 6 expedientes de ${positivos} es una fracción apreciable: cada uno que sacás cambia lo que queda.`}
+        correccion={`preguntar si hay reposición y comparar el tamaño de la muestra con el de la población. Auditar 6 expedientes de ${positivos} es una fracción apreciable: cada uno que sacas cambia lo que queda.`}
       />
 
       <Trampa
@@ -208,7 +208,7 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
             texto: "Porque al no reponer, la probabilidad de éxito cambia en cada extracción",
             esCorrecta: true,
             porQue:
-              "La binomial exige que p sea constante en todos los ensayos. Si sacás una ficha incompleta, quedan menos incompletas entre menos fichas: la probabilidad de la siguiente ya es otra. Con una población de sólo 43 y una muestra de 6, esa diferencia importa de verdad.",
+              "La binomial exige que p sea constante en todos los ensayos. Si sacas una ficha incompleta, quedan menos incompletas entre menos fichas: la probabilidad de la siguiente ya es otra. Con una población de sólo 43 y una muestra de 6, esa diferencia importa de verdad.",
           },
           {
             texto: "Porque 6 es un número muy chico de ensayos",
@@ -355,7 +355,7 @@ function Barras({
         {etiquetaX}
         {muchas && (
           <span className="ml-1 text-slate-300 dark:text-slate-600">
-            · deslizá para ver todo
+            · desliza para ver todo
           </span>
         )}
       </p>
@@ -710,7 +710,7 @@ function Hipergeometrica({ N, K }: { N: number; K: number }) {
         </div>
         <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
           La última tarjeta muestra el error: usar binomial supone reposición.
-          Con una población de sólo {N}, cada expediente que sacás cambia la
+          Con una población de sólo {N}, cada expediente que sacas cambia la
           composición de los {N - 1} restantes, y esa diferencia sí importa.
         </p>
       </div>

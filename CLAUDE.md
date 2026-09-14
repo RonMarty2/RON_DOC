@@ -14,6 +14,12 @@ No saltearlo aunque el pedido de la sesión parezca no tener relación: un arreg
 - **No se publica nada con `[CONTENIDO PENDIENTE]`.** Una materia sin material real no aparece, en vez de mostrar una plantilla vacía.
 - Axiom y SimuladorPRO aparecen como proyectos, con sus enlaces reales.
 
+## Idioma: tuteo, nunca voseo (decidido el 2026-09-14)
+
+Todo lo que lee un alumno va en tuteo: la web, las láminas y los cuadernillos de `ejercicios/` ("puedes", "mira", "fíjate", "tú"). El 14-sep se pasaron 384 formas en 56 archivos y se recompilaron los PDF. Los comentarios del código y los documentos para Ronald no se tocan.
+
+Si hay que volver a barrer, ojo con dos cosas: los verbos que cambian de raíz no salen por regla ("contá" → "cuenta", "volvé" → "vuelve", "pedí" → "pide"), y los imperativos con pronombre pegado no llevan tilde en voseo ("respondelas" → "respóndelas"), así que un buscador de tildes no los ve.
+
 ## Formato
 
 - **Tarjetas**: `src/components/lamina/LaminaShell.tsx`, con las piezas visuales de `src/components/lamina/dispositivos.tsx`. La muestra de referencia es `src/app/muestra/LaminaBayes.tsx` (ruta `/muestra`, sin enlaces desde el sitio).
@@ -40,7 +46,6 @@ No saltearlo aunque el pedido de la sesión parezca no tener relación: un arreg
 
 - Modo proyector: la tarjeta ya crece con la pantalla (en 1920×1080 mide unos 900 px de ancho, con letra de 21 px) y se maneja con las flechas o un control de presentación. Falta que Ronald lo pruebe proyectado en clase.
 - Si el Aula de Probabilidad se migra a tarjetas, y cuándo. Hoy es un libro con scroll de unas 11.000 líneas.
-- Tuteo o voseo en el texto que lee el alumno. El Aula hoy mezcla los dos; Axiom pasó todo a tuteo porque sus alumnos son de Cochabamba. La muestra está escrita en tuteo, de forma provisoria.
 - Con qué materia se arranca. Cada una necesita el dossier del docente.
 
 ## Material que ya existe

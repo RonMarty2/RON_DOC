@@ -129,14 +129,14 @@ export function ModuloEspacioMuestral({
         aunque se conozcan de antemano todos los resultados posibles.
         <Ejemplos>
           <Ejemplo caso="Tirar un dado">
-            No sabés qué cara va a salir, pero sabés que va a ser una de seis.
+            No sabes qué cara va a salir, pero sabes que va a ser una de seis.
           </Ejemplo>
           <Ejemplo caso="Aplicar el cuestionario a un estudiante al azar">
-            No sabés qué puntaje va a dar, pero sabés que estará entre 0 y 27.
+            No sabes qué puntaje va a dar, pero sabes que estará entre 0 y 27.
           </Ejemplo>
           <Ejemplo caso="NO es aleatorio: medir el largo de una mesa">
-            El resultado está determinado de antemano. Si repetís la medición
-            obtenés lo mismo, salvo error de instrumento.
+            El resultado está determinado de antemano. Si repites la medición
+            obtienes lo mismo, salvo error de instrumento.
           </Ejemplo>
         </Ejemplos>
       </Definicion>
@@ -160,14 +160,14 @@ export function ModuloEspacioMuestral({
           </Ejemplo>
           <Ejemplo caso={'Tamizaje:  S = {positivo, negativo}'}>
             El MISMO experimento puede tener espacios muestrales distintos
-            según qué se registre. Si sólo anotás si superó el corte, hay dos
-            resultados; si anotás el puntaje, veintiocho.
+            según qué se registre. Si sólo anotas si superó el corte, hay dos
+            resultados; si anotas el puntaje, veintiocho.
           </Ejemplo>
         </Ejemplos>
       </Definicion>
 
       <Hilo>
-        Dicho así suena abstracto. Tirá el dado unas cuantas veces y mirá qué
+        Dicho así suena abstracto. Tira el dado unas cuantas veces y mira qué
         pasa: cada tirada te da un resultado de ese conjunto, y ninguna te
         deja adivinar la siguiente.
       </Hilo>
@@ -186,7 +186,7 @@ export function ModuloEspacioMuestral({
           <p>
             Con pocas tiradas las seis barras están desparejas y da la impresión
             de que el dado favorece a alguna cara. No es así: lo único que pasa
-            es que hay pocos datos. A medida que tirás más, las seis barras se
+            es que hay pocos datos. A medida que tiras más, las seis barras se
             van apretando contra la línea del 16,7%, que es 1 dividido 6.
           </p>
           <p>
@@ -195,10 +195,10 @@ export function ModuloEspacioMuestral({
             malentendidos: <strong>no predice una tirada, predice el
             comportamiento a la larga</strong>. Saber que la probabilidad de un
             6 es 1/6 no te dice nada sobre la próxima tirada. Te dice que si
-            tirás muchísimas veces, alrededor de una de cada seis va a ser un 6.
+            tiras muchísimas veces, alrededor de una de cada seis va a ser un 6.
           </p>
           <p>
-            Guardá esta idea: en el apartado 2.2 va a reaparecer con nombre
+            Guarda esta idea: en el apartado 2.2 va a reaparecer con nombre
             propio, cuando distingamos la probabilidad que se calcula sin
             observar nada de la que sale de observar muchas veces.
           </p>
@@ -229,14 +229,14 @@ export function ModuloEspacioMuestral({
       </Definicion>
 
       <Hilo>
-        Tirá los dos y buscá dónde cae cada resultado en la tabla. Fijate que
+        Tira los dos y busca dónde cae cada resultado en la tabla. Fíjate que
         el par (2, 5) y el par (5, 2) son casillas distintas.
       </Hilo>
 
       <DosDadosInteractivo />
 
       <Hilo>
-        Cambiá los dos dados por los dos primeros ítems del cuestionario y la
+        Cambia los dos dados por los dos primeros ítems del cuestionario y la
         tabla es la misma, con menos casillas.
       </Hilo>
 
@@ -259,7 +259,7 @@ export function ModuloEspacioMuestral({
             la pregunta central.
           </p>
           <p>
-            Fijate también que las 36 casillas siguen siendo un espacio muestral
+            Fíjate también que las 36 casillas siguen siendo un espacio muestral
             común y corriente: un conjunto de resultados posibles. Lo único que
             cambió es que cada resultado ahora tiene dos partes.
           </p>
@@ -281,7 +281,7 @@ export function ModuloEspacioMuestral({
       </Definicion>
 
       <Hilo>
-        Tamizá fichas de a una y mirá cómo se va llenando el histograma. Cada
+        Tamiza fichas de a una y mira cómo se va llenando el histograma. Cada
         ficha aporta su puntaje a una de las 28 barras.
       </Hilo>
 
@@ -289,7 +289,7 @@ export function ModuloEspacioMuestral({
 
       <Comprueba
         pregunta="Tomamos una de las 200 fichas al azar y miramos su puntaje del cuestionario. ¿Cuál es el espacio muestral de ese experimento?"
-        pista="Preguntate qué se está listando: ¿personas, o resultados?"
+        pista="Pregúntate qué se está listando: ¿personas, o resultados?"
         opciones={[
           {
             texto: "Los 28 puntajes posibles, de 0 a 27",
@@ -486,7 +486,7 @@ function UnDadoInteractivo() {
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-          Tirá el dado
+          Tira el dado
         </h4>
         <div className="flex flex-wrap gap-2">
           <button
@@ -569,7 +569,7 @@ function UnDadoInteractivo() {
         {total === 0 ? (
           <p>
             Todavía no tiraste. La línea gris de cada barra marca dónde
-            <em> debería</em> quedar cada cara si tirás muchas veces:{" "}
+            <em> debería</em> quedar cada cara si tiras muchas veces:{" "}
             <strong>1/6 ≈ 16.7%</strong>.
           </p>
         ) : total < 30 ? (
@@ -579,7 +579,7 @@ function UnDadoInteractivo() {
             <strong>los porcentajes no significan nada todavía</strong>. Con
             una sola tirada una cara marca 100% y las otras 0%; con dos,
             50%/50%. No es que el dado esté cargado — es que hay muy pocos
-            datos. Fijate cuánto se despegan las barras de la línea gris:{" "}
+            datos. Fíjate cuánto se despegan las barras de la línea gris:{" "}
             {(() => {
               const pcts = conteos.map((c) => (c / total) * 100);
               const brecha = Math.max(...pcts) - Math.min(...pcts);
@@ -593,7 +593,7 @@ function UnDadoInteractivo() {
                 </>
               );
             })()}{" "}
-            Tirá 100 más y mirá qué pasa con esa brecha.
+            Tira 100 más y mira qué pasa con esa brecha.
           </p>
         ) : (
           <p>
@@ -624,7 +624,7 @@ function UnDadoInteractivo() {
       <div className="mt-6 border-t border-slate-100 pt-5 dark:border-slate-800">
         <Definicion termino="Punto muestral">
           Cada resultado individual dentro del espacio muestral. Cada vez que
-          tirás el dado obtenés exactamente un punto muestral.
+          tiras el dado obtienes exactamente un punto muestral.
           {caraTop !== null && (
             <> La última tirada te dio uno de los seis: {caraVisible}.</>
           )}
@@ -648,7 +648,7 @@ function UnDadoInteractivo() {
               Evento compuesto de dos puntos.
             </Ejemplo>
             <Ejemplo caso={'"Sale menos de 3"  =  {1, 2}'}>
-              Otro compuesto. Fijate que se solapa con "sale par" en el 2.
+              Otro compuesto. Fíjate que se solapa con "sale par" en el 2.
             </Ejemplo>
             <Ejemplo caso={'"Sale primo"  =  {2, 3, 5}'}>
               El enunciado suena a una sola condición, pero agrupa tres
@@ -681,7 +681,7 @@ function UnDadoInteractivo() {
             </Ejemplo>
             <Ejemplo caso={'IMPOSIBLE — "sale par Y sale impar a la vez"'}>
               Ningún resultado cumple las dos cosas, así que el conjunto es
-              vacío. Probalo abajo dejando el evento sin ninguna cara marcada.
+              vacío. Pruébalo abajo dejando el evento sin ninguna cara marcada.
             </Ejemplo>
           </Ejemplos>
         </Definicion>
@@ -689,7 +689,7 @@ function UnDadoInteractivo() {
 
       <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
         <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-          Armá tu propio evento — tocá las caras que quieras incluir:
+          Arma tu propio evento — toca las caras que quieras incluir:
         </p>
         <div className="mt-3 flex justify-center gap-2">
           {[1, 2, 3, 4, 5, 6].map((cara) => (
@@ -709,7 +709,7 @@ function UnDadoInteractivo() {
           ))}
         </div>
         <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
-          <span className="text-xs text-slate-400">Probá:</span>
+          <span className="text-xs text-slate-400">Prueba:</span>
           {[
             { etiqueta: "los pares", caras: [2, 4, 6] },
             { etiqueta: "los primos", caras: [2, 3, 5] },
@@ -754,7 +754,7 @@ function UnDadoInteractivo() {
             )}{" "}
             — <strong>{nombreEvento}</strong>.{" "}
             {total === 0 ? (
-              <>Tirá el dado arriba para ver con qué frecuencia ocurre.</>
+              <>Tira el dado arriba para ver con qué frecuencia ocurre.</>
             ) : (
               <>
                 Ocurrió en{" "}
@@ -791,7 +791,7 @@ function UnDadoInteractivo() {
           )}
           {descripcion && evento.size < 6 && (
             <p className="mt-2 text-slate-600 dark:text-slate-400">
-              Fijate que el mismo evento se puede escribir de dos formas: por{" "}
+              Fíjate que el mismo evento se puede escribir de dos formas: por{" "}
               <strong>enumeración</strong> (la lista de caras) o por{" "}
               <strong>comprensión</strong> (la propiedad que las une). Las dos
               nombran exactamente el mismo subconjunto de S.
@@ -875,7 +875,7 @@ function DosDadosInteractivo() {
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-          Tirá los dos dados
+          Tira los dos dados
         </h4>
         <div className="flex flex-wrap gap-2">
           <button
@@ -1030,7 +1030,7 @@ function TamizajeInteractivo() {
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-          Tamizá estudiantes, uno por uno
+          Tamiza estudiantes, uno por uno
         </h4>
         <div className="flex flex-wrap gap-2">
           <button
@@ -1161,7 +1161,7 @@ function TamizajeInteractivo() {
       </div>
       <div className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
         {indice === 0 ? (
-          <p>Tamizá al primer estudiante y el cálculo va a aparecer aquí.</p>
+          <p>Tamiza al primer estudiante y el cálculo va a aparecer aquí.</p>
         ) : indice < 20 ? (
           <p>
             Van <strong className="tabular-nums">{indice}</strong> fichas y{" "}
@@ -1169,7 +1169,7 @@ function TamizajeInteractivo() {
             sea{" "}
             <strong className="tabular-nums">{pctPositivo.toFixed(1)}%</strong>.
             Pero con tan pocas fichas ese porcentaje salta con cada estudiante
-            nuevo: no lo tomes como estimación todavía. Tamizá 20 más y volvé a
+            nuevo: no lo tomes como estimación todavía. Tamiza 20 más y vuelve a
             mirarlo.
           </p>
         ) : (
@@ -1268,7 +1268,7 @@ function DadoEItem() {
       <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
         El dado no es el tema de la materia: es el objeto más limpio para ver
         la estructura. Acá está esa estructura al lado del objeto que vas a
-        usar toda tu carrera. Tiralos juntos.
+        usar toda tu carrera. Tíralos juntos.
       </p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -1361,8 +1361,8 @@ function DadoEItem() {
       <div className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
         {n === 0 ? (
           <>
-            Fijate antes de tirar: en los dos casos sabés{" "}
-            <strong>qué puede salir</strong> y no sabés{" "}
+            Fíjate antes de tirar: en los dos casos sabes{" "}
+            <strong>qué puede salir</strong> y no sabes{" "}
             <strong>qué va a salir</strong>. Eso es todo lo que hace falta para
             que algo sea un experimento aleatorio.
           </>

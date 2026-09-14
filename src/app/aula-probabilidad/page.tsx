@@ -39,8 +39,8 @@ export default function AulaProbabilidadPage() {
               </h1>
               <p className="mt-3 max-w-2xl text-slate-700 dark:text-slate-300">
                 Unidad 2 completa, del espacio muestral al Teorema de Bayes.
-                Cada concepto se define primero y se comprueba después: tirás
-                los dados, tamizás las fichas y ves el cálculo armarse solo.
+                Cada concepto se define primero y se comprueba después: tiras
+                los dados, tamizas las fichas y ves el cálculo armarse solo.
                 Sirve tanto proyectada en clase como para estudiar por tu
                 cuenta.
               </p>

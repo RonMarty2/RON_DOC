@@ -70,7 +70,7 @@ export function ArmarPuntaje() {
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-          Respondé el cuestionario y mirá cómo se arma el puntaje
+          Responde el cuestionario y mira cómo se arma el puntaje
         </h4>
         <div className="flex flex-wrap gap-2">
           <button
@@ -208,7 +208,7 @@ export type CampoFicha = "phq9" | "dx" | "gad7" | "expediente";
  */
 export function LasFichas({
   campos,
-  titulo = "Mirá una ficha por dentro",
+  titulo = "Mira una ficha por dentro",
   intro,
 }: {
   campos: CampoFicha[];
@@ -370,7 +370,7 @@ export function LasFichas({
           </div>
 
           <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
-            Saltá directo a cada caso posible
+            Salta directo a cada caso posible
           </p>
           <div className="mt-2 flex flex-wrap gap-2">
             {interesantes.map((x) => (
@@ -472,7 +472,7 @@ const PREGUNTAS_CONTEO: PreguntaConteo[] = [
     universo: () => true,
     cumple: (e) => e.phq9 < 5,
     cierre:
-      "Mismo procedimiento, otra pregunta: cambió lo que contamos, pero el total sigue siendo las 200 fichas. Fijate que da bastante más que la anterior — la mayoría de los estudiantes puntúa bajo.",
+      "Mismo procedimiento, otra pregunta: cambió lo que contamos, pero el total sigue siendo las 200 fichas. Fíjate que da bastante más que la anterior — la mayoría de los estudiantes puntúa bajo.",
   },
   {
     id: "graves",
@@ -512,7 +512,7 @@ export function PuenteALaProbabilidad() {
         <strong>lo único que tenemos</strong>, y cada pregunta de probabilidad
         de este capítulo se responde <strong>contándolas</strong>. Elegir una
         ficha al azar es el experimento; contar cuántas cumplen algo es la
-        probabilidad. Tocá una pregunta y mirá el conteo:
+        probabilidad. Toca una pregunta y mira el conteo:
       </p>
 
       <div className="mt-4 flex flex-col gap-2">
@@ -559,7 +559,7 @@ export function PuenteALaProbabilidad() {
       <div className="mt-4 rounded-xl bg-white px-4 py-3 dark:bg-slate-900">
         {!p ? (
           <p className="text-sm text-slate-600 dark:text-slate-400">
-            Cada cuadradito es un estudiante. Elegí una pregunta arriba y se
+            Cada cuadradito es un estudiante. Elige una pregunta arriba y se
             van a marcar los que cumplen.
           </p>
         ) : (
@@ -836,9 +836,9 @@ export function AnalogiaDados() {
 
       {/* La escalera: de una pregunta a nueve, un peldaño por vez */}
       <p className="mt-6 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-        Empezá tirando <strong>una sola</strong> pregunta. Después sumá otra, y
-        después las nueve. Fijate qué le pasa al resultado posible cada vez que
-        agregás una:
+        Empieza tirando <strong>una sola</strong> pregunta. Después suma otra, y
+        después las nueve. Fíjate qué le pasa al resultado posible cada vez que
+        agregas una:
       </p>
 
       <div className="mt-3 flex flex-wrap gap-2">
@@ -901,7 +901,7 @@ export function AnalogiaDados() {
       <div className="mt-4 rounded-xl bg-white px-4 py-3 dark:bg-slate-900">
         {suma === null ? (
           <p className="text-sm text-slate-600 dark:text-slate-400">
-            Tirá y mirá cuánto sale. Todavía no hay nada que calcular: sólo
+            Tira y mira cuánto sale. Todavía no hay nada que calcular: sólo
             estamos viendo qué resultados puede dar el instrumento.
           </p>
         ) : (
@@ -913,7 +913,7 @@ export function AnalogiaDados() {
               {cuantas === 1 && (
                 <>
                   Con una sola pregunta, el «puntaje» es el número que salió.
-                  Puede ser 0, 1, 2 o 3 — nada más. Agregá una segunda y mirá
+                  Puede ser 0, 1, 2 o 3 — nada más. Agrega una segunda y mira
                   cómo se abre el abanico.
                 </>
               )}

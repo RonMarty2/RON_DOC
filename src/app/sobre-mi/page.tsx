@@ -31,7 +31,7 @@ export default function SobreMiPage() {
           <p>
             [CONTENIDO PENDIENTE] Aquí va una bio corta: formación académica,
             experiencia docente, áreas de especialización y líneas de investigación.
-            Reemplazá este texto en <code>src/app/sobre-mi/page.tsx</code>.
+            Reemplaza este texto en <code>src/app/sobre-mi/page.tsx</code>.
           </p>
 
           <h2>Materias que dicto</h2>

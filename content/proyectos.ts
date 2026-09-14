@@ -33,7 +33,7 @@ export const PROYECTOS: Proyecto[] = [
     slug: "calculadora-financiera",
     titulo: "[CONTENIDO PENDIENTE] Otra app",
     descripcion:
-      "Reemplazá esta entrada en content/proyectos.ts por otra app real que quieras enlazar.",
+      "Reemplaza esta entrada en content/proyectos.ts por otra app real que quieras enlazar.",
     url: "https://ejemplo.com/",
     estado: "en-desarrollo",
     icono: "💡",

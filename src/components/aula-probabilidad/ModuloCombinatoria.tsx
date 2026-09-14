@@ -73,7 +73,7 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
       </Definicion>
 
       <Hilo>
-        Movelo y mirá el número. Lo interesante no es cuánto vale, sino la
+        Muévelo y mira el número. Lo interesante no es cuánto vale, sino la
         velocidad a la que crece.
       </Hilo>
 
@@ -168,7 +168,7 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
 
       <Comprueba
         pregunta="El servicio decide citar a 3 estudiantes y asignarles turnos distintos: 9:00, 10:00 y 11:00. ¿Qué corresponde calcular?"
-        pista="Aplicá la prueba de intercambio: ¿cambia algo si dos de los citados intercambian su lugar?"
+        pista="Aplica la prueba de intercambio: ¿cambia algo si dos de los citados intercambian su lugar?"
         opciones={[
           {
             texto: "Permutación",
@@ -373,7 +373,7 @@ function FactorialCreciente() {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <h5 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-        Movelo y mirá qué rápido crece
+        Muévelo y mira qué rápido crece
       </h5>
       <label className="mt-4 flex items-center gap-3">
         <span className="w-16 shrink-0 font-mono text-sm text-slate-600 dark:text-slate-400">
@@ -531,7 +531,7 @@ function Enumerador() {
         </p>
         <p className="mt-1 text-slate-600 dark:text-slate-400">
           {importaOrden
-            ? `Fijate que A→B y B→A aparecen las dos: son ordenamientos distintos del mismo par. Por eso hay ${permutaciones(n, r) / combinaciones(n, r)} veces más que en combinación — que es exactamente ${r}! ordenamientos internos por grupo.`
+            ? `Fíjate que A→B y B→A aparecen las dos: son ordenamientos distintos del mismo par. Por eso hay ${permutaciones(n, r) / combinaciones(n, r)} veces más que en combinación — que es exactamente ${r}! ordenamientos internos por grupo.`
             : "Cada grupo aparece una sola vez: AB está, pero BA no, porque son el mismo grupo con otro orden de escritura."}
         </p>
       </div>

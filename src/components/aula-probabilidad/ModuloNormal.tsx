@@ -232,13 +232,13 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
 
 
       <p className="text-sm text-slate-700 dark:text-slate-300">
-        Mové el punto de corte y mirá qué le pasa a todo lo que construimos
+        Mueve el punto de corte y mira qué le pasa a todo lo que construimos
         desde el primer apartado. No hay una respuesta correcta: hay un
         intercambio.
       </p>
 
       <Hilo>
-        Esto cierra el capítulo. Mové el corte y mirá qué le pasa, al mismo
+        Esto cierra el capítulo. Mueve el corte y mira qué le pasa, al mismo
         tiempo, a todo lo que fuimos construyendo desde el primer apartado.
       </Hilo>
 
@@ -281,7 +281,7 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
 
       <Comprueba
         pregunta="El comité propone bajar el punto de corte de 10 a 5 para «no dejar pasar a nadie». ¿Qué se gana y qué se pierde?"
-        pista="Mové el deslizador de arriba hasta 5 y comparalo con 10 antes de responder."
+        pista="Mueve el deslizador de arriba hasta 5 y compáralo con 10 antes de responder."
         opciones={[
           {
             texto: "Se pierden menos casos reales, pero se disparan las falsas alarmas y cae el valor predictivo",
@@ -297,7 +297,7 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
           {
             texto: "No cambia nada, porque la sensibilidad es una propiedad fija del cuestionario",
             porQue:
-              "La sensibilidad y la especificidad NO son fijas: dependen de dónde se ponga el corte. El 88% de ambas corresponde específicamente al corte en 10, y se mueve apenas lo desplazás.",
+              "La sensibilidad y la especificidad NO son fijas: dependen de dónde se ponga el corte. El 88% de ambas corresponde específicamente al corte en 10, y se mueve apenas lo desplazas.",
           },
         ]}
       />
@@ -310,7 +310,7 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
           con Bayes, y modelamos variables completas con cuatro distribuciones.
         </p>
         <p>
-          Pero fijate en algo que hicimos todo el tiempo sin señalarlo: usamos
+          Pero fíjate en algo que hicimos todo el tiempo sin señalarlo: usamos
           la prevalencia, la sensibilidad y la media del cuestionario{" "}
           <strong>como si fueran datos conocidos</strong>. En la investigación
           real no lo son: son parámetros que hay que estimar a partir de una

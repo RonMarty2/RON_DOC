@@ -55,7 +55,7 @@ export function ModuloElArchivo({ onContinuar }: { onContinuar: () => void }) {
         intro={
           <p>
             Éstas son fichas reales del servicio. Todavía tienen un solo campo
-            visible: el puntaje que acabás de aprender a armar. A medida que
+            visible: el puntaje que acabas de aprender a armar. A medida que
             avancemos, esta misma ficha va a ir mostrando más datos — pero
             sólo cuando haya algo que hacer con ellos.
           </p>
@@ -141,7 +141,7 @@ export function ModuloElArchivo({ onContinuar }: { onContinuar: () => void }) {
         onContinuar={onContinuar}
       >
         <p>
-          Ya tenés el objeto completo: un dado, una pregunta, un puntaje, una
+          Ya tienes el objeto completo: un dado, una pregunta, un puntaje, una
           ficha y un archivo de doscientas. Todo lo que sigue se calcula sobre
           eso.
         </p>
@@ -198,11 +198,11 @@ function DiezFichas() {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-        Marcá las que el filtro debería marcar
+        Marca las que el filtro debería marcar
       </h4>
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
         La regla es una sola: se marca a quien saca{" "}
-        <strong>{CORTE_TAMIZAJE} o más</strong>. Tocá las fichas que
+        <strong>{CORTE_TAMIZAJE} o más</strong>. Toca las fichas que
         correspondan.
       </p>
 

@@ -22,7 +22,7 @@ export const MATERIAS: Materia[] = [
         href: "/aula-probabilidad",
         titulo: "Aula Interactiva de Probabilidad",
         descripcion:
-          "Un test detecta el 88% de los casos reales y, aun así, la mitad de sus alarmas son falsas. La herramienta recorre la Unidad 2 completa —del espacio muestral al Teorema de Bayes— definiendo cada concepto y dejando que lo compruebes vos mismo sobre 200 fichas reales.",
+          "Un test detecta el 88% de los casos reales y, aun así, la mitad de sus alarmas son falsas. La herramienta recorre la Unidad 2 completa —del espacio muestral al Teorema de Bayes— definiendo cada concepto y dejando que lo compruebes tú mismo sobre 200 fichas reales.",
         icono: "🎲",
       },
     ],
@@ -68,7 +68,7 @@ export const MATERIAS: Materia[] = [
             src: "/interactivos/pearson_pizarra.html",
             titulo: "Pizarra interactiva: correlación de Pearson",
             descripcion:
-              "Manipulá los puntos para ver cómo cambia el coeficiente r en tiempo real.",
+              "Manipula los puntos para ver cómo cambia el coeficiente r en tiempo real.",
             alto: "640px",
           },
         ],

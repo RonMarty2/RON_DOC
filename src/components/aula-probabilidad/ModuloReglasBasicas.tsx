@@ -76,7 +76,7 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         intro={
           <p>
             La misma ficha de siempre, mostrando ahora las dos mediciones lado
-            a lado. Pasá algunas y fijate si te parece que van juntas — al
+            a lado. Pasa algunas y fíjate si te parece que van juntas — al
             final del apartado vamos a poder contestarlo con un número en vez
             de con una impresión.
           </p>
@@ -84,7 +84,7 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
       />
 
       <p className="text-slate-700 dark:text-slate-300">
-        Dos círculos que se solapan sobre una hoja. Si sumás el área de cada
+        Dos círculos que se solapan sobre una hoja. Si sumas el área de cada
         uno por separado, la zona compartida queda contada dos veces y el total
         te da de más. Hay que restarla una vez. Ese dibujo es toda la lógica de
         la regla de la suma.
@@ -110,7 +110,7 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
       </Definicion>
 
       <Hilo>
-        Antes de la fórmula, mirá el dibujo: dos círculos que se solapan, y la
+        Antes de la fórmula, mira el dibujo: dos círculos que se solapan, y la
         zona del medio que pertenece a los dos a la vez.
       </Hilo>
 
@@ -328,7 +328,7 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
 
       <Comprueba
         pregunta="Dar positivo y dar negativo en el mismo cuestionario no pueden ocurrir juntos. ¿Son eventos independientes?"
-        pista="Independiente significa que saber uno no cambia la probabilidad del otro. Probá aplicar esa definición."
+        pista="Independiente significa que saber uno no cambia la probabilidad del otro. Prueba aplicar esa definición."
         opciones={[
           {
             texto: "No: son mutuamente excluyentes, y eso los vuelve fuertemente dependientes",
@@ -694,7 +694,7 @@ function VennIndependencia() {
       >
         {modo === "real" ? (
           <>
-            <strong>Se pisan mucho más de lo que deberían.</strong> Mirá los
+            <strong>Se pisan mucho más de lo que deberían.</strong> Mira los
             dos números: en la población general el {(pB * 100).toFixed(1)}%
             tiene ansiedad, pero <em>dentro</em> del círculo azul es el{" "}
             {(pBdadoA * 100).toFixed(1)}%. Entrar al círculo de depresión{" "}
@@ -707,8 +707,8 @@ function VennIndependencia() {
             números coinciden: dentro del círculo azul hay la misma proporción
             de ansiedad que en toda la población. Entrar al círculo{" "}
             <strong>no cambiaría nada</strong> — saber que alguien dio positivo
-            en depresión no diría absolutamente nada sobre su ansiedad. Tocá
-            «Lo que hay» y mirá cuánto más se pisan en realidad.
+            en depresión no diría absolutamente nada sobre su ansiedad. Toca
+            «Lo que hay» y mira cuánto más se pisan en realidad.
           </>
         )}
       </div>

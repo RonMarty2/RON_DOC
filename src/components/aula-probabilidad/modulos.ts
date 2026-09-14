@@ -52,7 +52,7 @@ export const MODULOS: ModuloMeta[] = [
     titulo: "Un dado y una pregunta",
     subtitulo: "El objeto más simple",
     resumen:
-      "Tirá un dado. Después mirá una pregunta del cuestionario: cuatro opciones, cuatro caras. Sumá dos preguntas, después las nueve, y ya tenés un puntaje.",
+      "Tira un dado. Después mira una pregunta del cuestionario: cuatro opciones, cuatro caras. Suma dos preguntas, después las nueve, y ya tienes un puntaje.",
   },
   {
     id: "el-archivo",

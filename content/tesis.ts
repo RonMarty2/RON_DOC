@@ -50,6 +50,6 @@ export const AREAS_TESIS: AreaTesis[] = [
  * Editalo libremente: es el "cómo trabajo" tuyo, no datos de terceros.
  */
 export const ENFOQUE_TUTORIA = [
-  "[CONTENIDO PENDIENTE] Definí acá tu enfoque al acompañar trabajos de grado: cómo orientás la formulación del problema, qué prácticas exigís en el manejo de datos, qué bibliografía sugerís.",
-  "[CONTENIDO PENDIENTE] Segundo párrafo: criterios de evaluación, cadencia de reuniones, herramientas que usás (R, Stata, Excel, Python, etc.).",
+  "[CONTENIDO PENDIENTE] Define acá tu enfoque al acompañar trabajos de grado: cómo orientas la formulación del problema, qué prácticas exiges en el manejo de datos, qué bibliografía sugieres.",
+  "[CONTENIDO PENDIENTE] Segundo párrafo: criterios de evaluación, cadencia de reuniones, herramientas que usas (R, Stata, Excel, Python, etc.).",
 ];

@@ -81,7 +81,7 @@ export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
             </p>
             {!veDiagnostico && (
               <p className="mt-2 rounded-lg bg-slate-100 px-3 py-2 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
-                Este panel crece con vos: por ahora muestra sólo los datos que
+                Este panel crece contigo: por ahora muestra sólo los datos que
                 ya se presentaron. La tabla de 2×2 y los indicadores aparecen
                 en el apartado 2.3, cuando haya con qué calcularlos.
               </p>

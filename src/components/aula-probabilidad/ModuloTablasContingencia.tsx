@@ -262,8 +262,8 @@ export function ModuloTablasContingencia({
       </Definicion>
 
       <Hilo>
-        Elegí cada pregunta de la lista y mirá qué parte de la tabla se
-        enciende. Prestá atención a una sola cosa: qué cambia entre una y otra.
+        Elige cada pregunta de la lista y mira qué parte de la tabla se
+        enciende. Presta atención a una sola cosa: qué cambia entre una y otra.
       </Hilo>
 
       <TablaInteractiva
@@ -322,7 +322,7 @@ export function ModuloTablasContingencia({
       </div>
 
       <MiniHistoria titulo="La condicional comparte numerador con la conjunta">
-        Fijate en la tabla: la conjunta y la sensibilidad usan la{" "}
+        Fíjate en la tabla: la conjunta y la sensibilidad usan la{" "}
         <strong>misma celda</strong> arriba ({t.VP} verdaderos positivos). Lo
         único que cambia es el denominador — {t.total} contra {t.dxSi}. Por eso
         calcular una creyendo que se calcula la otra es el error más común de
@@ -418,8 +418,8 @@ export function ModuloTablasContingencia({
       />
 
       <Comprueba
-        pregunta={`De los ${t.total} estudiantes, ${t.VN} dieron negativo y estaban efectivamente sanos. Si querés calcular la especificidad, ¿cuál es el denominador correcto?`}
-        pista="Preguntate qué condición se conoce de antemano en la definición de especificidad."
+        pregunta={`De los ${t.total} estudiantes, ${t.VN} dieron negativo y estaban efectivamente sanos. Si quieres calcular la especificidad, ¿cuál es el denominador correcto?`}
+        pista="Pregúntate qué condición se conoce de antemano en la definición de especificidad."
         opciones={[
           {
             texto: `${t.dxNo} — todos los que NO tienen el diagnóstico`,
@@ -470,7 +470,7 @@ export function ModuloTablasContingencia({
 
       <Comprueba
         pregunta={`Dos servicios usan el MISMO cuestionario. En el primero, de ${t.positivos} positivos ${t.VP} tenían el diagnóstico. En el segundo, de 43 positivos 38 lo tenían. ¿Qué instrumento es mejor?`}
-        pista="Fijate qué mide el valor predictivo: ¿el test, o el test más la población?"
+        pista="Fíjate qué mide el valor predictivo: ¿el test, o el test más la población?"
         opciones={[
           {
             texto: "Ninguno: es el mismo instrumento, cambia la población",
@@ -547,7 +547,7 @@ function TablaInteractiva({
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
       <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
-        Elegí una pregunta y mirá qué parte de la tabla se usa para
+        Elige una pregunta y mira qué parte de la tabla se usa para
         responderla:
       </p>
       <div className="mt-3 flex flex-col gap-1.5">

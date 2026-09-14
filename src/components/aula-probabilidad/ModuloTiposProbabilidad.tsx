@@ -102,7 +102,7 @@ export function ModuloTiposProbabilidad({
 
       <Hilo>
         Las dos primeras no son rivales: cuando el experimento es simétrico
-        terminan coincidiendo. Tirá la moneda y comprobalo.
+        terminan coincidiendo. Tira la moneda y compruébalo.
       </Hilo>
 
       <MonedaConvergente />
@@ -140,7 +140,7 @@ export function ModuloTiposProbabilidad({
       <MiniHistoria titulo="Las dos primeras terminan coincidiendo">
         Si el experimento es simétrico, la frecuencia observada se acerca a la
         probabilidad clásica a medida que aumentan las repeticiones. Eso es lo
-        que acabás de ver con la moneda: la línea teórica no se movió nunca, y
+        que acabas de ver con la moneda: la línea teórica no se movió nunca, y
         la barra fue hacia ella sola.
       </MiniHistoria>
 
@@ -260,8 +260,8 @@ export function ModuloTiposProbabilidad({
       />
 
       <Comprueba
-        pregunta="Querés calcular la probabilidad de que un estudiante saque MENOS de 27 puntos. Contar todos esos casos es tedioso. ¿Qué conviene hacer?"
-        pista="Pensá si es más fácil contar lo que pedís o lo contrario."
+        pregunta="Quieres calcular la probabilidad de que un estudiante saque MENOS de 27 puntos. Contar todos esos casos es tedioso. ¿Qué conviene hacer?"
+        pista="Piensa si es más fácil contar lo que pides o lo contrario."
         opciones={[
           {
             texto: "Calcular la probabilidad de sacar exactamente 27 y restarla de 1",
@@ -452,9 +452,9 @@ function MonedaConvergente() {
           </p>
           <p className="mt-1 text-slate-600 dark:text-slate-400">
             {tiradas === 0
-              ? "Todavía sin datos. Tirá la moneda para empezar a estimarla."
+              ? "Todavía sin datos. Tira la moneda para empezar a estimarla."
               : tiradas < 30
-                ? `${caras} caras en ${tiradas} ${tiradas === 1 ? "tirada" : "tiradas"}. Con tan pocas, este número salta muchísimo y todavía no dice nada: tirá 100 o 1.000 y mirá cómo se pega al 50%.`
+                ? `${caras} caras en ${tiradas} ${tiradas === 1 ? "tirada" : "tiradas"}. Con tan pocas, este número salta muchísimo y todavía no dice nada: tira 100 o 1.000 y mira cómo se pega al 50%.`
                 : `${caras} caras en ${tiradas.toLocaleString("es")} tiradas. Sólo existe porque observamos — y cuantas más tiradas, más se acerca al valor clásico.`}
           </p>
         </div>
@@ -533,7 +533,7 @@ function Axiomas({ p }: { p: number }) {
           onClick={() => setActivo(activo === 1 ? null : 1)}
         >
           <p className="text-sm text-slate-700 dark:text-slate-300">
-            Mirá la barra: un trozo puede ser grandísimo o achicarse hasta
+            Mira la barra: un trozo puede ser grandísimo o achicarse hasta
             desaparecer, pero <strong>no puede tener ancho negativo</strong>.
             No hay forma de dibujarlo. Ese es todo el axioma.
           </p>
@@ -728,7 +728,7 @@ function ComplementoVisual({ p }: { p: number }) {
             </>
           ) : (
             <>
-              Éste es el evento A. Tocá el botón y mirá qué pasa con los
+              Éste es el evento A. Toca el botón y mira qué pasa con los
               cuadraditos: el complemento no es «otro evento parecido», es{" "}
               <strong>exactamente todo lo que A deja afuera</strong>.
             </>
@@ -832,8 +832,8 @@ function AsignacionAleatoria() {
         Un estudio compara una terapia contra una lista de espera. Para que los
         dos grupos sean comparables, cada participante se asigna{" "}
         <strong>al azar</strong>. La probabilidad de caer en tratamiento es
-        exactamente <strong>0,5</strong> — y lo sabés antes de reclutar a nadie,
-        porque esa simetría la fabricaste vos al diseñar el procedimiento.
+        exactamente <strong>0,5</strong> — y lo sabes antes de reclutar a nadie,
+        porque esa simetría la fabricaste tú al diseñar el procedimiento.
       </p>
 
       <div className="mt-4 flex flex-wrap gap-2">
@@ -875,7 +875,7 @@ function AsignacionAleatoria() {
 
       {n === 0 ? (
         <p className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
-          Antes de asignar a nadie ya podés afirmar que la probabilidad es 0,5.
+          Antes de asignar a nadie ya puedes afirmar que la probabilidad es 0,5.
           Ninguna probabilidad frecuentista permite eso: para las que salen de
           contar, hay que contar primero.
         </p>
@@ -948,7 +948,7 @@ function AsignacionAleatoria() {
               <>
                 Con {n} {n === 1 ? "participante" : "participantes"} la
                 proporción está lejos de 0,5 y no significa nada: el
-                procedimiento sigue siendo perfectamente simétrico. Seguí
+                procedimiento sigue siendo perfectamente simétrico. Sigue
                 asignando.
               </>
             ) : (

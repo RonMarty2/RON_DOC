@@ -36,19 +36,19 @@ export function ModuloUnDado({ onContinuar }: { onContinuar: () => void }) {
       <IndiceApartado
         insignia={INSIGNIA}
         pasos={[
-          "Tirá un dado",
+          "Tira un dado",
           "Una pregunta es un dado",
           "Nueve preguntas son un puntaje",
         ]}
       />
 
       <PasoTitulo numero={1} insignia={INSIGNIA}>
-        Tirá un dado
+        Tira un dado
       </PasoTitulo>
 
       <p className="text-slate-700 dark:text-slate-300">
         Empecemos por el objeto más simple que existe en todo este capítulo. Un
-        dado. Tiralo unas cuantas veces y no pienses en nada más que en lo que
+        dado. Tíralo unas cuantas veces y no pienses en nada más que en lo que
         vas viendo.
       </p>
 
@@ -56,7 +56,7 @@ export function ModuloUnDado({ onContinuar }: { onContinuar: () => void }) {
 
       <Hilo>
         Eso es todo lo que hace falta para empezar: algo que puede salir de
-        varias maneras, y que no sabés de cuál va a salir esta vez. El resto
+        varias maneras, y que no sabes de cuál va a salir esta vez. El resto
         del capítulo es aprender a hablar con precisión sobre situaciones así.
       </Hilo>
 
@@ -80,7 +80,7 @@ export function ModuloUnDado({ onContinuar }: { onContinuar: () => void }) {
           Con nueve, de 0 a 27.
         </p>
         <p>
-          Fijate que nunca hizo falta memorizar ese 27: sale de multiplicar 9
+          Fíjate que nunca hizo falta memorizar ese 27: sale de multiplicar 9
           por 3. Ese va a ser el método de todo el capítulo — construir el
           número en vez de recordarlo.
         </p>
@@ -91,8 +91,8 @@ export function ModuloUnDado({ onContinuar }: { onContinuar: () => void }) {
       </PasoTitulo>
 
       <p className="text-slate-700 dark:text-slate-300">
-        Hasta acá las preguntas salían al azar. Respondelas vos, como las
-        respondería una persona, y mirá armarse el puntaje:
+        Hasta acá las preguntas salían al azar. Respóndelas tú, como las
+        respondería una persona, y mira armarse el puntaje:
       </p>
 
       <ArmarPuntaje />
@@ -132,7 +132,7 @@ export function ModuloUnDado({ onContinuar }: { onContinuar: () => void }) {
         onContinuar={onContinuar}
       >
         <p>
-          Ya sabés qué es un dado, qué es una pregunta y de dónde sale un
+          Ya sabes qué es un dado, qué es una pregunta y de dónde sale un
           puntaje. Todo lo que viste hasta acá cabe en una persona.
         </p>
         <p>
@@ -251,7 +251,7 @@ function UnDadoSuelto() {
           </button>
           <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
             {historial.length === 0
-              ? "Todavía no tiraste. Antes de hacerlo: ¿podés saber qué va a salir?"
+              ? "Todavía no tiraste. Antes de hacerlo: ¿puedes saber qué va a salir?"
               : cara !== null
                 ? `Salió ${cara}.`
                 : ""}
@@ -280,18 +280,18 @@ function UnDadoSuelto() {
       <p className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
         {historial.length === 0 ? (
           <>
-            No podés. Y sin embargo tampoco estás completamente a ciegas: sabés
+            No puedes. Y sin embargo tampoco estás completamente a ciegas: sabes
             que va a salir uno de seis números, y que no va a salir un 7.
           </>
         ) : historial.length < 5 ? (
           <>
             No sabías cuál iba a salir, pero sabías cuáles <em>podían</em>{" "}
-            salir. Tirá unas cuantas veces más.
+            salir. Tira unas cuantas veces más.
           </>
         ) : (
           <>
-            Después de {historial.length} tiradas seguís sin poder predecir la
-            próxima, y sin embargo ya sabés bastante: que hay seis resultados
+            Después de {historial.length} tiradas sigues sin poder predecir la
+            próxima, y sin embargo ya sabes bastante: que hay seis resultados
             posibles, que no aparece ningún otro, y que ninguno parece tener
             preferencia. <strong>De eso trata el capítulo</strong> — de todo lo
             que sí se puede afirmar sobre algo que no se puede predecir.

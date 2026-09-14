@@ -10,7 +10,7 @@ export default function NotFound() {
         Página no encontrada
       </h1>
       <p className="text-slate-600 dark:text-slate-400">
-        La ruta que buscás no existe o fue removida. Volvé al inicio para seguir
+        La ruta que buscas no existe o fue removida. Vuelve al inicio para seguir
         navegando.
       </p>
       <Link

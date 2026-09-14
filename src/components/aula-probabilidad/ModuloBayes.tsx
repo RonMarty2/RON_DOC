@@ -121,7 +121,7 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
               Nuestro caso: el del misterio con el que abrió el capítulo.
             </Ejemplo>
             <Ejemplo caso="Previa 40% · evidencia: mismo cuestionario · posterior ≈85%">
-              Idéntico instrumento, población distinta. Probalo con el
+              Idéntico instrumento, población distinta. Pruébalo con el
               deslizador de abajo.
             </Ejemplo>
             <Ejemplo caso="Fuera de la clínica: un antivirus marca un archivo">
@@ -167,7 +167,7 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
 
       <Cierre>
         <p>
-          Mirá las dos cajas naranjas: los verdaderos positivos y las falsas
+          Mira las dos cajas naranjas: los verdaderos positivos y las falsas
           alarmas son <strong>casi la misma cantidad de personas</strong>. Ese
           es el corazón de todo el capítulo, y contado así no tiene ningún
           misterio.
@@ -274,8 +274,8 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
       />
 
       <Comprueba
-        pregunta="Un colega concluye: «el test acierta el 88% de las veces, así que si diste positivo tenés 88% de probabilidad de estar deprimido». ¿Dónde está el error?"
-        pista="Fijate qué condiciona cada número: qué se sabe ya, y qué se está preguntando."
+        pregunta="Un colega concluye: «el test acierta el 88% de las veces, así que si diste positivo tienes 88% de probabilidad de estar deprimido». ¿Dónde está el error?"
+        pista="Fíjate qué condiciona cada número: qué se sabe ya, y qué se está preguntando."
         opciones={[
           {
             texto: "Confunde P(positivo | trastorno) con P(trastorno | positivo)",
@@ -308,13 +308,13 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         El mismo test, distintas poblaciones
       </PasoTitulo>
       <p className="text-sm text-slate-700 dark:text-slate-300">
-        Mové la prevalencia sin tocar el instrumento — sensibilidad y
+        Mueve la prevalencia sin tocar el instrumento — sensibilidad y
         especificidad quedan fijas en 88%. El valor predictivo cambia
         radicalmente.
       </p>
 
       <Hilo>
-        Ahora movelo vos. Sensibilidad y especificidad quedan fijas en 88%: el
+        Ahora muévelo tú. Sensibilidad y especificidad quedan fijas en 88%: el
         instrumento no cambia en ningún momento. Lo único que cambia es a quién
         se le aplica.
       </Hilo>

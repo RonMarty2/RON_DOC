@@ -524,7 +524,7 @@ export function Comprueba({
   return (
     <div className="rounded-2xl border-2 border-slate-300 bg-slate-50/60 p-5 dark:border-slate-700 dark:bg-slate-900/60 sm:p-6">
       <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-        Comprobá si lo entendiste
+        Comprueba si lo entendiste
       </p>
       <p className="mt-2 font-serif text-lg font-semibold leading-snug text-slate-900 dark:text-slate-100">
         {pregunta}
@@ -692,7 +692,7 @@ export function IndiceApartado({
  * tener que reconstruir la explicación desde los componentes.
  */
 export function Cierre({
-  titulo = "Lo que acabás de ver",
+  titulo = "Lo que acabas de ver",
   children,
 }: {
   titulo?: string;

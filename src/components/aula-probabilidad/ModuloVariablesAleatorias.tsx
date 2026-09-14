@@ -110,7 +110,7 @@ export function ModuloVariablesAleatorias({
       </Definicion>
 
       <Hilo>
-        Mové el número de estudiantes y mirá cómo cambia la forma completa de
+        Mueve el número de estudiantes y mira cómo cambia la forma completa de
         la distribución, no un valor suelto.
       </Hilo>
 
@@ -118,7 +118,7 @@ export function ModuloVariablesAleatorias({
 
       <Cierre>
         <p>
-          Fijate en dos cosas. La primera: las barras{" "}
+          Fíjate en dos cosas. La primera: las barras{" "}
           <strong>siempre suman 1</strong>, sin importar cuántos estudiantes
           elijas. No es casualidad, es la condición que define una
           distribución: los valores posibles tienen que cubrir todo lo que puede
@@ -149,7 +149,7 @@ export function ModuloVariablesAleatorias({
             µ
           </Termino>{" "}
           y se calcula con una{" "}
-          <Termino significa="Sigma mayúscula. Significa «sumá todo lo que viene a continuación, para cada valor posible». No es una operación nueva: es una forma corta de escribir una suma larga.">
+          <Termino significa="Sigma mayúscula. Significa «suma todo lo que viene a continuación, para cada valor posible». No es una operación nueva: es una forma corta de escribir una suma larga.">
             Σ
           </Termino>
           .
@@ -369,7 +369,7 @@ function TablaEsperanza({ p }: { p: number }) {
       <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h5 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
-            Armá la suma, término por término
+            Arma la suma, término por término
           </h5>
           <div className="flex flex-wrap gap-2">
             {!completo && (
@@ -397,8 +397,8 @@ function TablaEsperanza({ p }: { p: number }) {
 
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
           La Σ no es magia: es sumar un término por cada valor posible de{" "}
-          <V>X</V>. Con <V>n</V> = 2 hay tres términos. Calculalos uno por uno y
-          mirá cómo se acumula el total.
+          <V>X</V>. Con <V>n</V> = 2 hay tres términos. Calcúlalos uno por uno y
+          mira cómo se acumula el total.
         </p>
 
         <div className="mt-4 overflow-x-auto">
@@ -484,7 +484,7 @@ function TablaEsperanza({ p }: { p: number }) {
             </p>
           ) : !completo ? (
             <p>
-              Llevás <strong>{revelados}</strong> de {filas.length} términos.
+              Llevas <strong>{revelados}</strong> de {filas.length} términos.
               Las probabilidades suman{" "}
               <strong className="tabular-nums">{parcialProb.toFixed(4)}</strong>{" "}
               — todavía no llegan a 1, así que falta al menos un valor posible.
@@ -525,7 +525,7 @@ function TablaEsperanza({ p }: { p: number }) {
               </>
             ),
             explicacion:
-              "Sustituimos los tres valores posibles de X con sus probabilidades. Fijate que el término de x = 0 aporta cero: multiplicar por cero anula ese sumando, por más probable que sea.",
+              "Sustituimos los tres valores posibles de X con sus probabilidades. Fíjate que el término de x = 0 aporta cero: multiplicar por cero anula ese sumando, por más probable que sea.",
           },
           {
             expresion: (
@@ -534,7 +534,7 @@ function TablaEsperanza({ p }: { p: number }) {
               </>
             ),
             explicacion:
-              "Al evaluar dos estudiantes al azar se esperan, en promedio, 0,43 positivos. Nunca vas a observar 0,43 personas: es un promedio de largo plazo. Guardá el número — en 2.8 vamos a comprobar que coincide con n·p.",
+              "Al evaluar dos estudiantes al azar se esperan, en promedio, 0,43 positivos. Nunca vas a observar 0,43 personas: es un promedio de largo plazo. Guarda el número — en 2.8 vamos a comprobar que coincide con n·p.",
           },
         ]}
       />

@@ -34,7 +34,7 @@ export default function PodcastsPage() {
           </h1>
           <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-400">
             Conversaciones y explicaciones cortas alojadas en iVoox y YouTube.
-            Hacé clic en cualquier tarjeta para abrir el episodio en la plataforma.
+            Haz clic en cualquier tarjeta para abrir el episodio en la plataforma.
           </p>
         </div>
       </section>
@@ -71,7 +71,7 @@ export default function PodcastsPage() {
               Sin episodios todavía en esta plataforma.
             </p>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-              Probá con otro filtro o volvé más tarde.
+              Prueba con otro filtro o vuelve más tarde.
             </p>
           </div>
         ) : (

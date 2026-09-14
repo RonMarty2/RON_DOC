@@ -1,192 +1,249 @@
-\apartado{2.3}{Tablas de contingencia}
+\apartado{2.3}{Tablas de contingencia}{calculo}
+\bajada{Cruzar dos variables para responder lo que ninguna responde sola.
+En psicología esa tabla aparece dos veces: cuando se juzga si un test acierta,
+y cuando se juzga si dos evaluadores están de acuerdo.}
 
-\noindent\textit{Cruzar lo que dijo el test contra lo que era verdad. De acá
-salen los tres números que todo el mundo confunde.}
-\recordar{%
-  \begin{center}\small
-  \begin{tabular}{@{}lccl@{}}
-  \toprule
-   & \textbf{Tiene el trastorno} & \textbf{No lo tiene} & \\
-  \midrule
-  \textbf{Test $+$} & VP & FP & \\
-  \textbf{Test $-$} & FN & VN & \\
-  \bottomrule
-  \end{tabular}
-  \end{center}
-  $\text{Sensibilidad}=\dfrac{VP}{VP+FN}$ \quad
-  $\text{Especificidad}=\dfrac{VN}{VN+FP}$ \quad
-  $\text{VPP}=\dfrac{VP}{VP+FP}$\\[0.3em]
-  Las tres tienen el \emph{mismo} tipo de numerador y \emph{distinto}
-  denominador. Ahí está toda la diferencia.}
+\definicion{Tabla de contingencia}{%
+  Un cuadro que cruza dos variables categóricas y cuenta cuántos casos caen en
+  cada combinación. Con dos variables de dos categorías salen cuatro celdas,
+  ni una más.}
 
-\ejercicio{0}{%
-  Escribí con tus palabras qué significa cada sigla: VP, FP, FN, VN.
-  ¿Cuál de los dos errores te parece más grave en un tamizaje de depresión, y
-  por qué?}
-\espacioresolver[3.2cm]
+\minihistoria{El 80\% de acuerdo que en realidad es mucho menos}{%
+  Dos evaluadores codifican por separado las mismas 50 entrevistas y coinciden
+  en 40. Un 80\% de acuerdo suena excelente y suele informarse tal cual.\par
+  Pero si los dos marcan «presenta el criterio» sólo en el 30\% de los casos,
+  una parte de esas coincidencias iba a ocurrir aunque hubieran contestado
+  tirando una moneda cargada. Cuánto exactamente, se calcula — y es la mitad
+  de este apartado.}
+
+\ejercicio{0}{En una tabla que cruza lo que dijo el test contra el diagnóstico
+  real, escribí con tus palabras qué significa cada sigla: VP, FP, FN, VN.
+  ¿Cuál de los dos errores te parece más grave en un tamizaje de salud mental,
+  y por qué?}{}
+\renglones[5]
 \respuesta{VP: positivo y lo tiene. FP: positivo y no lo tiene (falsa alarma).
 FN: negativo y sí lo tiene (caso perdido). VN: negativo y no lo tiene.}
 \solucion{%
-  \textbf{VP} (verdadero positivo): el test lo marcó y sí tenía el trastorno.\\
-  \textbf{FP} (falso positivo): lo marcó pero estaba sano — una falsa alarma.\\
-  \textbf{FN} (falso negativo): no lo marcó pero sí lo tenía — un caso perdido.\\
-  \textbf{VN} (verdadero negativo): no lo marcó y estaba sano.
-  \\[0.3em]
-  En un tamizaje de salud mental el FN suele considerarse más grave: una falsa
-  alarma cuesta una entrevista innecesaria, un caso perdido deja a alguien sin
-  ayuda. Por eso estos instrumentos se calibran para «sonar de más».
-  \\[0.3em]
-  \textit{No hay respuesta única}: lo que se busca es que puedan argumentar el
-  costo de cada error.}
+  \textbf{VP}: el test lo marcó y sí tenía el trastorno.\par
+  \textbf{FP}: lo marcó pero estaba sano — una falsa alarma.\par
+  \textbf{FN}: no lo marcó pero sí lo tenía — un caso perdido.\par
+  \textbf{VN}: no lo marcó y estaba sano.
+  \par
+  En salud mental el FN suele considerarse más grave: una falsa alarma cuesta
+  una entrevista innecesaria, un caso perdido deja a alguien sin ayuda. Por eso
+  estos instrumentos se calibran para «sonar de más».
+  \par
+  \textbf{No hay respuesta única}: lo que se evalúa es que puedan argumentar el
+  costo de cada error, no que elijan el mismo que el docente.}
 
-\ejercicio{1}{%
-  Una tabla de un estudio pequeño da: $VP=8$, $FP=5$, $FN=2$, $VN=35$.
+\ejercicio{1}{Dos evaluadores codifican 50 entrevistas y coinciden en 40.
+  \textbf{Antes de calcular nada, escribí qué porcentaje de acuerdo creés que
+  se lograría si los dos contestaran al azar}, sabiendo que cada uno marca
+  «sí» en el 30\% de los casos: \underline{\hspace{2cm}}
+  \par\vspace{0.2em}
+  Guardá ese número. Lo vas a comprobar en el ejercicio 6.}{Predecí primero}
+\renglones[3]
+\respuesta{El acuerdo esperado por azar es 58\%. Casi nadie lo estima tan alto.}
+\solucion{%
+  La respuesta se calcula en el ejercicio 6 y da \textbf{58\%}.
+  \par
+  Casi todo el mundo estima algo entre 20\% y 40\%, porque intuitivamente
+  «coincidir por azar» suena raro. Pero los dos evaluadores coinciden tanto
+  cuando los dos dicen «sí» como cuando los dos dicen «no», y decir «no» es
+  lo que más hacen: ahí se acumula el acuerdo accidental.
+  \par
+  Ese hueco entre lo que estimaste y el 58\% es el motivo por el que existe el
+  coeficiente kappa.}
+\enclase{Anotá en el pizarrón las estimaciones de tres o cuatro estudiantes
+antes de seguir. Volvé a ellas en el ejercicio 6: el contraste es el momento
+más útil de la clase.}
+
+\ejercicio{1}{Una tabla de un estudio da $VP=8$, $FP=5$, $FN=2$, $VN=35$.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item ¿Cuántas personas participaron en total?
+    \item ¿Cuántas personas participaron?
     \item ¿Cuántas tenían realmente el trastorno?
     \item ¿Cuántas dieron positivo en el test?
-  \end{enumerate}}
-\espacioresolver[2.6cm]
+  \end{enumerate}}{}
+\renglones[4]
 \respuesta{(a) 50. (b) 10. (c) 13.}
 \solucion{%
-  (a) $8+5+2+35 = 50$ personas.
-  \\[0.3em]
-  (b) Las que lo tenían son las de la primera columna: $VP+FN = 8+2 = 10$.
-  \\[0.3em]
-  (c) Las que dieron positivo son la primera fila: $VP+FP = 8+5 = 13$.
-  \\[0.3em]
-  \textbf{Fijate en la estructura}: la verdad se lee por \emph{columnas} y lo
-  que dijo el test por \emph{filas}. Confundir una con otra es el origen de
-  casi todos los errores que siguen.}
+  (a) $8+5+2+35=50$.\par
+  (b) Las de la primera \emph{columna}: $VP+FN=8+2=10$.\par
+  (c) Las de la primera \emph{fila}: $VP+FP=8+5=13$.
+  \par
+  \textbf{Fijate en la estructura}: la verdad se lee por columnas y lo que dijo
+  el test por filas. Confundirlas es el origen de casi todos los errores que
+  siguen.}
 
-\ejercicio{1}{%
-  Con la misma tabla ($VP=8$, $FP=5$, $FN=2$, $VN=35$), calculá la
-  probabilidad \emph{conjunta} de que una persona elegida al azar sea a la vez
-  positiva en el test y tenga el trastorno.}
-\espacioresolver[1.8cm]
-\respuesta{$8/50 = 0{,}16$.}
+\ejercicio{2}{Con la misma tabla ($VP=8$, $FP=5$, $FN=2$, $VN=35$), calculá
+  estas dos y explicá por qué dan distinto si el numerador es el mismo:
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item la \textbf{sensibilidad};
+    \item el \textbf{valor predictivo positivo}.
+  \end{enumerate}}{Dos casos casi iguales}
+\renglones[5]
+\respuesta{(a) $8/10=0{,}80$. (b) $8/13\approx 0{,}615$. Cambia el
+denominador: columna contra fila.}
 \solucion{%
-  \[ P(\text{test}+ \cap \text{trastorno}) = \frac{VP}{\text{total}}
-     = \frac{8}{50} = 0{,}16 \]
-  Se llama \textbf{conjunta} porque exige las dos cosas a la vez, y su
-  denominador es el total general: no sabemos nada de la persona antes de
-  elegirla.}
-
-\ejercicio{2}{%
-  Con la misma tabla, calculá la \textbf{sensibilidad} y la
-  \textbf{especificidad}. Escribí en palabras qué mide cada una.}
-\espacioresolver[3cm]
-\respuesta{Sensibilidad $=8/10=0{,}80$; especificidad $=35/40=0{,}875$.}
-\solucion{%
-  \[ \text{Sensibilidad} = \frac{VP}{VP+FN} = \frac{8}{8+2} = \frac{8}{10} = 0{,}80 \]
+  (a) $\text{Sensibilidad}=\dfrac{VP}{VP+FN}=\dfrac{8}{10}=0{,}80$.
   De los que \emph{sí tenían} el trastorno, el test detectó al 80\%.
-  \\[0.3em]
-  \[ \text{Especificidad} = \frac{VN}{VN+FP} = \frac{35}{35+5} = \frac{35}{40} = 0{,}875 \]
-  De los que \emph{estaban sanos}, el test descartó correctamente al 87,5\%.
-  \\[0.3em]
-  Las dos miran \textbf{columnas}: parten de conocer la verdad y preguntan qué
-  hizo el test. Son propiedades del instrumento.}
-
-\ejercicio{2}{%
-  Con la misma tabla, calculá el \textbf{valor predictivo positivo} (VPP).
-  Compará el resultado con la sensibilidad del ejercicio anterior: ¿por qué
-  no dan lo mismo si el numerador es el mismo?}
-\espacioresolver[3cm]
-\respuesta{$VPP = 8/13 \approx 0{,}615$. Cambia el denominador: fila en vez de
-columna.}
-\solucion{%
-  \[ \text{VPP} = \frac{VP}{VP+FP} = \frac{8}{8+5} = \frac{8}{13} \approx 0{,}615 \]
-  \\[0.3em]
+  \par
+  (b) $\text{VPP}=\dfrac{VP}{VP+FP}=\dfrac{8}{13}\approx 0{,}615$.
+  De los que \emph{dieron positivo}, el 61,5\% lo tenía.
+  \par
   \textbf{Mismo numerador (8), distinto denominador.} La sensibilidad divide
-  por la \emph{columna} (los 10 que tenían el trastorno) y el VPP divide por la
-  \emph{fila} (los 13 que dieron positivo).
-  \\[0.3em]
-  Y son preguntas distintas: la sensibilidad es la pregunta del
-  \emph{instrumento} («si está enfermo, ¿lo detecto?»); el VPP es la pregunta
-  del \emph{paciente} («di positivo, ¿estoy enfermo?»). $80\%$ contra
-  $61{,}5\%$.}
+  por la columna; el VPP, por la fila.
+  \par
+  Y son preguntas de personas distintas: la sensibilidad es la pregunta del
+  \emph{instrumento} («si está enfermo, ¿lo detecto?»); el VPP es la del
+  \emph{paciente} («di positivo, ¿estoy enfermo?»). Nunca son la misma, y
+  confundirlas es el tema del último ejercicio.}
 
-\ejercicio{3}{%
-  Sobre las 200 fichas del servicio, la tabla real es:
+\ejercicio{2}{Un informe afirma:
+  \begin{quote}\itshape
+  «Los dos evaluadores coincidieron en 40 de 50 entrevistas. La confiabilidad
+  entre jueces es del 80\%, que es excelente.»
+  \end{quote}
+  El cálculo del 80\% está bien, pero la conclusión no se sigue.
+  \textbf{Señalá qué le falta al razonamiento} para poder afirmar que la
+  confiabilidad es excelente.}{Encontrá el error}
+\renglones[5]
+\respuesta{Falta descontar el acuerdo que ocurriría por azar. Sin eso, el 80\%
+no dice cuánto acuerdo es genuino.}
+\solucion{%
+  El $40/50=80\%$ está bien calculado. Lo que falla es \textbf{interpretarlo
+  como confiabilidad}.
+  \par
+  Dos personas que codifican al azar también coinciden a veces — y coinciden
+  bastante, sobre todo cuando la categoría es poco frecuente y los dos dicen
+  «no» casi siempre. Ese acuerdo accidental está adentro del 80\% y no
+  significa nada.
+  \par
+  Para saber cuánto del acuerdo es genuino hay que calcular cuánto se
+  esperaría por azar y descontarlo. Eso es exactamente lo que hace el
+  coeficiente \textbf{kappa}, y se calcula en el ejercicio 6.
+  \par
+  \textit{Es un error frecuente en tesis y en informes publicados: informar el
+  porcentaje de acuerdo crudo como si fuera confiabilidad.}}
+
+\ejercicio{3}{Ésta es la tabla real de los dos evaluadores sobre las 50
+  entrevistas:
   \begin{center}\small
-  \begin{tabular}{@{}lcc@{}}
+  \begin{tabular}{@{}lccc@{}}
   \toprule
-   & \textbf{Dx sí} & \textbf{Dx no} \\
+   & \textbf{B: sí} & \textbf{B: no} & \textbf{Total} \\
   \midrule
-  \textbf{Test $+$} & 22 & 21 \\
-  \textbf{Test $-$} & 3  & 154 \\
+  \textbf{A: sí} & 10 & 5  & 15 \\
+  \textbf{A: no} & 5  & 30 & 35 \\
+  \textbf{Total} & 15 & 35 & 50 \\
   \bottomrule
   \end{tabular}
   \end{center}
-  Calculá sensibilidad, especificidad, VPP y prevalencia.}
-\espacioresolver[4.5cm]
-\respuesta{Sens. $=22/25=0{,}88$; espec. $=154/175=0{,}88$;
-VPP $=22/43\approx 0{,}512$; prevalencia $=25/200=0{,}125$.}
-\solucion{%
-  Primero los márgenes: con el trastorno $22+3=25$; sanos $21+154=175$;
-  positivos $22+21=43$; total $200$.
-  \[ \text{Sensibilidad}=\frac{22}{25}=0{,}88 \qquad
-     \text{Especificidad}=\frac{154}{175}=0{,}88 \]
-  \[ \text{VPP}=\frac{22}{43}\approx 0{,}512 \qquad
-     \text{Prevalencia}=\frac{25}{200}=0{,}125 \]
-  \\[0.3em]
-  \textbf{Acá está el corazón de la unidad.} El instrumento acierta el 88\%
-  por los dos lados —es bueno—, y sin embargo de cada 100 alarmas que da,
-  casi 49 son falsas. No es una contradicción: es lo que pasa cuando se busca
-  algo poco frecuente. El apartado 2.6 explica exactamente por qué.}
-
-\ejercicio{3}{%
-  Con la misma tabla de 200 fichas, calculá:
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item la probabilidad \emph{conjunta} de dar positivo y tener el trastorno;
-    \item la probabilidad \emph{marginal} de dar positivo;
-    \item la probabilidad \emph{condicional} de tener el trastorno dado que dio positivo.
-  \end{enumerate}
-  Identificá cuál de las tres es el VPP.}
-\espacioresolver[3.6cm]
-\respuesta{(a) $22/200=0{,}11$; (b) $43/200=0{,}215$; (c) $22/43\approx0{,}512$.
-La (c) es el VPP.}
+    \item Calculá el acuerdo observado.
+    \item Calculá el acuerdo esperado \emph{por azar}: la probabilidad de que
+      los dos digan «sí» por casualidad, más la de que los dos digan «no».
+    \item Compará con tu estimación del ejercicio 2.
+  \end{enumerate}}{}
+\renglones[7]
+\respuesta{(a) $40/50 = 80\%$. (b) $0{,}09+0{,}49 = 0{,}58 = 58\%$.}
 \solucion{%
-  (a) Conjunta: $\dfrac{22}{200} = 0{,}11$ — denominador: el total.
-  \\[0.3em]
-  (b) Marginal: $\dfrac{43}{200} = 0{,}215$ — denominador: el total, ignorando
-  la otra variable.
-  \\[0.3em]
-  (c) Condicional: $\dfrac{22}{43} \approx 0{,}512$ — denominador: sólo los que
-  dieron positivo.
-  \\[0.3em]
-  La \textbf{(c) es el VPP}. Condicionar significa exactamente eso: achicar el
-  universo de la pregunta a los que cumplen la condición. Fijate que las tres
-  tienen el mismo numerador y responden cosas distintas.}
+  (a) Coinciden en $10+30=40$ de 50: $\mathbf{80\%}$.
+  \par
+  (b) A dice «sí» en $15/50=0{,}30$ de los casos y B también en $0{,}30$. Si
+  fueran independientes, los dos dirían «sí» a la vez en
+  $0{,}30\times 0{,}30=0{,}09$.
+  \par
+  A dice «no» en $0{,}70$ y B en $0{,}70$: los dos dirían «no» a la vez en
+  $0{,}70\times 0{,}70=0{,}49$.
+  \[ \text{Acuerdo por azar} = 0{,}09+0{,}49 = 0{,}58 = \mathbf{58\%} \]
+  \par
+  \textbf{El 58\% es enorme}, y casi nadie lo estima tan alto. Casi todo viene
+  del $0{,}49$: los dos evaluadores dicen «no» la mayor parte del tiempo, y
+  ahí coinciden sin esforzarse.
+  \par
+  De los 80 puntos de acuerdo, 58 son gratis. Sólo 22 son mérito de los
+  evaluadores.}
+\enclase{Volvé acá a las estimaciones que anotaste en el ejercicio 2. Es el
+momento del apartado donde más se aprende, y no funciona si no se comprometieron
+con un número antes.}
 
-\ejercicio{4}{%
-  Un colega lee la ficha técnica del cuestionario y dice:
+\ejercicio{3}{Con los mismos datos, el coeficiente \textbf{kappa} mide qué
+  proporción del acuerdo posible \emph{por encima del azar} efectivamente se
+  logró:
+  \[ \kappa = \frac{P_{o} - P_{e}}{1 - P_{e}} \]
+  donde $P_{o}$ es el acuerdo observado y $P_{e}$ el esperado por azar.
+  Calculalo e interpretá el resultado en una frase.}{}
+\renglones[5]
+\respuesta{$\kappa = (0{,}80-0{,}58)/(1-0{,}58) = 0{,}22/0{,}42 \approx 0{,}52$.}
+\solucion{%
+  \[ \kappa = \frac{0{,}80-0{,}58}{1-0{,}58} = \frac{0{,}22}{0{,}42}
+     \approx 0{,}52 \]
+  \par
+  \textbf{Cómo se lee la fórmula}: arriba, cuánto acuerdo hubo por encima del
+  azar ($0{,}22$). Abajo, cuánto acuerdo por encima del azar era posible como
+  máximo ($0{,}42$, porque el $58\%$ ya estaba tomado). El cociente dice qué
+  parte de lo posible se logró: algo más de la mitad.
+  \par
+  Un $\kappa$ de $0{,}52$ se considera acuerdo \emph{moderado} — muy lejos del
+  «excelente» que sugería el 80\% crudo. El mismo estudio, los mismos datos, y
+  una conclusión completamente distinta según qué número se informe.}
+
+\ejercicio{4}{Un colega lee la ficha técnica de un cuestionario de tamizaje y
+  dice:
   \begin{quote}\itshape
   «Tiene 88\% de sensibilidad. Entonces, si un estudiante da positivo, tiene
   88\% de probabilidad de estar deprimido. Yo le informo eso.»
   \end{quote}
+  Sobre las 200 fichas del servicio, la tabla real es $VP=22$, $FP=21$,
+  $FN=3$, $VN=154$.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
     \item ¿Qué está confundiendo, exactamente?
     \item ¿Cuál es el valor correcto para esa pregunta?
     \item Escribí en dos o tres líneas cómo se lo informarías al estudiante.
-  \end{enumerate}}
-\espacioresolver[5cm]
-\respuesta{(a) Confunde $P(+\mid \text{enfermo})$ con $P(\text{enfermo}\mid +)$.
+  \end{enumerate}}{}
+\renglones[7]
+\respuesta{(a) Confunde $P(+\mid\text{enfermo})$ con $P(\text{enfermo}\mid +)$.
 (b) $22/43 \approx 51{,}2\%$. (c) Respuesta abierta.}
 \solucion{%
-  (a) Confunde \textbf{sensibilidad} con \textbf{valor predictivo positivo}, o
-  sea $P(+\mid\text{enfermo})$ con $P(\text{enfermo}\mid+)$. Son
-  probabilidades condicionales \emph{inversas}: misma información, distinto
-  denominador. Invertirlas se llama \emph{falacia de la tasa base}.
-  \\[0.3em]
-  (b) El valor correcto es el VPP: $\dfrac{22}{43} \approx 51{,}2\%$.
-  \\[0.3em]
-  (c) Algo del tipo: «Este cuestionario detecta a la mayoría de las personas
-  con depresión, y por eso está diseñado para marcar de más. Que hayas dado
-  positivo significa que conviene que hablemos con más detalle, no que tengas
-  el diagnóstico: aproximadamente la mitad de las personas que marcamos así no
-  lo tienen. Por eso el paso siguiente es una entrevista, no un tratamiento.»
-  \\[0.3em]
-  \textit{Nota}: el error del colega no es de aritmética ni de descuido. Lo
-  cometen médicos y psicólogos con años de experiencia — está documentado
-  desde los años setenta. Por eso vale la pena practicarlo hasta que suene mal.}
+  (a) Confunde \textbf{sensibilidad} con \textbf{valor predictivo positivo}: es
+  $P(+\mid\text{enfermo})$ contra $P(\text{enfermo}\mid+)$. Misma información,
+  distinto denominador. Invertir una condicional así se llama \emph{falacia de
+  la tasa base}.
+  \par
+  (b) $\text{VPP}=\dfrac{22}{22+21}=\dfrac{22}{43}\approx 51{,}2\%$.
+  \par
+  (c) Algo del tipo: «Este cuestionario está hecho para marcar de más, a
+  propósito: preferimos conversar de más antes que dejar pasar a alguien. De
+  cada dos personas que marcamos, aproximadamente una no tiene el trastorno.
+  Lo que sigue es una entrevista para mirarlo con calma, no un diagnóstico.»
+  \par
+  \textbf{Adónde lleva esto}: el mismo error de invertir una condicional
+  reaparece en investigación con el valor $p$. Un $p$ de $0{,}03$ es
+  $P(\text{datos}\mid H_0)$ — la probabilidad de estos datos si la hipótesis
+  nula fuera cierta. Leerlo como «hay 3\% de probabilidad de que mi hipótesis
+  sea falsa» es $P(H_0\mid\text{datos})$: exactamente la misma inversión que
+  acaba de cometer el colega, y probablemente el error más extendido de la
+  psicología como disciplina.
+  \par
+  Si entendieron este ejercicio, entendieron ese también.}
+\enclase{Éste es el ejercicio que justifica todo el apartado. El puente con el
+valor $p$ conviene mencionarlo aunque no se desarrolle: los prepara para la
+Unidad 3 y les da una herramienta que muchos psicólogos titulados no tienen.}
+
+\trampa{informar el porcentaje de acuerdo crudo como confiabilidad entre jueces}%
+  {es fácil de calcular, suena alto y nadie lo cuestiona en una defensa}%
+  {hay que descontar el acuerdo que ocurriría por azar. Un 80\% de acuerdo con
+   una categoría poco frecuente puede ser un kappa mediocre, y la diferencia
+   cambia la conclusión del estudio}
+
+\cierre{%
+  La misma tabla de cuatro celdas respondió dos preguntas que parecían de
+  materias distintas: si un test acierta, y si dos evaluadores se ponen de
+  acuerdo. En los dos casos lo decisivo fue el mismo detalle — \emph{cuál es el
+  denominador} —, y en los dos casos el número que suena bien resultó ser el
+  que responde la pregunta equivocada.
+  \par
+  Hasta acá contamos casos que ya existían en un archivo. Lo que viene es
+  contar posibilidades que todavía no ocurrieron: de cuántas maneras podría
+  armarse algo.}

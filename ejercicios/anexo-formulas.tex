@@ -1,0 +1,48 @@
+\apartado{}{Fórmulas}{preambulo}
+\bajada{Están acá y no al principio de cada apartado a propósito: si la fórmula
+está en el renglón de arriba, el ejercicio se resuelve copiando. Ir a buscarla
+obliga a decidir cuál hace falta, que es la mitad del trabajo.}
+
+\definicion{Probabilidad}{%
+  \textbf{Clásica} (sólo con simetría):
+  $P(A)=\dfrac{\text{casos favorables}}{\text{casos posibles}}$\par
+  \textbf{Frecuentista}:
+  $P(A)\approx\dfrac{\text{veces que ocurrió}}{\text{veces que se observó}}$\par
+  \textbf{Complemento}: $P(A^{c})=1-P(A)$\par
+  \textbf{Axiomas}: $0\le P(A)\le 1$ \quad y \quad $P(S)=1$}
+
+\definicion{Espacio muestral}{%
+  Si un procedimiento tiene $k$ etapas y cada una tiene $m$ resultados
+  posibles, el total es $m^{k}$ — se multiplica, no se suma.\par
+  Ejemplo: 9 ítems de 4 opciones dan $4^{9}=262\,144$ formas de responder,
+  y sólo 28 puntajes distintos.}
+
+\definicion{Tabla de contingencia}{%
+  \begin{center}\small
+  \begin{tabular}{@{}lcc@{}}
+  \toprule
+   & \textbf{Condición sí} & \textbf{Condición no}\\
+  \midrule
+  \textbf{Test $+$} & VP & FP\\
+  \textbf{Test $-$} & FN & VN\\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+  $\text{Sensibilidad}=\dfrac{VP}{VP+FN}$ \quad
+  $\text{Especificidad}=\dfrac{VN}{VN+FP}$ \quad
+  $\text{VPP}=\dfrac{VP}{VP+FP}$\par
+  Las tres tienen el mismo tipo de numerador y distinto denominador: las dos
+  primeras dividen por \emph{columna}, el VPP por \emph{fila}.}
+
+\definicion{Acuerdo entre evaluadores}{%
+  $P_{o}$ = proporción de casos en que coinciden.\par
+  $P_{e}$ = acuerdo esperado por azar = (proporción de «sí» de A $\times$
+  proporción de «sí» de B) $+$ (proporción de «no» de A $\times$ proporción de
+  «no» de B).\par
+  $\kappa=\dfrac{P_{o}-P_{e}}{1-P_{e}}$}
+
+\definicion{Combinatoria}{%
+  $n! = n\times(n-1)\times\cdots\times 2\times 1$, \; y \; $0!=1$\par
+  \textbf{Permutación} (importa el orden): $P(n,k)=\dfrac{n!}{(n-k)!}$\par
+  \textbf{Combinación} (no importa): $C(n,k)=\dfrac{n!}{k!\,(n-k)!}$\par
+  Relación: $P(n,k)=C(n,k)\times k!$}

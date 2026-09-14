@@ -1,128 +1,222 @@
-\apartado{2.4}{Teoría combinatoria}
+\apartado{2.4}{Teoría combinatoria}{calculo}
+\bajada{Contar sin enumerar. En psicología aparece cada vez que hay que armar
+algo: el orden de una batería de pruebas, los grupos de un estudio, las
+secuencias de un diseño experimental. La única pregunta previa es siempre la
+misma: ¿importa el orden?}
 
-\noindent\textit{Contar sin enumerar. La única pregunta que hay que resolver
-antes de elegir la fórmula es: ¿importa el orden?}
-\recordar{%
-  $n! = n\cdot(n-1)\cdots 2\cdot 1$, y $0!=1$.\quad
-  \textbf{Permutación} (importa el orden):
-  $P(n,k)=\dfrac{n!}{(n-k)!}$.\quad
-  \textbf{Combinación} (no importa):
-  $C(n,k)=\dbinom{n}{k}=\dfrac{n!}{k!\,(n-k)!}$.\\[0.3em]
-  Siempre $C(n,k) \le P(n,k)$: agrupar los órdenes reduce la cuenta.}
+\definicion{Permutación y combinación}{%
+  \textbf{Permutación}: cuántas maneras hay de elegir $k$ de $n$ \emph{cuando
+  el orden significa algo}.\par
+  \textbf{Combinación}: cuántas maneras hay de elegir $k$ de $n$ \emph{cuando
+  el orden no significa nada}.\par
+  Siempre $P(n,k) = C(n,k)\times k!$: la permutación cuenta cada grupo tantas
+  veces como maneras haya de ordenarlo.}
 
-\ejercicio{0}{%
-  Calculá $4!$ y $0!$. Escribí el desarrollo de $4!$, no sólo el resultado.}
-\espacioresolver[1.6cm]
-\respuesta{$4! = 24$; $0! = 1$.}
+\minihistoria{El orden de las pruebas no es un detalle administrativo}{%
+  Si aplicás cuatro pruebas seguidas, la última la responden cansados y la
+  primera sin práctica. Eso se llama \emph{efecto de orden}, y contamina el
+  resultado.\par
+  La solución es contrabalancear: repartir los órdenes entre los
+  participantes para que el efecto se distribuya. Pero para repartirlos hay
+  que saber cuántos hay — y ésa es una pregunta de combinatoria, con
+  consecuencias directas sobre la validez del estudio.}
+
+\ejercicio{0}{Calculá $4!$ escribiendo el desarrollo completo, no sólo el
+  resultado. Después explicá en una línea qué cuenta ese número si las cuatro
+  cosas son cuatro pruebas de una batería.}{}
+\renglones[3]
+\respuesta{$4!=4\times3\times2\times1=24$: los 24 órdenes posibles de aplicación.}
 \solucion{%
   $4! = 4\times 3\times 2\times 1 = 24$.
-  \\[0.3em]
-  $0! = 1$ por definición. Suena arbitrario, pero es lo que hace que las
-  fórmulas funcionen: hay exactamente \emph{una} manera de no elegir nada.}
+  \par
+  Si son cuatro pruebas, ese 24 son \textbf{todos los órdenes posibles de
+  aplicarlas}. Para el primer lugar hay 4 opciones; elegida ésa, quedan 3 para
+  el segundo; después 2; después 1.
+  \par
+  Ese razonamiento —«y después quedan»— es el factorial entero. No hay que
+  memorizarlo, hay que poder reconstruirlo.}
 
-\ejercicio{1}{%
-  Tenés 3 fichas marcadas A, B y C. ¿De cuántas maneras distintas podés
-  ordenarlas en fila? Enumeralas todas y comprobá que coincide con $3!$.}
-\espacioresolver[2.4cm]
-\respuesta{$3!=6$: ABC, ACB, BAC, BCA, CAB, CBA.}
+\ejercicio{1}{Tenés 5 protocolos y querés elegir 2 para revisarlos.
+  \textbf{Antes de calcular nada, escribí cuántas parejas creés que salen:}
+  \underline{\hspace{2.2cm}}
+  \par\vspace{0.2em}
+  Ahora enumeralas todas y contá. ¿Coincidió?}{Predecí primero}
+\renglones[4]
+\respuesta{10 parejas.}
 \solucion{%
-  $3! = 3\times 2\times 1 = 6$, y son:
-  ABC, ACB, BAC, BCA, CAB, CBA.
-  \\[0.3em]
-  El razonamiento detrás del factorial: para el primer lugar hay 3 opciones,
-  para el segundo quedan 2, para el tercero 1. $3\times 2\times 1$.}
+  Llamándolos 1 a 5: 12, 13, 14, 15, 23, 24, 25, 34, 35, 45. Son \textbf{10}.
+  \par
+  Mucha gente arriesga 20, contando «5 opciones para el primero $\times$ 4 para
+  el segundo». Ese razonamiento cuenta la pareja 12 y la 21 como distintas, y
+  son la misma pareja de protocolos.
+  \par
+  Por eso hay que dividir por 2, que es $2!$: las dos maneras de ordenar cada
+  pareja.}
+\enclase{Preguntá quién dijo 20 antes de mostrar la respuesta. Suele ser la
+mitad del curso, y esa mitad se acuerda del ejercicio todo el cuatrimestre.}
 
-\ejercicio{1}{%
-  En un grupo de 5 estudiantes hay que formar parejas para un trabajo.
-  ¿Cuántas parejas distintas se pueden formar?}
-\espacioresolver[2cm]
-\respuesta{$C(5,2)=10$.}
+\ejercicio{1}{Un estudio aplica \textbf{4 pruebas} a cada participante.
+  ¿Cuántos órdenes de aplicación distintos existen? Si el estudio tiene 24
+  participantes, ¿cuántos podrían recibir cada orden?}{}
+\renglones[3]
+\respuesta{$4!=24$ órdenes; un participante por orden.}
 \solucion{%
-  El orden no importa: la pareja «Ana y Beto» es la misma que «Beto y Ana».
-  Entonces es combinación:
-  \[ C(5,2) = \frac{5!}{2!\,3!} = \frac{120}{2\times 6} = 10 \]}
+  $4! = 24$ órdenes posibles.
+  \par
+  Con 24 participantes toca exactamente uno por orden: un contrabalanceo
+  \textbf{completo}. Es el diseño ideal, porque cada posición de cada prueba
+  aparece la misma cantidad de veces.
+  \par
+  El problema aparece cuando hay 5 pruebas: $5!=120$ órdenes, y casi ningún
+  estudio de psicología tiene 120 participantes. Ahí hay que contrabalancear
+  parcialmente, y saber cuántos órdenes existen es lo que permite decidir cómo.}
 
-\ejercicio{2}{%
-  De 5 estudiantes hay que elegir 3 para tres roles distintos: quien expone,
-  quien toma notas y quien coordina. ¿Cuántas asignaciones distintas hay?}
-\espacioresolver[2.2cm]
-\respuesta{$P(5,3)=60$.}
-\solucion{%
-  Acá el orden \textbf{sí} importa: no es lo mismo que Ana exponga y Beto
-  coordine que al revés. Es permutación:
-  \[ P(5,3) = \frac{5!}{(5-3)!} = \frac{120}{2} = 60 \]
-  O directamente: $5 \times 4 \times 3 = 60$.}
-
-\ejercicio{2}{%
-  Calculá $C(6,2)$ y $P(6,2)$. ¿Cuántas veces más grande es la permutación?
-  Explicá por qué es exactamente ese factor.}
-\espacioresolver[2.6cm]
-\respuesta{$C(6,2)=15$, $P(6,2)=30$. La permutación es $2!=2$ veces más grande.}
-\solucion{%
-  \[ C(6,2)=\frac{6!}{2!\,4!}=15 \qquad P(6,2)=\frac{6!}{4!}=30 \]
-  La permutación es exactamente $2$ veces más grande, y ese 2 es $2!$: cada
-  grupo de 2 personas se puede ordenar de $2!=2$ maneras.
-  \\[0.3em]
-  En general $P(n,k) = C(n,k)\times k!$. Ésa es toda la diferencia entre las
-  dos fórmulas, y saberlo evita memorizarlas por separado.}
-
-\ejercicio{3}{%
-  De los \textbf{43 estudiantes} que dieron positivo en el tamizaje, el
-  servicio quiere elegir a 5 para una entrevista de profundización. El orden
-  en que se los elige no importa. ¿De cuántas maneras distintas puede
-  formarse ese grupo?}
-\espacioresolver[3cm]
-\respuesta{$C(43,5) = 962\,598$.}
-\solucion{%
-  El orden no importa: es un grupo, no una fila.
-  \[ C(43,5) = \frac{43!}{5!\,38!}
-     = \frac{43\times 42\times 41\times 40\times 39}{5\times 4\times 3\times 2\times 1}
-     = \frac{115\,511\,760}{120} = 962\,598 \]
-  \\[0.3em]
-  \textbf{Truco de cálculo}: no calcules $43!$ — es un número astronómico.
-  Alcanza con multiplicar los 5 factores de arriba y dividir por $5!$.}
-
-\ejercicio{3}{%
-  El mismo servicio ahora quiere \textbf{agendar} a 5 de esos 43 estudiantes
-  en cinco horarios distintos del lunes. ¿De cuántas maneras puede hacerlo?
-  Compará con el resultado anterior y explicá la diferencia.}
-\espacioresolver[3cm]
-\respuesta{$P(43,5) = 115\,511\,760$, que es $5! = 120$ veces mayor.}
-\solucion{%
-  Ahora el orden importa, porque cada persona queda en un horario distinto:
-  \[ P(43,5) = 43\times 42\times 41\times 40\times 39 = 115\,511\,760 \]
-  \\[0.3em]
-  Es exactamente $120$ veces el resultado anterior, y $120 = 5!$: cada grupo
-  de 5 personas se puede repartir en los cinco horarios de $5!$ maneras.
-  \\[0.3em]
-  \textbf{La misma gente, dos preguntas distintas.} Elegir a quiénes entrevistar
-  es una combinación; decidir además cuándo, una permutación.}
-
-\ejercicio{4}{%
-  Para cada situación, decidí si hay que usar combinación o permutación, y
-  calculá el resultado. Justificá la elección en una línea.
+\ejercicio{2}{Dos situaciones que parecen iguales. Resolvé las dos y explicá
+  qué cambió.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item Elegir 3 de los 43 positivos para un grupo focal.
-    \item Elegir 3 de los 43 y asignarles los roles de moderador, relator y observador.
-    \item Elegir un comité de 2 personas entre 6 docentes.
-    \item Elegir presidente y secretario entre 6 docentes.
-  \end{enumerate}}
-\espacioresolver[5cm]
-\respuesta{(a) $C(43,3)=12\,341$; (b) $P(43,3)=74\,046$;
-(c) $C(6,2)=15$; (d) $P(6,2)=30$.}
+    \item De 6 estudiantes se eligen 2 para un grupo focal.
+    \item De 6 estudiantes se eligen 2: uno expone y el otro toma notas.
+  \end{enumerate}}{Dos casos casi iguales}
+\renglones[5]
+\respuesta{(a) $C(6,2)=15$; (b) $P(6,2)=30$. Cambió si el orden significa algo.}
 \solucion{%
-  (a) \textbf{Combinación}: en un grupo focal todos cumplen el mismo papel.
-  $C(43,3)=\dfrac{43\times42\times41}{6}=12\,341$.
-  \\[0.3em]
-  (b) \textbf{Permutación}: los roles son distintos.
-  $P(43,3)=43\times42\times41=74\,046$.
-  \\[0.3em]
-  (c) \textbf{Combinación}: los dos miembros del comité son intercambiables.
-  $C(6,2)=15$.
-  \\[0.3em]
-  (d) \textbf{Permutación}: presidente y secretario no son lo mismo.
-  $P(6,2)=30$.
-  \\[0.3em]
+  (a) $C(6,2)=\dfrac{6!}{2!\,4!}=15$. \quad
+  (b) $P(6,2)=\dfrac{6!}{4!}=30$.
+  \par
+  Las palabras cambian poquísimo —«un grupo focal» contra «uno expone y el otro
+  toma notas»— y el resultado se duplica. Lo que cambió es que en (b) los dos
+  lugares no son intercambiables.
+  \par
+  El factor exacto es $2!=2$. En general $P(n,k)=C(n,k)\times k!$, y esa
+  relación es lo único que hay que recordar: las dos fórmulas son la misma con
+  un divisor de diferencia.
+  \par
   \textbf{La pregunta que resuelve todo}: si intercambio dos de los elegidos,
-  ¿cambia el resultado? Si cambia, importa el orden (permutación). Si no
-  cambia, no importa (combinación). Nada más que eso.}
+  ¿cambia el resultado? Si cambia, es permutación. Si no, combinación.}
+
+\ejercicio{2}{Una estudiante resolvió así «¿cuántos grupos de 3 se pueden
+  formar con 43 personas?»:
+  \begin{quote}\itshape
+  $43 \times 42 \times 41 = 74\,046$ grupos.
+  \end{quote}
+  \textbf{Señalá el paso exacto} donde se equivoca, explicá por qué, y dá el
+  resultado correcto.}{Encontrá el error}
+\renglones[5]
+\respuesta{Falta dividir por $3!=6$. El correcto es $12\,341$.}
+\solucion{%
+  El error no está en la multiplicación —$43\times 42\times 41$ está bien—
+  sino en \textbf{no dividir después}. Ese producto cuenta permutaciones:
+  considera que «Ana, Beto, Caro» y «Caro, Beto, Ana» son grupos distintos, y
+  son el mismo grupo.
+  \par
+  Cada grupo de 3 aparece contado $3!=6$ veces:
+  \[ C(43,3)=\frac{43\times 42\times 41}{3!}=\frac{74\,046}{6}=12\,341 \]
+  \par
+  \textbf{Cómo detectarlo sin saber la respuesta}: si el enunciado dice «grupos»
+  y el procedimiento no divide por nada, algo falta.}
+\enclase{Que digan en voz alta cuántas veces está contado cada grupo. Si pueden
+justificar el 6, entendieron la fórmula; si sólo dicen «hay que dividir por 3
+factorial», la memorizaron.}
+
+\ejercicio{3}{De los \textbf{43 estudiantes} que dieron positivo en el
+  tamizaje, el servicio quiere elegir a 5 para una entrevista de
+  profundización. El orden no importa.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿De cuántas maneras puede formarse ese grupo?
+    \item ¿Y si además hay que asignarles cinco horarios distintos del lunes?
+    \item ¿Por cuánto se multiplicó, y por qué exactamente por ese número?
+  \end{enumerate}}{}
+\renglones[6]
+\respuesta{(a) $C(43,5)=962\,598$. (b) $P(43,5)=115\,511\,760$.
+(c) Por $5!=120$.}
+\solucion{%
+  (a) \[ C(43,5)=\frac{43\times 42\times 41\times 40\times 39}{5!}
+     = \frac{115\,511\,760}{120} = 962\,598 \]
+  \par
+  (b) $P(43,5) = 43\times 42\times 41\times 40\times 39 = 115\,511\,760$.
+  \par
+  (c) Se multiplicó por $5! = 120$: cada grupo de 5 personas se puede repartir
+  entre los cinco horarios de 120 maneras.
+  \par
+  \textbf{Truco de cálculo}: no calcules $43!$, que es un número astronómico.
+  Alcanza con los 5 factores de arriba y dividir por $5!$.}
+
+\ejercicio{3}{El servicio quiere saber de cuántas maneras puede elegir a 4
+  estudiantes para entrevistar. \textbf{¿Alcanza el enunciado para responder?}
+  Si te parece que sí, calculá; si no, escribí qué dato falta y por qué sin él
+  no se puede.}{¿Alcanzan los datos?}
+\renglones[4]
+\respuesta{No alcanza: falta de cuántos se elige, y si el orden importa.}
+\solucion{%
+  \textbf{No alcanza}, y faltan dos cosas:
+  \begin{enumerate}[label=\arabic*.,topsep=2pt,itemsep=1pt]
+    \item \textbf{De cuántos se elige.} No es lo mismo elegir 4 entre los 43
+      positivos que entre las 200 fichas.
+    \item \textbf{Si el orden importa.} Cuatro personas para un mismo grupo es
+      una combinación; cuatro personas para cuatro horarios distintos es una
+      permutación, y da 24 veces más.
+  \end{enumerate}
+  \par
+  Reconocer que un pedido está incompleto es parte del trabajo: en la práctica
+  llegan así, y operar igual con los números que aparecen es de donde salen la
+  mayoría de los errores en informes reales.}
+
+\ejercicio{4}{Un investigador escribe en su método:
+  \begin{quote}\itshape
+  «Las cuatro pruebas se contrabalancearon aplicando dos secuencias:
+  A-B-C-D y D-C-B-A.»
+  \end{quote}
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuántas secuencias posibles hay en total?
+    \item Con esas dos secuencias, ¿en qué posiciones puede aparecer la prueba
+      A? ¿Y la B?
+    \item ¿Está contrabalanceado? Justificá.
+  \end{enumerate}}{}
+\renglones[7]
+\respuesta{(a) $4!=24$. (b) A sólo en 1.\textsuperscript{a} o 4.\textsuperscript{a};
+B sólo en 2.\textsuperscript{a} o 3.\textsuperscript{a}. (c) No.}
+\solucion{%
+  (a) $4! = \mathbf{24}$ secuencias posibles. Usó 2.
+  \par
+  (b) Con esas dos secuencias, A aparece \textbf{sólo} en la primera o en la
+  cuarta posición. B, \textbf{sólo} en la segunda o la tercera. Nunca al revés.
+  \par
+  (c) \textbf{No está contrabalanceado.} Invertir una secuencia no reparte las
+  posiciones: las fija de a pares. Si la prueba B es sensible al cansancio, ese
+  efecto queda dentro de la medición de B y no hay forma de separarlo — y el
+  investigador va a atribuir a la prueba lo que produjo el orden.
+  \par
+  \textbf{Qué habría que hacer}: usar un cuadrado latino, donde cada prueba
+  aparece exactamente una vez en cada posición. Con 4 pruebas alcanzan 4
+  secuencias bien elegidas; con 24 participantes se puede hacer el
+  contrabalanceo completo.
+  \par
+  \textit{Éste es un error real y frecuente en tesis de grado. La combinatoria
+  no lo detecta por casualidad: lo detecta porque el 24 contra el 2 hace
+  evidente cuánto quedó sin cubrir.}}
+\enclase{Si tenés tiempo, pediles que construyan un cuadrado latino de 4×4 en
+el pizarrón. Es la única manera de que vean por qué cuatro secuencias bien
+elegidas valen más que dos simétricas.}
+
+\formulaanotada{%
+  $\displaystyle C(n,k)=\binom{n}{k}=\frac{n!}{k!\,(n-k)!}
+   \qquad P(n,k)=\frac{n!}{(n-k)!}$}{%
+  \item[$n$] el total disponible.
+  \item[$k$] cuántos se eligen.
+  \item[$k!$] el divisor que agrupa los órdenes repetidos. Es lo único que
+    distingue la combinación de la permutación.}
+
+\trampa{multiplicar $n\times(n-1)\times\cdots$ y quedarse ahí}%
+  {es el primer paso correcto, y el resultado parece razonable: un número
+   grande para un problema de contar}%
+  {ese producto cuenta órdenes, no grupos. Si el orden no importa, hay que
+   dividir por $k!$. La palabra «grupo» en el enunciado es la señal}
+
+\cierre{%
+  Los ejercicios eran todos de combinatoria, pero ninguno se resolvía copiando
+  la fórmula: uno pedía arriesgar antes de calcular, otro comparar dos casos
+  casi idénticos, otro revisar el trabajo de alguien más, otro darse cuenta de
+  que faltaban datos, y el último detectar un error de diseño en un método
+  publicado.
+  \par
+  Ésas son las cinco cosas que se hacen con la combinatoria fuera de un examen.}

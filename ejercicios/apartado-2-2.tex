@@ -1,149 +1,225 @@
-\apartado{2.2}{Tipos de probabilidad}
+\apartado{2.2}{Tipos de probabilidad}{fundamentos}
+\bajada{Tres maneras de ponerle un número a lo incierto. En psicología las
+tres tienen lugar propio, y no son intercambiables: una la fabrica el diseño,
+otra sale de contar, y la tercera es un juicio profesional.}
 
-\noindent\textit{Tres maneras de asignar un número a lo incierto, y cuándo
-sirve cada una.}
-\recordar{%
-  \textbf{Clásica}: $P(A)=\dfrac{\text{casos favorables}}{\text{casos posibles}}$,
-  \emph{sólo} si todos los resultados son igualmente probables.\quad
-  \textbf{Frecuentista}: $P(A)\approx\dfrac{\text{veces que ocurrió}}{\text{veces que se observó}}$.\quad
-  \textbf{Subjetiva}: grado de creencia, sin conteo detrás.\\[0.3em]
-  Axiomas: $0\le P(A)\le 1$;\quad $P(S)=1$;\quad $P(A^{c}) = 1-P(A)$.}
+\definicion{Los tres tipos}{%
+  \textbf{Clásica}: $P(A)=\text{favorables}/\text{posibles}$, \emph{sólo} si
+  todos los resultados son igualmente probables.\par
+  \textbf{Frecuentista}: la proporción observada en muchos casos.\par
+  \textbf{Subjetiva}: un grado de creencia fundado, sin conteo detrás.}
 
-\ejercicio{0}{%
-  ¿Cuáles de estos números pueden ser una probabilidad? Marcá y justificá los
-  que no.
-  \[ -0{,}2 \qquad 0{,}5 \qquad 1{,}4 \qquad \tfrac{3}{4} \qquad 0 \qquad 1 \]}
-\espacioresolver[2cm]
-\respuesta{Válidos: $0{,}5$, $3/4$, $0$ y $1$. No: $-0{,}2$ y $1{,}4$.}
+\minihistoria{Dónde vive cada una en tu trabajo}{%
+  \textbf{Clásica} — asignás 40 participantes al azar a tratamiento o control.
+  La probabilidad de que a alguien le toque tratamiento es exactamente
+  $1/2$, y lo sabés \emph{antes} de empezar: la simetría la fabricaste vos con
+  el procedimiento.\par
+  \textbf{Frecuentista} — de 200 pacientes que iniciaron terapia, 46
+  abandonaron antes de la sexta sesión. La tasa de abandono es $46/200$, y no
+  se podía saber de antemano: hubo que observar.\par
+  \textbf{Subjetiva} — un terapeuta con veinte años de práctica dice que este
+  paciente tiene buen pronóstico. No hay conteo detrás, y sin embargo es
+  información valiosa.}
+
+\ejercicio{0}{¿Cuáles de estos números pueden ser una probabilidad? Marcá los
+  que no y explicá por qué.
+  \[ -0{,}2 \qquad 0{,}5 \qquad 1{,}4 \qquad \tfrac{3}{4}
+     \qquad 0 \qquad 1 \qquad 46/200 \]}{}
+\renglones[3]
+\respuesta{Válidos: $0{,}5$, $3/4$, $0$, $1$ y $46/200$. No: $-0{,}2$ y $1{,}4$.}
 \solucion{%
-  Válidos: $0{,}5$, $\tfrac{3}{4}$, $0$ y $1$.
-  \\[0.3em]
   $-0{,}2$ no puede serlo porque ninguna probabilidad es negativa, y $1{,}4$
-  tampoco porque ninguna supera a 1. Son los dos primeros axiomas.
-  \\[0.3em]
-  Que $0$ y $1$ sí valgan no es un detalle: $0$ es el evento imposible y $1$
-  el evento seguro.}
+  tampoco porque ninguna supera a 1.
+  \par
+  Que $0$ y $1$ sí valgan no es un detalle técnico: $0$ es el evento imposible
+  y $1$ el evento seguro. Y $46/200=0{,}23$ está perfectamente dentro del
+  rango.
+  \par
+  Estos dos límites son los dos primeros axiomas de Kolmogórov, y son la única
+  forma rápida de detectar que una cuenta salió mal: si te dio $1{,}3$, no hace
+  falta revisar nada más — ya sabés que hay un error.}
+\enclase{Pediles que digan en voz alta qué significaría una probabilidad de
+$1{,}4$. Nadie puede completar la frase, y esa imposibilidad enseña más que
+el axioma escrito.}
 
-\ejercicio{1}{%
-  Se tira un dado. Calculá $P(\text{sale par})$ escribiendo explícitamente
-  cuántos casos favorables y cuántos posibles hay.}
-\espacioresolver[1.8cm]
-\respuesta{$3/6 = 0{,}5$.}
+\ejercicio{1}{Un estudio asigna al azar 40 participantes: 20 a tratamiento y
+  20 a control.
+  \textbf{Antes de calcular, escribí qué probabilidad creés que tiene un
+  participante de quedar en tratamiento:} \underline{\hspace{2cm}}
+  \par\vspace{0.2em}
+  Ahora calculala. ¿Qué tipo de probabilidad usaste y por qué te alcanzó con
+  el enunciado, sin observar ningún dato?}{Predecí primero}
+\renglones[4]
+\respuesta{$20/40 = 0{,}5$. Clásica: la simetría la fabricó el diseño.}
 \solucion{%
-  Favorables: $\{2,4,6\}$, o sea 3. Posibles: 6.
-  \[ P(\text{par}) = \frac{3}{6} = 0{,}5 \]
-  Acá la fórmula clásica es legítima porque las seis caras son igualmente
-  probables.}
+  $P(\text{tratamiento}) = \dfrac{20}{40} = 0{,}5$.
+  \par
+  Es \textbf{clásica}, y ésta es la parte que importa: no hizo falta correr el
+  estudio ni observar a nadie. La probabilidad se conoce de antemano porque el
+  investigador \emph{construyó} la simetría al asignar al azar en partes
+  iguales.
+  \par
+  Es de los pocos lugares en psicología donde la probabilidad clásica se
+  aplica con total legitimidad — y no es casualidad: se aplica justamente
+  porque alguien la diseñó para que se aplicara.}
 
-\ejercicio{1}{%
-  Una baraja española tiene 40 cartas y 10 son de oros.
-  Calculá $P(\text{oros})$ y $P(\text{no oros})$.}
-\espacioresolver[1.8cm]
-\respuesta{$P(\text{oros})=10/40=0{,}25$; $P(\text{no oros})=0{,}75$.}
+\ejercicio{1}{De 200 pacientes que iniciaron terapia en el año, 46 abandonaron
+  antes de la sexta sesión. Calculá la probabilidad de que un paciente elegido
+  al azar de ese grupo haya abandonado, y la de que no.}{}
+\renglones[3]
+\respuesta{$46/200 = 0{,}23$ y $154/200 = 0{,}77$.}
 \solucion{%
-  $P(\text{oros}) = \dfrac{10}{40} = 0{,}25$.
-  \\[0.3em]
+  $P(\text{abandono}) = \dfrac{46}{200} = 0{,}23$.
+  \par
   Para el complemento no hace falta volver a contar:
-  $P(\text{no oros}) = 1 - 0{,}25 = 0{,}75$.
-  \\[0.3em]
-  Usar el complemento en vez de recontar ahorra trabajo y evita errores. Va a
-  ser decisivo en el apartado 2.5.}
+  $P(\text{no abandono}) = 1 - 0{,}23 = 0{,}77$.
+  \par
+  Usar el complemento en vez de recontar ahorra trabajo y evita errores. En
+  2.5 va a ser decisivo.}
 
-\ejercicio{2}{%
-  Se tira una moneda 1000 veces y salen 512 caras.
+\ejercicio{2}{Dos situaciones que dan el \emph{mismo número} y no son la misma
+  cosa. Calculá las dos y explicá en qué se diferencian.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item ¿Cuál es la probabilidad \emph{frecuentista} de cara?
-    \item ¿Cuál es la \emph{clásica}?
-    \item ¿Por qué no dan igual, y cuál usarías?
-  \end{enumerate}}
-\espacioresolver[3cm]
-\respuesta{(a) $0{,}512$. (b) $0{,}5$. (c) Difieren por azar; con una moneda
-simétrica se usa la clásica.}
+    \item Probabilidad de que a un participante le toque el grupo control, en
+      una asignación al azar de 50 y 50.
+    \item Proporción de pacientes que completaron el tratamiento, si de 100
+      lo completaron 50.
+  \end{enumerate}}{Dos casos casi iguales}
+\renglones[5]
+\respuesta{Las dos dan $0{,}5$, pero (a) es clásica y se sabe de antemano;
+(b) es frecuentista y hubo que observar.}
 \solucion{%
-  (a) $512/1000 = 0{,}512$. \quad (b) $1/2 = 0{,}5$.
-  \\[0.3em]
-  (c) No dan igual por puro azar del muestreo: en 1000 tiradas casi nunca sale
-  exactamente 500. La diferencia de 12 tiradas es perfectamente normal.
-  \\[0.3em]
-  Con una moneda que sabemos simétrica conviene la clásica, porque la simetría
-  es información más confiable que 1000 tiradas. La frecuentista se vuelve
-  imprescindible justo cuando NO hay simetría — como en el cuestionario.}
+  Las dos dan $0{,}5$. La diferencia no está en el número sino en
+  \textbf{de dónde salió}:
+  \par
+  (a) Se sabía \textbf{antes} de empezar, porque el diseño lo garantiza. Si
+  repetís el estudio, sigue siendo $0{,}5$ exactamente.
+  \par
+  (b) Se supo \textbf{después} de observar 100 casos. Si seguís a los próximos
+  100 pacientes, casi seguro no da 50 de nuevo — puede dar 47 o 54.
+  \par
+  \textbf{Por qué importa}: sobre (a) podés apostar sin datos; sobre (b) tenés
+  que preguntarte cuántos casos observaste. Cincuenta de 100 y 5 de 10 dan el
+  mismo $0{,}5$ y no merecen la misma confianza.}
+\enclase{Preguntá cuál de las dos cambiaría si repitieran el estudio. Es la
+forma más rápida de que vean que el mismo número puede tener dos estatutos
+distintos.}
 
-\ejercicio{2}{%
-  Se tira un dado. Calculá $P(\text{no sale 6})$ de dos maneras: contando
-  directamente y usando el complemento. Comprobá que coinciden.}
-\espacioresolver[2.2cm]
-\respuesta{$5/6 \approx 0{,}833$ por los dos caminos.}
+\ejercicio{2}{Una investigadora escribe:
+  \begin{quote}\itshape
+  «El cuestionario tiene 28 puntajes posibles y tres niveles de gravedad
+  (leve, moderado, grave). Como hay tres niveles, la probabilidad de que un
+  paciente caiga en el nivel grave es $1/3$.»
+  \end{quote}
+  \textbf{Señalá el paso exacto} donde se equivoca y explicá por qué.}{Encontrá el error}
+\renglones[5]
+\respuesta{Aplica la fórmula clásica sin que haya simetría: los tres niveles no
+son igualmente probables. Habría que contar.}
 \solucion{%
-  \textbf{Contando}: los favorables son $\{1,2,3,4,5\}$, o sea 5.
-  $P = 5/6 \approx 0{,}833$.
-  \\[0.3em]
-  \textbf{Por complemento}: $P(\text{sale 6}) = 1/6$, entonces
-  $P(\text{no sale 6}) = 1 - \tfrac{1}{6} = \tfrac{5}{6} \approx 0{,}833$.
-  \\[0.3em]
-  Coinciden, como tienen que coincidir. Con un dado da igual qué camino tomar;
-  con 200 fichas y varias condiciones, el complemento ahorra muchísimo.}
+  El error está en el paso «como hay tres niveles, cada uno vale $1/3$».
+  \par
+  Contar \emph{categorías} no autoriza a repartir la probabilidad en partes
+  iguales entre ellas. Los tres niveles de gravedad cubren rangos distintos de
+  puntaje y, sobre todo, la gente no se distribuye de manera uniforme: la
+  mayoría puntúa bajo y muy pocos llegan a grave.
+  \par
+  Es el mismo error del $1/28$ del apartado anterior, con otro disfraz. Y es
+  más peligroso acá, porque «tres niveles, un tercio cada uno» suena razonable.
+  \par
+  \textbf{Lo correcto}: contar cuántos pacientes del archivo caen en cada
+  nivel y dividir por el total.}
 
-\ejercicio{3}{%
-  De las 200 fichas del servicio, 43 llegan al corte de 10 o más.
-  Se elige una ficha al azar.
+\ejercicio{3}{De las 200 fichas del servicio, 43 llegan al corte de 10 o más y
+  25 tienen diagnóstico confirmado por un profesional. Se elige una ficha al
+  azar.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item Calculá $P(\text{dar positivo})$.
-    \item Calculá $P(\text{no dar positivo})$.
-    \item ¿Qué tipo de probabilidad estás usando, y por qué no la clásica?
-  \end{enumerate}}
-\espacioresolver[3.2cm]
-\respuesta{(a) $43/200 = 0{,}215$. (b) $0{,}785$. (c) Frecuentista.}
+    \item Calculá $P(\text{dar positivo})$ y $P(\text{no dar positivo})$.
+    \item Calculá $P(\text{tener el diagnóstico})$. Ese número tiene nombre
+      propio: ¿cuál?
+    \item ¿Qué tipo de probabilidad son, y por qué no la clásica?
+  \end{enumerate}}{}
+\renglones[6]
+\respuesta{(a) $0{,}215$ y $0{,}785$. (b) $0{,}125$, la prevalencia.
+(c) Frecuentista.}
 \solucion{%
-  (a) $P = \dfrac{43}{200} = 0{,}215$, o sea $21{,}5\%$.
-  \\[0.3em]
-  (b) $P = 1 - 0{,}215 = 0{,}785$.
-  \\[0.3em]
-  (c) Es \textbf{frecuentista}: sale de contar lo que efectivamente ocurrió en
-  200 personas. No puede ser clásica porque los puntajes no son igualmente
-  probables — no hay ninguna simetría que garantice que sacar 3 sea tan
-  probable como sacar 20.}
+  (a) $P = \dfrac{43}{200} = 0{,}215$, y su complemento $0{,}785$.
+  \par
+  (b) $P = \dfrac{25}{200} = 0{,}125$. Se llama \textbf{prevalencia}: qué
+  proporción de la población tiene la condición. Guardalo — en 2.6 va a ser la
+  mitad del cálculo que explica por qué un test bueno da tantas falsas alarmas.
+  \par
+  (c) Son \textbf{frecuentistas}: salen de contar lo que ocurrió en 200
+  personas. No pueden ser clásicas porque nada garantiza que los puntajes sean
+  igualmente probables. Nadie diseñó esa simetría, y la naturaleza no la
+  regala.}
 
-\ejercicio{3}{%
-  En el mismo archivo, 25 estudiantes tienen diagnóstico confirmado por un
-  profesional. Calculá la probabilidad de que una ficha elegida al azar
-  corresponda a alguien con el trastorno. Ese número tiene nombre propio:
-  ¿cuál?}
-\espacioresolver[2.2cm]
-\respuesta{$25/200 = 0{,}125$ (12,5\%). Se llama \emph{prevalencia}.}
+\ejercicio{3}{El servicio quiere estimar la probabilidad de que un estudiante
+  con diagnóstico confirmado \emph{responda} a la primera línea de tratamiento.
+  Tiene el archivo de 200 fichas con puntajes, diagnóstico y fecha de la
+  entrevista. \textbf{¿Alcanza para responder?} Si sí, explicá cómo; si no,
+  decí qué falta.}{¿Alcanzan los datos?}
+\renglones[4]
+\respuesta{No alcanza: el archivo no registra si recibieron tratamiento ni cómo
+respondieron.}
 \solucion{%
-  $P = \dfrac{25}{200} = 0{,}125$, o sea $12{,}5\%$.
-  \\[0.3em]
-  Se llama \textbf{prevalencia}: qué proporción de la población tiene la
-  condición. Guardá bien este número — en el apartado 2.6 va a ser la mitad
-  del cálculo que explica por qué un test muy bueno puede dar tantas falsas
-  alarmas.}
+  \textbf{No alcanza.} El archivo llega hasta el diagnóstico, y la pregunta es
+  sobre lo que pasa \emph{después}: haría falta saber quiénes iniciaron
+  tratamiento y con qué resultado.
+  \par
+  Los 25 con diagnóstico confirmado están ahí y son tentadores, pero
+  responderían otra pregunta.
+  \par
+  \textbf{La regla que conviene fijar}: una probabilidad frecuentista se
+  calcula sobre casos donde el evento pudo observarse. Si el dato nunca se
+  registró, no hay cuenta que lo produzca — hay que ir a buscarlo.}
 
-\ejercicio{4}{%
-  Clasificá cada afirmación como probabilidad \emph{clásica},
-  \emph{frecuentista} o \emph{subjetiva}, y justificá en una línea.
+\ejercicio{4}{Clasificá cada afirmación como \emph{clásica}, \emph{frecuentista}
+  o \emph{subjetiva}, y justificá en una línea.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item «La probabilidad de sacar un as de una baraja de 40 es $4/40$.»
-    \item «En nuestro servicio, el 21,5\% de los tamizados da positivo.»
-    \item «Creo que este paciente tiene un 70\% de chances de adherir al tratamiento.»
-    \item «La probabilidad de que llueva mañana es del 30\%.»
-  \end{enumerate}}
-\espacioresolver[4cm]
-\respuesta{(a) clásica; (b) frecuentista; (c) subjetiva; (d) frecuentista
-(sobre registros históricos), aunque con componente de modelo.}
+    \item «A cada participante le toca el grupo experimental con probabilidad $1/2$.»
+    \item «En nuestro servicio, el 23\% de los pacientes abandona antes de la sexta sesión.»
+    \item «Creo que esta paciente tiene un 70\% de chances de sostener el tratamiento.»
+    \item «La probabilidad de recaída al año es del 40\%.»
+  \end{enumerate}
+  Después contestá: ¿cuál de las cuatro cambiaría si el estudio se repitiera
+  con otras personas?}{}
+\renglones[6]
+\respuesta{(a) clásica; (b) frecuentista; (c) subjetiva; (d) frecuentista.
+Cambiarían (b) y (d).}
 \solucion{%
-  (a) \textbf{Clásica}: hay simetría — las 40 cartas son igualmente probables.
-  \\[0.3em]
-  (b) \textbf{Frecuentista}: sale de contar casos observados.
-  \\[0.3em]
-  (c) \textbf{Subjetiva}: es un juicio clínico. No hay conteo detrás, lo que
-  no la vuelve inútil: es información de un profesional con experiencia. Pero
-  no se puede verificar del mismo modo.
-  \\[0.3em]
-  (d) \textbf{Frecuentista} en el fondo: los servicios meteorológicos miran
-  cuántas veces llovió en días con condiciones parecidas. Suele confundirse
-  con subjetiva porque suena a opinión.
-  \\[0.3em]
-  \textit{Lo importante}: los tres tipos dan un número entre 0 y 1 y respetan
-  los mismos axiomas. Lo que cambia es de dónde sale el número — y por lo
-  tanto, cuánto podés confiar en él.}
+  (a) \textbf{Clásica}: la simetría está fabricada por el diseño.\par
+  (b) \textbf{Frecuentista}: sale de contar casos observados.\par
+  (c) \textbf{Subjetiva}: es un juicio clínico. No hay conteo detrás, lo que no
+  la vuelve inútil — es información de alguien con experiencia — pero no se
+  verifica del mismo modo.\par
+  (d) \textbf{Frecuentista}: sale de estudios de seguimiento.
+  \par
+  \textbf{Cambiarían (b) y (d)}, porque dependen de a quién se observó. La (a)
+  no cambia nunca, porque no depende de las personas sino del procedimiento.
+  Y la (c) cambia con el clínico, no con los pacientes — que es una tercera
+  cosa, y vale la pena decirlo en voz alta.
+  \par
+  Las tres respetan los mismos axiomas y dan números entre 0 y 1. Lo que cambia
+  es de dónde sale el número, y por lo tanto cuánto se puede confiar en él y
+  qué haría falta para discutirlo.}
+\enclase{La pregunta final es la que separa a quien clasificó de memoria de
+quien entendió. Dejala para el cierre de la clase.}
+
+\trampa{decir «es subjetiva» como si fuera un descalificativo}%
+  {suena a «opinión sin fundamento», y en un contexto científico eso parece
+   malo}%
+  {una probabilidad subjetiva bien calibrada, de un profesional con
+   experiencia, puede ser mejor que una frecuentista calculada sobre 10 casos.
+   Lo que la distingue no es su calidad sino cómo se la discute: no se
+   verifica contando, se verifica siguiendo pronósticos en el tiempo}
+
+\cierre{%
+  Los tres tipos dan un número entre 0 y 1 y respetan los mismos axiomas.
+  Cambia el origen: la clásica la fabrica el diseño, la frecuentista sale de
+  contar, la subjetiva es un juicio.
+  \par
+  Y quedó algo pendiente que no se puede resolver con un solo número: hasta
+  acá cada probabilidad miraba \emph{una} variable por vez. Las preguntas que
+  de verdad importan en la clínica cruzan dos — lo que dijo el test contra lo
+  que era verdad, lo que dijo un evaluador contra lo que dijo el otro. Para eso
+  hace falta una tabla.}

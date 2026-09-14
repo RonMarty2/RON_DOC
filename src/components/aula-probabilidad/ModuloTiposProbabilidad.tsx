@@ -107,6 +107,14 @@ export function ModuloTiposProbabilidad({
 
       <MonedaConvergente />
 
+      <Hilo>
+        La moneda deja la impresión de que la probabilidad clásica es cosa de
+        casinos. En investigación aparece todo el tiempo, y con la misma
+        propiedad: se conoce antes de observar nada.
+      </Hilo>
+
+      <AsignacionAleatoria />
+
       <Cierre>
         <p>
           La línea del 50% nunca se movió: esa es la probabilidad clásica, y se
@@ -727,6 +735,242 @@ function ComplementoVisual({ p }: { p: number }) {
           )}
         </p>
       </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* El gemelo psicológico de la moneda: la asignación aleatoria         */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Dónde vive la probabilidad clásica en psicología.
+ *
+ * La moneda enseña la convergencia con claridad, pero deja la impresión de
+ * que la probabilidad clásica es cosa de casinos. No lo es: en investigación
+ * aparece cada vez que se asigna participantes al azar, y aparece con una
+ * propiedad que ningún dato observado tiene — se conoce ANTES de empezar,
+ * porque la simetría no se descubrió, se fabricó con el procedimiento.
+ *
+ * El interactivo hace visible las dos cosas a la vez: la probabilidad teórica
+ * fija en 0,5 y la proporción observada tambaleando alrededor. Una es clásica,
+ * la otra frecuentista, y son el mismo experimento.
+ */
+function AsignacionAleatoria() {
+  const [asignados, setAsignados] = useState<boolean[]>([]);
+  const [corriendo, setCorriendo] = useState(false);
+  const corriendoRef = useRef(false);
+  const limpiarRef = useRef<(() => void) | null>(null);
+
+  useEffect(() => () => limpiarRef.current?.(), []);
+
+  function asignar(cuantos: number) {
+    if (corriendoRef.current) return;
+
+    const nuevos = Array.from({ length: cuantos }, () => entero(0, 1) === 1);
+
+    // Con muchos participantes no tiene sentido animar de a uno: se agregan
+    // de golpe y se sale. Esta rama va ANTES de declarar los temporizadores
+    // porque no los usa — llamarlos desde acá entraba en la zona muerta de
+    // `const` y rompía el componente con «Cannot access 'i' before
+    // initialization».
+    if (cuantos > 10) {
+      setAsignados((a) => [...a, ...nuevos]);
+      return;
+    }
+
+    corriendoRef.current = true;
+    setCorriendo(true);
+
+    let entregados = 0;
+    let terminado = false;
+
+    const finalizar = () => {
+      if (terminado) return;
+      terminado = true;
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+      limpiarRef.current = null;
+      // Lo que todavía no se entregó se agrega de una vez, para que el
+      // resultado no dependa de que la animación haya llegado al final.
+      if (entregados < cuantos) {
+        setAsignados((a) => [...a, ...nuevos.slice(entregados)]);
+        entregados = cuantos;
+      }
+      corriendoRef.current = false;
+      setCorriendo(false);
+    };
+
+    const id = window.setInterval(() => {
+      setAsignados((a) => [...a, nuevos[entregados]]);
+      entregados++;
+      if (entregados >= cuantos) finalizar();
+    }, 260);
+    // Red de seguridad: si el navegador pausa los temporizadores (pestaña en
+    // segundo plano, app minimizada), el estado no queda trabado.
+    const seguro = window.setTimeout(finalizar, 260 * cuantos + 900);
+    limpiarRef.current = () => {
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+    };
+  }
+
+  const n = asignados.length;
+  const tratamiento = asignados.filter(Boolean).length;
+  const proporcion = n > 0 ? tratamiento / n : 0;
+  const desvio = Math.abs(proporcion - 0.5);
+
+  return (
+    <div className="rounded-2xl border-2 border-blue-300 bg-blue-50/40 p-5 dark:border-blue-800 dark:bg-blue-950/20 sm:p-6">
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+        Dónde vive la probabilidad clásica en tu carrera
+      </p>
+      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+        La asignación aleatoria es la moneda
+      </h4>
+      <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        Un estudio compara una terapia contra una lista de espera. Para que los
+        dos grupos sean comparables, cada participante se asigna{" "}
+        <strong>al azar</strong>. La probabilidad de caer en tratamiento es
+        exactamente <strong>0,5</strong> — y lo sabés antes de reclutar a nadie,
+        porque esa simetría la fabricaste vos al diseñar el procedimiento.
+      </p>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        <button
+          type="button"
+          disabled={corriendo}
+          onClick={() => asignar(1)}
+          className="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:opacity-50"
+        >
+          Asignar 1 participante
+        </button>
+        <button
+          type="button"
+          disabled={corriendo}
+          onClick={() => asignar(10)}
+          className="rounded-full border border-blue-300 px-4 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100 disabled:opacity-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-950/40"
+        >
+          Asignar 10
+        </button>
+        <button
+          type="button"
+          disabled={corriendo}
+          onClick={() => asignar(200)}
+          className="rounded-full border border-blue-300 px-4 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100 disabled:opacity-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-950/40"
+        >
+          Asignar 200
+        </button>
+        {n > 0 && (
+          <button
+            type="button"
+            disabled={corriendo}
+            onClick={() => setAsignados([])}
+            className="rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-500 disabled:opacity-50 dark:border-slate-600 dark:text-slate-400"
+          >
+            Empezar de nuevo
+          </button>
+        )}
+      </div>
+
+      {n === 0 ? (
+        <p className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+          Antes de asignar a nadie ya podés afirmar que la probabilidad es 0,5.
+          Ninguna probabilidad frecuentista permite eso: para las que salen de
+          contar, hay que contar primero.
+        </p>
+      ) : (
+        <>
+          {/* Las dos columnas del estudio */}
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {[true, false].map((esTratamiento) => {
+              const cuantos = asignados.filter((x) => x === esTratamiento).length;
+              return (
+                <div
+                  key={String(esTratamiento)}
+                  className={
+                    "rounded-xl border p-3 " +
+                    (esTratamiento
+                      ? "border-blue-300 bg-white dark:border-blue-700 dark:bg-slate-900"
+                      : "border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900")
+                  }
+                >
+                  <p
+                    className={
+                      "text-xs font-semibold uppercase tracking-wider " +
+                      (esTratamiento
+                        ? "text-blue-600 dark:text-blue-400"
+                        : "text-slate-400")
+                    }
+                  >
+                    {esTratamiento ? "Tratamiento" : "Lista de espera"}
+                  </p>
+                  <p className="mt-1 font-mono text-3xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+                    {cuantos}
+                  </p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    {((cuantos / n) * 100).toFixed(1)}% de {n}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* La barra: teórica fija, observada temblando */}
+          <div className="mt-4 rounded-xl bg-white p-4 dark:bg-slate-900">
+            <div className="flex items-baseline justify-between text-xs">
+              <span className="text-slate-500 dark:text-slate-400">
+                Proporción observada en tratamiento
+              </span>
+              <span className="font-mono font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+                {proporcion.toFixed(3)}
+              </span>
+            </div>
+            <div className="relative mt-2 h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+              <div
+                className="h-full bg-blue-500 transition-all duration-300"
+                style={{ width: `${proporcion * 100}%` }}
+              />
+              {/* La marca del valor teórico, que no se mueve nunca */}
+              <div
+                className="absolute inset-y-0 w-px bg-slate-900 dark:bg-slate-100"
+                style={{ left: "50%" }}
+                aria-hidden
+              />
+            </div>
+            <p className="mt-1.5 text-right font-mono text-[10px] text-slate-400">
+              la marca fija es 0,500 · la probabilidad clásica
+            </p>
+          </div>
+
+          <p className="mt-3 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+            {n < 10 ? (
+              <>
+                Con {n} {n === 1 ? "participante" : "participantes"} la
+                proporción está lejos de 0,5 y no significa nada: el
+                procedimiento sigue siendo perfectamente simétrico. Seguí
+                asignando.
+              </>
+            ) : (
+              <>
+                Con {n} participantes la proporción observada es{" "}
+                <strong className="tabular-nums">{proporcion.toFixed(3)}</strong>
+                , a{" "}
+                <strong className="tabular-nums">{desvio.toFixed(3)}</strong> de
+                la marca.
+                <span className="mt-2 block text-slate-600 dark:text-slate-400">
+                  Estás viendo los <strong>dos tipos a la vez</strong>. El 0,5
+                  de la marca es <strong>clásico</strong>: sale del diseño y no
+                  se mueve. El número de arriba es{" "}
+                  <strong>frecuentista</strong>: sale de contar y tiembla.
+                  Cuantos más participantes, más se acerca — pero nunca
+                  «aprende» el 0,5, porque el 0,5 ya estaba.
+                </span>
+              </>
+            )}
+          </p>
+        </>
+      )}
     </div>
   );
 }

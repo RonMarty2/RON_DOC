@@ -174,6 +174,14 @@ export function ModuloEspacioMuestral({
 
       <UnDadoInteractivo />
 
+      <Hilo>
+        Todo eso vale para un dado. La pregunta razonable es qué tiene que ver
+        con psicología, y la respuesta es que el objeto cambia pero la
+        estructura no.
+      </Hilo>
+
+      <DadoEItem />
+
       <Cierre>
           <p>
             Con pocas tiradas las seis barras están desparejas y da la impresión
@@ -226,6 +234,13 @@ export function ModuloEspacioMuestral({
       </Hilo>
 
       <DosDadosInteractivo />
+
+      <Hilo>
+        Cambiá los dos dados por los dos primeros ítems del cuestionario y la
+        tabla es la misma, con menos casillas.
+      </Hilo>
+
+      <Puente2ItemsPuntaje />
 
       <Cierre>
           <p>
@@ -1168,6 +1183,324 @@ function TamizajeInteractivo() {
             . El valor real en las 200 fichas es <strong>21.5%</strong>.
           </p>
         )}
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* El gemelo psicológico del dado: un ítem de un cuestionario          */
+/* ------------------------------------------------------------------ */
+
+/** Las cuatro opciones de un ítem tipo Likert de frecuencia. */
+const OPCIONES_ITEM = [
+  { valor: 0, texto: "Ningún día" },
+  { valor: 1, texto: "Varios días" },
+  { valor: 2, texto: "Más de la mitad de los días" },
+  { valor: 3, texto: "Casi todos los días" },
+];
+
+/**
+ * El mismo experimento, dos objetos, lado a lado.
+ *
+ * La auditoría del capítulo mostró que 2.1 y 2.2 son los apartados con más
+ * objetos clásicos del temario (43% y 36% del texto), y son justamente los
+ * dos primeros: un estudiante de psicología abre la herramienta y lo primero
+ * que ve son dados y monedas durante tres pantallas seguidas.
+ *
+ * Este componente no reemplaza al dado —el dado enseña bien porque no tiene
+ * ruido clínico— sino que le pone al lado su equivalente real: un ítem de un
+ * cuestionario. Se tiran los dos con el mismo botón, para que la estructura
+ * compartida sea visible en vez de estar afirmada en un párrafo.
+ */
+function DadoEItem() {
+  const [resultados, setResultados] = useState<{ dado: number; item: number }[]>([]);
+  const [visible, setVisible] = useState<{ dado: number; item: number } | null>(null);
+  const [girando, setGirando] = useState(false);
+  const girandoRef = useRef(false);
+  const limpiarRef = useRef<(() => void) | null>(null);
+
+  useEffect(() => () => limpiarRef.current?.(), []);
+
+  function tirar() {
+    if (girandoRef.current) return;
+    girandoRef.current = true;
+    setGirando(true);
+
+    const final = { dado: entero(1, 6), item: entero(0, 3) };
+    let vueltas = 0;
+    let terminado = false;
+
+    const finalizar = () => {
+      if (terminado) return;
+      terminado = true;
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+      limpiarRef.current = null;
+      setVisible(final);
+      setResultados((r) => [...r, final].slice(-20));
+      girandoRef.current = false;
+      setGirando(false);
+    };
+
+    const id = window.setInterval(() => {
+      vueltas++;
+      if (vueltas >= 8) finalizar();
+      else setVisible({ dado: entero(1, 6), item: entero(0, 3) });
+    }, 70);
+    const seguro = window.setTimeout(finalizar, 1500);
+    limpiarRef.current = () => {
+      window.clearInterval(id);
+      window.clearTimeout(seguro);
+    };
+  }
+
+  const n = resultados.length;
+
+  return (
+    <div className="rounded-2xl border-2 border-blue-300 bg-blue-50/40 p-5 dark:border-blue-800 dark:bg-blue-950/20 sm:p-6">
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+        El mismo experimento, dos objetos
+      </p>
+      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+        Un dado y un ítem de cuestionario son la misma cosa
+      </h4>
+      <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        El dado no es el tema de la materia: es el objeto más limpio para ver
+        la estructura. Acá está esa estructura al lado del objeto que vas a
+        usar toda tu carrera. Tiralos juntos.
+      </p>
+
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        {/* El dado */}
+        <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Un dado
+          </p>
+          <div className="mt-3 grid h-20 place-content-center">
+            <span className="text-5xl leading-none" aria-hidden>
+              {visible === null ? "🎲" : CARAS_DADO[visible.dado - 1]}
+            </span>
+          </div>
+          <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-400">
+            {visible === null ? "Sin tirar" : `Salió ${visible.dado}`}
+          </p>
+          <p className="mt-3 border-t border-slate-100 pt-2 text-center font-mono text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+            S = {"{1, 2, 3, 4, 5, 6}"} · 6 resultados
+          </p>
+        </div>
+
+        {/* El ítem */}
+        <div className="rounded-xl border border-blue-300 bg-white p-4 dark:border-blue-700 dark:bg-slate-900">
+          <p className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            Un ítem del cuestionario
+          </p>
+          <p className="mt-1 text-xs italic leading-snug text-slate-500 dark:text-slate-400">
+            «¿Con qué frecuencia te sentiste decaído o sin esperanzas en las
+            últimas dos semanas?»
+          </p>
+          <div className="mt-2 flex flex-col gap-1">
+            {OPCIONES_ITEM.map((o) => {
+              const elegida = visible?.item === o.valor;
+              return (
+                <div
+                  key={o.valor}
+                  className={
+                    "flex items-center gap-2 rounded-md px-2 py-1 text-xs transition " +
+                    (elegida
+                      ? "bg-blue-600 font-semibold text-white"
+                      : "text-slate-600 dark:text-slate-400")
+                  }
+                >
+                  <span className="font-mono tabular-nums">{o.valor}</span>
+                  <span className="truncate">{o.texto}</span>
+                </div>
+              );
+            })}
+          </div>
+          <p className="mt-3 border-t border-slate-100 pt-2 text-center font-mono text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+            S = {"{0, 1, 2, 3}"} · 4 resultados
+          </p>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        disabled={girando}
+        onClick={tirar}
+        className="mt-4 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:opacity-50"
+      >
+        🎲 Tirar los dos a la vez
+      </button>
+
+      {n > 0 && (
+        <div className="mt-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Lo que fue saliendo ({n} {n === 1 ? "vez" : "veces"})
+          </p>
+          <div className="mt-2 -mx-1 overflow-x-auto px-1">
+            <div className="flex min-w-max gap-1.5">
+              {resultados.map((r, i) => (
+                <div
+                  key={i}
+                  className="grid w-10 shrink-0 gap-0.5 rounded-lg bg-white px-1 py-1 text-center dark:bg-slate-800"
+                >
+                  <span className="font-mono text-sm font-semibold tabular-nums text-slate-700 dark:text-slate-200">
+                    {r.dado}
+                  </span>
+                  <span className="border-t border-slate-100 pt-0.5 font-mono text-sm font-semibold tabular-nums text-blue-600 dark:border-slate-700 dark:text-blue-400">
+                    {r.item}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+        {n === 0 ? (
+          <>
+            Fijate antes de tirar: en los dos casos sabés{" "}
+            <strong>qué puede salir</strong> y no sabés{" "}
+            <strong>qué va a salir</strong>. Eso es todo lo que hace falta para
+            que algo sea un experimento aleatorio.
+          </>
+        ) : (
+          <>
+            Los dos espacios muestrales tienen la misma naturaleza y distinto
+            tamaño: 6 contra 4. Todo lo que vale para el dado vale para el
+            ítem, cambiando el 6 por el 4.
+            <span className="mt-2 block text-slate-600 dark:text-slate-400">
+              <strong>Con una diferencia que importa:</strong> las seis caras
+              del dado son igual de probables y las cuatro opciones del ítem
+              no. Mucha gente responde 0 y muy poca responde 3. Por eso la
+              probabilidad del cuestionario no se puede calcular contando
+              opciones — hay que contar personas, y eso es el apartado 2.2.
+            </span>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+/* ------------------------------------------------------------------ */
+/* El gemelo de los dos dados: dos ítems y el puntaje que suman        */
+/* ------------------------------------------------------------------ */
+
+/**
+ * El interactivo de dos dados era el único del temario sin una sola mención
+ * de psicología. No hacía falta reemplazarlo —la tabla de doble entrada se
+ * entiende mejor con dados— sino mostrar que la misma tabla, con 4 opciones
+ * en vez de 6 caras, es exactamente lo que ocurre cuando alguien responde dos
+ * ítems y se suman sus respuestas.
+ *
+ * Es estático a propósito: acá lo que hay que ver es la tabla completa de un
+ * vistazo, no simular. La simulación ya la hicieron con los dados.
+ */
+function Puente2ItemsPuntaje() {
+  // Cuántas combinaciones de dos ítems dan cada puntaje total (0 a 6).
+  const combinaciones: Record<number, string[]> = {};
+  for (let a = 0; a <= 3; a++) {
+    for (let b = 0; b <= 3; b++) {
+      const suma = a + b;
+      (combinaciones[suma] ??= []).push(`${a}+${b}`);
+    }
+  }
+  const totales = Object.keys(combinaciones).map(Number).sort((x, y) => x - y);
+  const maximo = Math.max(...totales.map((s) => combinaciones[s].length));
+
+  return (
+    <div className="rounded-2xl border-2 border-blue-300 bg-blue-50/40 p-5 dark:border-blue-800 dark:bg-blue-950/20 sm:p-6">
+      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+        La misma tabla, con el cuestionario
+      </p>
+      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+        Dos ítems también arman una tabla, y también tienen un centro
+      </h4>
+      <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        Dos ítems de 4 opciones dan <strong>4 × 4 = 16</strong> formas de
+        responder, y su suma va de 0 a 6. Igual que con los dados, los totales
+        del medio se pueden lograr de más maneras:
+      </p>
+
+      {/* La tabla de doble entrada, 4×4 */}
+      <div className="mt-4 -mx-1 overflow-x-auto px-1">
+        <table className="min-w-max border-collapse text-center text-sm">
+          <thead>
+            <tr>
+              <th className="p-1 text-[10px] font-medium uppercase tracking-wider text-slate-400">
+                ítem 1 ╲ 2
+              </th>
+              {[0, 1, 2, 3].map((b) => (
+                <th
+                  key={b}
+                  className="w-11 p-1 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400"
+                >
+                  {b}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {[0, 1, 2, 3].map((a) => (
+              <tr key={a}>
+                <th className="p-1 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">
+                  {a}
+                </th>
+                {[0, 1, 2, 3].map((b) => (
+                  <td
+                    key={b}
+                    className="border border-slate-200 bg-white p-1.5 font-mono text-sm tabular-nums text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                  >
+                    {a + b}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Cuántas maneras dan cada puntaje */}
+      <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
+        De cuántas maneras sale cada puntaje
+      </p>
+      <div className="mt-2 -mx-1 overflow-x-auto px-1">
+        <div className="flex min-w-max items-end gap-2">
+          {totales.map((s) => {
+            const cuantas = combinaciones[s].length;
+            return (
+              <div key={s} className="flex w-12 flex-col items-center gap-1">
+                <span className="font-mono text-xs tabular-nums text-slate-500 dark:text-slate-400">
+                  {cuantas}
+                </span>
+                <div
+                  className="w-full rounded-t bg-blue-500 transition-all"
+                  style={{ height: `${(cuantas / maximo) * 70 + 6}px` }}
+                />
+                <span className="font-mono text-xs font-semibold tabular-nums text-slate-700 dark:text-slate-200">
+                  {s}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+        <p>
+          El puntaje <strong>3</strong> sale de 4 maneras (0+3, 1+2, 2+1, 3+0)
+          y el <strong>0</strong> de una sola. Es la misma forma de campana que
+          con dos dados, por la misma razón.
+        </p>
+        <p className="mt-2 text-slate-600 dark:text-slate-400">
+          Con nueve ítems en vez de dos, esa campana se vuelve mucho más
+          marcada — y eso es exactamente por qué los puntajes de un cuestionario
+          se distribuyen como se distribuyen, que es el tema del apartado 2.9.
+        </p>
       </div>
     </div>
   );

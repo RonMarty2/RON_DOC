@@ -48,9 +48,7 @@ content/
     matematica-financiera/...
 
 public/
-  interactivos/                     ← HTMLs standalone embebidos vía iframe
-    pearson_pizarra.html
-    regresion_animada.html
+  interactivos/                     ← HTMLs standalone embebidos vía iframe (vacía por ahora)
   recursos/                         ← PDFs y archivos descargables
     psicoestadistica/...
     administracion-financiera/...

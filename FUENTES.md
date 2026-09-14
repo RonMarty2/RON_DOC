@@ -15,7 +15,7 @@ Este archivo es la memoria de esa relación: qué se trajo, desde qué commit, y
 
 | Repo | Último commit revisado | Fecha del commit |
 |---|---|---|
-| axiom-simulador | `fd17d4ceea61ff130a565bc9affe78e15bf7134a` | 2026-09-14 |
+| axiom-simulador | `a0ab04b844992e1c1e14c39346d4d17e3efbaa1d` | 2026-09-14 |
 | simuladorPRO | `8acdc6c2c8f6f1655610da2be697c57eb77cb6ac` | 2026-08-02 |
 
 Se actualiza al terminar cada revisión, aunque no se haya traído nada.
@@ -116,3 +116,4 @@ Supabase, login, pagos y planes, paneles de docente, banco de exámenes UMSS, mo
 | 2026-09-14 | Línea base: axiom `fd17d4c`, simuladorPRO `8acdc6c` | Nada todavía; se armó el mapa de piezas | — |
 | 2026-09-14 | Sin commits nuevos en ninguno de los dos | Base visual de Axiom: paleta, tipografías, MathText, LaminaShell, dispositivos, reglas de lámina. Muestra en `/muestra` | `TablaRuffini`: es de álgebra preuniversitaria, no la usa ninguna materia de RON_DOC |
 | 2026-09-14 | Sin commits nuevos en ninguno de los dos | Motor financiero de SIMPRO (`8acdc6c`) con sus pruebas. Lámina `/amortizacion` sobre `calcularAmortizacionGenerica` | — |
+| 2026-09-14 | Axiom `fd17d4c..a0ab04b` (6 commits); SIMPRO sin cambios | Nada | Los 6 son del banco de exámenes de Económicas, facultades e inventario de facsímiles: ninguna ruta vigilada, y el banco está en "lo que no se trae" |

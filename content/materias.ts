@@ -65,15 +65,6 @@ export const MATERIAS: Materia[] = [
         resumen:
           "Estadística bivariada: medición del grado de asociación lineal entre dos variables cuantitativas.",
         archivoMdx: "correlacion-pearson",
-        interactivos: [
-          {
-            src: "/interactivos/pearson_pizarra.html",
-            titulo: "Pizarra interactiva: correlación de Pearson",
-            descripcion:
-              "Manipula los puntos para ver cómo cambia el coeficiente r en tiempo real.",
-            alto: "640px",
-          },
-        ],
       },
       {
         slug: "regresion-lineal-simple",
@@ -81,15 +72,6 @@ export const MATERIAS: Materia[] = [
         resumen:
           "Ajuste de una recta por mínimos cuadrados ordinarios, interpretación de coeficientes y bondad de ajuste.",
         archivoMdx: "regresion-lineal-simple",
-        interactivos: [
-          {
-            src: "/interactivos/regresion_animada.html",
-            titulo: "Regresión lineal animada",
-            descripcion:
-              "Animación del proceso de minimización de la suma de cuadrados de los residuos.",
-            alto: "640px",
-          },
-        ],
       },
     ],
   },

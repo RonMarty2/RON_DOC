@@ -1,151 +1,230 @@
 \apartado{2.8}{Distribuciones discretas}{distrib}
+\bajada{Tres preguntas de planificación, tres procesos distintos, tres fórmulas
+distintas. Confundirlas produce números equivocados que parecen razonables — y
+los tres procesos aparecen en cualquier servicio que administre tests y agende
+entrevistas.}
 
-\bajada{Tres preguntas de planificación, tres procesos distintos, tres fórmulas distintas. Confundirlas produce números equivocados que parecen razonables.}
-\ejercicio{0}{%
-  ¿Qué es un \emph{ensayo de Bernoulli}? Dá dos ejemplos, uno con un objeto
-  cotidiano y otro del servicio de salud mental.}{}
-\renglones[3]
-\respuesta{Un experimento con dos resultados posibles (éxito/fracaso).
-Ej.: tirar una moneda; que una ficha dé positivo o no.}
+\definicion{Las tres, y qué las distingue}{%
+  \textbf{Binomial}: un número fijo de intentos independientes, con la misma
+  probabilidad en cada uno.\par
+  \textbf{Poisson}: conteos en un intervalo de tiempo o espacio, con una tasa
+  media conocida. No hay «intentos» que contar.\par
+  \textbf{Hipergeométrica}: extracción \emph{sin reposición} de un grupo finito
+  y chico, donde la probabilidad cambia en cada extracción.}
+
+\minihistoria{El control de calidad industrial, con protocolos}{%
+  En una fábrica se toma una muestra de un lote y se cuenta cuántas piezas
+  salen fuera de norma. En un servicio de psicología se toma una muestra de los
+  protocolos administrados y se cuenta cuántos salen inválidos: mal
+  codificados, incompletos, con patrón de respuesta inconsistente.\par
+  Es el mismo problema y la misma fórmula. Cambia el sustantivo.}
+
+\ejercicio{0}{¿Qué es un \emph{ensayo de Bernoulli}? Da dos ejemplos de un
+  servicio de psicología. Después explica por qué llamar «éxito» a uno de los
+  dos resultados puede resultar engañoso.}{}
+\renglones[4]
+\respuesta{Un experimento con dos resultados posibles. Ej.: un protocolo es
+válido o no; un paciente completa el tratamiento o no.}
 \solucion{%
   Un experimento con \textbf{exactamente dos resultados posibles}, que por
-  convención se llaman éxito y fracaso, con probabilidad $p$ y $1-p$.
-  \\[0.3em]
-  Cotidiano: tirar una moneda (cara/cruz). Del servicio: una ficha da positivo
-  o no da positivo.
-  \\[0.3em]
-  «Éxito» es sólo una etiqueta: acá el éxito es dar positivo en depresión, que
-  obviamente no es una buena noticia. Conviene aclararlo en clase porque
-  confunde.}
+  convención se llaman éxito y fracaso, con probabilidades $p$ y $1-p$.
+  \par
+  De un servicio: un protocolo administrado es válido o inválido; un paciente
+  completa el tratamiento o lo abandona; una ficha da positivo o negativo.
+  \par
+  Lo engañoso es que «éxito» es sólo una etiqueta para el resultado que se
+  cuenta. Si estás contando protocolos inválidos, el «éxito» es encontrar uno
+  inválido — que obviamente no es una buena noticia. Conviene decirlo en voz
+  alta antes de que alguien lo lea en un informe.}
 
-\ejercicio{1}{%
-  Para cada situación, decide si los intentos son \emph{independientes} y si
-  la probabilidad $p$ se mantiene constante.
+\ejercicio{1}{Un servicio administra 25 protocolos por semana. Por experiencia
+  sabe que alrededor del \textbf{4\,\%} sale inválido.
+  \textbf{Antes de calcular, escribe cuántos protocolos inválidos crees que
+  aparecen en una semana típica:} \underline{\hspace{1.8cm}}
+  \par\vspace{0.2em}
+  Y arriesga también qué probabilidad hay de que no aparezca
+  \emph{ninguno}: \underline{\hspace{1.8cm}}}{Predice primero}
+\renglones[4]
+\respuesta{El promedio es 1. La probabilidad de ninguno es 36\,\%, bastante más
+alta de lo que casi todos estiman.}
+\solucion{%
+  El promedio es $E(X)=25\times 0{,}04$, o sea \textbf{1} protocolo inválido
+  por semana.
+  \par
+  La probabilidad de que no aparezca ninguno es \textbf{36\,\%}, y se calcula
+  en el ejercicio 5. Casi todo el mundo la estima mucho más baja —alrededor del
+  10\,\%— porque con un promedio de 1 cuesta aceptar que «cero» sea tan
+  frecuente.
+  \par
+  Esa intuición equivocada es cara en la práctica: una semana sin protocolos
+  inválidos no significa que el procedimiento haya mejorado.}
+\enclase{Anota las estimaciones. El contraste en el ejercicio 5 es el momento
+más útil del apartado.}
+
+\ejercicio{1}{Para cada situación, decide si los intentos son
+  \emph{independientes} y si la probabilidad $p$ se mantiene constante.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item Tirar una moneda 10 veces.
-    \item Sacar 3 cartas de una baraja sin devolverlas.
-    \item Tamizar a 20 estudiantes distintos elegidos al azar de toda la universidad.
+    \item Administrar 25 protocolos a personas distintas.
+    \item Revisar 3 legajos de una caja de 20, sin devolverlos.
+    \item Tamizar a 20 estudiantes elegidos al azar de toda la universidad.
   \end{enumerate}}{}
 \renglones[4]
-\respuesta{(a) sí y sí; (b) no y no; (c) sí y sí (aproximadamente).}
+\respuesta{(a) sí y sí; (b) no y no; (c) sí y sí, aproximadamente.}
 \solucion{%
-  (a) \textbf{Sí}: la moneda no recuerda nada y $p=0{,}5$ siempre.
-  \\[0.3em]
-  (b) \textbf{No}: al sacar una carta sin devolverla cambia lo que queda, así
+  (a) \textbf{Sí}: cada administración es independiente de las otras y $p$ no
+  cambia.
+  \par
+  (b) \textbf{No}: al sacar un legajo sin devolverlo cambia lo que queda, así
   que $p$ cambia en cada extracción. Éste es el caso hipergeométrico.
-  \\[0.3em]
+  \par
   (c) \textbf{Sí, aproximadamente}: técnicamente se muestrea sin reposición,
-  pero la población es tan grande frente a 20 que $p$ prácticamente no se
-  mueve. Por eso se usa binomial.
-  \\[0.3em]
-  \textbf{La regla práctica}: si la muestra es menos del 10\% de la población,
-  la binomial es una buena aproximación aunque no haya reposición.}
+  pero la población es tan grande frente a 20 que $p$ prácticamente no se mueve.
+  \par
+  \textbf{La regla práctica}: si la muestra es menos del 10\,\% de la
+  población, la binomial es buena aproximación aunque no haya reposición. En
+  (b) es 3 de 20, o sea el 15\,\%: no alcanza.}
 
-\ejercicio{1}{%
-  Se tira una moneda 5 veces. Calcula la probabilidad de obtener exactamente
-  2 caras, usando $\binom{5}{2}p^{2}(1-p)^{3}$ con $p=0{,}5$.}{}
-\renglones[3]
-\respuesta{$10\times 0{,}25\times 0{,}125 = 0{,}3125$.}
+\ejercicio{2}{Dos preguntas sobre el mismo servicio que exigen fórmulas
+  distintas. Identifica cuál corresponde a cada una y explica por qué, sin
+  calcular todavía.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item De los 25 protocolos de esta semana, ¿cuántos saldrán inválidos?
+    \item ¿Cuántas consultas de urgencia llegarán la semana que viene?
+  \end{enumerate}}{Dos casos casi iguales}
+\renglones[5]
+\respuesta{(a) binomial; (b) Poisson. En (b) no hay un número fijo de intentos.}
 \solucion{%
-  \[ P(X=2)=\binom{5}{2}(0{,}5)^{2}(0{,}5)^{3}
-     = 10 \times 0{,}25 \times 0{,}125 = 0{,}3125 \]
-  \\[0.3em]
-  El $\binom{5}{2}=10$ cuenta de cuántas maneras pueden ubicarse las 2 caras
-  entre las 5 tiradas. Sin ese factor estarías calculando la probabilidad de
-  una secuencia concreta, no de «2 caras en cualquier orden».}
+  (a) \textbf{Binomial}: hay un número fijo de intentos (25 protocolos), cada
+  uno sale válido o inválido, con la misma probabilidad.
+  \par
+  (b) \textbf{Poisson}: no hay número fijo de intentos. No se puede decir
+  «cuántas consultas de urgencia \emph{no} ocurrieron» — sólo hay una tasa por
+  unidad de tiempo.
+  \par
+  \textbf{La pregunta que las separa}: ¿puedo contar los fracasos? Con los
+  protocolos sí: los 24 que salieron bien. Con las urgencias no: las urgencias
+  que no pasaron no existen como casos. Si no puedes contar los fracasos, no es
+  binomial.}
 
-\ejercicio{2}{%
-  En una población el 20\% de las personas da positivo en un tamizaje. Se
-  evalúan 10 personas. Calcula la probabilidad de que exactamente 3 den
-  positivo.}{}
-\renglones[4]
-\respuesta{$\approx 0{,}2013$.}
+\ejercicio{2}{Un coordinador calcula así la probabilidad de encontrar
+  exactamente 2 protocolos inválidos entre 25, con $p=0{,}04$:
+  \begin{quote}\itshape
+  $P(X=2) = (0{,}04)^2 \times (0{,}96)^{23} = 0{,}000624$
+  \end{quote}
+  \textbf{Señala qué le falta} al procedimiento, explica por qué, y da el
+  resultado correcto.}{Encuentra el error}
+\renglones[6]
+\respuesta{Falta el coeficiente $\binom{25}{2}=300$. El correcto es
+$\approx 0{,}1877$.}
 \solucion{%
-  \[ P(X=3)=\binom{10}{3}(0{,}2)^{3}(0{,}8)^{7}
-     = 120 \times 0{,}008 \times 0{,}2097 \approx 0{,}2013 \]
-  Alrededor del 20\%.
-  \\[0.3em]
-  $\binom{10}{3}=\dfrac{10\times 9\times 8}{3\times 2\times 1}=120$.}
+  Lo que calculó es la probabilidad de \textbf{una secuencia concreta}: que los
+  dos primeros salgan inválidos y los 23 restantes válidos, en ese orden exacto.
+  \par
+  Pero la pregunta no dice \emph{cuáles} dos. Los dos inválidos pueden ser
+  cualquier par de los 25, y hay $\binom{25}{2}=300$ pares posibles:
+  \[ P(X=2)=\binom{25}{2}(0{,}04)^{2}(0{,}96)^{23}
+     = 300 \times 0{,}000624 \approx 0{,}1877 \]
+  \par
+  El resultado correcto es 18,8\,\%, unas 300 veces el número que obtuvo.
+  \par
+  \textbf{Cómo detectarlo}: si una probabilidad de algo perfectamente normal te
+  da 0,0006, sospecha. Y fíjate que el coeficiente binomial es justamente la
+  combinatoria del apartado 2.4 haciendo su trabajo aquí.}
+\enclase{Pregunta qué cuenta el 300. Si pueden decir «los pares de posiciones
+donde pueden caer los inválidos», la fórmula dejó de ser un símbolo.}
 
-\ejercicio{2}{%
-  Un servicio recibe en promedio 3 consultas de urgencia por semana. Calcula
-  la probabilidad de recibir exactamente 2 en una semana dada.}{}
-\renglones[3]
-\respuesta{$\approx 0{,}224$.}
+\ejercicio{3}{Sobre el mismo control de calidad: 25 protocolos por semana,
+  $p=0{,}04$ de salir inválido.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Probabilidad de que \emph{ninguno} salga inválido?
+    \item ¿Probabilidad de que salga \emph{al menos uno}?
+    \item Compara (a) con tu estimación del ejercicio 2.
+  \end{enumerate}}{}
+\renglones[6]
+\respuesta{(a) $\approx 0{,}3604$. (b) $\approx 0{,}6396$.}
 \solucion{%
-  Es Poisson, con $\lambda = 3$:
-  \[ P(X=2)=\frac{e^{-3}\,3^{2}}{2!}
-     = \frac{0{,}0498 \times 9}{2} \approx 0{,}224 \]
-  \\[0.3em]
-  Se usa Poisson y no binomial porque no hay un número fijo de «intentos»: no
-  se puede decir cuántas consultas \emph{no} ocurrieron. Sólo hay una tasa por
-  unidad de tiempo.}
+  (a) \[ P(X=0)=\binom{25}{0}(0{,}04)^{0}(0{,}96)^{25}=(0{,}96)^{25}
+     \approx 0{,}3604 \]
+  Un 36\,\%: más de una semana de cada tres no tiene ningún protocolo inválido.
+  \par
+  (b) Por complemento, que es mucho más rápido que sumar desde $X=1$ hasta
+  $X=25$:
+  \[ P(X\ge 1)=1-P(X=0)\approx 1-0{,}3604=0{,}6396 \]
+  \par
+  (c) Casi todo el mundo estima el (a) alrededor del 10\,\%. \textbf{La
+  consecuencia práctica es real}: si el servicio interpreta una semana limpia
+  como señal de que el procedimiento mejoró, se está engañando — pasa una de
+  cada tres semanas sin que cambie nada.}
 
-\ejercicio{3}{%
-  El servicio va a tamizar a 20 estudiantes nuevos. Sabe por su archivo que la
-  probabilidad de dar positivo es $p=0{,}215$.
-  Calcula la probabilidad de encontrar exactamente 5 positivos.}{}
-\renglones[4]
-\respuesta{$\approx 0{,}1887$.}
-\solucion{%
-  \[ P(X=5)=\binom{20}{5}(0{,}215)^{5}(0{,}785)^{15} \]
-  $\binom{20}{5} = 15\,504$; $(0{,}215)^{5} \approx 0{,}000459$;
-  $(0{,}785)^{15} \approx 0{,}0265$.
-  \[ P(X=5) \approx 15\,504 \times 0{,}000459 \times 0{,}0265 \approx 0{,}1887 \]
-  \\[0.3em]
-  Casi el 19\%. Y recuerda del apartado 2.7 que lo esperado eran $4{,}3$
-  positivos, así que 5 es un resultado de los más frecuentes.}
-
-\ejercicio{3}{%
-  Dos preguntas más del mismo servicio:
+\ejercicio{3}{Dos preguntas más del mismo servicio:
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
     \item Recibe en promedio 5 solicitudes de atención por semana.
-          ¿Probabilidad de recibir exactamente 8 en una semana?
-    \item De los 43 estudiantes positivos, 9 tienen el expediente incompleto.
-          Se auditan 6 al azar, sin reposición. ¿Probabilidad de que
-          exactamente 2 estén incompletos?
+      ¿Probabilidad de recibir exactamente 8 en una semana?
+    \item De los 43 estudiantes que dieron positivo, 9 tienen el expediente
+      incompleto. Se auditan 6 al azar, sin reposición. ¿Probabilidad de que
+      exactamente 2 estén incompletos?
   \end{enumerate}}{}
-\renglones[6]
+\renglones[7]
 \respuesta{(a) $\approx 0{,}0653$. (b) $\approx 0{,}2739$.}
 \solucion{%
-  (a) \textbf{Poisson}, $\lambda = 5$:
+  (a) \textbf{Poisson}, con $\lambda = 5$:
   \[ P(X=8)=\frac{e^{-5}\,5^{8}}{8!}
-     = \frac{0{,}006738 \times 390\,625}{40\,320} \approx 0{,}0653 \]
-  \\[0.3em]
-  (b) \textbf{Hipergeométrica}, porque se audita sin reposición de un grupo
-  finito de 43: $N=43$, $K=9$, $n=6$, $k=2$.
+     = \frac{0{,}006738\times 390\,625}{40\,320}\approx 0{,}0653 \]
+  \par
+  (b) \textbf{Hipergeométrica}: se audita sin reposición de un grupo finito de
+  43. Con $N=43$, $K=9$, $n=6$, $k=2$:
   \[ P(X=2)=\frac{\binom{9}{2}\binom{34}{4}}{\binom{43}{6}}
-     = \frac{36 \times 46\,376}{6\,096\,454} \approx 0{,}2739 \]
-  \\[0.3em]
-  Acá \emph{no} se puede usar binomial: 6 de 43 es el 14\% del grupo, muy por
-  encima del 10\%, así que la probabilidad cambia de manera apreciable en cada
-  extracción.}
+     = \frac{36\times 46\,376}{6\,096\,454}\approx 0{,}2739 \]
+  \par
+  Aquí \emph{no} se puede usar binomial: 6 de 43 es el 14\,\%, muy por encima
+  del 10\,\%, así que la probabilidad cambia de manera apreciable en cada
+  extracción. Se comprueba en el ejercicio 8.}
 
-\ejercicio{4}{%
-  Para cada pregunta, decide qué distribución corresponde —binomial, Poisson o
-  hipergeométrica— y justifica en una línea. No hace falta calcular.
+\ejercicio{4}{Una auditora resuelve el punto (b) anterior con la binomial,
+  usando $n=6$ y $p=9/43=0{,}209$, y obtiene $0{,}2569$.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item De 30 estudiantes tamizados esta semana, ¿cuántos darán positivo?
-    \item ¿Cuántas urgencias llegarán el próximo fin de semana?
-    \item De las 25 fichas con diagnóstico confirmado, se revisan 5 al azar:
-          ¿cuántas tendrán además ansiedad?
-    \item Un profesional atiende 12 primeras entrevistas: ¿en cuántas
-          confirmará el diagnóstico?
+    \item ¿Por cuánto se equivocó, en términos relativos?
+    \item ¿Por qué la binomial no corresponde aquí?
+    \item ¿En qué caso su atajo \emph{sí} habría sido aceptable?
   \end{enumerate}}{}
-\renglones[6]
-\respuesta{(a) binomial; (b) Poisson; (c) hipergeométrica; (d) binomial.}
+\renglones[7]
+\respuesta{(a) $0{,}2569$ contra $0{,}2739$: un 6\,\% menos. (b) Hay extracción
+sin reposición de un grupo chico. (c) Si el grupo fuera mucho más grande, por
+ejemplo auditar 6 de 500.}
 \solucion{%
-  (a) \textbf{Binomial}: número fijo de intentos (30), misma $p$, y los
-  estudiantes vienen de una población grande.
-  \\[0.3em]
-  (b) \textbf{Poisson}: no hay número fijo de intentos, sólo una tasa por
-  unidad de tiempo. No se puede contar «cuántas urgencias no ocurrieron».
-  \\[0.3em]
-  (c) \textbf{Hipergeométrica}: se extrae sin reposición de un grupo finito y
-  chico (5 de 25 es el 20\%), así que $p$ cambia en cada extracción.
-  \\[0.3em]
-  (d) \textbf{Binomial}: 12 intentos fijos, cada uno confirma o no.
-  \\[0.3em]
-  \textbf{El árbol de decisión}: ¿hay un número fijo de intentos? Si no →
-  Poisson. Si sí, ¿el grupo del que extraes es chico y sin reposición? Si sí →
-  hipergeométrica. Si no → binomial.}
+  (a) Obtuvo $0{,}2569$ contra el valor correcto $0{,}2739$: se equivocó en
+  torno al 6\,\% relativo.
+  \par
+  (b) La binomial supone que $p$ es constante. Aquí no lo es: si el primer
+  legajo sale incompleto, quedan 8 incompletos entre 42, y $p$ baja de
+  $0{,}209$ a $0{,}190$. Con 6 de 43 esa variación ya pesa.
+  \par
+  (c) Si el grupo fuera mucho más grande —auditar 6 de 500, por ejemplo— la
+  probabilidad casi no se movería y la binomial sería una aproximación
+  perfectamente aceptable.
+  \par
+  \textbf{Lo que hay que retener no es el 6\,\%.} Es que el error es
+  \emph{chico}: no salta a la vista, no rompe nada, y por eso sobrevive hasta
+  el informe final. Los errores grandes se detectan solos; éstos no.
+  \par
+  \textbf{El árbol de decisión}: ¿hay un número fijo de intentos? Si no,
+  Poisson. Si sí, ¿extraes sin reposición de un grupo chico? Si sí,
+  hipergeométrica. Si no, binomial.}
+\enclase{Si tienes tiempo, pídeles que calculen cómo cambia $p$ tras la primera
+extracción. Ver el paso de $0{,}209$ a $0{,}190$ convence más que la regla del
+10\,\%.}
+
+\trampa{usar la binomial para auditorías y muestreos de archivos}%
+  {es la fórmula más conocida, y el resultado se parece tanto al correcto que
+   nadie lo cuestiona}%
+  {en una auditoría se extrae sin reposición de un grupo finito. Si la muestra
+   supera el 10\,\% del grupo, corresponde la hipergeométrica}
+
+\cierre{%
+  Las tres distribuciones responden preguntas que un servicio se hace todas las
+  semanas: cuántos protocolos van a fallar, cuántas urgencias van a llegar,
+  cuántos legajos incompletos va a encontrar una auditoría.
+  \par
+  Las tres trabajan con variables discretas — cosas que se cuentan. Lo que
+  falta es la herramienta para las que se miden, y con ella se puede evaluar
+  cualquier punto de corte sin volver a contar el archivo.}

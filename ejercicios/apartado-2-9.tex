@@ -1,137 +1,221 @@
 \apartado{2.9}{Distribución normal}{distrib}
+\bajada{La curva que permite evaluar cualquier punto de corte sin volver a
+contar el archivo. Cierra la unidad respondiendo la pregunta que la abrió:
+dónde conviene ponerlo, y qué se sacrifica con cada decisión.}
 
-\bajada{La curva que permite evaluar cualquier punto de corte sin volver a contar el archivo. Cierra la unidad respondiendo dónde conviene ponerlo.}
-\ejercicio{0}{%
-  Según la regla 68–95–99,7, ¿qué porcentaje de los casos cae entre
-  $\mu-\sigma$ y $\mu+\sigma$? ¿Y fuera de $\mu\pm 2\sigma$?}{}
+\definicion{Puntuación $z$}{%
+  $z = \dfrac{x-\mu}{\sigma}$: a cuántas desviaciones estándar del promedio
+  está un valor. Convierte cualquier escala en una sola, comparable — que es
+  exactamente lo que hace falta cuando cada test tiene su propio rango.}
+
+\minihistoria{Por qué los tests informan puntuaciones tipificadas}{%
+  Un paciente saca 14 en un cuestionario de depresión y 38 en uno de ansiedad.
+  ¿En cuál está peor? Los números no se pueden comparar: las escalas son
+  distintas.\par
+  Convertidos a $z$, sí. Por eso los informes psicológicos usan puntuaciones
+  tipificadas, percentiles o escalas derivadas como el CI: todas son la misma
+  idea de poner cada valor en relación con su propia distribución.}
+
+\ejercicio{0}{Según la regla 68--95--99,7: ¿qué porcentaje de los casos cae
+  entre $\mu-\sigma$ y $\mu+\sigma$? ¿Y qué porcentaje queda \emph{fuera} de
+  $\mu\pm 2\sigma$? ¿Cómo se reparte ese resto?}{}
 \renglones[3]
-\respuesta{68\% dentro de $\mu\pm\sigma$; 5\% fuera de $\mu\pm 2\sigma$.}
+\respuesta{68\,\% dentro de una desviación; 5\,\% fuera de dos, repartido en
+2,5\,\% de cada lado.}
 \solucion{%
-  Entre $\mu\pm\sigma$ cae el \textbf{68\%}.
-  \\[0.3em]
-  Fuera de $\mu\pm 2\sigma$ cae el $100-95 = \mathbf{5\%}$, repartido en las
-  dos colas: un 2,5\% de cada lado.}
+  Entre $\mu\pm\sigma$ cae el \textbf{68\,\%}.
+  \par
+  Fuera de $\mu\pm 2\sigma$ queda el 5\,\%, repartido en las dos colas:
+  2,5\,\% de cada lado.
+  \par
+  Ese reparto en dos colas es lo que hay que tener presente: cuando te
+  preguntan por «los que superan» un valor alto, la respuesta es la mitad del
+  porcentaje de afuera, no todo.}
 
-\ejercicio{1}{%
-  Un test de inteligencia tiene $\mu=100$ y $\sigma=15$.
-  ¿Entre qué dos valores cae el 68\% de la población? ¿Y el 95\%?}{}
+\ejercicio{1}{Un test de inteligencia tiene $\mu=100$ y $\sigma=15$. Una
+  paciente obtiene 130.
+  \textbf{Antes de calcular, escribe qué porcentaje de la población crees que
+  supera ese puntaje:} \underline{\hspace{1.8cm}}
+  \par\vspace{0.2em}
+  Ahora calcula su puntuación $z$ y usa la regla 68--95--99,7.}{Predice primero}
+\renglones[4]
+\respuesta{$z=2$, y lo supera el 2,5\,\%.}
+\solucion{%
+  \[ z=\frac{130-100}{15}=\frac{30}{15}=2 \]
+  Está a 2 desviaciones estándar por encima del promedio.
+  \par
+  Fuera de $\mu\pm 2\sigma$ queda el 5\,\%, y la cola de arriba se lleva la
+  mitad: lo supera el \textbf{2,5\,\%} de la población.
+  \par
+  La estimación más frecuente ronda el 10\,\%, porque 130 «no parece tan lejos»
+  de 100. La escala engaña: en unidades de $\sigma$ está bastante lejos.}
+
+\ejercicio{1}{Con el mismo test ($\mu=100$, $\sigma=15$):
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Qué puntaje bruto corresponde a $z=-1{,}5$?
+    \item ¿Qué $z$ le corresponde a un puntaje de 92?
+  \end{enumerate}}{}
 \renglones[3]
-\respuesta{68\%: entre 85 y 115. 95\%: entre 70 y 130.}
+\respuesta{(a) $77{,}5$. (b) $z\approx -0{,}53$.}
 \solucion{%
-  68\%: $100 \pm 15$, o sea entre \textbf{85 y 115}.
-  \\[0.3em]
-  95\%: $100 \pm 2(15) = 100\pm 30$, o sea entre \textbf{70 y 130}.}
+  (a) Despejando: $x=\mu+z\sigma = 100+(-1{,}5)(15)=77{,}5$.
+  \par
+  (b) $z=\dfrac{92-100}{15}=\dfrac{-8}{15}\approx -0{,}53$.
+  \par
+  El signo dice de qué lado del promedio está; el valor absoluto, cuán lejos.
+  Un $z$ de $-0{,}53$ es una diferencia menor: casi el 30\,\% de la población
+  está por debajo de ese valor.}
 
-\ejercicio{1}{%
-  Con el mismo test ($\mu=100$, $\sigma=15$), calcula la puntuación $z$ de
-  alguien que obtuvo 130. Interpreta el resultado en una frase.}{}
-\renglones[3]
-\respuesta{$z=2$: está a 2 desviaciones estándar por encima del promedio.}
+\ejercicio{2}{Una paciente obtiene 14 en un cuestionario de depresión
+  ($\mu=6{,}32$, $\sigma=4{,}64$) y 38 en uno de ansiedad ($\mu=30$,
+  $\sigma=8$). Su terapeuta quiere saber en cuál está relativamente peor.
+  Calcula las dos puntuaciones $z$ y responde.}{Dos casos casi iguales}
+\renglones[5]
+\respuesta{$z\approx 1{,}66$ en depresión y $z=1{,}00$ en ansiedad: está
+relativamente peor en depresión.}
 \solucion{%
-  \[ z = \frac{130-100}{15} = \frac{30}{15} = 2 \]
-  Está a \textbf{2 desviaciones estándar por encima} del promedio. Por la
-  regla 68–95–99,7, sólo un 2,5\% de la población supera ese valor.}
+  \[ z_{\text{dep}}=\frac{14-6{,}32}{4{,}64}=\frac{7{,}68}{4{,}64}\approx 1{,}66
+     \qquad
+     z_{\text{ans}}=\frac{38-30}{8}=\frac{8}{8}=1{,}00 \]
+  \par
+  Está relativamente \textbf{peor en depresión}: $1{,}66$ desviaciones por
+  encima del promedio contra $1{,}00$.
+  \par
+  Fíjate que el puntaje bruto sugería lo contrario — 38 es mucho más grande que
+  14. \textbf{Comparar puntajes brutos de escalas distintas no significa nada},
+  y es un error que aparece en informes reales cuando alguien arma un perfil
+  poniendo los números uno al lado del otro.}
+\enclase{Éste es el ejercicio que justifica las puntuaciones tipificadas. Si
+entienden por qué 14 «pesa» más que 38, entendieron para qué sirve el $z$.}
 
-\ejercicio{2}{%
-  Con el mismo test, ¿qué puntaje bruto corresponde a $z=-1{,}5$?
-  ¿Y qué $z$ le corresponde a un puntaje de 92?}{}
-\renglones[3]
-\respuesta{$z=-1{,}5 \rightarrow 77{,}5$; \; $x=92 \rightarrow z\approx -0{,}53$.}
+\ejercicio{2}{Un informe dice:
+  \begin{quote}\itshape
+  «El paciente obtuvo $z=1{,}5$, o sea que está un 1,5\,\% por encima del
+  promedio del grupo.»
+  \end{quote}
+  \textbf{Señala el error} y escribe qué significa realmente ese $z$.}{Encuentra el error}
+\renglones[5]
+\respuesta{Confunde el $z$ con un porcentaje. Significa 1,5 desviaciones
+estándar por encima del promedio, y lo supera alrededor del 7\,\% del grupo.}
 \solucion{%
-  Despejando $x$ de $z=\dfrac{x-\mu}{\sigma}$:
-  \[ x = \mu + z\sigma = 100 + (-1{,}5)(15) = 100 - 22{,}5 = 77{,}5 \]
-  \\[0.3em]
-  Y al revés:
-  \[ z = \frac{92-100}{15} = \frac{-8}{15} \approx -0{,}53 \]
-  \\[0.3em]
-  El signo dice de qué lado del promedio está; el valor absoluto, cuán lejos.}
+  El error es \textbf{leer el $z$ como si fuera un porcentaje}. No lo es: es un
+  número de desviaciones estándar.
+  \par
+  $z=1{,}5$ significa que el paciente está a \textbf{una desviación y media por
+  encima} del promedio. Cuánto representa eso en porcentaje depende de la forma
+  de la distribución: en una normal, lo supera alrededor del 7\,\% del grupo.
+  \par
+  \textbf{Por qué es grave}: dicho como «1,5\,\% por encima» suena a una
+  diferencia despreciable, y en realidad es un valor claramente alto. Un lector
+  del informe podría decidir no intervenir.}
 
-\ejercicio{2}{%
-  En una distribución normal con $\mu=50$ y $\sigma=10$, ¿qué proporción de
-  los casos supera el valor 70? Resuélvelo con la regla 68–95–99,7, sin tabla.}{}
-\renglones[3]
-\respuesta{$z=2$, así que aproximadamente el 2,5\%.}
-\solucion{%
-  \[ z = \frac{70-50}{10} = 2 \]
-  Fuera de $\mu\pm 2\sigma$ queda el 5\%, repartido en dos colas simétricas.
-  La cola de arriba se lleva la mitad: \textbf{2,5\%}.}
-
-\ejercicio{3}{%
-  En las 200 fichas, el puntaje de depresión tiene $\mu=6{,}32$ y
+\ejercicio{3}{En las 200 fichas, el puntaje de depresión tiene $\mu=6{,}32$ y
   $\sigma=4{,}64$. El corte del tamizaje está en 10.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
     \item Calcula la puntuación $z$ del corte.
-    \item Usando la tabla normal, $P(Z \ge 0{,}79) \approx 0{,}214$.
-          ¿Qué significa ese número?
-    \item Compara con la proporción real de positivos del archivo ($43/200$).
+    \item Sabiendo que $P(Z\ge 0{,}79)\approx 0{,}214$, ¿qué significa ese
+      número?
+    \item Compáralo con la proporción real de positivos del archivo ($43/200$).
   \end{enumerate}}{}
-\renglones[5]
-\respuesta{(a) $z\approx 0{,}79$. (b) 21,4\% superaría el corte según el
-modelo. (c) Real: 21,5\%. Casi idéntico.}
+\renglones[6]
+\respuesta{(a) $z\approx 0{,}79$. (b) El 21,4\,\% superaría el corte según el
+modelo. (c) El real es 21,5\,\%: casi idéntico.}
 \solucion{%
-  (a) \[ z = \frac{10-6{,}32}{4{,}64} = \frac{3{,}68}{4{,}64} \approx 0{,}79 \]
-  \\[0.3em]
-  (b) Significa que, si los puntajes siguieran una distribución normal, el
-  \textbf{21,4\%} de las personas superaría el corte de 10.
-  \\[0.3em]
-  (c) La proporción real es $\dfrac{43}{200} = 21{,}5\%$. La diferencia es de
-  una décima de punto porcentual.
-  \\[0.3em]
-  \textbf{Por qué importa}: el modelo normal reprodujo el dato real sin
-  contar ni una ficha. Eso es lo que lo hace útil — permite evaluar cualquier
-  corte, incluso uno que nunca se probó, usando sólo $\mu$ y $\sigma$.}
+  (a) \[ z=\frac{10-6{,}32}{4{,}64}=\frac{3{,}68}{4{,}64}\approx 0{,}79 \]
+  \par
+  (b) Si los puntajes siguieran una distribución normal, el \textbf{21,4\,\%}
+  de las personas superaría el corte de 10.
+  \par
+  (c) La proporción real es $43/200$, o sea 21,5\,\%. La diferencia es de una
+  décima de punto porcentual.
+  \par
+  \textbf{Por qué importa}: el modelo reprodujo el dato real sin contar ni una
+  ficha. Eso es lo que lo hace útil — permite evaluar cualquier corte, incluso
+  uno que nunca se probó, usando sólo $\mu$ y $\sigma$.}
 
-\ejercicio{3}{%
-  Con los mismos $\mu=6{,}32$ y $\sigma=4{,}64$, calcula la puntuación $z$ si
-  el servicio moviera el corte a 8, y otra vez si lo moviera a 13.
-  ¿En cuál de los tres cortes (8, 10, 13) se marcaría a más gente?}{}
-\renglones[4]
-\respuesta{Corte 8: $z\approx 0{,}36$. Corte 13: $z\approx 1{,}44$.
-Con 8 se marca a más gente.}
-\solucion{%
-  \[ z_{8} = \frac{8-6{,}32}{4{,}64} \approx 0{,}36 \qquad
-     z_{13} = \frac{13-6{,}32}{4{,}64} \approx 1{,}44 \]
-  \\[0.3em]
-  Cuanto más bajo el corte, menor el $z$ y mayor el área a la derecha: se
-  marca a más gente. Con corte 8 se marcaría aproximadamente al 36\% del
-  archivo; con 13, alrededor del 7,5\%.
-  \\[0.3em]
-  Fíjate que no hizo falta volver a revisar ninguna ficha.}
-
-\ejercicio{4}{%
-  El servicio evalúa mover el corte. Con el corte en 10 tiene 88\% de
-  sensibilidad, 88\% de especificidad y un VPP del 51,2\%.
+\ejercicio{3}{El servicio evalúa mover el corte a 8 o a 13.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item Si baja el corte a 8, ¿qué le pasa a la sensibilidad? ¿Y a la
-          especificidad? ¿Y al VPP?
-    \item Si lo sube a 13, ¿qué cambia?
-    \item El servicio tiene capacidad para 30 entrevistas al mes y tamiza 200
-          estudiantes. ¿Qué corte recomendarías, y qué estás sacrificando?
+    \item Calcula la puntuación $z$ de cada uno.
+    \item ¿Con cuál se marcaría a más gente?
+    \item ¿Alcanza con estos cálculos para decidir cuál es el mejor corte? Si
+      no, ¿qué falta?
+  \end{enumerate}}{¿Alcanzan los datos?}
+\renglones[7]
+\respuesta{(a) $z\approx 0{,}36$ y $z\approx 1{,}44$. (b) Con 8. (c) No
+alcanza: falta el costo de cada tipo de error.}
+\solucion{%
+  (a) \[ z_{8}=\frac{8-6{,}32}{4{,}64}\approx 0{,}36 \qquad
+         z_{13}=\frac{13-6{,}32}{4{,}64}\approx 1{,}44 \]
+  \par
+  (b) Con el corte en 8: cuanto más bajo el corte, menor el $z$ y mayor el área
+  a la derecha. Con 8 se marcaría alrededor del 36\,\% del archivo; con 13,
+  alrededor del 7,5\,\%.
+  \par
+  (c) \textbf{No alcanza.} El cálculo dice \emph{a cuántos} marca cada corte,
+  pero no cuál conviene. Para eso falta lo que la estadística no puede dar:
+  \begin{enumerate}[label=\arabic*.,topsep=2pt,itemsep=1pt]
+    \item \textbf{Cuánto cuesta cada error.} Una falsa alarma cuesta una
+      entrevista; un caso perdido puede costar mucho más.
+    \item \textbf{Cuántas entrevistas puede sostener el servicio.}
+  \end{enumerate}
+  \par
+  Elegir un corte es una decisión clínica y organizacional informada por
+  números, no una consecuencia de ellos.}
+
+\ejercicio{4}{El servicio tiene capacidad para 30 entrevistas al mes y tamiza
+  200 estudiantes. Con el corte en 10 se marcan 43, con 88\,\% de sensibilidad
+  y 51,2\,\% de valor predictivo.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Si sube el corte a 13, ¿qué le pasa a la sensibilidad, a la
+      especificidad y al valor predictivo?
+    \item ¿Qué corte recomendarías, y qué estás sacrificando?
+    \item ¿Se te ocurre una salida que no sea mover el corte?
   \end{enumerate}}{}
 \renglones[8]
-\respuesta{(a) Sensibilidad sube, especificidad baja, VPP baja.
-(b) Al revés. (c) Respuesta abierta y argumentada.}
+\respuesta{(a) Sensibilidad baja, especificidad sube, valor predictivo sube.
+(b) y (c) abiertas: priorizar por puntaje en vez de subir el corte es una buena
+salida.}
 \solucion{%
-  (a) Bajando el corte a 8 se marca a más gente: se escapan menos casos
-  (\textbf{sensibilidad sube}) pero hay más falsas alarmas
-  (\textbf{especificidad baja}), y como los nuevos marcados son en su mayoría
-  sanos, el \textbf{VPP baja}.
-  \\[0.3em]
-  (b) Subiéndolo a 13 pasa exactamente lo contrario: sensibilidad baja
-  (se escapan más casos), especificidad sube, VPP sube.
-  \\[0.3em]
+  (a) Subiendo el corte se marca a menos gente: se escapan más casos
+  (\textbf{sensibilidad baja}), hay menos falsas alarmas
+  (\textbf{especificidad sube}) y, como los que quedan marcados son los de
+  puntaje más alto, el \textbf{valor predictivo sube}.
+  \par
   \textbf{No existe un corte que mejore todo a la vez.} Todo corte es un
   intercambio entre los dos errores.
-  \\[0.3em]
-  (c) Con corte 10 se marcan 43 de 200 y hay capacidad para 30: el servicio ya
-  está desbordado. Subir a 13 dejaría unos 15 marcados, que entran cómodos —
-  pero se perderían casos reales, y el falso negativo es el error más grave en
-  salud mental.
-  \\[0.3em]
-  Una respuesta defendible: mantener el corte en 10 y \textbf{priorizar} las
-  entrevistas por puntaje (primero los más altos), en vez de subir el corte.
-  Así no se descarta a nadie de antemano y se ordena la lista de espera por
-  gravedad. Otra: pedir más recursos con este cálculo como argumento.
-  \\[0.3em]
-  \textit{Lo que se evalúa acá no es el número, es que puedan nombrar qué
+  \par
+  (b) Con corte 10 se marcan 43 y hay capacidad para 30: el servicio ya está
+  desbordado. Subir a 13 dejaría unos 15 marcados, que entran cómodos — pero se
+  perderían casos reales, y el falso negativo es el error más grave en salud
+  mental.
+  \par
+  (c) \textbf{La salida que no mueve el corte}: mantenerlo en 10 y
+  \emph{priorizar} las entrevistas por puntaje, atendiendo primero a los más
+  altos. Así nadie queda descartado de antemano y la lista de espera se ordena
+  por gravedad en vez de cortarse por un umbral.
+  \par
+  Otra: usar estos números como argumento para pedir más horas. «Detectamos 43
+  casos y podemos atender 30» es un pedido mucho más fuerte que «necesitamos
+  más personal».
+  \par
+  \textit{Lo que se evalúa aquí no es el número: es que puedan nombrar qué
   sacrifican con cada opción.}}
+\enclase{El punto (c) es el que conviene dejar para el final de la clase. La
+mayoría asume que la única decisión posible es mover el corte, y ver que hay
+otra es lo que convierte la estadística en una herramienta de gestión.}
+
+\trampa{buscar «el mejor corte» como si fuera una pregunta estadística}%
+  {los números permiten evaluar cada corte con precisión, así que parece que
+   también deberían poder elegirlo}%
+  {la estadística dice qué pasa con cada corte; cuál conviene depende de cuánto
+   cuesta cada error y de qué puede sostener el servicio. Esa parte la decide
+   un profesional, no una fórmula}
+
+\cierre{%
+  Con $\mu$, $\sigma$ y una puntuación $z$ se puede evaluar cualquier punto de
+  corte sin volver a contar el archivo — y el modelo reprodujo el 21,5\,\% real
+  con una décima de diferencia.
+  \par
+  Con eso cierra la unidad. Empezaste tirando un dado para ver qué podía pasar,
+  y terminas pudiendo decirle a un servicio de salud mental a cuántas personas
+  va a marcar cada umbral que elija, y qué pierde con cada uno.}

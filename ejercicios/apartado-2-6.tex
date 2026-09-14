@@ -1,167 +1,232 @@
 \apartado{2.6}{Teorema de Bayes}{climax}
+\bajada{Dar vuelta una probabilidad condicional. Es el apartado que explica por
+qué un test que casi nunca falla puede equivocarse en la mitad de sus alarmas —
+y por qué el mismo instrumento sirve en un servicio y no sirve en otro.}
 
-\bajada{Dar vuelta una probabilidad condicional. Es el apartado que explica por qué un test que casi nunca falla puede equivocarse en la mitad de sus alarmas.}
-\ejercicio{0}{%
-  Define con tus palabras qué es la \emph{prevalencia} de un trastorno.
-  ¿De qué depende: del instrumento que se use, o de la población que se
-  estudie?}{}
+\definicion{Valor predictivo positivo}{%
+  La probabilidad de tener la condición \emph{dado que} el test dio positivo.
+  Es la pregunta del paciente, y no es la misma que la sensibilidad, que es la
+  pregunta del instrumento.}
+
+\minihistoria{Los médicos también se equivocan en esto}{%
+  En los años setenta, Kahneman y Tversky le plantearon el problema a médicos,
+  psicólogos y estadísticos entrenados: una enfermedad afecta al 1\,\% de la
+  población, un test la detecta con 95\,\% de acierto, una persona da positivo.
+  ¿Qué probabilidad tiene de estar enferma?\par
+  La respuesta mayoritaria fue 95\,\%. La correcta rondaba el 16\,\%. El error
+  no era de aritmética: al ver el resultado del test, las personas se olvidaban
+  de un dato que tenían delante — que la enfermedad es rara.}
+
+\ejercicio{0}{Define con tus palabras qué es la \emph{prevalencia} de un
+  trastorno. ¿De qué depende: del instrumento que se use, o de la población que
+  se estudie?}{}
 \renglones[3]
 \respuesta{La proporción de la población que tiene el trastorno. Depende de la
 población, no del instrumento.}
 \solucion{%
   Es la \textbf{proporción de la población que tiene la condición} en un
   momento dado.
-  \\[0.3em]
+  \par
   Depende de la \textbf{población}, no del instrumento. La misma prueba
-  aplicada en una guardia psiquiátrica y en una feria de la salud da
-  resultados de utilidad muy distinta, porque la prevalencia es distinta —
-  aunque el instrumento sea idéntico. Ésa es toda la idea del apartado.}
+  aplicada en una guardia psiquiátrica y en una feria de la salud da resultados
+  de utilidad muy distinta, porque la prevalencia es distinta aunque el
+  instrumento sea idéntico.
+  \par
+  Ésa es toda la idea del apartado, y la razón por la que no existe «el valor
+  predictivo de un test» sin decir en qué población.}
 
-\ejercicio{1}{%
-  De cada 1000 personas de cierta población, 10 tienen el trastorno.
+\ejercicio{1}{Un tamizaje de riesgo suicida se aplica en una población donde la
+  condición afecta al 1\,\% de las personas. El test tiene 90\,\% de
+  sensibilidad y 90\,\% de especificidad.
+  \textbf{Antes de calcular, escribe qué probabilidad crees que tiene de estar
+  en riesgo alguien que dio positivo:} \underline{\hspace{2cm}}
+  \par\vspace{0.2em}
+  Lo vas a comprobar en el ejercicio 4.}{Predice primero}
+\renglones[3]
+\respuesta{Es 8,3\,\%. Casi todo el mundo estima cerca del 90\,\%.}
+\solucion{%
+  La respuesta es \textbf{8,3\,\%}, y se calcula en el ejercicio 4.
+  \par
+  La estimación intuitiva casi siempre ronda el 90\,\%, porque uno toma el
+  acierto del test como si fuera la respuesta. Es el mismo error que cometieron
+  los médicos del estudio de Kahneman y Tversky.
+  \par
+  La distancia entre tu estimación y el 8,3\,\% es lo que este apartado
+  corrige.}
+\enclase{Anota las estimaciones antes de seguir. Si el curso dice 90\,\%, está
+en buena compañía: lo mismo respondieron profesionales con años de práctica.}
+
+\ejercicio{1}{De cada 1000 personas de cierta población, 10 tienen el
+  trastorno.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
     \item ¿Cuántas no lo tienen?
     \item ¿Cuál es la prevalencia, en porcentaje?
   \end{enumerate}}{}
 \renglones[3]
-\respuesta{(a) 990. (b) 1\%.}
+\respuesta{(a) 990. (b) 1\,\%.}
 \solucion{%
-  (a) $1000-10 = 990$.
-  \\[0.3em]
-  (b) $\dfrac{10}{1000} = 0{,}01 = 1\%$.
-  \\[0.3em]
+  (a) $1000-10=990$. \quad (b) $\dfrac{10}{1000}=0{,}01$, o sea 1\,\%.
+  \par
   Trabajar con \emph{frecuencias naturales} («10 de cada 1000») en vez de
   porcentajes reduce muchísimo los errores. Es un resultado experimental
-  conocido, no una preferencia de estilo.}
+  conocido, no una preferencia de estilo: la misma persona que falla el
+  problema en porcentajes lo resuelve bien en frecuencias.}
 
-\ejercicio{1}{%
-  En cada frase, identifica si se está hablando de $P(+\mid E)$
-  —dar positivo dado que se tiene el trastorno— o de $P(E\mid +)$
-  —tener el trastorno dado que se dio positivo—.
+\ejercicio{2}{En cada frase, identifica si se habla de $P(+\mid E)$ —dar
+  positivo dado que se tiene el trastorno— o de $P(E\mid +)$ —tener el
+  trastorno dado que se dio positivo—.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item «De los pacientes con depresión, el test detecta al 88\%.»
+    \item «De los pacientes con depresión, el test detecta al 88\,\%.»
     \item «De los que dieron positivo, la mitad tenía el trastorno.»
-    \item «El instrumento tiene una sensibilidad del 88\%.»
-  \end{enumerate}}{}
-\renglones[3]
-\respuesta{(a) $P(+\mid E)$; (b) $P(E\mid +)$; (c) $P(+\mid E)$.}
-\solucion{%
-  (a) $P(+\mid E)$ — parte de los que tienen el trastorno.\\
-  (b) $P(E\mid +)$ — parte de los que dieron positivo.\\
-  (c) $P(+\mid E)$ — sensibilidad es otro nombre para lo mismo.
-  \\[0.3em]
-  \textbf{El truco de lectura}: busca la palabra «de los\ldots». Lo que viene
-  después es el \emph{denominador}, o sea el grupo del que ya sabemos algo.
-  Ahí está la condición.}
-
-\ejercicio{2}{%
-  Una enfermedad afecta al 1\% de la población. Un test tiene 90\% de
-  sensibilidad y 90\% de especificidad. Una persona da positivo.
-  Usando \textbf{frecuencias naturales} sobre 1000 personas, completa:
-  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item ¿Cuántas tienen la enfermedad? ¿Cuántas de ellas dan positivo?
-    \item ¿Cuántas están sanas? ¿Cuántas de ellas dan positivo igual?
-    \item ¿Cuántos positivos hay en total? ¿Qué proporción de ellos está enferma?
-  \end{enumerate}}{}
-\renglones[6]
-\respuesta{(a) 10 enfermas, 9 positivas. (b) 990 sanas, 99 positivas.
-(c) 108 positivos, de los cuales 9 están enfermos: $\approx 8{,}3\%$.}
-\solucion{%
-  (a) Enfermas: $1\%$ de 1000 $= 10$. De ellas dan positivo el 90\%:
-  $\mathbf{9}$.
-  \\[0.3em]
-  (b) Sanas: $990$. Con 90\% de especificidad, el 10\% da positivo igual:
-  $99$ falsas alarmas.
-  \\[0.3em]
-  (c) Positivos totales: $9 + 99 = 108$. De ellos están enfermos 9:
-  \[ \frac{9}{108} \approx 0{,}083 = 8{,}3\% \]
-  \\[0.3em]
-  \textbf{Un test con 90\% de acierto, y sin embargo 9 de cada 10 alarmas son
-  falsas.} No es un error del test: es que hay 99 veces más gente sana que
-  enferma, así que aun equivocándose poco con los sanos, en números absolutos
-  se equivoca muchísimo. Éste es el problema que Kahneman y Tversky le
-  plantearon a médicos entrenados: la mayoría respondió 90\%.}
-
-\ejercicio{2}{%
-  Rehaz el ejercicio anterior con la \textbf{fórmula de Bayes} en vez de
-  frecuencias naturales, y comprueba que da lo mismo.}{}
-\renglones[4]
-\respuesta{$\dfrac{0{,}9\times 0{,}01}{0{,}9\times 0{,}01+0{,}1\times 0{,}99}
-\approx 0{,}083$.}
-\solucion{%
-  \[ P(E\mid +) = \frac{0{,}90 \times 0{,}01}
-     {0{,}90\times 0{,}01 + 0{,}10\times 0{,}99}
-     = \frac{0{,}009}{0{,}009+0{,}099} = \frac{0{,}009}{0{,}108} \approx 0{,}083 \]
-  \\[0.3em]
-  Mismo resultado, $8{,}3\%$. Fíjate que $0{,}009$ y $0{,}099$ son los 9 y los
-  99 del ejercicio anterior divididos por 1000: la fórmula y las frecuencias
-  naturales son literalmente la misma cuenta.}
-
-\ejercicio{3}{%
-  Aplica Bayes al servicio real: sensibilidad $0{,}88$, especificidad
-  $0{,}88$, prevalencia $0{,}125$. Calcula la probabilidad de tener el
-  trastorno dado que se dio positivo. Compara con el $22/43$ que sale de
-  contar la tabla.}{}
+    \item «El instrumento tiene una sensibilidad del 88\,\%.»
+  \end{enumerate}
+  Después escribe cuál es el truco de lectura que te sirvió.}{Dos casos casi iguales}
 \renglones[5]
-\respuesta{$\approx 0{,}512$, igual que $22/43 \approx 0{,}512$.}
+\respuesta{(a) $P(+\mid E)$; (b) $P(E\mid +)$; (c) $P(+\mid E)$. El truco: lo
+que viene después de «de los\ldots» es el denominador.}
 \solucion{%
-  \[ P(E\mid +) = \frac{0{,}88\times 0{,}125}
-     {0{,}88\times 0{,}125 + 0{,}12\times 0{,}875}
-     = \frac{0{,}110}{0{,}110 + 0{,}105} = \frac{0{,}110}{0{,}215} \approx 0{,}512 \]
-  \\[0.3em]
-  Contando la tabla: $\dfrac{22}{43} \approx 0{,}512$. \textbf{Idéntico.}
-  \\[0.3em]
-  Y no es casualidad: $0{,}110\times 200 = 22$ y $0{,}215\times 200 = 43$.
-  Bayes no es una fórmula nueva, es la misma división escrita con
-  proporciones en vez de personas. Sirve cuando no tienes la tabla pero sí los
-  tres números.}
+  (a) $P(+\mid E)$ — parte de los que tienen el trastorno.\par
+  (b) $P(E\mid +)$ — parte de los que dieron positivo.\par
+  (c) $P(+\mid E)$ — «sensibilidad» es otro nombre para lo mismo.
+  \par
+  \textbf{El truco de lectura}: busca la expresión «de los\ldots». Lo que viene
+  inmediatamente después es el \emph{denominador}, o sea el grupo del que ya
+  sabemos algo. Ahí está la condición.
+  \par
+  Las frases (a) y (c) dicen exactamente lo mismo con palabras distintas, y la
+  (b) dice algo completamente diferente. Ésa es toda la dificultad del
+  apartado.}
 
-\ejercicio{3}{%
-  Mismo instrumento (sensibilidad y especificidad $0{,}88$), pero aplicado en
-  un servicio de urgencias donde la prevalencia es del \textbf{50\%}.
-  Calcula el nuevo valor predictivo positivo y explica qué cambió.}{}
-\renglones[4]
-\respuesta{$0{,}88$. El instrumento es el mismo; cambió la población.}
-\solucion{%
-  \[ P(E\mid +) = \frac{0{,}88\times 0{,}50}
-     {0{,}88\times 0{,}50 + 0{,}12\times 0{,}50}
-     = \frac{0{,}44}{0{,}44+0{,}06} = \frac{0{,}44}{0{,}50} = 0{,}88 \]
-  \\[0.3em]
-  \textbf{El VPP pasó de $51{,}2\%$ a $88\%$ sin tocar el instrumento.}
-  Cambió la población: donde la mitad de la gente tiene el trastorno, una
-  alarma significa muchísimo más.
-  \\[0.3em]
-  Consecuencia práctica: no existe «el VPP de un test». Un instrumento
-  publicado con buen VPP en un servicio de urgencias puede ser casi inútil
-  como tamizaje poblacional. Antes de adoptar un instrumento hay que preguntar
-  en qué población se validó.}
-
-\ejercicio{4}{%
-  Una estudiante da positivo en el tamizaje del servicio y pregunta, angustiada,
-  si eso significa que tiene depresión.
+\ejercicio{2}{Retoma el tamizaje del ejercicio 2: prevalencia 1\,\%,
+  sensibilidad 90\,\%, especificidad 90\,\%. Usando \textbf{frecuencias
+  naturales} sobre 1000 personas, completa:
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item ¿Qué número le corresponde como respuesta, y por qué ése y no el 88\%?
-    \item Redacta lo que le dirías, sin usar la palabra «probabilidad».
-    \item Si el servicio bajara el corte de 10 a 8, ¿el VPP subiría o bajaría?
-          Justifica sin calcular.
+    \item ¿Cuántas tienen el trastorno? ¿Cuántas de ellas dan positivo?
+    \item ¿Cuántas no lo tienen? ¿Cuántas de ellas dan positivo igual?
+    \item ¿Cuántos positivos hay en total? ¿Qué proporción de ellos lo tiene?
   \end{enumerate}}{}
 \renglones[7]
-\respuesta{(a) $51{,}2\%$, el VPP. (b) Respuesta abierta.
-(c) Bajaría: más positivos, y los nuevos son en su mayoría falsas alarmas.}
+\respuesta{(a) 10 con el trastorno, 9 positivas. (b) 990 sin él, 99 positivas.
+(c) 108 positivos, de los cuales 9 lo tienen: 8,3\,\%.}
 \solucion{%
-  (a) Le corresponde el \textbf{VPP: $51{,}2\%$}. El 88\% responde otra
-  pregunta —«si tuviera depresión, ¿la detectaríamos?»— y ella ya sabe que dio
-  positivo: su denominador son los 43 marcados, no los 25 enfermos.
-  \\[0.3em]
-  (b) Algo como: «Este cuestionario está hecho para marcar de más, a propósito:
-  preferimos conversar de más antes que dejar pasar a alguien. De cada dos
-  personas que marcamos así, aproximadamente una no tiene el trastorno. Lo que
-  sigue es una entrevista para mirarlo con calma, no un diagnóstico.»
-  \\[0.3em]
-  (c) \textbf{Bajaría.} Al bajar el corte se marcan más personas; se captan
+  (a) Con el trastorno: 1\,\% de 1000 es 10. De ellas dan positivo el 90\,\%:
+  \textbf{9}.
+  \par
+  (b) Sin el trastorno: 990. Con 90\,\% de especificidad, el 10\,\% da positivo
+  igual: 99 falsas alarmas.
+  \par
+  (c) Positivos totales: $9+99=108$. De ellos lo tienen 9:
+  \[ \frac{9}{108}\approx 0{,}083 \]
+  o sea 8,3\,\%.
+  \par
+  \textbf{Un test con 90\,\% de acierto, y sin embargo 9 de cada 10 alarmas son
+  falsas.} No es un defecto del test: es que hay 99 veces más gente sana que
+  enferma, así que aun equivocándose poco con los sanos, en números absolutos
+  se equivoca muchísimo.
+  \par
+  Compara con tu estimación del ejercicio 2.}
+\enclase{Dibuja el árbol en el pizarrón con las 1000 personas. Ver los 99
+falsos positivos al lado de los 9 verdaderos convence más que la fórmula.}
+
+\ejercicio{3}{Rehaz el cálculo anterior con la \textbf{fórmula de Bayes} y
+  comprueba que da lo mismo:
+  \[ P(E\mid +) = \frac{P(+\mid E)\cdot P(E)}
+       {P(+\mid E)\cdot P(E) + P(+\mid \bar{E})\cdot P(\bar{E})} \]}{}
+\renglones[5]
+\respuesta{$(0{,}9\times 0{,}01)/(0{,}9\times 0{,}01+0{,}1\times 0{,}99)
+\approx 0{,}083$.}
+\solucion{%
+  \[ P(E\mid +) = \frac{0{,}90\times 0{,}01}
+     {0{,}90\times 0{,}01 + 0{,}10\times 0{,}99}
+     = \frac{0{,}009}{0{,}009+0{,}099}=\frac{0{,}009}{0{,}108}\approx 0{,}083 \]
+  \par
+  Mismo resultado. Y fíjate que $0{,}009$ y $0{,}099$ son los 9 y los 99 del
+  ejercicio anterior divididos por 1000: \textbf{la fórmula y las frecuencias
+  naturales son literalmente la misma cuenta}, escrita con proporciones en vez
+  de personas.
+  \par
+  Conviene saber las dos: las frecuencias naturales para entender y para
+  explicarle a un paciente, la fórmula para cuando no tienes la tabla pero sí
+  los tres números.}
+
+\ejercicio{3}{Aplica Bayes al servicio real: sensibilidad $0{,}88$,
+  especificidad $0{,}88$, prevalencia $0{,}125$.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item Calcula la probabilidad de tener el trastorno dado que se dio
+      positivo.
+    \item Compárala con el $22/43$ que sale de contar la tabla del apartado 2.3.
+    \item Repite el cálculo suponiendo que el mismo instrumento se aplica en
+      una guardia donde la prevalencia es del 50\,\%.
+  \end{enumerate}}{}
+\renglones[8]
+\respuesta{(a) $\approx 0{,}512$. (b) Idéntico a $22/43$. (c) $0{,}88$.}
+\solucion{%
+  (a) \[ \frac{0{,}88\times 0{,}125}{0{,}88\times 0{,}125+0{,}12\times 0{,}875}
+     = \frac{0{,}110}{0{,}215}\approx 0{,}512 \]
+  \par
+  (b) Contando la tabla: $\dfrac{22}{43}\approx 0{,}512$. \textbf{Idéntico}, y
+  no es casualidad: $0{,}110\times 200=22$ y $0{,}215\times 200=43$.
+  \par
+  (c) Con prevalencia $0{,}50$:
+  \[ \frac{0{,}88\times 0{,}50}{0{,}88\times 0{,}50+0{,}12\times 0{,}50}
+     = \frac{0{,}44}{0{,}50}=0{,}88 \]
+  \par
+  \textbf{El valor predictivo pasó de 51,2\,\% a 88\,\% sin tocar el
+  instrumento.} Cambió la población.
+  \par
+  Consecuencia práctica: cuando leas que un instrumento tiene «buen valor
+  predictivo», pregunta en qué población se validó. Uno validado en un servicio
+  de urgencias puede ser casi inútil como tamizaje poblacional, y el número
+  publicado no te avisa.}
+
+\ejercicio{4}{Una estudiante da positivo en el tamizaje del servicio y
+  pregunta, angustiada, si eso significa que tiene depresión.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Qué número le corresponde como respuesta, y por qué ése y no el
+      88\,\%?
+    \item Redacta lo que le dirías, sin usar la palabra «probabilidad».
+    \item Si el servicio bajara el corte de 10 a 8, ¿el valor predictivo
+      subiría o bajaría? Justifica sin calcular.
+  \end{enumerate}}{}
+\renglones[8]
+\respuesta{(a) 51,2\,\%, el valor predictivo positivo. (b) Respuesta abierta.
+(c) Bajaría.}
+\solucion{%
+  (a) Le corresponde el \textbf{valor predictivo positivo: 51,2\,\%}. El 88\,\%
+  responde otra pregunta —«si tuviera depresión, ¿la detectaríamos?»— y ella ya
+  sabe que dio positivo: su denominador son los 43 marcados, no los 25 con el
+  trastorno.
+  \par
+  (b) Algo del tipo: «Este cuestionario está hecho para marcar de más, a
+  propósito: preferimos conversar de más antes que dejar pasar a alguien. De
+  cada dos personas que marcamos, aproximadamente una no tiene el trastorno. Lo
+  que sigue es una entrevista para mirarlo con calma, no un diagnóstico.»
+  \par
+  (c) \textbf{Bajaría.} Al bajar el corte se marca a más personas; se captan
   algunos casos que antes se escapaban, pero la mayoría de los nuevos marcados
   son sanos, simplemente porque los sanos son muchos más. El numerador crece
-  poco y el denominador crece mucho.
-  \\[0.3em]
-  \textit{Ese razonamiento se comprueba numéricamente en el apartado 2.9,
-  moviendo el corte.}}
+  poco y el denominador crece mucho. Se comprueba numéricamente en 2.9.
+  \par
+  \textbf{Adónde lleva esto}: el mismo error de invertir una condicional
+  reaparece en investigación con el valor $p$. Un $p$ de $0{,}03$ es
+  $P(\text{datos}\mid H_0)$. Leerlo como «hay 3\,\% de probabilidad de que mi
+  hipótesis sea falsa» es $P(H_0\mid\text{datos})$: exactamente la misma
+  inversión. Si entendiste este ejercicio, entendiste ése también.}
+\enclase{El punto (b) es el que importa profesionalmente. Pide que lo lean en
+voz alta: la mayoría escribe algo que sigue sonando a diagnóstico.}
+
+\trampa{leer la sensibilidad como si respondiera la pregunta del paciente}%
+  {los dos números son porcentajes altos sobre el mismo test, y la ficha
+   técnica publica la sensibilidad pero no el valor predictivo}%
+  {la sensibilidad divide por los que tienen la condición y el valor predictivo
+   por los que dieron positivo. Para el paciente sólo sirve el segundo, y
+   depende de la prevalencia de tu población}
+
+\cierre{%
+  El instrumento acierta el 88\,\% por los dos lados y aun así casi la mitad de
+  sus alarmas son falsas. No es una contradicción: es lo que pasa cuando se
+  busca algo poco frecuente, y se calcula con una división.
+  \par
+  Hasta aquí todas las preguntas fueron sobre eventos sueltos: dar positivo,
+  tener el trastorno, presentar las dos sintomatologías. Lo que viene es
+  describir el comportamiento completo de una variable de una sola vez.}

@@ -1,145 +1,220 @@
 \apartado{2.7}{Variables aleatorias}{distrib}
+\bajada{Hasta aquí preguntábamos por eventos sueltos. Ahora describimos el
+comportamiento completo de una variable de una sola vez, y lo resumimos en dos
+números que vas a ver en cada artículo que leas: la media y la desviación.}
 
-\bajada{Hasta aquí preguntábamos por eventos sueltos. Ahora se describe el comportamiento completo de una variable, y se lo resume en dos números.}
-\ejercicio{0}{%
-  ¿Cuáles de estas son variables aleatorias \emph{discretas} y cuáles
-  \emph{continuas}?
+\definicion{Variable aleatoria discreta}{%
+  Una regla que asigna un número a cada resultado del experimento, y que toma
+  valores separados: se cuentan, no se miden. El puntaje de un cuestionario, el
+  número de sesiones a las que asiste un paciente, la cantidad de casos que
+  llegan en una semana.}
+
+\minihistoria{Dos números que resumen una distribución entera}{%
+  Cuando un artículo dice «los participantes obtuvieron $M=6{,}32$
+  ($DE=4{,}64$)», está resumiendo doscientos números en dos.\par
+  El primero dice alrededor de qué valor se agrupan; el segundo, cuánto se
+  dispersan. Con esos dos, y suponiendo una forma de campana, se puede
+  reconstruir casi toda la distribución — que es lo que hace posible el
+  apartado 2.9.}
+
+\ejercicio{0}{¿Cuáles de estas son variables aleatorias \emph{discretas} y
+  cuáles \emph{continuas}? Explica en una línea cada decisión.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item El puntaje del cuestionario (0 a 27).
-    \item El tiempo que tarda alguien en completarlo.
-    \item La cantidad de estudiantes que dan positivo en una semana.
+    \item El puntaje de un cuestionario de 9 ítems (0 a 27).
+    \item El tiempo que tarda una persona en completarlo.
+    \item La cantidad de sesiones a las que asiste un paciente.
+    \item El nivel de cortisol en saliva.
   \end{enumerate}}{}
-\renglones[3]
-\respuesta{(a) discreta; (b) continua; (c) discreta.}
+\renglones[4]
+\respuesta{Discretas: (a) y (c). Continuas: (b) y (d).}
 \solucion{%
-  (a) \textbf{Discreta}: sólo puede valer $0,1,2,\ldots,27$. No existe el
-  puntaje $14{,}3$.
-  \\[0.3em]
-  (b) \textbf{Continua}: entre 4 y 5 minutos hay infinitos valores posibles.
-  \\[0.3em]
-  (c) \textbf{Discreta}: se cuentan personas, y no hay media persona.
-  \\[0.3em]
-  La distinción importa porque cambian las herramientas: las discretas usan
+  (a) \textbf{Discreta}: sólo puede valer $0,1,\ldots,27$. No existe el puntaje
+  $14{,}3$.\par
+  (b) \textbf{Continua}: entre 4 y 5 minutos hay infinitos valores posibles.\par
+  (c) \textbf{Discreta}: se cuentan sesiones, y no hay media sesión.\par
+  (d) \textbf{Continua}: es una medición física, limitada sólo por la precisión
+  del instrumento.
+  \par
+  La distinción importa porque cambia la herramienta: las discretas usan
   binomial, Poisson o hipergeométrica (2.8); las continuas, la normal (2.9).}
 
-\ejercicio{1}{%
-  Sea $X$ el resultado de tirar un dado. Escribe la función de masa, o sea la
-  tabla de todos los valores posibles con su probabilidad. Verifica que las
-  probabilidades suman 1.}{}
-\renglones[3]
-\respuesta{$P(x)=1/6$ para $x=1,\ldots,6$; suman $6\times 1/6 = 1$.}
-\solucion{%
+\ejercicio{1}{Un programa breve tiene 4 sesiones. Sea $X$ el número de sesiones
+  a las que asiste un paciente, con esta distribución:
   \begin{center}\small
-  \begin{tabular}{@{}lcccccc@{}}
+  \begin{tabular}{@{}lccccc@{}}
   \toprule
-  $x$ & 1 & 2 & 3 & 4 & 5 & 6\\
-  $P(x)$ & $1/6$ & $1/6$ & $1/6$ & $1/6$ & $1/6$ & $1/6$\\
+  $x$ & 0 & 1 & 2 & 3 & 4\\
+  $P(x)$ & $0{,}10$ & $0{,}15$ & $0{,}20$ & $0{,}25$ & $0{,}30$\\
   \bottomrule
   \end{tabular}
   \end{center}
-  Suma: $6\times\tfrac{1}{6}=1$. \checkmark
-  \\[0.3em]
-  Que sumen 1 no es un detalle: es el segundo axioma. Si una tabla de
-  probabilidades no suma 1, está mal.}
-
-\ejercicio{1}{%
-  Con la misma variable, calcula $E(X)$ desarrollando la suma término a
-  término.}{}
-\renglones[3]
-\respuesta{$E(X)=3{,}5$.}
-\solucion{%
-  \[ E(X)=1\cdot\tfrac{1}{6}+2\cdot\tfrac{1}{6}+3\cdot\tfrac{1}{6}
-     +4\cdot\tfrac{1}{6}+5\cdot\tfrac{1}{6}+6\cdot\tfrac{1}{6}
-     =\frac{21}{6}=3{,}5 \]}
-
-\ejercicio{2}{%
-  Calcula la varianza y la desviación estándar del resultado de un dado,
-  sabiendo que $\mu=3{,}5$.}{}
+  \textbf{Antes de calcular, escribe a cuántas sesiones crees que asiste un
+  paciente en promedio:} \underline{\hspace{1.8cm}}
+  \par\vspace{0.2em}
+  Ahora verifica que la distribución es válida.}{Predice primero}
 \renglones[4]
-\respuesta{$\operatorname{Var}(X)\approx 2{,}92$; $\sigma\approx 1{,}71$.}
+\respuesta{Es válida: las probabilidades suman 1. El promedio es 2,5 (se
+calcula en el ejercicio 4).}
 \solucion{%
-  \[ \operatorname{Var}(X)=\frac{(1-3{,}5)^2+(2-3{,}5)^2+\cdots+(6-3{,}5)^2}{6} \]
-  Los cuadrados son $6{,}25;\ 2{,}25;\ 0{,}25;\ 0{,}25;\ 2{,}25;\ 6{,}25$, que
-  suman $17{,}5$.
-  \[ \operatorname{Var}(X)=\frac{17{,}5}{6}\approx 2{,}92
-     \qquad \sigma=\sqrt{2{,}92}\approx 1{,}71 \]
-  \\[0.3em]
-  La varianza está en «puntos al cuadrado», que no significa nada; por eso se
-  informa $\sigma$, que vuelve a las unidades originales.}
+  $0{,}10+0{,}15+0{,}20+0{,}25+0{,}30 = 1$, y ninguna es negativa. Es válida.
+  \par
+  Que sumen 1 no es un detalle: es el segundo axioma. Si una tabla de
+  probabilidades no suma 1, está mal y no hay nada más que revisar.
+  \par
+  El promedio da $2{,}5$, y se calcula en el ejercicio 4. La estimación más
+  frecuente es 3, porque uno mira dónde está la probabilidad más alta — y la
+  moda no es la media.}
 
-\ejercicio{2}{%
-  Una variable $X$ toma los valores 0, 1, 2 y 3 con probabilidades
-  $0{,}4$; $0{,}3$; $0{,}2$ y $0{,}1$.
-  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item Verifica que es una distribución válida.
-    \item Calcula $E(X)$.
-  \end{enumerate}}{}
+\ejercicio{1}{Con la misma variable, calcula la probabilidad de que un paciente
+  asista a \textbf{al menos} 3 sesiones, y la de que abandone antes de la
+  primera.}{}
 \renglones[3]
-\respuesta{(a) Suman 1. (b) $E(X)=1{,}0$.}
+\respuesta{$P(X\ge 3)=0{,}55$; $P(X=0)=0{,}10$.}
 \solucion{%
-  (a) $0{,}4+0{,}3+0{,}2+0{,}1 = 1$, y ninguna es negativa. \checkmark
-  \\[0.3em]
-  (b) $E(X)=0(0{,}4)+1(0{,}3)+2(0{,}2)+3(0{,}1)=0+0{,}3+0{,}4+0{,}3=1{,}0$.
-  \\[0.3em]
-  Ésta es exactamente la forma de una pregunta del cuestionario, donde las
-  cuatro opciones no son igualmente probables: mucha gente responde 0 y poca
-  responde 3.}
+  $P(X\ge 3)=P(3)+P(4)=0{,}25+0{,}30=0{,}55$.
+  \par
+  $P(X=0)=0{,}10$: uno de cada diez pacientes no llega a la primera sesión.
+  \par
+  Las dos son sumas de casillas de la tabla. Todavía no hace falta ninguna
+  fórmula nueva — una distribución es sólo una lista de probabilidades bien
+  organizada.}
 
-\ejercicio{3}{%
-  En las 200 fichas, el puntaje de depresión tiene media $\mu = 6{,}32$ y
-  desviación estándar $\sigma = 4{,}64$.
+\ejercicio{2}{Dos preguntas sobre la misma tabla que suenan parecidas y piden
+  cosas distintas. Contesta las dos y explica qué cambia.
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuál es el número de sesiones \emph{más probable}?
+    \item ¿Cuál es el número de sesiones \emph{esperado}?
+  \end{enumerate}}{Dos casos casi iguales}
+\renglones[5]
+\respuesta{(a) 4 sesiones (la moda). (b) $E(X)=2{,}5$ (la media).}
+\solucion{%
+  (a) El más probable es \textbf{4}, con $P=0{,}30$. Es la \emph{moda}: se lee
+  buscando la probabilidad más alta.
+  \par
+  (b) El esperado es:
+  \[ E(X)=0(0{,}10)+1(0{,}15)+2(0{,}20)+3(0{,}25)+4(0{,}30)=2{,}5 \]
+  \par
+  \textbf{Son distintos y los dos son correctos}, porque responden preguntas
+  diferentes. Si tienes que apostar a un solo paciente, apuesta a 4. Si tienes
+  que estimar cuántas sesiones vas a dar en total a 100 pacientes, usa 2,5 y te
+  da 250.
+  \par
+  Confundirlas hace planificar de más: con la moda dirías 400 sesiones.}
+
+\ejercicio{2}{Una coordinadora calcula así la varianza de esa variable:
+  \begin{quote}\itshape
+  $\operatorname{Var}(X) = \dfrac{(0-2{,}5)^2+(1-2{,}5)^2+(2-2{,}5)^2+(3-2{,}5)^2+(4-2{,}5)^2}{5} = 2{,}5$
+  \end{quote}
+  \textbf{Señala el paso exacto} donde se equivoca y explica por qué.}{Encuentra el error}
+\renglones[5]
+\respuesta{Promedió los cuadrados por igual en vez de ponderarlos por su
+probabilidad. Lo correcto es $1{,}75$.}
+\solucion{%
+  El error está en \textbf{dividir por 5}. Eso trata a los cinco valores como
+  si fueran igualmente probables, y no lo son: el 4 pesa el triple que el 0.
+  \par
+  Cada cuadrado hay que multiplicarlo por \emph{su} probabilidad:
+  \[ \operatorname{Var}(X)=\sum (x_i-\mu)^2 P(x_i) \]
+  \[ =6{,}25(0{,}10)+2{,}25(0{,}15)+0{,}25(0{,}20)+0{,}25(0{,}25)+2{,}25(0{,}30) \]
+  \[ = 0{,}625+0{,}3375+0{,}05+0{,}0625+0{,}675 = 1{,}75 \]
+  \par
+  Y $\sigma=\sqrt{1{,}75}\approx 1{,}32$ sesiones.
+  \par
+  \textbf{Cómo detectarlo sin la respuesta}: si el procedimiento divide por la
+  cantidad de valores en vez de usar las probabilidades, la tabla sobraba — y
+  si la tabla sobra, algo está mal.}
+\enclase{Pregunta por qué se divide por 5 en la varianza de una muestra y no
+aquí. La respuesta es que allá cada dato vale $1/n$; aquí cada valor ya trae su
+peso.}
+
+\ejercicio{3}{En las 200 fichas del servicio, el puntaje de depresión tiene
+  $\mu = 6{,}32$ y $\sigma = 4{,}64$.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
     \item ¿Qué significa cada número, en palabras y en puntos del cuestionario?
-    \item El corte está en 10. ¿Está por encima o por debajo de $\mu+\sigma$?
+    \item ¿Entre qué valores cae la mayoría de las fichas, aproximadamente?
+    \item El corte está en 10. ¿Queda por encima o por debajo de
+      $\mu+\sigma$?
   \end{enumerate}}{}
-\renglones[4]
-\respuesta{(a) Promedio 6,32 puntos; dispersión típica 4,64 puntos.
-(b) $\mu+\sigma = 10{,}96$, así que el corte está por debajo.}
+\renglones[6]
+\respuesta{(a) Promedio 6,32 puntos, dispersión típica 4,64. (b) Entre 1,68 y
+10,96. (c) $\mu+\sigma=10{,}96$: el corte queda por debajo.}
 \solucion{%
-  (a) El puntaje promedio del archivo es de $6{,}32$ puntos. La desviación
-  dice que lo típico es apartarse unos $4{,}64$ puntos de ese promedio: la
-  mayoría de las fichas cae más o menos entre $1{,}7$ y $11$ puntos.
-  \\[0.3em]
-  (b) $\mu+\sigma = 6{,}32+4{,}64 = 10{,}96$. El corte de 10 está
-  \textbf{por debajo}: no llega a una desviación estándar por encima del
-  promedio.
-  \\[0.3em]
+  (a) El puntaje promedio del archivo es $6{,}32$ puntos. La desviación dice
+  que lo típico es apartarse unos $4{,}64$ puntos de ese promedio.
+  \par
+  (b) Entre $\mu-\sigma = 1{,}68$ y $\mu+\sigma = 10{,}96$. Si la distribución
+  tiene forma de campana, ahí cae alrededor del 68\,\% de las fichas — la regla
+  que se usa en 2.9.
+  \par
+  (c) $\mu+\sigma = 10{,}96$, así que el corte de 10 queda \textbf{por debajo}:
+  no llega a una desviación estándar por encima del promedio.
+  \par
   Eso ya anticipa algo: el corte no es un valor extremo, así que va a marcar a
-  bastante gente. En el apartado 2.9 se calcula cuánta exactamente.}
+  bastante gente. Cuánta exactamente se calcula en 2.9.}
 
-\ejercicio{3}{%
-  El servicio va a tamizar a 20 estudiantes nuevos. La probabilidad de que
-  cada uno dé positivo es $0{,}215$.
-  ¿Cuántos positivos espera encontrar? Usa $E(X)=n\cdot p$.}{}
-\renglones[3]
-\respuesta{$20\times 0{,}215 = 4{,}3$ estudiantes.}
-\solucion{%
-  \[ E(X) = n\cdot p = 20 \times 0{,}215 = 4{,}3 \]
-  \\[0.3em]
-  Espera unos 4 o 5 positivos. El valor esperado sirve justamente para esto:
-  planificar cuántas entrevistas reservar.}
-
-\ejercicio{4}{%
-  Un estudiante objeta:
-  \begin{quote}\itshape
-  «$E(X)=3{,}5$ para un dado no puede estar bien: un dado nunca saca 3,5.»
-  \end{quote}
-  ¿Tiene razón? Explica qué significa realmente el valor esperado, y da otro
-  ejemplo donde $E(X)$ tampoco sea un valor posible.}{}
+\ejercicio{3}{El servicio va a tamizar 20 estudiantes nuevos y quiere saber
+  cuántos positivos esperar, para reservar horas de entrevista.
+  \textbf{¿Alcanza con saber que $\mu=6{,}32$ y $\sigma=4{,}64$?} Si te parece
+  que sí, calcula; si no, di qué hace falta.}{¿Alcanzan los datos?}
 \renglones[5]
-\respuesta{No tiene razón. $E(X)$ es el promedio a la larga, no un resultado
-posible. Ej.: $4{,}3$ positivos entre 20 estudiantes.}
+\respuesta{No alcanza con $\mu$ y $\sigma$ solos: hace falta la proporción de
+positivos, $p=0{,}215$. Con ella, $E(X)=20\times 0{,}215=4{,}3$.}
 \solucion{%
-  \textbf{No tiene razón}, aunque la observación es buena.
-  \\[0.3em]
-  $E(X)$ no es «el resultado más probable» ni «un resultado posible»: es el
-  \textbf{promedio al que tienden los resultados si el experimento se repite
-  muchas veces}. Si tiras un dado 10\,000 veces y promedias, el número se
-  acerca a 3,5.
-  \\[0.3em]
-  Otro ejemplo: los $4{,}3$ positivos esperados entre 20 estudiantes. Nunca
-  vas a encontrar 4,3 personas — vas a encontrar 3, 4, 5 o 6. Pero si repites
-  el tamizaje muchas semanas, el promedio se acerca a 4,3.
-  \\[0.3em]
-  \textit{Es el mismo malentendido que «la familia argentina promedio tiene
-  1,9 hijos». Nadie tiene 1,9 hijos, y sin embargo el número informa.}}
+  \textbf{Con $\mu$ y $\sigma$ solos no alcanza.} Esos dos números describen el
+  \emph{puntaje}, y la pregunta es sobre \emph{cuántas personas} superan un
+  corte: son dos variables distintas.
+  \par
+  Lo que hace falta es la proporción de positivos, $p=\dfrac{43}{200}=0{,}215$.
+  Con ella:
+  \[ E(X)=n\cdot p = 20\times 0{,}215 = 4{,}3 \]
+  Se esperan unos 4 o 5 positivos.
+  \par
+  \textit{Con un supuesto adicional sí se puede llegar desde $\mu$ y $\sigma$:
+  si la distribución fuera normal, se obtiene $p\approx 0{,}214$ — y eso es
+  exactamente lo que se hace en 2.9. Pero es un supuesto, no un dato, y
+  conviene saber cuándo lo estás usando.}}
+
+\ejercicio{4}{Un estudiante objeta:
+  \begin{quote}\itshape
+  «$E(X)=2{,}5$ sesiones no puede estar bien: nadie asiste a media sesión.»
+  \end{quote}
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Tiene razón? Explica qué significa realmente el valor esperado.
+    \item Da otro ejemplo de psicología donde $E(X)$ tampoco sea un valor
+      posible.
+    \item ¿Para qué sirve entonces, si nadie va a obtener ese valor?
+  \end{enumerate}}{}
+\renglones[7]
+\respuesta{(a) No tiene razón: es el promedio a la larga, no un resultado
+posible. (b) Ej.: 4,3 positivos entre 20 estudiantes. (c) Para planificar
+totales.}
+\solucion{%
+  (a) \textbf{No tiene razón}, aunque la observación es buena. $E(X)$ no es «el
+  resultado más probable» ni «un resultado posible»: es el \textbf{promedio al
+  que tienden los resultados si el experimento se repite muchas veces}.
+  \par
+  (b) Los $4{,}3$ positivos esperados entre 20 estudiantes. Nunca vas a
+  encontrar 4,3 personas — vas a encontrar 3, 4, 5 o 6. Pero si repites el
+  tamizaje muchas semanas, el promedio se acerca a 4,3.
+  \par
+  (c) \textbf{Para planificar totales, no casos individuales.} Con 100
+  pacientes y $E(X)=2{,}5$, vas a dar unas 250 sesiones. Ese número sí es real
+  y sí se usa: define cuántas horas contratar.
+  \par
+  Es el mismo malentendido que «la familia promedio tiene 1,9 hijos». Nadie
+  tiene 1,9 hijos, y sin embargo el número informa cuántas escuelas hacen
+  falta.}
+
+\trampa{usar la moda para planificar porque es «el valor más probable»}%
+  {suena razonable: si 4 es lo más frecuente, parece el mejor pronóstico}%
+  {para un caso individual puede servir, pero para totales hay que usar la
+   media. Con la moda, el programa de 100 pacientes estimaría 400 sesiones en
+   vez de 250 — un 60\,\% de más}
+
+\cierre{%
+  Una variable aleatoria es una lista de valores con sus probabilidades, y dos
+  números la resumen: dónde se agrupa y cuánto se dispersa.
+  \par
+  Lo que viene es el paso siguiente: en vez de armar la tabla contando casos,
+  hay procesos tan frecuentes que su tabla ya está calculada. Tres de ellos
+  cubren casi todo lo que un servicio necesita planificar.}

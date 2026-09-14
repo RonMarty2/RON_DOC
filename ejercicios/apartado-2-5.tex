@@ -1,149 +1,222 @@
 \apartado{2.5}{Reglas básicas}{calculo}
+\bajada{Cuándo se suman las probabilidades y cuándo se multiplican. Y por qué
+suponer independencia sin verificarla produce números que parecen razonables y
+no lo son — algo que en psicología pasa todo el tiempo, porque casi nada es
+independiente.}
 
-\bajada{Cuándo se suman las probabilidades y cuándo se multiplican. Y por qué suponer independencia sin verificarla produce números que parecen razonables y no lo son.}
-\ejercicio{0}{%
-  Explica con tus palabras qué significa que dos eventos sean
-  \emph{mutuamente excluyentes}, y da un ejemplo con un dado.}{}
-\renglones[3]
-\respuesta{Que no pueden ocurrir a la vez. Ej.: «sale 2» y «sale 5».}
-\solucion{%
-  Significa que \textbf{no pueden ocurrir al mismo tiempo}: si ocurre uno, el
-  otro queda descartado. Formalmente, $P(A\cap B)=0$.
-  \\[0.3em]
-  Con un dado: «sale 2» y «sale 5» son mutuamente excluyentes. En cambio
-  «sale par» y «sale mayor que 3» \emph{no} lo son, porque el 4 y el 6
-  cumplen las dos cosas.
-  \\[0.3em]
-  \textbf{Cuidado}: mutuamente excluyente e independiente NO son lo mismo.
-  De hecho son casi opuestos — si son excluyentes, saber que ocurrió uno te
-  dice con certeza que el otro no ocurrió, o sea que se influyen al máximo.}
+\definicion{Mutuamente excluyentes e independientes}{%
+  \textbf{Mutuamente excluyentes}: no pueden ocurrir a la vez. Si ocurre uno,
+  el otro queda descartado.\par
+  \textbf{Independientes}: saber que ocurrió uno no cambia la probabilidad del
+  otro.\par
+  No son lo mismo, y casi son opuestos: si dos eventos son excluyentes, saber
+  que ocurrió uno te dice \emph{con certeza} que el otro no ocurrió, o sea que
+  se influyen al máximo.}
 
-\ejercicio{1}{%
-  Se tira un dado. Sea $A$ = «sale par» y $B$ = «sale mayor que 4».
-  Enumera $A$, $B$ y $A\cap B$. Calcula $P(A)$, $P(B)$ y $P(A\cap B)$.}{}
-\renglones[3]
-\respuesta{$A=\{2,4,6\}$, $B=\{5,6\}$, $A\cap B=\{6\}$;
-$P(A)=3/6$, $P(B)=2/6$, $P(A\cap B)=1/6$.}
-\solucion{%
-  $A=\{2,4,6\}$, $B=\{5,6\}$, $A\cap B=\{6\}$.
-  \[ P(A)=\tfrac{3}{6}=0{,}5 \qquad P(B)=\tfrac{2}{6}\approx 0{,}333
-     \qquad P(A\cap B)=\tfrac{1}{6}\approx 0{,}167 \]
-  El 6 es el único que cumple las dos condiciones, y por eso aparece en la
-  intersección.}
+\minihistoria{La comorbilidad es el ejemplo, no una excepción}{%
+  La depresión y la ansiedad aparecen juntas mucho más seguido de lo que
+  ocurriría por azar. Lo mismo pasa con consumo y trastornos del ánimo, o con
+  ansiedad e insomnio.\par
+  Por eso multiplicar probabilidades «porque sí» es un error caro en
+  psicología: da números más chicos que la realidad justo en los casos más
+  graves, que son los que más recursos necesitan.}
 
-\ejercicio{1}{%
-  Con los mismos $A$ y $B$, calcula $P(A\cup B)$ de dos maneras: enumerando
-  los elementos de $A\cup B$, y aplicando la regla de la suma.}{}
-\renglones[3]
-\respuesta{$A\cup B=\{2,4,5,6\}$, $P=4/6\approx 0{,}667$ por los dos caminos.}
-\solucion{%
-  \textbf{Enumerando}: $A\cup B=\{2,4,5,6\}$, o sea 4 elementos.
-  $P=\tfrac{4}{6}\approx 0{,}667$.
-  \\[0.3em]
-  \textbf{Con la regla}:
-  \[ P(A\cup B)=P(A)+P(B)-P(A\cap B)=\tfrac{3}{6}+\tfrac{2}{6}-\tfrac{1}{6}
-     =\tfrac{4}{6} \]
-  \\[0.3em]
-  Si no restaras la intersección te daría $5/6$, contando el 6 dos veces. Ése
-  es el error más común de toda la unidad, y el diagrama de Venn lo hace
-  obvio: la zona compartida está en los dos círculos.}
-
-\ejercicio{2}{%
-  Se tiran dos monedas. Calcula $P(\text{dos caras})$ usando la regla del
-  producto, y verifica el resultado enumerando el espacio muestral.}{}
-\renglones[3]
-\respuesta{$0{,}5\times 0{,}5 = 0{,}25$, y $1/4$ enumerando.}
-\solucion{%
-  Las dos monedas son independientes: el resultado de una no cambia nada
-  para la otra.
-  \[ P(CC) = P(C)\cdot P(C) = 0{,}5 \times 0{,}5 = 0{,}25 \]
-  \\[0.3em]
-  Enumerando: $S=\{CC,CX,XC,XX\}$ y sólo un caso sirve, $1/4=0{,}25$.
-  Coinciden.}
-
-\ejercicio{2}{%
-  Se tira un dado. Sea $A$ = «sale par» y $B$ = «sale mayor que 4».
-  Verifica si $A$ y $B$ son independientes comparando $P(A\cap B)$ con
-  $P(A)\cdot P(B)$.}{}
-\renglones[3]
-\respuesta{$P(A\cap B)=1/6\approx 0{,}167$ y $P(A)P(B)=1/6\approx 0{,}167$:
-sí son independientes.}
-\solucion{%
-  \[ P(A)\cdot P(B) = \tfrac{3}{6}\times\tfrac{2}{6} = \tfrac{6}{36}
-     = \tfrac{1}{6} \approx 0{,}167 \]
-  \[ P(A\cap B) = \tfrac{1}{6} \approx 0{,}167 \]
-  Coinciden, así que $A$ y $B$ \textbf{son independientes}.
-  \\[0.3em]
-  Resultado poco intuitivo: uno esperaría que «ser par» y «ser mayor que 4»
-  se influyeran. La independencia no es cuestión de intuición — se verifica
-  con la cuenta.}
-
-\ejercicio{3}{%
-  En las 200 fichas: 43 dan positivo en depresión, 21 dan positivo en
-  ansiedad, y 17 dan positivo en las dos.
-  Calcula la probabilidad de que una ficha elegida al azar dé positivo
-  \textbf{en al menos uno} de los dos cuestionarios.}{}
+\ejercicio{0}{Explica con tus palabras qué significa que dos eventos sean
+  \emph{mutuamente excluyentes}, y da un ejemplo de una historia clínica.
+  Después decide: ¿«presentar sintomatología depresiva» y «presentar
+  sintomatología ansiosa» son mutuamente excluyentes?}{}
 \renglones[4]
-\respuesta{$47/200 = 0{,}235$.}
+\respuesta{Que no pueden ocurrir a la vez. No son excluyentes: una misma
+persona puede presentar las dos.}
 \solucion{%
-  \[ P(D\cup A) = P(D)+P(A)-P(D\cap A)
-     = \frac{43}{200}+\frac{21}{200}-\frac{17}{200} = \frac{47}{200} = 0{,}235 \]
-  \\[0.3em]
-  En personas: $43+21-17 = 47$. Sin restar los 17 que están en los dos grupos
-  darías $64$, contándolos dos veces — y $64/200 = 0{,}32$, un $36\%$ de más.}
+  Mutuamente excluyentes significa que \textbf{no pueden ocurrir al mismo
+  tiempo}: formalmente, $P(A\cap B)=0$.
+  \par
+  Un ejemplo de historia clínica: el diagnóstico principal registrado en la
+  ficha. Sólo puede ser uno, así que «diagnóstico principal: depresión mayor» y
+  «diagnóstico principal: trastorno de pánico» sí son excluyentes.
+  \par
+  Pero \textbf{presentar sintomatología depresiva y ansiosa no lo es}: una
+  misma persona puede presentar las dos, y de hecho es lo más frecuente. Ése es
+  el corazón del apartado.}
+\enclase{Que alguien nombre un par de eventos realmente excluyentes en
+psicología. Cuesta más de lo que parece, y esa dificultad ya enseña algo.}
 
-\ejercicio{3}{%
-  ¿Son \textbf{independientes} dar positivo en depresión y dar positivo en
-  ansiedad?
+\ejercicio{1}{En un servicio se registran dos síntomas. De 200 fichas, 43
+  presentan sintomatología depresiva y 21 ansiosa.
+  \textbf{Antes de calcular nada, escribe cuántas fichas crees que presentan
+  las dos:} \underline{\hspace{2cm}}
+  \par\vspace{0.2em}
+  Guarda ese número: lo vas a comparar en el ejercicio 6.}{Predice primero}
+\renglones[3]
+\respuesta{Son 17. La mayoría estima bastante menos.}
+\solucion{%
+  La respuesta es \textbf{17}, y se comprueba en el ejercicio 6.
+  \par
+  Casi todo el mundo estima entre 4 y 8, porque razona «si son 43 y 21 de 200,
+  coincidir debe ser raro». Ese razonamiento supone independencia sin decirlo,
+  y bajo independencia darían unas 4,5 fichas.
+  \par
+  La distancia entre lo que estimaste y el 17 es exactamente el tamaño de la
+  comorbilidad. No es un detalle estadístico: es un hecho clínico.}
+\enclase{Anota dos o tres estimaciones en el pizarrón. Vuelve a ellas en el
+ejercicio 6 — es donde se produce el aprendizaje.}
+
+\ejercicio{1}{Sea $A$ = «presenta sintomatología ansiosa» y $D$ = «presenta
+  sintomatología depresiva», sobre las 200 fichas, con $|A|=21$, $|D|=43$ y
+  $|A\cap D|=17$. Calcula $P(A)$, $P(D)$ y $P(A\cap D)$.}{}
+\renglones[3]
+\respuesta{$P(A)=0{,}105$; $P(D)=0{,}215$; $P(A\cap D)=0{,}085$.}
+\solucion{%
+  \[ P(A)=\frac{21}{200}=0{,}105 \qquad P(D)=\frac{43}{200}=0{,}215
+     \qquad P(A\cap D)=\frac{17}{200}=0{,}085 \]
+  La intersección son las personas que presentan \emph{las dos} cosas, no las
+  que presentan alguna.}
+
+\ejercicio{2}{Dos preguntas que suenan igual y no lo son. Contesta las dos y
+  explica qué cambia.
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item ¿Cuántos casos con ambos positivos \emph{esperarías} si fueran independientes?
-    \item ¿Cuántos hay en realidad?
-    \item Calcula $P(\text{ansiedad}\mid\text{depresión})$ y compara con $P(\text{ansiedad})$.
-  \end{enumerate}}{}
+    \item ¿Qué probabilidad hay de que una ficha presente \textbf{las dos}
+      sintomatologías?
+    \item ¿Qué probabilidad hay de que presente \textbf{al menos una}?
+  \end{enumerate}}{Dos casos casi iguales}
 \renglones[5]
-\respuesta{(a) $\approx 4{,}5$; (b) 17; (c) $17/43\approx 0{,}395$ contra
-$0{,}105$. No son independientes.}
+\respuesta{(a) $17/200 = 0{,}085$. (b) $47/200 = 0{,}235$.}
 \solucion{%
-  (a) Bajo independencia:
-  $P(D)\cdot P(A)\times 200 = 0{,}215\times 0{,}105\times 200 \approx 4{,}5$
-  personas.
-  \\[0.3em]
-  (b) En realidad hay \textbf{17}, casi cuatro veces más.
-  \\[0.3em]
-  (c) $P(A\mid D)=\dfrac{17}{43}\approx 0{,}395$, contra $P(A)=0{,}105$.
-  \\[0.3em]
-  \textbf{Saber que alguien dio positivo en depresión casi cuadruplica la
-  probabilidad de que dé positivo en ansiedad.} Eso es exactamente lo
-  contrario de la independencia — y es un hallazgo clínico real: la depresión
-  y la ansiedad son altamente comórbidas.}
+  (a) Es la intersección: $\dfrac{17}{200}=0{,}085$.
+  \par
+  (b) Es la unión, y hay que restar la intersección:
+  \[ P(A\cup D)=P(A)+P(D)-P(A\cap D)
+     =\frac{21}{200}+\frac{43}{200}-\frac{17}{200}=\frac{47}{200}=0{,}235 \]
+  \par
+  En personas: $21+43-17=47$. \textbf{Sin restar los 17} darías 64,
+  contándolos dos veces — un 36\,\% de más.
+  \par
+  «Las dos» y «al menos una» son preguntas clínicas distintas: la primera
+  identifica los casos complejos, la segunda dimensiona la demanda total del
+  servicio.}
 
-\ejercicio{4}{%
-  Un investigador escribe en su informe:
+\ejercicio{2}{Un informe de un servicio dice:
   \begin{quote}\itshape
-  «La probabilidad de dar positivo en depresión es 21,5\% y en ansiedad
-  10,5\%. Por lo tanto, la probabilidad de dar positivo en ambas es
-  $0{,}215 \times 0{,}105 = 2{,}3\%$.»
+  «El 10,5\,\% presenta sintomatología ansiosa y el 21,5\,\% depresiva. Como
+  son independientes, el 32\,\% presenta al menos una de las dos.»
+  \end{quote}
+  Hay \textbf{dos} errores en esa frase. Señala los dos y explica cada uno.}{Encuentra el error}
+\renglones[6]
+\respuesta{(1) Suma sin restar la intersección. (2) Afirma independencia sin
+verificarla, y no son independientes. El valor real es 23,5\,\%.}
+\solucion{%
+  \textbf{Primer error}: sumó 10,5 más 21,5 y obtuvo 32 sin restar a quienes
+  están en los dos grupos. Aunque fueran independientes, la regla de la suma
+  exige restar la intersección.
+  \par
+  \textbf{Segundo error}: afirma la independencia en vez de verificarla. Y no
+  son independientes — se comprueba en el ejercicio siguiente.
+  \par
+  El valor correcto es $\dfrac{47}{200}$, o sea 23,5\,\%, bastante menos que el
+  32\,\% del informe.
+  \par
+  \textit{Lo llamativo}: los dos errores empujan en la misma dirección
+  —sobreestimar— así que ninguno corrige al otro. Un servicio que planifique
+  con ese 32\,\% pide más recursos de los que necesita para la demanda total, y
+  al mismo tiempo subestima los casos complejos, como muestra el ejercicio 8.}
+
+\ejercicio{3}{¿Son \textbf{independientes} presentar sintomatología depresiva y
+  presentar sintomatología ansiosa?
+  \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
+    \item ¿Cuántos casos con ambas \emph{esperarías} si fueran independientes?
+    \item ¿Cuántos hay en realidad?
+    \item Calcula $P(A\mid D)$ y compárala con $P(A)$.
+    \item Compara con tu estimación del ejercicio 2.
+  \end{enumerate}}{}
+\renglones[7]
+\respuesta{(a) Unas 4,5. (b) 17. (c) $17/43\approx 0{,}395$ contra $0{,}105$.
+No son independientes.}
+\solucion{%
+  (a) Bajo independencia: $0{,}105\times 0{,}215\times 200 \approx 4{,}5$
+  fichas.
+  \par
+  (b) En realidad hay \textbf{17}: casi cuatro veces más.
+  \par
+  (c) $P(A\mid D)=\dfrac{17}{43}\approx 0{,}395$, contra $P(A)=0{,}105$.
+  \par
+  \textbf{Saber que alguien presenta sintomatología depresiva casi cuadruplica
+  la probabilidad de que presente también ansiosa.} Eso es exactamente lo
+  contrario de la independencia, y es un hallazgo clínico real: la comorbilidad
+  entre depresión y ansiedad está documentada en toda la literatura.
+  \par
+  (d) Si estimaste entre 4 y 8, estabas razonando como si fueran
+  independientes sin darte cuenta. Es el sesgo por defecto, y por eso conviene
+  verificar siempre.}
+\enclase{Éste es el momento del apartado. Vuelve a las estimaciones del
+pizarrón: la mayoría habrá dicho un número cercano al 4,5 de la independencia,
+sin haber hecho ninguna cuenta.}
+
+\ejercicio{3}{Un investigador quiere calcular la probabilidad de que un
+  paciente con sintomatología depresiva \emph{desarrolle} sintomatología
+  ansiosa en los seis meses siguientes. Tiene las 200 fichas con los dos
+  puntajes tomados el mismo día.
+  \textbf{¿Alcanzan los datos?} Si te parece que sí, calcula; si no, escribe
+  qué falta.}{¿Alcanzan los datos?}
+\renglones[5]
+\respuesta{No alcanzan: las fichas son de un solo momento y la pregunta es
+sobre lo que ocurre después. Haría falta una segunda medición.}
+\solucion{%
+  \textbf{No alcanzan.} Las dos medidas se tomaron \emph{el mismo día}, así que
+  el archivo describe lo que pasa a la vez, no lo que pasa después.
+  \par
+  El $17/43 \approx 0{,}395$ del ejercicio anterior es tentador y responde otra
+  pregunta: «entre los que hoy tienen síntomas depresivos, qué proporción hoy
+  también tiene ansiosos». No dice nada sobre desarrollar algo en el futuro.
+  \par
+  Haría falta un \textbf{seguimiento}: volver a medir a los seis meses,
+  distinguiendo a quienes ya tenían síntomas ansiosos al inicio. Confundir un
+  dato transversal con uno longitudinal es uno de los errores más frecuentes en
+  la lectura de investigación en psicología.}
+
+\ejercicio{4}{Un equipo planifica el servicio del año que viene y escribe:
+  \begin{quote}\itshape
+  «Esperamos unos 4 o 5 casos con comorbilidad, que son los que requieren
+  seguimiento intensivo. Reservamos dos horas semanales para eso.»
   \end{quote}
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
-    \item ¿Qué supuso sin decirlo?
-    \item ¿Cuál es el valor real, y por cuánto se equivocó?
-    \item ¿Qué consecuencia práctica tendría ese error para planificar el servicio?
+    \item ¿De dónde salió ese «4 o 5», y qué supuso quien lo calculó?
+    \item ¿Cuál es el número real?
+    \item ¿Qué consecuencia concreta tiene el error para el equipo?
   \end{enumerate}}{}
-\renglones[6]
-\respuesta{(a) Supuso independencia. (b) Real $17/200 = 8{,}5\%$: subestimó
-casi 4 veces. (c) Respuesta abierta.}
+\renglones[7]
+\respuesta{(a) De multiplicar las probabilidades, suponiendo independencia.
+(b) 17. (c) Respuesta abierta: falta casi cuatro veces el tiempo previsto.}
 \solucion{%
-  (a) Supuso que los dos eventos son \textbf{independientes}, que es lo único
-  que autoriza a multiplicar las probabilidades sin más. No lo verificó.
-  \\[0.3em]
-  (b) El valor real es $\dfrac{17}{200} = 8{,}5\%$, contra el $2{,}3\%$ que
-  calculó: subestimó por un factor de casi 4.
-  \\[0.3em]
-  (c) Si el servicio planifica con $2{,}3\%$, espera unos 5 casos con
-  comorbilidad y aparecen 17. Esos casos suelen ser los más complejos y los
-  que más tiempo de atención requieren, así que el error no es sólo de
-  cálculo: deja al equipo sin recursos justo donde más hacen falta.
-  \\[0.3em]
+  (a) De $0{,}105\times 0{,}215\times 200 \approx 4{,}5$. Quien lo calculó
+  \textbf{supuso independencia} sin verificarla — probablemente sin notar que
+  lo estaba suponiendo.
+  \par
+  (b) El número real es \textbf{17}.
+  \par
+  (c) El equipo reservó dos horas semanales para unos 4 casos y va a recibir
+  17. Y no son casos cualesquiera: la comorbilidad suele implicar cuadros más
+  complejos, más sesiones y mayor riesgo. El error no deja al servicio un poco
+  corto — lo deja sin recursos justo donde más hacen falta.
+  \par
   \textbf{La regla}: multiplicar probabilidades sólo se puede si son
   independientes, y la independencia se verifica, no se supone. En psicología
-  casi nada es independiente.}
+  casi nada es independiente, así que la carga de la prueba está siempre del
+  lado de quien multiplica.}
+
+\trampa{multiplicar dos probabilidades para obtener la de que ocurran las dos}%
+  {es la fórmula que se aprende primero y funciona con dados y monedas, que es
+   donde todos la practicamos}%
+  {sólo vale bajo independencia. Con dos medidas tomadas sobre las mismas
+   personas, lo esperable es que NO sean independientes: compruébalo antes de
+   multiplicar}
+
+\cierre{%
+  La regla de la suma pide restar la intersección y la del producto pide
+  verificar la independencia. Las dos se olvidan por la misma razón: el
+  resultado que sale al olvidarlas parece razonable.
+  \par
+  Y quedó planteada una pregunta que este apartado no puede responder. Sabemos
+  que $P(A\mid D)$ es casi cuatro veces $P(A)$ — pero cuando lo que conocemos
+  es el resultado de un test y lo que queremos saber es la condición, la
+  condicional hay que darla vuelta. Ése es el apartado siguiente.}

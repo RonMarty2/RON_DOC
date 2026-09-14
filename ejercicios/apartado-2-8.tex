@@ -1,21 +1,10 @@
-\apartado{2.8}{Distribuciones discretas}
+\apartado{2.8}{Distribuciones discretas}{distrib}
 
-\noindent\textit{Tres preguntas de planificación, tres procesos distintos,
-tres fórmulas distintas. Confundirlas produce números equivocados que parecen
-razonables.}
-\recordar{%
-  \textbf{Binomial} — $n$ intentos fijos, independientes, misma $p$:
-  $P(X=k)=\dbinom{n}{k}p^{k}(1-p)^{n-k}$.\\[0.3em]
-  \textbf{Poisson} — conteos en un intervalo, con tasa media $\lambda$:
-  $P(X=k)=\dfrac{e^{-\lambda}\lambda^{k}}{k!}$.\\[0.3em]
-  \textbf{Hipergeométrica} — extracción \emph{sin reposición} de un grupo
-  finito de $N$ con $K$ éxitos:
-  $P(X=k)=\dfrac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}}$.}
-
+\bajada{Tres preguntas de planificación, tres procesos distintos, tres fórmulas distintas. Confundirlas produce números equivocados que parecen razonables.}
 \ejercicio{0}{%
   ¿Qué es un \emph{ensayo de Bernoulli}? Dá dos ejemplos, uno con un objeto
-  cotidiano y otro del servicio de salud mental.}
-\espacioresolver[2.4cm]
+  cotidiano y otro del servicio de salud mental.}{}
+\renglones[3]
 \respuesta{Un experimento con dos resultados posibles (éxito/fracaso).
 Ej.: tirar una moneda; que una ficha dé positivo o no.}
 \solucion{%
@@ -36,8 +25,8 @@ Ej.: tirar una moneda; que una ficha dé positivo o no.}
     \item Tirar una moneda 10 veces.
     \item Sacar 3 cartas de una baraja sin devolverlas.
     \item Tamizar a 20 estudiantes distintos elegidos al azar de toda la universidad.
-  \end{enumerate}}
-\espacioresolver[3cm]
+  \end{enumerate}}{}
+\renglones[4]
 \respuesta{(a) sí y sí; (b) no y no; (c) sí y sí (aproximadamente).}
 \solucion{%
   (a) \textbf{Sí}: la moneda no recuerda nada y $p=0{,}5$ siempre.
@@ -54,8 +43,8 @@ Ej.: tirar una moneda; que una ficha dé positivo o no.}
 
 \ejercicio{1}{%
   Se tira una moneda 5 veces. Calcula la probabilidad de obtener exactamente
-  2 caras, usando $\binom{5}{2}p^{2}(1-p)^{3}$ con $p=0{,}5$.}
-\espacioresolver[2.4cm]
+  2 caras, usando $\binom{5}{2}p^{2}(1-p)^{3}$ con $p=0{,}5$.}{}
+\renglones[3]
 \respuesta{$10\times 0{,}25\times 0{,}125 = 0{,}3125$.}
 \solucion{%
   \[ P(X=2)=\binom{5}{2}(0{,}5)^{2}(0{,}5)^{3}
@@ -68,8 +57,8 @@ Ej.: tirar una moneda; que una ficha dé positivo o no.}
 \ejercicio{2}{%
   En una población el 20\% de las personas da positivo en un tamizaje. Se
   evalúan 10 personas. Calcula la probabilidad de que exactamente 3 den
-  positivo.}
-\espacioresolver[3cm]
+  positivo.}{}
+\renglones[4]
 \respuesta{$\approx 0{,}2013$.}
 \solucion{%
   \[ P(X=3)=\binom{10}{3}(0{,}2)^{3}(0{,}8)^{7}
@@ -80,8 +69,8 @@ Ej.: tirar una moneda; que una ficha dé positivo o no.}
 
 \ejercicio{2}{%
   Un servicio recibe en promedio 3 consultas de urgencia por semana. Calcula
-  la probabilidad de recibir exactamente 2 en una semana dada.}
-\espacioresolver[2.6cm]
+  la probabilidad de recibir exactamente 2 en una semana dada.}{}
+\renglones[3]
 \respuesta{$\approx 0{,}224$.}
 \solucion{%
   Es Poisson, con $\lambda = 3$:
@@ -95,8 +84,8 @@ Ej.: tirar una moneda; que una ficha dé positivo o no.}
 \ejercicio{3}{%
   El servicio va a tamizar a 20 estudiantes nuevos. Sabe por su archivo que la
   probabilidad de dar positivo es $p=0{,}215$.
-  Calcula la probabilidad de encontrar exactamente 5 positivos.}
-\espacioresolver[3.4cm]
+  Calcula la probabilidad de encontrar exactamente 5 positivos.}{}
+\renglones[4]
 \respuesta{$\approx 0{,}1887$.}
 \solucion{%
   \[ P(X=5)=\binom{20}{5}(0{,}215)^{5}(0{,}785)^{15} \]
@@ -115,8 +104,8 @@ Ej.: tirar una moneda; que una ficha dé positivo o no.}
     \item De los 43 estudiantes positivos, 9 tienen el expediente incompleto.
           Se auditan 6 al azar, sin reposición. ¿Probabilidad de que
           exactamente 2 estén incompletos?
-  \end{enumerate}}
-\espacioresolver[5cm]
+  \end{enumerate}}{}
+\renglones[6]
 \respuesta{(a) $\approx 0{,}0653$. (b) $\approx 0{,}2739$.}
 \solucion{%
   (a) \textbf{Poisson}, $\lambda = 5$:
@@ -142,8 +131,8 @@ Ej.: tirar una moneda; que una ficha dé positivo o no.}
           ¿cuántas tendrán además ansiedad?
     \item Un profesional atiende 12 primeras entrevistas: ¿en cuántas
           confirmará el diagnóstico?
-  \end{enumerate}}
-\espacioresolver[5.5cm]
+  \end{enumerate}}{}
+\renglones[6]
 \respuesta{(a) binomial; (b) Poisson; (c) hipergeométrica; (d) binomial.}
 \solucion{%
   (a) \textbf{Binomial}: número fijo de intentos (30), misma $p$, y los

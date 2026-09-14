@@ -1,20 +1,10 @@
-\apartado{2.5}{Reglas básicas}
+\apartado{2.5}{Reglas básicas}{calculo}
 
-\noindent\textit{Cuándo se suman las probabilidades y cuándo se multiplican.
-Y por qué suponer independencia sin verificarla produce números que parecen
-razonables y no lo son.}
-\recordar{%
-  \textbf{Suma}: $P(A\cup B) = P(A)+P(B)-P(A\cap B)$.
-  Si son mutuamente excluyentes, $P(A\cap B)=0$ y se suman sin más.\quad
-  \textbf{Producto}: $P(A\cap B) = P(A)\cdot P(B\mid A)$.
-  Si son independientes, $P(B\mid A)=P(B)$ y queda $P(A)\cdot P(B)$.\\[0.3em]
-  \textbf{Independencia} significa: saber que ocurrió $A$ no cambia la
-  probabilidad de $B$.}
-
+\bajada{Cuándo se suman las probabilidades y cuándo se multiplican. Y por qué suponer independencia sin verificarla produce números que parecen razonables y no lo son.}
 \ejercicio{0}{%
   Explica con tus palabras qué significa que dos eventos sean
-  \emph{mutuamente excluyentes}, y dá un ejemplo con un dado.}
-\espacioresolver[2.2cm]
+  \emph{mutuamente excluyentes}, y da un ejemplo con un dado.}{}
+\renglones[3]
 \respuesta{Que no pueden ocurrir a la vez. Ej.: «sale 2» y «sale 5».}
 \solucion{%
   Significa que \textbf{no pueden ocurrir al mismo tiempo}: si ocurre uno, el
@@ -30,8 +20,8 @@ razonables y no lo son.}
 
 \ejercicio{1}{%
   Se tira un dado. Sea $A$ = «sale par» y $B$ = «sale mayor que 4».
-  Enumera $A$, $B$ y $A\cap B$. Calcula $P(A)$, $P(B)$ y $P(A\cap B)$.}
-\espacioresolver[2.8cm]
+  Enumera $A$, $B$ y $A\cap B$. Calcula $P(A)$, $P(B)$ y $P(A\cap B)$.}{}
+\renglones[3]
 \respuesta{$A=\{2,4,6\}$, $B=\{5,6\}$, $A\cap B=\{6\}$;
 $P(A)=3/6$, $P(B)=2/6$, $P(A\cap B)=1/6$.}
 \solucion{%
@@ -43,8 +33,8 @@ $P(A)=3/6$, $P(B)=2/6$, $P(A\cap B)=1/6$.}
 
 \ejercicio{1}{%
   Con los mismos $A$ y $B$, calcula $P(A\cup B)$ de dos maneras: enumerando
-  los elementos de $A\cup B$, y aplicando la regla de la suma.}
-\espacioresolver[2.6cm]
+  los elementos de $A\cup B$, y aplicando la regla de la suma.}{}
+\renglones[3]
 \respuesta{$A\cup B=\{2,4,5,6\}$, $P=4/6\approx 0{,}667$ por los dos caminos.}
 \solucion{%
   \textbf{Enumerando}: $A\cup B=\{2,4,5,6\}$, o sea 4 elementos.
@@ -60,8 +50,8 @@ $P(A)=3/6$, $P(B)=2/6$, $P(A\cap B)=1/6$.}
 
 \ejercicio{2}{%
   Se tiran dos monedas. Calcula $P(\text{dos caras})$ usando la regla del
-  producto, y verifica el resultado enumerando el espacio muestral.}
-\espacioresolver[2.4cm]
+  producto, y verifica el resultado enumerando el espacio muestral.}{}
+\renglones[3]
 \respuesta{$0{,}5\times 0{,}5 = 0{,}25$, y $1/4$ enumerando.}
 \solucion{%
   Las dos monedas son independientes: el resultado de una no cambia nada
@@ -74,8 +64,8 @@ $P(A)=3/6$, $P(B)=2/6$, $P(A\cap B)=1/6$.}
 \ejercicio{2}{%
   Se tira un dado. Sea $A$ = «sale par» y $B$ = «sale mayor que 4».
   Verifica si $A$ y $B$ son independientes comparando $P(A\cap B)$ con
-  $P(A)\cdot P(B)$.}
-\espacioresolver[2.8cm]
+  $P(A)\cdot P(B)$.}{}
+\renglones[3]
 \respuesta{$P(A\cap B)=1/6\approx 0{,}167$ y $P(A)P(B)=1/6\approx 0{,}167$:
 sí son independientes.}
 \solucion{%
@@ -92,8 +82,8 @@ sí son independientes.}
   En las 200 fichas: 43 dan positivo en depresión, 21 dan positivo en
   ansiedad, y 17 dan positivo en las dos.
   Calcula la probabilidad de que una ficha elegida al azar dé positivo
-  \textbf{en al menos uno} de los dos cuestionarios.}
-\espacioresolver[3cm]
+  \textbf{en al menos uno} de los dos cuestionarios.}{}
+\renglones[4]
 \respuesta{$47/200 = 0{,}235$.}
 \solucion{%
   \[ P(D\cup A) = P(D)+P(A)-P(D\cap A)
@@ -109,8 +99,8 @@ sí son independientes.}
     \item ¿Cuántos casos con ambos positivos \emph{esperarías} si fueran independientes?
     \item ¿Cuántos hay en realidad?
     \item Calcula $P(\text{ansiedad}\mid\text{depresión})$ y compara con $P(\text{ansiedad})$.
-  \end{enumerate}}
-\espacioresolver[4cm]
+  \end{enumerate}}{}
+\renglones[5]
 \respuesta{(a) $\approx 4{,}5$; (b) 17; (c) $17/43\approx 0{,}395$ contra
 $0{,}105$. No son independientes.}
 \solucion{%
@@ -138,8 +128,8 @@ $0{,}105$. No son independientes.}
     \item ¿Qué supuso sin decirlo?
     \item ¿Cuál es el valor real, y por cuánto se equivocó?
     \item ¿Qué consecuencia práctica tendría ese error para planificar el servicio?
-  \end{enumerate}}
-\espacioresolver[5cm]
+  \end{enumerate}}{}
+\renglones[6]
 \respuesta{(a) Supuso independencia. (b) Real $17/200 = 8{,}5\%$: subestimó
 casi 4 veces. (c) Respuesta abierta.}
 \solucion{%

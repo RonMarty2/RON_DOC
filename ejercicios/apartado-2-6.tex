@@ -1,21 +1,11 @@
-\apartado{2.6}{Teorema de Bayes}
+\apartado{2.6}{Teorema de Bayes}{climax}
 
-\noindent\textit{Dar vuelta una probabilidad condicional. Es el apartado que
-explica por qué un test que casi nunca falla puede equivocarse en la mitad de
-sus alarmas.}
-\recordar{%
-  \[ P(E\mid +) = \frac{P(+\mid E)\cdot P(E)}
-                        {P(+\mid E)\cdot P(E) + P(+\mid \bar{E})\cdot P(\bar{E})} \]
-  En palabras: los verdaderos positivos, divididos por \emph{todos} los
-  positivos.\\[0.3em]
-  $P(+\mid E)$ es la sensibilidad; $P(E)$ la prevalencia;
-  $P(+\mid\bar{E}) = 1-\text{especificidad}$.}
-
+\bajada{Dar vuelta una probabilidad condicional. Es el apartado que explica por qué un test que casi nunca falla puede equivocarse en la mitad de sus alarmas.}
 \ejercicio{0}{%
   Define con tus palabras qué es la \emph{prevalencia} de un trastorno.
   ¿De qué depende: del instrumento que se use, o de la población que se
-  estudie?}
-\espacioresolver[2.2cm]
+  estudie?}{}
+\renglones[3]
 \respuesta{La proporción de la población que tiene el trastorno. Depende de la
 población, no del instrumento.}
 \solucion{%
@@ -32,8 +22,8 @@ población, no del instrumento.}
   \begin{enumerate}[label=(\alph*),topsep=2pt,itemsep=1pt]
     \item ¿Cuántas no lo tienen?
     \item ¿Cuál es la prevalencia, en porcentaje?
-  \end{enumerate}}
-\espacioresolver[1.8cm]
+  \end{enumerate}}{}
+\renglones[3]
 \respuesta{(a) 990. (b) 1\%.}
 \solucion{%
   (a) $1000-10 = 990$.
@@ -52,8 +42,8 @@ población, no del instrumento.}
     \item «De los pacientes con depresión, el test detecta al 88\%.»
     \item «De los que dieron positivo, la mitad tenía el trastorno.»
     \item «El instrumento tiene una sensibilidad del 88\%.»
-  \end{enumerate}}
-\espacioresolver[2.6cm]
+  \end{enumerate}}{}
+\renglones[3]
 \respuesta{(a) $P(+\mid E)$; (b) $P(E\mid +)$; (c) $P(+\mid E)$.}
 \solucion{%
   (a) $P(+\mid E)$ — parte de los que tienen el trastorno.\\
@@ -72,8 +62,8 @@ población, no del instrumento.}
     \item ¿Cuántas tienen la enfermedad? ¿Cuántas de ellas dan positivo?
     \item ¿Cuántas están sanas? ¿Cuántas de ellas dan positivo igual?
     \item ¿Cuántos positivos hay en total? ¿Qué proporción de ellos está enferma?
-  \end{enumerate}}
-\espacioresolver[5cm]
+  \end{enumerate}}{}
+\renglones[6]
 \respuesta{(a) 10 enfermas, 9 positivas. (b) 990 sanas, 99 positivas.
 (c) 108 positivos, de los cuales 9 están enfermos: $\approx 8{,}3\%$.}
 \solucion{%
@@ -94,8 +84,8 @@ población, no del instrumento.}
 
 \ejercicio{2}{%
   Rehaz el ejercicio anterior con la \textbf{fórmula de Bayes} en vez de
-  frecuencias naturales, y comprueba que da lo mismo.}
-\espacioresolver[3.2cm]
+  frecuencias naturales, y comprueba que da lo mismo.}{}
+\renglones[4]
 \respuesta{$\dfrac{0{,}9\times 0{,}01}{0{,}9\times 0{,}01+0{,}1\times 0{,}99}
 \approx 0{,}083$.}
 \solucion{%
@@ -111,8 +101,8 @@ población, no del instrumento.}
   Aplica Bayes al servicio real: sensibilidad $0{,}88$, especificidad
   $0{,}88$, prevalencia $0{,}125$. Calcula la probabilidad de tener el
   trastorno dado que se dio positivo. Compara con el $22/43$ que sale de
-  contar la tabla.}
-\espacioresolver[4cm]
+  contar la tabla.}{}
+\renglones[5]
 \respuesta{$\approx 0{,}512$, igual que $22/43 \approx 0{,}512$.}
 \solucion{%
   \[ P(E\mid +) = \frac{0{,}88\times 0{,}125}
@@ -129,8 +119,8 @@ población, no del instrumento.}
 \ejercicio{3}{%
   Mismo instrumento (sensibilidad y especificidad $0{,}88$), pero aplicado en
   un servicio de urgencias donde la prevalencia es del \textbf{50\%}.
-  Calcula el nuevo valor predictivo positivo y explica qué cambió.}
-\espacioresolver[3.6cm]
+  Calcula el nuevo valor predictivo positivo y explica qué cambió.}{}
+\renglones[4]
 \respuesta{$0{,}88$. El instrumento es el mismo; cambió la población.}
 \solucion{%
   \[ P(E\mid +) = \frac{0{,}88\times 0{,}50}
@@ -154,8 +144,8 @@ población, no del instrumento.}
     \item Redacta lo que le dirías, sin usar la palabra «probabilidad».
     \item Si el servicio bajara el corte de 10 a 8, ¿el VPP subiría o bajaría?
           Justifica sin calcular.
-  \end{enumerate}}
-\espacioresolver[6cm]
+  \end{enumerate}}{}
+\renglones[7]
 \respuesta{(a) $51{,}2\%$, el VPP. (b) Respuesta abierta.
 (c) Bajaría: más positivos, y los nuevos son en su mayoría falsas alarmas.}
 \solucion{%

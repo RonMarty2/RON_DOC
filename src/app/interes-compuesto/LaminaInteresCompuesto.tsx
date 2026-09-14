@@ -380,7 +380,7 @@ export function LaminaInteresCompuesto() {
       titulo="Interés compuesto e inflación"
       volver={{ href: "/", titulo: "Inicio" }}
       diapositivas={diapositivas}
-      teAbrePuertaA={{ href: "/amortizacion", titulo: "Tres formas de devolver un préstamo" }}
+      teAbrePuertaA={{ href: "/anualidades", titulo: "Cuotas iguales: cuánto valen hoy y al final" }}
     />
   );
 }

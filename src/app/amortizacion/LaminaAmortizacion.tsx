@@ -286,7 +286,7 @@ const diapositivas: LaminaDiapositiva[] = [
     contenido: (
       <div className="flex flex-col gap-[0.6em]">
         <p>La cuota que, repetida 5 veces, devuelve el préstamo con sus intereses.</p>
-        <MathText block>{"$$C = P \\cdot \\frac{i}{1 - (1+i)^{-n}}$$"}</MathText>
+        <MathText block>{"$$R = P \\cdot \\frac{i}{1 - (1+i)^{-n}}$$"}</MathText>
         <div>
           <FilaRol rol="Lo que te prestaron" conocido="$P$" nuevo="$10.000$" />
           <FilaRol rol="La tasa de cada período" conocido="$i$" nuevo="$0{,}10$" />
@@ -295,11 +295,11 @@ const diapositivas: LaminaDiapositiva[] = [
         <div className="rounded-[0.75em] bg-papel-suave px-[0.9em] py-[0.7em]">
           <LineaEjemplo
             glosa="Ojo: $i$ es la tasa por período (mensual: $0{,}10 \div 12$)"
-            eq={`$C = 10.000 \\cdot \\dfrac{0{,}10}{1 - 1{,}1^{-${ANIOS}}}$`}
+            eq={`$R = 10.000 \\cdot \\dfrac{0{,}10}{1 - 1{,}1^{-${ANIOS}}}$`}
           />
           <LineaEjemplo
             glosa=""
-            eq={`$C = \\dfrac{1.000}{${(1 - Math.pow(1 + TASA, -ANIOS)).toFixed(6).replace(".", "{,}")}} \\approx ${tex(FRANCES.cuotas[0].cuota)}$`}
+            eq={`$R = \\dfrac{1.000}{${(1 - Math.pow(1 + TASA, -ANIOS)).toFixed(6).replace(".", "{,}")}} \\approx ${tex(FRANCES.cuotas[0].cuota)}$`}
           />
         </div>
       </div>
@@ -364,7 +364,7 @@ export function LaminaAmortizacion() {
       titulo="Tres formas de devolver un préstamo"
       volver={{ href: "/", titulo: "Inicio" }}
       diapositivas={diapositivas}
-      necesitasAntes={{ href: "/interes-compuesto", titulo: "Interés compuesto e inflación" }}
+      necesitasAntes={{ href: "/anualidades", titulo: "Cuotas iguales: cuánto valen hoy y al final" }}
     />
   );
 }

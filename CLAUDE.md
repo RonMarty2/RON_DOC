@@ -48,7 +48,7 @@ Si hay que volver a barrer, ojo con dos cosas: los verbos que cambian de raíz n
 ## Decisiones pendientes (preguntar a Ronald, no asumir)
 
 - Modo proyector: la tarjeta ya crece con la pantalla (en 1920×1080 mide unos 900 px de ancho, con letra de 21 px; en 1280×720 y 1366×768 entra sin desbordar) y se maneja con las flechas o un control de presentación. Falta que Ronald lo pruebe proyectado en clase.
-- Láminas `/interes-compuesto` y `/amortizacion` (Matemática Financiera): sin enlazar y fuera de buscadores hasta que Ronald las revise contra su dossier. Detalle en `bitacoras/matematica-financiera.md`.
+- Láminas `/interes-compuesto`, `/anualidades` y `/amortizacion` (Matemática Financiera): sin enlazar y fuera de buscadores hasta que Ronald las revise contra su dossier. Detalle en `bitacoras/matematica-financiera.md`.
 - Si el Aula de Probabilidad se migra a tarjetas, y cuándo. Hoy es un libro con scroll de unas 11.000 líneas.
 - Con qué materia se arranca. Cada una necesita el dossier del docente.
 

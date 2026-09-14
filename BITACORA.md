@@ -40,6 +40,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | Materia Psicoestadística Inferencial | `/materias/psicoestadistica-inferencial` | Publicada |
 | Proyectos (AXIOM, SIMPRO) | `/proyectos` | Publicada, enlaces reales |
 | **Lámina Interés compuesto e inflación** | `/interes-compuesto` | **Borrador sin enlazar**: espera revisión de Ronald |
+| **Lámina Cuotas iguales (anualidades)** | `/anualidades` | **Borrador sin enlazar**: espera revisión de Ronald |
 | **Lámina Tres formas de devolver un préstamo** | `/amortizacion` | **Borrador sin enlazar**: espera revisión de Ronald |
 | Muestra del formato (Bayes) | `/muestra` | Sin enlazar, sólo referencia del formato |
 | Otras 4 materias | — | "En preparación" en la portada: falta el dossier de cada una |
@@ -84,18 +85,20 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - `aad4dd6` Motor financiero de SIMPRO copiado con sus 87 pruebas; lámina `/amortizacion`.
 - `fc05ce2` Borrados los HTML de relleno de `public/interactivos`; revisión de Axiom (6 commits del banco de exámenes, nada que traer).
 - `6e9ca79` Lámina `/interes-compuesto` con `src/lib/finanzas/interes.ts` y sus pruebas; ajustes de alto en `/amortizacion`; esta bitácora y `bitacoras/matematica-financiera.md`.
-- *(este commit)* El deploy corre `npm test` antes de compilar. `sitemap.xml` generado sólo con lo publicado (`src/app/sitemap.ts`); sin `robots.txt`, porque bajo `/RON_DOC/` los buscadores no lo leen.
+- `a7dc21e` El deploy corre `npm test` antes de compilar. `sitemap.xml` generado sólo con lo publicado (`src/app/sitemap.ts`); sin `robots.txt`, porque bajo `/RON_DOC/` los buscadores no lo leen.
+- *(este commit)* Lámina `/anualidades` con `src/lib/finanzas/anualidades.ts` y pruebas (103 en total, una contra la cuota francesa de SIMPRO). Cadena interés compuesto → anualidades → amortización. La cuota pasa a llamarse $R$ en todas las láminas.
 
 ## 7. Qué sigue
 
 **Se puede hacer sin Ronald** (en este orden):
 
-1. Lámina **Anualidades** (valor presente y futuro de cuotas iguales), para cerrar la cadena interés compuesto → anualidades → amortización. Fórmulas en `src/lib/finanzas/`.
-2. Láminas de **bonos** (precio como valor presente) y **depreciaciones** (lineal del motor + otros métodos).
+1. Lámina de **bonos** (precio como valor presente de cupones y nominal): usa `valorPresenteAnualidad`.
+2. Lámina de **depreciaciones** (lineal del motor de SIMPRO + suma de dígitos y saldo decreciente propios).
+3. Cuando Matemática Financiera se publique: su página de materia necesita mostrar las láminas en orden (hoy `HerramientaCard` dice "Aula interactiva" fijo).
 
 **Necesita a Ronald:**
 
-- Revisar `/interes-compuesto` y `/amortizacion` (notación, ejemplos, orden) y decir "publícala".
+- Revisar `/interes-compuesto`, `/anualidades` y `/amortizacion` (notación, ejemplos, orden) y decir "publícalas".
 - Pasar el dossier de la próxima materia.
 - Probar una lámina proyectada en clase.
 - Recompilar la app Android en Android Studio.

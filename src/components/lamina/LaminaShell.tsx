@@ -176,14 +176,18 @@ export function LaminaShell({
         onTouchEnd={alTerminarToque}
       >
         <div className="lamina-escala h-full max-h-[46em] w-full max-w-[42em]">
+          {/* Se anuncia sólo qué tarjeta es; leer la tarjeta entera en voz alta cada vez tapaba todo lo demás. */}
+          <p aria-live="polite" className="sr-only">
+            Tarjeta {i + 1} de {total}: {tarjeta.etiqueta}
+          </p>
           <article
             key={i}
-            aria-live="polite"
+            aria-labelledby={`tarjeta-${i}`}
             className={`${dir > 0 ? "lamina-entra-der" : "lamina-entra-izq"} flex h-full flex-col gap-[0.9em] overflow-y-auto overscroll-contain rounded-[1.25em] border border-borde bg-tarjeta px-[1.4em] py-[1.6em] leading-relaxed shadow-[0_8px_30px_rgba(0,0,0,0.06)]`}
           >
-            <p className={`text-[0.72em] font-extrabold uppercase tracking-[0.06em] ${TONO_TEXTO[tarjeta.tono ?? "acento"]}`}>
+            <h2 id={`tarjeta-${i}`} className={`font-sans text-[0.72em] font-extrabold uppercase tracking-[0.06em] ${TONO_TEXTO[tarjeta.tono ?? "acento"]}`}>
               {tarjeta.etiqueta}
-            </p>
+            </h2>
             {tarjeta.contenido}
           </article>
         </div>

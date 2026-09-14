@@ -92,14 +92,15 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - `5e1d43e` Lámina `/anualidades` con `src/lib/finanzas/anualidades.ts` y pruebas (103 en total, una contra la cuota francesa de SIMPRO). Cadena interés compuesto → anualidades → amortización. La cuota pasa a llamarse $R$ en todas las láminas.
 - `6c99ee2` Lámina `/bonos` con `src/lib/finanzas/bonos.ts` (precio, rendimiento al vencimiento por bisección, duración de Macaulay y modificada) y pruebas (110 en total). Pie de las láminas en un solo renglón.
 - `3853c09` Lámina `/depreciaciones` con `src/lib/finanzas/depreciacion.ts` (lineal con el motor de SIMPRO, suma de dígitos, porcentaje fijo, fondo de amortización) y pruebas (121 en total). Con esto están las cinco láminas del temario de Matemática Financiera.
-- *(este commit)* Publicación de Matemática Financiera preparada: las cinco láminas están en `content/materias.ts` con `borrador: true`, que decide a la vez portada, página de materia, sitemap y `noindex`. Varias láminas se muestran como lista numerada (`ListaLaminas`). Probado quitando las marcas en local y vuelto a poner.
+- `b6e0ebe` Publicación de Matemática Financiera preparada: las cinco láminas están en `content/materias.ts` con `borrador: true`, que decide a la vez portada, página de materia, sitemap y `noindex`. Varias láminas se muestran como lista numerada (`ListaLaminas`). Probado quitando las marcas en local y vuelto a poner.
+- *(este commit)* Accesibilidad de las láminas: fórmulas con MathML para lectores de pantalla; la etiqueta de cada tarjeta es título (`h2`); al cambiar de tarjeta se anuncia sólo "Tarjeta n de N" en vez de leer la tarjeta entera; el foco no se mueve, para no obligar a volver a buscar el botón.
 
 ## 7. Qué sigue
 
 **Se puede hacer sin Ronald** (en este orden):
 
-1. Revisar la accesibilidad de las láminas con lector de pantalla y teclado (foco al cambiar de tarjeta, etiquetas de los deslizadores).
-2. Revisar el rendimiento en celular de gama baja: las láminas cargan ~190 kB de JavaScript (KaTeX va en el cliente porque las tarjetas son interactivas).
+1. Revisar el rendimiento en celular de gama baja: las láminas cargan ~190 kB de JavaScript (KaTeX va en el cliente porque las tarjetas son interactivas).
+2. Probar las láminas con un lector de pantalla real (TalkBack en Android): lo de accesibilidad se verificó por estructura, no escuchándolo.
 
 **Cuando Ronald diga "publícalas":** en `content/materias.ts`, dentro de Matemática Financiera, borrar las cinco líneas `borrador: true,` y subir. Nada más: portada, página de la materia, sitemap e indexación se ajustan solos.
 

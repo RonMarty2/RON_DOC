@@ -34,7 +34,8 @@ export function MathText({
           displayMode: seg.tipo === "display",
           throwOnError: false,
           strict: "ignore",
-          output: "html",
+          // Con MathML oculto a la vista, un lector de pantalla puede leer la fórmula (Axiom usa sólo "html").
+          output: "htmlAndMathml",
         });
         if (seg.tipo === "display") {
           return (

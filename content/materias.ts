@@ -159,6 +159,44 @@ export const MATERIAS: Materia[] = [
     nombre: "Matemática Financiera",
     descripcion:
       "Herramientas cuantitativas para la evaluación de operaciones financieras a lo largo del tiempo.",
+    // Borradores hasta que Ronald las revise contra su dossier: para publicarlas, borrar `borrador: true`.
+    herramientas: [
+      {
+        href: "/interes-compuesto",
+        titulo: "Interés compuesto e inflación",
+        descripcion: "Del interés simple a la tasa real: por qué el dinero crece sobre lo que ya creció, y cuánto se come la inflación.",
+        tipo: "lamina",
+        borrador: true,
+      },
+      {
+        href: "/anualidades",
+        titulo: "Cuotas iguales: cuánto valen hoy y al final",
+        descripcion: "Valor futuro y presente de una anualidad, vencida o anticipada, y de dónde sale la cuota de un préstamo.",
+        tipo: "lamina",
+        borrador: true,
+      },
+      {
+        href: "/amortizacion",
+        titulo: "Tres formas de devolver un préstamo",
+        descripcion: "Sistemas americano, alemán y francés con el mismo préstamo: por qué la cuota más baja no es la más barata.",
+        tipo: "lamina",
+        borrador: true,
+      },
+      {
+        href: "/bonos",
+        titulo: "Bonos: precio, rendimiento y duración",
+        descripcion: "Cuánto vale hoy la promesa de un bono, por qué su precio baja cuando sube la tasa y cuánto sufre.",
+        tipo: "lamina",
+        borrador: true,
+      },
+      {
+        href: "/depreciaciones",
+        titulo: "Depreciaciones: cuatro formas de repartir una pérdida",
+        descripcion: "Lineal, suma de dígitos, porcentaje fijo y fondo de amortización sobre la misma máquina.",
+        tipo: "lamina",
+        borrador: true,
+      },
+    ],
     temas: [
       {
         slug: "interes-compuesto-inflacion",

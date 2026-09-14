@@ -98,5 +98,4 @@ La cuota era $C$ en la lámina de amortización y chocaba con el capital de la d
 
 ## Pendiente
 
-- Revisión de Ronald y "publícala" (agregar como herramientas de `matematica-financiera` en `content/materias.ts` y quitar `robots` de cada `page.tsx`).
-- Preparar la página de la materia para mostrar las cinco láminas en orden (ver `BITACORA.md` §7).
+- Revisión de Ronald y "publícalas": borrar las cinco líneas `borrador: true,` de Matemática Financiera en `content/materias.ts`. La página de la materia y la portada ya las muestran como lista numerada en este orden.

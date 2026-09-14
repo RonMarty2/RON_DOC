@@ -67,6 +67,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | 2026-09-14 | Las láminas que no salen del dossier de Ronald quedan sin enlazar y con `noindex` hasta que él diga "publícala" | Elegido por Ronald: "revisarla primero" |
 | 2026-09-14 | La letra de las tarjetas se frena también por la altura (`2vh`) | A 1366×768, típico de proyector, crecer sólo con el ancho desbordaba las tarjetas |
 | 2026-09-14 | Trabajar parte por parte sin preguntar, anotando todo en esta bitácora | Pedido explícito de Ronald |
+| 2026-09-14 | Una herramienta en borrador se marca con `borrador: true` en `content/materias.ts`, y esa sola marca controla dónde aparece y si se indexa | Publicar tiene que ser un solo cambio, sin olvidar ningún lugar |
 
 ## 5. Trabajo en paralelo
 
@@ -90,13 +91,17 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - `a7dc21e` El deploy corre `npm test` antes de compilar. `sitemap.xml` generado sólo con lo publicado (`src/app/sitemap.ts`); sin `robots.txt`, porque bajo `/RON_DOC/` los buscadores no lo leen.
 - `5e1d43e` Lámina `/anualidades` con `src/lib/finanzas/anualidades.ts` y pruebas (103 en total, una contra la cuota francesa de SIMPRO). Cadena interés compuesto → anualidades → amortización. La cuota pasa a llamarse $R$ en todas las láminas.
 - `6c99ee2` Lámina `/bonos` con `src/lib/finanzas/bonos.ts` (precio, rendimiento al vencimiento por bisección, duración de Macaulay y modificada) y pruebas (110 en total). Pie de las láminas en un solo renglón.
-- *(este commit)* Lámina `/depreciaciones` con `src/lib/finanzas/depreciacion.ts` (lineal con el motor de SIMPRO, suma de dígitos, porcentaje fijo, fondo de amortización) y pruebas (121 en total). Con esto están las cinco láminas del temario de Matemática Financiera.
+- `3853c09` Lámina `/depreciaciones` con `src/lib/finanzas/depreciacion.ts` (lineal con el motor de SIMPRO, suma de dígitos, porcentaje fijo, fondo de amortización) y pruebas (121 en total). Con esto están las cinco láminas del temario de Matemática Financiera.
+- *(este commit)* Publicación de Matemática Financiera preparada: las cinco láminas están en `content/materias.ts` con `borrador: true`, que decide a la vez portada, página de materia, sitemap y `noindex`. Varias láminas se muestran como lista numerada (`ListaLaminas`). Probado quitando las marcas en local y vuelto a poner.
 
 ## 7. Qué sigue
 
 **Se puede hacer sin Ronald** (en este orden):
 
-1. Preparar la publicación de Matemática Financiera para el día que Ronald diga "publícalas": su página de materia tiene que mostrar las cinco láminas en orden (hoy `HerramientaCard` dice "Aula interactiva" fijo y la portada muestra una tarjeta grande por herramienta).
+1. Revisar la accesibilidad de las láminas con lector de pantalla y teclado (foco al cambiar de tarjeta, etiquetas de los deslizadores).
+2. Revisar el rendimiento en celular de gama baja: las láminas cargan ~190 kB de JavaScript (KaTeX va en el cliente porque las tarjetas son interactivas).
+
+**Cuando Ronald diga "publícalas":** en `content/materias.ts`, dentro de Matemática Financiera, borrar las cinco líneas `borrador: true,` y subir. Nada más: portada, página de la materia, sitemap e indexación se ajustan solos.
 
 **Necesita a Ronald:**
 

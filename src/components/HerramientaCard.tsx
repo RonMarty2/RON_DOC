@@ -8,7 +8,9 @@ export function HerramientaCard({ herramienta }: { herramienta: HerramientaMater
       className="group flex flex-col gap-5 rounded-[1.25rem] border border-borde bg-tarjeta p-6 shadow-[0_8px_30px_rgba(0,0,0,0.05)] transition hover:-translate-y-0.5 hover:border-borde-fuerte sm:p-8"
     >
       <div>
-        <p className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-acento">Aula interactiva</p>
+        <p className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-acento">
+          {herramienta.tipo === "lamina" ? "Lámina interactiva" : "Aula interactiva"}
+        </p>
         <h3 className="mt-2 font-serif text-2xl font-semibold leading-tight sm:text-3xl">{herramienta.titulo}</h3>
         <p className="mt-3 max-w-2xl leading-relaxed text-tinta-media">{herramienta.descripcion}</p>
       </div>
@@ -23,7 +25,7 @@ export function HerramientaCard({ herramienta }: { herramienta: HerramientaMater
         </ul>
       )}
       <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-acento px-5 py-2.5 text-sm font-semibold text-acento-texto transition group-hover:bg-acento-hover">
-        Abrir el aula
+        {herramienta.tipo === "lamina" ? "Abrir la lámina" : "Abrir el aula"}
         <span aria-hidden className="transition group-hover:translate-x-0.5">→</span>
       </span>
     </Link>

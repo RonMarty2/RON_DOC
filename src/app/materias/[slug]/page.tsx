@@ -3,8 +3,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { obtenerMateria } from "@content/materias";
 import { HerramientaCard } from "@/components/HerramientaCard";
+import { ListaLaminas } from "@/components/ListaLaminas";
 import { TemaCard } from "@/components/TemaCard";
-import { materiaPublicada, materiasPublicadas, temasPublicados } from "@/lib/publicado";
+import { herramientasPublicadas, materiaPublicada, materiasPublicadas, temasPublicados } from "@/lib/publicado";
 import { construirMetadata } from "@/lib/seo";
 
 interface Params {
@@ -31,6 +32,9 @@ export default async function MateriaPage({ params }: { params: Promise<Params> 
   if (!materia || !materiaPublicada(materia)) notFound();
 
   const temas = temasPublicados(materia);
+  const herramientas = herramientasPublicadas(materia);
+  const aulas = herramientas.filter((h) => h.tipo !== "lamina");
+  const laminas = herramientas.filter((h) => h.tipo === "lamina");
 
   return (
     <>
@@ -45,11 +49,21 @@ export default async function MateriaPage({ params }: { params: Promise<Params> 
         </div>
       </section>
 
-      {materia.herramientas && materia.herramientas.length > 0 && (
+      {aulas.length > 0 && (
         <section className="mx-auto flex max-w-6xl flex-col gap-5 px-4 pt-12 sm:px-6 lg:px-8">
-          {materia.herramientas.map((h) => (
+          {aulas.map((h) => (
             <HerramientaCard key={h.href} herramienta={h} />
           ))}
+        </section>
+      )}
+
+      {laminas.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 pt-12 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-2xl font-semibold">Láminas, en orden</h2>
+          <p className="mt-1 text-sm text-tinta-tenue">Cada una se apoya en la anterior.</p>
+          <div className="mt-5">
+            <ListaLaminas laminas={laminas} />
+          </div>
         </section>
       )}
 

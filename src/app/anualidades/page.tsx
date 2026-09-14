@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { esBorrador } from "@/lib/publicado";
 import { LaminaAnualidades } from "./LaminaAnualidades";
 
-// Sin enlaces ni indexación hasta que Ronald la revise contra su dossier de Matemática Financiera.
+// Mientras sea borrador en content/materias.ts, no se indexa.
 export const metadata: Metadata = {
   title: "Anualidades",
-  robots: { index: false, follow: false },
+  ...(esBorrador("/anualidades") ? { robots: { index: false, follow: false } } : {}),
 };
 
 export default function AnualidadesPage() {

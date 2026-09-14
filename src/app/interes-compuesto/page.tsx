@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { esBorrador } from "@/lib/publicado";
 import { LaminaInteresCompuesto } from "./LaminaInteresCompuesto";
 
-// Sin enlaces ni indexación hasta que Ronald la revise contra su dossier de Matemática Financiera.
+// Mientras sea borrador en content/materias.ts, no se indexa.
 export const metadata: Metadata = {
   title: "Interés compuesto e inflación",
-  robots: { index: false, follow: false },
+  ...(esBorrador("/interes-compuesto") ? { robots: { index: false, follow: false } } : {}),
 };
 
 export default function InteresCompuestoPage() {

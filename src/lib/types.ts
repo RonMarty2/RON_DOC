@@ -62,6 +62,10 @@ export interface HerramientaMateria {
   descripcion: string;
   /** Qué trae, en frases cortas y verificables (se listan en la portada). */
   destacados?: string[];
+  /** "aula" es un libro con scroll de una unidad; "lamina" es un tema en tarjetas. Por defecto "aula". */
+  tipo?: "aula" | "lamina";
+  /** Mientras sea true no aparece en ningún lado y su página no se indexa. Publicar = quitarlo. */
+  borrador?: boolean;
 }
 
 export interface Podcast {

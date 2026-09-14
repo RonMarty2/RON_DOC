@@ -25,7 +25,8 @@ Si hay que volver a barrer, ojo con dos cosas: los verbos que cambian de raíz n
 - **Tarjetas**: `src/components/lamina/LaminaShell.tsx`, con las piezas visuales de `src/components/lamina/dispositivos.tsx`. La muestra de referencia es `src/app/muestra/LaminaBayes.tsx` (ruta `/muestra`, sin enlaces desde el sitio).
 - **Colores sólo con los tokens** (`bg-papel`, `text-tinta`, `text-acento`, `bg-ok/10`…, definidos en `globals.css`). Así el modo oscuro sale solo.
 - **Fórmulas con KaTeX** (`src/components/MathText.tsx`), nunca armadas a mano.
-- **Números financieros sólo desde el motor copiado de SimuladorPRO.** Si una fórmula está mal, se arregla allá y se vuelve a copiar (ver "Regla de propiedad" en FUENTES.md).
+- **Números financieros sólo desde el motor copiado de SimuladorPRO** (`src/lib/simpro/`, no se edita). Si una fórmula está mal, se arregla allá y se vuelve a copiar (ver "Regla de propiedad" en FUENTES.md). Las pruebas del motor corren con `npm test`.
+- Ejemplo de lámina financiera: `src/app/amortizacion/LaminaAmortizacion.tsx`. Ningún monto está escrito a mano: todos salen de `calcularAmortizacionGenerica`.
 
 ## Reglas para escribir una lámina (vienen de Axiom, aprobadas por Ronald)
 
@@ -44,7 +45,8 @@ Si hay que volver a barrer, ojo con dos cosas: los verbos que cambian de raíz n
 
 ## Decisiones pendientes (preguntar a Ronald, no asumir)
 
-- Modo proyector: la tarjeta ya crece con la pantalla (en 1920×1080 mide unos 900 px de ancho, con letra de 21 px) y se maneja con las flechas o un control de presentación. Falta que Ronald lo pruebe proyectado en clase.
+- Modo proyector: la tarjeta ya crece con la pantalla (en 1920×1080 mide unos 900 px de ancho, con letra de 21 px; en 1280×720 y 1366×768 entra sin desbordar) y se maneja con las flechas o un control de presentación. Falta que Ronald lo pruebe proyectado en clase.
+- Lámina `/amortizacion` (Matemática Financiera): está sin enlazar y fuera de buscadores hasta que Ronald la revise contra su dossier (notación, ejemplo, orden americano → alemán → francés). Para publicarla: agregarla como herramienta de `matematica-financiera` en `content/materias.ts` y quitarle el `robots` de `page.tsx`.
 - Si el Aula de Probabilidad se migra a tarjetas, y cuándo. Hoy es un libro con scroll de unas 11.000 líneas.
 - Con qué materia se arranca. Cada una necesita el dossier del docente.
 

@@ -85,9 +85,10 @@ h1, h2, h3, h4 {
 
 /* --- Láminas en tarjetas --- */
 
-/* Todo lo de adentro mide en em: así la tarjeta crece entera en un proyector. */
+/* Todo lo de adentro mide en em: así la tarjeta crece entera en un proyector.
+   El 2vh la frena en pantallas bajas (1366×768, típico de proyector), donde crecer con el ancho la desbordaba. */
 .lamina-escala {
-  font-size: clamp(15px, 0.45vw + 13px, 22px);
+  font-size: clamp(15px, min(0.45vw + 13px, 2vh), 22px);
 }
 
 /* KaTeX trae 1.21em: al lado de Atkinson las fórmulas se veían un talle más grandes que el texto. */

@@ -48,6 +48,13 @@ Se actualiza al terminar cada revisión, aunque no se haya traído nada.
 
    Para leer la versión nueva de un archivo sin tocar el repo: `git -C ../simuladorPRO show origin/main:src/lib/calculo-financiero.ts`.
 
+   Para volver a copiar el motor sin tocar SIMPRO, y comprobar que sigue funcionando:
+
+   ```bash
+   for f in calculo-financiero.ts calculo-financiero.test.ts calculo-financiero-v2.test.ts; do git -C ../simuladorPRO show origin/main:src/lib/$f > src/lib/simpro/$f; done
+   npm test
+   ```
+
 4. **Decidir y avisar.** Resumir en pocas líneas qué hay de nuevo que valga para RON_DOC (arreglos de celular, componentes visuales, reglas nuevas en la bitácora, correcciones del motor financiero) y qué no aplica. Traer lo que corresponda, actualizando el `Commit origen` en el mapa.
 
 5. **Anotar.** Actualizar "Hasta dónde se revisó" y agregar una fila al registro del final.
@@ -76,7 +83,7 @@ Estados: `pendiente` · `traída` · `adaptada` · `descartada`.
 |---|---|---|---|---|---|
 | Paleta y tipografías | `src/app/globals.css` (tokens de `:root`), `src/app/aprende/_components/lienzo.tsx` (`LIENZO`), `src/app/layout.tsx` (fuentes) | `src/app/globals.css`, `src/app/layout.tsx` | adaptada | `fd17d4c` | Variables CSS con versión oscura (Axiom sólo tiene claro). `--aviso` y `--error` más oscuros: los de Axiom no llegaban a 4.5:1 sobre el papel. Crimson Pro y Atkinson rigen en todo el sitio. Ojo: la bitácora de Axiom §4 todavía describe la paleta violeta vieja; manda el código (terracota) |
 | Fórmulas con KaTeX | `src/app/components/MathText.tsx` | `src/components/MathText.tsx` | adaptada | `fd17d4c` | Export con nombre; mismo parser y mismos arreglos de celular. Sin `"use client"` ni `useMemo`: desde una página del servidor la fórmula llega armada y KaTeX no viaja al navegador. Dentro de láminas `.katex` va a 1.1em (en `globals.css`) |
-| Contenedor de tarjetas | `src/app/laminas/_components/LaminaShell.tsx` | `src/components/lamina/LaminaShell.tsx` | adaptada | `fd17d4c` | Sin framer-motion (animación CSS). Todo en em: la tarjeta crece entera en proyector. Flechas del teclado y control de presentación. Puntos con área táctil de 20 px. Sin las zonas laterales tocables: leyendo el código, en celular tapan unos 20 px del borde de las opciones (no se probó en Axiom). No cambia de tarjeta si el gesto empieza sobre una fórmula ancha o un deslizador. Botón de tema |
+| Contenedor de tarjetas | `src/app/laminas/_components/LaminaShell.tsx` | `src/components/lamina/LaminaShell.tsx` | adaptada | `fd17d4c` | Sin framer-motion (animación CSS). Todo en em: la tarjeta crece entera en proyector, y la letra también se frena por la altura (`2vh`), porque a 1366×768 crecer sólo con el ancho la desbordaba. Flechas del teclado y control de presentación. Puntos con área táctil de 20 px. Sin las zonas laterales tocables: leyendo el código, en celular tapan unos 20 px del borde de las opciones (no se probó en Axiom). No cambia de tarjeta si el gesto empieza sobre una fórmula ancha o un deslizador. Botón de tema |
 | Dispositivos visuales de tarjeta | `src/app/laminas/_components/dispositivos.tsx` | `src/components/lamina/dispositivos.tsx` | adaptada | `fd17d4c` | Colores por variable CSS, tamaños en em. `FilaRol` y `PartePuente` pasan su contenido por MathText (regla 12). `LineaEjemplo` sin overflow propio: le ponía barra vertical a cada fracción. `TablaRuffini` no se trajo. Agregado `Resultado` |
 | Kit didáctico | `src/app/aprende/_components/pedagogia.tsx` | — | pendiente | — | |
 | Solución paso a paso | `src/app/components/SolucionPasos.tsx` | — | pendiente | — | |
@@ -88,7 +95,7 @@ Estados: `pendiente` · `traída` · `adaptada` · `descartada`.
 
 | Pieza | Origen | Destino en RON_DOC | Estado | Commit origen | Notas |
 |---|---|---|---|---|---|
-| Motor financiero | `src/lib/calculo-financiero.ts` + `calculo-financiero.test.ts` + `calculo-financiero-v2.test.ts` | — | pendiente | — | Copia fiel |
+| Motor financiero | `src/lib/calculo-financiero.ts` + `calculo-financiero.test.ts` + `calculo-financiero-v2.test.ts` | `src/lib/simpro/` (mismos nombres) | traída | `8acdc6c` | Copia idéntica byte a byte (comparada por sha1). Sus 87 pruebas corren en RON_DOC con `npm test`. Primer uso: la lámina `/amortizacion` |
 | Flujo de caja del proyecto | `src/lib/flujo-proyecto.ts`, `src/lib/finanzas/proyecto-financiero.ts`, `src/lib/iva-proyecto.ts`, `src/types/proyecto.ts` | — | pendiente | — | Revisar dependencias al copiar |
 | Sensibilidad y escenarios | `src/lib/finanzas/sensibilidad.ts`, `src/lib/escenarios.ts` | — | pendiente | — | |
 | Laboratorio de viabilidad | `src/lib/laboratorio-viabilidad.ts` (la pantalla vive en `src/components/presentacion/VisorPitch.tsx`) | — | pendiente | — | |
@@ -108,3 +115,4 @@ Supabase, login, pagos y planes, paneles de docente, banco de exámenes UMSS, mo
 |---|---|---|---|
 | 2026-09-14 | Línea base: axiom `fd17d4c`, simuladorPRO `8acdc6c` | Nada todavía; se armó el mapa de piezas | — |
 | 2026-09-14 | Sin commits nuevos en ninguno de los dos | Base visual de Axiom: paleta, tipografías, MathText, LaminaShell, dispositivos, reglas de lámina. Muestra en `/muestra` | `TablaRuffini`: es de álgebra preuniversitaria, no la usa ninguna materia de RON_DOC |
+| 2026-09-14 | Sin commits nuevos en ninguno de los dos | Motor financiero de SIMPRO (`8acdc6c`) con sus pruebas. Lámina `/amortizacion` sobre `calcularAmortizacionGenerica` | — |

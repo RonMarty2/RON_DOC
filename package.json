@@ -2,7 +2,7 @@
   "name": "ron-doc",
   "version": "0.1.0",
   "private": true,
-  "description": "Sitio acad\u00e9mico personal \u2014 Mgr. Ronald Mart\u00ednez Jim\u00e9nez",
+  "description": "Sitio académico personal — Mgr. Ronald Martínez Jiménez",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@capacitor/android": "^8.5.0",
     "@capacitor/core": "^8.5.0",
+    "katex": "^0.16.47",
     "next": "^15.5.19",
     "next-mdx-remote": "^5.0.0",
     "react": "19.0.0",

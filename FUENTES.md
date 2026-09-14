@@ -74,14 +74,14 @@ Estados: `pendiente` · `traída` · `adaptada` · `descartada`.
 
 | Pieza | Origen | Destino en RON_DOC | Estado | Commit origen | Notas |
 |---|---|---|---|---|---|
-| Paleta y tipografías LIENZO | `src/app/aprende/_components/lienzo.tsx`, `src/app/globals.css` | — | pendiente | — | |
-| Fórmulas con KaTeX | `src/app/components/MathText.tsx` | — | pendiente | — | Reemplaza el `Frac` hecho a mano del Aula |
-| Contenedor de tarjetas | `src/app/laminas/_components/LaminaShell.tsx` | — | pendiente | — | Ancho máx. 560 px: falta modo proyector |
-| Dispositivos visuales de tarjeta | `src/app/laminas/_components/dispositivos.tsx` | — | pendiente | — | |
+| Paleta y tipografías | `src/app/globals.css` (tokens de `:root`), `src/app/aprende/_components/lienzo.tsx` (`LIENZO`), `src/app/layout.tsx` (fuentes) | `src/app/globals.css`, `src/app/layout.tsx` | adaptada | `fd17d4c` | Variables CSS con versión oscura (Axiom sólo tiene claro). `--aviso` y `--error` más oscuros: los de Axiom no llegaban a 4.5:1 sobre el papel. Crimson Pro y Atkinson rigen en todo el sitio. Ojo: la bitácora de Axiom §4 todavía describe la paleta violeta vieja; manda el código (terracota) |
+| Fórmulas con KaTeX | `src/app/components/MathText.tsx` | `src/components/MathText.tsx` | traída | `fd17d4c` | Export con nombre; mismo parser y mismos arreglos de celular. Dentro de láminas `.katex` va a 1.1em (en `globals.css`) |
+| Contenedor de tarjetas | `src/app/laminas/_components/LaminaShell.tsx` | `src/components/lamina/LaminaShell.tsx` | adaptada | `fd17d4c` | Sin framer-motion (animación CSS). Todo en em: la tarjeta crece entera en proyector. Flechas del teclado y control de presentación. Puntos con área táctil de 20 px. Sin las zonas laterales tocables: leyendo el código, en celular tapan unos 20 px del borde de las opciones (no se probó en Axiom). No cambia de tarjeta si el gesto empieza sobre una fórmula ancha o un deslizador. Botón de tema |
+| Dispositivos visuales de tarjeta | `src/app/laminas/_components/dispositivos.tsx` | `src/components/lamina/dispositivos.tsx` | adaptada | `fd17d4c` | Colores por variable CSS, tamaños en em. `FilaRol` y `PartePuente` pasan su contenido por MathText (regla 12). `LineaEjemplo` sin overflow propio: le ponía barra vertical a cada fracción. `TablaRuffini` no se trajo. Agregado `Resultado` |
 | Kit didáctico | `src/app/aprende/_components/pedagogia.tsx` | — | pendiente | — | |
 | Solución paso a paso | `src/app/components/SolucionPasos.tsx` | — | pendiente | — | |
 | Motor de figuras | `src/lib/figuras/motor.ts`, `src/lib/figuras/svg-sanitizar.ts` | — | pendiente | — | |
-| Reglas de lámina 1 a 12 | `BITACORA.md` §4 y §4.5 | `CLAUDE.md` | pendiente | — | |
+| Reglas de lámina 1 a 12 | `BITACORA.md` §4 y §4.5 | `CLAUDE.md` | adaptada | `fd17d4c` | Resumidas. La regla 6 (banco de exámenes como mapa) pasa a ser "el dossier del docente es la fuente" |
 | Láminas de referencia para Matemática Financiera | `src/app/laminas/porcentajes-mezclas-interes/interes-simple-y-compuesto/`, `src/app/laminas/progresiones/` | — | pendiente | — | Base para interés compuesto y anualidades; el nivel es preuniversitario |
 
 ### Desde simuladorPRO
@@ -107,3 +107,4 @@ Supabase, login, pagos y planes, paneles de docente, banco de exámenes UMSS, mo
 | Fecha | Rango revisado | Qué se trajo | Qué se descartó y por qué |
 |---|---|---|---|
 | 2026-09-14 | Línea base: axiom `fd17d4c`, simuladorPRO `8acdc6c` | Nada todavía; se armó el mapa de piezas | — |
+| 2026-09-14 | Sin commits nuevos en ninguno de los dos | Base visual de Axiom: paleta, tipografías, MathText, LaminaShell, dispositivos, reglas de lámina. Muestra en `/muestra` | `TablaRuffini`: es de álgebra preuniversitaria, no la usa ninguna materia de RON_DOC |

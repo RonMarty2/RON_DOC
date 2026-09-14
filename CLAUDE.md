@@ -16,15 +16,31 @@ No saltearlo aunque el pedido de la sesión parezca no tener relación: un arreg
 
 ## Formato
 
-- **Tarjetas** (una idea por tarjeta, navegación con íconos y deslizando), tomando como base `LaminaShell` de Axiom.
-- **Fórmulas con KaTeX**, nunca armadas a mano.
+- **Tarjetas**: `src/components/lamina/LaminaShell.tsx`, con las piezas visuales de `src/components/lamina/dispositivos.tsx`. La muestra de referencia es `src/app/muestra/LaminaBayes.tsx` (ruta `/muestra`, sin enlaces desde el sitio).
+- **Colores sólo con los tokens** (`bg-papel`, `text-tinta`, `text-acento`, `bg-ok/10`…, definidos en `globals.css`). Así el modo oscuro sale solo.
+- **Fórmulas con KaTeX** (`src/components/MathText.tsx`), nunca armadas a mano.
 - **Números financieros sólo desde el motor copiado de SimuladorPRO.** Si una fórmula está mal, se arregla allá y se vuelve a copiar (ver "Regla de propiedad" en FUENTES.md).
+
+## Reglas para escribir una lámina (vienen de Axiom, aprobadas por Ronald)
+
+1. **Puente al inicio**: nunca arrancar con notación nueva; conectar con algo que ya se sabe y mantener esa comparación a la vista.
+2. **Un salto lógico por tarjeta.** Lo que no es necesario para llegar a la conclusión va aparte, al final.
+3. **Nombrar el paso "obvio"** que en realidad no lo es.
+4. **Prosa corrida dentro de la tarjeta**, con acentos puntuales; nada de grillas de cajitas de colores.
+5. **Orden**: Gancho → Puente → Por qué funciona (un paso por tarjeta) → Aplicándolo → Ojo (error típico) → Generalización → Practícalo tú.
+6. **La fuente es el dossier del docente.** Los números de un caso no se inventan ni se cambian sin revisarlo.
+7. **Figuras con coordenadas calculadas**, nunca a ojo.
+8. **Usar las piezas compartidas** antes que escribir estilos sueltos en cada lámina.
+9. **Cada lámina lleva al menos un ejemplo numérico completo**, paso a paso.
+10. **Cada tarjeta necesita un dispositivo visual propio** que haga ver la idea, no sólo texto con formato.
+11. **Nada de guiones largos (—) en el texto de la lámina**: se confunden con el signo menos.
+12. **Toda expresión matemática pasa por MathText**, incluso "x = 1". Dentro de `$...$` el decimal va como `0{,}88`, si no KaTeX pone un espacio después de la coma.
 
 ## Decisiones pendientes (preguntar a Ronald, no asumir)
 
-- Modo proyector: las tarjetas de Axiom miden como máximo 560 px de ancho, pensadas para celular; en clase se proyecta.
+- Modo proyector: la tarjeta ya crece con la pantalla (en 1920×1080 mide unos 900 px de ancho, con letra de 21 px) y se maneja con las flechas o un control de presentación. Falta que Ronald lo pruebe proyectado en clase.
 - Si el Aula de Probabilidad se migra a tarjetas, y cuándo. Hoy es un libro con scroll de unas 11.000 líneas.
-- Tuteo o voseo en el texto que lee el alumno. El Aula hoy mezcla los dos; Axiom pasó todo a tuteo porque sus alumnos son de Cochabamba.
+- Tuteo o voseo en el texto que lee el alumno. El Aula hoy mezcla los dos; Axiom pasó todo a tuteo porque sus alumnos son de Cochabamba. La muestra está escrita en tuteo, de forma provisoria.
 - Con qué materia se arranca. Cada una necesita el dossier del docente.
 
 ## Material que ya existe

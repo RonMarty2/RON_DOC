@@ -5,7 +5,8 @@ import { construirMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = construirMetadata(
   "Aula Interactiva de Probabilidad",
-  "Unidad 2 de Psicoestadística Inferencial: del espacio muestral a la distribución normal. Cada concepto se define y se comprueba sobre 200 fichas reales."
+  "Unidad 2 de Psicoestadística Inferencial: del espacio muestral a la distribución normal. Cada concepto se define y se comprueba sobre 200 fichas reales.",
+  "aula-probabilidad"
 );
 
 export default function AulaProbabilidadPage() {

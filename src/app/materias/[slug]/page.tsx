@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const materia = obtenerMateria(slug);
   if (!materia || !materiaPublicada(materia)) return { title: "Página no encontrada", robots: { index: false } };
-  return construirMetadata(materia.nombre, materia.descripcion);
+  return construirMetadata(materia.nombre, materia.descripcion, `materia-${materia.slug}`);
 }
 
 export default async function MateriaPage({ params }: { params: Promise<Params> }) {

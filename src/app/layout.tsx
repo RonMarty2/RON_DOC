@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { RegistroPWA } from "@/components/RegistroPWA";
-import { SITIO } from "@/lib/seo";
+import { SITIO, urlImagenCompartir } from "@/lib/seo";
 import { conBase } from "@/lib/rutas";
 
 const crimson = Crimson_Pro({
@@ -53,7 +53,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_BO",
     siteName: SITIO.nombre,
+    images: [{ url: urlImagenCompartir("portada"), width: 1200, height: 630, alt: SITIO.nombre }],
   },
+  twitter: { card: "summary_large_image", images: [urlImagenCompartir("portada")] },
 };
 
 export const viewport: Viewport = {

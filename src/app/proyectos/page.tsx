@@ -5,7 +5,8 @@ import { construirMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = construirMetadata(
   "Proyectos",
-  "Apps educativas desarrolladas por Ronald Martínez Jiménez."
+  "Apps educativas desarrolladas por Ronald Martínez Jiménez.",
+  "proyectos"
 );
 
 export default function ProyectosPage() {

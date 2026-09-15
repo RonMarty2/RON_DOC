@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { esBorrador } from "@/lib/publicado";
+import { metadataDeHerramienta } from "@/lib/seo";
 import { LaminaDepreciaciones } from "./LaminaDepreciaciones";
 
-// Mientras sea borrador en content/materias.ts, no se indexa.
-export const metadata: Metadata = {
-  title: "Depreciaciones",
-  ...(esBorrador("/depreciaciones") ? { robots: { index: false, follow: false } } : {}),
-};
+// Título, descripción e imagen para compartir salen de content/materias.ts; mientras sea borrador, no se indexa.
+export const metadata: Metadata = metadataDeHerramienta("/depreciaciones", "Depreciaciones");
 
 export default function DepreciacionesPage() {
   return <LaminaDepreciaciones />;

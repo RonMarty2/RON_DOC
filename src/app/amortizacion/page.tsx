@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { esBorrador } from "@/lib/publicado";
+import { metadataDeHerramienta } from "@/lib/seo";
 import { LaminaAmortizacion } from "./LaminaAmortizacion";
 
-// Mientras sea borrador en content/materias.ts, no se indexa.
-export const metadata: Metadata = {
-  title: "Tres formas de devolver un préstamo",
-  ...(esBorrador("/amortizacion") ? { robots: { index: false, follow: false } } : {}),
-};
+// Título, descripción e imagen para compartir salen de content/materias.ts; mientras sea borrador, no se indexa.
+export const metadata: Metadata = metadataDeHerramienta("/amortizacion");
 
 export default function AmortizacionPage() {
   return <LaminaAmortizacion />;

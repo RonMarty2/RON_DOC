@@ -2,9 +2,11 @@
 
 // Dispositivos visuales para tarjetas: cada uno hace VER una idea en vez de describirla (reglas de lámina, FUENTES.md).
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { MathText } from "@/components/MathText";
 import type { Azar, Ejercicio } from "@/lib/finanzas/ejercicios";
+import { anotarRespuesta, leerProgreso } from "@/lib/progreso";
 import { TONO_TEXTO, type Tono } from "./LaminaShell";
 
 export function TarjetaPractica({
@@ -74,7 +76,13 @@ export function PracticaVariable({ generar, ...inicial }: Ejercicio & { generar:
   const [ronda, setRonda] = useState(0);
   const [ejercicio, setEjercicio] = useState<Ejercicio>(inicial);
   const [respondida, setRespondida] = useState(false);
+  // Los aciertos se suman a los de visitas anteriores a esta lámina, guardados en el navegador.
+  const ruta = usePathname();
   const [marcador, setMarcador] = useState({ bien: 0, hechos: 0 });
+  useEffect(() => {
+    const { bien, hechos } = leerProgreso(ruta);
+    setMarcador({ bien, hechos });
+  }, [ruta]);
 
   return (
     <div className="flex flex-col gap-[0.8em]">
@@ -83,7 +91,8 @@ export function PracticaVariable({ generar, ...inicial }: Ejercicio & { generar:
         {...ejercicio}
         onResponder={(acierto) => {
           setRespondida(true);
-          setMarcador((m) => ({ bien: m.bien + (acierto ? 1 : 0), hechos: m.hechos + 1 }));
+          const { bien, hechos } = anotarRespuesta(ruta, acierto);
+          setMarcador({ bien, hechos });
         }}
       />
       {respondida && (

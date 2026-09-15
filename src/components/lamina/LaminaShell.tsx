@@ -2,7 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { anotarTarjeta, leerProgreso, tarjetaParaRetomar } from "@/lib/progreso";
 
 export type Tono = "acento" | "tenue" | "aviso" | "ok" | "error";
 
@@ -59,7 +61,9 @@ function tieneGestoPropio(desde: EventTarget | null, limite: Element): boolean {
 
 /**
  * Lámina en tarjetas: una idea por tarjeta, navegación sólo con íconos,
- * puntos tocables, deslizar, y flechas o control de presentación en clase.
+ * puntos tocables, deslizar, y flechas o control de presentación en clase
+ * (Inicio y Fin saltan a la primera y la última). Recuerda en el navegador
+ * del alumno dónde quedó y qué tarjetas ya vio (`src/lib/progreso.ts`).
  */
 export function LaminaShell({
   contexto,
@@ -70,11 +74,16 @@ export function LaminaShell({
   teAbrePuertaA,
 }: LaminaShellProps) {
   const total = diapositivas.length;
+  const ruta = usePathname();
   const [pos, setPos] = useState({ i: 0, dir: 1 });
+  const [vistas, setVistas] = useState<number[]>([]);
+  const [retomada, setRetomada] = useState(false);
+  const cargado = useRef(false);
   const toque = useRef<{ x: number; y: number } | null>(null);
 
   const irA = useCallback(
     (destino: (actual: number) => number) => {
+      setRetomada(false);
       setPos((p) => {
         const n = destino(p.i);
         if (n < 0 || n >= total || n === p.i) return p;
@@ -83,6 +92,24 @@ export function LaminaShell({
     },
     [total]
   );
+
+  // Progreso guardado en el navegador del alumno. Arranca siempre en la
+  // primera tarjeta para que el HTML del servidor y el del navegador
+  // coincidan, y recién después salta a donde había quedado.
+  useEffect(() => {
+    if (!cargado.current) {
+      cargado.current = true;
+      const guardado = leerProgreso(ruta);
+      const retomar = tarjetaParaRetomar(guardado, total);
+      if (retomar > 0) {
+        setVistas(guardado.vistas);
+        setRetomada(true);
+        setPos({ i: retomar, dir: 1 });
+        return;
+      }
+    }
+    setVistas(anotarTarjeta(ruta, pos.i, total).vistas);
+  }, [pos.i, ruta, total]);
 
   // El contenido del sitio queda detrás de la lámina: que no se desplace a escondidas.
   useEffect(() => {
@@ -104,11 +131,17 @@ export function LaminaShell({
       } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
         e.preventDefault();
         irA((a) => a - 1);
+      } else if (e.key === "Home") {
+        e.preventDefault();
+        irA(() => 0);
+      } else if (e.key === "End") {
+        e.preventDefault();
+        irA(() => total - 1);
       }
     }
     window.addEventListener("keydown", alTeclear);
     return () => window.removeEventListener("keydown", alTeclear);
-  }, [irA]);
+  }, [irA, total]);
 
   function alEmpezarToque(e: React.TouchEvent) {
     toque.current = tieneGestoPropio(e.target, e.currentTarget)
@@ -163,7 +196,7 @@ export function LaminaShell({
           >
             <span
               className={`block h-1 rounded-full transition-all duration-200 ${
-                n === i ? "w-8 bg-acento" : n < i ? "w-5 bg-acento/45" : "w-5 bg-borde-fuerte"
+                n === i ? "w-8 bg-acento" : n < i || vistas.includes(n) ? "w-5 bg-acento/45" : "w-5 bg-borde-fuerte"
               }`}
             />
           </button>
@@ -178,7 +211,7 @@ export function LaminaShell({
         <div className="lamina-escala h-full max-h-[46em] w-full max-w-[42em]">
           {/* Se anuncia sólo qué tarjeta es; leer la tarjeta entera en voz alta cada vez tapaba todo lo demás. */}
           <p aria-live="polite" className="sr-only">
-            Tarjeta {i + 1} de {total}: {tarjeta.etiqueta}
+            {retomada && "Retomas donde quedaste. "}Tarjeta {i + 1} de {total}: {tarjeta.etiqueta}
           </p>
           <article
             key={i}
@@ -215,11 +248,21 @@ export function LaminaShell({
           </button>
         </div>
 
-        {(necesitasAntes || teAbrePuertaA) && (
+        {(necesitasAntes || teAbrePuertaA || retomada) && (
           // Lado a lado y recortados: en dos renglones el pie le quitaba alto a la tarjeta en celular.
+          // Al retomar, el aviso ocupa el lugar del pie (mismo alto) hasta que el alumno se mueve.
           <footer className="mx-auto flex max-w-3xl justify-center gap-6 px-4 pt-3">
-            {necesitasAntes && <EnlacePie etiqueta="Necesitas antes" enlace={necesitasAntes} />}
-            {teAbrePuertaA && <EnlacePie etiqueta="Te abre la puerta a" enlace={teAbrePuertaA} alinear="derecha" />}
+            {retomada ? (
+              <button type="button" onClick={() => irA(() => 0)} className="flex min-w-0 flex-col items-center text-xs">
+                <span className="text-[9.5px] font-bold uppercase tracking-[0.12em] text-tinta-tenue">Seguiste donde quedaste</span>
+                <span className="truncate font-medium text-acento hover:text-acento-hover">Volver a la primera tarjeta</span>
+              </button>
+            ) : (
+              <>
+                {necesitasAntes && <EnlacePie etiqueta="Necesitas antes" enlace={necesitasAntes} />}
+                {teAbrePuertaA && <EnlacePie etiqueta="Te abre la puerta a" enlace={teAbrePuertaA} alinear="derecha" />}
+              </>
+            )}
           </footer>
         )}
       </div>

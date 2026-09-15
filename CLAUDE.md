@@ -24,7 +24,7 @@ Si hay que volver a barrer, ojo con dos cosas: los verbos que cambian de raíz n
 
 ## Formato
 
-- **Tarjetas**: `src/components/lamina/LaminaShell.tsx`, con las piezas visuales de `src/components/lamina/dispositivos.tsx`. La muestra de referencia es `src/app/muestra/LaminaBayes.tsx` (ruta `/muestra`, sin enlaces desde el sitio).
+- **Tarjetas**: `src/components/lamina/LaminaShell.tsx`, con las piezas visuales de `src/components/lamina/dispositivos.tsx`. La muestra de referencia es `src/app/muestra/LaminaBayes.tsx` (ruta `/muestra`, sin enlaces desde el sitio). El shell recuerda en el navegador del alumno dónde quedó, qué tarjetas vio y sus aciertos (`src/lib/progreso.ts`): si se reordenan o agregan tarjetas, cambia el largo y deja de retomar, que es lo buscado.
 - **Colores sólo con los tokens** (`bg-papel`, `text-tinta`, `text-acento`, `bg-ok/10`…, definidos en `globals.css`). Así el modo oscuro sale solo. Única excepción: colores que distinguen categorías en un gráfico o bloques del recorrido (el Aula usa azul, índigo, ámbar, verde y rosa); ahí sí van con su variante `dark:`, y con contraste de 4.5:1 si llevan texto encima.
 - **Fórmulas con KaTeX** (`src/components/MathText.tsx`), nunca armadas a mano.
 - **Números financieros sólo desde funciones probadas.** Lo que calcula SIMPRO sale de su motor copiado (`src/lib/simpro/`, no se edita: si está mal se arregla allá y se vuelve a copiar, ver FUENTES.md). Lo que SIMPRO no calcula va en `src/lib/finanzas/` con su `.test.ts`. Todo corre con `npm test`.

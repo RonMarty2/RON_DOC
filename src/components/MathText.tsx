@@ -1,11 +1,7 @@
 // Sin "use client" a propósito: usado desde el servidor, la fórmula llega armada y KaTeX no viaja al navegador.
 import katex from "katex";
 import "katex/dist/katex.min.css";
-
-type Segmento = {
-  tipo: "texto" | "inline" | "display";
-  contenido: string;
-};
+import { parsearMath } from "./math-parse";
 
 /** Texto con matemática entre `$...$` (en línea) o `$$...$$` (en bloque). */
 export function MathText({
@@ -28,6 +24,13 @@ export function MathText({
             <span key={i} className="whitespace-pre-wrap">
               {seg.contenido}
             </span>
+          );
+        }
+        if (seg.tipo === "negrita") {
+          return (
+            <strong key={i} className="whitespace-pre-wrap font-semibold">
+              {seg.contenido}
+            </strong>
           );
         }
         const html = katex.renderToString(seg.contenido, {
@@ -71,29 +74,4 @@ export function MathText({
       })}
     </Envoltorio>
   );
-}
-
-function parsearMath(texto: string): Segmento[] {
-  const resultado: Segmento[] = [];
-  const regex = /(\$\$([^$]+)\$\$|\$([^$\n]+)\$)/g;
-  let ultimoIdx = 0;
-  let match: RegExpExecArray | null;
-
-  while ((match = regex.exec(texto)) !== null) {
-    if (match.index > ultimoIdx) {
-      resultado.push({ tipo: "texto", contenido: texto.slice(ultimoIdx, match.index) });
-    }
-    if (match[2] !== undefined) {
-      resultado.push({ tipo: "display", contenido: match[2] });
-    } else {
-      resultado.push({ tipo: "inline", contenido: match[3] });
-    }
-    ultimoIdx = match.index + match[0].length;
-  }
-
-  if (ultimoIdx < texto.length) {
-    resultado.push({ tipo: "texto", contenido: texto.slice(ultimoIdx) });
-  }
-
-  return resultado;
 }

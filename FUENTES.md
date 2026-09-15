@@ -15,7 +15,7 @@ Este archivo es la memoria de esa relación: qué se trajo, desde qué commit, y
 
 | Repo | Último commit revisado | Fecha del commit |
 |---|---|---|
-| axiom-simulador | `a0ab04b844992e1c1e14c39346d4d17e3efbaa1d` | 2026-09-14 |
+| axiom-simulador | `7a5d8eded0fceb7f83e90bddd50bff87326407db` | 2026-09-14 |
 | simuladorPRO | `8acdc6c2c8f6f1655610da2be697c57eb77cb6ac` | 2026-08-02 |
 
 Se actualiza al terminar cada revisión, aunque no se haya traído nada.
@@ -82,7 +82,8 @@ Estados: `pendiente` · `traída` · `adaptada` · `descartada`.
 | Pieza | Origen | Destino en RON_DOC | Estado | Commit origen | Notas |
 |---|---|---|---|---|---|
 | Paleta y tipografías | `src/app/globals.css` (tokens de `:root`), `src/app/aprende/_components/lienzo.tsx` (`LIENZO`), `src/app/layout.tsx` (fuentes) | `src/app/globals.css`, `src/app/layout.tsx` | adaptada | `fd17d4c` | Variables CSS con versión oscura (Axiom sólo tiene claro). `--aviso` y `--error` más oscuros: los de Axiom no llegaban a 4.5:1 sobre el papel. Crimson Pro y Atkinson rigen en todo el sitio. Ojo: la bitácora de Axiom §4 todavía describe la paleta violeta vieja; manda el código (terracota) |
-| Fórmulas con KaTeX | `src/app/components/MathText.tsx` | `src/components/MathText.tsx` | adaptada | `fd17d4c` | Export con nombre; mismo parser y mismos arreglos de celular. Sin `"use client"` ni `useMemo`: desde una página del servidor la fórmula llega armada y KaTeX no viaja al navegador. Genera `htmlAndMathml` (Axiom sólo `html`) para que un lector de pantalla lea la fórmula. Dentro de láminas `.katex` va a 1.1em (en `globals.css`) |
+| Analizador de fórmulas y **negrita** | `src/app/components/math-parse.ts` + `math-parse.test.ts` | `src/components/math-parse.ts` (idéntico) + `math-parse.test.ts` | traída | `58051af` | La prueba sólo cambia `node:test` por vitest |
+| Fórmulas con KaTeX | `src/app/components/MathText.tsx` | `src/components/MathText.tsx` | adaptada | `58051af` | Export con nombre; mismo parser y mismos arreglos de celular. Sin `"use client"` ni `useMemo`: desde una página del servidor la fórmula llega armada y KaTeX no viaja al navegador. Genera `htmlAndMathml` (Axiom sólo `html`) para que un lector de pantalla lea la fórmula. Dentro de láminas `.katex` va a 1.1em (en `globals.css`) |
 | Contenedor de tarjetas | `src/app/laminas/_components/LaminaShell.tsx` | `src/components/lamina/LaminaShell.tsx` | adaptada | `fd17d4c` | Sin framer-motion (animación CSS). Todo en em: la tarjeta crece entera en proyector, y la letra también se frena por la altura (`2vh`), porque a 1366×768 crecer sólo con el ancho la desbordaba. Flechas del teclado y control de presentación. Puntos con área táctil de 20 px. Sin las zonas laterales tocables: leyendo el código, en celular tapan unos 20 px del borde de las opciones (no se probó en Axiom). No cambia de tarjeta si el gesto empieza sobre una fórmula ancha o un deslizador. Botón de tema. Los enlaces del pie van lado a lado y recortados (en dos renglones le quitaban alto a la tarjeta). Accesibilidad: la etiqueta de la tarjeta es un `h2` y una región `aria-live` anuncia sólo "Tarjeta n de N: etiqueta" |
 | Dispositivos visuales de tarjeta | `src/app/laminas/_components/dispositivos.tsx` | `src/components/lamina/dispositivos.tsx` | adaptada | `fd17d4c` | Colores por variable CSS, tamaños en em. `FilaRol` y `PartePuente` pasan su contenido por MathText (regla 12). `LineaEjemplo` sin overflow propio: le ponía barra vertical a cada fracción. `TablaRuffini` no se trajo. Agregado `Resultado` |
 | Kit didáctico | `src/app/aprende/_components/pedagogia.tsx` | — | pendiente | — | |
@@ -117,3 +118,4 @@ Supabase, login, pagos y planes, paneles de docente, banco de exámenes UMSS, mo
 | 2026-09-14 | Sin commits nuevos en ninguno de los dos | Base visual de Axiom: paleta, tipografías, MathText, LaminaShell, dispositivos, reglas de lámina. Muestra en `/muestra` | `TablaRuffini`: es de álgebra preuniversitaria, no la usa ninguna materia de RON_DOC |
 | 2026-09-14 | Sin commits nuevos en ninguno de los dos | Motor financiero de SIMPRO (`8acdc6c`) con sus pruebas. Lámina `/amortizacion` sobre `calcularAmortizacionGenerica` | — |
 | 2026-09-14 | Axiom `fd17d4c..a0ab04b` (6 commits); SIMPRO sin cambios | Nada | Los 6 son del banco de exámenes de Económicas, facultades e inventario de facsímiles: ninguna ruta vigilada, y el banco está en "lo que no se trae" |
+| 2026-09-14 | Axiom `a0ab04b..7a5d8ed` (8 commits); SIMPRO sin cambios | `58051af`: `parsearMath` en archivo propio con 10 pruebas, y `**negrita**` en MathText | Los otros 7: exámenes de Económicas y títulos de parciales del banco |

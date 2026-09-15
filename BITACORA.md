@@ -24,10 +24,14 @@
 - El motor se copia con `node scripts/traer-motor-simpro.mjs` a `src/lib/simpro/`: archivos idénticos salvo las rutas de import. `--comprobar` dice si SIMPRO cambió. No editar esos archivos a mano.
 - Es material de Ronald (su app, sus 27 proyectos de ejemplo), así que se publica sin esperar "publícalas", una vez que funcione completo.
 
+**Números de referencia** (salen del motor; sirven para comprobar que la página muestra lo mismo): Cafetería «Grano Andino» (clave `cafeteria`): inversión 120.000, capital de trabajo 50.000, préstamo 63.000, WACC 11,03%, flujo −122.600 | 45.584 | 43.034 | 57.560 | 73.549 | 195.617, VAN 159.712, TIR 43,1%, recuperación 2,59 años. De las 27 plantillas, 6 no son viables: `muebles`, `lavanderia`, `academia`, `medio`, `solar`, `digitalizacion`.
+
+**Pregunta para Ronald (no se tocó el motor):** el flujo del año 0 ya descuenta el préstamo (es lo que ponen los dueños) y el VAN lo descuenta al WACC. En el enfoque clásico, ese flujo se descuenta al costo del capital propio, o bien se usa el WACC con el flujo sin deuda. Si hay que cambiarlo, se arregla en SIMPRO y se vuelve a copiar.
+
 **Pasos:**
 
 - [x] 1. Motor copiado: tipos, flujo de caja a 5 años con IVA, IT e IUE, indicadores, escenarios, sensibilidad, laboratorio de viabilidad, fábrica de proyectos y las 27 plantillas (17 archivos, 187 pruebas de SIMPRO corriendo en `npm test`).
-- [ ] 2. Página `/simulador-proyectos`: elegir proyecto (27 plantillas por categoría, `PLANTILLAS` y `CATEGORIAS` de `plantillas.ts`) y "así está armado" (inversión por categoría, capital de trabajo, productos, personal, financiamiento).
+- [ ] 2. **(en curso)** Página `/simulador-proyectos`: elegir proyecto (27 plantillas por categoría, `PLANTILLAS` y `CATEGORIAS` de `plantillas.ts`) y "así está armado" (inversión por categoría, capital de trabajo, productos, personal, financiamiento).
 - [ ] 3. Flujo de caja año 0 a 5 (`construirFlujoCaja` de `flujo-proyecto.ts`): tabla y gráfico de barras calculado.
 - [ ] 4. "¿Conviene?": VAN, TIR contra WACC, período de recuperación, IR y RBC, cada uno con su fórmula en KaTeX y qué significa con los números del proyecto.
 - [ ] 5. Tres escenarios (`compararEscenarios`, `DEFAULT_OPTIMISTA`, `DEFAULT_PESIMISTA`, `esViable`).

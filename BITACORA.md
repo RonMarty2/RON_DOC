@@ -26,10 +26,11 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
    npm install
    npm run dev      # http://localhost:3000
    npm test         # motor de SIMPRO + fórmulas propias
-   npm run build    # sitio estático en out/
+   npm run build    # sitio estático en out/ (y la lista de precarga del service worker)
+   node scripts/servir-compilado.mjs   # out/ bajo /RON_DOC/ en :3017, para probar sin internet
    ```
 
-   Para verlo en el navegador de Claude Code: la configuración `ron-doc` está en `Pagina personal/.claude/launch.json` (fuera del repo). No correr `next build` con `npm run dev` levantado: comparten `.next`.
+   Para verlo en el navegador de Claude Code: las configuraciones `ron-doc` (desarrollo) y `ron-doc-compilado` (lo compilado) están en `Pagina personal/.claude/launch.json` (fuera del repo). No correr `next build` con `npm run dev` levantado: comparten `.next`. Para que lo compilado quede igual que en GitHub: `MSYS_NO_PATHCONV=1 NEXT_PUBLIC_BASE_PATH=/RON_DOC npm run build`.
 
 ## 3. Estado actual
 
@@ -74,6 +75,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | 2026-09-14 | La práctica de las láminas genera ejercicios nuevos; las opciones incorrectas salen de errores típicos, no del azar | Una sola pregunta por lámina no alcanza para practicar; equivocarse con un distractor con nombre enseña qué se confundió |
 | 2026-09-14 | El azar se usa sólo después de un clic; el primer ejercicio es fijo | Si se sorteara al cargar, el HTML del servidor y el del navegador no coincidirían |
 | 2026-09-14 | El progreso se guarda en el navegador del alumno (localStorage), no en un servidor | Sin cuentas ni datos personales fuera del celular; si el navegador no deja guardar, la lámina funciona igual |
+| 2026-09-14 | Sin internet se guarda todo lo publicado apenas se abre el sitio, no sólo lo visitado | Las láminas se proyectan en aulas sin conexión y el alumno estudia con datos móviles: ~630 kB una vez, a cambio de que funcione todo |
 | 2026-09-14 | La lámina retoma sola donde quedó, con un aviso para volver al inicio | Es lo que hace el Aula. Para proyectar en clase desde la misma computadora: el aviso, el primer punto o la tecla Inicio |
 
 ## 5. Trabajo en paralelo
@@ -105,17 +107,17 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - `6aec37f` De Axiom: `parsearMath` en `src/components/math-parse.ts` con sus 10 pruebas, y `**negrita**` dentro de MathText (131 pruebas en total).
 - `6771f61` El Aula de Probabilidad pasa a la paleta del sitio: 683 clases de gris y blanco a tokens y 609 variantes `dark:` que sobraban, en 21 archivos; etiquetas en Atkinson en vez de monoespaciada. Verificado midiendo el contraste de todo el texto en los 11 apartados, claro y oscuro: 0 por debajo de lo legible, después de corregir 7 casos (letra blanca sobre colores medios y una indicación en gris muy claro). Sin desbordes en 375 px.
 - `8469c68` **Práctica ilimitada** en las cinco láminas de Matemática Financiera: el primer ejercicio es el escrito a mano y "Otro ejercicio" genera uno nuevo con otros números (`src/lib/finanzas/ejercicios.ts`, dos tipos por tema). Cada distractor es un error típico con nombre. Marcador de aciertos. `src/lib/formato.ts` junta el formato de montos. 165 pruebas: 2.000 ejercicios generados verifican 4 opciones distintas, explicación con el resultado y fórmulas sin error de KaTeX.
-- *(este commit)* **Progreso del alumno** guardado en su navegador, sin cuentas (`src/lib/progreso.ts`, con pruebas): la lámina se abre en la tarjeta donde quedó, con el aviso "Seguiste donde quedaste · Volver a la primera tarjeta" en el lugar del pie; los puntos marcan las tarjetas ya vistas; los aciertos de la práctica se suman entre visitas; la lista de láminas muestra "Viste 9 de 12 tarjetas · 2 de 3 ejercicios bien" o "✓ Vista entera". Inicio y Fin del teclado (o del control de presentación) saltan a la primera y la última tarjeta. Si la lámina cambia de largo, no retoma. 173 pruebas.
+- `e44e01a` **Progreso del alumno** guardado en su navegador, sin cuentas (`src/lib/progreso.ts`, con pruebas): la lámina se abre en la tarjeta donde quedó, con el aviso "Seguiste donde quedaste · Volver a la primera tarjeta" en el lugar del pie; los puntos marcan las tarjetas ya vistas; los aciertos de la práctica se suman entre visitas; la lista de láminas muestra "Viste 9 de 12 tarjetas · 2 de 3 ejercicios bien" o "✓ Vista entera". Inicio y Fin del teclado (o del control de presentación) saltan a la primera y la última tarjeta. Si la lámina cambia de largo, no retoma. 173 pruebas.
+- *(este commit)* **Sin internet de verdad.** El service worker guardaba sólo el HTML de `/` y `/aula-probabilidad/`: sin conexión la página se veía pero no respondía (faltaba el JavaScript). Ahora `scripts/precarga-sw.mjs` corre después de `npm run build`, toma las páginas del sitemap (sólo lo publicado: una lámina entra sola al publicarla) y les suma el JS, el CSS y las fuentes que cargan, sin woff/ttf ni las variantes de vietnamita y latín extendido. La versión del caché es una huella del contenido: si algo cambia, el teléfono renueva todo. Hoy: 4 páginas y 37 archivos, unos 630 kB por la red más el HTML (JS 218, CSS 18, fuentes 397). Probado con `scripts/servir-compilado.mjs`: portada abierta con red, servidor apagado, el Aula (nunca visitada) abrió, respondió a los clics y cargó sus fuentes. Se verificó también que todo lo que pide la lámina de Bonos, práctica incluida, está en la lista. Si el sitemap y `out/` no cuadran, la compilación falla. 179 pruebas.
 
 ## 7. Qué sigue
 
 **Se puede hacer sin Ronald** (en este orden):
 
-1. **Sin internet:** sumar las láminas a la precarga del service worker (`public/sw.js`, hoy sólo `/` y `/aula-probabilidad/`) cuando se publiquen.
-2. **Control automático al publicar:** que el deploy falle si una página tiene fórmulas con error de KaTeX o una tarjeta desborda en 375×812 (hoy se mide a mano).
-3. **Cuadernillo imprimible de Matemática Financiera**, con ejercicios de los mismos generadores y sus soluciones.
-4. Rendimiento en celular de gama baja: las láminas cargan ~190 kB de JavaScript (KaTeX va en el cliente porque las tarjetas son interactivas).
-5. Probar las láminas con un lector de pantalla real (TalkBack en Android): la accesibilidad se verificó por estructura, no escuchándola.
+1. **Control automático al publicar:** que el deploy falle si una página tiene fórmulas con error de KaTeX o una tarjeta desborda en 375×812 (hoy se mide a mano).
+2. **Cuadernillo imprimible de Matemática Financiera**, con ejercicios de los mismos generadores y sus soluciones.
+3. Rendimiento en celular de gama baja: las láminas cargan ~190 kB de JavaScript (KaTeX va en el cliente porque las tarjetas son interactivas).
+4. Probar las láminas con un lector de pantalla real (TalkBack en Android): la accesibilidad se verificó por estructura, no escuchándola.
 
 **Decisiones de Ronald que mejorarían mucho:** dominio propio (la dirección de GitHub Pages es difícil de recordar); contar visitas (requiere un servicio externo: decisión de privacidad); Aula en tarjetas o scroll.
 

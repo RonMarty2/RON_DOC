@@ -18,7 +18,7 @@ export function Header() {
   ];
 
   return (
-    <header className="pt-segura px-seguro sticky top-0 z-40 border-b border-borde bg-papel/85 backdrop-blur">
+    <header className="pt-segura px-seguro sticky top-0 z-40 border-b border-borde bg-papel/85 backdrop-blur print:hidden">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="shrink-0 font-serif text-lg font-semibold tracking-tight">
           Ronald Martínez J.

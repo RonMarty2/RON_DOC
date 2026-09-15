@@ -45,9 +45,11 @@ function armar(azar: Azar, pregunta: string, correcta: string, distractores: str
   return { pregunta, opciones, correcta: opciones.indexOf(correcta), explicacion };
 }
 
-function reintentar(azar: Azar, variantes: ((azar: Azar) => Ejercicio | null)[]): Ejercicio {
+/** `tipo` elige la variante (la hoja de práctica las alterna); sin él, sale una al azar. */
+function reintentar(azar: Azar, variantes: ((azar: Azar) => Ejercicio | null)[], tipo?: number): Ejercicio {
   for (let intento = 0; intento < 50; intento++) {
-    const ejercicio = elegir(azar, variantes)(azar);
+    const variante = tipo === undefined ? elegir(azar, variantes) : variantes[tipo % variantes.length];
+    const ejercicio = variante(azar);
     if (ejercicio) return ejercicio;
   }
   throw new Error("No se pudo armar un ejercicio con opciones distintas");
@@ -64,7 +66,7 @@ const CAPITALIZACION: Record<number, { adverbio: string; periodos: string; perio
   12: { adverbio: "mensualmente", periodos: "meses", periodo: "mes" },
 };
 
-export function ejercicioInteresCompuesto(azar: Azar): Ejercicio {
+export function ejercicioInteresCompuesto(azar: Azar, tipo?: number): Ejercicio {
   return reintentar(azar, [
     (a) => {
       const capital = entre(a, 1000, 20000, 500);
@@ -99,12 +101,12 @@ export function ejercicioInteresCompuesto(azar: Azar): Ejercicio {
         `Con la ecuación de Fisher: $r = \\dfrac{1 + ${dec(i)}}{1 + ${dec(inflacion)}} - 1 \\approx ${tex(pct(correcto))}$. Restar las tasas da ${pct(i - inflacion)}: se acerca, pero no es la tasa real.`
       );
     },
-  ]);
+  ], tipo);
 }
 
 // ── Anualidades ─────────────────────────────────────────────────────────────
 
-export function ejercicioAnualidades(azar: Azar): Ejercicio {
+export function ejercicioAnualidades(azar: Azar, tipo?: number): Ejercicio {
   return reintentar(azar, [
     (a) => {
       const meta = entre(a, 5000, 50000, 1000);
@@ -136,12 +138,12 @@ export function ejercicioAnualidades(azar: Azar): Ejercicio {
         `$\\text{VP} = ${tex(bs(cuota))} \\cdot \\dfrac{1 - ${dec(1 + i)}^{-${anios}}}{${dec(i)}} \\approx ${dec(correcto)}$. ${plata(cuota * anios)} suma las cuotas sin traerlas a hoy, y ${plata(futuro)} es lo que valen al final, no hoy.`
       );
     },
-  ]);
+  ], tipo);
 }
 
 // ── Amortización ────────────────────────────────────────────────────────────
 
-export function ejercicioAmortizacion(azar: Azar): Ejercicio {
+export function ejercicioAmortizacion(azar: Azar, tipo?: number): Ejercicio {
   return reintentar(azar, [
     (a) => {
       const anios = entre(a, 3, 8);
@@ -176,12 +178,12 @@ export function ejercicioAmortizacion(azar: Azar): Ejercicio {
         `$R = ${tex(bs(prestamo))} \\cdot \\dfrac{${dec(i)}}{1 - ${dec(1 + i)}^{-${anios}}} \\approx ${dec(correcto)}$. ${plata(prestamo / anios)} ignora el interés, ${plata(alemanPrimera)} es la primera cuota del sistema alemán, y ${plata(cuotaDesdeValorFuturo(prestamo, i, anios))} trata el préstamo como un monto a juntar.`
       );
     },
-  ]);
+  ], tipo);
 }
 
 // ── Bonos ───────────────────────────────────────────────────────────────────
 
-export function ejercicioBonos(azar: Azar): Ejercicio {
+export function ejercicioBonos(azar: Azar, tipo?: number): Ejercicio {
   return reintentar(azar, [
     (a) => {
       const cuponPct = entre(a, 3, 12);
@@ -218,12 +220,12 @@ export function ejercicioBonos(azar: Azar): Ejercicio {
             : `El bono paga ${cuponPct}% y el mercado sólo ${mercadoPct}%: vale más que el nominal, así que se vende sobre la par. El plazo cambia cuánto sube, no hacia dónde.`
       );
     },
-  ]);
+  ], tipo);
 }
 
 // ── Depreciaciones ──────────────────────────────────────────────────────────
 
-export function ejercicioDepreciaciones(azar: Azar): Ejercicio {
+export function ejercicioDepreciaciones(azar: Azar, tipo?: number): Ejercicio {
   return reintentar(azar, [
     (a) => {
       const vida = entre(a, 3, 8);
@@ -259,5 +261,5 @@ export function ejercicioDepreciaciones(azar: Azar): Ejercicio {
         `Cada año se deprecia $\\dfrac{${tex(bs(costo))} - ${tex(bs(salvamento))}}{${vida}} = ${dec(porAnio)}$. Después de ${anio} ${anio === 1 ? "año" : "años"}: $${tex(bs(costo))} - ${anio} \\times ${dec(porAnio)} = ${dec(correcto)}$. ${plata(tabla[anio - 1].acumulada)} es lo depreciado, no lo que queda, y ${plata(costo - (anio * costo) / vida)} olvida el salvamento.`
       );
     },
-  ]);
+  ], tipo);
 }

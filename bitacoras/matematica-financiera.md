@@ -59,6 +59,16 @@ La última tarjeta de cada lámina arranca con el ejercicio escrito a mano (el d
 
 Los distractores son errores con nombre: interés simple, capitalizar una vez al año, olvidar multiplicar los períodos, restar tasas, confundir VP con VF, olvidar el salvamento, depreciación acumulada en vez de valor en libros, sumar cupones sin descontar. La explicación nombra cada uno.
 
+### Hoja de práctica para imprimir
+
+`/practica-financiera`, también borrador. Usa los mismos generadores que la práctica de las láminas (`src/lib/finanzas/hoja.ts`): se eligen temas y cantidad, cada versión numerada trae otros números y su hoja de respuestas explicada. Al publicar las láminas, publicarla también (borrar su `borrador: true`).
+
+Para imprimir a PDF sin abrir el navegador (sirve para revisar cortes de página):
+
+```bash
+"/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless=new --no-pdf-header-footer --virtual-time-budget=15000 --print-to-pdf="hoja.pdf" "http://localhost:3000/practica-financiera/#v=4821&n=2"
+```
+
 ## Notación usada (a confirmar con el dossier)
 
 | Símbolo | Significa |
@@ -112,4 +122,4 @@ La cuota era $C$ en la lámina de amortización y chocaba con el capital de la d
 
 ## Pendiente
 
-- Revisión de Ronald y "publícalas": borrar las cinco líneas `borrador: true,` de Matemática Financiera en `content/materias.ts`. La página de la materia y la portada ya las muestran como lista numerada en este orden.
+- Revisión de Ronald y "publícalas": borrar las seis líneas `borrador: true,` de Matemática Financiera en `content/materias.ts` (cinco láminas y la hoja de práctica). La página de la materia y la portada ya las muestran como lista numerada en este orden.

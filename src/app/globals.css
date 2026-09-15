@@ -158,3 +158,29 @@ h1, h2, h3, h4 {
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
 }
+
+/* Al imprimir, siempre tinta oscura sobre blanco, aunque la pantalla esté en modo oscuro. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+  html,
+  html.dark {
+    color-scheme: light;
+    --papel: #ffffff;
+    --papel-suave: #ffffff;
+    --tarjeta: #ffffff;
+    --tinta: #000000;
+    --tinta-media: #1f1f1f;
+    --tinta-tenue: #444444;
+    --borde: #bbbbbb;
+    --borde-fuerte: #888888;
+    --acento: #7d2f13;
+    --acento-hover: #7d2f13;
+    --acento-texto: #ffffff;
+    --ok: #1e5f4f;
+    --aviso: #8a4006;
+    --error: #991b1b;
+  }
+}

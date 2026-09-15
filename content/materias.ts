@@ -196,6 +196,13 @@ export const MATERIAS: Materia[] = [
         tipo: "lamina",
         borrador: true,
       },
+      {
+        href: "/practica-financiera",
+        titulo: "Hoja de práctica para imprimir",
+        descripcion: "Ejercicios de los cinco temas con otros números en cada versión, para que cada alumno tenga la suya, y la hoja de respuestas explicada.",
+        tipo: "hoja",
+        borrador: true,
+      },
     ],
     temas: [
       {

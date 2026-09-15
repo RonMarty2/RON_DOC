@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="border-t border-borde bg-papel-suave">
+    <footer className="border-t border-borde bg-papel-suave print:hidden">
       <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-6 px-4 py-10 sm:px-6 lg:px-8">
         <div>
           <p className="font-serif text-lg font-semibold">Mgr. Ronald Martínez Jiménez</p>

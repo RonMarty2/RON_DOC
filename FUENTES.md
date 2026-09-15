@@ -119,3 +119,4 @@ Supabase, login, pagos y planes, paneles de docente, banco de exámenes UMSS, mo
 | 2026-09-14 | Sin commits nuevos en ninguno de los dos | Motor financiero de SIMPRO (`8acdc6c`) con sus pruebas. Lámina `/amortizacion` sobre `calcularAmortizacionGenerica` | — |
 | 2026-09-14 | Axiom `fd17d4c..a0ab04b` (6 commits); SIMPRO sin cambios | Nada | Los 6 son del banco de exámenes de Económicas, facultades e inventario de facsímiles: ninguna ruta vigilada, y el banco está en "lo que no se trae" |
 | 2026-09-14 | Axiom `a0ab04b..7a5d8ed` (8 commits); SIMPRO sin cambios | `58051af`: `parsearMath` en archivo propio con 10 pruebas, y `**negrita**` en MathText | Los otros 7: exámenes de Económicas y títulos de parciales del banco |
+| 2026-09-14 | Sin commits nuevos en ninguno de los dos (revisado al empezar y al terminar la tanda de progreso, sin internet, controles, imágenes para compartir y hoja imprimible) | Nada | — |

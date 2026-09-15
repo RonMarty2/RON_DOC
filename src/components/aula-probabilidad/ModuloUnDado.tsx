@@ -13,7 +13,7 @@ import {
   Puente,
 } from "./narrativa";
 
-const INSIGNIA = "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200";
+const INSIGNIA = "bg-borde text-tinta-media";
 
 /**
  * Primer peldaño del capítulo: un dado, una pregunta, un puntaje.
@@ -46,7 +46,7 @@ export function ModuloUnDado({ onContinuar }: { onContinuar: () => void }) {
         Tira un dado
       </PasoTitulo>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Empecemos por el objeto más simple que existe en todo este capítulo. Un
         dado. Tíralo unas cuantas veces y no pienses en nada más que en lo que
         vas viendo.
@@ -64,7 +64,7 @@ export function ModuloUnDado({ onContinuar }: { onContinuar: () => void }) {
         Una pregunta es un dado
       </PasoTitulo>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Ahora cambiemos el objeto, pero no la estructura. Un cuestionario de
         salud mental hace preguntas del tipo «¿con qué frecuencia te pasó
         esto en las últimas dos semanas?», y cada una se responde con una de
@@ -90,7 +90,7 @@ export function ModuloUnDado({ onContinuar }: { onContinuar: () => void }) {
         Nueve preguntas son un puntaje
       </PasoTitulo>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Hasta acá las preguntas salían al azar. Respóndelas tú, como las
         respondería una persona, y mira armarse el puntaje:
       </p>
@@ -157,19 +157,19 @@ export function ModuloUnDado({ onContinuar }: { onContinuar: () => void }) {
 function LaPromesa() {
   return (
     <div className="rounded-2xl border-2 border-amber-300 bg-amber-50/60 p-5 dark:border-amber-800 dark:bg-amber-950/20 sm:p-6">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400">
         A dónde vamos
       </p>
-      <p className="mt-2 font-serif text-lg leading-snug text-slate-900 dark:text-slate-100 sm:text-xl">
+      <p className="mt-2 font-serif text-lg leading-snug text-tinta sm:text-xl">
         Hay un cuestionario que casi nunca falla y que, aun así, se equivoca
         en casi la mitad de las alarmas que da.
       </p>
-      <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mt-3 text-sm leading-relaxed text-tinta-media">
         Las dos cosas son ciertas al mismo tiempo, y no es un juego de
         palabras. Cuando termines el capítulo vas a poder calcular
         exactamente por qué, con los datos de tu propio servicio.
       </p>
-      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-2 text-sm text-tinta-media">
         Por ahora no hace falta entenderlo. Empezamos por un dado.
       </p>
     </div>
@@ -230,9 +230,9 @@ function UnDadoSuelto() {
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center gap-4">
-        <div className="grid h-24 w-24 shrink-0 place-content-center rounded-2xl border-2 border-slate-300 bg-slate-50 dark:border-slate-600 dark:bg-slate-800">
+        <div className="grid h-24 w-24 shrink-0 place-content-center rounded-2xl border-2 border-borde-fuerte bg-papel-suave">
           <span className="text-6xl leading-none" aria-hidden>
             {cara === null ? "🎲" : CARAS[cara - 1]}
           </span>
@@ -245,11 +245,11 @@ function UnDadoSuelto() {
             type="button"
             disabled={girando}
             onClick={tirar}
-            className="rounded-full bg-slate-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 disabled:opacity-50 dark:bg-slate-600 dark:hover:bg-slate-500"
+            className="rounded-full bg-tinta px-5 py-2.5 text-sm font-semibold text-papel shadow-sm transition hover:bg-tinta disabled:opacity-50"
           >
             🎲 Tirar el dado
           </button>
-          <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
+          <p className="mt-3 text-sm text-tinta-media">
             {historial.length === 0
               ? "Todavía no tiraste. Antes de hacerlo: ¿puedes saber qué va a salir?"
               : cara !== null
@@ -261,14 +261,14 @@ function UnDadoSuelto() {
 
       {historial.length > 0 && (
         <div className="mt-4">
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p className="text-xs font-semibold uppercase tracking-wider text-tinta-tenue">
             Lo que fue saliendo
           </p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {historial.map((v, i) => (
               <span
                 key={i}
-                className="grid h-8 w-8 place-content-center rounded-lg bg-slate-100 text-sm font-semibold tabular-nums text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                className="grid h-8 w-8 place-content-center rounded-lg bg-papel-suave text-sm font-semibold tabular-nums text-tinta-media"
               >
                 {v}
               </span>
@@ -277,7 +277,7 @@ function UnDadoSuelto() {
         </div>
       )}
 
-      <p className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+      <p className="mt-4 rounded-xl bg-papel-suave px-4 py-3 text-sm text-tinta-media">
         {historial.length === 0 ? (
           <>
             No puedes. Y sin embargo tampoco estás completamente a ciegas: sabes

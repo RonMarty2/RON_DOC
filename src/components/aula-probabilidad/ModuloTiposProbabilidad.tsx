@@ -43,7 +43,7 @@ export function ModuloTiposProbabilidad({
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Ya sabemos qué es un espacio muestral y qué es un evento. Falta lo
         principal: <strong>de dónde sale el número</strong> que llamamos
         probabilidad. Hay tres formas legítimas de conseguirlo, y no compiten
@@ -147,7 +147,7 @@ export function ModuloTiposProbabilidad({
       <PasoTitulo numero={2} insignia={INSIGNIA}>
         Aplicado: la probabilidad de dar positivo
       </PasoTitulo>
-      <p className="text-sm text-slate-700 dark:text-slate-300">
+      <p className="text-sm text-tinta-media">
         Acá no hay simetría: nada garantiza que dar positivo y dar negativo
         sean igual de probables. Así que la calculamos por frecuencia, contando
         el archivo.
@@ -386,9 +386,9 @@ function MonedaConvergente() {
   const pct = tiradas > 0 ? (caras / tiradas) * 100 : 0;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="font-serif text-lg font-semibold text-tinta">
           Clásica contra frecuentista, en la misma moneda
         </h4>
         <div className="flex flex-wrap gap-2">
@@ -406,7 +406,7 @@ function MonedaConvergente() {
           <button
             type="button"
             onClick={reset}
-            className="rounded-full border border-slate-200 px-3 py-1.5 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full border border-borde px-3 py-1.5 text-sm text-tinta-media transition hover:bg-papel-suave"
           >
             Reiniciar
           </button>
@@ -434,23 +434,23 @@ function MonedaConvergente() {
       </div>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl bg-slate-50 px-4 py-3 text-sm dark:bg-slate-800/60">
-          <p className="font-semibold text-slate-800 dark:text-slate-200">
+        <div className="rounded-xl bg-papel-suave px-4 py-3 text-sm">
+          <p className="font-semibold text-tinta">
             Clásica: 50%
           </p>
-          <p className="mt-1 text-slate-600 dark:text-slate-400">
+          <p className="mt-1 text-tinta-media">
             Dos resultados, ninguna razón para preferir uno. 1/2, sin tirar la
             moneda ni una vez.
           </p>
         </div>
-        <div className="rounded-xl bg-slate-50 px-4 py-3 text-sm dark:bg-slate-800/60">
-          <p className="font-semibold text-slate-800 dark:text-slate-200">
+        <div className="rounded-xl bg-papel-suave px-4 py-3 text-sm">
+          <p className="font-semibold text-tinta">
             Frecuentista:{" "}
             <span className="tabular-nums">
               {tiradas > 0 ? `${pct.toFixed(1)}%` : "—"}
             </span>
           </p>
-          <p className="mt-1 text-slate-600 dark:text-slate-400">
+          <p className="mt-1 text-tinta-media">
             {tiradas === 0
               ? "Todavía sin datos. Tira la moneda para empezar a estimarla."
               : tiradas < 30
@@ -476,11 +476,11 @@ function Axiomas({ p }: { p: number }) {
   const pctNeg = 100 - pctPos;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <h4 className="font-serif text-lg font-semibold text-tinta">
         Los tres axiomas de Kolmogórov (1933)
       </h4>
-      <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-1 text-sm text-tinta-media">
         Las tres formas de arriba dan números distintos, pero todas tienen que
         respetar las mismas tres reglas. Acá están las {total} fichas puestas
         en una sola barra: <strong>la barra entera es el espacio muestral</strong>,
@@ -489,12 +489,12 @@ function Axiomas({ p }: { p: number }) {
 
       {/* La barra del espacio muestral */}
       <div className="mt-5">
-        <div className="flex h-14 overflow-hidden rounded-xl border-2 border-slate-300 dark:border-slate-600">
+        <div className="flex h-14 overflow-hidden rounded-xl border-2 border-borde-fuerte">
           <div
             className={
               "flex items-center justify-center transition-all " +
               (activo === 3 || activo === null
-                ? "bg-amber-500 text-white"
+                ? "bg-amber-500 text-amber-950"
                 : "bg-amber-500/40 text-amber-900 dark:text-amber-100")
             }
             style={{ width: `${pctPos}%` }}
@@ -505,7 +505,7 @@ function Axiomas({ p }: { p: number }) {
             className={
               "flex items-center justify-center transition-all " +
               (activo === 3 || activo === null
-                ? "bg-blue-500 text-white"
+                ? "bg-blue-600 text-white"
                 : "bg-blue-500/40 text-blue-900 dark:text-blue-100")
             }
             style={{ width: `${pctNeg}%` }}
@@ -532,20 +532,20 @@ function Axiomas({ p }: { p: number }) {
           activo={activo === 1}
           onClick={() => setActivo(activo === 1 ? null : 1)}
         >
-          <p className="text-sm text-slate-700 dark:text-slate-300">
+          <p className="text-sm text-tinta-media">
             Mira la barra: un trozo puede ser grandísimo o achicarse hasta
             desaparecer, pero <strong>no puede tener ancho negativo</strong>.
             No hay forma de dibujarlo. Ese es todo el axioma.
           </p>
           <div className="mt-2 flex items-center gap-3">
-            <span className="text-xs text-slate-500">Válido:</span>
+            <span className="text-xs text-tinta-tenue">Válido:</span>
             <div className="h-4 w-24 rounded bg-amber-500" />
-            <span className="text-xs tabular-nums text-slate-500">
+            <span className="text-xs tabular-nums text-tinta-tenue">
               0 ≤ {p.toFixed(3)} ≤ 1
             </span>
           </div>
           <div className="mt-1.5 flex items-center gap-3 opacity-50">
-            <span className="text-xs text-slate-500">Imposible:</span>
+            <span className="text-xs text-tinta-tenue">Imposible:</span>
             <div className="h-4 w-0 rounded border border-dashed border-rose-400" />
             <span className="text-xs text-rose-500">no se puede dibujar</span>
           </div>
@@ -559,7 +559,7 @@ function Axiomas({ p }: { p: number }) {
           activo={activo === 2}
           onClick={() => setActivo(activo === 2 ? null : 2)}
         >
-          <p className="text-sm text-slate-700 dark:text-slate-300">
+          <p className="text-sm text-tinta-media">
             Los dos trozos de la barra llenan exactamente el ancho total, sin
             dejar hueco ni desbordarse. Cada ficha del archivo está en uno de
             los dos: no hay ninguna que no sea ni positiva ni negativa.
@@ -578,12 +578,12 @@ function Axiomas({ p }: { p: number }) {
           activo={activo === 3}
           onClick={() => setActivo(activo === 3 ? null : 3)}
         >
-          <p className="text-sm text-slate-700 dark:text-slate-300">
+          <p className="text-sm text-tinta-media">
             Los dos trozos <strong>no se pisan</strong>: ninguna ficha es
             positiva y negativa a la vez. Por eso para saber cuántas hay entre
             las dos alcanza con sumar los anchos, sin restar nada.
           </p>
-          <p className="mt-2 rounded-lg bg-slate-100 px-3 py-2 text-sm text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+          <p className="mt-2 rounded-lg bg-papel-suave px-3 py-2 text-sm text-tinta-media">
             Ojo: esto vale <strong>sólo</strong> cuando los eventos son
             excluyentes. Cuando se solapan hay que restar la parte compartida,
             y eso es exactamente lo que veremos en el apartado 2.5.
@@ -618,7 +618,7 @@ function AxiomaFila({
         "rounded-xl border-2 transition " +
         (activo
           ? "border-blue-500 bg-blue-50/40 dark:bg-blue-950/20"
-          : "border-slate-200 dark:border-slate-700")
+          : "border-borde")
       }
     >
       <button
@@ -628,17 +628,17 @@ function AxiomaFila({
         className="w-full px-4 py-3 text-left"
       >
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+          <span className="text-sm font-semibold text-tinta">
             Axioma {n} · {nombre}
           </span>
-          <span className="font-mono text-sm text-blue-700 dark:text-blue-300">
+          <span className="tabular-nums text-sm text-blue-700 dark:text-blue-300">
             {simbolo}
           </span>
-          <span className="ml-auto text-xs text-slate-400">
+          <span className="ml-auto text-xs text-tinta-tenue">
             {activo ? "▲" : "▼ ver en la barra"}
           </span>
         </div>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-1 text-sm text-tinta-media">
           {texto}
         </p>
       </button>
@@ -671,9 +671,9 @@ function ComplementoVisual({ p }: { p: number }) {
   const etiqueta = verComplemento ? "NO dar positivo" : "dar positivo";
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h5 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h5 className="font-serif text-lg font-semibold text-tinta">
           El complemento es «todo lo demás»
         </h5>
         <button
@@ -685,7 +685,7 @@ function ComplementoVisual({ p }: { p: number }) {
         </button>
       </div>
 
-      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-2 text-sm text-tinta-media">
         Cada cuadradito es una ficha. Marcado = cumple el evento que estamos
         mirando.
       </p>
@@ -703,18 +703,18 @@ function ComplementoVisual({ p }: { p: number }) {
                   ? verComplemento
                     ? "bg-blue-600"
                     : "bg-amber-500"
-                  : "bg-slate-200 dark:bg-slate-700")
+                  : "bg-borde")
               }
             />
           );
         })}
       </div>
 
-      <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 dark:bg-slate-800/60">
-        <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+      <div className="mt-4 rounded-xl bg-papel-suave px-4 py-3">
+        <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
           P({etiqueta}) = {num}/{total} = {prob.toFixed(3)}
         </p>
-        <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+        <p className="mt-1 text-sm leading-relaxed text-tinta-media">
           {verComplemento ? (
             <>
               Se dieron vuelta exactamente los mismos cuadraditos: los que
@@ -822,13 +822,13 @@ function AsignacionAleatoria() {
 
   return (
     <div className="rounded-2xl border-2 border-blue-300 bg-blue-50/40 p-5 dark:border-blue-800 dark:bg-blue-950/20 sm:p-6">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
         Dónde vive la probabilidad clásica en tu carrera
       </p>
-      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+      <h4 className="mt-1 font-serif text-xl font-semibold text-tinta">
         La asignación aleatoria es la moneda
       </h4>
-      <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mt-2 text-sm leading-relaxed text-tinta-media">
         Un estudio compara una terapia contra una lista de espera. Para que los
         dos grupos sean comparables, cada participante se asigna{" "}
         <strong>al azar</strong>. La probabilidad de caer en tratamiento es
@@ -866,7 +866,7 @@ function AsignacionAleatoria() {
             type="button"
             disabled={corriendo}
             onClick={() => setAsignados([])}
-            className="rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-500 disabled:opacity-50 dark:border-slate-600 dark:text-slate-400"
+            className="rounded-full border border-borde-fuerte px-4 py-2 text-sm font-medium text-tinta-media transition hover:border-borde-fuerte disabled:opacity-50"
           >
             Empezar de nuevo
           </button>
@@ -874,7 +874,7 @@ function AsignacionAleatoria() {
       </div>
 
       {n === 0 ? (
-        <p className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+        <p className="mt-4 rounded-xl bg-tarjeta px-4 py-3 text-sm text-tinta-media">
           Antes de asignar a nadie ya puedes afirmar que la probabilidad es 0,5.
           Ninguna probabilidad frecuentista permite eso: para las que salen de
           contar, hay que contar primero.
@@ -891,8 +891,8 @@ function AsignacionAleatoria() {
                   className={
                     "rounded-xl border p-3 " +
                     (esTratamiento
-                      ? "border-blue-300 bg-white dark:border-blue-700 dark:bg-slate-900"
-                      : "border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900")
+                      ? "border-blue-300 bg-tarjeta dark:border-blue-700"
+                      : "border-borde bg-tarjeta")
                   }
                 >
                   <p
@@ -900,15 +900,15 @@ function AsignacionAleatoria() {
                       "text-xs font-semibold uppercase tracking-wider " +
                       (esTratamiento
                         ? "text-blue-600 dark:text-blue-400"
-                        : "text-slate-400")
+                        : "text-tinta-tenue")
                     }
                   >
                     {esTratamiento ? "Tratamiento" : "Lista de espera"}
                   </p>
-                  <p className="mt-1 font-mono text-3xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+                  <p className="mt-1 tabular-nums text-3xl font-semibold tabular-nums text-tinta">
                     {cuantos}
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                  <p className="text-xs text-tinta-tenue">
                     {((cuantos / n) * 100).toFixed(1)}% de {n}
                   </p>
                 </div>
@@ -917,33 +917,33 @@ function AsignacionAleatoria() {
           </div>
 
           {/* La barra: teórica fija, observada temblando */}
-          <div className="mt-4 rounded-xl bg-white p-4 dark:bg-slate-900">
+          <div className="mt-4 rounded-xl bg-tarjeta p-4">
             <div className="flex items-baseline justify-between text-xs">
-              <span className="text-slate-500 dark:text-slate-400">
+              <span className="text-tinta-tenue">
                 Proporción observada en tratamiento
               </span>
-              <span className="font-mono font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+              <span className="tabular-nums font-semibold tabular-nums text-tinta">
                 {proporcion.toFixed(3)}
               </span>
             </div>
-            <div className="relative mt-2 h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+            <div className="relative mt-2 h-3 overflow-hidden rounded-full bg-papel-suave">
               <div
                 className="h-full bg-blue-500 transition-all duration-300"
                 style={{ width: `${proporcion * 100}%` }}
               />
               {/* La marca del valor teórico, que no se mueve nunca */}
               <div
-                className="absolute inset-y-0 w-px bg-slate-900 dark:bg-slate-100"
+                className="absolute inset-y-0 w-px bg-tinta"
                 style={{ left: "50%" }}
                 aria-hidden
               />
             </div>
-            <p className="mt-1.5 text-right font-mono text-[10px] text-slate-400">
+            <p className="mt-1.5 text-right tabular-nums text-[10px] text-tinta-tenue">
               la marca fija es 0,500 · la probabilidad clásica
             </p>
           </div>
 
-          <p className="mt-3 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+          <p className="mt-3 rounded-xl bg-tarjeta px-4 py-3 text-sm text-tinta-media">
             {n < 10 ? (
               <>
                 Con {n} {n === 1 ? "participante" : "participantes"} la
@@ -958,7 +958,7 @@ function AsignacionAleatoria() {
                 , a{" "}
                 <strong className="tabular-nums">{desvio.toFixed(3)}</strong> de
                 la marca.
-                <span className="mt-2 block text-slate-600 dark:text-slate-400">
+                <span className="mt-2 block text-tinta-media">
                   Estás viendo los <strong>dos tipos a la vez</strong>. El 0,5
                   de la marca es <strong>clásico</strong>: sale del diseño y no
                   se mueve. El número de arriba es{" "}

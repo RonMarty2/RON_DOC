@@ -99,7 +99,7 @@ export function inicialAleatoria(): string {
 export const PALETA_AVATARES = [
   "bg-blue-600", "bg-indigo-600", "bg-sky-700",
   "bg-emerald-600", "bg-teal-700", "bg-amber-600",
-  "bg-rose-600", "bg-violet-700", "bg-slate-700",
+  "bg-rose-600", "bg-violet-700", "bg-tinta",
 ];
 export function colorAvatar(seed: number): string {
   return PALETA_AVATARES[seed % PALETA_AVATARES.length];

@@ -38,7 +38,7 @@ export function ModuloVariablesAleatorias({
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Hasta acá preguntamos por eventos: ¿da positivo o no? Dos opciones, una
         probabilidad para cada una. Pero el cuestionario no devuelve un sí o un
         no: devuelve un número entre 0 y 27, y cada uno de esos 28 valores tiene
@@ -259,18 +259,18 @@ function ConstructorDistribucion({ p }: { p: number }) {
   const maxProb = Math.max(...valores.map((v) => v.prob));
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <h4 className="font-serif text-lg font-semibold text-tinta">
         La distribución completa, de una sola vez
       </h4>
-      <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-1 text-sm text-tinta-media">
         Definimos <V>X</V> = cantidad de estudiantes que dan positivo al
         seleccionar <V>n</V> al azar. Cada barra es un valor posible con su
         probabilidad.
       </p>
 
       <label className="mt-4 flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-        <span className="font-mono text-slate-600 dark:text-slate-400">
+        <span className="tabular-nums text-tinta-media">
           n = {n} estudiantes
         </span>
         <input
@@ -290,7 +290,7 @@ function ConstructorDistribucion({ p }: { p: number }) {
       >
         {valores.map((v) => (
           <div key={v.k} className="flex min-w-[24px] flex-1 flex-col items-center justify-end gap-1">
-            <span className="text-[11px] tabular-nums text-slate-500 dark:text-slate-400">
+            <span className="text-[11px] tabular-nums text-tinta-tenue">
               {(v.prob * 100).toFixed(1)}
             </span>
             <div
@@ -298,14 +298,14 @@ function ConstructorDistribucion({ p }: { p: number }) {
               style={{ height: `${Math.max(2, (v.prob / maxProb) * 110)}px` }}
               title={`P(X = ${v.k}) = ${v.prob.toFixed(4)}`}
             />
-            <span className="text-xs font-semibold tabular-nums text-slate-700 dark:text-slate-300">
+            <span className="text-xs font-semibold tabular-nums text-tinta-media">
               {v.k}
             </span>
           </div>
         ))}
       </div>
       </div>
-      <p className="mt-1 text-center text-xs text-slate-400">
+      <p className="mt-1 text-center text-xs text-tinta-tenue">
         valores posibles de X (cantidad de positivos)
       </p>
 
@@ -319,11 +319,11 @@ function ConstructorDistribucion({ p }: { p: number }) {
             valor del espacio muestral.
           </p>
         </div>
-        <div className="rounded-xl bg-slate-50 px-4 py-3 text-sm dark:bg-slate-800/60">
-          <p className="font-semibold text-slate-800 dark:text-slate-200">
+        <div className="rounded-xl bg-papel-suave px-4 py-3 text-sm">
+          <p className="font-semibold text-tinta">
             E[X] = {esperanza.toFixed(4)}
           </p>
-          <p className="mt-1 text-slate-600 dark:text-slate-400">
+          <p className="mt-1 text-tinta-media">
             {Number.isInteger(esperanza)
               ? "En este caso da un entero, pero eso es coincidencia."
               : "No es un valor que la variable pueda tomar: nunca vas a observar una fracción de estudiante."}
@@ -366,9 +366,9 @@ function TablaEsperanza({ p }: { p: number }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h5 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          <h5 className="font-serif text-lg font-semibold text-tinta">
             Arma la suma, término por término
           </h5>
           <div className="flex flex-wrap gap-2">
@@ -376,7 +376,7 @@ function TablaEsperanza({ p }: { p: number }) {
               <button
                 type="button"
                 onClick={() => setRevelados((r) => r + 1)}
-                className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+                className="rounded-full bg-emerald-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-800"
               >
                 {revelados === 0
                   ? "Calcular el primer término"
@@ -387,7 +387,7 @@ function TablaEsperanza({ p }: { p: number }) {
               <button
                 type="button"
                 onClick={() => setRevelados(0)}
-                className="rounded-full border border-slate-200 px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                className="rounded-full border border-borde px-3 py-2 text-sm text-tinta-media transition hover:bg-papel-suave"
               >
                 Reiniciar
               </button>
@@ -395,7 +395,7 @@ function TablaEsperanza({ p }: { p: number }) {
           </div>
         </div>
 
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-2 text-sm text-tinta-media">
           La Σ no es magia: es sumar un término por cada valor posible de{" "}
           <V>X</V>. Con <V>n</V> = 2 hay tres términos. Calcúlalos uno por uno y
           mira cómo se acumula el total.
@@ -404,20 +404,20 @@ function TablaEsperanza({ p }: { p: number }) {
         <div className="mt-4 overflow-x-auto">
           <table className="w-full border-collapse text-sm">
             <thead>
-              <tr className="border-b border-slate-200 text-left dark:border-slate-700">
-                <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">x</th>
-                <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">
+              <tr className="border-b border-borde text-left">
+                <th className="py-2 pr-4 font-semibold text-tinta-media">x</th>
+                <th className="py-2 pr-4 font-semibold text-tinta-media">
                   P(X = x)
                 </th>
-                <th className="py-2 pr-4 font-semibold text-slate-700 dark:text-slate-300">
+                <th className="py-2 pr-4 font-semibold text-tinta-media">
                   x · P(X = x)
                 </th>
-                <th className="py-2 font-semibold text-slate-700 dark:text-slate-300">
+                <th className="py-2 font-semibold text-tinta-media">
                   (x − µ)² · P(X = x)
                 </th>
               </tr>
             </thead>
-            <tbody className="tabular-nums text-slate-600 dark:text-slate-400">
+            <tbody className="tabular-nums text-tinta-media">
               {filas.map((f, i) => {
                 const visible = i < revelados;
                 const recienSalido = i === revelados - 1;
@@ -425,11 +425,11 @@ function TablaEsperanza({ p }: { p: number }) {
                   <tr
                     key={f.k}
                     className={
-                      "border-b border-slate-100 transition dark:border-slate-800 " +
+                      "border-b border-borde transition " +
                       (recienSalido ? "bg-emerald-50 dark:bg-emerald-950/30" : "")
                     }
                   >
-                    <td className="py-2 pr-4 font-semibold text-slate-800 dark:text-slate-200">
+                    <td className="py-2 pr-4 font-semibold text-tinta">
                       {f.k}
                     </td>
                     <td className="py-2 pr-4">
@@ -438,10 +438,10 @@ function TablaEsperanza({ p }: { p: number }) {
                     <td className="py-2 pr-4">
                       {visible ? (
                         <>
-                          <span className="text-slate-400">
+                          <span className="text-tinta-tenue">
                             {f.k} × {f.prob.toFixed(4)} =
                           </span>{" "}
-                          <strong className="text-slate-800 dark:text-slate-200">
+                          <strong className="text-tinta">
                             {f.aporteE.toFixed(4)}
                           </strong>
                         </>
@@ -452,10 +452,10 @@ function TablaEsperanza({ p }: { p: number }) {
                     <td className="py-2">
                       {visible ? (
                         <>
-                          <span className="text-slate-400">
+                          <span className="text-tinta-tenue">
                             {f.desvio.toFixed(4)} × {f.prob.toFixed(4)} =
                           </span>{" "}
-                          <strong className="text-slate-800 dark:text-slate-200">
+                          <strong className="text-tinta">
                             {f.aporteVar.toFixed(4)}
                           </strong>
                         </>
@@ -466,7 +466,7 @@ function TablaEsperanza({ p }: { p: number }) {
                   </tr>
                 );
               })}
-              <tr className="font-semibold text-slate-900 dark:text-slate-100">
+              <tr className="font-semibold text-tinta">
                 <td className="py-2 pr-4">Σ</td>
                 <td className="py-2 pr-4">{parcialProb.toFixed(4)}</td>
                 <td className="py-2 pr-4">{parcialE.toFixed(4)}</td>
@@ -476,7 +476,7 @@ function TablaEsperanza({ p }: { p: number }) {
           </table>
         </div>
 
-        <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+        <div className="mt-4 rounded-xl bg-papel-suave px-4 py-3 text-sm text-tinta-media">
           {revelados === 0 ? (
             <p>
               Todavía no calculaste ningún término. La fila Σ está en cero

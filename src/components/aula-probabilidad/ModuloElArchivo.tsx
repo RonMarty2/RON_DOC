@@ -20,7 +20,7 @@ import {
   Trampa,
 } from "./narrativa";
 
-const INSIGNIA = "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200";
+const INSIGNIA = "bg-borde text-tinta-media";
 
 /**
  * Segundo peldaño: de un puntaje suelto a un archivo.
@@ -43,7 +43,7 @@ export function ModuloElArchivo({ onContinuar }: { onContinuar: () => void }) {
         Una ficha
       </PasoTitulo>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Cuando un estudiante responde el cuestionario, su puntaje se guarda.
         Eso es una ficha: un estudiante y su número. Por ahora nada más que
         eso.
@@ -72,7 +72,7 @@ export function ModuloElArchivo({ onContinuar }: { onContinuar: () => void }) {
         Diez fichas
       </PasoTitulo>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Acá hay diez fichas del archivo. Con diez todavía se puede contar a
         mano, y eso es exactamente lo que vamos a hacer — antes de dejar que
         una máquina cuente doscientas por nosotros.
@@ -90,7 +90,7 @@ export function ModuloElArchivo({ onContinuar }: { onContinuar: () => void }) {
         Doscientas fichas
       </PasoTitulo>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Contar diez a mano se puede. Doscientas, no — y ahí es donde deja de
         alcanzar el sentido común y empieza a hacer falta el método.
       </p>
@@ -196,11 +196,11 @@ function DiezFichas() {
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <h4 className="font-serif text-lg font-semibold text-tinta">
         Marca las que el filtro debería marcar
       </h4>
-      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-2 text-sm text-tinta-media">
         La regla es una sola: se marca a quien saca{" "}
         <strong>{CORTE_TAMIZAJE} o más</strong>. Toca las fichas que
         correspondan.
@@ -226,16 +226,16 @@ function DiezFichas() {
                       : "border-rose-500 bg-rose-50 dark:border-rose-600 dark:bg-rose-950/30"
                     : marcada
                       ? "border-amber-500 bg-amber-50 dark:border-amber-600 dark:bg-amber-950/30"
-                      : "border-slate-200 hover:border-slate-400 dark:border-slate-700")
+                      : "border-borde hover:border-borde-fuerte")
                 }
               >
-                <span className="block text-[10px] text-slate-400">
+                <span className="block text-[10px] text-tinta-tenue">
                   #{f.id}
                 </span>
-                <span className="block text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+                <span className="block text-2xl font-semibold tabular-nums text-tinta">
                   {f.phq9}
                 </span>
-                <span className="block text-[10px] font-semibold uppercase tracking-wide text-slate-400">
+                <span className="block text-[10px] font-semibold uppercase tracking-wide text-tinta-tenue">
                   {revelado
                     ? deberia
                       ? "marcar"
@@ -255,7 +255,7 @@ function DiezFichas() {
           type="button"
           onClick={() => setRevelado(true)}
           disabled={revelado}
-          className="rounded-full bg-slate-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 disabled:opacity-50 dark:bg-slate-600 dark:hover:bg-slate-500"
+          className="rounded-full bg-tinta px-5 py-2.5 text-sm font-semibold text-papel shadow-sm transition hover:bg-tinta disabled:opacity-50"
         >
           Comprobar
         </button>
@@ -266,7 +266,7 @@ function DiezFichas() {
               setMarcadas(new Set());
               setRevelado(false);
             }}
-            className="rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-500 dark:border-slate-600 dark:text-slate-400"
+            className="rounded-full border border-borde-fuerte px-4 py-2 text-sm font-medium text-tinta-media transition hover:border-borde-fuerte"
           >
             Probar de nuevo
           </button>
@@ -274,7 +274,7 @@ function DiezFichas() {
       </div>
 
       {revelado && (
-        <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+        <div className="mt-4 rounded-xl bg-papel-suave px-4 py-3 text-sm text-tinta-media">
           <p>
             Acertaste <strong>{aciertos} de 10</strong>. De estas diez fichas,{" "}
             <strong>{correctas.length}</strong> superan el corte

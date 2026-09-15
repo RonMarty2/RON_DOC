@@ -110,17 +110,17 @@ export function VotacionSimulada({
     >
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <div>
-          <p className="font-mono text-xs font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+          <p className="tabular-nums text-xs font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
             Votación de clase
           </p>
-          <h4 className="mt-1 font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+          <h4 className="mt-1 font-serif text-lg font-semibold text-tinta">
             {pregunta}
           </h4>
         </div>
         <div className="flex items-center gap-3">
           {fase === "idle" && (
             <label className="flex items-center gap-2 text-xs">
-              <span className="font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              <span className="font-semibold uppercase tracking-wider text-tinta-tenue">
                 Estudiantes simulados
               </span>
               <input
@@ -129,7 +129,7 @@ export function VotacionSimulada({
                 max={200}
                 value={n}
                 onChange={(e) => setN(Math.max(5, Math.min(200, Number(e.target.value) || 0)))}
-                className="w-16 rounded-md border border-slate-200 bg-white px-2 py-1 text-sm tabular-nums dark:border-slate-700 dark:bg-slate-900"
+                className="w-16 rounded-md border border-borde bg-tarjeta px-2 py-1 text-sm tabular-nums"
               />
             </label>
           )}
@@ -151,17 +151,17 @@ export function VotacionSimulada({
                     "text-sm font-medium " +
                     (revelaCorrecta
                       ? "text-emerald-700 dark:text-emerald-300"
-                      : "text-slate-700 dark:text-slate-300")
+                      : "text-tinta-media")
                   }
                 >
                   {revelaCorrecta && <span aria-hidden>✓ </span>}
                   {op.texto}
                 </span>
-                <span className="text-xs tabular-nums text-slate-500 dark:text-slate-500">
+                <span className="text-xs tabular-nums text-tinta-tenue">
                   {v} ({pct.toFixed(0)}%)
                 </span>
               </div>
-              <div className="mt-1 h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+              <div className="mt-1 h-3 overflow-hidden rounded-full bg-papel-suave">
                 <div
                   className={
                     "h-full rounded-full transition-[width] duration-150 " +
@@ -191,7 +191,7 @@ export function VotacionSimulada({
           </button>
         )}
         {fase === "votando" && (
-          <p className="text-sm text-slate-700 dark:text-slate-300">
+          <p className="text-sm text-tinta-media">
             Recibiendo votos…{" "}
             <span className="tabular-nums">
               {emitidos}/{n}
@@ -203,14 +203,14 @@ export function VotacionSimulada({
             <button
               type="button"
               onClick={() => setFase("revelado")}
-              className="rounded-full bg-amber-500 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-600"
+              className="rounded-full bg-amber-500 px-5 py-2 text-sm font-semibold text-amber-950 shadow-sm transition hover:bg-amber-400"
             >
               🔍 Cerrar y revelar respuesta
             </button>
             <button
               type="button"
               onClick={reset}
-              className="rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              className="rounded-full border border-borde px-4 py-2 text-sm text-tinta-media transition hover:bg-papel-suave"
             >
               Repetir
             </button>
@@ -220,7 +220,7 @@ export function VotacionSimulada({
           <button
             type="button"
             onClick={reset}
-            className="rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full border border-borde px-4 py-2 text-sm text-tinta-media transition hover:bg-papel-suave"
           >
             Nueva votación
           </button>

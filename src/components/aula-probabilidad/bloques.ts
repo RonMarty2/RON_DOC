@@ -30,18 +30,18 @@ export interface BloqueEstilo {
 export const BLOQUES: Record<BloqueId, BloqueEstilo> = {
   preambulo: {
     etiqueta: "Antes de empezar",
-    activo: "border-slate-700 bg-slate-700 text-white",
+    activo: "border-tinta bg-tinta text-papel",
     inactivo:
-      "border-slate-200 bg-white text-slate-700 hover:border-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
-    texto: "text-slate-700 dark:text-slate-300",
-    insignia: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
-    barra: "bg-slate-400",
+      "border-borde bg-tarjeta text-tinta-media hover:border-borde-fuerte",
+    texto: "text-tinta-media",
+    insignia: "bg-papel-suave text-tinta-media",
+    barra: "bg-borde-fuerte",
   },
   fundamentos: {
     etiqueta: "Fundamentos",
     activo: "border-blue-600 bg-blue-600 text-white",
     inactivo:
-      "border-slate-200 bg-white text-slate-700 hover:border-blue-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+      "border-borde bg-tarjeta text-tinta-media hover:border-blue-400",
     texto: "text-blue-700 dark:text-blue-300",
     insignia: "bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300",
     barra: "bg-blue-500",
@@ -50,7 +50,7 @@ export const BLOQUES: Record<BloqueId, BloqueEstilo> = {
     etiqueta: "Herramientas de cálculo",
     activo: "border-indigo-600 bg-indigo-600 text-white",
     inactivo:
-      "border-slate-200 bg-white text-slate-700 hover:border-indigo-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+      "border-borde bg-tarjeta text-tinta-media hover:border-indigo-400",
     texto: "text-indigo-700 dark:text-indigo-300",
     insignia:
       "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300",
@@ -58,9 +58,9 @@ export const BLOQUES: Record<BloqueId, BloqueEstilo> = {
   },
   bayes: {
     etiqueta: "El clímax",
-    activo: "border-amber-600 bg-amber-600 text-white",
+    activo: "border-amber-700 bg-amber-700 text-white",
     inactivo:
-      "border-slate-200 bg-white text-slate-700 hover:border-amber-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+      "border-borde bg-tarjeta text-tinta-media hover:border-amber-400",
     texto: "text-amber-700 dark:text-amber-400",
     insignia:
       "bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300",
@@ -68,9 +68,9 @@ export const BLOQUES: Record<BloqueId, BloqueEstilo> = {
   },
   distribuciones: {
     etiqueta: "Distribuciones",
-    activo: "border-emerald-600 bg-emerald-600 text-white",
+    activo: "border-emerald-700 bg-emerald-700 text-white",
     inactivo:
-      "border-slate-200 bg-white text-slate-700 hover:border-emerald-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300",
+      "border-borde bg-tarjeta text-tinta-media hover:border-emerald-400",
     texto: "text-emerald-700 dark:text-emerald-400",
     insignia:
       "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300",

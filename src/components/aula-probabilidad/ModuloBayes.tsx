@@ -43,14 +43,14 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
   return (
     <div className="flex flex-col gap-6">
       <div className="rounded-2xl border-2 border-amber-300 bg-amber-50/60 p-5 dark:border-amber-800 dark:bg-amber-950/20 sm:p-6">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400">
+        <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-amber-700 dark:text-amber-400">
           La promesa del inicio
         </p>
-        <p className="mt-2 font-serif text-lg leading-snug text-slate-900 dark:text-slate-100">
+        <p className="mt-2 font-serif text-lg leading-snug text-tinta">
           «Hay un cuestionario que casi nunca falla y que, aun así, se equivoca
           en casi la mitad de las alarmas que da.»
         </p>
-        <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        <p className="mt-3 text-sm leading-relaxed text-tinta-media">
           Eso quedó dicho al abrir el capítulo, sin un solo número, y desde
           entonces fuiste juntando todo lo que hacía falta para entenderlo: qué
           es una probabilidad, cómo se cuenta, qué cambia cuando cambia el
@@ -59,7 +59,7 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
         </p>
       </div>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         En los años setenta, Kahneman y Tversky le plantearon este problema a
         médicos, psicólogos y estadísticos entrenados: una enfermedad afecta al
         1% de la población, un test la detecta con 95% de acierto, una persona
@@ -307,7 +307,7 @@ export function ModuloBayes({ onContinuar }: { onContinuar: () => void }) {
       <PasoTitulo numero={4} insignia={INSIGNIA}>
         El mismo test, distintas poblaciones
       </PasoTitulo>
-      <p className="text-sm text-slate-700 dark:text-slate-300">
+      <p className="text-sm text-tinta-media">
         Mueve la prevalencia sin tocar el instrumento — sensibilidad y
         especificidad quedan fijas en 88%. El valor predictivo cambia
         radicalmente.
@@ -444,21 +444,21 @@ function ArbolFrecuencias({
   const m = modeloBayes(prev, sens, esp, 1000);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <h4 className="font-serif text-lg font-semibold text-tinta">
         Los dos caminos hacia un positivo
       </h4>
-      <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-1 text-sm text-tinta-media">
         Con 1,000 estudiantes es más fácil de ver que con porcentajes: se
         cuentan personas, no fracciones.
       </p>
 
       <div className="mt-5 flex flex-col items-center gap-3">
-        <div className="rounded-xl border-2 border-slate-300 px-6 py-2.5 text-center dark:border-slate-600">
-          <p className="font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+        <div className="rounded-xl border-2 border-borde-fuerte px-6 py-2.5 text-center">
+          <p className="font-serif text-2xl font-semibold tabular-nums text-tinta">
             {m.N.toLocaleString("es")}
           </p>
-          <p className="text-xs text-slate-500">estudiantes tamizados</p>
+          <p className="text-xs text-tinta-tenue">estudiantes tamizados</p>
         </div>
 
         <div className="grid w-full gap-3 sm:grid-cols-2">
@@ -466,31 +466,31 @@ function ArbolFrecuencias({
             <p className="text-xs font-semibold uppercase tracking-wider text-rose-700 dark:text-rose-300">
               Sí tienen el trastorno
             </p>
-            <p className="font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="font-serif text-2xl font-semibold tabular-nums text-tinta">
               {m.enfermos}
             </p>
             <div className="mt-3 space-y-1.5 text-sm">
-              <p className="rounded-lg bg-rose-500 px-3 py-1.5 font-semibold text-white">
+              <p className="rounded-lg bg-rose-600 px-3 py-1.5 font-semibold text-white">
                 {m.VP} dan positivo <span className="opacity-75">(detectados)</span>
               </p>
-              <p className="rounded-lg bg-white px-3 py-1.5 text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+              <p className="rounded-lg bg-tarjeta px-3 py-1.5 text-tinta-media">
                 {m.FN} dan negativo <span className="opacity-75">(se escapan)</span>
               </p>
             </div>
           </div>
 
-          <div className="rounded-xl border-2 border-slate-300 bg-slate-50/50 p-4 dark:border-slate-700 dark:bg-slate-800/30">
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+          <div className="rounded-xl border-2 border-borde-fuerte bg-papel-suave/50 p-4">
+            <p className="text-xs font-semibold uppercase tracking-wider text-tinta-media">
               No lo tienen
             </p>
-            <p className="font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="font-serif text-2xl font-semibold tabular-nums text-tinta">
               {m.sanos}
             </p>
             <div className="mt-3 space-y-1.5 text-sm">
               <p className="rounded-lg bg-amber-400 px-3 py-1.5 font-semibold text-amber-950">
                 {m.FP} dan positivo <span className="opacity-75">(falsas alarmas)</span>
               </p>
-              <p className="rounded-lg bg-white px-3 py-1.5 text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+              <p className="rounded-lg bg-tarjeta px-3 py-1.5 text-tinta-media">
                 {m.VN} dan negativo <span className="opacity-75">(descartados)</span>
               </p>
             </div>
@@ -534,9 +534,9 @@ function DeslizadorPrevalencia({ sens, esp }: { sens: number; esp: number }) {
     )[0];
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <label className="flex flex-wrap items-center gap-4">
-        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+        <span className="text-sm font-medium text-tinta-media">
           Prevalencia en la población tamizada
         </span>
         <span className="font-serif text-xl font-semibold tabular-nums text-blue-700 dark:text-blue-300">
@@ -555,23 +555,23 @@ function DeslizadorPrevalencia({ sens, esp }: { sens: number; esp: number }) {
 
       <div className="mt-5 flex flex-wrap items-end gap-6">
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue">
             Valor predictivo positivo
           </p>
-          <p className="font-serif text-4xl font-semibold tabular-nums text-slate-900 dark:text-slate-100 sm:text-5xl">
+          <p className="font-serif text-4xl font-semibold tabular-nums text-tinta sm:text-5xl">
             {(vpp * 100).toFixed(1)}%
           </p>
         </div>
-        <p className="flex-1 text-sm text-slate-600 dark:text-slate-400">
+        <p className="flex-1 text-sm text-tinta-media">
           Un resultado positivo significa:{" "}
-          <strong className="text-slate-800 dark:text-slate-200">
+          <strong className="text-tinta">
             {ref.texto}
           </strong>
           .
         </p>
       </div>
 
-      <div className="mt-4 h-4 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+      <div className="mt-4 h-4 overflow-hidden rounded-full bg-papel-suave">
         <div
           className="h-full rounded-full bg-gradient-to-r from-amber-400 to-emerald-500 transition-[width] duration-200"
           style={{ width: `${vpp * 100}%` }}
@@ -588,14 +588,14 @@ function DeslizadorPrevalencia({ sens, esp }: { sens: number; esp: number }) {
               "rounded-full border px-3 py-1.5 text-xs font-medium transition " +
               (Math.abs(prevPct - r.prev) < 0.3
                 ? "border-blue-600 bg-blue-600 text-white"
-                : "border-slate-200 text-slate-600 hover:border-blue-300 dark:border-slate-700 dark:text-slate-400")
+                : "border-borde text-tinta-media hover:border-blue-300")
             }
           >
             {r.prev}%
           </button>
         ))}
       </div>
-      <p className="mt-3 text-xs text-slate-500 dark:text-slate-500">
+      <p className="mt-3 text-xs text-tinta-tenue">
         Sensibilidad y especificidad quedan fijas en{" "}
         {(sens * 100).toFixed(0)}% — el instrumento es exactamente el mismo en
         todos los casos.

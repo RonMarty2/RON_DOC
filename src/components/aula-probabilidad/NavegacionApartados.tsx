@@ -173,8 +173,8 @@ function ListaApartados({
               <span className={"h-1 w-3 shrink-0 rounded-full " + b.barra} />
               <span
                 className={
-                  "font-mono text-[9px] font-semibold uppercase tracking-widest transition " +
-                  (bloqueActivo ? b.texto : "text-slate-400 dark:text-slate-600")
+                  "tabular-nums text-[9px] font-semibold uppercase tracking-widest transition " +
+                  (bloqueActivo ? b.texto : "text-tinta-tenue")
                 }
               >
                 {b.etiqueta}
@@ -195,8 +195,8 @@ function ListaApartados({
                           (esActivo ? b.activo : b.inactivo)
                         : "flex w-full items-start gap-2 rounded-lg px-2 py-1.5 text-left text-[13px] leading-tight transition " +
                           (esActivo
-                            ? "bg-slate-100 font-semibold text-slate-900 dark:bg-slate-800 dark:text-slate-100"
-                            : "text-slate-500 hover:bg-slate-50 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-800/60 dark:hover:text-slate-200")
+                            ? "bg-papel-suave font-semibold text-tinta"
+                            : "text-tinta-tenue hover:bg-papel-suave hover:text-tinta")
                     }
                   >
                     <span aria-hidden className="shrink-0">
@@ -247,12 +247,12 @@ export function RielApartados({
       style={{ left: hueco.izquierda, width: hueco.ancho }}
       className="pointer-events-none fixed inset-y-0 z-20 flex items-center"
     >
-      <div className="pointer-events-auto max-h-[76vh] w-full overflow-y-auto rounded-2xl border border-slate-200 bg-white/95 p-3 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/95">
+      <div className="pointer-events-auto max-h-[76vh] w-full overflow-y-auto rounded-2xl border border-borde bg-tarjeta/95 p-3 shadow-sm backdrop-blur">
         <div className="mb-2 flex items-baseline justify-between gap-2">
-          <span className="font-mono text-[9px] font-semibold uppercase tracking-widest text-slate-400">
+          <span className="tabular-nums text-[9px] font-semibold uppercase tracking-widest text-tinta-tenue">
             Recorrido
           </span>
-          <span className="shrink-0 font-mono text-[10px] tabular-nums text-slate-400">
+          <span className="shrink-0 tabular-nums text-[10px] tabular-nums text-tinta-tenue">
             {indiceActivo + 1}/{MODULOS.length}
           </span>
         </div>
@@ -339,7 +339,7 @@ export function MenuApartados({
         >
           <path d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <span className="font-mono text-xs tabular-nums">
+        <span className="tabular-nums text-xs tabular-nums">
           {indiceActivo + 1}/{MODULOS.length}
         </span>
       </button>
@@ -353,16 +353,16 @@ export function MenuApartados({
           />
           <nav
             aria-label="Apartados"
-            className="pb-segura px-seguro fixed bottom-0 left-0 right-0 z-50 max-h-[80vh] overflow-y-auto rounded-t-2xl border-t border-slate-200 bg-white px-5 pt-4 shadow-2xl sm:bottom-20 sm:left-4 sm:right-auto sm:w-[min(18rem,calc(100vw-2rem))] sm:rounded-2xl sm:border sm:pb-4 dark:border-slate-700 dark:bg-slate-900"
+            className="pb-segura px-seguro fixed bottom-0 left-0 right-0 z-50 max-h-[80vh] overflow-y-auto rounded-t-2xl border-t border-borde bg-tarjeta px-5 pt-4 shadow-2xl sm:bottom-20 sm:left-4 sm:right-auto sm:w-[min(18rem,calc(100vw-2rem))] sm:rounded-2xl sm:border sm:pb-4"
           >
             <div className="mb-3 flex items-center justify-between gap-3">
-              <span className="min-w-0 truncate font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+              <span className="min-w-0 truncate tabular-nums text-[10px] font-semibold uppercase tracking-widest text-tinta-tenue">
                 Recorrido · {indiceActivo + 1} de {MODULOS.length}
               </span>
               <button
                 type="button"
                 onClick={() => setAbierto(false)}
-                className="text-sm text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                className="text-sm text-tinta-tenue hover:text-tinta-media"
               >
                 cerrar ✕
               </button>

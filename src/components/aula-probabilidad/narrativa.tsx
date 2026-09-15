@@ -22,14 +22,14 @@ export function Definicion({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-l-4 border-slate-800 pl-4 dark:border-slate-200">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+    <div className="border-l-4 border-tinta pl-4">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-tinta-tenue">
         Definición
       </p>
-      <p className="mt-0.5 font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+      <p className="mt-0.5 font-serif text-lg font-semibold text-tinta">
         {termino}
       </p>
-      <div className="mt-1 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <div className="mt-1 text-sm leading-relaxed text-tinta-media">
         {children}
       </div>
     </div>
@@ -122,7 +122,7 @@ export function Puente({
 }) {
   return (
     <div className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-white sm:p-8">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-blue-200">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-blue-200">
         Lo que sigue
       </p>
       <div className="mt-2 space-y-2 leading-relaxed text-blue-50">{children}</div>
@@ -228,7 +228,7 @@ export function Termino({
             left: pos.left,
             width: Math.min(288, typeof window !== "undefined" ? window.innerWidth - 24 : 288),
           }}
-          className="z-50 block rounded-xl border border-slate-200 bg-white p-3 text-left text-xs font-normal leading-relaxed text-slate-700 shadow-xl dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200"
+          className="z-50 block rounded-xl border border-borde bg-tarjeta p-3 text-left text-xs font-normal leading-relaxed text-tinta-media shadow-xl"
         >
           {significa}
         </span>
@@ -256,12 +256,12 @@ export function Ejemplos({
         type="button"
         onClick={() => setAbierto((v) => !v)}
         aria-expanded={abierto}
-        className="rounded-full border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-blue-400 hover:text-blue-700 dark:border-slate-600 dark:text-slate-400 dark:hover:border-blue-600 dark:hover:text-blue-300"
+        className="rounded-full border border-borde-fuerte px-3 py-1.5 text-xs font-semibold text-tinta-media transition hover:border-blue-400 hover:text-blue-700 dark:hover:border-blue-600 dark:hover:text-blue-300"
       >
         {abierto ? "Ocultar ejemplos" : titulo} {abierto ? "▲" : "▼"}
       </button>
       {abierto && (
-        <div className="mt-2 flex flex-col gap-2 rounded-xl bg-slate-50 p-4 text-sm dark:bg-slate-800/60">
+        <div className="mt-2 flex flex-col gap-2 rounded-xl bg-papel-suave p-4 text-sm">
           {children}
         </div>
       )}
@@ -278,12 +278,12 @@ export function Ejemplo({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-0.5 border-l-2 border-slate-300 pl-3 dark:border-slate-600">
-      <span className="font-mono text-sm text-slate-800 dark:text-slate-200">
+    <div className="flex flex-col gap-0.5 border-l-2 border-borde-fuerte pl-3">
+      <span className="tabular-nums text-sm text-tinta">
         {caso}
       </span>
       {children && (
-        <span className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+        <span className="text-xs leading-relaxed text-tinta-media">
           {children}
         </span>
       )}
@@ -318,20 +318,20 @@ export function Desarrollo({
   const completo = visibles >= pasos.length;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 px-5 py-2.5 dark:border-slate-800">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+    <div className="rounded-2xl border border-borde bg-tarjeta">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-borde px-5 py-2.5">
+        <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-tinta-tenue">
           {titulo}
         </p>
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[10px] tabular-nums text-slate-400">
+          <span className="tabular-nums text-[10px] tabular-nums text-tinta-tenue">
             {Math.min(visibles, pasos.length)} / {pasos.length}
           </span>
           {!completo && (
             <button
               type="button"
               onClick={() => setVisibles(pasos.length)}
-              className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 transition hover:text-slate-600 dark:hover:text-slate-300"
+              className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue transition hover:text-tinta-media"
             >
               Ver todo
             </button>
@@ -340,7 +340,7 @@ export function Desarrollo({
             <button
               type="button"
               onClick={() => setVisibles(1)}
-              className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 transition hover:text-slate-600 dark:hover:text-slate-300"
+              className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue transition hover:text-tinta-media"
             >
               Reiniciar
             </button>
@@ -348,7 +348,7 @@ export function Desarrollo({
         </div>
       </div>
 
-      <ol className="flex flex-col divide-y divide-slate-100 dark:divide-slate-800">
+      <ol className="flex flex-col divide-y divide-borde">
         {pasos.slice(0, visibles).map((p, i) => (
           <li key={i} className="flex gap-4 px-5 py-4">
             <span
@@ -360,10 +360,10 @@ export function Desarrollo({
               {i + 1}
             </span>
             <div className="min-w-0 flex-1">
-              <div className="overflow-x-auto text-lg leading-loose tabular-nums text-slate-900 dark:text-slate-100">
+              <div className="overflow-x-auto text-lg leading-loose tabular-nums text-tinta">
                 {p.expresion}
               </div>
-              <p className="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              <p className="mt-1.5 text-sm leading-relaxed text-tinta-media">
                 {p.explicacion}
               </p>
             </div>
@@ -372,12 +372,12 @@ export function Desarrollo({
       </ol>
 
       {!completo && (
-        <div className="border-t border-slate-100 px-5 py-3 dark:border-slate-800">
+        <div className="border-t border-borde px-5 py-3">
           <button
             type="button"
             onClick={() => setVisibles((v) => v + 1)}
             className={
-              "rounded-full border-2 px-4 py-2 text-sm font-semibold transition hover:bg-slate-50 dark:hover:bg-slate-800 " +
+              "rounded-full border-2 px-4 py-2 text-sm font-semibold transition hover:bg-papel-suave " +
               acento
             }
           >
@@ -413,8 +413,8 @@ const COLORES_PARTE = {
     chip: "text-emerald-700 dark:text-emerald-400",
   },
   gris: {
-    caja: "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200",
-    chip: "text-slate-500 dark:text-slate-400",
+    caja: "bg-papel-suave text-tinta",
+    chip: "text-tinta-tenue",
   },
 };
 
@@ -432,9 +432,9 @@ export function FormulaAnotada({
   partes: ParteFormula[];
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-2xl border border-borde bg-tarjeta">
       {titulo && (
-        <p className="border-b border-slate-100 px-5 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:border-slate-800 dark:text-slate-500">
+        <p className="border-b border-borde px-5 py-2.5 tabular-nums text-[10px] font-semibold uppercase tracking-widest text-tinta-tenue">
           {titulo}
         </p>
       )}
@@ -459,7 +459,7 @@ export function FormulaAnotada({
                 <span
                   className={
                     "rounded-lg px-2.5 py-1.5 text-lg leading-none " +
-                    (p.etiqueta ? c.caja : "text-slate-500 dark:text-slate-400")
+                    (p.etiqueta ? c.caja : "text-tinta-tenue")
                   }
                 >
                   {p.expresion}
@@ -470,7 +470,7 @@ export function FormulaAnotada({
         </div>
       </div>
       {partes.some((p) => p.significa) && (
-        <ul className="flex flex-col gap-1.5 border-t border-slate-100 px-5 py-4 text-sm dark:border-slate-800">
+        <ul className="flex flex-col gap-1.5 border-t border-borde px-5 py-4 text-sm">
           {partes
             .filter((p) => p.significa)
             .map((p, i) => {
@@ -484,7 +484,7 @@ export function FormulaAnotada({
                   >
                     {p.etiqueta}
                   </span>
-                  <span className="text-slate-600 dark:text-slate-400">
+                  <span className="text-tinta-media">
                     {p.significa}
                   </span>
                 </li>
@@ -522,15 +522,15 @@ export function Comprueba({
   const acerto = respondio && opciones[elegida].esCorrecta === true;
 
   return (
-    <div className="rounded-2xl border-2 border-slate-300 bg-slate-50/60 p-5 dark:border-slate-700 dark:bg-slate-900/60 sm:p-6">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+    <div className="rounded-2xl border-2 border-borde-fuerte bg-papel-suave/60 p-5 sm:p-6">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-tinta-tenue">
         Comprueba si lo entendiste
       </p>
-      <p className="mt-2 font-serif text-lg font-semibold leading-snug text-slate-900 dark:text-slate-100">
+      <p className="mt-2 font-serif text-lg font-semibold leading-snug text-tinta">
         {pregunta}
       </p>
       {pista && !respondio && (
-        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-tinta-tenue">
           {pista}
         </p>
       )}
@@ -551,7 +551,7 @@ export function Comprueba({
                   ? "border-emerald-600 bg-emerald-50 text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-200"
                   : esta
                     ? "border-rose-400 bg-rose-50 text-rose-900 dark:bg-rose-950/30 dark:text-rose-200"
-                    : "border-slate-200 bg-white text-slate-700 hover:border-blue-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300")
+                    : "border-borde bg-tarjeta text-tinta-media hover:border-blue-400")
               }
             >
               {mostrarCorrecta && <span aria-hidden>✓ </span>}
@@ -584,7 +584,7 @@ export function Comprueba({
           <button
             type="button"
             onClick={() => setElegida(null)}
-            className="self-start text-xs font-semibold uppercase tracking-wider text-slate-400 transition hover:text-slate-600 dark:hover:text-slate-300"
+            className="self-start text-xs font-semibold uppercase tracking-wider text-tinta-tenue transition hover:text-tinta-media"
           >
             Intentar de nuevo
           </button>
@@ -617,7 +617,7 @@ export function PasoTitulo({
       >
         {numero}
       </span>
-      <h4 className="font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+      <h4 className="font-serif text-xl font-semibold text-tinta">
         {children}
       </h4>
     </div>
@@ -635,7 +635,7 @@ export function PasoTitulo({
  */
 export function Hilo({ children }: { children: React.ReactNode }) {
   return (
-    <p className="flex gap-3 border-l-2 border-slate-300 py-1 pl-4 text-[15px] leading-relaxed text-slate-600 italic dark:border-slate-600 dark:text-slate-400">
+    <p className="flex gap-3 border-l-2 border-borde-fuerte py-1 pl-4 text-[15px] leading-relaxed text-tinta-media italic">
       {children}
     </p>
   );
@@ -657,9 +657,9 @@ export function IndiceApartado({
   return (
     <nav
       aria-label="Contenido del apartado"
-      className="rounded-2xl border border-slate-200 bg-slate-50/60 p-4 dark:border-slate-800 dark:bg-slate-900/60"
+      className="rounded-2xl border border-borde bg-papel-suave/60 p-4"
     >
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-tinta-tenue">
         En este apartado
       </p>
       <ol className="mt-2 flex flex-wrap gap-2">
@@ -667,7 +667,7 @@ export function IndiceApartado({
           <li key={p}>
             <a
               href={`#paso-${i + 1}`}
-              className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:border-blue-400 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-600 dark:hover:text-blue-300"
+              className="flex items-center gap-2 rounded-full border border-borde bg-tarjeta px-3 py-1.5 text-xs font-medium text-tinta-media transition hover:border-blue-400 hover:text-blue-700 dark:hover:border-blue-600 dark:hover:text-blue-300"
             >
               <span
                 className={
@@ -699,11 +699,11 @@ export function Cierre({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border-l-4 border-slate-800 bg-slate-50/60 py-4 pl-5 pr-4 dark:border-slate-200 dark:bg-slate-900/60">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+    <div className="rounded-2xl border-l-4 border-tinta bg-papel-suave/60 py-4 pl-5 pr-4">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-tinta-tenue">
         {titulo}
       </p>
-      <div className="mt-2 space-y-2 text-[15px] leading-relaxed text-slate-700 dark:text-slate-300">
+      <div className="mt-2 space-y-2 text-[15px] leading-relaxed text-tinta-media">
         {children}
       </div>
     </div>

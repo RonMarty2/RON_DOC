@@ -101,7 +101,7 @@ export function ModuloEspacioMuestral({
 }) {
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-[15px] leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="text-[15px] leading-relaxed text-tinta-media">
         Antes de calcular una sola probabilidad hay que delimitar con precisión
         de qué estamos hablando. Suena a formalismo, pero no lo es: la mayoría
         de los errores de este capítulo no vienen de equivocarse en una cuenta,
@@ -483,9 +483,9 @@ function UnDadoInteractivo() {
           : "evento compuesto";
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="font-serif text-lg font-semibold text-tinta">
           Tira el dado
         </h4>
         <div className="flex flex-wrap gap-2">
@@ -516,7 +516,7 @@ function UnDadoInteractivo() {
           <button
             type="button"
             onClick={reset}
-            className="rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full border border-borde px-4 py-2 text-sm text-tinta-media transition hover:bg-papel-suave"
           >
             Reiniciar
           </button>
@@ -545,19 +545,19 @@ function UnDadoInteractivo() {
               <span className="w-6 shrink-0 text-center text-xl sm:w-8 sm:text-2xl" aria-hidden>
                 {CARAS_DADO[cara - 1]}
               </span>
-              <div className="relative h-4 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+              <div className="relative h-4 flex-1 overflow-hidden rounded-full bg-papel-suave">
                 <div
                   className="h-full rounded-full bg-blue-500 transition-[width] duration-200"
                   style={{ width: `${pct}%` }}
                 />
                 <div
                   aria-hidden
-                  className="absolute top-0 h-full w-0.5 bg-slate-900/40 dark:bg-slate-100/40"
+                  className="absolute top-0 h-full w-0.5 bg-tinta/40"
                   style={{ left: "16.666%" }}
                   title="Valor teórico: 16.7%"
                 />
               </div>
-              <span className="w-16 shrink-0 text-right text-xs tabular-nums text-slate-600 sm:w-24 dark:text-slate-400">
+              <span className="w-16 shrink-0 text-right text-xs tabular-nums text-tinta-media sm:w-24">
                 {c} · {pct.toFixed(1)}%
               </span>
             </div>
@@ -565,7 +565,7 @@ function UnDadoInteractivo() {
         })}
       </div>
 
-      <div className="mt-5 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+      <div className="mt-5 rounded-xl bg-papel-suave px-4 py-3 text-sm text-tinta-media">
         {total === 0 ? (
           <p>
             Todavía no tiraste. La línea gris de cada barra marca dónde
@@ -621,7 +621,7 @@ function UnDadoInteractivo() {
       </div>
 
       {/* Definición + interactivo: punto muestral y suceso */}
-      <div className="mt-6 border-t border-slate-100 pt-5 dark:border-slate-800">
+      <div className="mt-6 border-t border-borde pt-5">
         <Definicion termino="Punto muestral">
           Cada resultado individual dentro del espacio muestral. Cada vez que
           tiras el dado obtienes exactamente un punto muestral.
@@ -687,8 +687,8 @@ function UnDadoInteractivo() {
         </Definicion>
       </div>
 
-      <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+      <div className="mt-4 rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+        <p className="text-sm font-medium text-tinta-media">
           Arma tu propio evento — toca las caras que quieras incluir:
         </p>
         <div className="mt-3 flex justify-center gap-2">
@@ -701,7 +701,7 @@ function UnDadoInteractivo() {
                 "grid h-11 w-11 place-items-center rounded-lg border-2 text-2xl transition " +
                 (evento.has(cara)
                   ? "border-emerald-600 bg-emerald-50 dark:bg-emerald-950/40"
-                  : "border-slate-200 dark:border-slate-700")
+                  : "border-borde")
               }
             >
               {CARAS_DADO[cara - 1]}
@@ -709,7 +709,7 @@ function UnDadoInteractivo() {
           ))}
         </div>
         <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
-          <span className="text-xs text-slate-400">Prueba:</span>
+          <span className="text-xs text-tinta-tenue">Prueba:</span>
           {[
             { etiqueta: "los pares", caras: [2, 4, 6] },
             { etiqueta: "los primos", caras: [2, 3, 5] },
@@ -721,13 +721,13 @@ function UnDadoInteractivo() {
               key={s.etiqueta}
               type="button"
               onClick={() => setEvento(new Set(s.caras))}
-              className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-slate-700 dark:text-slate-400 dark:hover:border-emerald-600 dark:hover:text-emerald-300"
+              className="rounded-full border border-borde px-3 py-1 text-xs text-tinta-media transition hover:border-emerald-400 hover:text-emerald-700 dark:hover:border-emerald-600 dark:hover:text-emerald-300"
             >
               {s.etiqueta}
             </button>
           ))}
         </div>
-        <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+        <div className="mt-4 rounded-xl bg-papel-suave px-4 py-3 text-sm text-tinta-media">
           <p>
             Tu evento es{" "}
             <strong>
@@ -768,19 +768,19 @@ function UnDadoInteractivo() {
             )}
           </p>
           {evento.size === 0 && (
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <p className="mt-2 text-tinta-media">
               Sin ninguna cara adentro, no hay resultado que lo haga ocurrir:
               es el evento imposible, y su probabilidad es 0 por más que tires.
             </p>
           )}
           {evento.size === 6 && (
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <p className="mt-2 text-tinta-media">
               Con las seis caras adentro, cualquier resultado lo hace ocurrir:
               es el evento seguro, y su probabilidad es 1 (100%).
             </p>
           )}
           {evento.size > 0 && evento.size < 6 && !descripcion && (
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <p className="mt-2 text-tinta-media">
               Este conjunto no responde a ninguna propiedad simple: no son «los
               pares», ni «los primos», ni «los mayores que 3». Cuando eso pasa,
               la única forma de describir el evento es{" "}
@@ -790,7 +790,7 @@ function UnDadoInteractivo() {
             </p>
           )}
           {descripcion && evento.size < 6 && (
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <p className="mt-2 text-tinta-media">
               Fíjate que el mismo evento se puede escribir de dos formas: por{" "}
               <strong>enumeración</strong> (la lista de caras) o por{" "}
               <strong>comprensión</strong> (la propiedad que las une). Las dos
@@ -872,9 +872,9 @@ function DosDadosInteractivo() {
   const total = historial.length;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="font-serif text-lg font-semibold text-tinta">
           Tira los dos dados
         </h4>
         <div className="flex flex-wrap gap-2">
@@ -889,7 +889,7 @@ function DosDadosInteractivo() {
           <button
             type="button"
             onClick={reset}
-            className="rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full border border-borde px-4 py-2 text-sm text-tinta-media transition hover:bg-papel-suave"
           >
             Reiniciar
           </button>
@@ -898,16 +898,16 @@ function DosDadosInteractivo() {
 
       <div className="mt-6 flex items-center justify-center gap-4">
         <div className="flex flex-col items-center gap-1">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue">
             Dado A
           </span>
           <div className="grid h-16 w-16 place-items-center rounded-2xl border-2 border-blue-600 bg-blue-50 text-4xl shadow-sm dark:bg-blue-950/40">
             {ultimo === null ? "🎲" : CARAS_DADO[ultimo[0] - 1]}
           </div>
         </div>
-        <span className="text-xl font-semibold text-slate-400">+</span>
+        <span className="text-xl font-semibold text-tinta-tenue">+</span>
         <div className="flex flex-col items-center gap-1">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue">
             Dado B
           </span>
           <div className="grid h-16 w-16 place-items-center rounded-2xl border-2 border-amber-500 bg-amber-50 text-4xl shadow-sm dark:bg-amber-950/30">
@@ -917,7 +917,7 @@ function DosDadosInteractivo() {
       </div>
 
       {ultimo && (
-        <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-4 text-center text-sm text-tinta-media">
           Par{" "}
           <strong className="tabular-nums">
             ({ultimo[0]}, {ultimo[1]})
@@ -928,7 +928,7 @@ function DosDadosInteractivo() {
 
       <div className="mt-5 overflow-x-auto">
         <table className="mx-auto border-collapse text-center">
-          <caption className="mb-2 text-xs text-slate-500 dark:text-slate-400">
+          <caption className="mb-2 text-xs text-tinta-tenue">
             Filas = Dado A · Columnas = Dado B
           </caption>
           <thead>
@@ -963,7 +963,7 @@ function DosDadosInteractivo() {
                           ? "border-blue-600 bg-blue-600 text-white ring-2 ring-blue-400"
                           : c > 0
                             ? "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300"
-                            : "border-slate-200 text-slate-300 dark:border-slate-800 dark:text-slate-700")
+                            : "border-borde text-borde-fuerte")
                       }
                     >
                       {c > 0 ? c : "·"}
@@ -975,7 +975,7 @@ function DosDadosInteractivo() {
           </tbody>
         </table>
       </div>
-      <p className="mt-3 text-center text-xs text-slate-500 dark:text-slate-500">
+      <p className="mt-3 text-center text-xs text-tinta-tenue">
         {total === 0
           ? "36 casillas posibles (6 × 6). Todavía vacías."
           : `${total} tiradas anotadas. Cada casilla es cuántas veces salió esa combinación exacta.`}
@@ -1027,9 +1027,9 @@ function TamizajeInteractivo() {
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="font-serif text-lg font-semibold text-tinta">
           Tamiza estudiantes, uno por uno
         </h4>
         <div className="flex flex-wrap gap-2">
@@ -1060,7 +1060,7 @@ function TamizajeInteractivo() {
           <button
             type="button"
             onClick={reset}
-            className="rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full border border-borde px-4 py-2 text-sm text-tinta-media transition hover:bg-papel-suave"
           >
             Reiniciar
           </button>
@@ -1068,7 +1068,7 @@ function TamizajeInteractivo() {
       </div>
 
       {ultimo && (
-        <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-2 text-center text-sm text-tinta-media">
           Estudiante #{ultimo.id}, PHQ-9 ={" "}
           <strong className="tabular-nums">{ultimo.phq9}</strong>
           {ultimo.phq9 >= 10 ? " (positivo)" : " (negativo)"}. Llevamos{" "}
@@ -1095,7 +1095,7 @@ function TamizajeInteractivo() {
                   className={
                     "text-[10px] tabular-nums " +
                     (c > 0
-                      ? "font-bold text-slate-700 dark:text-slate-300"
+                      ? "font-bold text-tinta-media"
                       : "text-transparent")
                   }
                 >
@@ -1110,7 +1110,7 @@ function TamizajeInteractivo() {
                         ? "ring-2 ring-blue-500 "
                         : "") +
                       (c === 0
-                        ? "bg-slate-100 dark:bg-slate-800"
+                        ? "bg-papel-suave"
                         : zonaPositiva
                           ? "bg-amber-500"
                           : "bg-blue-500")
@@ -1126,7 +1126,7 @@ function TamizajeInteractivo() {
                       ? "font-bold text-blue-700 dark:text-blue-300"
                       : zonaPositiva
                         ? "text-amber-600 dark:text-amber-500"
-                        : "text-slate-400")
+                        : "text-tinta-tenue")
                   }
                 >
                   {v}
@@ -1136,13 +1136,13 @@ function TamizajeInteractivo() {
           })}
         </div>
       </div>
-      <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+      <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-tinta-tenue">
         <span>
-          <strong className="text-slate-700 dark:text-slate-300">Abajo</strong>{" "}
+          <strong className="text-tinta-media">Abajo</strong>{" "}
           = puntaje posible (0 a 27)
         </span>
         <span>
-          <strong className="text-slate-700 dark:text-slate-300">Arriba</strong>{" "}
+          <strong className="text-tinta-media">Arriba</strong>{" "}
           = cuántos estudiantes lo sacaron
         </span>
         <span className="flex items-center gap-1.5">
@@ -1159,7 +1159,7 @@ function TamizajeInteractivo() {
           color="ambar"
         />
       </div>
-      <div className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+      <div className="mt-3 rounded-xl bg-papel-suave px-4 py-3 text-sm text-tinta-media">
         {indice === 0 ? (
           <p>Tamiza al primer estudiante y el cálculo va a aparecer aquí.</p>
         ) : indice < 20 ? (
@@ -1259,13 +1259,13 @@ function DadoEItem() {
 
   return (
     <div className="rounded-2xl border-2 border-blue-300 bg-blue-50/40 p-5 dark:border-blue-800 dark:bg-blue-950/20 sm:p-6">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
         El mismo experimento, dos objetos
       </p>
-      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+      <h4 className="mt-1 font-serif text-xl font-semibold text-tinta">
         Un dado y un ítem de cuestionario son la misma cosa
       </h4>
-      <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mt-2 text-sm leading-relaxed text-tinta-media">
         El dado no es el tema de la materia: es el objeto más limpio para ver
         la estructura. Acá está esa estructura al lado del objeto que vas a
         usar toda tu carrera. Tíralos juntos.
@@ -1273,8 +1273,8 @@ function DadoEItem() {
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {/* El dado */}
-        <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+        <div className="rounded-xl border border-borde bg-tarjeta p-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-tinta-tenue">
             Un dado
           </p>
           <div className="mt-3 grid h-20 place-content-center">
@@ -1282,20 +1282,20 @@ function DadoEItem() {
               {visible === null ? "🎲" : CARAS_DADO[visible.dado - 1]}
             </span>
           </div>
-          <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-400">
+          <p className="mt-2 text-center text-sm text-tinta-media">
             {visible === null ? "Sin tirar" : `Salió ${visible.dado}`}
           </p>
-          <p className="mt-3 border-t border-slate-100 pt-2 text-center font-mono text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+          <p className="mt-3 border-t border-borde pt-2 text-center tabular-nums text-xs text-tinta-tenue">
             S = {"{1, 2, 3, 4, 5, 6}"} · 6 resultados
           </p>
         </div>
 
         {/* El ítem */}
-        <div className="rounded-xl border border-blue-300 bg-white p-4 dark:border-blue-700 dark:bg-slate-900">
+        <div className="rounded-xl border border-blue-300 bg-tarjeta p-4 dark:border-blue-700">
           <p className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
             Un ítem del cuestionario
           </p>
-          <p className="mt-1 text-xs italic leading-snug text-slate-500 dark:text-slate-400">
+          <p className="mt-1 text-xs italic leading-snug text-tinta-tenue">
             «¿Con qué frecuencia te sentiste decaído o sin esperanzas en las
             últimas dos semanas?»
           </p>
@@ -1309,16 +1309,16 @@ function DadoEItem() {
                     "flex items-center gap-2 rounded-md px-2 py-1 text-xs transition " +
                     (elegida
                       ? "bg-blue-600 font-semibold text-white"
-                      : "text-slate-600 dark:text-slate-400")
+                      : "text-tinta-media")
                   }
                 >
-                  <span className="font-mono tabular-nums">{o.valor}</span>
+                  <span className="tabular-nums tabular-nums">{o.valor}</span>
                   <span className="truncate">{o.texto}</span>
                 </div>
               );
             })}
           </div>
-          <p className="mt-3 border-t border-slate-100 pt-2 text-center font-mono text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+          <p className="mt-3 border-t border-borde pt-2 text-center tabular-nums text-xs text-tinta-tenue">
             S = {"{0, 1, 2, 3}"} · 4 resultados
           </p>
         </div>
@@ -1335,7 +1335,7 @@ function DadoEItem() {
 
       {n > 0 && (
         <div className="mt-4">
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p className="text-xs font-semibold uppercase tracking-wider text-tinta-tenue">
             Lo que fue saliendo ({n} {n === 1 ? "vez" : "veces"})
           </p>
           <div className="mt-2 -mx-1 overflow-x-auto px-1">
@@ -1343,12 +1343,12 @@ function DadoEItem() {
               {resultados.map((r, i) => (
                 <div
                   key={i}
-                  className="grid w-10 shrink-0 gap-0.5 rounded-lg bg-white px-1 py-1 text-center dark:bg-slate-800"
+                  className="grid w-10 shrink-0 gap-0.5 rounded-lg bg-tarjeta px-1 py-1 text-center"
                 >
-                  <span className="font-mono text-sm font-semibold tabular-nums text-slate-700 dark:text-slate-200">
+                  <span className="tabular-nums text-sm font-semibold tabular-nums text-tinta-media">
                     {r.dado}
                   </span>
-                  <span className="border-t border-slate-100 pt-0.5 font-mono text-sm font-semibold tabular-nums text-blue-600 dark:border-slate-700 dark:text-blue-400">
+                  <span className="border-t border-borde pt-0.5 tabular-nums text-sm font-semibold tabular-nums text-blue-600 dark:text-blue-400">
                     {r.item}
                   </span>
                 </div>
@@ -1358,7 +1358,7 @@ function DadoEItem() {
         </div>
       )}
 
-      <div className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+      <div className="mt-4 rounded-xl bg-tarjeta px-4 py-3 text-sm text-tinta-media">
         {n === 0 ? (
           <>
             Fíjate antes de tirar: en los dos casos sabes{" "}
@@ -1371,7 +1371,7 @@ function DadoEItem() {
             Los dos espacios muestrales tienen la misma naturaleza y distinto
             tamaño: 6 contra 4. Todo lo que vale para el dado vale para el
             ítem, cambiando el 6 por el 4.
-            <span className="mt-2 block text-slate-600 dark:text-slate-400">
+            <span className="mt-2 block text-tinta-media">
               <strong>Con una diferencia que importa:</strong> las seis caras
               del dado son igual de probables y las cuatro opciones del ítem
               no. Mucha gente responde 0 y muy poca responde 3. Por eso la
@@ -1414,13 +1414,13 @@ function Puente2ItemsPuntaje() {
 
   return (
     <div className="rounded-2xl border-2 border-blue-300 bg-blue-50/40 p-5 dark:border-blue-800 dark:bg-blue-950/20 sm:p-6">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
         La misma tabla, con el cuestionario
       </p>
-      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+      <h4 className="mt-1 font-serif text-xl font-semibold text-tinta">
         Dos ítems también arman una tabla, y también tienen un centro
       </h4>
-      <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mt-2 text-sm leading-relaxed text-tinta-media">
         Dos ítems de 4 opciones dan <strong>4 × 4 = 16</strong> formas de
         responder, y su suma va de 0 a 6. Igual que con los dados, los totales
         del medio se pueden lograr de más maneras:
@@ -1431,13 +1431,13 @@ function Puente2ItemsPuntaje() {
         <table className="min-w-max border-collapse text-center text-sm">
           <thead>
             <tr>
-              <th className="p-1 text-[10px] font-medium uppercase tracking-wider text-slate-400">
+              <th className="p-1 text-[10px] font-medium uppercase tracking-wider text-tinta-tenue">
                 ítem 1 ╲ 2
               </th>
               {[0, 1, 2, 3].map((b) => (
                 <th
                   key={b}
-                  className="w-11 p-1 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400"
+                  className="w-11 p-1 tabular-nums text-xs font-semibold text-blue-600 dark:text-blue-400"
                 >
                   {b}
                 </th>
@@ -1447,13 +1447,13 @@ function Puente2ItemsPuntaje() {
           <tbody>
             {[0, 1, 2, 3].map((a) => (
               <tr key={a}>
-                <th className="p-1 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">
+                <th className="p-1 tabular-nums text-xs font-semibold text-blue-600 dark:text-blue-400">
                   {a}
                 </th>
                 {[0, 1, 2, 3].map((b) => (
                   <td
                     key={b}
-                    className="border border-slate-200 bg-white p-1.5 font-mono text-sm tabular-nums text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                    className="border border-borde bg-tarjeta p-1.5 tabular-nums text-sm tabular-nums text-tinta-media"
                   >
                     {a + b}
                   </td>
@@ -1465,7 +1465,7 @@ function Puente2ItemsPuntaje() {
       </div>
 
       {/* Cuántas maneras dan cada puntaje */}
-      <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
+      <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-tinta-tenue">
         De cuántas maneras sale cada puntaje
       </p>
       <div className="mt-2 -mx-1 overflow-x-auto px-1">
@@ -1474,14 +1474,14 @@ function Puente2ItemsPuntaje() {
             const cuantas = combinaciones[s].length;
             return (
               <div key={s} className="flex w-12 flex-col items-center gap-1">
-                <span className="font-mono text-xs tabular-nums text-slate-500 dark:text-slate-400">
+                <span className="tabular-nums text-xs tabular-nums text-tinta-tenue">
                   {cuantas}
                 </span>
                 <div
                   className="w-full rounded-t bg-blue-500 transition-all"
                   style={{ height: `${(cuantas / maximo) * 70 + 6}px` }}
                 />
-                <span className="font-mono text-xs font-semibold tabular-nums text-slate-700 dark:text-slate-200">
+                <span className="tabular-nums text-xs font-semibold tabular-nums text-tinta-media">
                   {s}
                 </span>
               </div>
@@ -1490,13 +1490,13 @@ function Puente2ItemsPuntaje() {
         </div>
       </div>
 
-      <div className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+      <div className="mt-4 rounded-xl bg-tarjeta px-4 py-3 text-sm text-tinta-media">
         <p>
           El puntaje <strong>3</strong> sale de 4 maneras (0+3, 1+2, 2+1, 3+0)
           y el <strong>0</strong> de una sola. Es la misma forma de campana que
           con dos dados, por la misma razón.
         </p>
-        <p className="mt-2 text-slate-600 dark:text-slate-400">
+        <p className="mt-2 text-tinta-media">
           Con nueve ítems en vez de dos, esa campana se vuelve mucho más
           marcada — y eso es exactamente por qué los puntajes de un cuestionario
           se distribuyen como se distribuyen, que es el tema del apartado 2.9.

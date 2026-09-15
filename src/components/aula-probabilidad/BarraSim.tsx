@@ -31,21 +31,21 @@ export function BarraSim({
   return (
     <div className="flex flex-col gap-1">
       <div className="flex items-baseline justify-between gap-3">
-        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+        <span className="text-sm font-medium text-tinta-media">
           {etiqueta}
         </span>
         <span
           className={
             "font-serif text-2xl font-semibold tabular-nums sm:text-3xl " +
             (progreso < 1
-              ? "text-slate-400 dark:text-slate-500"
-              : "text-slate-900 dark:text-slate-100")
+              ? "text-tinta-tenue"
+              : "text-tinta")
           }
         >
           {porcentaje.toFixed(1)}%
         </span>
       </div>
-      <div className="relative h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+      <div className="relative h-3 overflow-hidden rounded-full bg-papel-suave">
         <div
           className={"h-full rounded-full transition-[width] duration-150 " + clases}
           style={{ width: ancho + "%" }}
@@ -53,14 +53,14 @@ export function BarraSim({
         {esperadoPct !== undefined && (
           <div
             aria-hidden
-            className="absolute top-0 h-full w-0.5 bg-slate-900/50 dark:bg-slate-100/50"
+            className="absolute top-0 h-full w-0.5 bg-tinta/50"
             style={{ left: `calc(${esperadoPct}% - 1px)` }}
             title={`Valor teórico: ${esperadoPct.toFixed(1)}%`}
           />
         )}
       </div>
       {esperadoPct !== undefined && (
-        <p className="text-xs text-slate-500 dark:text-slate-500">
+        <p className="text-xs text-tinta-tenue">
           Valor teórico esperado:{" "}
           <span className="font-semibold tabular-nums">
             {esperadoPct.toFixed(1)}%

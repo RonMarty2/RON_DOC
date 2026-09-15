@@ -43,7 +43,7 @@ export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
         onClick={() => setAbierto((v) => !v)}
         aria-expanded={abierto}
         className={
-          "abajo-seguro fixed right-4 z-40 flex items-center gap-2 rounded-full bg-slate-800 px-4 py-3 text-sm font-semibold text-white shadow-lg transition duration-200 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 " +
+          "abajo-seguro fixed right-4 z-40 flex items-center gap-2 rounded-full bg-tinta px-4 py-3 text-sm font-semibold text-papel shadow-lg transition duration-200 hover:bg-tinta " +
           (alaVista || abierto
             ? "translate-y-0 opacity-100"
             : "pointer-events-none translate-y-24 opacity-0")
@@ -61,26 +61,26 @@ export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
             aria-hidden
           />
           <aside
-            className="pb-segura px-seguro fixed bottom-0 left-0 right-0 z-50 max-h-[80vh] overflow-y-auto rounded-t-2xl border-t border-slate-200 bg-white px-5 pt-5 shadow-2xl sm:bottom-20 sm:left-auto sm:right-4 sm:max-h-[70vh] sm:w-96 sm:rounded-2xl sm:border sm:pb-5 dark:border-slate-700 dark:bg-slate-900"
+            className="pb-segura px-seguro fixed bottom-0 left-0 right-0 z-50 max-h-[80vh] overflow-y-auto rounded-t-2xl border-t border-borde bg-tarjeta px-5 pt-5 shadow-2xl sm:bottom-20 sm:left-auto sm:right-4 sm:max-h-[70vh] sm:w-96 sm:rounded-2xl sm:border sm:pb-5"
             aria-label="Datos del caso"
           >
             <div className="flex items-center justify-between">
-              <h3 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+              <h3 className="font-serif text-lg font-semibold text-tinta">
                 Datos del caso
               </h3>
               <button
                 type="button"
                 onClick={() => setAbierto(false)}
-                className="rounded-full px-2 py-1 text-sm text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                className="rounded-full px-2 py-1 text-sm text-tinta-tenue hover:text-tinta-media"
               >
                 cerrar ✕
               </button>
             </div>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-xs text-tinta-tenue">
               Todo lo que hace falta recordar, sin salir de donde estás.
             </p>
             {!veDiagnostico && (
-              <p className="mt-2 rounded-lg bg-slate-100 px-3 py-2 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+              <p className="mt-2 rounded-lg bg-papel-suave px-3 py-2 text-xs text-tinta-tenue">
                 Este panel crece contigo: por ahora muestra sólo los datos que
                 ya se presentaron. La tabla de 2×2 y los indicadores aparecen
                 en el apartado 2.3, cuando haya con qué calcularlos.
@@ -107,7 +107,7 @@ export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
               <Bloque titulo="La tabla de 2×2 (apartado 2.3)">
                 <table className="w-full border-collapse text-center text-xs">
                   <thead>
-                    <tr className="text-slate-500 dark:text-slate-400">
+                    <tr className="text-tinta-tenue">
                       <th className="py-1" />
                       <th className="py-1 font-medium">Dx sí</th>
                       <th className="py-1 font-medium">Dx no</th>
@@ -115,7 +115,7 @@ export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
                   </thead>
                   <tbody className="tabular-nums">
                     <tr>
-                      <th className="py-1 text-right text-xs font-medium text-slate-500">
+                      <th className="py-1 text-right text-xs font-medium text-tinta-tenue">
                         Test +
                       </th>
                       <td className="rounded bg-emerald-100 py-1.5 font-bold text-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-200">
@@ -126,7 +126,7 @@ export function PanelDelCaso({ indiceActivo }: { indiceActivo: number }) {
                       </td>
                     </tr>
                     <tr>
-                      <th className="py-1 text-right text-xs font-medium text-slate-500">
+                      <th className="py-1 text-right text-xs font-medium text-tinta-tenue">
                         Test −
                       </th>
                       <td className="rounded bg-rose-100 py-1.5 font-bold text-rose-900 dark:bg-rose-950/50 dark:text-rose-200">
@@ -191,7 +191,7 @@ function Bloque({
 }) {
   return (
     <div className="mt-4">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-tinta-tenue">
         {titulo}
       </p>
       <div className="mt-1.5 flex flex-col gap-1">{children}</div>
@@ -218,11 +218,11 @@ function Dato({
       }
     >
       <span className="min-w-0 flex-1">
-        <span className="text-sm text-slate-700 dark:text-slate-300">
+        <span className="text-sm text-tinta-media">
           {etiqueta}
         </span>
         {sub && (
-          <span className="block text-[10px] leading-tight text-slate-400">
+          <span className="block text-[10px] leading-tight text-tinta-tenue">
             {sub}
           </span>
         )}
@@ -232,7 +232,7 @@ function Dato({
           "shrink-0 font-serif text-base font-semibold tabular-nums " +
           (destacado
             ? "text-amber-700 dark:text-amber-400"
-            : "text-slate-900 dark:text-slate-100")
+            : "text-tinta")
         }
       >
         {valor}

@@ -67,39 +67,39 @@ export function ArmarPuntaje() {
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="font-serif text-lg font-semibold text-tinta">
           Responde el cuestionario y mira cómo se arma el puntaje
         </h4>
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => preset(0)}
-            className="rounded-full border border-slate-200 px-3 py-1.5 text-xs text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full border border-borde px-3 py-1.5 text-xs text-tinta-media transition hover:bg-papel-suave"
           >
             Todo en 0
           </button>
           <button
             type="button"
             onClick={() => preset(3)}
-            className="rounded-full border border-slate-200 px-3 py-1.5 text-xs text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full border border-borde px-3 py-1.5 text-xs text-tinta-media transition hover:bg-papel-suave"
           >
             Todo en 3
           </button>
         </div>
       </div>
 
-      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-2 text-sm text-tinta-media">
         Nueve preguntas. Cada una se responde según con qué frecuencia
         molestó ese síntoma en las últimas dos semanas.
       </p>
 
       {/* Leyenda de las 4 respuestas */}
-      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs text-tinta-tenue">
         {RESPUESTAS.map((r) => (
           <span key={r.valor}>
-            <strong className="tabular-nums text-slate-700 dark:text-slate-300">
+            <strong className="tabular-nums text-tinta-media">
               {r.corta}
             </strong>{" "}
             = {r.larga}
@@ -108,14 +108,14 @@ export function ArmarPuntaje() {
       </div>
 
       {/* Los 9 ítems */}
-      <ol className="mt-4 flex flex-col divide-y divide-slate-100 dark:divide-slate-800">
+      <ol className="mt-4 flex flex-col divide-y divide-borde">
         {ITEMS_PHQ9.map((texto, i) => (
           <li
             key={i}
             className="flex flex-wrap items-center justify-between gap-3 py-2.5"
           >
-            <span className="flex-1 text-sm text-slate-700 dark:text-slate-300">
-              <span className="mr-1.5 tabular-nums text-slate-400">
+            <span className="flex-1 text-sm text-tinta-media">
+              <span className="mr-1.5 tabular-nums text-tinta-tenue">
                 {i + 1}.
               </span>
               {texto}
@@ -132,7 +132,7 @@ export function ArmarPuntaje() {
                     "grid h-8 w-8 place-items-center rounded-md border text-sm font-semibold tabular-nums transition " +
                     (respuestas[i] === r.valor
                       ? "border-blue-600 bg-blue-600 text-white"
-                      : "border-slate-200 text-slate-500 hover:border-blue-400 dark:border-slate-700 dark:text-slate-400")
+                      : "border-borde text-tinta-tenue hover:border-blue-400")
                   }
                 >
                   {r.corta}
@@ -144,9 +144,9 @@ export function ArmarPuntaje() {
       </ol>
 
       {/* El total, en vivo */}
-      <div className="mt-5 flex flex-wrap items-center gap-4 rounded-xl bg-slate-50 px-5 py-4 dark:bg-slate-800/60">
+      <div className="mt-5 flex flex-wrap items-center gap-4 rounded-xl bg-papel-suave px-5 py-4">
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue">
             Puntaje total
           </p>
           <p
@@ -154,13 +154,13 @@ export function ArmarPuntaje() {
               "font-serif text-4xl font-semibold tabular-nums " +
               (positivo
                 ? "text-amber-600 dark:text-amber-400"
-                : "text-slate-900 dark:text-slate-100")
+                : "text-tinta")
             }
           >
             {total}
           </p>
         </div>
-        <div className="flex-1 text-sm text-slate-700 dark:text-slate-300">
+        <div className="flex-1 text-sm text-tinta-media">
           {positivo ? (
             <p>
               <strong className="text-amber-700 dark:text-amber-300">
@@ -179,7 +179,7 @@ export function ArmarPuntaje() {
         </div>
       </div>
 
-      <p className="mt-4 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-4 text-sm text-tinta-media">
         De ahí sale el rango: 9 preguntas × 0 puntos = <strong>0</strong> como
         mínimo, y 9 × 3 = <strong>27</strong> como máximo. El corte en{" "}
         <strong>{CORTE_TAMIZAJE}</strong> no es arbitrario: es el valor con el
@@ -258,21 +258,21 @@ export function LasFichas({
   const cuantos = campos.length;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="font-serif text-lg font-semibold text-tinta">
           {titulo}
         </h4>
         <button
           type="button"
           onClick={otraFicha}
-          className="rounded-full bg-slate-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 dark:bg-slate-600 dark:hover:bg-slate-500"
+          className="rounded-full bg-tinta px-4 py-2 text-sm font-semibold text-papel shadow-sm transition hover:bg-tinta"
         >
           Ver otra ficha →
         </button>
       </div>
 
-      <div className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+      <div className="mt-2 text-sm text-tinta-media">
         {intro ?? (
           <p>
             Así se lee la ficha del estudiante #{f.id}
@@ -369,7 +369,7 @@ export function LasFichas({
               "No lo marcó, y efectivamente estaba sano."}
           </div>
 
-          <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-tinta-tenue">
             Salta directo a cada caso posible
           </p>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -381,8 +381,8 @@ export function LasFichas({
                 className={
                   "rounded-full border px-3 py-1.5 text-xs font-medium transition " +
                   (indice === x.i
-                    ? "border-slate-700 bg-slate-700 text-white dark:border-slate-500 dark:bg-slate-600"
-                    : "border-slate-200 text-slate-600 hover:border-slate-400 dark:border-slate-700 dark:text-slate-400")
+                    ? "border-tinta bg-tinta text-papel"
+                    : "border-borde text-tinta-media hover:border-borde-fuerte")
                 }
               >
                 {x.etiqueta}
@@ -410,13 +410,13 @@ function FilaFicha({
   positivo: boolean;
 }) {
   return (
-    <div className="flex gap-3 rounded-xl bg-slate-50 p-3 dark:bg-slate-800/60">
+    <div className="flex gap-3 rounded-xl bg-papel-suave p-3">
       <div
         className={
           "grid h-14 w-14 shrink-0 place-content-center rounded-xl text-center " +
           (positivo
             ? "bg-amber-200 text-amber-900 dark:bg-amber-900/60 dark:text-amber-100"
-            : "bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200")
+            : "bg-borde text-tinta-media")
         }
       >
         <span className="font-serif text-2xl font-semibold tabular-nums">
@@ -424,11 +424,11 @@ function FilaFicha({
         </span>
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+        <p className="text-sm font-semibold text-tinta">
           {titulo}{" "}
-          <span className="font-normal text-slate-400">({rango})</span>
+          <span className="font-normal text-tinta-tenue">({rango})</span>
         </p>
-        <p className="mt-0.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+        <p className="mt-0.5 text-sm leading-relaxed text-tinta-media">
           {lectura}
         </p>
       </div>
@@ -501,13 +501,13 @@ export function PuenteALaProbabilidad() {
 
   return (
     <div className="rounded-2xl border-2 border-blue-300 bg-blue-50/40 p-5 dark:border-blue-800 dark:bg-blue-950/20 sm:p-6">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-blue-700 dark:text-blue-300">
         Lo importante
       </p>
-      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+      <h4 className="mt-1 font-serif text-xl font-semibold text-tinta">
         ¿Y qué tiene que ver todo esto con probabilidad?
       </h4>
-      <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mt-2 text-sm leading-relaxed text-tinta-media">
         Todo. Estas {ESTUDIANTES.length} fichas son{" "}
         <strong>lo único que tenemos</strong>, y cada pregunta de probabilidad
         de este capítulo se responde <strong>contándolas</strong>. Elegir una
@@ -525,8 +525,8 @@ export function PuenteALaProbabilidad() {
             className={
               "rounded-xl border-2 px-4 py-3 text-left text-sm transition " +
               (activa === q.id
-                ? "border-blue-600 bg-white font-medium text-slate-900 dark:bg-slate-900 dark:text-slate-100"
-                : "border-transparent bg-white/70 text-slate-700 hover:border-blue-300 dark:bg-slate-900/60 dark:text-slate-300")
+                ? "border-blue-600 bg-tarjeta font-medium text-tinta"
+                : "border-transparent bg-tarjeta/70 text-tinta-media hover:border-blue-300")
             }
           >
             {q.pregunta}
@@ -548,31 +548,31 @@ export function PuenteALaProbabilidad() {
                 (marcada
                   ? "bg-blue-600"
                   : fuera
-                    ? "bg-slate-200 opacity-30 dark:bg-slate-700"
-                    : "bg-slate-300 dark:bg-slate-600")
+                    ? "bg-borde opacity-30"
+                    : "bg-borde-fuerte")
               }
             />
           );
         })}
       </div>
 
-      <div className="mt-4 rounded-xl bg-white px-4 py-3 dark:bg-slate-900">
+      <div className="mt-4 rounded-xl bg-tarjeta px-4 py-3">
         {!p ? (
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+          <p className="text-sm text-tinta-media">
             Cada cuadradito es un estudiante. Elige una pregunta arriba y se
             van a marcar los que cumplen.
           </p>
         ) : (
           <>
-            <p className="font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100 sm:text-3xl">
+            <p className="font-serif text-2xl font-semibold tabular-nums text-tinta sm:text-3xl">
               {num} / {den} = {pct.toFixed(1)}%
             </p>
-            <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-              <strong className="text-slate-800 dark:text-slate-200">
+            <p className="mt-1 text-sm leading-relaxed text-tinta-media">
+              <strong className="text-tinta">
                 {num}
               </strong>{" "}
               fichas marcadas de{" "}
-              <strong className="text-slate-800 dark:text-slate-200">
+              <strong className="text-tinta">
                 {den}
               </strong>{" "}
               posibles. {p.cierre}
@@ -581,7 +581,7 @@ export function PuenteALaProbabilidad() {
         )}
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mt-4 text-sm leading-relaxed text-tinta-media">
         Eso es todo lo que hace la probabilidad:{" "}
         <strong>contar casos favorables entre casos posibles</strong>. Lo que
         viene en el resto del capítulo es aprender a hacer ese conteo cuando la
@@ -606,26 +606,26 @@ export function PuenteALaProbabilidad() {
 export function DeDondeSalenLas200() {
   const total = ESTUDIANTES.length;
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <h4 className="font-serif text-lg font-semibold text-tinta">
         Dos números que no hay que mezclar
       </h4>
 
       <div className="mt-4 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
-        <div className="flex-1 rounded-xl border-2 border-slate-300 p-4 text-center dark:border-slate-600">
-          <p className="font-serif text-3xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+        <div className="flex-1 rounded-xl border-2 border-borde-fuerte p-4 text-center">
+          <p className="font-serif text-3xl font-semibold tabular-nums text-tinta">
             2.400
           </p>
-          <p className="mt-1 text-sm font-semibold text-slate-700 dark:text-slate-300">
+          <p className="mt-1 text-sm font-semibold text-tinta-media">
             estudiantes tiene la universidad
           </p>
-          <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+          <p className="mt-1 text-xs leading-relaxed text-tinta-tenue">
             Es la población completa sobre la que al servicio le gustaría
             concluir algo. No los conoce a todos.
           </p>
         </div>
 
-        <div className="flex items-center justify-center px-2 text-slate-400">
+        <div className="flex items-center justify-center px-2 text-tinta-tenue">
           <span className="text-2xl">→</span>
         </div>
 
@@ -633,10 +633,10 @@ export function DeDondeSalenLas200() {
           <p className="font-serif text-3xl font-semibold tabular-nums text-blue-700 dark:text-blue-300">
             {total}
           </p>
-          <p className="mt-1 text-sm font-semibold text-slate-700 dark:text-slate-300">
+          <p className="mt-1 text-sm font-semibold text-tinta-media">
             respondieron el cuestionario
           </p>
-          <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+          <p className="mt-1 text-xs leading-relaxed text-tinta-tenue">
             Y además fueron entrevistados por un profesional. Son{" "}
             <strong>las {total} fichas que tenemos</strong>, y de acá sale cada
             número del capítulo.
@@ -644,7 +644,7 @@ export function DeDondeSalenLas200() {
         </div>
       </div>
 
-      <p className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+      <p className="mt-4 rounded-xl bg-papel-suave px-4 py-3 text-sm leading-relaxed text-tinta-media">
         Cada vez que en esta herramienta veas un porcentaje, sale de contar
         entre esas <strong>{total} fichas</strong> — nunca entre las 2.400. Los
         2.400 aparecen sólo cuando la pregunta es sobre la universidad entera, y
@@ -668,11 +668,11 @@ export function ElOtroArchivo() {
   const maximo = Math.max(...DEMANDA_SEMANAL);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <h4 className="font-serif text-lg font-semibold text-tinta">
         Y hay un segundo archivo, mucho más chico
       </h4>
-      <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+      <p className="mt-2 text-sm leading-relaxed text-tinta-media">
         Además de las fichas, el servicio anota cuántas personas piden atención
         cada semana. Son {semanas} semanas seguidas, {total} solicitudes en
         total. No dice nada de quién pidió: sólo cuántos.
@@ -683,16 +683,16 @@ export function ElOtroArchivo() {
           <div
             key={i}
             title={`Semana ${i + 1}: ${v} solicitudes`}
-            className="w-full flex-1 rounded-t bg-slate-300 dark:bg-slate-600"
+            className="w-full flex-1 rounded-t bg-borde-fuerte"
             style={{ height: `${(v / maximo) * 60}px` }}
           />
         ))}
       </div>
-      <p className="mt-1 text-center text-xs text-slate-400">
+      <p className="mt-1 text-center text-xs text-tinta-tenue">
         las {semanas} semanas, una barra cada una
       </p>
 
-      <p className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+      <p className="mt-3 rounded-xl bg-papel-suave px-4 py-3 text-sm leading-relaxed text-tinta-media">
         Estos datos son de otra naturaleza: no hay un número fijo de intentos
         como en el cuestionario, hay un <strong>ritmo</strong> de solicitudes
         que llegan con el tiempo. Esa diferencia va a decidir qué herramienta
@@ -786,15 +786,15 @@ export function AnalogiaDados() {
   ];
 
   return (
-    <div className="rounded-2xl border-2 border-slate-300 bg-slate-50/60 p-5 dark:border-slate-600 dark:bg-slate-900/60 sm:p-6">
-      <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+    <div className="rounded-2xl border-2 border-borde-fuerte bg-papel-suave/60 p-5 sm:p-6">
+      <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-tinta-tenue">
         La analogía que conecta todo
       </p>
-      <h4 className="mt-1 font-serif text-xl font-semibold text-slate-900 dark:text-slate-100">
+      <h4 className="mt-1 font-serif text-xl font-semibold text-tinta">
         Cada pregunta es un dado. Cada opción, una cara.
       </h4>
 
-      <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mt-3 text-sm leading-relaxed text-tinta-media">
         Un dado común tiene <strong>seis caras</strong> y al tirarlo sale una.
         Cada pregunta del cuestionario tiene <strong>cuatro opciones</strong> y
         al responderla sale una. Es la misma estructura: un experimento con un
@@ -802,12 +802,12 @@ export function AnalogiaDados() {
       </p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+        <div className="rounded-xl border border-borde bg-tarjeta p-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-tinta-tenue">
             Un dado común
           </p>
           <p className="mt-2 text-2xl">⚀ ⚁ ⚂ ⚃ ⚄ ⚅</p>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+          <p className="mt-2 text-sm text-tinta-media">
             6 caras · sale 1, 2, 3, 4, 5 o 6
           </p>
         </div>
@@ -819,23 +819,23 @@ export function AnalogiaDados() {
             {OPCIONES_DADO.map((o) => (
               <span
                 key={o.valor}
-                className="rounded-md bg-white px-2 py-1 text-xs dark:bg-slate-800"
+                className="rounded-md bg-tarjeta px-2 py-1 text-xs"
               >
                 <strong className="tabular-nums">{o.valor}</strong>{" "}
-                <span className="text-slate-500 dark:text-slate-400">
+                <span className="text-tinta-tenue">
                   {o.texto}
                 </span>
               </span>
             ))}
           </div>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+          <p className="mt-2 text-sm text-tinta-media">
             4 caras · sale 0, 1, 2 o 3
           </p>
         </div>
       </div>
 
       {/* La escalera: de una pregunta a nueve, un peldaño por vez */}
-      <p className="mt-6 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+      <p className="mt-6 text-sm leading-relaxed text-tinta-media">
         Empieza tirando <strong>una sola</strong> pregunta. Después suma otra, y
         después las nueve. Fíjate qué le pasa al resultado posible cada vez que
         agregas una:
@@ -852,7 +852,7 @@ export function AnalogiaDados() {
               "rounded-full border px-3.5 py-1.5 text-sm font-medium transition " +
               (cuantas === p.n
                 ? "border-blue-600 bg-blue-600 text-white"
-                : "border-slate-300 text-slate-600 hover:border-blue-400 dark:border-slate-600 dark:text-slate-400")
+                : "border-borde-fuerte text-tinta-media hover:border-blue-400")
             }
           >
             {p.etiqueta}
@@ -860,7 +860,7 @@ export function AnalogiaDados() {
         ))}
       </div>
 
-      <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-3 text-sm text-tinta-media">
         Con {cuantas === 1 ? "una pregunta" : `${cuantas} preguntas`} el total
         puede ir de <strong className="tabular-nums">0</strong> a{" "}
         <strong className="tabular-nums">{maximo}</strong> ({cuantas} × 3 ={" "}
@@ -885,31 +885,31 @@ export function AnalogiaDados() {
               className={
                 "grid h-11 w-11 place-content-center rounded-lg border-2 text-center transition " +
                 (v === undefined
-                  ? "border-dashed border-slate-300 dark:border-slate-600"
+                  ? "border-dashed border-borde-fuerte"
                   : "border-blue-500 bg-blue-50 dark:bg-blue-950/40")
               }
             >
-              <span className="text-lg font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+              <span className="text-lg font-semibold tabular-nums text-tinta">
                 {v ?? "?"}
               </span>
-              <span className="text-[9px] text-slate-400">P{i + 1}</span>
+              <span className="text-[9px] text-tinta-tenue">P{i + 1}</span>
             </div>
           );
         })}
       </div>
 
-      <div className="mt-4 rounded-xl bg-white px-4 py-3 dark:bg-slate-900">
+      <div className="mt-4 rounded-xl bg-tarjeta px-4 py-3">
         {suma === null ? (
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+          <p className="text-sm text-tinta-media">
             Tira y mira cuánto sale. Todavía no hay nada que calcular: sólo
             estamos viendo qué resultados puede dar el instrumento.
           </p>
         ) : (
           <>
-            <p className="font-mono text-base tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="tabular-nums text-base tabular-nums text-tinta">
               {tirados!.join(" + ")} = {suma}
             </p>
-            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+            <p className="mt-1 text-sm text-tinta-media">
               {cuantas === 1 && (
                 <>
                   Con una sola pregunta, el «puntaje» es el número que salió.

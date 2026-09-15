@@ -50,18 +50,18 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
   return (
     <div className="flex flex-col gap-6">
       <div className="rounded-2xl border-2 border-emerald-300 bg-emerald-50/50 p-5 dark:border-emerald-800 dark:bg-emerald-950/20 sm:p-6">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
+        <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
           Un dato nuevo en la ficha
         </p>
-        <h4 className="mt-1 font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="mt-1 font-serif text-lg font-semibold text-tinta">
           El servicio pasa un segundo cuestionario
         </h4>
-        <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        <p className="mt-2 text-sm leading-relaxed text-tinta-media">
           Además del cuestionario de depresión, a las mismas 200 personas se
           les tomó uno de <strong>ansiedad</strong>: siete preguntas en vez de
           nueve, así que su puntaje va de 0 a 21, con el mismo corte de 10.
         </p>
-        <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        <p className="mt-2 text-sm leading-relaxed text-tinta-media">
           Aparece recién ahora porque recién ahora hace falta. Todo lo
           anterior se podía hacer con una sola medida por persona. Este
           apartado, no: la pregunta que viene es{" "}
@@ -83,7 +83,7 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
         }
       />
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Dos círculos que se solapan sobre una hoja. Si sumas el área de cada
         uno por separado, la zona compartida queda contada dos veces y el total
         te da de más. Hay que restarla una vez. Ese dibujo es toda la lógica de
@@ -201,7 +201,7 @@ export function ModuloReglasBasicas({ onContinuar }: { onContinuar: () => void }
       <PasoTitulo numero={3} insignia={INSIGNIA}>
         ¿Son independientes la depresión y la ansiedad?
       </PasoTitulo>
-      <p className="text-sm text-slate-700 dark:text-slate-300">
+      <p className="text-sm text-tinta-media">
         La independencia se <strong>verifica</strong>, no se supone. Y la forma
         de verificarla es comparar lo que predice la fórmula simplificada
         contra lo que realmente hay en el archivo.
@@ -386,9 +386,9 @@ function VennInteractivo({
   const enUnion = soloA + soloB + ambos;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="font-serif text-lg font-semibold text-tinta">
           Los dos cuestionarios, en un diagrama
         </h4>
         <div className="flex flex-wrap gap-2">
@@ -399,7 +399,7 @@ function VennInteractivo({
               "rounded-full px-3 py-1.5 text-sm font-semibold transition " +
               (modo === "union"
                 ? "bg-blue-600 text-white"
-                : "border border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-300")
+                : "border border-borde text-tinta-media")
             }
           >
             A ∪ B (alguno)
@@ -411,7 +411,7 @@ function VennInteractivo({
               "rounded-full px-3 py-1.5 text-sm font-semibold transition " +
               (modo === "interseccion"
                 ? "bg-blue-600 text-white"
-                : "border border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-300")
+                : "border border-borde text-tinta-media")
             }
           >
             A ∩ B (ambos)
@@ -420,7 +420,7 @@ function VennInteractivo({
       </div>
 
       <svg viewBox="0 0 360 190" className="mx-auto mt-4 w-full max-w-md" role="img" aria-label="Diagrama de Venn">
-        <rect x="1" y="1" width="358" height="188" rx="10" className="fill-slate-50 stroke-slate-200 dark:fill-slate-800/40 dark:stroke-slate-700" />
+        <rect x="1" y="1" width="358" height="188" rx="10" className="fill-papel-suave stroke-borde" />
         <circle
           cx="140" cy="95" r="72"
           className={
@@ -448,15 +448,15 @@ function VennInteractivo({
         {modo === "interseccion" && (
           <circle cx="220" cy="95" r="72" clipPath="url(#corte)" className="fill-emerald-500/60 stroke-emerald-700" strokeWidth="2" />
         )}
-        <text x="105" y="100" textAnchor="middle" className="fill-slate-900 text-lg font-semibold dark:fill-slate-100">{soloA}</text>
-        <text x="180" y="100" textAnchor="middle" className="fill-slate-900 text-lg font-semibold dark:fill-slate-100">{ambos}</text>
-        <text x="255" y="100" textAnchor="middle" className="fill-slate-900 text-lg font-semibold dark:fill-slate-100">{soloB}</text>
+        <text x="105" y="100" textAnchor="middle" className="fill-tinta text-lg font-semibold">{soloA}</text>
+        <text x="180" y="100" textAnchor="middle" className="fill-tinta text-lg font-semibold">{ambos}</text>
+        <text x="255" y="100" textAnchor="middle" className="fill-tinta text-lg font-semibold">{soloB}</text>
         <text x="140" y="35" textAnchor="middle" className="fill-blue-700 text-xs font-semibold dark:fill-blue-300">Depresión +</text>
         <text x="220" y="35" textAnchor="middle" className="fill-amber-700 text-xs font-semibold dark:fill-amber-300">Ansiedad +</text>
-        <text x="330" y="178" textAnchor="end" className="fill-slate-400 text-xs">{ninguno} sin ninguno</text>
+        <text x="330" y="178" textAnchor="end" className="fill-borde-fuerte text-xs">{ninguno} sin ninguno</text>
       </svg>
 
-      <div className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+      <div className="mt-3 rounded-xl bg-papel-suave px-4 py-3 text-sm text-tinta-media">
         {modo === "union" ? (
           <p>
             <strong className="tabular-nums">{enUnion}</strong> de {total}{" "}
@@ -495,8 +495,8 @@ function ComparacionIndependencia({
   const max = Math.max(esperado, observado);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <p className="text-sm text-slate-700 dark:text-slate-300">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <p className="text-sm text-tinta-media">
         Si fueran independientes, la cantidad de estudiantes con{" "}
         <strong>los dos</strong> positivos debería ser el producto de las dos
         probabilidades por el total.
@@ -505,16 +505,16 @@ function ComparacionIndependencia({
       <div className="mt-4 flex flex-col gap-4">
         <div>
           <div className="flex items-baseline justify-between">
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <span className="text-sm font-medium text-tinta-media">
               Predicho suponiendo independencia
             </span>
-            <span className="font-serif text-xl font-semibold tabular-nums text-slate-500">
+            <span className="font-serif text-xl font-semibold tabular-nums text-tinta-tenue">
               ≈ {esperado.toFixed(1)}
             </span>
           </div>
-          <div className="mt-1 h-5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+          <div className="mt-1 h-5 overflow-hidden rounded-full bg-papel-suave">
             <div
-              className="h-full rounded-full bg-slate-400"
+              className="h-full rounded-full bg-borde-fuerte"
               style={{ width: `${(esperado / max) * 100}%` }}
             />
           </div>
@@ -522,14 +522,14 @@ function ComparacionIndependencia({
 
         <div>
           <div className="flex items-baseline justify-between">
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <span className="text-sm font-medium text-tinta-media">
               Observado en el archivo
             </span>
             <span className="font-serif text-xl font-semibold tabular-nums text-rose-600 dark:text-rose-400">
               {revelado ? observado : "?"}
             </span>
           </div>
-          <div className="mt-1 h-5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+          <div className="mt-1 h-5 overflow-hidden rounded-full bg-papel-suave">
             <div
               className="h-full rounded-full bg-rose-500 transition-[width] duration-700"
               style={{ width: revelado ? `${(observado / max) * 100}%` : "0%" }}
@@ -595,9 +595,9 @@ function VennIndependencia() {
   const cx2 = cx1 + r * 2 - solape * r * 1.35;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="font-serif text-lg font-semibold text-tinta">
           La independencia, vista en el solapamiento
         </h4>
         <div className="flex flex-wrap gap-2">
@@ -608,7 +608,7 @@ function VennIndependencia() {
               "rounded-full px-3 py-1.5 text-sm font-semibold transition " +
               (modo === "real"
                 ? "bg-rose-600 text-white"
-                : "border border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-300")
+                : "border border-borde text-tinta-media")
             }
           >
             Lo que hay
@@ -619,8 +619,8 @@ function VennIndependencia() {
             className={
               "rounded-full px-3 py-1.5 text-sm font-semibold transition " +
               (modo === "independiente"
-                ? "bg-slate-600 text-white"
-                : "border border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-300")
+                ? "bg-tinta-media text-papel"
+                : "border border-borde text-tinta-media")
             }
           >
             Si fueran independientes
@@ -628,32 +628,32 @@ function VennIndependencia() {
         </div>
       </div>
 
-      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-2 text-sm text-tinta-media">
         Los dos círculos tienen <strong>siempre el mismo tamaño</strong>: {a}{" "}
         positivos en depresión y {b} en ansiedad. Lo único que cambia entre las
         dos vistas es <strong>cuánto se pisan</strong>.
       </p>
 
       <svg viewBox="0 0 360 190" className="mx-auto mt-4 w-full max-w-md" role="img" aria-label="Solapamiento entre depresión y ansiedad">
-        <rect x="1" y="1" width="358" height="188" rx="10" className="fill-slate-50 stroke-slate-200 dark:fill-slate-800/40 dark:stroke-slate-700" />
+        <rect x="1" y="1" width="358" height="188" rx="10" className="fill-papel-suave stroke-borde" />
         <circle cx={cx1} cy="95" r={r} className="fill-blue-500/30 stroke-blue-600" strokeWidth="2" />
         <circle cx={cx2} cy="95" r={r} className="fill-amber-500/30 stroke-amber-600" strokeWidth="2" />
-        <text x={cx1 - r / 2} y="100" textAnchor="middle" className="fill-slate-900 text-base font-semibold dark:fill-slate-100">{soloA}</text>
-        <text x={(cx1 + cx2) / 2} y="100" textAnchor="middle" className="fill-slate-900 text-lg font-bold dark:fill-slate-100">{ambos}</text>
-        <text x={cx2 + r / 2} y="100" textAnchor="middle" className="fill-slate-900 text-base font-semibold dark:fill-slate-100">{soloB}</text>
+        <text x={cx1 - r / 2} y="100" textAnchor="middle" className="fill-tinta text-base font-semibold">{soloA}</text>
+        <text x={(cx1 + cx2) / 2} y="100" textAnchor="middle" className="fill-tinta text-lg font-bold">{ambos}</text>
+        <text x={cx2 + r / 2} y="100" textAnchor="middle" className="fill-tinta text-base font-semibold">{soloB}</text>
         <text x={cx1} y="28" textAnchor="middle" className="fill-blue-700 text-xs font-semibold dark:fill-blue-300">Depresión + ({a})</text>
         <text x={cx2} y="176" textAnchor="middle" className="fill-amber-700 text-xs font-semibold dark:fill-amber-400">Ansiedad + ({b})</text>
       </svg>
 
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl bg-slate-50 px-4 py-3 dark:bg-slate-800/60">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+        <div className="rounded-xl bg-papel-suave px-4 py-3">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue">
             Ansiedad en la población general
           </p>
-          <p className="font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+          <p className="font-serif text-2xl font-semibold tabular-nums text-tinta">
             {(pB * 100).toFixed(1)}%
           </p>
-          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+          <p className="mt-0.5 text-xs text-tinta-tenue">
             P(B) = {b}/{total}
           </p>
         </div>
@@ -662,10 +662,10 @@ function VennIndependencia() {
             "rounded-xl px-4 py-3 " +
             (modo === "real"
               ? "bg-rose-50 dark:bg-rose-950/30"
-              : "bg-slate-50 dark:bg-slate-800/60")
+              : "bg-papel-suave")
           }
         >
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue">
             Ansiedad dentro del círculo azul
           </p>
           <p
@@ -673,12 +673,12 @@ function VennIndependencia() {
               "font-serif text-2xl font-semibold tabular-nums " +
               (modo === "real"
                 ? "text-rose-700 dark:text-rose-400"
-                : "text-slate-900 dark:text-slate-100")
+                : "text-tinta")
             }
           >
             {(pBdadoA * 100).toFixed(1)}%
           </p>
-          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+          <p className="mt-0.5 text-xs text-tinta-tenue">
             P(B | A) = {ambos}/{a}
           </p>
         </div>
@@ -689,7 +689,7 @@ function VennIndependencia() {
           "mt-3 rounded-xl px-4 py-3 text-sm leading-relaxed " +
           (modo === "real"
             ? "bg-rose-100 text-rose-900 dark:bg-rose-950/40 dark:text-rose-200"
-            : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300")
+            : "bg-papel-suave text-tinta-media")
         }
       >
         {modo === "real" ? (

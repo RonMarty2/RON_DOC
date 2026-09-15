@@ -39,7 +39,7 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         El servicio tiene {positivos} estudiantes marcados como positivos y
         capacidad para entrevistar a 5 esta semana. La pregunta administrativa
         es simple: ¿a quiénes cito? La estadística que hay detrás es menos
@@ -188,7 +188,7 @@ export function ModuloCombinatoria({ onContinuar }: { onContinuar: () => void })
         Aplicado: elegir 5 entre {positivos}
       </PasoTitulo>
 
-      <p className="text-sm text-slate-700 dark:text-slate-300">
+      <p className="text-sm text-tinta-media">
         A los 5 citados se los llama el mismo día, sin horarios diferenciados.
         Intercambiar dos de ellos no cambia nada en la práctica:{" "}
         <strong>el orden no importa</strong>, así que corresponde combinación.
@@ -371,12 +371,12 @@ function FactorialCreciente() {
         (n > 6 ? " × … × 2 × 1" : "");
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h5 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <h5 className="font-serif text-lg font-semibold text-tinta">
         Muévelo y mira qué rápido crece
       </h5>
       <label className="mt-4 flex items-center gap-3">
-        <span className="w-16 shrink-0 font-mono text-sm text-slate-600 dark:text-slate-400">
+        <span className="w-16 shrink-0 tabular-nums text-sm text-tinta-media">
           n = {n}
         </span>
         <input
@@ -388,13 +388,13 @@ function FactorialCreciente() {
           className="h-2 flex-1 cursor-pointer accent-indigo-600"
         />
       </label>
-      <p className="mt-4 font-mono text-sm text-slate-500 dark:text-slate-400">
+      <p className="mt-4 tabular-nums text-sm text-tinta-tenue">
         {n}! = {desarrollo}
       </p>
-      <p className="mt-1 font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100 sm:text-3xl">
+      <p className="mt-1 font-serif text-2xl font-semibold tabular-nums text-tinta sm:text-3xl">
         = {valor.toLocaleString("es")}
       </p>
-      <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-2 text-sm text-tinta-media">
         {n <= 6
           ? "Con estos números todavía se podría enumerar a mano."
           : n <= 12
@@ -449,18 +449,18 @@ function Enumerador() {
   }, [n, r, importaOrden, elementos]);
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h5 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <h5 className="font-serif text-lg font-semibold text-tinta">
         Todas las posibilidades, listadas de verdad
       </h5>
-      <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-1 text-sm text-tinta-media">
         Con un conjunto chico se pueden enumerar y ver la diferencia con los
         propios ojos.
       </p>
 
       <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
         <label className="flex items-center gap-2 text-sm">
-          <span className="font-mono text-slate-600 dark:text-slate-400">
+          <span className="tabular-nums text-tinta-media">
             n = {n}
           </span>
           <input
@@ -477,7 +477,7 @@ function Enumerador() {
           />
         </label>
         <label className="flex items-center gap-2 text-sm">
-          <span className="font-mono text-slate-600 dark:text-slate-400">
+          <span className="tabular-nums text-tinta-media">
             r = {r}
           </span>
           <input
@@ -495,7 +495,7 @@ function Enumerador() {
           className={
             "rounded-full px-4 py-2 text-sm font-semibold transition " +
             (importaOrden
-              ? "bg-amber-500 text-white hover:bg-amber-600"
+              ? "bg-amber-500 text-amber-950 hover:bg-amber-400"
               : "bg-indigo-600 text-white hover:bg-indigo-700")
           }
         >
@@ -508,7 +508,7 @@ function Enumerador() {
           <span
             key={i}
             className={
-              "rounded-md px-2.5 py-1 font-mono text-sm " +
+              "rounded-md px-2.5 py-1 tabular-nums text-sm " +
               (importaOrden
                 ? "bg-amber-100 text-amber-900 dark:bg-amber-950/40 dark:text-amber-200"
                 : "bg-indigo-100 text-indigo-900 dark:bg-indigo-950/40 dark:text-indigo-200")
@@ -519,17 +519,17 @@ function Enumerador() {
         ))}
       </div>
 
-      <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+      <div className="mt-4 rounded-xl bg-papel-suave px-4 py-3 text-sm text-tinta-media">
         <p>
           <strong className="tabular-nums">{listas.length}</strong>{" "}
           posibilidades ={" "}
-          <span className="font-mono">
+          <span className="tabular-nums">
             {importaOrden
               ? `P(${n}, ${r}) = ${permutaciones(n, r)}`
               : `C(${n}, ${r}) = ${combinaciones(n, r)}`}
           </span>
         </p>
-        <p className="mt-1 text-slate-600 dark:text-slate-400">
+        <p className="mt-1 text-tinta-media">
           {importaOrden
             ? `Fíjate que A→B y B→A aparecen las dos: son ordenamientos distintos del mismo par. Por eso hay ${permutaciones(n, r) / combinaciones(n, r)} veces más que en combinación — que es exactamente ${r}! ordenamientos internos por grupo.`
             : "Cada grupo aparece una sola vez: AB está, pero BA no, porque son el mismo grupo con otro orden de escritura."}

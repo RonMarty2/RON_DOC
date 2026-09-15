@@ -121,14 +121,14 @@ export function ModuloTablasContingencia({
         La columna que faltaba
       </PasoTitulo>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Hasta acá la ficha tenía un solo dato: el puntaje. Con eso alcanzó
         para contar, para dividir y para hablar de eventos. Pero hay una
         pregunta que con el puntaje solo <strong>no se puede contestar</strong>
         : si el cuestionario acierta o no.
       </p>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Para eso hace falta saber qué pasaba de verdad con cada estudiante, y
         eso lo dice otra cosa, no el cuestionario. Acá aparece el segundo dato
         de la ficha — y aparece ahora porque recién ahora hay algo que hacer
@@ -203,7 +203,7 @@ export function ModuloTablasContingencia({
         hace una tabla de contingencia.
       </Hilo>
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Un tamizaje se puede equivocar de dos formas distintas, y no son igual
         de graves: puede marcar a alguien que está sano (<strong>falsa
         alarma</strong>) o dejar pasar a alguien que necesitaba ayuda (
@@ -541,12 +541,12 @@ function TablaInteractiva({
       return "border-blue-600 bg-blue-600 text-white";
     if (enDen)
       return "border-amber-400 bg-amber-100 text-amber-900 dark:bg-amber-950/40 dark:text-amber-200";
-    return "border-slate-200 bg-white text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-600";
+    return "border-borde bg-tarjeta text-tinta-tenue";
   }
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <p className="text-sm font-medium text-tinta-media">
         Elige una pregunta y mira qué parte de la tabla se usa para
         responderla:
       </p>
@@ -561,12 +561,12 @@ function TablaInteractiva({
               "rounded-lg border px-3 py-2 text-left text-sm transition " +
               (activa === q.id
                 ? "border-blue-600 bg-blue-50 font-medium text-blue-900 dark:bg-blue-950/40 dark:text-blue-200"
-                : "border-slate-200 text-slate-600 hover:border-blue-300 dark:border-slate-700 dark:text-slate-400")
+                : "border-borde text-tinta-media hover:border-blue-300")
             }
           >
             {q.pregunta}
             {q.nombre && (
-              <span className="ml-2 font-mono text-xs uppercase tracking-wider text-slate-400">
+              <span className="ml-2 tabular-nums text-xs uppercase tracking-wider text-tinta-tenue">
                 {q.nombre}
               </span>
             )}
@@ -580,20 +580,20 @@ function TablaInteractiva({
           <thead>
             <tr>
               <th />
-              <th className="px-1.5 py-2 font-semibold text-slate-700 sm:px-3 dark:text-slate-300">
+              <th className="px-1.5 py-2 font-semibold text-tinta-media sm:px-3">
                 Dx: sí
               </th>
-              <th className="px-1.5 py-2 font-semibold text-slate-700 sm:px-3 dark:text-slate-300">
+              <th className="px-1.5 py-2 font-semibold text-tinta-media sm:px-3">
                 Dx: no
               </th>
-              <th className="px-3 py-2 text-xs font-medium text-slate-400">
+              <th className="px-3 py-2 text-xs font-medium text-tinta-tenue">
                 Total
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th className="px-1.5 py-2 text-right font-semibold text-slate-700 sm:px-3 dark:text-slate-300">
+              <th className="px-1.5 py-2 text-right font-semibold text-tinta-media sm:px-3">
                 Test +
               </th>
               <td className="p-1">
@@ -608,12 +608,12 @@ function TablaInteractiva({
                   <span className="text-[10px] uppercase tracking-wider opacity-80">FP</span>
                 </div>
               </td>
-              <td className="px-3 tabular-nums text-slate-500 dark:text-slate-400">
+              <td className="px-3 tabular-nums text-tinta-tenue">
                 {t.positivos}
               </td>
             </tr>
             <tr>
-              <th className="px-1.5 py-2 text-right font-semibold text-slate-700 sm:px-3 dark:text-slate-300">
+              <th className="px-1.5 py-2 text-right font-semibold text-tinta-media sm:px-3">
                 Test −
               </th>
               <td className="p-1">
@@ -628,17 +628,17 @@ function TablaInteractiva({
                   <span className="text-[10px] uppercase tracking-wider opacity-80">VN</span>
                 </div>
               </td>
-              <td className="px-3 tabular-nums text-slate-500 dark:text-slate-400">
+              <td className="px-3 tabular-nums text-tinta-tenue">
                 {t.negativos}
               </td>
             </tr>
             <tr>
-              <th className="px-3 py-2 text-right text-xs font-medium text-slate-400">
+              <th className="px-3 py-2 text-right text-xs font-medium text-tinta-tenue">
                 Total
               </th>
-              <td className="tabular-nums text-slate-500 dark:text-slate-400">{t.dxSi}</td>
-              <td className="tabular-nums text-slate-500 dark:text-slate-400">{t.dxNo}</td>
-              <td className="tabular-nums font-semibold text-slate-700 dark:text-slate-300">
+              <td className="tabular-nums text-tinta-tenue">{t.dxSi}</td>
+              <td className="tabular-nums text-tinta-tenue">{t.dxNo}</td>
+              <td className="tabular-nums font-semibold text-tinta-media">
                 {t.total}
               </td>
             </tr>
@@ -649,21 +649,21 @@ function TablaInteractiva({
       <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs">
         <span className="flex items-center gap-1.5">
           <span className="h-3 w-3 rounded-sm bg-blue-600" />
-          <span className="text-slate-600 dark:text-slate-400">Numerador</span>
+          <span className="text-tinta-media">Numerador</span>
         </span>
         <span className="flex items-center gap-1.5">
           <span className="h-3 w-3 rounded-sm bg-amber-300" />
-          <span className="text-slate-600 dark:text-slate-400">
+          <span className="text-tinta-media">
             Resto del denominador
           </span>
         </span>
       </div>
 
-      <div className="mt-4 rounded-xl bg-slate-50 px-4 py-3 dark:bg-slate-800/60">
-        <p className="font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+      <div className="mt-4 rounded-xl bg-papel-suave px-4 py-3">
+        <p className="font-serif text-2xl font-semibold tabular-nums text-tinta">
           {numerador} / {denominador} = {(resultado * 100).toFixed(1)}%
         </p>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-1 text-sm text-tinta-media">
           {pregunta.lectura}
         </p>
       </div>

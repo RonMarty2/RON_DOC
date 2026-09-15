@@ -36,7 +36,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | Parte | Ruta | Estado |
 |---|---|---|
 | Portada | `/` | Publicada. Pregunta del Aula, aulas abiertas, "cómo está hecho", proyectos |
-| Aula de Probabilidad (Psicoestadística Inferencial, Unidad 2) | `/aula-probabilidad` | Publicada. Scroll, no tarjetas. Bitácora: `bitacoras/psicoestadistica-inferencial.md` |
+| Aula de Probabilidad (Psicoestadística Inferencial, Unidad 2) | `/aula-probabilidad` | Publicada. Scroll, no tarjetas. Con la paleta del sitio desde el 14-sep (neutros); conserva sus colores de bloque y de gráficos. Bitácora: `bitacoras/psicoestadistica-inferencial.md` |
 | Materia Psicoestadística Inferencial | `/materias/psicoestadistica-inferencial` | Publicada |
 | Proyectos (AXIOM, SIMPRO) | `/proyectos` | Publicada, enlaces reales |
 | **Lámina Interés compuesto e inflación** | `/interes-compuesto` | **Borrador sin enlazar**: espera revisión de Ronald |
@@ -68,6 +68,9 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | 2026-09-14 | La letra de las tarjetas se frena también por la altura (`2vh`) | A 1366×768, típico de proyector, crecer sólo con el ancho desbordaba las tarjetas |
 | 2026-09-14 | Trabajar parte por parte sin preguntar, anotando todo en esta bitácora | Pedido explícito de Ronald |
 | 2026-09-14 | Una herramienta en borrador se marca con `borrador: true` en `content/materias.ts`, y esa sola marca controla dónde aparece y si se indexa | Publicar tiene que ser un solo cambio, sin olvidar ningún lugar |
+| 2026-09-14 | En el Aula, los grises y blancos pasan a los tokens (papel, tinta, borde); los colores con significado (azul, índigo, ámbar, verde, rosa) se quedan | Los neutros eran lo que la hacía parecer otro sitio. Los colores distinguen bloques del recorrido y categorías de los gráficos: pasarlos al terracota y al rojo, que se parecen, borraba información |
+| 2026-09-14 | Un gris sin variante `dark:` se convierte igual, salvo fondos blancos o semitransparentes | El primer intento convirtió también un botón blanco sobre azul, que en modo oscuro quedaba ilegible: esos eran iguales en los dos modos a propósito |
+| 2026-09-14 | Letra blanca sobre ámbar, verde o rosa medios pasa a un tono más oscuro del mismo color (o letra oscura sobre ámbar) | No llegaban a 4.5:1; el color sigue diciendo lo mismo |
 
 ## 5. Trabajo en paralelo
 
@@ -75,6 +78,7 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 
 - Antes de trabajar: `git pull`.
 - No tocar `ejercicios/`, `bitacoras/psicoestadistica-inferencial.md` ni `src/components/aula-probabilidad/` sin necesidad: son su terreno.
+- **Aviso para esa sesión (14-sep):** los componentes del Aula cambiaron de clases de color en un solo commit (grises → `bg-tarjeta`, `text-tinta-media`, `border-borde`…, sin sus `dark:`; `font-mono` → `tabular-nums`). Si tenías trabajo del Aula sin subir, al integrarlo usa esos tokens para lo neutro.
 - Si un push es rechazado, `git pull --rebase` y volver a subir.
 
 ## 6. Registro de cambios
@@ -94,7 +98,8 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - `3853c09` Lámina `/depreciaciones` con `src/lib/finanzas/depreciacion.ts` (lineal con el motor de SIMPRO, suma de dígitos, porcentaje fijo, fondo de amortización) y pruebas (121 en total). Con esto están las cinco láminas del temario de Matemática Financiera.
 - `b6e0ebe` Publicación de Matemática Financiera preparada: las cinco láminas están en `content/materias.ts` con `borrador: true`, que decide a la vez portada, página de materia, sitemap y `noindex`. Varias láminas se muestran como lista numerada (`ListaLaminas`). Probado quitando las marcas en local y vuelto a poner.
 - `86b5cb6` Accesibilidad de las láminas: fórmulas con MathML para lectores de pantalla; la etiqueta de cada tarjeta es título (`h2`); al cambiar de tarjeta se anuncia sólo "Tarjeta n de N" en vez de leer la tarjeta entera; el foco no se mueve, para no obligar a volver a buscar el botón.
-- *(este commit)* De Axiom: `parsearMath` en `src/components/math-parse.ts` con sus 10 pruebas, y `**negrita**` dentro de MathText (131 pruebas en total).
+- `6aec37f` De Axiom: `parsearMath` en `src/components/math-parse.ts` con sus 10 pruebas, y `**negrita**` dentro de MathText (131 pruebas en total).
+- *(este commit)* El Aula de Probabilidad pasa a la paleta del sitio: 683 clases de gris y blanco a tokens y 609 variantes `dark:` que sobraban, en 21 archivos; etiquetas en Atkinson en vez de monoespaciada. Verificado midiendo el contraste de todo el texto en los 11 apartados, claro y oscuro: 0 por debajo de lo legible, después de corregir 7 casos (letra blanca sobre colores medios y una indicación en gris muy claro). Sin desbordes en 375 px.
 
 ## 7. Qué sigue
 

@@ -52,13 +52,13 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
   return (
     <div className="flex flex-col gap-6">
       <div className="rounded-2xl border-2 border-emerald-300 bg-emerald-50/50 p-5 dark:border-emerald-800 dark:bg-emerald-950/20 sm:p-6">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
+        <p className="tabular-nums text-[10px] font-semibold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
           Los últimos datos del archivo
         </p>
-        <h4 className="mt-1 font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="mt-1 font-serif text-lg font-semibold text-tinta">
           Dos datos administrativos que hasta ahora no hacían falta
         </h4>
-        <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        <p className="mt-2 text-sm leading-relaxed text-tinta-media">
           Los apartados anteriores preguntaban por el instrumento: si acierta,
           si dos medidas van juntas, qué chance hay de tal cosa. Éste pregunta
           otra cosa — cómo <strong>organizar el trabajo</strong> del servicio —
@@ -81,7 +81,7 @@ export function ModuloDiscretas({ onContinuar }: { onContinuar: () => void }) {
 
       <ElOtroArchivo />
 
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         El servicio tiene tres preguntas de planificación y las tres se
         responden contando — pero no con la misma herramienta. Tres preguntas,
         tres procesos generadores distintos, tres distribuciones distintas.
@@ -266,8 +266,8 @@ const OPCIONES: { id: Tipo; pregunta: string; señal: string; nombre: string }[]
 
 function Selector({ tipo, setTipo }: { tipo: Tipo; setTipo: (t: Tipo) => void }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-      <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+      <h4 className="font-serif text-lg font-semibold text-tinta">
         Antes de la fórmula: ¿cómo se generaron los conteos?
       </h4>
       <div className="mt-4 flex flex-col gap-2">
@@ -281,13 +281,13 @@ function Selector({ tipo, setTipo }: { tipo: Tipo; setTipo: (t: Tipo) => void })
               "rounded-xl border-2 px-4 py-3 text-left transition " +
               (tipo === o.id
                 ? "border-blue-600 bg-blue-50 dark:bg-blue-950/40"
-                : "border-slate-200 hover:border-blue-300 dark:border-slate-700")
+                : "border-borde hover:border-blue-300")
             }
           >
-            <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
+            <p className="text-sm font-medium text-tinta">
               {o.pregunta}
             </p>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-xs text-tinta-tenue">
               Señal: {o.señal} →{" "}
               <span className="font-semibold text-blue-700 dark:text-blue-300">
                 {o.nombre}
@@ -332,7 +332,7 @@ function Barras({
               <div
                 className={
                   "w-full rounded-t transition-all " +
-                  (v.k === destacado ? "bg-blue-600" : "bg-slate-300 dark:bg-slate-700")
+                  (v.k === destacado ? "bg-blue-600" : "bg-borde-fuerte")
                 }
                 style={{ height: `${Math.max(2, (v.prob / max) * 110)}px` }}
                 title={`P(X = ${v.k}) = ${v.prob.toFixed(4)}`}
@@ -342,7 +342,7 @@ function Barras({
                   "text-[11px] tabular-nums " +
                   (v.k === destacado
                     ? "font-bold text-blue-700 dark:text-blue-300"
-                    : "text-slate-400")
+                    : "text-tinta-tenue")
                 }
               >
                 {v.k}
@@ -351,10 +351,10 @@ function Barras({
           ))}
         </div>
       </div>
-      <p className="mt-1 text-center text-xs text-slate-400">
+      <p className="mt-1 text-center text-xs text-tinta-tenue">
         {etiquetaX}
         {muchas && (
-          <span className="ml-1 text-slate-300 dark:text-slate-600">
+          <span className="ml-1 text-tinta-tenue">
             · desliza para ver todo
           </span>
         )}
@@ -389,15 +389,15 @@ function Binomial() {
         independientes.
       </Definicion>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <p className="text-sm text-slate-700 dark:text-slate-300">
+      <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+        <p className="text-sm text-tinta-media">
           <strong>El caso:</strong> se tamiza un curso de <V>n</V> estudiantes.
           La probabilidad de dar positivo es <V>p</V> = {p}. ¿Cuál es la
           probabilidad de que exactamente <V>k</V> den positivo?
         </p>
         <div className="mt-4 flex flex-col gap-3">
           <label className="flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-3">
-            <span className="font-mono sm:w-28 sm:shrink-0 text-slate-600 dark:text-slate-400">
+            <span className="tabular-nums sm:w-28 sm:shrink-0 text-tinta-media">
               n = {n}
             </span>
             <input type="range" min={1} max={40} value={n}
@@ -405,7 +405,7 @@ function Binomial() {
               className="h-2 flex-1 cursor-pointer accent-blue-600" />
           </label>
           <label className="flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-3">
-            <span className="font-mono sm:w-28 sm:shrink-0 text-slate-600 dark:text-slate-400">
+            <span className="tabular-nums sm:w-28 sm:shrink-0 text-tinta-media">
               k = {k}
             </span>
             <input type="range" min={0} max={n} value={k}
@@ -419,19 +419,19 @@ function Binomial() {
         <div className="mt-3 grid gap-2 sm:grid-cols-3 text-sm">
           <div className="rounded-xl bg-blue-50 px-3 py-2 dark:bg-blue-950/30">
             <p className="text-[10px] uppercase tracking-wider text-blue-600 dark:text-blue-400">P(X = {k})</p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {(prob * 100).toFixed(2)}%
             </p>
           </div>
-          <div className="rounded-xl bg-slate-50 px-3 py-2 dark:bg-slate-800/60">
-            <p className="text-[10px] uppercase tracking-wider text-slate-500">E[X] = np</p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+          <div className="rounded-xl bg-papel-suave px-3 py-2">
+            <p className="text-[10px] uppercase tracking-wider text-tinta-tenue">E[X] = np</p>
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {esperanza.toFixed(2)}
             </p>
           </div>
-          <div className="rounded-xl bg-slate-50 px-3 py-2 dark:bg-slate-800/60">
-            <p className="text-[10px] uppercase tracking-wider text-slate-500">Var = np(1−p)</p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+          <div className="rounded-xl bg-papel-suave px-3 py-2">
+            <p className="text-[10px] uppercase tracking-wider text-tinta-tenue">Var = np(1−p)</p>
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {varianza.toFixed(4)}
             </p>
           </div>
@@ -522,8 +522,8 @@ function Poisson({ lambda }: { lambda: number }) {
         varianza son <strong>iguales</strong>, ambas <V>λ</V>.
       </Definicion>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <p className="text-sm text-slate-700 dark:text-slate-300">
+      <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+        <p className="text-sm text-tinta-media">
           <strong>El caso:</strong> el servicio registró las solicitudes de{" "}
           {DEMANDA_SEMANAL.length} semanas consecutivas. Suman {total}, o sea{" "}
           {total}/{DEMANDA_SEMANAL.length} ={" "}
@@ -537,18 +537,18 @@ function Poisson({ lambda }: { lambda: number }) {
           {DEMANDA_SEMANAL.map((v, i) => (
             <div
               key={i}
-              className={"w-full flex-1 rounded-t " + (v > capacidad ? "bg-rose-500" : "bg-slate-300 dark:bg-slate-700")}
+              className={"w-full flex-1 rounded-t " + (v > capacidad ? "bg-rose-500" : "bg-borde-fuerte")}
               style={{ height: `${(v / Math.max(...DEMANDA_SEMANAL)) * 60}px` }}
               title={`Semana ${i + 1}: ${v} solicitudes`}
             />
           ))}
         </div>
-        <p className="mt-1 text-center text-xs text-slate-400">
+        <p className="mt-1 text-center text-xs text-tinta-tenue">
           las {DEMANDA_SEMANAL.length} semanas observadas (rojo = superó la capacidad)
         </p>
 
         <label className="mt-5 flex items-center gap-3 text-sm">
-          <span className="font-mono sm:w-32 sm:shrink-0 text-slate-600 dark:text-slate-400">
+          <span className="tabular-nums sm:w-32 sm:shrink-0 text-tinta-media">
             k = {k} solicitudes
           </span>
           <input type="range" min={0} max={15} value={k}
@@ -563,7 +563,7 @@ function Poisson({ lambda }: { lambda: number }) {
         <div className="mt-3 grid gap-2 sm:grid-cols-2 text-sm">
           <div className="rounded-xl bg-blue-50 px-3 py-2 dark:bg-blue-950/30">
             <p className="text-[10px] uppercase tracking-wider text-blue-600 dark:text-blue-400">P(X = {k})</p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {(prob * 100).toFixed(2)}%
             </p>
           </div>
@@ -571,7 +571,7 @@ function Poisson({ lambda }: { lambda: number }) {
             <p className="text-[10px] uppercase tracking-wider text-amber-700 dark:text-amber-400">
               P(superar la capacidad de {capacidad})
             </p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {(pExceso * 100).toFixed(1)}%
             </p>
           </div>
@@ -655,8 +655,8 @@ function Hipergeometrica({ N, K }: { N: number; K: number }) {
         la probabilidad de éxito cambia en cada extracción.
       </Definicion>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <p className="text-sm text-slate-700 dark:text-slate-300">
+      <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+        <p className="text-sm text-tinta-media">
           <strong>El caso:</strong> de los <V>N</V> = {N} estudiantes que
           dieron positivo, <V>K</V> = {K} tienen el expediente incompleto. Se
           auditan <V>n</V> expedientes al azar, sin devolverlos al montón.
@@ -665,7 +665,7 @@ function Hipergeometrica({ N, K }: { N: number; K: number }) {
 
         <div className="mt-4 flex flex-col gap-3">
           <label className="flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-3">
-            <span className="font-mono sm:w-32 sm:shrink-0 text-slate-600 dark:text-slate-400">
+            <span className="tabular-nums sm:w-32 sm:shrink-0 text-tinta-media">
               n = {n} auditados
             </span>
             <input type="range" min={1} max={12} value={n}
@@ -673,7 +673,7 @@ function Hipergeometrica({ N, K }: { N: number; K: number }) {
               className="h-2 flex-1 cursor-pointer accent-blue-600" />
           </label>
           <label className="flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:gap-3">
-            <span className="font-mono sm:w-32 sm:shrink-0 text-slate-600 dark:text-slate-400">
+            <span className="tabular-nums sm:w-32 sm:shrink-0 text-tinta-media">
               k = {k} incompletos
             </span>
             <input type="range" min={0} max={Math.min(n, K)} value={k}
@@ -689,13 +689,13 @@ function Hipergeometrica({ N, K }: { N: number; K: number }) {
         <div className="mt-3 grid gap-2 sm:grid-cols-3 text-sm">
           <div className="rounded-xl bg-blue-50 px-3 py-2 dark:bg-blue-950/30">
             <p className="text-[10px] uppercase tracking-wider text-blue-600 dark:text-blue-400">P(X = {k})</p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {(prob * 100).toFixed(2)}%
             </p>
           </div>
-          <div className="rounded-xl bg-slate-50 px-3 py-2 dark:bg-slate-800/60">
-            <p className="text-[10px] uppercase tracking-wider text-slate-500">E[X] = n·K/N</p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+          <div className="rounded-xl bg-papel-suave px-3 py-2">
+            <p className="text-[10px] uppercase tracking-wider text-tinta-tenue">E[X] = n·K/N</p>
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {esperanza.toFixed(2)}
             </p>
           </div>
@@ -703,12 +703,12 @@ function Hipergeometrica({ N, K }: { N: number; K: number }) {
             <p className="text-[10px] uppercase tracking-wider text-rose-700 dark:text-rose-400">
               Si usaras binomial
             </p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {(probBinomial * 100).toFixed(2)}%
             </p>
           </div>
         </div>
-        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+        <p className="mt-2 text-xs text-tinta-tenue">
           La última tarjeta muestra el error: usar binomial supone reposición.
           Con una población de sólo {N}, cada expediente que sacas cambia la
           composición de los {N - 1} restantes, y esa diferencia sí importa.

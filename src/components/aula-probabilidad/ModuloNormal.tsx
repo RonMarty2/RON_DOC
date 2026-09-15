@@ -43,7 +43,7 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-slate-700 dark:text-slate-300">
+      <p className="text-tinta-media">
         Volvamos a la decisión que abre y cierra este capítulo:{" "}
         <strong>¿dónde poner el punto de corte?</strong> Hasta ahora calculamos
         todo con el corte en 10 porque así lo fijó el estudio original. Pero el
@@ -231,7 +231,7 @@ export function ModuloNormal({ onContinuar }: { onContinuar: () => void }) {
       </PasoTitulo>
 
 
-      <p className="text-sm text-slate-700 dark:text-slate-300">
+      <p className="text-sm text-tinta-media">
         Mueve el punto de corte y mira qué le pasa a todo lo que construimos
         desde el primer apartado. No hay una respuesta correcta: hay un
         intercambio.
@@ -337,15 +337,15 @@ function AproximacionNormal() {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-sm text-slate-700 dark:text-slate-300">
+      <p className="text-sm text-tinta-media">
         Las distribuciones de 2.8 y la normal no son mundos separados. Cuando
         el número de ensayos de una binomial es grande, su forma se parece
         tanto a una campana que puede calcularse con ella. De Moivre lo
         demostró en 1733, medio siglo antes de que Gauss formalizara la normal.
       </p>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
-        <p className="text-sm text-slate-700 dark:text-slate-300">
+      <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
+        <p className="text-sm text-tinta-media">
           <strong>El caso:</strong> el servicio tamiza a {n} estudiantes. ¿Qué
           probabilidad hay de recibir {capacidad} derivaciones o menos, que es
           el máximo que puede procesar en el mes? Calcularlo con la binomial
@@ -353,15 +353,15 @@ function AproximacionNormal() {
           coeficiente combinatorio.
         </p>
         <div className="mt-4 grid gap-2 sm:grid-cols-3 text-sm">
-          <div className="rounded-xl bg-slate-50 px-3 py-2 dark:bg-slate-800/60">
-            <p className="text-[10px] uppercase tracking-wider text-slate-500">µ = np</p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+          <div className="rounded-xl bg-papel-suave px-3 py-2">
+            <p className="text-[10px] uppercase tracking-wider text-tinta-tenue">µ = np</p>
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {mu.toFixed(1)}
             </p>
           </div>
-          <div className="rounded-xl bg-slate-50 px-3 py-2 dark:bg-slate-800/60">
-            <p className="text-[10px] uppercase tracking-wider text-slate-500">σ = √(np(1−p))</p>
-            <p className="font-serif text-xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+          <div className="rounded-xl bg-papel-suave px-3 py-2">
+            <p className="text-[10px] uppercase tracking-wider text-tinta-tenue">σ = √(np(1−p))</p>
+            <p className="font-serif text-xl font-semibold tabular-nums text-tinta">
               {sigma.toFixed(2)}
             </p>
           </div>
@@ -369,7 +369,7 @@ function AproximacionNormal() {
             <p className="text-[10px] uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
               ¿np ≥ 5 y n(1−p) ≥ 5?
             </p>
-            <p className="font-serif text-sm font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+            <p className="font-serif text-sm font-semibold tabular-nums text-tinta">
               {mu.toFixed(0)} y {(n * (1 - p)).toFixed(0)} · se cumple
             </p>
           </div>
@@ -441,9 +441,9 @@ function Campana({ media, desviacion }: { media: number; desviacion: number }) {
   const pct = [68.3, 95.4, 99.7][bandas - 1];
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+    <div className="rounded-2xl border border-borde bg-tarjeta p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h4 className="font-serif text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h4 className="font-serif text-lg font-semibold text-tinta">
           La regla 68 – 95 – 99.7
         </h4>
         <div className="flex flex-wrap gap-2">
@@ -456,7 +456,7 @@ function Campana({ media, desviacion }: { media: number; desviacion: number }) {
                 "rounded-full px-3 py-1.5 text-sm font-semibold transition " +
                 (bandas === b
                   ? "bg-blue-600 text-white"
-                  : "border border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-300")
+                  : "border border-borde text-tinta-media")
               }
             >
               ±{b}σ
@@ -469,23 +469,23 @@ function Campana({ media, desviacion }: { media: number; desviacion: number }) {
         <rect x={xDeZ(-bandas)} y={12} width={xDeZ(bandas) - xDeZ(-bandas)} height={base - 12}
           className="fill-blue-500/20" />
         <polyline points={puntos} fill="none" className="stroke-blue-600" strokeWidth={2.5} />
-        <line x1={0} y1={base} x2={W} y2={base} className="stroke-slate-300 dark:stroke-slate-600" strokeWidth={1} />
+        <line x1={0} y1={base} x2={W} y2={base} className="stroke-borde-fuerte" strokeWidth={1} />
         {[-3, -2, -1, 0, 1, 2, 3].map((z) => (
           <g key={z}>
             <line x1={xDeZ(z)} y1={base} x2={xDeZ(z)} y2={base + 5}
-              className="stroke-slate-400" strokeWidth={1} />
+              className="stroke-borde-fuerte" strokeWidth={1} />
             <text x={xDeZ(z)} y={base + 17} textAnchor="middle"
-              className="fill-slate-500 text-[10px] dark:fill-slate-400">
+              className="fill-tinta-tenue text-[10px]">
               {(media + z * desviacion).toFixed(1)}
             </text>
           </g>
         ))}
       </svg>
 
-      <p className="mt-1 text-center text-xs text-slate-400">
+      <p className="mt-1 text-center text-xs text-tinta-tenue">
         puntaje del cuestionario · µ = {media.toFixed(2)}, σ = {desviacion.toFixed(2)}
       </p>
-      <p className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800/60 dark:text-slate-300">
+      <p className="mt-3 rounded-xl bg-papel-suave px-4 py-3 text-sm text-tinta-media">
         El <strong className="tabular-nums">{pct}%</strong> de los estudiantes
         tiene un puntaje entre{" "}
         <strong className="tabular-nums">
@@ -521,7 +521,7 @@ function SelectorDeCorte({
   return (
     <div className="rounded-2xl border-2 border-blue-300 bg-blue-50/30 p-5 dark:border-blue-800 dark:bg-blue-950/20 sm:p-6">
       <label className="flex flex-wrap items-center gap-4">
-        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+        <span className="text-sm font-medium text-tinta-media">
           Punto de corte
         </span>
         <span className="font-serif text-2xl font-semibold tabular-nums text-blue-700 dark:text-blue-300">
@@ -541,40 +541,40 @@ function SelectorDeCorte({
         <Metrica etiqueta="Sensibilidad" valor={t.sensibilidad} nota={`${t.VP} de ${t.dxSi} detectados`} tono="verde" />
         <Metrica etiqueta="Especificidad" valor={t.especificidad} nota={`${t.VN} de ${t.dxNo} descartados`} tono="verde" />
         <Metrica etiqueta="Valor predictivo" valor={t.vpp} nota={`${t.VP} de ${t.positivos} positivos`} tono="ambar" />
-        <div className="rounded-xl bg-white px-4 py-3 dark:bg-slate-900">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+        <div className="rounded-xl bg-tarjeta px-4 py-3">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue">
             Derivaciones
           </p>
-          <p className="font-serif text-2xl font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+          <p className="font-serif text-2xl font-semibold tabular-nums text-tinta">
             {t.positivos}
           </p>
-          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+          <p className="mt-0.5 text-xs text-tinta-tenue">
             entrevistas a agendar
           </p>
         </div>
       </div>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl bg-white px-4 py-3 text-sm dark:bg-slate-900">
+        <div className="rounded-xl bg-tarjeta px-4 py-3 text-sm">
           <p className="font-semibold text-rose-700 dark:text-rose-400">
             {t.FN} casos perdidos
           </p>
-          <p className="mt-1 text-slate-600 dark:text-slate-400">
+          <p className="mt-1 text-tinta-media">
             Personas que necesitaban ayuda y se fueron con un resultado
             negativo.
           </p>
         </div>
-        <div className="rounded-xl bg-white px-4 py-3 text-sm dark:bg-slate-900">
+        <div className="rounded-xl bg-tarjeta px-4 py-3 text-sm">
           <p className="font-semibold text-amber-700 dark:text-amber-400">
             {t.FP} falsas alarmas
           </p>
-          <p className="mt-1 text-slate-600 dark:text-slate-400">
+          <p className="mt-1 text-tinta-media">
             Entrevistas evitables, tiempo del servicio y un susto innecesario.
           </p>
         </div>
       </div>
 
-      <p className="mt-4 rounded-xl bg-white px-4 py-3 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300">
+      <p className="mt-4 rounded-xl bg-tarjeta px-4 py-3 text-sm text-tinta-media">
         Con el corte en {corte}, la normal predice que un{" "}
         <strong className="tabular-nums">{(areaTeorica * 100).toFixed(1)}%</strong>{" "}
         queda por encima (z = {z.toFixed(2)}); contando el archivo son{" "}
@@ -602,8 +602,8 @@ function Metrica({
   tono: "verde" | "ambar";
 }) {
   return (
-    <div className="rounded-xl bg-white px-4 py-3 dark:bg-slate-900">
-      <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+    <div className="rounded-xl bg-tarjeta px-4 py-3">
+      <p className="text-[10px] font-semibold uppercase tracking-wider text-tinta-tenue">
         {etiqueta}
       </p>
       <p
@@ -616,7 +616,7 @@ function Metrica({
       >
         {(valor * 100).toFixed(1)}%
       </p>
-      <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{nota}</p>
+      <p className="mt-0.5 text-xs text-tinta-tenue">{nota}</p>
     </div>
   );
 }

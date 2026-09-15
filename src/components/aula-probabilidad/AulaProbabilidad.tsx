@@ -159,8 +159,8 @@ export function AulaProbabilidad() {
 
       {/* Aviso de que se retomó donde se había quedado */}
       {retomado && (
-        <div className="mb-6 flex flex-wrap items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-800/60">
-          <span className="text-slate-700 dark:text-slate-300">
+        <div className="mb-6 flex flex-wrap items-center gap-3 rounded-xl border border-borde bg-papel-suave px-4 py-3 text-sm">
+          <span className="text-tinta-media">
             Retomaste donde habías quedado:{" "}
             <strong>
               {meta.apartado ? `${meta.apartado} ${meta.titulo}` : meta.titulo}
@@ -170,7 +170,7 @@ export function AulaProbabilidad() {
           <button
             type="button"
             onClick={empezarDeNuevo}
-            className="ml-auto shrink-0 rounded-full border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-blue-400 hover:text-blue-700 dark:border-slate-600 dark:text-slate-400 dark:hover:border-blue-600 dark:hover:text-blue-300"
+            className="ml-auto shrink-0 rounded-full border border-borde-fuerte px-3 py-1.5 text-xs font-semibold text-tinta-media transition hover:border-blue-400 hover:text-blue-700 dark:hover:border-blue-600 dark:hover:text-blue-300"
           >
             Empezar desde el inicio
           </button>
@@ -181,17 +181,17 @@ export function AulaProbabilidad() {
       <header className="mb-6">
         <p
           className={
-            "font-mono text-xs font-semibold uppercase tracking-widest " +
+            "tabular-nums text-xs font-semibold uppercase tracking-widest " +
             acento.texto
           }
         >
           {meta.icono} {meta.apartado ? `${meta.apartado} · ` : ""}
           {meta.subtitulo}
         </p>
-        <h2 className="mt-1 font-serif text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl dark:text-slate-100">
+        <h2 className="mt-1 font-serif text-2xl font-semibold tracking-tight text-tinta sm:text-3xl">
           {meta.titulo}
         </h2>
-        <p className="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm text-tinta-media">
           {meta.resumen}
         </p>
       </header>

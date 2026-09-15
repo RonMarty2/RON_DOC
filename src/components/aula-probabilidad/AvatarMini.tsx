@@ -31,7 +31,7 @@ export function AvatarMini({
           colorAvatar(seed) +
           " " +
           (resaltado
-            ? "ring-4 ring-amber-400 ring-offset-2 ring-offset-white dark:ring-offset-slate-950"
+            ? "ring-4 ring-amber-400 ring-offset-2 ring-offset-tarjeta"
             : "ring-1 ring-black/5") +
           " " +
           (parpadea ? "aula-parpadea" : "")
@@ -53,7 +53,7 @@ export function AvatarMini({
             "text-[10px] tabular-nums sm:text-xs " +
             (resaltado
               ? "font-semibold text-amber-700 dark:text-amber-300"
-              : "text-slate-500 dark:text-slate-400")
+              : "text-tinta-tenue")
           }
         >
           {etiqueta}

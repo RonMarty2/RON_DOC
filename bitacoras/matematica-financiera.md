@@ -45,6 +45,20 @@ Gancho (¿mismo interés con los tres?) → regla base: el interés es sobre lo 
 
 Orden elegido: del sistema más simple de calcular al más complejo (americano → alemán → francés).
 
+### Práctica ilimitada
+
+La última tarjeta de cada lámina arranca con el ejercicio escrito a mano (el de "Números de verdad") y el botón "Otro ejercicio" genera uno nuevo con `src/lib/finanzas/ejercicios.ts`. Dos tipos por tema:
+
+| Lámina | Tipo 1 | Tipo 2 |
+|---|---|---|
+| Interés compuesto | Monto con capitalización semestral, trimestral o mensual | Tasa real con inflación |
+| Anualidades | Cuota para juntar un monto (VF) | Valor hoy de una renta (VP) |
+| Amortización | Cuota del año k en el sistema alemán | Cuota del sistema francés |
+| Bonos | Precio con cupón y tasa de mercado | ¿Bajo, a o sobre la par? |
+| Depreciaciones | Suma de dígitos, año k | Valor en libros lineal, año k |
+
+Los distractores son errores con nombre: interés simple, capitalizar una vez al año, olvidar multiplicar los períodos, restar tasas, confundir VP con VF, olvidar el salvamento, depreciación acumulada en vez de valor en libros, sumar cupones sin descontar. La explicación nombra cada uno.
+
 ## Notación usada (a confirmar con el dossier)
 
 | Símbolo | Significa |

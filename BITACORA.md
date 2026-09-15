@@ -71,6 +71,8 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | 2026-09-14 | En el Aula, los grises y blancos pasan a los tokens (papel, tinta, borde); los colores con significado (azul, índigo, ámbar, verde, rosa) se quedan | Los neutros eran lo que la hacía parecer otro sitio. Los colores distinguen bloques del recorrido y categorías de los gráficos: pasarlos al terracota y al rojo, que se parecen, borraba información |
 | 2026-09-14 | Un gris sin variante `dark:` se convierte igual, salvo fondos blancos o semitransparentes | El primer intento convirtió también un botón blanco sobre azul, que en modo oscuro quedaba ilegible: esos eran iguales en los dos modos a propósito |
 | 2026-09-14 | Letra blanca sobre ámbar, verde o rosa medios pasa a un tono más oscuro del mismo color (o letra oscura sobre ámbar) | No llegaban a 4.5:1; el color sigue diciendo lo mismo |
+| 2026-09-14 | La práctica de las láminas genera ejercicios nuevos; las opciones incorrectas salen de errores típicos, no del azar | Una sola pregunta por lámina no alcanza para practicar; equivocarse con un distractor con nombre enseña qué se confundió |
+| 2026-09-14 | El azar se usa sólo después de un clic; el primer ejercicio es fijo | Si se sorteara al cargar, el HTML del servidor y el del navegador no coincidirían |
 
 ## 5. Trabajo en paralelo
 
@@ -99,14 +101,21 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - `b6e0ebe` Publicación de Matemática Financiera preparada: las cinco láminas están en `content/materias.ts` con `borrador: true`, que decide a la vez portada, página de materia, sitemap y `noindex`. Varias láminas se muestran como lista numerada (`ListaLaminas`). Probado quitando las marcas en local y vuelto a poner.
 - `86b5cb6` Accesibilidad de las láminas: fórmulas con MathML para lectores de pantalla; la etiqueta de cada tarjeta es título (`h2`); al cambiar de tarjeta se anuncia sólo "Tarjeta n de N" en vez de leer la tarjeta entera; el foco no se mueve, para no obligar a volver a buscar el botón.
 - `6aec37f` De Axiom: `parsearMath` en `src/components/math-parse.ts` con sus 10 pruebas, y `**negrita**` dentro de MathText (131 pruebas en total).
-- *(este commit)* El Aula de Probabilidad pasa a la paleta del sitio: 683 clases de gris y blanco a tokens y 609 variantes `dark:` que sobraban, en 21 archivos; etiquetas en Atkinson en vez de monoespaciada. Verificado midiendo el contraste de todo el texto en los 11 apartados, claro y oscuro: 0 por debajo de lo legible, después de corregir 7 casos (letra blanca sobre colores medios y una indicación en gris muy claro). Sin desbordes en 375 px.
+- *(este commit)* **Práctica ilimitada** en las cinco láminas de Matemática Financiera: el primer ejercicio es el escrito a mano y "Otro ejercicio" genera uno nuevo con otros números (`src/lib/finanzas/ejercicios.ts`, dos tipos por tema). Cada distractor es un error típico con nombre. Marcador de aciertos. `src/lib/formato.ts` junta el formato de montos. 165 pruebas: 2.000 ejercicios generados verifican 4 opciones distintas, explicación con el resultado y fórmulas sin error de KaTeX.
+- `6771f61` El Aula de Probabilidad pasa a la paleta del sitio: 683 clases de gris y blanco a tokens y 609 variantes `dark:` que sobraban, en 21 archivos; etiquetas en Atkinson en vez de monoespaciada. Verificado midiendo el contraste de todo el texto en los 11 apartados, claro y oscuro: 0 por debajo de lo legible, después de corregir 7 casos (letra blanca sobre colores medios y una indicación en gris muy claro). Sin desbordes en 375 px.
 
 ## 7. Qué sigue
 
 **Se puede hacer sin Ronald** (en este orden):
 
-1. Revisar el rendimiento en celular de gama baja: las láminas cargan ~190 kB de JavaScript (KaTeX va en el cliente porque las tarjetas son interactivas).
-2. Probar las láminas con un lector de pantalla real (TalkBack en Android): lo de accesibilidad se verificó por estructura, no escuchándolo.
+1. **Progreso del alumno** guardado en su celular (sin cuentas): láminas vistas, aciertos de la práctica, retomar en la tarjeta donde quedó.
+2. **Sin internet:** sumar las láminas a la precarga del service worker (`public/sw.js`, hoy sólo `/` y `/aula-probabilidad/`) cuando se publiquen.
+3. **Control automático al publicar:** que el deploy falle si una página tiene fórmulas con error de KaTeX o una tarjeta desborda en 375×812 (hoy se mide a mano).
+4. **Cuadernillo imprimible de Matemática Financiera**, con ejercicios de los mismos generadores y sus soluciones.
+5. Rendimiento en celular de gama baja: las láminas cargan ~190 kB de JavaScript (KaTeX va en el cliente porque las tarjetas son interactivas).
+6. Probar las láminas con un lector de pantalla real (TalkBack en Android): la accesibilidad se verificó por estructura, no escuchándola.
+
+**Decisiones de Ronald que mejorarían mucho:** dominio propio (la dirección de GitHub Pages es difícil de recordar); contar visitas (requiere un servicio externo: decisión de privacidad); Aula en tarjetas o scroll.
 
 **Cuando Ronald diga "publícalas":** en `content/materias.ts`, dentro de Matemática Financiera, borrar las cinco líneas `borrador: true,` y subir. Nada más: portada, página de la materia, sitemap e indexación se ajustan solos.
 

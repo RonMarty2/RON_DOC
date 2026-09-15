@@ -8,7 +8,7 @@ import {
   FilaRol,
   LineaEjemplo,
   Resultado,
-  TarjetaPractica,
+  PracticaVariable,
 } from "@/components/lamina/dispositivos";
 import { valorPresenteAnualidad } from "@/lib/finanzas/anualidades";
 import {
@@ -17,6 +17,7 @@ import {
   flujosBono,
   precioBono,
 } from "@/lib/finanzas/bonos";
+import { ejercicioBonos } from "@/lib/finanzas/ejercicios";
 
 // Todos los montos salen de src/lib/finanzas/: acá no se escribe ningún resultado a mano.
 const NOMINAL = 1000;
@@ -304,7 +305,8 @@ const diapositivas: LaminaDiapositiva[] = [
   {
     etiqueta: "Practícalo tú",
     contenido: (
-      <TarjetaPractica
+      <PracticaVariable
+        generar={ejercicioBonos}
         pregunta="Un bono de Bs 1.000 nominales paga un cupón de 6% anual y vence en 3 años. Si el mercado paga 8%, ¿cuánto vale hoy?"
         opciones={["Bs 1.000", `Bs ${bs(PRACTICA, 2)}`, `Bs ${bs(PRACTICA_SOLO_NOMINAL, 2)}`, "Bs 1.180"]}
         correcta={1}

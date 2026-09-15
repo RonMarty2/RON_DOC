@@ -8,7 +8,7 @@ import {
   FilaRol,
   LineaEjemplo,
   Resultado,
-  TarjetaPractica,
+  PracticaVariable,
 } from "@/components/lamina/dispositivos";
 import {
   cuotaDesdeValorFuturo,
@@ -17,6 +17,7 @@ import {
   valorPresenteAnualidad,
 } from "@/lib/finanzas/anualidades";
 import { montoCompuesto } from "@/lib/finanzas/interes";
+import { ejercicioAnualidades } from "@/lib/finanzas/ejercicios";
 
 // Todos los montos salen de src/lib/finanzas/: acá no se escribe ningún resultado a mano.
 const CUOTA = 1000;
@@ -327,7 +328,8 @@ const diapositivas: LaminaDiapositiva[] = [
   {
     etiqueta: "Practícalo tú",
     contenido: (
-      <TarjetaPractica
+      <PracticaVariable
+        generar={ejercicioAnualidades}
         pregunta="Quieres juntar Bs 10.000 en 4 años, depositando lo mismo al final de cada año al 8% anual. ¿Cuánto depositas cada año?"
         opciones={["Bs 2.500", `Bs ${bs(PRACTICA_R, 2)}`, `Bs ${bs(PRACTICA_VP, 2)}`, `Bs ${bs(PRACTICA_R / 1.08, 2)}`]}
         correcta={1}

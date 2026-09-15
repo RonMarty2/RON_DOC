@@ -8,13 +8,14 @@ import {
   FilaRol,
   LineaEjemplo,
   Resultado,
-  TarjetaPractica,
+  PracticaVariable,
 } from "@/components/lamina/dispositivos";
 import {
   calcularAmortizacionGenerica,
   type MetodoAmortizacion,
   type ResultadoAmortizacionGenerica,
 } from "@/lib/simpro/calculo-financiero";
+import { ejercicioAmortizacion } from "@/lib/finanzas/ejercicios";
 
 // Todos los montos salen del motor de SIMPRO: acá no se escribe ningún resultado a mano.
 const PRESTAMO = 10000;
@@ -347,7 +348,8 @@ const diapositivas: LaminaDiapositiva[] = [
   {
     etiqueta: "Practícalo tú",
     contenido: (
-      <TarjetaPractica
+      <PracticaVariable
+        generar={ejercicioAmortizacion}
         pregunta="Te prestan Bs 6.000 al 10% anual, a pagar en 3 años con el sistema alemán. ¿Cuánto pagas en la segunda cuota?"
         opciones={[`Bs ${bs(RESPUESTA_1)}`, `Bs ${bs(PRACTICA_FRANCES.cuotas[0].cuota)}`, `Bs ${bs(RESPUESTA_2)}`, `Bs ${bs(RESPUESTA_3)}`]}
         correcta={2}

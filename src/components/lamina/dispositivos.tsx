@@ -4,6 +4,7 @@
 
 import { useState } from "react";
 import { MathText } from "@/components/MathText";
+import type { Azar, Ejercicio } from "@/lib/finanzas/ejercicios";
 import { TONO_TEXTO, type Tono } from "./LaminaShell";
 
 export function TarjetaPractica({
@@ -11,11 +12,13 @@ export function TarjetaPractica({
   opciones,
   correcta,
   explicacion,
+  onResponder,
 }: {
   pregunta: string;
   opciones: string[];
   correcta: number;
   explicacion: string;
+  onResponder?: (acierto: boolean) => void;
 }) {
   const [elegida, setElegida] = useState<number | null>(null);
   const revelada = elegida !== null;
@@ -40,7 +43,10 @@ export function TarjetaPractica({
             <button
               key={j}
               type="button"
-              onClick={() => setElegida(j)}
+              onClick={() => {
+                setElegida(j);
+                onResponder?.(j === correcta);
+              }}
               disabled={revelada}
               className={`rounded-[0.65em] border-[1.5px] px-[0.9em] py-[0.6em] text-left text-[0.93em] font-semibold text-tinta transition ${estilo}`}
             >
@@ -54,6 +60,48 @@ export function TarjetaPractica({
       {revelada && (
         <div className="mt-[0.8em] text-[0.87em] leading-normal text-tinta-media">
           <MathText>{explicacion}</MathText>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/**
+ * El primer ejercicio es el de la lámina, escrito a mano; los siguientes se generan con números nuevos.
+ * Al azar sólo después de un clic: si se sorteara al cargar, el HTML del servidor y el del navegador no coincidirían.
+ */
+export function PracticaVariable({ generar, ...inicial }: Ejercicio & { generar: (azar: Azar) => Ejercicio }) {
+  const [ronda, setRonda] = useState(0);
+  const [ejercicio, setEjercicio] = useState<Ejercicio>(inicial);
+  const [respondida, setRespondida] = useState(false);
+  const [marcador, setMarcador] = useState({ bien: 0, hechos: 0 });
+
+  return (
+    <div className="flex flex-col gap-[0.8em]">
+      <TarjetaPractica
+        key={ronda}
+        {...ejercicio}
+        onResponder={(acierto) => {
+          setRespondida(true);
+          setMarcador((m) => ({ bien: m.bien + (acierto ? 1 : 0), hechos: m.hechos + 1 }));
+        }}
+      />
+      {respondida && (
+        <div className="flex flex-wrap items-center justify-between gap-[0.5em]">
+          <span aria-live="polite" className="text-[0.8em] tabular-nums text-tinta-tenue">
+            Aciertos: {marcador.bien} de {marcador.hechos}
+          </span>
+          <button
+            type="button"
+            onClick={() => {
+              setEjercicio(generar(Math.random));
+              setRonda((r) => r + 1);
+              setRespondida(false);
+            }}
+            className="rounded-full bg-acento px-[1em] py-[0.45em] text-[0.85em] font-semibold text-acento-texto transition hover:bg-acento-hover"
+          >
+            Otro ejercicio →
+          </button>
         </div>
       )}
     </div>

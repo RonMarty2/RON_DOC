@@ -8,7 +8,7 @@ import {
   FilaRol,
   LineaEjemplo,
   Resultado,
-  TarjetaPractica,
+  PracticaVariable,
 } from "@/components/lamina/dispositivos";
 import {
   depositoFondo,
@@ -17,6 +17,7 @@ import {
   type FilaDepreciacion,
   type MetodoDepreciacion,
 } from "@/lib/finanzas/depreciacion";
+import { ejercicioDepreciaciones } from "@/lib/finanzas/ejercicios";
 
 // Todos los montos salen de src/lib/finanzas/depreciacion.ts (el lineal, del motor de SIMPRO): acá no se escribe ningún resultado a mano.
 const COSTO = 50000;
@@ -340,7 +341,8 @@ const diapositivas: LaminaDiapositiva[] = [
   {
     etiqueta: "Practícalo tú",
     contenido: (
-      <TarjetaPractica
+      <PracticaVariable
+        generar={ejercicioDepreciaciones}
         pregunta="Un vehículo cuesta Bs 80.000, dura 4 años y su salvamento es Bs 8.000. Con suma de dígitos, ¿cuánto se deprecia el año 2?"
         opciones={[`Bs ${bs(PRACTICA_LINEAL)}`, `Bs ${bs(PRACTICA[1].depreciacion)}`, `Bs ${bs(PRACTICA[0].depreciacion)}`, `Bs ${bs((3 / 10) * 80000)}`]}
         correcta={1}

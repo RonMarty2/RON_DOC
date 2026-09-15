@@ -8,9 +8,10 @@ import {
   FilaRol,
   LineaEjemplo,
   Resultado,
-  TarjetaPractica,
+  PracticaVariable,
 } from "@/components/lamina/dispositivos";
 import { montoCompuesto, montoSimple, poderDeCompra, tasaEfectivaAnual, tasaReal } from "@/lib/finanzas/interes";
+import { ejercicioInteresCompuesto } from "@/lib/finanzas/ejercicios";
 
 // Todos los montos y tasas salen de src/lib/finanzas/interes.ts: acá no se escribe ningún resultado a mano.
 const CAPITAL = 10000;
@@ -363,7 +364,8 @@ const diapositivas: LaminaDiapositiva[] = [
   {
     etiqueta: "Practícalo tú",
     contenido: (
-      <TarjetaPractica
+      <PracticaVariable
+        generar={ejercicioInteresCompuesto}
         pregunta="Depositas Bs 5.000 al 8% anual capitalizable semestralmente, durante 2 años. ¿Cuánto tienes al final?"
         opciones={[`Bs ${bs(PRACTICA_SIMPLE)}`, `Bs ${bs(PRACTICA_ANUAL)}`, `Bs ${bs(PRACTICA_SEMESTRAL, 2)}`, "Bs 6.000"]}
         correcta={2}

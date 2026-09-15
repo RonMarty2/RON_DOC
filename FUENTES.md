@@ -48,12 +48,15 @@ Se actualiza al terminar cada revisión, aunque no se haya traído nada.
 
    Para leer la versión nueva de un archivo sin tocar el repo: `git -C ../simuladorPRO show origin/main:src/lib/calculo-financiero.ts`.
 
-   Para volver a copiar el motor sin tocar SIMPRO, y comprobar que sigue funcionando:
+   Para saber si la copia del motor quedó atrás y volver a copiarlo (lee los archivos de `../simuladorPRO/src`, así que conviene mirar antes qué rama tiene ese repo; no hacer `pull` desde acá):
 
    ```bash
-   for f in calculo-financiero.ts calculo-financiero.test.ts calculo-financiero-v2.test.ts; do git -C ../simuladorPRO show origin/main:src/lib/$f > src/lib/simpro/$f; done
+   node scripts/traer-motor-simpro.mjs --comprobar   # dice qué archivos cambiaron
+   node scripts/traer-motor-simpro.mjs               # copia (idénticos salvo rutas de import)
    npm test
    ```
+
+   La lista de archivos está en `ARCHIVOS` dentro del script; si un archivo nuevo importa algo que no está en la lista, el script falla y lo nombra.
 
 4. **Decidir y avisar.** Resumir en pocas líneas qué hay de nuevo que valga para RON_DOC (arreglos de celular, componentes visuales, reglas nuevas en la bitácora, correcciones del motor financiero) y qué no aplica. Traer lo que corresponda, actualizando el `Commit origen` en el mapa.
 
@@ -96,11 +99,12 @@ Estados: `pendiente` · `traída` · `adaptada` · `descartada`.
 
 | Pieza | Origen | Destino en RON_DOC | Estado | Commit origen | Notas |
 |---|---|---|---|---|---|
-| Motor financiero | `src/lib/calculo-financiero.ts` + `calculo-financiero.test.ts` + `calculo-financiero-v2.test.ts` | `src/lib/simpro/` (mismos nombres) | traída | `8acdc6c` | Copia idéntica byte a byte (comparada por sha1). Sus 87 pruebas corren en RON_DOC con `npm test`. Primer uso: la lámina `/amortizacion` |
-| Flujo de caja del proyecto | `src/lib/flujo-proyecto.ts`, `src/lib/finanzas/proyecto-financiero.ts`, `src/lib/iva-proyecto.ts`, `src/types/proyecto.ts` | — | pendiente | — | Revisar dependencias al copiar |
-| Sensibilidad y escenarios | `src/lib/finanzas/sensibilidad.ts`, `src/lib/escenarios.ts` | — | pendiente | — | |
-| Laboratorio de viabilidad | `src/lib/laboratorio-viabilidad.ts` (la pantalla vive en `src/components/presentacion/VisorPitch.tsx`) | — | pendiente | — | |
-| Casos bolivianos de ejemplo | `src/lib/plantillas.ts` | — | pendiente | — | Material para ejercicios |
+| Motor financiero | `src/lib/calculo-financiero.ts` + `calculo-financiero.test.ts` + `calculo-financiero-v2.test.ts` | `src/lib/simpro/` (mismos nombres) | traída | `8acdc6c` | Copia idéntica byte a byte. Sus 87 pruebas corren en RON_DOC con `npm test`. Usos: `/amortizacion`, depreciación lineal, simulador de proyectos |
+| Flujo de caja del proyecto | `src/lib/flujo-proyecto.ts`, `src/lib/finanzas/proyecto-financiero.ts`, `src/lib/finanzas/api-contract.ts`, `src/lib/iva-proyecto.ts`, `src/types/proyecto.ts` | `src/lib/simpro/` (`types/` adentro) | traída | `8acdc6c` | Con `scripts/traer-motor-simpro.mjs`: idénticos salvo rutas de import. Para `/simulador-proyectos` |
+| Sensibilidad y escenarios | `src/lib/finanzas/sensibilidad.ts`, `src/lib/escenarios.ts` + prueba | `src/lib/simpro/` | traída | `8acdc6c` | Ídem |
+| Laboratorio de viabilidad | `src/lib/laboratorio-viabilidad.ts` + prueba (la pantalla vive en `src/components/presentacion/VisorPitch.tsx`) | `src/lib/simpro/` | traída | `8acdc6c` | Ídem; la pantalla se escribe en RON_DOC |
+| Casos bolivianos de ejemplo | `src/lib/plantillas.ts` + prueba, `src/lib/proyecto-factory.ts` | `src/lib/simpro/` | traída | `8acdc6c` | 27 proyectos completos; los elige el alumno en el simulador |
+| Interfaz del simulador | `src/routes/construir-proyecto.tsx`, `simular-proyecto.tsx`, `components/constructor/`, `components/escenarios/` | `src/app/simulador-proyectos/` | adaptada (en curso) | `8acdc6c` | No se copia: React Router, Zustand y Supabase. Se reescribe con el aspecto del sitio y en tuteo |
 
 **No cubierto por SimuladorPRO** (hay que construirlo en RON_DOC): anualidades, bonos, ratios financieros, análisis vertical/horizontal, DuPont.
 
@@ -120,3 +124,4 @@ Supabase, login, pagos y planes, paneles de docente, banco de exámenes UMSS, mo
 | 2026-09-14 | Axiom `fd17d4c..a0ab04b` (6 commits); SIMPRO sin cambios | Nada | Los 6 son del banco de exámenes de Económicas, facultades e inventario de facsímiles: ninguna ruta vigilada, y el banco está en "lo que no se trae" |
 | 2026-09-14 | Axiom `a0ab04b..7a5d8ed` (8 commits); SIMPRO sin cambios | `58051af`: `parsearMath` en archivo propio con 10 pruebas, y `**negrita**` en MathText | Los otros 7: exámenes de Económicas y títulos de parciales del banco |
 | 2026-09-14 | Sin commits nuevos en ninguno de los dos (revisado al empezar y al terminar la tanda de progreso, sin internet, controles, imágenes para compartir y hoja imprimible) | Nada | — |
+| 2026-09-14 | SIMPRO `8acdc6c`, sin cambios | El motor del simulador de proyectos: `types/proyecto.ts`, `flujo-proyecto.ts`, `iva-proyecto.ts`, `escenarios.ts`, `finanzas/` (proyecto-financiero, sensibilidad, api-contract), `laboratorio-viabilidad.ts`, `proyecto-factory.ts`, `plantillas.ts` y sus pruebas, con `scripts/traer-motor-simpro.mjs` | Toda la interfaz (otro stack), login, cursos, entregas, eventos en vivo, podio y exportar a Excel: dependen de Supabase o del rol docente |

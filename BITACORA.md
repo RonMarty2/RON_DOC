@@ -8,6 +8,34 @@
 
 ---
 
+## 0. En curso ahora (leer antes que nada)
+
+> Regla pedida por Ronald: si se cortan los tokens, otra IA tiene que poder seguir desde acá sin rehacer nada. Antes de cada paso se actualiza esta lista, y se sube después de cada paso terminado. Al terminar el trabajo entero, pasa a §6 y esta sección queda vacía.
+
+### Simulador de proyectos de SIMPRO dentro de RON_DOC
+
+**Pedido (14-sep):** Ronald vio que de SIMPRO sólo había 2 cálculos escondidos en láminas sin publicar y un enlace en "Proyectos", y eligió **"Traer el simulador SIMPRO"**: que sus alumnos armen y simulen un proyecto de inversión (VAN, TIR, flujo de caja, impuestos de Bolivia) dentro de la página, sin cuenta.
+
+**Decisiones tomadas:**
+
+- Ruta `/simulador-proyectos`, tipo `aula`, en **Administración Financiera** (la bitácora de SIMPRO dice que está pensado para "Análisis Financiero" o "Formulación de Proyectos"; moverlo de materia es cambiar una línea en `content/materias.ts`).
+- Sin login ni Supabase: el proyecto elegido y los ajustes quedan en el navegador del alumno.
+- Se trae el **motor** de SIMPRO, no su interfaz (React + Vite + Supabase, otro stack): la interfaz se escribe acá con el aspecto del sitio y textos en tuteo.
+- El motor se copia con `node scripts/traer-motor-simpro.mjs` a `src/lib/simpro/`: archivos idénticos salvo las rutas de import. `--comprobar` dice si SIMPRO cambió. No editar esos archivos a mano.
+- Es material de Ronald (su app, sus 27 proyectos de ejemplo), así que se publica sin esperar "publícalas", una vez que funcione completo.
+
+**Pasos:**
+
+- [x] 1. Motor copiado: tipos, flujo de caja a 5 años con IVA, IT e IUE, indicadores, escenarios, sensibilidad, laboratorio de viabilidad, fábrica de proyectos y las 27 plantillas (17 archivos, 187 pruebas de SIMPRO corriendo en `npm test`).
+- [ ] 2. Página `/simulador-proyectos`: elegir proyecto (27 plantillas por categoría, `PLANTILLAS` y `CATEGORIAS` de `plantillas.ts`) y "así está armado" (inversión por categoría, capital de trabajo, productos, personal, financiamiento).
+- [ ] 3. Flujo de caja año 0 a 5 (`construirFlujoCaja` de `flujo-proyecto.ts`): tabla y gráfico de barras calculado.
+- [ ] 4. "¿Conviene?": VAN, TIR contra WACC, período de recuperación, IR y RBC, cada uno con su fórmula en KaTeX y qué significa con los números del proyecto.
+- [ ] 5. Tres escenarios (`compararEscenarios`, `DEFAULT_OPTIMISTA`, `DEFAULT_PESIMISTA`, `esViable`).
+- [ ] 6. Laboratorio: deslizadores de precio, ventas, costos y deuda (`calcularEscenarioLaboratorio`) y cuánto aguanta cada variable (`analizarLimitesViabilidad`).
+- [ ] 7. Publicar: herramienta en `content/materias.ts` sin borrador; pruebas de texto (KaTeX, voseo) sobre la página; medir en 375 px; imagen para compartir; anotar en §6, `FUENTES.md` y vaciar esta sección.
+
+---
+
 ## 1. Qué es
 
 El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba): **un libro interactivo por materia**. Toma lo visual de Axiom y el motor financiero de SIMPRO (ver `FUENTES.md`).
@@ -17,6 +45,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 
 ## 2. Cómo retomar
 
+0. Leer §0 (trabajo a medio hacer).
 1. `git pull` (hay otra sesión trabajando en paralelo, ver §5).
 2. Revisar si Axiom o SIMPRO cambiaron: protocolo en `FUENTES.md`.
 3. Leer `CLAUDE.md` (reglas de formato, idioma y publicación).

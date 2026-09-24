@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Muestra de la escena 1 del juego (24-09-2026). Ver IDEA-JUEGO.md. No se compila ni se enlaza desde el sitio. -->
+<title>Valle de los Proyectos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --noche:#15122b; --panel:#221d40; --borde:#3a3266; --tunari:#4a3f7a;
+    --adobe:#b8683f; --atardecer:#f2a65a; --leche:#f3eee4; --pasto:#6fa35c;
+    --texto:#e9e4f5; --tenue:#a79fc8; --alerta:#ef6f6c; --bien:#8fd694;
+    --pixel:"Press Start 2P", ui-monospace, "Courier New", monospace;
+    --dialogo:"VT323", ui-monospace, "Courier New", monospace;
+    --cuerpo:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  html,body{background:var(--noche);color:var(--texto)}
+  body{font-family:var(--cuerpo);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:18px 40px}
+  .marco{max-width:980px;margin-inline:auto;display:grid;gap:14px}
+  .cabeza{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between}
+  h1{font-family:var(--pixel);font-size:clamp(13px,2.4vw,18px);letter-spacing:.04em;color:var(--atardecer);margin:0;line-height:1.6}
+  .sub{color:var(--tenue);font-size:13px;margin:0}
+  .chip{font-family:var(--pixel);font-size:9px;letter-spacing:.06em;padding:6px 8px;border:2px solid var(--borde);background:var(--panel);color:var(--leche);white-space:nowrap}
+  .juego{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:14px}
+  @media (max-width:760px){.juego{grid-template-columns:1fr}}
+  .pantalla{border:4px solid var(--borde);background:#000;image-rendering:pixelated;box-shadow:0 0 0 4px var(--noche),0 0 0 6px var(--tunari)}
+  canvas{display:block;width:100%;height:auto;image-rendering:pixelated}
+  .hud{display:grid;gap:10px;align-content:start}
+  .dato{background:var(--panel);border:2px solid var(--borde);padding:10px 12px}
+  .dato .et{font-family:var(--pixel);font-size:8px;letter-spacing:.08em;color:var(--tenue);text-transform:uppercase}
+  .dato .v{font-family:var(--dialogo);font-size:30px;line-height:1.1;color:var(--leche);font-variant-numeric:tabular-nums}
+  .dato .v small{font-size:18px;color:var(--tenue)}
+  .fila{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .dialogo{background:var(--panel);border:4px solid var(--leche);outline:4px solid var(--noche);padding:14px 16px;display:grid;gap:10px}
+  .quien{font-family:var(--pixel);font-size:10px;color:var(--atardecer);letter-spacing:.05em}
+  .dice{font-family:var(--dialogo);font-size:24px;line-height:1.25;margin:0;min-height:3.8em}
+  .acciones{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  button{font-family:var(--pixel);font-size:10px;letter-spacing:.04em;line-height:1.6;color:var(--noche);background:var(--atardecer);border:0;padding:10px 14px;box-shadow:0 4px 0 #9a5a27;cursor:pointer}
+  button:hover{filter:brightness(1.08)}
+  button:active{transform:translateY(3px);box-shadow:0 1px 0 #9a5a27}
+  button.alt{background:var(--leche);box-shadow:0 4px 0 #9c9486}
+  button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--bien);outline-offset:3px}
+  .opciones{display:grid;gap:10px}
+  .opcion{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;text-align:left;background:var(--noche);color:var(--texto);border:2px solid var(--borde);box-shadow:none;padding:12px;font-family:var(--cuerpo);font-size:14px;line-height:1.4;letter-spacing:0}
+  .opcion:hover{border-color:var(--atardecer);filter:none}
+  .opcion b{font-family:var(--pixel);font-size:10px;color:var(--atardecer)}
+  .opcion .precio{font-family:var(--dialogo);font-size:22px;color:var(--leche);white-space:nowrap}
+  .ficha{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .ficha div{background:var(--noche);border:2px solid var(--borde);padding:8px;text-align:center}
+  .ficha .n{font-family:var(--dialogo);font-size:26px;color:var(--leche);display:block;line-height:1}
+  .ficha .l{font-size:12px;color:var(--tenue)}
+  label{font-size:13px;color:var(--tenue)}
+  input,textarea{font-family:var(--dialogo);font-size:22px;background:var(--noche);color:var(--leche);border:2px solid var(--borde);padding:6px 10px;width:100%;max-width:100%}
+  input{max-width:180px}
+  textarea{min-height:90px;resize:vertical;font-size:20px}
+  .nota{font-size:13px;color:var(--tenue);margin:0}
+  .mal{color:var(--alerta)} .ok{color:var(--bien)}
+  .registro{background:var(--panel);border:2px dashed var(--borde);padding:12px 14px}
+  .registro h2{font-family:var(--pixel);font-size:10px;letter-spacing:.06em;color:var(--leche);margin:0 0 8px}
+  .registro ol{margin:0;padding-left:20px;display:grid;gap:4px;font-size:13px;color:var(--texto)}
+  .registro ol li span{color:var(--tenue);font-variant-numeric:tabular-nums}
+  .pie{font-size:12px;color:var(--tenue);border-top:2px solid var(--borde);padding-top:10px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="marco">
+  <div class="cabeza">
+    <div>
+      <h1>VALLE DE LOS PROYECTOS</h1>
+      <p class="sub">Isla Proyectos II · Barrio de la Producción · Escena 1: «La máquina que no alcanzaba»</p>
+    </div>
+    <span class="chip" title="Cada estudiante recibe datos distintos">TUS DATOS: VERSIÓN 07 DE 32</span>
+  </div>
+
+  <div class="juego">
+    <div class="pantalla"><canvas id="lienzo" width="320" height="180" aria-label="Escena en pixel art: la planta de Lácteos Valle Alto en Punata, al atardecer, con el cerro Tunari al fondo"></canvas></div>
+    <div class="hud">
+      <div class="dato"><div class="et">Caja de la empresa</div><div class="v" id="hudCaja">Bs 120.000</div></div>
+      <div class="fila">
+        <div class="dato"><div class="et">Botellas / día</div><div class="v" id="hudBot">720</div></div>
+        <div class="dato"><div class="et">Pedidos / día</div><div class="v" id="hudPed">860</div></div>
+      </div>
+      <div class="dato"><div class="et">Confianza de Don Mario</div><div class="v" id="hudConf">★★★<small>☆☆</small></div></div>
+    </div>
+  </div>
+
+  <div class="dialogo" aria-live="polite">
+    <div class="quien" id="quien">DON MARIO · Lácteos Valle Alto</div>
+    <p class="dice" id="dice"></p>
+    <div id="zona"></div>
+  </div>
+
+  <div class="registro">
+    <h2>REGISTRO DE DECISIONES · lo ve el docente</h2>
+    <ol id="registro"><li><span>—</span> Todavía no hay decisiones.</li></ol>
+  </div>
+
+  <p class="pie">Maqueta para decidir el diseño: una sola escena, sin cuentas de estudiante; el registro se borra al cerrar. En el juego real, cada estudiante tiene sus propios ritmos de máquina (versión), el registro queda guardado y la escena termina en la defensa oral del docente. Números del caso: Semana 1 de Proyectos II, subtema 1.3.</p>
+</div>
+
+<script>
+(() => {
+  // ---------------- datos de la versión (en el juego real vienen por estudiante)
+  const V = { pasteur: 300, tanquesL: 400, cicloH: 8, envas: 120, horas: 16, efic: 0.9, pedidos: 860, precio: 12, costoL: 8 };
+  const ferm = V.tanquesL / V.cicloH;                 // 50 L/h
+  const capDia = Math.round(Math.min(V.pasteur, ferm, V.envas) * V.horas * V.efic); // 720
+  const ferm3 = 600 / V.cicloH;                       // 75 L/h
+  const cap3 = Math.round(Math.min(V.pasteur, ferm3, V.envas) * V.horas * V.efic);  // 1080
+
+  const st = { caja: 120000, bot: capDia, conf: 3, tanques: 2, envAuto: false, velocidad: 1 };
+  const $ = id => document.getElementById(id);
+  const fmt = n => "Bs " + n.toLocaleString("es-BO").replace(/,/g, ".");
+  const hud = () => {
+    $("hudCaja").textContent = fmt(st.caja);
+    $("hudBot").textContent = st.bot;
+    $("hudBot").className = "v " + (st.bot >= V.pedidos ? "ok" : "");
+    $("hudConf").innerHTML = "★".repeat(st.conf) + "<small>" + "☆".repeat(5 - st.conf) + "</small>";
+  };
+  const log = (t) => {
+    const ol = $("registro");
+    if (ol.dataset.vacio !== "no") { ol.innerHTML = ""; ol.dataset.vacio = "no"; }
+    const li = document.createElement("li");
+    const h = new Date().toLocaleTimeString("es-BO", { hour: "2-digit", minute: "2-digit" });
+    li.innerHTML = `<span>${h}</span> ${t}`;
+    ol.appendChild(li);
+  };
+
+  // ---------------- guion
+  let paso = 0;
+  const hablar = (quien, texto, contenido) => {
+    $("quien").textContent = quien;
+    $("dice").textContent = texto;
+    $("zona").innerHTML = "";
+    if (contenido) $("zona").appendChild(contenido);
+  };
+  const el = (html) => { const d = document.createElement("div"); d.innerHTML = html; return d; };
+  const boton = (txt, fn, alt) => { const b = document.createElement("button"); b.textContent = txt; if (alt) b.className = "alt"; b.onclick = fn; return b; };
+
+  function escena0() {
+    const acc = el('<div class="acciones"></div>'); acc.firstChild.appendChild(boton("SEGUIR ▶", escena1));
+    hablar("DON MARIO · Lácteos Valle Alto",
+      "¡Llegaste, consultor! Tengo 860 pedidos de yogur por día y la planta no da abasto. Un vendedor me ofrece una envasadora automática: tres veces más rápida. ¿La compro?", acc);
+  }
+
+  function escena1() {
+    const d = el(`
+      <div style="display:grid;gap:12px">
+        <div class="ficha">
+          <div><span class="n">${V.pasteur} L/h</span><span class="l">Pasteurizador</span></div>
+          <div><span class="n">2 × 200 L</span><span class="l">Tanques · ciclo de ${V.cicloH} h</span></div>
+          <div><span class="n">${V.envas} L/h</span><span class="l">Envasadora actual</span></div>
+        </div>
+        <p class="nota">La planta trabaja ${V.horas} horas por día, con ${V.efic * 100} % de eficiencia (limpiezas y paradas). Cada botella es de 1 litro.</p>
+        <label for="resp">Antes de aconsejar: ¿cuántas botellas por día puede sacar HOY la planta?</label>
+        <div class="acciones"><input id="resp" inputmode="numeric" autocomplete="off" placeholder="botellas"><span id="fb" class="nota"></span></div>
+      </div>`);
+    const acc = el('<div class="acciones" style="margin-top:10px"></div>').firstChild;
+    acc.appendChild(boton("CALCULAR ✔", comprobar));
+    d.appendChild(acc);
+    hablar("DON MARIO · te muestra la planta", "Estas son mis máquinas. Mi hijo dice que la envasadora es el problema… ¿tú qué calculas?", d);
+    setTimeout(() => $("resp") && $("resp").focus(), 50);
+    intentos = 0;
+  }
+  let intentos = 0;
+  function comprobar() {
+    const v = parseInt(($("resp").value || "").replace(/\D/g, ""), 10);
+    if (!v) { $("fb").textContent = "Escribe un número."; $("fb").className = "nota mal"; return; }
+    intentos++;
+    log(`Calculó la capacidad diaria: <b>${v}</b> botellas (intento ${intentos}).`);
+    if (Math.abs(v - capDia) <= 5) {
+      log("✔ Capacidad correcta: identificó la fermentación como cuello de botella.");
+      escena2(); return;
+    }
+    $("fb").className = "nota mal";
+    if (v === Math.round((V.pasteur + ferm + V.envas) * V.horas * V.efic) || v > 4000)
+      $("fb").textContent = "Don Mario frunce el ceño: «¿Sumaste las máquinas? El yogur pasa por TODAS, una tras otra…»";
+    else if (v === Math.round(ferm * V.horas) || v === 800)
+      $("fb").textContent = "«Casi… ¿y las limpiezas? No trabajamos el 100 % del tiempo.»";
+    else if (v === Math.round(V.envas * V.horas * V.efic))
+      $("fb").textContent = "«Eso envasaría la máquina… si le llegara el yogur. ¿Qué etapa es la más lenta?»";
+    else
+      $("fb").textContent = "«Ayer contamos las botellas y no salió eso. Mira qué máquina hace esperar a las otras.»";
+  }
+
+  function escena2() {
+    const d = el(`<div class="opciones">
+      <button class="opcion" id="o1"><b>A</b><span>Comprar la envasadora automática (400 L/h)</span><span class="precio">Bs 38.000</span></button>
+      <button class="opcion" id="o2"><b>B</b><span>Comprar un tercer tanque de fermentación (200 L)</span><span class="precio">Bs 45.000</span></button>
+      <button class="opcion" id="o3"><b>C</b><span>No comprar nada y rechazar pedidos</span><span class="precio">Bs 0</span></button>
+    </div>`);
+    hablar("DON MARIO", `¡${capDia} botellas, exacto! Eso contamos ayer. Entonces… ¿qué hago con la plata?`, d);
+    d.querySelector("#o1").onclick = () => decidir("A");
+    d.querySelector("#o2").onclick = () => decidir("B");
+    d.querySelector("#o3").onclick = () => decidir("C");
+  }
+
+  function decidir(op) {
+    let texto;
+    if (op === "A") {
+      st.caja -= 38000; st.envAuto = true; st.bot = capDia; st.conf = 1; st.velocidad = 1;
+      log("Decidió: <b>A · envasadora automática</b> (Bs 38.000). Resultado: 720 botellas/día, sin cambio.");
+      texto = `Pasó un mes… La envasadora nueva brilla, pero se queda esperando: siguen saliendo ${capDia} botellas. Faltan ${V.pedidos - capDia} por día y gastamos Bs 38.000. Mi hijo está furioso.`;
+    } else if (op === "B") {
+      st.caja -= 45000; st.tanques = 3; st.bot = cap3; st.conf = 5; st.velocidad = 1.5;
+      log(`Decidió: <b>B · tercer tanque</b> (Bs 45.000). Resultado: ${cap3} botellas/día, cubre los ${V.pedidos} pedidos.`);
+      texto = `¡Pasó un mes y la planta vuela! Con tres tanques salen ${cap3} botellas por día: atendemos los ${V.pedidos} pedidos y todavía sobra. Margen extra: ${fmt((V.pedidos - capDia) * (V.precio - V.costoL) * 26)} al mes.`;
+    } else {
+      st.conf = 2; st.bot = capDia; st.velocidad = 1;
+      log(`Decidió: <b>C · no invertir</b>. Pierde ${V.pedidos - capDia} pedidos por día.`);
+      texto = `Pasó un mes. No gastamos nada… pero rechazamos ${V.pedidos - capDia} pedidos por día. Dos tiendas ya le compran a la competencia.`;
+    }
+    hud();
+    const acc = el('<div class="acciones"></div>').firstChild;
+    acc.appendChild(boton("IR A LA DEFENSA ▶", escena3));
+    if (op !== "B") acc.appendChild(boton("↺ VOLVER A INTENTAR", () => { Object.assign(st, { caja: 120000, bot: capDia, conf: 3, tanques: 2, envAuto: false, velocidad: 1 }); hud(); log("Volvió a decidir."); escena2(); }, true));
+    hablar("DON MARIO · un mes después", texto, acc);
+  }
+
+  function escena3() {
+    const d = el(`<div style="display:grid;gap:10px">
+      <label for="def">Esto lo vas a defender en clase frente al docente. Escribe tu argumento (3 líneas):</label>
+      <textarea id="def" placeholder="La envasadora no aumentaba la capacidad porque…"></textarea>
+      <div class="acciones"></div></div>`);
+    d.querySelector(".acciones").appendChild(boton("ENTREGAR ARGUMENTO ✔", () => {
+      const t = ($("def").value || "").trim();
+      if (t.length < 20) { $("def").focus(); return; }
+      log(`Argumento para la defensa: «${t.replace(/</g, "&lt;").slice(0, 220)}»`);
+      final();
+    }));
+    hablar("TRIBUNAL · Defensa oral", "El docente te va a preguntar: «¿Por qué no bastaba con una máquina tres veces más rápida?»", d);
+  }
+
+  function final() {
+    const acc = el('<div class="acciones"></div>').firstChild;
+    acc.appendChild(boton("↺ JUGAR LA ESCENA DE NUEVO", () => location.reload(), true));
+    hablar("FIN DE LA ESCENA 1", "Tu decisión, tus cálculos y tu argumento quedaron en el registro. En el juego real, la nota sale de acá más tu defensa en clase. Próxima escena: «La cámara de frío que se llenó» (Semana 2).", acc);
+  }
+
+  // ---------------- pixel art
+  const cv = $("lienzo"), c = cv.getContext("2d");
+  const P = (x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x | 0, y | 0, w | 0, h | 0); };
+  const semilla = (i) => { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); };
+  const PERSONA = [ // Don Mario: sombrero, bigote, delantal
+    "....KKKK....", "...KKKKKK...", "..KKKKKKKK..", "....SSSS....", "...SSSSSS...", "...SESSES...",
+    "...SSMMSS...", "....SSSS....", "..WWWWWWWW..", ".SWWWAAWWWS.", ".SWWWAAWWWS.", ".SWWWAAWWWS.",
+    "...WWAAWW...", "...PP..PP...", "...PP..PP...", "..BBB..BBB..",
+  ];
+  const COL = { K: "#3b2a1e", S: "#d9a47a", E: "#15122b", M: "#4a2c1a", W: "#f3eee4", A: "#5b8fd6", P: "#3a3266", B: "#2a2140" };
+  const sprite = (m, x, y) => m.forEach((f, j) => [...f].forEach((ch, i) => { if (COL[ch]) P(x + i, y + j, 1, 1, COL[ch]); }));
+
+  let t = 0, botellas = [];
+  function fondo() {
+    const cielo = ["#2b2150", "#3d2a5e", "#5a3363", "#8a4560", "#c2605a", "#e98a57", "#f2a65a"];
+    cielo.forEach((col, i) => P(0, i * 13, 320, 13, col));
+    for (let i = 0; i < 26; i++) { const x = semilla(i) * 320, y = semilla(i + 99) * 40; if ((t / 30 + i) % 7 > 1) P(x, y, 1, 1, "#f3eee4"); }
+    P(248, 58, 10, 10, "#ffd89a"); P(246, 60, 14, 6, "#ffd89a");        // sol bajando
+    c.fillStyle = "#4a3f7a"; c.beginPath(); c.moveTo(0, 104);               // Tunari
+    [[30, 80], [60, 88], [95, 60], [120, 70], [150, 52], [175, 66], [210, 74], [240, 64], [280, 84], [320, 78], [320, 110], [0, 110]]
+      .forEach(([x, y]) => c.lineTo(x, y)); c.fill();
+    P(147, 52, 8, 3, "#e9e4f5"); P(144, 55, 12, 2, "#e9e4f5");               // nieve
+    P(0, 108, 320, 72, "#3c5a3a"); P(0, 150, 320, 30, "#6b5a45");            // pasto y calle
+    for (let x = 0; x < 320; x += 16) P(x + 4, 162, 8, 2, "#8a775c");
+  }
+  function planta() {
+    P(20, 70, 190, 80, "#b8683f"); P(20, 66, 190, 6, "#8e4e2e");             // galpón de adobe
+    for (let x = 20; x < 210; x += 10) P(x, 66, 5, 3, "#a85c34");
+    P(40, 74, 150, 10, "#15122b");
+    c.fillStyle = "#f2a65a"; c.font = "8px 'Press Start 2P', monospace"; c.fillText("LACTEOS VALLE ALTO", 44, 83);
+    const tanques = st.tanques;
+    for (let i = 0; i < 3; i++) {                                           // tanques
+      const x = 34 + i * 26, lleno = i < tanques;
+      P(x, 96, 20, 40, lleno ? "#c9d3dc" : "#6d6590"); P(x + 2, 98, 4, 36, lleno ? "#eef3f7" : "#7d75a0");
+      if (!lleno) { c.fillStyle = "#e9e4f5"; c.font = "6px 'Press Start 2P', monospace"; c.fillText("?", x + 7, 120); }
+      P(x + 4, 136, 3, 6, "#5c5476"); P(x + 13, 136, 3, 6, "#5c5476");
+    }
+    P(118, 112, 34, 26, st.envAuto ? "#5b8fd6" : "#8a8fa0");                // envasadora
+    P(122, 116, 26, 8, "#15122b"); P(124, 118, st.envAuto ? 22 : 10, 4, st.envAuto ? "#8fd694" : "#f2a65a");
+    P(152, 128, 56, 4, "#3a3266");                                          // cinta
+    botellas.forEach(b => { P(b, 121, 5, 7, "#f3eee4"); P(b + 1, 119, 3, 2, "#ef6f6c"); });
+    P(214, 96, 30, 44, "#e9e4f5"); P(218, 102, 22, 30, "#bcd6e6");         // cámara de frío
+    c.fillStyle = "#3a3266"; c.font = "6px 'Press Start 2P', monospace"; c.fillText("FRIO", 218, 138);
+    P(258, 124, 40, 18, "#f3eee4"); P(292, 128, 12, 14, "#d8d2c6");        // camioneta
+    P(262, 140, 7, 7, "#15122b"); P(286, 140, 7, 7, "#15122b");
+    sprite(PERSONA, 190 + Math.round(Math.sin(t / 40)), 134);
+  }
+  let ultimo = 0;
+  function cuadro(ms) {
+    const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (ms - ultimo > 50 || !ultimo) {
+      ultimo = ms; t++;
+      if (!quieto && t % Math.max(4, Math.round(10 / st.velocidad)) === 0) botellas.push(152);
+      botellas = botellas.map(b => b + (quieto ? 0 : 0.8 * st.velocidad)).filter(b => b < 206);
+      fondo(); planta();
+    }
+    requestAnimationFrame(cuadro);
+  }
+  const arrancar = () => { hud(); escena0(); requestAnimationFrame(cuadro); };
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(arrancar);
+})();
+</script>

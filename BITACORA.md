@@ -115,6 +115,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | 2026-09-14 | Imagen para compartir generada por página al compilar, con Noto Sans | Los alumnos reciben los enlaces por WhatsApp: sin imagen el enlace pasa desapercibido. Crimson Pro y Atkinson sólo están en woff2, que el generador no lee |
 | 2026-09-14 | Sin internet se guarda todo lo publicado apenas se abre el sitio, no sólo lo visitado | Las láminas se proyectan en aulas sin conexión y el alumno estudia con datos móviles: ~630 kB una vez, a cambio de que funcione todo |
 | 2026-09-14 | La lámina retoma sola donde quedó, con un aviso para volver al inicio | Es lo que hace el Aula. Para proyectar en clase desde la misma computadora: el aviso, el primer punto o la tecla Inicio |
+| 2026-09-24 | **RON_DOC tendrá un juego**: simulador de gestión con historia, en pixel art, una isla por materia, que **cuenta para la nota** (datos por versión, registro de decisiones, defensa oral como jefe final). No un cuestionario con puntos | Pedido de Ronald; vio la muestra (`docs/juego/valle-escena.html`) y dijo «se ve genial». Detalle y decisiones pendientes en `docs/juego/IDEA-JUEGO.md` |
 
 ## 5. Trabajo en paralelo
 
@@ -152,7 +153,16 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - `b01d881` **Hoja de práctica para imprimir** (`/practica-financiera`, borrador). Elige temas (los cinco de las láminas) y de 1 a 4 ejercicios por tema; cada **versión** (1 a 9.999) da otros números, siempre los mismos para el mismo número, y los ajustes viajan en la dirección (`#v=4821&t=anualidades,bonos&n=3`), así un enlace guardado reproduce la hoja. Alterna los dos tipos de ejercicio de cada tema (los generadores aceptan `tipo`). Al imprimir sale sólo la hoja en A4, con Nombre y Fecha, espacio para calcular y la hoja de respuestas explicada en página aparte; en modo oscuro también imprime tinta negra sobre blanco (`@media print` en `globals.css`, que además oculta encabezado y pie en cualquier página). Verificado imprimiendo a PDF con Edge sin ventana. `src/lib/finanzas/hoja.ts` con pruebas; las hojas de 40 versiones pasan los controles de fórmulas, `{,}`, guiones largos y voseo (detectores ahora en `src/lib/revision.ts`). Nuevo tipo de herramienta `hoja` (tarjeta "Hoja de práctica para imprimir · Armar la hoja"). 435 pruebas.
 - *(este commit)* **Rendimiento medido, sin cambios.** JavaScript comprimido por página (sin los polyfills, que sólo bajan navegadores viejos): portada 106 kB, Aula 178 kB, lámina 194 kB. La base de React y Next son 99 kB en todas; lo propio de la lámina son 75 kB de KaTeX. KaTeX tiene que ir en el navegador porque la práctica y el laboratorio arman fórmulas nuevas al tocar; cargarlo aparte rompería la primera tarjeta, que llega armada desde el servidor. Con la precarga, además, se baja una sola vez. Revisión de Axiom y SIMPRO: sin commits nuevos.
 
+### 2026-09-24
+
+- *(este commit)* **Idea del juego registrada**, sin tocar el sitio: `docs/juego/IDEA-JUEGO.md` (qué pidió Ronald, la idea, cómo cuenta para la nota, tamaño, decisiones pendientes, de dónde salen los casos) y `docs/juego/valle-escena.html` (muestra jugable de la escena 1, «La máquina que no alcanzaba», con Lácteos Valle Alto). Hecho desde la PC de Ronald; se retoma online.
+
 ## 7. Qué sigue
+
+**El juego (registrado el 24-09, retomar online):** leer `docs/juego/IDEA-JUEGO.md` y abrir la
+muestra `docs/juego/valle-escena.html`. Antes de construir, Ronald decide: cuentas de estudiante
+(choca con «sin cuentas» del 14-09), primera isla (recomendada Proyectos II, sobre el simulador de
+§0) y arte. La gamificación vieja de la copia de OneDrive **no se subió**: ver §7 del documento.
 
 **Se puede hacer sin Ronald** (en este orden):
 

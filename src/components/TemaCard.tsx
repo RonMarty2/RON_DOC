@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Tema, ColorAcento } from "@/lib/types";
 import { COLORES } from "@/lib/colores";
+import { TemaCardProgreso } from "@/components/gamificacion/TemaCardProgreso";
 
 interface Props {
   tema: Tema;
@@ -27,7 +28,7 @@ export function TemaCard({ tema, slugMateria, color, numero }: Props) {
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
         {tema.resumen}
       </p>
-      <div className="mt-4 flex items-center gap-3 text-xs text-slate-500 dark:text-slate-500">
+      <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-500">
         {tema.interactivos && tema.interactivos.length > 0 && (
           <span className={`inline-flex items-center gap-1 rounded-full ${c.bgSuave} px-2 py-0.5 ${c.texto}`}>
             ⚡ {tema.interactivos.length} interactivo{tema.interactivos.length > 1 ? "s" : ""}
@@ -38,6 +39,7 @@ export function TemaCard({ tema, slugMateria, color, numero }: Props) {
             📄 {tema.recursos.length} recurso{tema.recursos.length > 1 ? "s" : ""}
           </span>
         )}
+        <TemaCardProgreso slugMateria={slugMateria} slugTema={tema.slug} />
         <span className="ml-auto text-slate-400 transition group-hover:translate-x-0.5 dark:text-slate-500">
           →
         </span>

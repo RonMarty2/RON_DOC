@@ -1,0 +1,1697 @@
+{
+  "materia": "psicoestadistica",
+  "tema": 3,
+  "totalPreguntas": 70,
+  "preguntas": [
+    {
+      "id": "PIL-01",
+      "tipo": "opcion-multiple",
+      "enunciado": "Al inicio del video, ¿con cuántos puntajes se ilustra el problema de \"una montaña de números\"?",
+      "opciones": [
+        {
+          "texto": "500",
+          "esCorrecta": true
+        },
+        {
+          "texto": "50",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        },
+        {
+          "texto": "100",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-02",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿cuáles son los cuatro pilares de la estadística descriptiva?",
+      "opciones": [
+        {
+          "texto": "Centro, dispersión, posición y forma",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Media, mediana, moda y varianza",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Frecuencia, porcentaje, rango e intervalo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Histograma, ojiva, Pareto y boxplot",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-03",
+      "tipo": "opcion-multiple",
+      "enunciado": "El video usa la analogía de una barra con pesos en equilibrio para explicar un concepto. ¿A qué concepto se refiere?",
+      "opciones": [
+        {
+          "texto": "A la media, como el centro de gravedad de los datos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "A la desviación típica",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Al percentil",
+          "esCorrecta": false
+        },
+        {
+          "texto": "A la kurtosis",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-04",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de los puntajes de ansiedad de un pequeño estudio, ¿cuál es la media del grupo?",
+      "opciones": [
+        {
+          "texto": "8",
+          "esCorrecta": true
+        },
+        {
+          "texto": "6",
+          "esCorrecta": false
+        },
+        {
+          "texto": "5",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-05",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo ejemplo, ¿cuál es la mediana del grupo?",
+      "opciones": [
+        {
+          "texto": "6",
+          "esCorrecta": true
+        },
+        {
+          "texto": "8",
+          "esCorrecta": false
+        },
+        {
+          "texto": "5",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-06",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo ejemplo, ¿cuál es la moda del grupo?",
+      "opciones": [
+        {
+          "texto": "5",
+          "esCorrecta": true
+        },
+        {
+          "texto": "6",
+          "esCorrecta": false
+        },
+        {
+          "texto": "8",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-07",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿qué causa que la media (8) esté más alta que la mediana (6) y la moda (5) en el ejemplo de ansiedad?",
+      "opciones": [
+        {
+          "texto": "Un valor atípico de 20 que jala el promedio hacia arriba",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Un error en el cálculo de la media",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que hay muy pocos datos en el estudio",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que los datos no están ordenados",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-08",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de los sujetos A y B, ambos tienen el mismo tiempo de reacción promedio de 400 milisegundos. Según el video, ¿qué diferencia a un sujeto de otro?",
+      "opciones": [
+        {
+          "texto": "Su desviación típica: el sujeto A es consistente y el sujeto B es impredecible",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Su mediana, que es distinta aunque el promedio sea igual",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El número de veces que se midió a cada sujeto",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Su percentil dentro del grupo",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-09",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿qué nos dice la desviación típica?",
+      "opciones": [
+        {
+          "texto": "En promedio, qué tan lejos está cada dato del centro",
+          "esCorrecta": true
+        },
+        {
+          "texto": "El valor que más se repite en el grupo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El punto exacto donde se ubica la mitad de los datos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El porcentaje de personas que respondió correctamente una prueba",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-10",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, si se ordena a un grupo de personas de menor a mayor y se hacen tres cortes para crear cuatro grupos iguales, ¿cómo se llaman esos cortes?",
+      "opciones": [
+        {
+          "texto": "Cuartiles",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Percentiles",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Intervalos modales",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Marcas de clase",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-11",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, si se hacen 99 cortes para crear 100 grupos iguales, ¿cómo se llaman esos cortes?",
+      "opciones": [
+        {
+          "texto": "Percentiles",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Cuartiles",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Deciles",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Intervalos de Sturges",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-12",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de un puntaje de admisión de 78 que está en el percentil 85, ¿qué significa exactamente ese percentil 85, según el video?",
+      "opciones": [
+        {
+          "texto": "Que ese puntaje es superior al del 85% de las personas que dieron la prueba",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que el estudiante respondió correctamente el 85% de las preguntas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que el 85% de los estudiantes sacó ese mismo puntaje",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que solo el 15% de los estudiantes dio la prueba",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-13",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿cuál es la diferencia clave entre \"porcentaje\" y \"percentil\"?",
+      "opciones": [
+        {
+          "texto": "El porcentaje es un desempeño absoluto, mientras que el percentil es una posición relativa o ranking",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Son exactamente el mismo concepto con distinto nombre",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El porcentaje solo aplica a variables categóricas y el percentil a variables continuas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El percentil siempre es mayor que el porcentaje",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-14",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿qué mide la asimetría de un conjunto de datos?",
+      "opciones": [
+        {
+          "texto": "Si los datos se acumulan más hacia un lado, como arena movida por el viento",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Qué tan lejos está cada dato del centro",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El valor que más se repite",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El porcentaje de personas por debajo de un cierto nivel",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-15",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿por qué los tiempos de reacción casi siempre tienen una asimetría positiva (cola larga hacia la derecha)?",
+      "opciones": [
+        {
+          "texto": "Porque hay un límite de qué tan rápido se puede reaccionar, pero no de qué tan lento",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque siempre se miden en milisegundos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque los tiempos de reacción no se pueden agrupar en intervalos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque la muestra siempre es muy pequeña",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-16",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿qué mide la kurtosis?",
+      "opciones": [
+        {
+          "texto": "Si la distribución tiene un pico muy agudo o es más bien una loma aplanada",
+          "esCorrecta": true
+        },
+        {
+          "texto": "El porcentaje de personas por debajo de la media",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La diferencia entre la media y la mediana",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El número ideal de intervalos para agrupar los datos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-17",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el video, el coeficiente intelectual suele tener una distribución más simétrica que los tiempos de reacción.",
+      "respuestaVF": true,
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-18",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el video, la media por sí sola puede ser engañosa cuando hay valores atípicos en los datos.",
+      "respuestaVF": true,
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-19",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el video, el percentil de un puntaje indica directamente el porcentaje de preguntas que la persona respondió correctamente.",
+      "respuestaVF": false,
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PIL-20",
+      "tipo": "emparejamiento",
+      "enunciado": "Relaciona cada uno de los cuatro pilares con la pregunta que responde, según el cierre del video.",
+      "parejas": [
+        {
+          "izquierda": "Centro",
+          "derecha": "¿Dónde está el centro de los datos?"
+        },
+        {
+          "izquierda": "Dispersión",
+          "derecha": "¿Qué tan dispersos están los datos alrededor del centro?"
+        },
+        {
+          "izquierda": "Posición",
+          "derecha": "¿Dónde se para un individuo en comparación con el resto?"
+        },
+        {
+          "izquierda": "Forma",
+          "derecha": "¿Qué forma tiene todo el conjunto de datos?"
+        }
+      ],
+      "categoria": "Tema 3 / Los 4 Pilares de la Estadística",
+      "fuente": "Tema_3_-_Los_4_Pilares_de_la_Estadística.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-01",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el escenario inicial del podcast, ¿dónde trabaja el psicólogo escolar que tiene que resumir los resultados de rendimiento cognitivo de 500 estudiantes?",
+      "opciones": [
+        {
+          "texto": "En La Paz",
+          "esCorrecta": true
+        },
+        {
+          "texto": "En Cochabamba",
+          "esCorrecta": false
+        },
+        {
+          "texto": "En Santa Cruz",
+          "esCorrecta": false
+        },
+        {
+          "texto": "En Sucre",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-02",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿cuáles son las tres herramientas principales para encontrar el \"centro\" de un conjunto de datos?",
+      "opciones": [
+        {
+          "texto": "La media aritmética, la mediana y la moda",
+          "esCorrecta": true
+        },
+        {
+          "texto": "La media, la varianza y la desviación típica",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El percentil, el cuartil y el rango",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La asimetría, la kurtosis y la media",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-03",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿cómo se obtiene la mediana de un conjunto de datos?",
+      "opciones": [
+        {
+          "texto": "Ordenando los datos de menor a mayor y tomando el valor que queda justo en el medio",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Sumando todos los datos y dividiendo entre el número de datos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Buscando el valor que más se repite",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Calculando la raíz cuadrada de la varianza",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-04",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo del estudio en Cochabamba con la escala de ansiedad, los puntajes del grupo de pacientes son 5, 7, 8, 5, 20, 6 y 5. ¿Cuál es la moda de ese grupo?",
+      "opciones": [
+        {
+          "texto": "5",
+          "esCorrecta": true
+        },
+        {
+          "texto": "6",
+          "esCorrecta": false
+        },
+        {
+          "texto": "8",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-05",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo grupo de pacientes, ¿cuál es la mediana?",
+      "opciones": [
+        {
+          "texto": "6",
+          "esCorrecta": true
+        },
+        {
+          "texto": "5",
+          "esCorrecta": false
+        },
+        {
+          "texto": "8",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-06",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo grupo, ¿cuál es la media?",
+      "opciones": [
+        {
+          "texto": "8",
+          "esCorrecta": true
+        },
+        {
+          "texto": "6",
+          "esCorrecta": false
+        },
+        {
+          "texto": "5",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-07",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué causa que la media de ese grupo (8, ansiedad moderada) sea distinta de la mediana y la moda (ambas indicando ansiedad leve)?",
+      "opciones": [
+        {
+          "texto": "El paciente con un puntaje de 20, un valor atípico que jala el promedio hacia arriba",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Un error en la fórmula de la media",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que el grupo tiene muy pocos pacientes",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que los datos no se pueden ordenar",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-08",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, cuando el psicólogo de La Paz calcula la media de sus 500 estudiantes y obtiene 105, ¿qué pregunta se vuelve importante hacerse a continuación?",
+      "opciones": [
+        {
+          "texto": "Qué tan representativo es ese número, es decir, qué tan dispersos están los datos alrededor de él",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Cuál es la moda exacta del grupo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Si 105 es un número par o impar",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Cuántos estudiantes hay exactamente en cada percentil",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-09",
+      "tipo": "opcion-multiple",
+      "enunciado": "El podcast usa la imagen de un río con zonas de 10 centímetros y pozas de 3 metros para explicar un concepto. ¿Qué concepto ilustra esa imagen?",
+      "opciones": [
+        {
+          "texto": "Que el promedio por sí solo no advierte sobre el riesgo o la dispersión de los datos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que la mediana siempre es más confiable que la media",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que los ríos son un mal ejemplo para la estadística",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que la moda es la medida más importante para tomar decisiones",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-10",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué es la varianza?",
+      "opciones": [
+        {
+          "texto": "El promedio de las distancias al cuadrado de cada dato respecto a la media",
+          "esCorrecta": true
+        },
+        {
+          "texto": "El valor que más se repite en el grupo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La diferencia entre el valor máximo y el valor mínimo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El porcentaje de datos que están por debajo de la media",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-11",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿cómo se obtiene la desviación típica a partir de la varianza?",
+      "opciones": [
+        {
+          "texto": "Sacando la raíz cuadrada de la varianza",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Elevando la varianza al cuadrado",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Dividiendo la varianza entre el número de datos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Multiplicando la varianza por 100",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-12",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de los sujetos A y B con tiempos de reacción, ambos tienen un promedio de 400 milisegundos. ¿Cuál es la desviación típica del sujeto A?",
+      "opciones": [
+        {
+          "texto": "8 milisegundos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "182 milisegundos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "400 milisegundos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "40 milisegundos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-13",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo ejemplo, ¿cuál es la desviación típica del sujeto B?",
+      "opciones": [
+        {
+          "texto": "182 milisegundos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "8 milisegundos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "400 milisegundos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "18 milisegundos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-14",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, si tuvieras que contratar a un piloto entre el sujeto A (desviación baja) y el sujeto B (desviación alta), ¿a cuál elegirías y por qué?",
+      "opciones": [
+        {
+          "texto": "Al sujeto A, porque su tiempo de reacción es mucho más consistente y confiable",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Al sujeto B, porque a veces reacciona más rápido que A",
+          "esCorrecta": false
+        },
+        {
+          "texto": "A cualquiera de los dos, porque tienen el mismo promedio",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Ninguno, porque ambos tienen un promedio demasiado alto",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-15",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, si se ordena a 500 estudiantes de menor a mayor puntaje y se hacen 99 cortes, ¿cómo se llaman los 100 grupos resultantes?",
+      "opciones": [
+        {
+          "texto": "Percentiles",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Cuartiles",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Deciles",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Intervalos modales",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-16",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de la prueba de aptitud verbal en Santa Cruz, un estudiante saca 78 puntos y su nota corresponde al percentil 85. Según el podcast, ¿qué significa exactamente ese percentil 85?",
+      "opciones": [
+        {
+          "texto": "Que su habilidad es superior a la del 85% de todas las personas que tomaron la prueba",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que respondió correctamente el 85% de las preguntas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que el 85% de los estudiantes sacó ese mismo puntaje",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que faltó el 15% del examen por responder",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-17",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿podría un estudiante sacar un porcentaje bajo, como 30 de 100, en un examen muy difícil y aun así estar en el percentil 99?",
+      "opciones": [
+        {
+          "texto": "Sí, si el examen fue tan difícil que la mayoría de las personas sacó menos de 30",
+          "esCorrecta": true
+        },
+        {
+          "texto": "No, eso es matemáticamente imposible",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Solo si el examen tiene menos de 10 preguntas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Solo si el estudiante repite el examen",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-18",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, cuando el psicólogo de La Paz revisa el puntaje de 78 de la hija de un padre dentro del grupo de 500 estudiantes de su escuela, ¿a qué percentil corresponde ese puntaje?",
+      "opciones": [
+        {
+          "texto": "Percentil 25",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Percentil 85",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Percentil 75",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Percentil 50",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-19",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué tipo de asimetría tienen típicamente los salarios en una población, donde unos pocos millonarios jalan la media muy por encima de la mayoría?",
+      "opciones": [
+        {
+          "texto": "Asimetría positiva, con una cola larga hacia la derecha",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Asimetría negativa, con una cola larga hacia la izquierda",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Ninguna asimetría, es una distribución perfectamente simétrica",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Asimetría bimodal",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-20",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué tipo de asimetría describe un examen muy fácil donde casi todos sacan la nota máxima y solo unos pocos reprueban?",
+      "opciones": [
+        {
+          "texto": "Asimetría negativa, con la cola hacia la izquierda",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Asimetría positiva, con la cola hacia la derecha",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Ninguna asimetría",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Kurtosis leptocúrtica",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-21",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿por qué le importa a un psicólogo si su distribución de datos tiene asimetría y kurtosis cercanas a cero?",
+      "opciones": [
+        {
+          "texto": "Porque muchas pruebas estadísticas avanzadas asumen que los datos siguen una distribución normal",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque así se calcula automáticamente la moda",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque eso determina cuántos estudiantes hay en la muestra",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque solo así se puede calcular la media",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-22",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué frase resume la idea de que un programa como Excel o SPSS puede calcular perfectamente un promedio absurdo si los datos de entrada están mal?",
+      "opciones": [
+        {
+          "texto": "Garbage in, garbage out (basura entra, basura sale)",
+          "esCorrecta": true
+        },
+        {
+          "texto": "El software siempre calcula, pero nunca se equivoca",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La moda nunca puede fallar",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El promedio corrige automáticamente los errores de captura",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-23",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el podcast, el software estadístico piensa e interpreta los datos por sí solo, por lo que ya no hace falta la interpretación humana.",
+      "respuestaVF": false,
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-24",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el podcast, dos grupos pueden tener exactamente la misma media y aun así ser muy diferentes en cuanto a qué tan dispersos están sus datos.",
+      "respuestaVF": true,
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-25",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el podcast, un percentil alto siempre significa que la persona respondió correctamente un alto porcentaje de las preguntas de la prueba.",
+      "respuestaVF": false,
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-26",
+      "tipo": "seleccion-multiple",
+      "enunciado": "Según el podcast, ¿cuáles de las siguientes son las cuatro dimensiones fundamentales para entender un conjunto de datos? (selecciona todas las que correspondan)",
+      "opciones": [
+        {
+          "texto": "El centro (el sujeto promedio)",
+          "esCorrecta": true,
+          "peso": 25
+        },
+        {
+          "texto": "La dispersión (qué tan diferentes son los individuos entre sí)",
+          "esCorrecta": true,
+          "peso": 25
+        },
+        {
+          "texto": "La posición (dónde se ubica una persona específica dentro del grupo)",
+          "esCorrecta": true,
+          "peso": 25
+        },
+        {
+          "texto": "La forma (qué forma tiene todo el conjunto)",
+          "esCorrecta": true,
+          "peso": 25
+        },
+        {
+          "texto": "La frecuencia acumulada",
+          "esCorrecta": false,
+          "peso": -100
+        },
+        {
+          "texto": "El error de escala",
+          "esCorrecta": false,
+          "peso": -100
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "PROM-27",
+      "tipo": "emparejamiento",
+      "enunciado": "Relaciona cada medida de centro con su definición según el podcast.",
+      "parejas": [
+        {
+          "izquierda": "Media aritmética",
+          "derecha": "Se suman todos los datos y se dividen entre el número de datos"
+        },
+        {
+          "izquierda": "Mediana",
+          "derecha": "El valor que queda justo en el medio al ordenar los datos de menor a mayor"
+        },
+        {
+          "izquierda": "Moda",
+          "derecha": "El valor que más se repite en el conjunto de datos"
+        },
+        {
+          "izquierda": "Desviación típica",
+          "derecha": "La raíz cuadrada de la varianza"
+        }
+      ],
+      "categoria": "Tema 3 / El Peligro del Promedio",
+      "fuente": "Tema_3_-_Podcast_-_El_peligro_de_confiar_solo_en_el_promedio.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-01",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué medida defiende como \"la más completa y poderosa\" el primer participante del debate?",
+      "opciones": [
+        {
+          "texto": "La media aritmética",
+          "esCorrecta": true
+        },
+        {
+          "texto": "La mediana",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La moda",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La desviación típica",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-02",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según ese mismo participante, ¿por qué la media es superior según él?",
+      "opciones": [
+        {
+          "texto": "Porque es la única medida que toma en cuenta absolutamente todos los datos, sin ignorar a nadie",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque siempre coincide con un valor real de los datos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque no se ve afectada por los valores extremos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque es más fácil de calcular que la mediana",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-03",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el participante que defiende la mediana, ¿por qué los valores extremos son distintos en psicología comparados con la física?",
+      "opciones": [
+        {
+          "texto": "Porque en psicología los valores extremos no son errores de medición, sino personas con características únicas",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque en psicología nunca existen valores extremos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque en física los valores extremos siempre se eliminan del análisis",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque en psicología los datos siempre son categóricos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-04",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de la escala de ansiedad GAT7 usado en el debate, con puntajes 5, 7, 8, 5, 20, 6 y 5, ¿cuál es la media del grupo?",
+      "opciones": [
+        {
+          "texto": "8",
+          "esCorrecta": true
+        },
+        {
+          "texto": "6",
+          "esCorrecta": false
+        },
+        {
+          "texto": "5",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-05",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo ejemplo, ¿cuál es la mediana del grupo?",
+      "opciones": [
+        {
+          "texto": "6",
+          "esCorrecta": true
+        },
+        {
+          "texto": "8",
+          "esCorrecta": false
+        },
+        {
+          "texto": "5",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-06",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el participante que defiende la media, ¿qué revela el hecho de que la media (8) y la mediana (6) sean distintas en el ejemplo de ansiedad?",
+      "opciones": [
+        {
+          "texto": "Que la distribución no es simétrica, lo cual es en sí mismo un dato valioso",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que se cometió un error de cálculo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que hay que descartar la media por completo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que el grupo tiene demasiados pocos pacientes para analizar",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-07",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el participante que defiende la mediana, ¿por qué la mediana (6, ansiedad leve) sería más útil que la media (8, ansiedad moderada) para un terapeuta que planifica una terapia grupal?",
+      "opciones": [
+        {
+          "texto": "Porque describe mejor la experiencia del paciente típico, que en su mayoría tiene ansiedad leve",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque la mediana siempre es más fácil de calcular",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque la media no se puede calcular con datos de ansiedad",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque la mediana ignora por completo al paciente con el puntaje más alto",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-08",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué propuesta conjunta surge en el debate como forma de conciliar ambas posturas frente a la diferencia entre media y mediana?",
+      "opciones": [
+        {
+          "texto": "Reportar ambas medidas y entender qué revela su diferencia, ya que \"la discrepancia es el hallazgo\"",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Usar siempre la mediana y nunca la media",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Usar siempre la media y nunca la mediana",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Eliminar del análisis a cualquier paciente con un valor atípico",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-09",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, si se promedia una escala Likert de 1 a 5 y el resultado es 3.5, ¿qué problema señala el participante que defiende la mediana?",
+      "opciones": [
+        {
+          "texto": "Que 3.5 es un valor que no existe en la realidad de la encuesta, es una abstracción",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que 3.5 es matemáticamente imposible de calcular",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que la escala Likert no permite calcular ningún promedio",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que 3.5 siempre corresponde a la moda del grupo",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-10",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿alrededor de qué medida se construye el diagrama de caja (boxplot)?",
+      "opciones": [
+        {
+          "texto": "Alrededor de la mediana y los cuartiles",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Alrededor de la media y la desviación típica",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Alrededor de la moda y el rango",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Alrededor de la varianza",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-11",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de los dos pilotos A y B, ambos con una media de 400 milisegundos, ¿cuál es la desviación típica del piloto A?",
+      "opciones": [
+        {
+          "texto": "8 milisegundos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "182 milisegundos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "400 milisegundos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "40 milisegundos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-12",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo ejemplo, ¿cuál es la desviación típica del piloto B?",
+      "opciones": [
+        {
+          "texto": "182 milisegundos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "8 milisegundos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "400 milisegundos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "18 milisegundos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-13",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el participante que defiende la media, ¿por qué el ejemplo de los pilotos demuestra la utilidad de la media?",
+      "opciones": [
+        {
+          "texto": "Porque solo a partir de la media se puede calcular la desviación típica, que revela cuál piloto es más consistente",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque la mediana de los dos pilotos es distinta",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque los pilotos tienen distinta moda de tiempos de reacción",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque sin la media no se pueden medir los tiempos de reacción",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-14",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de distribución de ingresos que se menciona en el debate (10 personas que ganan 30.000 al año y un multimillonario que gana 100 millones al año), ¿qué medida se considera más representativa del \"ciudadano típico\"?",
+      "opciones": [
+        {
+          "texto": "La mediana",
+          "esCorrecta": true
+        },
+        {
+          "texto": "La media",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La moda",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La desviación típica",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-15",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el participante que defiende la media, ¿qué propiedad matemática única tiene la media entre todos los números posibles?",
+      "opciones": [
+        {
+          "texto": "Minimiza la suma de las desviaciones al cuadrado respecto a todos los puntos de datos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Siempre coincide con uno de los valores originales del conjunto de datos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Nunca se ve afectada por valores atípicos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Es igual a la moda en cualquier distribución",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-16",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué analogía usa el participante que defiende la media para explicar que un valor extremo puede desplazar el centro sin dejar de ser relevante?",
+      "opciones": [
+        {
+          "texto": "El centro de gravedad del sistema solar, cercano al sol pero desplazado por la influencia de Júpiter y Saturno",
+          "esCorrecta": true
+        },
+        {
+          "texto": "El centro de una asamblea universitaria",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Un río con zonas poco profundas y pozas profundas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Un histograma con forma de Skyline",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-17",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿en qué se basa principalmente la estadística inferencial cuando se comparan, por ejemplo, tres terapias diferentes?",
+      "opciones": [
+        {
+          "texto": "En comparar las medias de los grupos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "En comparar las modas de los grupos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "En comparar los rangos de los grupos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "En comparar la kurtosis de los grupos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-18",
+      "tipo": "opcion-multiple",
+      "enunciado": "Al cerrar el debate, ¿cuál es la postura final del participante que defendía la media?",
+      "opciones": [
+        {
+          "texto": "Que la media es un punto de partida indispensable, aunque usarla sola en distribuciones asimétricas puede llevar a malas interpretaciones",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que la media debe reemplazar por completo a la mediana en cualquier análisis",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que la mediana nunca debería usarse en psicología",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que la media y la mediana siempre deben dar el mismo resultado",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-19",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el debate, la mediana de un grupo suele coincidir con un valor real presente en los datos, mientras que la media puede ser una cifra que nadie tiene realmente.",
+      "respuestaVF": true,
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-20",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el debate, ambos participantes terminan de acuerdo en que un solo número (media o mediana) nunca es suficiente para entender la complejidad del comportamiento humano.",
+      "respuestaVF": true,
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-21",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el debate, la mediana permite calcular directamente la varianza y la desviación típica de un conjunto de datos.",
+      "respuestaVF": false,
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-22",
+      "tipo": "seleccion-multiple",
+      "enunciado": "Según el debate, ¿cuáles de las siguientes afirmaciones sobre la media son argumentos usados por su defensor? (selecciona todas las que correspondan)",
+      "opciones": [
+        {
+          "texto": "Toma en cuenta absolutamente todos los datos del conjunto",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Es la base necesaria para calcular la varianza y la desviación típica",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Minimiza la suma de las desviaciones al cuadrado respecto a los datos",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Siempre coincide con un valor real de la escala usada",
+          "esCorrecta": false,
+          "peso": -100
+        },
+        {
+          "texto": "Nunca se ve afectada por valores atípicos",
+          "esCorrecta": false,
+          "peso": -100
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    },
+    {
+      "id": "DEB2-23",
+      "tipo": "emparejamiento",
+      "enunciado": "Relaciona cada medida o gráfico con la idea que defiende cada participante del debate.",
+      "parejas": [
+        {
+          "izquierda": "Media",
+          "derecha": "Toma en cuenta todos los datos y es la base de la varianza y la desviación típica"
+        },
+        {
+          "izquierda": "Mediana",
+          "derecha": "Es más robusta ante valores extremos y suele ser un valor real de la escala"
+        },
+        {
+          "izquierda": "Boxplot (diagrama de caja)",
+          "derecha": "Se construye alrededor de la mediana y los cuartiles"
+        },
+        {
+          "izquierda": "Desviación típica",
+          "derecha": "Solo se puede calcular a partir de la media"
+        }
+      ],
+      "categoria": "Tema 3 / Debate - Media vs Mediana",
+      "fuente": "Tema_3_-__Podcast_-_Debate_-_Media_contra_mediana_para_medir_el_comportamiento.gift",
+      "tema": 3
+    }
+  ]
+}

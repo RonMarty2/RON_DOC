@@ -1,0 +1,2304 @@
+{
+  "materia": "psicoestadistica",
+  "tema": 2,
+  "totalPreguntas": 94,
+  "preguntas": [
+    {
+      "id": "ARQ-01",
+      "tipo": "opcion-multiple",
+      "enunciado": "Al inicio del video, ¿cuántos estudiantes tienen medida su ansiedad en el ejemplo con el que arranca la explicación?",
+      "opciones": [
+        {
+          "texto": "500",
+          "esCorrecta": true
+        },
+        {
+          "texto": "50",
+          "esCorrecta": false
+        },
+        {
+          "texto": "200",
+          "esCorrecta": false
+        },
+        {
+          "texto": "1000",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-02",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿a qué se compara la frecuencia absoluta?",
+      "opciones": [
+        {
+          "texto": "A contar cuántas manos se levantan en una asamblea",
+          "esCorrecta": true
+        },
+        {
+          "texto": "A la cuota de mercado de cada dato",
+          "esCorrecta": false
+        },
+        {
+          "texto": "A ir llenando un vaso de agua",
+          "esCorrecta": false
+        },
+        {
+          "texto": "A un histograma de una ciudad",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-03",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿a qué se compara la frecuencia relativa?",
+      "opciones": [
+        {
+          "texto": "A la cuota de mercado de cada dato",
+          "esCorrecta": true
+        },
+        {
+          "texto": "A contar cuántas manos se levantan en una asamblea",
+          "esCorrecta": false
+        },
+        {
+          "texto": "A ir llenando un vaso de agua",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Al Skyline de una ciudad",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-04",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿a qué se compara la frecuencia acumulada?",
+      "opciones": [
+        {
+          "texto": "A ir llenando un vaso de agua",
+          "esCorrecta": true
+        },
+        {
+          "texto": "A contar cuántas manos se levantan en una asamblea",
+          "esCorrecta": false
+        },
+        {
+          "texto": "A la cuota de mercado de cada dato",
+          "esCorrecta": false
+        },
+        {
+          "texto": "A crear estantes en una biblioteca",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-05",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo clínico de la tabla de pacientes con ataques de pánico, ¿de cuántos pacientes son los datos que se organizan?",
+      "opciones": [
+        {
+          "texto": "20",
+          "esCorrecta": true
+        },
+        {
+          "texto": "50",
+          "esCorrecta": false
+        },
+        {
+          "texto": "500",
+          "esCorrecta": false
+        },
+        {
+          "texto": "7",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-06",
+      "tipo": "opcion-multiple",
+      "enunciado": "En la tabla de los pacientes con ataques de pánico, al mirar la fila del valor 2, ¿qué porcentaje de pacientes tuvo dos ataques o menos según la frecuencia relativa acumulada?",
+      "opciones": [
+        {
+          "texto": "60%",
+          "esCorrecta": true
+        },
+        {
+          "texto": "90%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "30%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "80%",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-07",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿por qué no tiene sentido calcular la frecuencia acumulada para una variable como el estado civil (soltero, casado, viudo)?",
+      "opciones": [
+        {
+          "texto": "Porque esas categorías no se pueden ordenar de forma lógica",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque hay muy pocos datos disponibles",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque el estado civil no se puede medir con números",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque la frecuencia acumulada solo aplica a variables continuas",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-08",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué solución propone el video cuando una variable, como el tiempo de reacción medido con muchos decimales, hace que casi cada dato sea único?",
+      "opciones": [
+        {
+          "texto": "Agrupar los datos en intervalos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Eliminar los datos repetidos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Calcular solo la frecuencia absoluta",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Redondear cada dato a un número entero",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-09",
+      "tipo": "opcion-multiple",
+      "enunciado": "El video compara la creación de intervalos de datos con el trabajo de un bibliotecario. ¿Con qué la compara exactamente?",
+      "opciones": [
+        {
+          "texto": "Con crear categorías o estantes (historia, ciencia, ficción) en lugar de listar cada libro por separado",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Con ordenar los libros alfabéticamente por autor",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Con contar cuántos libros hay en total",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Con prestar los libros a los estudiantes",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-10",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿cuál es el primero de los tres pasos del método de Sturges?",
+      "opciones": [
+        {
+          "texto": "Calcular el rango total de los datos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Estimar el número ideal de intervalos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Definir qué tan grande será cada intervalo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Calcular la marca de clase",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-11",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de los puntajes de CI de 50 estudiantes, ¿en cuántos intervalos terminaron organizados los datos?",
+      "opciones": [
+        {
+          "texto": "7",
+          "esCorrecta": true
+        },
+        {
+          "texto": "5",
+          "esCorrecta": false
+        },
+        {
+          "texto": "10",
+          "esCorrecta": false
+        },
+        {
+          "texto": "50",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-12",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo ejemplo, ¿entre qué valores iban los datos originales de CI antes de agruparlos?",
+      "opciones": [
+        {
+          "texto": "Entre 85 y 128",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Entre 99 y 106",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Entre 0 y 100",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Entre 1 y 50",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-13",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Cómo se llama, según el video, el punto medio que representa a cada intervalo?",
+      "opciones": [
+        {
+          "texto": "Marca de clase",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Intervalo modal",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Frecuencia relativa",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Rango total",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-14",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de los 50 estudiantes, ¿entre qué valores se ubica el intervalo modal (la barra más alta)?",
+      "opciones": [
+        {
+          "texto": "Entre 99 y 106",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Entre 85 y 92",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Entre 106 y 113",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Entre 121 y 128",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-15",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué porcentaje de los 50 estudiantes se agrupa en ese intervalo modal?",
+      "opciones": [
+        {
+          "texto": "30%",
+          "esCorrecta": true
+        },
+        {
+          "texto": "50%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "60%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "10%",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-16",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿A qué compara el video un histograma?",
+      "opciones": [
+        {
+          "texto": "Al horizonte o Skyline de una ciudad",
+          "esCorrecta": true
+        },
+        {
+          "texto": "A un vaso que se va llenando de agua",
+          "esCorrecta": false
+        },
+        {
+          "texto": "A una asamblea universitaria",
+          "esCorrecta": false
+        },
+        {
+          "texto": "A una fila de personas ordenadas de menor a mayor",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-17",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el video, ¿por qué las barras de un histograma van pegadas entre sí?",
+      "opciones": [
+        {
+          "texto": "Porque representan una variable continua, como la altura o el tiempo",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque así se ve más ordenado el gráfico",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque siempre hay el mismo número de categorías",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque representan variables categóricas",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-18",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué ejemplo usa el video para ilustrar un gráfico de barras de categorías, con las barras separadas?",
+      "opciones": [
+        {
+          "texto": "Perros contra gatos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Ataques de pánico",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Puntajes de CI",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Niveles de ansiedad",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-19",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué dos elementos se combinan, según el video, para construir un diagrama de Pareto?",
+      "opciones": [
+        {
+          "texto": "Ordenar las causas de mayor a menor y añadir una columna de porcentaje acumulado",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Calcular la media y la desviación típica",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Dibujar un histograma y una ojiva",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Calcular la marca de clase de cada intervalo",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-20",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de las causas de deserción universitaria, ¿qué dos causas explican, según el video, el 80% del problema?",
+      "opciones": [
+        {
+          "texto": "Factores económicos y bajo rendimiento",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Problemas de salud y vocación equivocada",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Falta de dinero y falta de tiempo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Bajo rendimiento y problemas familiares",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-21",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el ejemplo de salud pública que menciona el video, ¿qué porcentaje de las consultas se debe a solo dos diagnósticos, de acuerdo con un diagrama de Pareto?",
+      "opciones": [
+        {
+          "texto": "75%",
+          "esCorrecta": true
+        },
+        {
+          "texto": "50%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "90%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "25%",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-22",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el video, un histograma y un gráfico de barras común son exactamente lo mismo.",
+      "respuestaVF": false,
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-23",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el video, en educación un histograma puede revelar que una clase no es un grupo promedio, sino que está dividida en dos grupos distintos.",
+      "respuestaVF": true,
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-24",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el video, la frecuencia acumulada tiene sentido para cualquier tipo de variable, incluso si sus categorías no tienen un orden lógico.",
+      "respuestaVF": false,
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-25",
+      "tipo": "seleccion-multiple",
+      "enunciado": "Según el video, ¿cuáles de las siguientes son \"frecuencias\" (los ladrillos fundamentales) que se explican en el video? (selecciona todas las que correspondan)",
+      "opciones": [
+        {
+          "texto": "Frecuencia absoluta",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Frecuencia relativa",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Frecuencia acumulada",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Frecuencia marginal",
+          "esCorrecta": false,
+          "peso": -100
+        },
+        {
+          "texto": "Frecuencia normalizada",
+          "esCorrecta": false,
+          "peso": -100
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "ARQ-26",
+      "tipo": "emparejamiento",
+      "enunciado": "Relaciona cada tipo de frecuencia con la analogía que usa el video para explicarla.",
+      "parejas": [
+        {
+          "izquierda": "Frecuencia absoluta",
+          "derecha": "Contar cuántas manos se levantan en una asamblea"
+        },
+        {
+          "izquierda": "Frecuencia relativa",
+          "derecha": "La cuota de mercado de cada dato"
+        },
+        {
+          "izquierda": "Frecuencia acumulada",
+          "derecha": "Ir llenando un vaso de agua"
+        },
+        {
+          "izquierda": "Un histograma",
+          "derecha": "El Skyline o el horizonte de una ciudad"
+        }
+      ],
+      "categoria": "Tema 2 / Arquitectura de los Datos",
+      "fuente": "Tema_2_-_La_Arquitectura_de_los_Datos.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-01",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo que usan ambos participantes del debate, ¿en qué escala se midió el nivel de ansiedad de los 500 pacientes?",
+      "opciones": [
+        {
+          "texto": "De 1 a 100",
+          "esCorrecta": true
+        },
+        {
+          "texto": "De 0 a 10",
+          "esCorrecta": false
+        },
+        {
+          "texto": "De 1 a 10",
+          "esCorrecta": false
+        },
+        {
+          "texto": "De 0 a 6",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-02",
+      "tipo": "opcion-multiple",
+      "enunciado": "Uno de los participantes del debate compara agrupar datos en intervalos con el trabajo de una bibliotecaria. ¿Qué hace esa bibliotecaria según la analogía?",
+      "opciones": [
+        {
+          "texto": "Crea secciones como historia, ciencia ficción y biografías en vez de dejar los libros apilados en el suelo",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Ordena los libros por orden alfabético de título",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Cuenta cuántos libros hay en total en la biblioteca",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Presta los libros según la fecha de devolución",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-03",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿qué porcentaje de los 50 estudiantes se concentra en el intervalo de coeficiente intelectual de 99 a 106?",
+      "opciones": [
+        {
+          "texto": "30%",
+          "esCorrecta": true
+        },
+        {
+          "texto": "50%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "60%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "80%",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-04",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué defiende el participante que está a favor de la regla de Sturges?",
+      "opciones": [
+        {
+          "texto": "Que da un método riguroso y objetivo para que distintos investigadores lleguen a la misma estructura de intervalos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que permite ignorar los valores atípicos por completo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que reemplaza por completo a los histogramas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que solo sirve para variables categóricas",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-05",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿para qué tipo de distribuciones funciona mejor la regla de Sturges?",
+      "opciones": [
+        {
+          "texto": "Para distribuciones normales o simétricas (la clásica curva de campana)",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Para distribuciones bimodales",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Solo para variables categóricas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Para cualquier distribución, sin excepción",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-06",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué herramienta alternativa propone el participante escéptico de la regla de Sturges?",
+      "opciones": [
+        {
+          "texto": "El diagrama de tallo y hojas de John Tukey",
+          "esCorrecta": true
+        },
+        {
+          "texto": "El diagrama de Pareto",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La ojiva",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El diagrama circular en 3D",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-07",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de tres notas de examen (75, 78 y 81) que se usa para explicar el diagrama de tallo y hojas, ¿cuántas hojas tiene el tallo correspondiente a la decena del 70?",
+      "opciones": [
+        {
+          "texto": "2",
+          "esCorrecta": true
+        },
+        {
+          "texto": "1",
+          "esCorrecta": false
+        },
+        {
+          "texto": "3",
+          "esCorrecta": false
+        },
+        {
+          "texto": "0",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-08",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿cuál es la principal ventaja del diagrama de tallo y hojas frente a agrupar en intervalos?",
+      "opciones": [
+        {
+          "texto": "Permite ver la forma de los datos sin perder ni un solo valor original",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Es más rápido de calcular que la media",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Sirve mejor para variables categóricas que para numéricas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Elimina automáticamente los valores atípicos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-09",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿para qué tipo de conjuntos de datos es más útil el diagrama de tallo y hojas?",
+      "opciones": [
+        {
+          "texto": "Para conjuntos de datos pequeños, como una clase de 30 alumnos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Para conjuntos de 500 pacientes con muchos decimales",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Solo para variables categóricas como el estado civil",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Para cualquier tamaño de datos, sin límite",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-10",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el escenario del examen con distribución bimodal que se discute en el debate, ¿alrededor de qué puntajes se agrupan las dos mitades de estudiantes?",
+      "opciones": [
+        {
+          "texto": "Una mitad alrededor de 90 y la otra alrededor de 40",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Una mitad alrededor de 100 y la otra alrededor de 50",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Una mitad alrededor de 80 y la otra alrededor de 60",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Una mitad alrededor de 70 y la otra alrededor de 30",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-11",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿qué riesgo tiene aplicar la regla de Sturges a esa distribución bimodal?",
+      "opciones": [
+        {
+          "texto": "Puede sugerir intervalos tan anchos que las dos jorobas se fusionen en una sola masa central, ocultando que hay dos subgrupos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Puede hacer que aparezcan más picos de los que realmente existen",
+          "esCorrecta": false
+        },
+        {
+          "texto": "No tiene ningún riesgo porque Sturges está diseñada para distribuciones bimodales",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Convierte automáticamente los datos en una variable categórica",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-12",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el caso clínico de los ataques de pánico que se discute en el debate, ¿a partir de cuántos ataques el protocolo del hospital indica que un paciente debe ser internado?",
+      "opciones": [
+        {
+          "texto": "Más de 4 ataques",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Más de 2 ataques",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Más de 6 ataques",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Más de 3 ataques",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-13",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿qué problema tendría crear un intervalo que vaya de 3 a 5 ataques de pánico?",
+      "opciones": [
+        {
+          "texto": "Mezclaría en un mismo intervalo a pacientes con 4 ataques (que no se internan) y con 5 ataques (que sí se internan)",
+          "esCorrecta": true
+        },
+        {
+          "texto": "No permitiría calcular la frecuencia absoluta",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Haría que el intervalo modal desapareciera",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Es imposible crear ese intervalo con la regla de Sturges",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-14",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Cuál es, según el debate, la solución que propone el participante defensor de la agrupación frente al problema del umbral clínico de los ataques de pánico?",
+      "opciones": [
+        {
+          "texto": "Definir los límites de los intervalos para que respeten esos umbrales críticos, por ejemplo de 2 a 3, luego 4, luego de 5 a 6",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Eliminar del análisis a los pacientes con exactamente 4 ataques",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Usar siempre la regla de Sturges sin modificarla",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Convertir los ataques de pánico en una variable categórica",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-15",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿qué es una ojiva?",
+      "opciones": [
+        {
+          "texto": "El gráfico de las frecuencias acumuladas",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Un tipo de diagrama de barras para variables categóricas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Un sinónimo de la regla de Sturges",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El punto medio de un intervalo",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-16",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de la ojiva usado en el debate, un padre ve que la puntuación de su hijo corresponde a un valor de 80% en el eje vertical. ¿Qué significa eso?",
+      "opciones": [
+        {
+          "texto": "Que la puntuación de su hijo fue superior a la del 80% de sus compañeros",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que su hijo respondió correctamente el 80% de las preguntas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que el 80% de los estudiantes sacó una nota más baja que cero",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que su hijo está en el percentil 20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-17",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿en qué consiste el \"error de escala\" al crear un gráfico de barras?",
+      "opciones": [
+        {
+          "texto": "En cortar el eje vertical y no empezar desde cero, para exagerar visualmente pequeñas diferencias",
+          "esCorrecta": true
+        },
+        {
+          "texto": "En usar demasiados colores en el gráfico",
+          "esCorrecta": false
+        },
+        {
+          "texto": "En no incluir un título en el gráfico",
+          "esCorrecta": false
+        },
+        {
+          "texto": "En invertir el eje horizontal y el vertical",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-18",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el debate, ¿qué distorsión producen los gráficos circulares (de pastel) en 3D?",
+      "opciones": [
+        {
+          "texto": "Que los sectores en primer plano parecen mucho más grandes de lo que realmente son",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que es imposible calcular porcentajes con ellos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que solo pueden usarse con datos numéricos continuos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que obligan a usar siempre menos de tres categorías",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-19",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo sobre ingresos que se menciona en el debate, ¿qué franja de ingresos concentra al 40% de la población de la ciudad?",
+      "opciones": [
+        {
+          "texto": "De 40.000 a 60.000 dólares",
+          "esCorrecta": true
+        },
+        {
+          "texto": "De 20.000 a 40.000 dólares",
+          "esCorrecta": false
+        },
+        {
+          "texto": "De 50.000 a 70.000 dólares",
+          "esCorrecta": false
+        },
+        {
+          "texto": "De 0 a 20.000 dólares",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-20",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Cuál es la conclusión final que comparten ambos participantes al cerrar el debate?",
+      "opciones": [
+        {
+          "texto": "Que no hay una sola herramienta mágica, y la habilidad del investigador está en saber qué herramienta usar en cada contexto, siendo consciente de sus límites",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que la regla de Sturges siempre debe usarse en lugar de cualquier otra técnica",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que agrupar datos en intervalos nunca debería hacerse",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que el diagrama de tallo y hojas reemplaza por completo a los histogramas",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-21",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el debate, la regla de Sturges es descrita por uno de los participantes como una fórmula infalible que nunca puede llevar a conclusiones erróneas.",
+      "respuestaVF": false,
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-22",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el debate, el diagrama de tallo y hojas de John Tukey permite ver la forma de la distribución sin perder los valores numéricos originales.",
+      "respuestaVF": true,
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-23",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el debate, un investigador competente podría diseñar los intervalos de un histograma para que respeten un umbral clínico importante, en lugar de dejar que ese umbral quede dividido entre dos intervalos.",
+      "respuestaVF": true,
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-24",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el debate, los gráficos circulares en 3D representan las proporciones de manera más precisa que los gráficos circulares planos en 2D.",
+      "respuestaVF": false,
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-25",
+      "tipo": "seleccion-multiple",
+      "enunciado": "Según el debate, ¿cuáles de los siguientes son ejemplos de manipulación o distorsión visual que se mencionan explícitamente? (selecciona todas las que correspondan)",
+      "opciones": [
+        {
+          "texto": "El error de escala (no empezar el eje vertical en cero)",
+          "esCorrecta": true,
+          "peso": 50
+        },
+        {
+          "texto": "Los gráficos circulares en 3D",
+          "esCorrecta": true,
+          "peso": 50
+        },
+        {
+          "texto": "El diagrama de tallo y hojas",
+          "esCorrecta": false,
+          "peso": -100
+        },
+        {
+          "texto": "La frecuencia relativa acumulada",
+          "esCorrecta": false,
+          "peso": -100
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-26",
+      "tipo": "seleccion-multiple",
+      "enunciado": "Según el debate, ¿cuáles de las siguientes afirmaciones sobre la agrupación de datos en intervalos defiende el participante crítico de la regla de Sturges? (selecciona todas las que correspondan)",
+      "opciones": [
+        {
+          "texto": "Puede ocultar la existencia de dos subgrupos distintos en una distribución bimodal",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Puede mezclar en un mismo intervalo a pacientes que, según un umbral clínico, deberían recibir tratamientos distintos",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Sacrifica la precisión de cada dato individual a cambio de una imagen simplificada",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Es siempre superior al diagrama de tallo y hojas",
+          "esCorrecta": false,
+          "peso": -100
+        },
+        {
+          "texto": "Nunca debería usarse en investigación científica",
+          "esCorrecta": false,
+          "peso": -100
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "DEB1-27",
+      "tipo": "emparejamiento",
+      "enunciado": "Relaciona cada herramienta o concepto del debate con lo que representa.",
+      "parejas": [
+        {
+          "izquierda": "Regla de Sturges",
+          "derecha": "Método estandarizado para decidir cuántos intervalos crear"
+        },
+        {
+          "izquierda": "Diagrama de tallo y hojas",
+          "derecha": "Técnica que agrupa los datos sin perder ningún valor original"
+        },
+        {
+          "izquierda": "Ojiva",
+          "derecha": "Gráfico de las frecuencias acumuladas"
+        },
+        {
+          "izquierda": "Error de escala",
+          "derecha": "Cortar el eje vertical para exagerar diferencias pequeñas"
+        }
+      ],
+      "categoria": "Tema 2 / Debate - Agrupar Datos Distorsiona",
+      "fuente": "Tema_2_-_Podcast_-_Debate_-_Cuando_agrupar_datos_distorsiona_la_realidad.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-01",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿en qué ciudad se ubica el ejemplo inicial de los niveles de ansiedad de 500 estudiantes?",
+      "opciones": [
+        {
+          "texto": "Cochabamba",
+          "esCorrecta": true
+        },
+        {
+          "texto": "La Paz",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Santa Cruz",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Sucre",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-02",
+      "tipo": "opcion-multiple",
+      "enunciado": "El podcast usa la analogía de una Asamblea Universitaria para explicar la frecuencia absoluta. En el ejemplo, si 45 personas votan por una opción, ¿cuál es la frecuencia absoluta?",
+      "opciones": [
+        {
+          "texto": "45",
+          "esCorrecta": true
+        },
+        {
+          "texto": "90%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El total de personas en la asamblea",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El porcentaje de votos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-03",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, si esos mismos 45 votos ocurren en una asamblea de solo 50 personas, ¿qué porcentaje representan?",
+      "opciones": [
+        {
+          "texto": "90%",
+          "esCorrecta": true
+        },
+        {
+          "texto": "45%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "50%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "9%",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-04",
+      "tipo": "opcion-multiple",
+      "enunciado": "El psicólogo del ejemplo clínico registra los ataques de pánico de pacientes durante un mes. ¿De cuántos pacientes son esos datos?",
+      "opciones": [
+        {
+          "texto": "20",
+          "esCorrecta": true
+        },
+        {
+          "texto": "50",
+          "esCorrecta": false
+        },
+        {
+          "texto": "500",
+          "esCorrecta": false
+        },
+        {
+          "texto": "45",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-05",
+      "tipo": "opcion-multiple",
+      "enunciado": "En la tabla de ataques de pánico, la fila correspondiente a \"dos ataques\" tiene una frecuencia absoluta de 5. ¿Qué significa ese número?",
+      "opciones": [
+        {
+          "texto": "Que 5 de los 20 pacientes tuvieron exactamente dos ataques ese mes",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que 5 pacientes tuvieron más de dos ataques",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que el 5% de los pacientes tuvo ataques de pánico",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que hubo 5 tipos distintos de ataques registrados",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-05B",
+      "tipo": "opcion-multiple",
+      "enunciado": "En esa misma fila de \"dos ataques\", la frecuencia acumulada tiene un valor de 12. ¿Cómo se obtiene ese 12?",
+      "opciones": [
+        {
+          "texto": "Sumando los pacientes con dos ataques (5), más los que tuvieron uno (4), más los que tuvieron cero (3)",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Multiplicando 5 por 2 (los ataques y los pacientes)",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Restando los pacientes con más de dos ataques al total de 20",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Es un dato que no se puede calcular con la información dada",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-06",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué porcentaje representa la frecuencia relativa acumulada en la fila de \"dos ataques\" (12 de 20 pacientes)?",
+      "opciones": [
+        {
+          "texto": "60%",
+          "esCorrecta": true
+        },
+        {
+          "texto": "12%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "40%",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-07",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, en la fila de \"cuatro ataques\" la frecuencia relativa acumulada es 0.80. ¿Qué porcentaje de pacientes queda por encima de ese umbral de cuatro ataques?",
+      "opciones": [
+        {
+          "texto": "20%",
+          "esCorrecta": true
+        },
+        {
+          "texto": "80%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "60%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "40%",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-08",
+      "tipo": "opcion-multiple",
+      "enunciado": "El podcast advierte sobre un error común al calcular frecuencias acumuladas. ¿Con qué tipo de variable ocurre ese error?",
+      "opciones": [
+        {
+          "texto": "Con variables nominales, como el estado civil (soltero, casado, viudo, divorciado)",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Con variables numéricas continuas, como el tiempo de reacción",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Con variables numéricas discretas, como el número de ataques de pánico",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Con cualquier variable que tenga más de 10 categorías",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-09",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿por qué no tiene sentido acumular las categorías del estado civil?",
+      "opciones": [
+        {
+          "texto": "Porque esas categorías no tienen un orden lógico o jerarquía intrínseca",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque hay demasiadas categorías posibles",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque el estado civil cambia con el tiempo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque no se puede calcular la frecuencia absoluta del estado civil",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-10",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, cuando una variable es continua (como el tiempo de reacción con varios decimales), ¿qué le ocurre a una tabla de frecuencias simple?",
+      "opciones": [
+        {
+          "texto": "Tendría casi tantas filas como personas, y dejaría de ser útil como resumen",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Se vuelve más fácil de leer que con datos discretos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Deja de poder calcular la frecuencia absoluta",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Se convierte automáticamente en un histograma",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-11",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué analogía usa el podcast para explicar por qué se agrupan los datos continuos en intervalos de clase?",
+      "opciones": [
+        {
+          "texto": "La de un bibliotecario que organiza mil libros nuevos en estantes por categoría, en vez de hacer una lista infinita",
+          "esCorrecta": true
+        },
+        {
+          "texto": "La de una asamblea universitaria votando",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La de un vaso que se va llenando de agua",
+          "esCorrecta": false
+        },
+        {
+          "texto": "La de un termómetro que mide la temperatura",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-12",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué se sacrifica y qué se gana al agrupar datos en intervalos de clase?",
+      "opciones": [
+        {
+          "texto": "Se sacrifica precisión individual a cambio de ganar claridad general sobre el grupo",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Se sacrifica el total de datos a cambio de reducir el número de pacientes",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Se sacrifica la frecuencia absoluta a cambio de la frecuencia relativa",
+          "esCorrecta": false
+        },
+        {
+          "texto": "No se sacrifica nada, solo se gana precisión",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-13",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué fórmula da el podcast para la regla de Sturges, usada para calcular el número de intervalos (k)?",
+      "opciones": [
+        {
+          "texto": "k = 1 + 3.322 × log10(n)",
+          "esCorrecta": true
+        },
+        {
+          "texto": "k = n / 3.322",
+          "esCorrecta": false
+        },
+        {
+          "texto": "k = log10(n) / 3.322",
+          "esCorrecta": false
+        },
+        {
+          "texto": "k = 3.322 × n",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-14",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de los coeficientes intelectuales de 50 estudiantes de Santa Cruz, ¿cuáles son el valor más bajo y el más alto registrados?",
+      "opciones": [
+        {
+          "texto": "85 y 128",
+          "esCorrecta": true
+        },
+        {
+          "texto": "85 y 106",
+          "esCorrecta": false
+        },
+        {
+          "texto": "99 y 128",
+          "esCorrecta": false
+        },
+        {
+          "texto": "99 y 106",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-15",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo ejemplo, ¿cuál es el rango de los datos (máximo menos mínimo)?",
+      "opciones": [
+        {
+          "texto": "43",
+          "esCorrecta": true
+        },
+        {
+          "texto": "6.64",
+          "esCorrecta": false
+        },
+        {
+          "texto": "7",
+          "esCorrecta": false
+        },
+        {
+          "texto": "50",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-16",
+      "tipo": "opcion-multiple",
+      "enunciado": "Aplicando la fórmula de Sturges a esos 50 estudiantes, el resultado antes de redondear es aproximadamente 6.64. ¿A qué número de intervalos se redondea ese valor?",
+      "opciones": [
+        {
+          "texto": "7",
+          "esCorrecta": true
+        },
+        {
+          "texto": "6",
+          "esCorrecta": false
+        },
+        {
+          "texto": "10",
+          "esCorrecta": false
+        },
+        {
+          "texto": "5",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-17",
+      "tipo": "opcion-multiple",
+      "enunciado": "Al dividir el rango (43) entre los 7 intervalos calculados con Sturges, se obtiene una amplitud de 6.14. Según el podcast, ¿a qué valor se redondea finalmente la amplitud de cada intervalo?",
+      "opciones": [
+        {
+          "texto": "7",
+          "esCorrecta": true
+        },
+        {
+          "texto": "6",
+          "esCorrecta": false
+        },
+        {
+          "texto": "6.14",
+          "esCorrecta": false
+        },
+        {
+          "texto": "8",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-18",
+      "tipo": "opcion-multiple",
+      "enunciado": "En la tabla resultante del ejemplo de los 50 estudiantes, ¿qué porcentaje del grupo cae en el intervalo de 99 a 106?",
+      "opciones": [
+        {
+          "texto": "30%",
+          "esCorrecta": true
+        },
+        {
+          "texto": "60%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "90%",
+          "esCorrecta": false
+        },
+        {
+          "texto": "50%",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-19",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, en la notación de intervalos con corchete y paréntesis (por ejemplo, [85, 92)), ¿qué significa el corchete?",
+      "opciones": [
+        {
+          "texto": "Que ese límite está incluido en el intervalo",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que ese límite está excluido del intervalo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que ese intervalo es el modal",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que ese intervalo no tiene datos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-20",
+      "tipo": "opcion-multiple",
+      "enunciado": "Si un estudiante tiene un coeficiente intelectual exacto de 92, y los intervalos son [85, 92) y [92, 99), ¿en cuál de los dos intervalos se debe contar a ese estudiante?",
+      "opciones": [
+        {
+          "texto": "En el intervalo [92, 99), porque el paréntesis excluye el 92 del primer intervalo",
+          "esCorrecta": true
+        },
+        {
+          "texto": "En el intervalo [85, 92), porque el corchete lo incluye ahí",
+          "esCorrecta": false
+        },
+        {
+          "texto": "En ambos intervalos a la vez",
+          "esCorrecta": false
+        },
+        {
+          "texto": "En ninguno de los dos intervalos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-21",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según la anécdota que se cuenta en el podcast, ¿qué error cometió un estudiante de posgrado al analizar sus datos?",
+      "opciones": [
+        {
+          "texto": "Asignó mal a todos los pacientes que caían justo en los límites de los intervalos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Olvidó calcular la frecuencia relativa",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Usó la regla de Sturges con una fórmula equivocada",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Confundió la media con la mediana",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-22",
+      "tipo": "opcion-multiple",
+      "enunciado": "¿Qué metáfora usa el podcast para describir un histograma?",
+      "opciones": [
+        {
+          "texto": "El Skyline o perfil de una ciudad",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Un vaso que se llena de agua",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Una balanza en equilibrio",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Una fila de personas ordenadas de menor a mayor",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-23",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿por qué las barras de un histograma van pegadas entre sí, a diferencia de un diagrama de barras para categorías?",
+      "opciones": [
+        {
+          "texto": "Porque representan una variable continua, donde el final de un intervalo es el inicio del siguiente sin ningún hueco",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Porque así ocupan menos espacio en el gráfico",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque siempre hay exactamente 7 intervalos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Porque los datos categóricos no pueden graficarse con barras pegadas",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-24",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué es el polígono de frecuencias?",
+      "opciones": [
+        {
+          "texto": "Una línea que une los puntos medios de la parte superior de cada barra del histograma",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Un sinónimo de la ojiva",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Un gráfico exclusivo para variables categóricas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El nombre alternativo del diagrama de Pareto",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-25",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué representa la ojiva?",
+      "opciones": [
+        {
+          "texto": "El gráfico de las frecuencias acumuladas, siempre en forma de curva ascendente",
+          "esCorrecta": true
+        },
+        {
+          "texto": "El histograma de una variable categórica",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El punto medio de cada intervalo",
+          "esCorrecta": false
+        },
+        {
+          "texto": "El porcentaje de datos que quedan fuera de los intervalos",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-26",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo de un rompecabezas que se resuelve en distintos tiempos, si la curva de la ojiva sube muy rápido al principio y luego se aplana, ¿qué sugiere eso sobre la dificultad del rompecabezas?",
+      "opciones": [
+        {
+          "texto": "Que era fácil, porque la mayoría de la gente lo resolvió en tiempos bajos",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que era muy difícil, porque pocas personas lo resolvieron rápido",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que los datos no se pueden interpretar sin más información",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que la mitad de la gente no lo resolvió",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-27",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué logra el diagrama de tallo y hojas de John Tukey que otras formas de agrupar datos no logran?",
+      "opciones": [
+        {
+          "texto": "Agrupa los datos como un histograma pero sin perder los valores numéricos originales",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Elimina automáticamente los valores atípicos",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Solo funciona con variables categóricas",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Reemplaza por completo a la frecuencia relativa",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-28",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el ejemplo del \"error de escala\" que da el podcast, unas ventas pasan de 800 a 820. Si el eje vertical se corta y empieza en 790 en vez de en 0, ¿qué efecto visual produce eso?",
+      "opciones": [
+        {
+          "texto": "Que la segunda barra parezca el doble de alta que la primera, aunque el aumento real es de apenas 2.5%",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que ambas barras se vean exactamente iguales",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que la primera barra desaparezca del gráfico",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que el gráfico deje de poder leerse",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-29",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el caso de estudio de deserción universitaria en La Paz que menciona el podcast, ¿a cuántos estudiantes afecta la causa \"factores económicos\"?",
+      "opciones": [
+        {
+          "texto": "150",
+          "esCorrecta": true
+        },
+        {
+          "texto": "90",
+          "esCorrecta": false
+        },
+        {
+          "texto": "30",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-30",
+      "tipo": "opcion-multiple",
+      "enunciado": "En ese mismo caso, ¿cuántos estudiantes señalan \"bajo rendimiento\" como causa de deserción?",
+      "opciones": [
+        {
+          "texto": "90",
+          "esCorrecta": true
+        },
+        {
+          "texto": "150",
+          "esCorrecta": false
+        },
+        {
+          "texto": "30",
+          "esCorrecta": false
+        },
+        {
+          "texto": "20",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-31",
+      "tipo": "opcion-multiple",
+      "enunciado": "Según el podcast, ¿qué advertencia se da sobre los gráficos circulares (de pastel) en 3D?",
+      "opciones": [
+        {
+          "texto": "Que no deben usarse nunca, porque distorsionan la percepción de los tamaños de los sectores",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que solo deben usarse si hay menos de tres categorías",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que son más precisos que los gráficos de barras",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que solo funcionan con variables numéricas continuas",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-32",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el primer escenario final que menciona el podcast, un psicólogo educativo calcula el promedio de las notas de un curso y obtiene un 7. Pero, ¿qué podría estar ocultando ese promedio, según el ejemplo?",
+      "opciones": [
+        {
+          "texto": "Que la mitad de la clase sacó 10 y la otra mitad sacó 4 (una distribución bimodal)",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Que todos los estudiantes sacaron exactamente 7",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que el curso tiene menos de 10 estudiantes",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Que las notas están mal registradas",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-33",
+      "tipo": "opcion-multiple",
+      "enunciado": "En el segundo escenario final que menciona el podcast, sobre salud pública en Bolivia, ¿qué dos diagnósticos representan, juntos, el 75% de las consultas en hospitales públicos?",
+      "opciones": [
+        {
+          "texto": "Depresión mayor y alcoholismo",
+          "esCorrecta": true
+        },
+        {
+          "texto": "Ansiedad y esquizofrenia",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Ataques de pánico y depresión mayor",
+          "esCorrecta": false
+        },
+        {
+          "texto": "Ansiedad y alcoholismo",
+          "esCorrecta": false
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-34",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el podcast, la frecuencia acumulada tiene sentido para cualquier variable, incluso si sus categorías no se pueden ordenar de forma lógica.",
+      "respuestaVF": false,
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-35",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el podcast, el diagrama de tallo y hojas de John Tukey permite ver la forma de la distribución sin perder ni un solo valor original.",
+      "respuestaVF": true,
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-36",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el podcast, un gráfico de barras honesto debe, en general, empezar su eje vertical en cero.",
+      "respuestaVF": true,
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-37",
+      "tipo": "verdadero-falso",
+      "enunciado": "Según el podcast, la regla de Sturges se aplica dividiendo el número de datos entre el rango de los mismos.",
+      "respuestaVF": false,
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-38",
+      "tipo": "seleccion-multiple",
+      "enunciado": "Según el podcast, ¿cuáles de las siguientes son las tres notaciones que se mencionan para describir tipos de frecuencia? (selecciona todas las que correspondan)",
+      "opciones": [
+        {
+          "texto": "Frecuencia absoluta",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Frecuencia relativa",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Frecuencia acumulada",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Frecuencia geométrica",
+          "esCorrecta": false,
+          "peso": -100
+        },
+        {
+          "texto": "Frecuencia estandarizada",
+          "esCorrecta": false,
+          "peso": -100
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-39",
+      "tipo": "seleccion-multiple",
+      "enunciado": "Según el podcast, ¿cuáles de los siguientes pasos forman parte del procedimiento de la regla de Sturges para agrupar datos en intervalos? (selecciona todas las que correspondan)",
+      "opciones": [
+        {
+          "texto": "Calcular el rango de los datos (máximo menos mínimo)",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Calcular el número de intervalos con la fórmula de Sturges",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Dividir el rango entre el número de intervalos para obtener la amplitud",
+          "esCorrecta": true,
+          "peso": 33.33333
+        },
+        {
+          "texto": "Calcular la frecuencia relativa acumulada de cada paciente",
+          "esCorrecta": false,
+          "peso": -100
+        },
+        {
+          "texto": "Eliminar los valores atípicos antes de agrupar",
+          "esCorrecta": false,
+          "peso": -100
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    },
+    {
+      "id": "ORG-40",
+      "tipo": "emparejamiento",
+      "enunciado": "Relaciona cada herramienta o gráfico con lo que representa según el podcast.",
+      "parejas": [
+        {
+          "izquierda": "Histograma",
+          "derecha": "El Skyline o perfil de una ciudad, muestra dónde se concentra la masa de datos"
+        },
+        {
+          "izquierda": "Polígono de frecuencias",
+          "derecha": "Una línea que une los puntos medios de la parte superior de cada barra del histograma"
+        },
+        {
+          "izquierda": "Ojiva",
+          "derecha": "El gráfico de las frecuencias acumuladas, siempre ascendente"
+        },
+        {
+          "izquierda": "Diagrama de Pareto",
+          "derecha": "Un gráfico de barras ordenado de mayor a menor con una línea de porcentaje acumulado"
+        }
+      ],
+      "categoria": "Tema 2 / Organiza Datos y Mentiras Visuales",
+      "fuente": "Tema_2_-_Podcast_-_Organiza_datos_y_detecta_mentiras_visuales.gift",
+      "tema": 2
+    }
+  ]
+}

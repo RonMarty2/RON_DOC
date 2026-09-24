@@ -5,6 +5,7 @@ import { MATERIAS, obtenerMateria } from "@content/materias";
 import { COLORES } from "@/lib/colores";
 import { TemaCard } from "@/components/TemaCard";
 import { construirMetadata } from "@/lib/seo";
+import { SeccionQuests } from "@/components/gamificacion/SeccionQuests";
 
 interface Params {
   slug: string;
@@ -137,6 +138,9 @@ export default async function MateriaPage({
           </div>
         </section>
       )}
+
+      {/* Gamificación: Misiones y progreso */}
+      <SeccionQuests slugMateria={slug} color={materia.color} />
     </>
   );
 }

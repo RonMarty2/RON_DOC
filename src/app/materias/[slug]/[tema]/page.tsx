@@ -9,6 +9,7 @@ import { COLORES } from "@/lib/colores";
 import { Interactivo } from "@/components/Interactivo";
 import { Recurso } from "@/components/Recurso";
 import { construirMetadata } from "@/lib/seo";
+import { BotonLectura } from "@/components/gamificacion/BotonLectura";
 
 interface Params {
   slug: string;
@@ -55,6 +56,8 @@ export default async function TemaPage({
   const { materia, tema: t } = r;
   const c = COLORES[materia.color];
   const fuente = await leerMdx(materia.slug, t.archivoMdx);
+  const temaIndex = materia.temas.findIndex((x) => x.slug === t.slug);
+  const temaNumero = temaIndex + 1;
 
   return (
     <article>
@@ -78,6 +81,15 @@ export default async function TemaPage({
       </section>
 
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+        {/* Botón de lectura gamificado */}
+        <div className="mb-8">
+          <BotonLectura
+            slugMateria={materia.slug}
+            slugTema={t.slug}
+            temaNumero={temaNumero}
+          />
+        </div>
+
         {/* Contenido MDX */}
         <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-serif prose-a:text-blue-600 dark:prose-a:text-blue-400">
           <MDXRemote source={fuente} />

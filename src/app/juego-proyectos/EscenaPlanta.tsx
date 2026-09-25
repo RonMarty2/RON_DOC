@@ -12,14 +12,17 @@ import {
   revisarRecuperacion,
   type Opcion,
 } from "@/lib/juego/planta";
+import { guardarPartidaNube, leerPartidaNube } from "@/lib/juego/nube";
 import { anotar, describir, guardarPartida, leerPartida, partidaNueva, type Evento, type Partida } from "@/lib/juego/registro";
+import { versionDeAlumno } from "@/lib/juego/version-alumno";
+import { BarraCuenta, useCuenta, type EstadoGuardado } from "./CuentaJuego";
 import { LienzoPlanta } from "./LienzoPlanta";
 
 type Paso = "saludo" | "capacidad" | "decidir" | "compra" | "mes" | "recuperacion" | "defensa" | "final";
 
 const CONFIANZA: Record<Opcion, number> = { tanque: 5, nada: 2, envasadora: 1 };
 
-/** "#v=417" elige la versión; sin eso, el caso del dossier. Mientras no haya cuentas, así se prueba cada una. */
+/** Sin cuenta, "#v=417" elige la versión y sin eso va el caso del dossier. Con cuenta, la versión sale del id del alumno. */
 function versionDeLaDireccion(): number {
   const v = Number(new URLSearchParams(window.location.hash.slice(1)).get("v"));
   return Number.isInteger(v) && v >= 0 && v <= VERSION_MAXIMA ? v : 0;
@@ -45,22 +48,79 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
   const [recuperacionBien, setRecuperacionBien] = useState(false);
   const [texto, setTexto] = useState("");
   const campo = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
+  const cuenta = useCuenta();
+  const alumnoId = cuenta.estado === "dentro" ? (cuenta.alumno?.id ?? null) : null;
+  const cursoId = cuenta.cursoId;
+  const [guardado, setGuardado] = useState<EstadoGuardado>("sin-cambios");
+  // Sólo se sube a la cuenta lo que hizo el alumno, no lo que se acaba de leer de ella.
+  const pendiente = useRef(false);
+
+  const empezarCon = (v: number, guardada: Partida | null) => {
+    pendiente.current = false;
+    setVersion(v);
+    setPartida(guardada ?? partidaNueva(v));
+    setPaso(guardada?.terminada ? "final" : "saludo");
+    setOpcion(null);
+    setMesPasado(false);
+  };
 
   // La versión y la partida guardada se leen después de montar: el HTML del servidor es el de la versión 0.
   useEffect(() => {
+    if (alumnoId) return;
+    setGuardado("sin-cambios");
     const leer = () => {
       const v = versionDeLaDireccion();
-      setVersion(v);
-      const guardada = leerPartida(v);
-      setPartida(guardada ?? partidaNueva(v));
-      setPaso(guardada?.terminada ? "final" : "saludo");
-      setOpcion(null);
-      setMesPasado(false);
+      empezarCon(v, leerPartida(v));
     };
     leer();
     window.addEventListener("hashchange", leer);
     return () => window.removeEventListener("hashchange", leer);
-  }, []);
+  }, [alumnoId]);
+
+  // Con cuenta: su versión, y la partida de su cuenta en ese curso (o la de este navegador si no hay).
+  useEffect(() => {
+    if (!alumnoId) return;
+    let vivo = true;
+    const v = versionDeAlumno(alumnoId);
+    const local = leerPartida(v);
+    empezarCon(v, local);
+    setGuardado("sin-cambios");
+    leerPartidaNube(alumnoId, cursoId, v)
+      .then((enNube) => {
+        if (!vivo) return;
+        if (enNube) {
+          empezarCon(v, enNube);
+          guardarPartida(enNube);
+          setGuardado(enNube.terminada ? "entregada" : "guardado");
+        } else if (local && local.eventos.length > 0) {
+          pendiente.current = true; // lo jugado en este navegador pasa a la cuenta
+          setPartida({ ...local });
+        }
+      })
+      .catch(() => vivo && setGuardado("error"));
+    return () => {
+      vivo = false;
+    };
+  }, [alumnoId, cursoId]);
+
+  // Cada cambio del alumno se sube a su cuenta, agrupando los que llegan seguidos.
+  // Si falla, queda pendiente y se reintenta con la próxima respuesta (no en bucle).
+  useEffect(() => {
+    if (!alumnoId || !pendiente.current) return;
+    const t = window.setTimeout(() => {
+      pendiente.current = false;
+      setGuardado("guardando");
+      guardarPartidaNube(alumnoId, cursoId, partida)
+        .then(() => setGuardado(partida.terminada ? "entregada" : "guardado"))
+        .catch(() => {
+          pendiente.current = true;
+          setGuardado("error");
+        });
+    }, 600);
+    return () => window.clearTimeout(t);
+  }, [partida, alumnoId, cursoId]);
+
+  const entregada = guardado === "entregada";
 
   useEffect(() => {
     if (["capacidad", "compra", "recuperacion", "defensa"].includes(paso)) campo.current?.focus();
@@ -70,6 +130,7 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
     setPartida((p) => {
       const nueva = { ...anotar(p, e), ...cambios };
       guardarPartida(nueva);
+      pendiente.current = true;
       return nueva;
     });
 
@@ -157,8 +218,10 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
   };
 
   const jugarDeNuevo = () => {
+    if (entregada) return;
     const nueva = partidaNueva(version);
     guardarPartida(nueva);
+    pendiente.current = true;
     setPartida(nueva);
     setOpcion(null);
     setMesPasado(false);
@@ -312,7 +375,7 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
     case "final":
       quien = "FIN DE LA ESCENA 1";
       dice = guion.FINAL;
-      zona = (
+      zona = entregada ? null : (
         <Boton alt onClick={jugarDeNuevo}>
           ↺ JUGAR LA ESCENA DE NUEVO
         </Boton>
@@ -332,6 +395,8 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
             {version === 0 ? "CASO DEL DOSSIER" : `TUS DATOS: VERSIÓN ${version}`}
           </span>
         </div>
+
+        <BarraCuenta cuenta={cuenta} guardado={guardado} />
 
         <div className="juego-tablero">
           <div className="juego-pantalla">
@@ -386,7 +451,11 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
         </section>
 
         <p className="juego-pie">
-          Borrador para probar en clase. Todavía sin cuentas: el registro se guarda sólo en este navegador. Números del caso:
+          Borrador para probar en clase.{" "}
+          {cuenta.estado === "dentro"
+            ? "El registro se guarda en tu cuenta y en este navegador."
+            : "Sin cuenta, el registro se guarda sólo en este navegador."}{" "}
+          Números del caso:
           Semana 1 de Proyectos II, subtema 1.3 (versión 0); las demás versiones cambian los números con las mismas reglas.
         </p>
       </div>

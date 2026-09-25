@@ -1,5 +1,5 @@
 -- ============================================================================
--- BORRADOR (25-09-2026), todavía sin aplicar. Partidas del juego de RON_DOC.
+-- APLICADA el 25-09-2026 en el Supabase de SIMPRO. Partidas del juego de RON_DOC.
 --
 -- Va en el proyecto de Supabase de SIMPRO (decidido por Ronald el 25-09: cuentas
 -- con Supabase), para que el alumno use la misma cuenta, los mismos cursos y el

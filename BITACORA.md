@@ -4,7 +4,7 @@
 >
 > Cada materia tiene además su bitácora en `bitacoras/` (qué enseña cada lámina, números de verdad, decisiones de contenido).
 
-**Última actualización:** 2026-09-14
+**Última actualización:** 2026-09-25
 
 ---
 
@@ -155,14 +155,18 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 
 ### 2026-09-24
 
-- *(este commit)* **Idea del juego registrada**, sin tocar el sitio: `docs/juego/IDEA-JUEGO.md` (qué pidió Ronald, la idea, cómo cuenta para la nota, tamaño, decisiones pendientes, de dónde salen los casos) y `docs/juego/valle-escena.html` (muestra jugable de la escena 1, «La máquina que no alcanzaba», con Lácteos Valle Alto). Hecho desde la PC de Ronald; se retoma online.
+- `3ca2ed3` **Idea del juego registrada**, sin tocar el sitio: `docs/juego/IDEA-JUEGO.md` (qué pidió Ronald, la idea, cómo cuenta para la nota, tamaño, decisiones pendientes, de dónde salen los casos) y `docs/juego/valle-escena.html` (muestra jugable de la escena 1, «La máquina que no alcanzaba», con Lácteos Valle Alto). Hecho desde la PC de Ronald; se retoma online.
+
+### 2026-09-25
+
+- *(este commit)* **Revisión del juego, sin construir todavía:** `docs/juego/IDEA-JUEGO.md` §8 (la versión de la muestra es de adorno, la decisión queda resuelta al calcular, pistas atadas a una versión, números fuera de funciones probadas, fuentes de internet) y recomendación de **código de entrega** en vez de cuentas. **De Axiom:** el detector de voseo pasa a generar las formas desde infinitivos, con los imperativos con pronombre pegado ("sumale", "resolvelo") y verbos de finanzas (`src/lib/revision.ts`); barrido de 157 archivos: el sitio está limpio, quedan 2 en `ejercicios/LEEME.md` (terreno de la otra sesión). 536 pruebas.
 
 ## 7. Qué sigue
 
 **El juego (registrado el 24-09, retomar online):** leer `docs/juego/IDEA-JUEGO.md` y abrir la
 muestra `docs/juego/valle-escena.html`. Antes de construir, Ronald decide: cuentas de estudiante
 (choca con «sin cuentas» del 14-09), primera isla (recomendada Proyectos II, sobre el simulador de
-§0) y arte. La gamificación vieja de la copia de OneDrive **no se subió**: ver §7 del documento.
+§0) y arte. Revisión del 25-09 con mejoras y recomendación (código de entrega) en §8 del documento. La gamificación vieja de la copia de OneDrive **no se subió**: ver §7 del documento.
 
 **Se puede hacer sin Ronald** (en este orden):
 

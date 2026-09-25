@@ -15,7 +15,7 @@ Este archivo es la memoria de esa relación: qué se trajo, desde qué commit, y
 
 | Repo | Último commit revisado | Fecha del commit |
 |---|---|---|
-| axiom-simulador | `7a5d8eded0fceb7f83e90bddd50bff87326407db` | 2026-09-14 |
+| axiom-simulador | `53ab5dccd4cd08ad303245bfebf1ce228f9df6e0` | 2026-09-18 |
 | simuladorPRO | `8acdc6c2c8f6f1655610da2be697c57eb77cb6ac` | 2026-08-02 |
 
 Se actualiza al terminar cada revisión, aunque no se haya traído nada.
@@ -125,3 +125,4 @@ Supabase, login, pagos y planes, paneles de docente, banco de exámenes UMSS, mo
 | 2026-09-14 | Axiom `a0ab04b..7a5d8ed` (8 commits); SIMPRO sin cambios | `58051af`: `parsearMath` en archivo propio con 10 pruebas, y `**negrita**` en MathText | Los otros 7: exámenes de Económicas y títulos de parciales del banco |
 | 2026-09-14 | Sin commits nuevos en ninguno de los dos (revisado al empezar y al terminar la tanda de progreso, sin internet, controles, imágenes para compartir y hoja imprimible) | Nada | — |
 | 2026-09-14 | SIMPRO `8acdc6c`, sin cambios | El motor del simulador de proyectos: `types/proyecto.ts`, `flujo-proyecto.ts`, `iva-proyecto.ts`, `escenarios.ts`, `finanzas/` (proyecto-financiero, sensibilidad, api-contract), `laboratorio-viabilidad.ts`, `proyecto-factory.ts`, `plantillas.ts` y sus pruebas, con `scripts/traer-motor-simpro.mjs` | Toda la interfaz (otro stack), login, cursos, entregas, eventos en vivo, podio y exportar a Excel: dependen de Supabase o del rol docente |
+| 2026-09-25 | Axiom `7a5d8ed..53ab5dc` (64 commits); SIMPRO `8acdc6c`, sin cambios | `06b691f`/`3c7ab7b`: detector de voseo generado desde infinitivos, con imperativos con pronombre pegado, en `src/lib/revision.ts` (lista de verbos propia, con los de finanzas; sin el imperativo suelto de -ir, que choca con el pretérito de yo) | Banco de exámenes, figuras de lecciones y `lienzo.tsx` (la rejilla de Ejes: RON_DOC no trajo el lienzo) |

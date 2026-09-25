@@ -4,13 +4,45 @@
  * decimales sin llaves, guiones largos y voseo.
  */
 
-// Formas de voseo sin ambigüedad: no están "elegí", "pedí" ni "ves", que también existen en tuteo.
-export const VOSEO = [
-  "podés", "tenés", "querés", "sabés", "sos", "hacés", "fijate", "mirá", "pensá", "calculá", "probá",
-  "tocá", "usá", "mové", "movés", "deslizá", "respondé", "contá", "volvé", "andá", "vení", "decí", "hacé",
-  "poné", "tené", "sumá", "restá", "multiplicá", "dividí", "compará", "anotá", "recordá", "empezá", "seguí",
-  "elegís", "necesitás", "pagás", "ganás", "ahorrás", "pedís", "depositás", "invertís", "cobrás", "debés",
+// Voseo: se listan INFINITIVOS y se generan sus formas, como en Axiom (06b691f, 16-sep). Una lista de
+// formas escritas a mano sólo ve lo que alguien se acordó de escribir, y buscar "-ás/-és/-ís" marca el
+// futuro de tú ("verás") y sustantivos ("interés"). De "mirar" salen "mirás", "mirá" y el imperativo con
+// pronombre pegado sin tilde ("miralo", "mirale"), que en tuteo lleva tilde ("míralo") y un buscador de
+// tildes no ve. Sumar un verbo es agregar una palabra.
+const INFINITIVOS = [
+  // consignas de lámina
+  "poder", "tener", "querer", "saber", "hacer", "decir", "mirar", "pensar", "calcular", "probar", "tocar",
+  "usar", "mover", "deslizar", "responder", "contar", "volver", "poner", "sumar", "restar", "multiplicar",
+  "dividir", "comparar", "anotar", "recordar", "empezar", "seguir", "elegir", "necesitar", "fijar", "leer",
+  "escribir", "buscar", "resolver", "obtener", "entender", "aprender", "venir", "marcar", "revisar",
+  "completar", "comprobar", "verificar", "estimar", "redondear", "convertir", "despejar", "reemplazar",
+  "aplicar", "ubicar", "avanzar", "cambiar", "llevar", "sacar", "dejar", "quitar", "notar", "bajar",
+  "subir", "tomar", "pasar", "armar", "ordenar", "separar", "repetir", "terminar", "observar", "descontar",
+  // finanzas y el juego
+  "pagar", "ganar", "ahorrar", "pedir", "depositar", "invertir", "cobrar", "deber", "prestar", "comprar",
+  "vender", "producir", "gastar", "decidir", "capitalizar", "amortizar", "depreciar", "defender",
+  "argumentar", "explicar", "asesorar", "aconsejar", "entregar",
 ];
+
+// Palabras que existen y que la regla genera: "tomate", "terminales", el nombre Tomás y las letras cambiales.
+const NO_SON_VOSEO = new Set(["tomate", "terminales", "tomás", "cambiales"]);
+
+function formasDeVoseo() {
+  const formas = new Set(["sos", "vos", "andá", "vení", "decí", "dividí", "seguí", "fijate", "acordate", "date cuenta"]);
+  for (const inf of INFINITIVOS) {
+    const raiz = inf.slice(0, -2);
+    const vocal = inf.at(-2) as "a" | "e" | "i";
+    const tilde = { a: "á", e: "é", i: "í" }[vocal];
+    formas.add(`${raiz}${tilde}s`);
+    // El imperativo suelto de -ir ("elegí", "invertí") es también el pretérito de yo: sólo los de arriba.
+    if (vocal !== "i") formas.add(`${raiz}${tilde}`);
+    // Sin "se": con -ar daría "sumase", imperfecto de subjuntivo bien escrito.
+    for (const pron of ["lo", "la", "los", "las", "le", "les", "me", "nos", "te"]) formas.add(`${raiz}${vocal}${pron}`);
+  }
+  return [...formas].filter((f) => !NO_SON_VOSEO.has(f));
+}
+
+export const VOSEO = formasDeVoseo();
 
 export function erroresKatex(html: string) {
   return [...html.matchAll(/class="katex-error"[^>]*title="([^"]*)"/g)].map((m) => m[1]);

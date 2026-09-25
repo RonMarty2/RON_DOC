@@ -94,3 +94,42 @@ commit local con esos archivos en `C:\Users\lmigu\RON_DOC_trabajo`, rama `rescat
 
 **No trabajar más RON_DOC dentro de OneDrive:** esa copia está vieja y el sincronizador y git se
 pisan. El original es este repositorio.
+
+## 8. Revisión del 25-09 (sesión online): qué mejorar antes de construir
+
+Se jugó la muestra leyendo su código. La idea se sostiene; lo que falta es esto, en orden:
+
+1. **La versión es de adorno.** El chip dice «VERSIÓN 07 DE 32», pero los datos están fijos en
+   el código. Para que cuente para la nota, los ritmos de las máquinas tienen que salir del número
+   de versión con el mismo sorteo con semilla que ya usa `/practica-financiera`, con límites que
+   conserven la lección: la fermentación siempre es el cuello de botella y la envasadora rápida
+   nunca suma un litro. Cada versión se prueba con script, como los ejercicios de las láminas.
+2. **Después de calcular, la decisión es de opción múltiple y ya está resuelta.** Quien calculó 720
+   ya sabe que la envasadora no sirve. Mejor que antes de comprar tenga que **calcular la
+   consecuencia**: con el tercer tanque salen 1.080 L/día, se venden los 860 pedidos (140 más por
+   día × Bs 4 = Bs 560), unos Bs 14.560 al mes con 26 días, y los Bs 45.000 se recuperan en unos
+   **3,1 meses**. Eso lleva la escena al período de recuperación y conecta con el motor de SIMPRO.
+3. **Las pistas por error están escritas para una sola versión** (`v === 800`). Tienen que salir
+   de la misma fórmula con los datos de cada versión (sumó máquinas, olvidó la eficiencia, tomó la
+   envasadora).
+4. **Números sólo desde funciones probadas** (regla de CLAUDE.md): capacidad, cuello de botella y
+   recuperación en `src/lib/juego/` con su `.test.ts`, no dentro de la escena.
+5. **Dentro del sitio**, la muestra usa fuentes de Google cargadas de internet: en el aula sin
+   conexión se vería con la letra del sistema. Al pasarla a Next van con `next/font`, como el resto,
+   y entran en la precarga. Los colores del pixel art quedan como excepción (igual que los colores
+   de categoría de los gráficos), con su contraste medido.
+6. **Detalles:** el registro vacío muestra un guion largo (regla 11); «Volver a intentar» borra la
+   consecuencia de la mala decisión pero el registro la conserva, que es lo buscado.
+
+**Recomendación para la decisión 1 (cuentas):** el **código de entrega**, porque no rompe la
+decisión del 14-09. El registro se queda en el navegador; al terminar la escena se arma un código
+(o un archivo) con la versión, los números escritos, la decisión y el argumento. El alumno lo manda
+por donde ya entrega tareas y el docente lo pega en una página de revisión que **recalcula todo con
+la versión** y muestra cómo razonó. Un código así se puede falsificar con paciencia; lo que lo hace
+válido para la nota es la defensa oral, que ya es el jefe final. Las cuentas con Supabase quedan
+para el nivel 3 (mercado compartido), donde sí hacen falta.
+
+**Orden sugerido una vez que Ronald decida:** motor de escena y versiones (`src/lib/juego/`, con
+pruebas) → escena 1 en `/juego/proyectos` como borrador → página de revisión del código de entrega →
+probar con un curso → escena 2 («La cámara de frío que se llenó»). El simulador de §0 de la bitácora
+sigue siendo la base de las escenas con VAN y TIR, así que conviene terminarlo en paralelo.

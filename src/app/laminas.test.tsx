@@ -49,8 +49,13 @@ describe("los controles detectan lo que buscan", () => {
     expect(problemasDeTexto("Paso 1", html)).toEqual(["guion largo (—)", "podés"]);
   });
 
+  it("voseo que una lista a mano no veía: imperativo con pronombre pegado y verbos de finanzas", () => {
+    const html = renderToStaticMarkup(<MathText>{"Sumale el interés, resolvelo y después invertís"}</MathText>);
+    expect(problemasDeTexto("Paso 2", html)).toEqual(expect.arrayContaining(["sumale", "resolvelo", "invertís"]));
+  });
+
   it("no confunde palabras en tuteo que se parecen", () => {
-    const html = renderToStaticMarkup(<MathText>{"Tú ves que elegí bien; los positivos y $x - 1$"}</MathText>);
+    const html = renderToStaticMarkup(<MathText>{"Tú ves que elegí bien, invertí y verás el interés; súmale, resuélvelo, el tomate y $x - 1$"}</MathText>);
     expect(problemasDeTexto("Ojo", html)).toEqual([]);
   });
 });

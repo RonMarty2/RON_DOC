@@ -1,0 +1,36 @@
+name: Mantener Supabase despierto
+
+# El plan gratis de Supabase pausa el proyecto (el de SIMPRO, que usa también el juego) después de
+# una semana sin consultas a la base: el 25-09-2026 estaba pausado y SIMPRO no andaba. Esta consulta
+# cada tres días lo mantiene activo. Usa las mismas variables que el deploy del sitio.
+# Si RON_DOC pasa 60 días sin commits, GitHub apaga los horarios: se reactiva desde Actions.
+
+on:
+  schedule:
+    - cron: "17 12 */3 * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  consultar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consultar la base
+        env:
+          URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+          CLAVE: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        run: |
+          if [ -z "$URL" ] || [ -z "$CLAVE" ]; then
+            echo "::error::Faltan las variables NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY del repositorio."
+            exit 1
+          fi
+          # Una lectura real de la base (con permisos de anónimo devuelve una lista vacía, y alcanza).
+          codigo=$(curl -s -o respuesta.txt -w "%{http_code}" \
+            "$URL/rest/v1/juego_partidas?select=id&limit=1" \
+            -H "apikey: $CLAVE" -H "Authorization: Bearer $CLAVE")
+          echo "Respuesta $codigo: $(head -c 200 respuesta.txt)"
+          if [ "$codigo" != "200" ]; then
+            echo "::error::Supabase respondió $codigo. Puede estar pausado: entrar al panel y tocar Resume project."
+            exit 1
+          fi

@@ -1,0 +1,324 @@
+<title>Valle de los Proyectos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=VT323&display=swap">
+<style>
+  /* Un solo tema a propósito: la noche del valle, la misma paleta del juego (src/app/juego-proyectos/juego.css). */
+  :root{
+    color-scheme: dark;
+    --noche:#15122b; --panel:#221d40; --panel2:#2b2550; --borde:#3a3266; --tunari:#4a3f7a;
+    --atardecer:#f2a65a; --adobe:#b8683f; --leche:#f3eee4; --texto:#e9e4f5; --tenue:#a79fc8;
+    --bien:#8fd694; --alerta:#ef6f6c; --cielo:#7fb3e6;
+    --pixel:"Press Start 2P", ui-monospace, "Courier New", monospace;
+    --dialogo:"VT323", ui-monospace, "Courier New", monospace;
+    --cuerpo:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  html,body{background:var(--noche);color:var(--texto)}
+  body{font-family:var(--cuerpo);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:28px 56px}
+  .marco{max-width:1040px;margin-inline:auto;display:grid;gap:44px}
+  h1,h2,h3{text-wrap:balance}
+  .pixel{font-family:var(--pixel);letter-spacing:.05em;line-height:1.7}
+  .eti{font-family:var(--pixel);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--tenue)}
+  p{margin:0;max-width:68ch}
+  .tenue{color:var(--tenue)}
+
+  /* cabecera */
+  .cabeza{display:grid;gap:14px;border-bottom:4px solid var(--borde);padding-bottom:26px}
+  .cabeza h1{font-family:var(--pixel);font-size:clamp(18px,3.4vw,30px);color:var(--atardecer);margin:0;line-height:1.5}
+  .tesis{font-family:var(--dialogo);font-size:clamp(24px,3.2vw,32px);line-height:1.2;color:var(--leche);max-width:34ch}
+  .meta{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:var(--pixel);font-size:8px;letter-spacing:.08em;padding:6px 8px;border:2px solid var(--borde);background:var(--panel);color:var(--leche);white-space:nowrap}
+  .chip.ok{border-color:#4d7a52;color:var(--bien)}
+  .chip.va{border-color:#7a5a2e;color:var(--atardecer)}
+
+  section{display:grid;gap:18px}
+  .sec-t{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .sec-t h2{font-family:var(--pixel);font-size:13px;color:var(--leche);margin:0;letter-spacing:.06em;line-height:1.7}
+  .sec-t .n{font-family:var(--pixel);font-size:13px;color:var(--atardecer)}
+
+  /* 1 · no es / sí es */
+  .contraste{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:700px){.contraste{grid-template-columns:1fr}}
+  .caja{background:var(--panel);border:2px solid var(--borde);padding:16px 18px;display:grid;gap:10px;align-content:start}
+  .caja ul{margin:0;padding-left:18px;display:grid;gap:6px}
+  .caja.no{border-style:dashed}
+  .caja.no h3{color:var(--alerta)} .caja.si h3{color:var(--bien)}
+  .caja h3{font-family:var(--pixel);font-size:10px;margin:0;letter-spacing:.06em;line-height:1.7}
+
+  /* 2 · mapa del valle */
+  .mapa{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  @media (max-width:860px){.mapa{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:460px){.mapa{grid-template-columns:1fr}}
+  .isla{background:var(--panel);border:2px solid var(--borde);padding:14px;display:grid;gap:8px;align-content:start;position:relative}
+  .isla.activa{border-color:var(--atardecer);box-shadow:0 0 0 2px var(--noche),0 0 0 4px var(--adobe)}
+  .isla h3{font-family:var(--pixel);font-size:10px;margin:0;color:var(--leche);line-height:1.7}
+  .isla .rol{font-size:14px}
+  .isla .mec{font-size:13px;color:var(--tenue)}
+  .isla .estado{font-family:var(--pixel);font-size:8px;letter-spacing:.06em}
+  .isla.activa .estado{color:var(--atardecer)} .isla .estado{color:var(--tenue)}
+  .jerarquia{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;color:var(--tenue)}
+  .jerarquia b{color:var(--leche);font-weight:700}
+  .flecha{color:var(--atardecer);font-family:var(--pixel);font-size:10px}
+
+  /* 3 · bucle de la escena */
+  .bucle{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;counter-reset:paso}
+  @media (max-width:980px){.bucle{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  @media (max-width:560px){.bucle{grid-template-columns:1fr 1fr}}
+  .paso{background:var(--panel);border:2px solid var(--borde);padding:12px;display:grid;gap:6px;align-content:start}
+  .paso .num{font-family:var(--pixel);font-size:9px;color:var(--atardecer)}
+  .paso h3{font-size:15px;margin:0;color:var(--leche)}
+  .paso p{font-size:13px;color:var(--tenue)}
+  .paso.calc{background:var(--panel2);border-color:var(--tunari)}
+  .paso.calc .num::after{content:" · CALCULA";color:var(--cielo)}
+  .paso.fin{border-color:var(--adobe)}
+  .reglas-bucle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  @media (max-width:760px){.reglas-bucle{grid-template-columns:1fr}}
+  .regla{border-left:4px solid var(--tunari);padding:4px 0 4px 12px;font-size:14px}
+  .regla b{color:var(--leche)}
+  .ejemplo{background:#0f0d20;border:2px solid var(--borde);padding:14px 16px;font-family:var(--dialogo);font-size:21px;line-height:1.3;color:var(--leche);display:grid;gap:6px}
+  .ejemplo .q{color:var(--atardecer)}
+  .ejemplo .r{color:var(--bien)}
+  .ejemplo .m{color:var(--alerta)}
+
+  /* 4 · nota */
+  .nota-flujo{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:stretch;gap:8px}
+  @media (max-width:860px){.nota-flujo{grid-template-columns:1fr}.nota-flujo .flecha{transform:rotate(90deg);justify-self:center}}
+  .nota-flujo .caja{padding:12px 14px}
+  .nota-flujo .flecha{align-self:center}
+  .formula{font-family:var(--dialogo);font-size:28px;color:var(--leche);text-align:center;padding:8px;border:2px dashed var(--borde)}
+  .formula span{color:var(--atardecer)}
+
+  /* 5 · cómo está hecho */
+  .capas{display:grid;gap:6px}
+  .capa{display:grid;grid-template-columns:200px 1fr;gap:14px;background:var(--panel);border:2px solid var(--borde);padding:10px 14px;align-items:baseline}
+  @media (max-width:620px){.capa{grid-template-columns:1fr;gap:4px}}
+  .capa code{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:12.5px;color:var(--cielo)}
+  .capa .que{font-size:14px}
+
+  /* 6 · hoja de ruta */
+  .niveles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  @media (max-width:760px){.niveles{grid-template-columns:1fr}}
+  .nivel{background:var(--panel);border:2px solid var(--borde);padding:14px;display:grid;gap:8px;align-content:start}
+  .nivel.ahora{border-color:var(--atardecer)}
+  .nivel h3{font-family:var(--pixel);font-size:10px;margin:0;color:var(--leche);line-height:1.7}
+  .nivel p{font-size:14px}
+  .lista{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+  .lista li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14px;align-items:baseline}
+  .lista .m{font-family:var(--pixel);font-size:10px}
+  .lista .hecho .m{color:var(--bien)} .lista .falta .m{color:var(--tenue)}
+  .lista .hecho{color:var(--texto)} .lista .falta{color:var(--tenue)}
+
+  /* 7 · preguntas abiertas */
+  .abiertas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  @media (max-width:700px){.abiertas{grid-template-columns:1fr}}
+  .pregunta{background:var(--panel);border:2px dashed var(--tunari);padding:14px 16px;display:grid;gap:6px}
+  .pregunta h3{font-size:15px;margin:0;color:var(--leche)}
+  .pregunta p{font-size:14px;color:var(--tenue)}
+  .pregunta .prop{color:var(--texto)}
+  .pregunta .prop b{color:var(--atardecer);font-weight:700}
+
+  .pie{border-top:4px solid var(--borde);padding-top:16px;font-size:13px;color:var(--tenue);display:grid;gap:6px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="marco">
+
+  <header class="cabeza">
+    <span class="eti">RON_DOC · el juego · esquema de la idea</span>
+    <h1>VALLE DE LOS PROYECTOS</h1>
+    <p class="tesis">Eres un consultor joven en un valle como Cochabamba. Si no sabes calcular, la empresa de tu cliente pierde. Lo que aprendes es la forma de jugar.</p>
+    <div class="meta">
+      <span class="chip">VERSIÓN DE LA IDEA 1 · 25-09-2026</span>
+      <span class="chip ok">ESCENA 1 JUGABLE</span>
+      <span class="chip va">CUENTA PARA LA NOTA</span>
+    </div>
+  </header>
+
+  <!-- 1 -->
+  <section>
+    <div class="sec-t"><span class="n">1</span><h2>QUÉ ES Y QUÉ NO ES</h2></div>
+    <div class="contraste">
+      <div class="caja no">
+        <h3>NO ES</h3>
+        <ul>
+          <li>Un cuestionario con puntos y animaciones («eso para mí no es juego»).</li>
+          <li>Elegir entre cuatro opciones hasta acertar.</li>
+          <li>Niveles, logros y rachas como fin en sí mismos (la gamificación vieja de OneDrive quedó archivada).</li>
+        </ul>
+      </div>
+      <div class="caja si">
+        <h3>SÍ ES</h3>
+        <ul>
+          <li>Un <b>simulador de gestión con historia</b>, en pixel art, en el celular del alumno.</li>
+          <li>El alumno <b>escribe el número</b>, no lo elige. Si se equivoca, la pista depende de su error.</li>
+          <li>Cada decisión tiene una <b>consecuencia visible en el mundo</b>: la planta produce más, la caja baja, el cliente confía o no.</li>
+          <li>Termina en una <b>defensa oral en clase</b>: el jefe final es el docente.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <div class="sec-t"><span class="n">2</span><h2>EL MUNDO</h2></div>
+    <div class="jerarquia">
+      <b>Valle</b><span class="flecha">▶</span>
+      <b>Isla</b> = una materia <span class="flecha">▶</span>
+      <b>Barrio</b> = una unidad o semana <span class="flecha">▶</span>
+      <b>Escena</b> = un cliente con un problema real del dossier
+    </div>
+    <div class="mapa">
+      <div class="isla activa">
+        <span class="estado">EN CONSTRUCCIÓN</span>
+        <h3>PROYECTOS II</h3>
+        <p class="rol">Asesoras o abres un emprendimiento.</p>
+        <p class="mec">Capacidad, cuellos de botella, inversión, recuperación. Después, el motor de SIMPRO: VAN, TIR, eventos (sequía, devaluación).</p>
+      </div>
+      <div class="isla">
+        <span class="estado">IDEA</span>
+        <h3>INFERENCIAL</h3>
+        <p class="rol">Eres el analista de un hospital o una universidad.</p>
+        <p class="mec">Decides el tamaño de muestra, calculas, decides si el tratamiento funciona.</p>
+      </div>
+      <div class="isla">
+        <span class="estado">IDEA</span>
+        <h3>ECONOMETRÍA</h3>
+        <p class="rol">Pronosticas para el mercado del valle.</p>
+        <p class="mec">Si pronosticas mal, compras de más o te quedas sin stock.</p>
+      </div>
+      <div class="isla">
+        <span class="estado">IDEA</span>
+        <h3>BOLSA DE VALORES</h3>
+        <p class="rol">Administras el ahorro del pueblo.</p>
+        <p class="mec">Carteras en un mercado que se mueve.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <div class="sec-t"><span class="n">3</span><h2>UNA ESCENA POR DENTRO</h2></div>
+    <p class="tenue">Así funciona la escena 1, «La máquina que no alcanzaba» (Lácteos Valle Alto, Punata). Es el molde de todas las escenas: cambia el caso, no la forma.</p>
+    <div class="bucle">
+      <div class="paso"><span class="num">1</span><h3>El problema</h3><p>Don Mario tiene 860 pedidos por día y le ofrecen una envasadora 3 veces más rápida.</p></div>
+      <div class="paso calc"><span class="num">2</span><h3>Diagnóstico</h3><p>¿Cuántas botellas saca hoy la planta? Tiene que encontrar el cuello de botella.</p></div>
+      <div class="paso"><span class="num">3</span><h3>Decide</h3><p>Envasadora, tercer tanque o no invertir.</p></div>
+      <div class="paso calc"><span class="num">4</span><h3>Antes de firmar</h3><p>¿Cuántas botellas saldrán con esa compra? Aquí descubre si la compra sirve.</p></div>
+      <div class="paso"><span class="num">5</span><h3>Un mes después</h3><p>El mundo cambia: la cinta va más rápido o no, la caja baja, la confianza sube o cae.</p></div>
+      <div class="paso calc"><span class="num">6</span><h3>¿Cuándo se paga?</h3><p>Meses para recuperar la inversión con lo que realmente se vende.</p></div>
+      <div class="paso fin"><span class="num">7</span><h3>Defensa</h3><p>Escribe el argumento que va a defender en clase.</p></div>
+    </div>
+    <div class="reglas-bucle">
+      <p class="regla"><b>Si se equivoca,</b> el personaje le responde según su error: «¿sumaste las máquinas?», «¿y las limpiezas?», «eso son días, no meses».</p>
+      <p class="regla"><b>Si se traba,</b> tras dos fallos puede pedir ayuda al socio. Queda anotado que la pidió.</p>
+      <p class="regla"><b>Si decide mal,</b> ve la consecuencia y puede volver a intentarlo. El registro guarda las dos decisiones.</p>
+    </div>
+    <div class="ejemplo" aria-label="Ejemplo de diálogo">
+      <span class="q">DON MARIO: ¿Cuántas botellas puede sacar HOY la planta?</span>
+      <span class="m">&gt; 800</span>
+      <span>«Casi… ¿y las limpiezas? No trabajamos todo el día sin parar.»</span>
+      <span class="r">&gt; 720 ✔ ¡720 botellas, exacto! Eso contamos ayer.</span>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <div class="sec-t"><span class="n">4</span><h2>CÓMO CUENTA PARA LA NOTA SIN TRAMPA</h2></div>
+    <div class="nota-flujo">
+      <div class="caja"><span class="eti">cuenta</span><p>El alumno entra con Google, la misma cuenta de SIMPRO, y elige su curso.</p></div>
+      <span class="flecha">▶</span>
+      <div class="caja"><span class="eti">versión propia</span><p>Su cuenta le da una de 999 versiones: otros números, la misma lección. No puede copiar el resultado del compañero.</p></div>
+      <span class="flecha">▶</span>
+      <div class="caja"><span class="eti">registro</span><p>Se guarda cada número que escribió, cada ayuda, cada decisión y su argumento. Al entregar, queda fijo.</p></div>
+      <span class="flecha">▶</span>
+      <div class="caja"><span class="eti">panel del docente</span><p>Recalcula todo con su versión: qué error cometió, en qué intento acertó, qué decidió.</p></div>
+    </div>
+    <p class="formula">nota = <span>el caso</span> (cómo razonó) + <span>la defensa oral</span> (si lo sabe explicar)</p>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <div class="sec-t"><span class="n">5</span><h2>CÓMO ESTÁ HECHO</h2></div>
+    <p class="tenue">Cada capa se apoya en la de arriba. Ningún número está escrito a mano: todos salen de funciones con pruebas.</p>
+    <div class="capas">
+      <div class="capa"><span class="eti">el caso</span><span class="que">Dossier de Ronald (Semana 1 de Proyectos II). La versión 0 son sus números exactos.</span></div>
+      <div class="capa"><span class="eti">el motor</span><span class="que">Capacidad, consecuencias, errores típicos y las 999 versiones. <code>src/lib/juego/planta.ts</code></span></div>
+      <div class="capa"><span class="eti">el guion</span><span class="que">Lo que dicen los personajes, armado con los números de cada versión y revisado (tuteo, sin guiones largos). <code>guion-planta.ts</code></span></div>
+      <div class="capa"><span class="eti">la pantalla</span><span class="que">Pixel art dibujado con código, diálogo, tablero de caja, botellas y confianza. <code>/juego-proyectos</code></span></div>
+      <div class="capa"><span class="eti">la nube</span><span class="que">Supabase de SIMPRO: cuentas, cursos y la tabla <code>juego_partidas</code>.</span></div>
+      <div class="capa"><span class="eti">el docente</span><span class="que">Partidas del curso, recalculadas. <code>/juego-proyectos/docente</code></span></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <div class="sec-t"><span class="n">6</span><h2>DÓNDE ESTAMOS Y HACIA DÓNDE VA</h2></div>
+    <div class="niveles">
+      <div class="nivel ahora">
+        <span class="eti" style="color:var(--atardecer)">ahora</span>
+        <h3>NIVEL 1 · ESCENAS</h3>
+        <p>Escenas con diálogo, cálculo, decisión y consecuencia, dentro del sitio. Semanas por isla.</p>
+      </div>
+      <div class="nivel">
+        <span class="eti">después</span>
+        <h3>NIVEL 2 · MAPA</h3>
+        <p>El personaje camina por el valle y entra a los edificios. Meses.</p>
+      </div>
+      <div class="nivel">
+        <span class="eti">si todo funciona</span>
+        <h3>NIVEL 3 · MERCADO COMPARTIDO</h3>
+        <p>Los compañeros compiten en el mismo mercado, sobre SIMPRO.</p>
+      </div>
+    </div>
+    <ul class="lista">
+      <li class="hecho"><span class="m">✔</span>Motor de la escena 1 con 999 versiones</li>
+      <li class="hecho"><span class="m">✔</span>Escena 1 jugable en celular y PC</li>
+      <li class="hecho"><span class="m">✔</span>Entrar con Google y guardar la partida en la cuenta</li>
+      <li class="hecho"><span class="m">✔</span>Panel del docente</li>
+      <li class="falta"><span class="m">·</span>Probarlo con una cuenta real y después con un curso</li>
+      <li class="falta"><span class="m">·</span>Escena 2: «La cámara de frío que se llenó» (Semana 2), con los números de su dossier</li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <div class="sec-t"><span class="n">7</span><h2>LO QUE FALTA DEFINIR</h2></div>
+    <p class="tenue">Aquí es donde la idea tiene que crecer. Cada punto trae una propuesta para discutir, no una decisión.</p>
+    <div class="abiertas">
+      <div class="pregunta">
+        <h3>¿Las escenas se conectan?</h3>
+        <p>Hoy cada escena empieza de cero.</p>
+        <p class="prop"><b>Propuesta:</b> la caja y la confianza de Don Mario pasan a la escena 2. Si compró la envasadora, empieza con Bs 38.000 menos y un cliente desconfiado.</p>
+      </div>
+      <div class="pregunta">
+        <h3>¿Qué gana el consultor?</h3>
+        <p>Falta un motivo para avanzar que no sean puntos.</p>
+        <p class="prop"><b>Propuesta:</b> reputación en el valle. Los clientes satisfechos te recomiendan y se abren barrios nuevos; los malos consejos cierran puertas.</p>
+      </div>
+      <div class="pregunta">
+        <h3>¿Cómo se califica la defensa?</h3>
+        <p>La defensa es el jefe final, pero no tiene rúbrica.</p>
+        <p class="prop"><b>Propuesta:</b> una rúbrica corta en el panel del docente, junto al registro de cada alumno, para poner la nota ahí mismo.</p>
+      </div>
+      <div class="pregunta">
+        <h3>¿Cuándo aparecen los eventos?</h3>
+        <p>Sequía, devaluación, un competidor nuevo.</p>
+        <p class="prop"><b>Propuesta:</b> desde la escena 3, cuando entre el VAN: el evento cambia el flujo y obliga a recalcular.</p>
+      </div>
+      <div class="pregunta">
+        <h3>¿Cómo se llama la materia?</h3>
+        <p>El juego vive por ahora dentro de Administración Financiera.</p>
+        <p class="prop"><b>Falta:</b> el nombre oficial de Proyectos II para darle su lugar en el sitio.</p>
+      </div>
+      <div class="pregunta">
+        <h3>¿Y el arte?</h3>
+        <p>Hoy es un boceto dibujado con código.</p>
+        <p class="prop"><b>Decidido:</b> seguir así hasta probarlo con un curso. Después, paquetes libres o un dibujante.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <p>Fuentes: <b>docs/juego/IDEA-JUEGO.md</b> (la idea completa) y la bitácora de RON_DOC (§0, los pasos). Esta página se guarda en <b>docs/juego/esquema.html</b>: cuando la idea cambie, se actualiza aquí y sube la versión de la idea.</p>
+  </footer>
+</div>

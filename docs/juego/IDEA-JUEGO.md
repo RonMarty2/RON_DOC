@@ -2,6 +2,7 @@
 
 > Registrado el **2026-09-24** desde una sesión de Claude Code en la PC de Ronald (trabajando su
 > sistema de materias en OneDrive). **Retomar en una sesión online sobre este repositorio.**
+> **Esquema de la idea** (versión 1, 25-09): [`esquema.html`](./esquema.html), publicado para Ronald en https://claude.ai/artifact/9eusX4vS4LfCB1PLWkDt1Y (privado). Cuando la idea cambie, se actualiza ese archivo y se vuelve a publicar en la misma dirección.
 > Muestra jugable de la escena 1: [`valle-escena.html`](./valle-escena.html) (abrir en el
 > navegador; no está enlazada desde el sitio ni se compila).
 

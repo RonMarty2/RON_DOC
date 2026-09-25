@@ -5,6 +5,7 @@ const TIPO = {
   aula: { etiqueta: "Aula interactiva", boton: "Abrir el aula" },
   lamina: { etiqueta: "Lámina interactiva", boton: "Abrir la lámina" },
   hoja: { etiqueta: "Hoja de práctica para imprimir", boton: "Armar la hoja" },
+  juego: { etiqueta: "Juego", boton: "Empezar a jugar" },
 };
 
 export function HerramientaCard({ herramienta }: { herramienta: HerramientaMateria }) {

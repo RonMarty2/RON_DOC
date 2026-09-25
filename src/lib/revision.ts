@@ -44,6 +44,12 @@ function formasDeVoseo() {
 
 export const VOSEO = formasDeVoseo();
 
+// Una sola expresión con todas las formas (las largas primero), compilada una vez: son más de mil.
+const HAY_VOSEO = new RegExp(
+  String.raw`(?<!\p{L})(${[...VOSEO].sort((a, b) => b.length - a.length).join("|")})(?!\p{L})`,
+  "giu",
+);
+
 export function erroresKatex(html: string) {
   return [...html.matchAll(/class="katex-error"[^>]*title="([^"]*)"/g)].map((m) => m[1]);
 }
@@ -63,6 +69,6 @@ export function problemasDeTexto(etiqueta: string, html: string) {
     .replace(/&[a-z]+;|&#\d+;/g, " ")}`;
   return [
     ...(texto.includes("—") ? ["guion largo (—)"] : []),
-    ...VOSEO.filter((f) => new RegExp(String.raw`(?<!\p{L})${f}(?!\p{L})`, "iu").test(texto)),
+    ...new Set([...texto.matchAll(HAY_VOSEO)].map((m) => m[1].toLowerCase())),
   ];
 }

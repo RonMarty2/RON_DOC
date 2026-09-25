@@ -7,6 +7,7 @@ import {
   cuelloDeBotella,
   datosDeVersion,
   revisarCapacidad,
+  revisarCapacidadConCompra,
   revisarRecuperacion,
   versionValida,
 } from "./planta";
@@ -33,8 +34,19 @@ describe("el caso del dossier (versión 0)", () => {
     expect(c.pedidosPerdidosPorDia).toBe(0);
     expect(c.margenExtraPorMes).toBe(140 * 4 * 26);
     expect(c.mesesRecuperacion).toBeCloseTo(45_000 / 14_560, 10);
-    expect(revisarRecuperacion(d, 3.1)).toBe(true);
-    expect(revisarRecuperacion(d, 3.3)).toBe(false);
+    expect(revisarRecuperacion(d, 3.1)).toBe("correcta");
+    expect(revisarRecuperacion(d, 3.3)).toBe("otra");
+    expect(revisarRecuperacion(d, 1.2)).toBe("conto-lo-que-no-se-vende"); // 45.000 / (360 × 4 × 26)
+    expect(revisarRecuperacion(d, 80.4)).toBe("dio-dias"); // 45.000 / (140 × 4)
+  });
+
+  it("antes de que pase el mes, reconoce quien cree que la envasadora sube la producción", () => {
+    expect(revisarCapacidadConCompra(d, "envasadora", 720)).toBe("correcta");
+    expect(revisarCapacidadConCompra(d, "envasadora", 5760)).toBe("creyo-que-sube"); // 400 × 16 × 0,9
+    expect(revisarCapacidadConCompra(d, "envasadora", 4320)).toBe("creyo-que-sube"); // manda el pasteurizador
+    expect(revisarCapacidadConCompra(d, "tanque", 1080)).toBe("correcta");
+    expect(revisarCapacidadConCompra(d, "tanque", 1200)).toBe("sin-eficiencia");
+    expect(revisarCapacidadConCompra(d, "tanque", 900)).toBe("otra");
   });
 
   it("no comprar nada pierde 140 pedidos por día", () => {
@@ -74,6 +86,10 @@ describe("versiones", () => {
       const hoy = capacidadDiaria(d);
       expect(revisarCapacidad(d, hoy)).toBe("correcta");
       expect(revisarCapacidad(d, Math.round(hoy / (d.eficiencia)))).toBe("sin-eficiencia");
+      const meses = consecuencia(d, "tanque").mesesRecuperacion!;
+      expect(revisarRecuperacion(d, Math.round(meses * 10) / 10)).toBe("correcta");
+      expect(revisarCapacidadConCompra(d, "envasadora", hoy)).toBe("correcta");
+      expect(revisarCapacidadConCompra(d, "tanque", consecuencia(d, "tanque").capacidad)).toBe("correcta");
     }
   });
 

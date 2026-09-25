@@ -64,9 +64,9 @@ export interface HerramientaMateria {
   destacados?: string[];
   /**
    * "aula" es un libro con scroll de una unidad; "lamina" es un tema en tarjetas;
-   * "hoja" es una hoja de práctica para imprimir. Por defecto "aula".
+   * "hoja" es una hoja de práctica para imprimir; "juego", una escena del juego. Por defecto "aula".
    */
-  tipo?: "aula" | "lamina" | "hoja";
+  tipo?: "aula" | "lamina" | "hoja" | "juego";
   /** Mientras sea true no aparece en ningún lado y su página no se indexa. Publicar = quitarlo. */
   borrador?: boolean;
 }

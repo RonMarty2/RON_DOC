@@ -103,7 +103,7 @@ export function imagenesParaCompartir(): Record<string, Contenido> {
     imagenes[`materia-${materia.slug}`] = { contexto: "Materia", titulo: materia.nombre, descripcion: materia.descripcion };
     for (const h of materia.herramientas ?? []) {
       imagenes[claveDeHerramienta(h.href)] = {
-        contexto: `${materia.nombre} · ${h.tipo === "lamina" ? "Lámina" : h.tipo === "hoja" ? "Hoja de práctica" : "Aula interactiva"}`,
+        contexto: `${materia.nombre} · ${h.tipo === "lamina" ? "Lámina" : h.tipo === "hoja" ? "Hoja de práctica" : h.tipo === "juego" ? "Juego" : "Aula interactiva"}`,
         titulo: h.titulo,
         descripcion: h.descripcion,
       };

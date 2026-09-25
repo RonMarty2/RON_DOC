@@ -80,6 +80,16 @@ export const MATERIAS: Materia[] = [
     nombre: "Administración Financiera",
     descripcion:
       "Análisis de estados financieros, ratios, sistema Du Pont y flujos de fondos para la toma de decisiones empresariales.",
+    // El juego va acá mientras Proyectos II no tenga su materia (moverlo es mover este bloque). Borrador hasta probarlo con un curso.
+    herramientas: [
+      {
+        href: "/juego-proyectos",
+        titulo: "Valle de los Proyectos: la máquina que no alcanzaba",
+        descripcion: "Juego en pixel art: asesoras a una lechera de Punata, calculas su capacidad y decides en qué invertir. Cada alumno tiene sus propios números.",
+        tipo: "juego",
+        borrador: true,
+      },
+    ],
     temas: [
       {
         slug: "introduccion-estados-financieros",

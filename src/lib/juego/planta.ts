@@ -32,6 +32,8 @@ export interface DatosPlanta {
   /** Bs por litro vendido, ya descontado el costo. */
   margenPorLitro: number;
   diasPorMes: number;
+  /** Plata de la empresa al empezar la escena (dato de la escena, no del dossier). */
+  cajaInicial: number;
 }
 
 export const CASO_DOSSIER: DatosPlanta = {
@@ -49,6 +51,7 @@ export const CASO_DOSSIER: DatosPlanta = {
   pedidosPorDia: 860,
   margenPorLitro: 4,
   diasPorMes: 26,
+  cajaInicial: 120_000,
 };
 
 /** Litros por hora que deja pasar la fermentación con `tanques` tanques. */
@@ -136,10 +139,43 @@ export function revisarCapacidad(d: DatosPlanta, escrito: number): Diagnostico {
   return erroresTipicosCapacidad(d).find(([, n]) => cerca(escrito, n))?.[0] ?? "otra";
 }
 
-/** Meses de recuperación del tercer tanque, con un decimal de tolerancia. */
-export function revisarRecuperacion(d: DatosPlanta, escrito: number) {
+export type DiagnosticoCompra = "correcta" | "creyo-que-sube" | "sin-eficiencia" | "otra";
+
+/**
+ * Antes de que pase el mes, el alumno dice cuántas botellas saldrán con lo que compró.
+ * Con la envasadora el error típico es creer que sube (la nueva envasadora como límite, o el
+ * pasteurizador); con el tanque, olvidar la eficiencia.
+ */
+export function revisarCapacidadConCompra(d: DatosPlanta, opcion: "envasadora" | "tanque", escrito: number): DiagnosticoCompra {
+  if (cerca(escrito, consecuencia(d, opcion).capacidad)) return "correcta";
+  const dia = d.horasPorDia * d.eficiencia;
+  if (opcion === "envasadora") {
+    const creidos = [d.envasadoraNueva * dia, Math.min(d.pasteurizador, d.envasadoraNueva) * dia].map(Math.round);
+    return creidos.some((n) => cerca(escrito, n)) ? "creyo-que-sube" : "otra";
+  }
+  return cerca(escrito, Math.round(ritmoFermentacion(d, d.tanques + 1) * d.horasPorDia)) ? "sin-eficiencia" : "otra";
+}
+
+export type DiagnosticoRecuperacion = "correcta" | "conto-lo-que-no-se-vende" | "dio-dias" | "otra";
+
+/** Los números que dan los errores típicos al calcular la recuperación del tanque. */
+export function erroresTipicosRecuperacion(d: DatosPlanta): [Exclude<DiagnosticoRecuperacion, "correcta" | "otra">, number][] {
+  const extraVendido = d.pedidosPorDia - capacidadDiaria(d);
+  const extraProducido = consecuencia(d, "tanque").capacidad - capacidadDiaria(d);
+  return [
+    // la capacidad nueva entera, aunque no haya pedidos para venderla
+    ["conto-lo-que-no-se-vende", d.precioTanque / (extraProducido * d.margenPorLitro * d.diasPorMes)],
+    // el margen de un día, no de un mes: da días
+    ["dio-dias", d.precioTanque / (extraVendido * d.margenPorLitro)],
+  ];
+}
+
+/** Meses de recuperación del tercer tanque, con un décimo de tolerancia (se escribe con un decimal). */
+export function revisarRecuperacion(d: DatosPlanta, escrito: number): DiagnosticoRecuperacion {
+  const cercaMeses = (a: number, b: number) => Math.abs(a - b) <= 0.1;
   const meses = consecuencia(d, "tanque").mesesRecuperacion;
-  return meses !== null && Math.abs(escrito - meses) <= 0.1;
+  if (meses !== null && cercaMeses(escrito, meses)) return "correcta";
+  return erroresTipicosRecuperacion(d).find(([, n]) => cercaMeses(escrito, n))?.[0] ?? "otra";
 }
 
 // ── Versiones ────────────────────────────────────────────────────────────────
@@ -165,6 +201,7 @@ export function versionValida(d: DatosPlanta) {
     conTanque - d.pedidosPorDia >= 50 &&
     // una recuperación creíble para un tanque: ni semanas ni más de medio año largo
     meses !== null && meses >= 1.5 && meses <= 8 &&
+    erroresTipicosRecuperacion(d).every(([, n]) => Math.abs(n - meses) > 0.25) &&
     distintos
   );
 }

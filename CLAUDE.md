@@ -6,6 +6,10 @@
 
 **Ronald autoriza subir directo a `main`** cuando `npm test` y `npx tsc --noEmit` pasan: no hace falta preguntar ni abrir PR. Si la sesión trabaja en una rama asignada (las sesiones en la nube la traen), se sube también a `main` con avance directo (`git push origin HEAD:main` después de traer `main`; si `main` avanzó, integrarlo antes, nunca forzar). El deploy a GitHub Pages sale solo con cada push a `main`.
 
+## Agentes
+
+Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (registro y reglas para combinar los de la nube con los de la PC de Ronald); todo agente nuevo se anota ahí en el mismo commit.
+
 ## Antes de hacer cualquier cosa
 
 **Revisar las fuentes.** RON_DOC toma piezas de `axiom-simulador` (lo visual y la matemática) y de `simuladorPRO` (lo financiero), y esos dos repos siguen mejorando por su cuenta. Al empezar la sesión, seguir el protocolo de [FUENTES.md](./FUENTES.md): traer lo nuevo con `git fetch`, ver qué cambió desde el último commit revisado, contarle a Ronald en pocas líneas qué vale la pena traer, y anotar la revisión.

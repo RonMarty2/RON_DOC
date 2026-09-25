@@ -128,6 +128,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | 2026-09-14 | Imagen para compartir generada por página al compilar, con Noto Sans | Los alumnos reciben los enlaces por WhatsApp: sin imagen el enlace pasa desapercibido. Crimson Pro y Atkinson sólo están en woff2, que el generador no lee |
 | 2026-09-14 | Sin internet se guarda todo lo publicado apenas se abre el sitio, no sólo lo visitado | Las láminas se proyectan en aulas sin conexión y el alumno estudia con datos móviles: ~630 kB una vez, a cambio de que funcione todo |
 | 2026-09-14 | La lámina retoma sola donde quedó, con un aviso para volver al inicio | Es lo que hace el Aula. Para proyectar en clase desde la misma computadora: el aviso, el primer punto o la tecla Inicio |
+| 2026-09-25 | Agentes en `.claude/agents/`, con un registro de origen (nube o PC) y reglas para combinarlos | Ronald creó agentes en la copia vieja de OneDrive, sin subir; Claude irá creando los que haga falta en la nube, y se juntan cuando Ronald esté en la PC sin que uno pise al otro |
 | 2026-09-25 | Subir directo a `main` cuando las pruebas pasan, sin preguntar ni PR (anotado en `CLAUDE.md`) | Pedido de Ronald: las sesiones en la nube se quedaban en su rama y lo hecho no se publicaba |
 | 2026-09-25 | Juego: cuentas con **Supabase** (el proyecto de SIMPRO), primera isla Proyectos II, arte con código, y va antes que el simulador | Elegido por Ronald. Cambia, sólo para la parte evaluada del juego, la decisión del 14-09 de no tener cuentas: las láminas siguen sin cuentas. Se había recomendado un código de entrega |
 | 2026-09-24 | **RON_DOC tendrá un juego**: simulador de gestión con historia, en pixel art, una isla por materia, que **cuenta para la nota** (datos por versión, registro de decisiones, defensa oral como jefe final). No un cuestionario con puntos | Pedido de Ronald; vio la muestra (`docs/juego/valle-escena.html`) y dijo «se ve genial». Detalle y decisiones pendientes en `docs/juego/IDEA-JUEGO.md` |
@@ -183,6 +184,8 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 - *(este commit)* **Juego, paso 5:** página del docente `/juego-proyectos/docente` con el resumen recalculado de cada partida del curso. 558 pruebas.
 
 ## 7. Qué sigue
+
+**Agentes (pendiente, cuando Ronald esté en la PC):** traer los de `…\1.MATERIAS\RON_DOC\.claude\agents\` sin empujar desde esa copia vieja: clonar limpio (`git clone https://github.com/RonMarty2/RON_DOC.git C:\Users\lmigu\RON_DOC_git`), copiar los `.md` a `.claude\agents\`, subir, y combinarlos con los de la nube según `.claude/agents/LEEME.md`.
 
 **El juego:** en curso, ver §0 (decidido el 25-09). La gamificación vieja de la copia de OneDrive **no se subió**: ver §7 del documento.
 

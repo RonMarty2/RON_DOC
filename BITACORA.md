@@ -12,7 +12,20 @@
 
 > Regla pedida por Ronald: si se cortan los tokens, otra IA tiene que poder seguir desde acá sin rehacer nada. Antes de cada paso se actualiza esta lista, y se sube después de cada paso terminado. Al terminar el trabajo entero, pasa a §6 y esta sección queda vacía.
 
-### Simulador de proyectos de SIMPRO dentro de RON_DOC
+### El juego: isla Proyectos II, escena 1 (primero, decidido el 25-09)
+
+**Decisiones de Ronald (25-09):** cuentas con **Supabase** (no el código de entrega recomendado), el mismo proyecto de SIMPRO (perfiles, cursos, inscripciones, Google); primera isla **Proyectos II**; arte **dibujado con código** hasta probarlo con un curso; **el juego va antes** que terminar el simulador (pausado abajo, se retoma cuando una escena necesite VAN o TIR). Idea completa y revisión en `docs/juego/IDEA-JUEGO.md` (§8).
+
+**Pasos:**
+
+- [x] 1. Motor de la escena 1 (`src/lib/juego/planta.ts` + pruebas): la versión 0 es el caso del dossier (720 L/día, tercer tanque 1.080, recuperación 3,1 meses); las versiones 1 a 999 salen con semilla y cumplen las reglas que conservan la lección (fermentación como cuello de botella, la envasadora nueva no suma, el tanque alcanza, recuperación entre 1,5 y 8 meses, errores típicos que no se confunden). Diagnóstico de cada error típico para la pista.
+- [ ] 2. **(siguiente)** Escena 1 jugable en `/juego/proyectos`, como borrador (sin enlazar, `noindex`): la muestra `docs/juego/valle-escena.html` pasada a Next, con los números de `planta.ts`, el cálculo de la recuperación antes de decidir, pistas por diagnóstico, fuentes con `next/font`, registro en el navegador mientras no haya sesión.
+- [ ] 3. Tabla `juego_partidas`: borrador en `docs/juego/supabase-juego-partidas.sql` (permisos con las funciones de SIMPRO). **Necesita a Ronald:** aplicarla en SIMPRO como migración 033.
+- [ ] 4. Inicio de sesión y guardar la partida. **Necesita a Ronald:** la URL y la clave pública (anon) del proyecto como variables del deploy de GitHub (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`) y `https://ronmarty2.github.io/RON_DOC/` entre las direcciones de regreso permitidas de Supabase. Sin esas variables, el juego sigue funcionando sin guardar (como el modo local de SIMPRO). La versión de cada alumno sale de su id, así el docente la recalcula.
+- [ ] 5. Página del docente: partidas de su curso, cada una recalculada con su versión (números escritos, pistas que recibió, decisión, argumento).
+- [ ] 6. Probar con un curso real; después, escena 2 («La cámara de frío que se llenó», Semana 2).
+
+### Simulador de proyectos de SIMPRO dentro de RON_DOC (pausado el 25-09: va primero el juego)
 
 **Pedido (14-sep):** Ronald vio que de SIMPRO sólo había 2 cálculos escondidos en láminas sin publicar y un enlace en "Proyectos", y eligió **"Traer el simulador SIMPRO"**: que sus alumnos armen y simulen un proyecto de inversión (VAN, TIR, flujo de caja, impuestos de Bolivia) dentro de la página, sin cuenta.
 
@@ -115,6 +128,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | 2026-09-14 | Imagen para compartir generada por página al compilar, con Noto Sans | Los alumnos reciben los enlaces por WhatsApp: sin imagen el enlace pasa desapercibido. Crimson Pro y Atkinson sólo están en woff2, que el generador no lee |
 | 2026-09-14 | Sin internet se guarda todo lo publicado apenas se abre el sitio, no sólo lo visitado | Las láminas se proyectan en aulas sin conexión y el alumno estudia con datos móviles: ~630 kB una vez, a cambio de que funcione todo |
 | 2026-09-14 | La lámina retoma sola donde quedó, con un aviso para volver al inicio | Es lo que hace el Aula. Para proyectar en clase desde la misma computadora: el aviso, el primer punto o la tecla Inicio |
+| 2026-09-25 | Juego: cuentas con **Supabase** (el proyecto de SIMPRO), primera isla Proyectos II, arte con código, y va antes que el simulador | Elegido por Ronald. Cambia, sólo para la parte evaluada del juego, la decisión del 14-09 de no tener cuentas: las láminas siguen sin cuentas. Se había recomendado un código de entrega |
 | 2026-09-24 | **RON_DOC tendrá un juego**: simulador de gestión con historia, en pixel art, una isla por materia, que **cuenta para la nota** (datos por versión, registro de decisiones, defensa oral como jefe final). No un cuestionario con puntos | Pedido de Ronald; vio la muestra (`docs/juego/valle-escena.html`) y dijo «se ve genial». Detalle y decisiones pendientes en `docs/juego/IDEA-JUEGO.md` |
 
 ## 5. Trabajo en paralelo
@@ -160,13 +174,11 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 ### 2026-09-25
 
 - *(este commit)* **Revisión del juego, sin construir todavía:** `docs/juego/IDEA-JUEGO.md` §8 (la versión de la muestra es de adorno, la decisión queda resuelta al calcular, pistas atadas a una versión, números fuera de funciones probadas, fuentes de internet) y recomendación de **código de entrega** en vez de cuentas. **De Axiom:** el detector de voseo pasa a generar las formas desde infinitivos, con los imperativos con pronombre pegado ("sumale", "resolvelo") y verbos de finanzas (`src/lib/revision.ts`); barrido de 157 archivos: el sitio está limpio, quedan 2 en `ejercicios/LEEME.md` (terreno de la otra sesión). 536 pruebas.
+- *(este commit)* **Juego, paso 1:** decisiones de Ronald anotadas (§0 y §4), motor de la escena 1 con versiones (`src/lib/juego/planta.ts`, 10 pruebas que recorren las 999 versiones) y borrador de la tabla de partidas para Supabase. 546 pruebas.
 
 ## 7. Qué sigue
 
-**El juego (registrado el 24-09, retomar online):** leer `docs/juego/IDEA-JUEGO.md` y abrir la
-muestra `docs/juego/valle-escena.html`. Antes de construir, Ronald decide: cuentas de estudiante
-(choca con «sin cuentas» del 14-09), primera isla (recomendada Proyectos II, sobre el simulador de
-§0) y arte. Revisión del 25-09 con mejoras y recomendación (código de entrega) en §8 del documento. La gamificación vieja de la copia de OneDrive **no se subió**: ver §7 del documento.
+**El juego:** en curso, ver §0 (decidido el 25-09). La gamificación vieja de la copia de OneDrive **no se subió**: ver §7 del documento.
 
 **Se puede hacer sin Ronald** (en este orden):
 

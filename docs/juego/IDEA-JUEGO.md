@@ -57,7 +57,7 @@ pierde; el error tiene consecuencias en el mundo, y eso es lo que enseña.
 probada con un curso real antes de seguir); el pixel art tiene que ser coherente (paquetes con
 licencia libre o un dibujante; la muestra es un boceto hecho con código).
 
-## 5. Decisiones pendientes de Ronald
+## 5. Decisiones de Ronald (tomadas el 25-09: cuentas con Supabase, Proyectos II, arte con código, juego antes que el simulador; plan en §0 de la bitácora)
 
 1. **Cuentas de estudiante.** Para que cuente para la nota hace falta saber quién jugó y guardar el
    registro fuera del celular. Esto **choca con la decisión del 14-09** («progreso en el navegador,

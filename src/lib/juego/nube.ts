@@ -145,3 +145,57 @@ export async function guardarPartidaNube(alumnoId: string, cursoId: string | nul
   );
   if (error) throw error;
 }
+
+// ── Para el docente ──────────────────────────────────────────────────────────
+// Lo que deja leer la base: sus cursos (cursos.docente_id), las inscripciones y los perfiles de sus
+// alumnos (políticas de SIMPRO) y las partidas de sus cursos (juego_partidas_docente_leer).
+
+/** Los cursos que dicta, los activos primero. Filtra por docente: los cursos activos los ve cualquiera. */
+export async function cursosQueDicta(docenteId: string): Promise<Curso[]> {
+  const sb = await nube();
+  const { data, error } = await sb.from("cursos").select("id, nombre, paralelo, estado").eq("docente_id", docenteId);
+  if (error) throw error;
+  return (data ?? [])
+    .filter((c) => c.estado !== "archivado")
+    .sort((a, b) => Number(a.estado !== "activo") - Number(b.estado !== "activo"))
+    .map((c) => ({ id: c.id, nombre: c.paralelo ? `${c.nombre} · ${c.paralelo}` : c.nombre }));
+}
+
+export interface InscritoConPartida {
+  estudianteId: string;
+  nombre: string;
+  email: string;
+  partida: { version: number; registro: Entrada[]; terminada: boolean; actualizado: string } | null;
+}
+
+/** Cada inscrito del curso con su partida de la escena, o null si todavía no jugó. */
+export async function partidasDelCurso(cursoId: string): Promise<InscritoConPartida[]> {
+  const sb = await nube();
+  const [inscritos, partidas] = await Promise.all([
+    sb.from("inscripciones").select("estudiante_id, perfiles(nombre, apellido, email)").eq("curso_id", cursoId),
+    sb
+      .from("juego_partidas")
+      .select("estudiante_id, version, registro, terminada, actualizado_en")
+      .eq("curso_id", cursoId)
+      .eq("isla", "proyectos")
+      .eq("escena", "planta"),
+  ]);
+  if (inscritos.error) throw inscritos.error;
+  if (partidas.error) throw partidas.error;
+  type Perfil = { nombre: string | null; apellido: string | null; email: string | null } | null;
+  const porAlumno = new Map((partidas.data ?? []).map((p) => [p.estudiante_id as string, p]));
+  return (inscritos.data as unknown as { estudiante_id: string; perfiles: Perfil }[])
+    .map((i) => {
+      const p = porAlumno.get(i.estudiante_id);
+      const nombre = [i.perfiles?.nombre, i.perfiles?.apellido].filter(Boolean).join(" ").trim();
+      return {
+        estudianteId: i.estudiante_id,
+        nombre: nombre || i.perfiles?.email || "Sin nombre",
+        email: i.perfiles?.email ?? "",
+        partida: p && Array.isArray(p.registro)
+          ? { version: p.version, registro: p.registro as Entrada[], terminada: Boolean(p.terminada), actualizado: p.actualizado_en }
+          : null,
+      };
+    })
+    .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+}

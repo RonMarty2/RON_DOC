@@ -163,3 +163,28 @@ puede que existan temas, subtemas que se ajusten de mejor manera a cierto tipo.�
   la colección de *WarioWare*.
 - Consecuencia técnica: el código de escenas tiene que admitir modalidades distintas bajo el mismo
   marco (hoy la escena 1 es una sola modalidad; se generaliza cuando llegue la segunda).
+
+## 11. Cómo se planifica (26-09)
+
+Pedidos de Ronald en la conversación del 26-09, ya reglas de los siete agentes:
+
+1. **Diseño inverso:** primero qué sabe hacer el alumno al terminar, cómo lo demuestra y qué pasa si lo
+   hace mal; después el juego. Ronald: *«veo esto y no entiendo qué aprenderá».*
+2. **Arco de la materia con inicio y fin**, cada etapa usando lo que produjo la anterior. En Proyectos II
+   sale del mapa de ruta del dossier: semana 1 técnico I (4.1.1 a 4.1.4) → semana 2 técnico II y
+   administrativo (4.1.5 a 4.1.7, 4.2) → semana 3 comercial y costos (4.3, entra el simulador) →
+   semana 4 flujo y evaluación (4.4, 4.5) → semana 5 riesgo (4.6) → semana 6 integración. El producto
+   final es el Capítulo 4 del proyecto del alumno.
+3. **Dominio antes de avanzar**, sin dar la respuesta: consecuencia y pista según el error → pista
+   concreta → leer la sección exacta del dossier → otros números. El registro guarda el escalón.
+4. **Tipos de proyecto:** producción, comercio, servicios, agrícola y digital (las tablas "Lo mismo, en
+   cada tipo de proyecto" del dossier). Hilo principal (Lácteos Valle Alto) más contraste con otros tipos.
+5. **Decidir lo que el dossier ya responde** (por ejemplo, el tercer tanque cuesta Bs 52.000, como dice
+   el dossier) y preguntar como mucho una cosa por ronda.
+6. **Todo lo que se decide se vuelve regla de los agentes** en el mismo commit.
+
+Decidido además, por defecto y sin objeción de Ronald: marco "La planta que levantas" (el alumno es el
+socio técnico de Don Mario y arma la planta etapa por etapa); la escena de la planta pasa a la semana 2
+con el precio del dossier; unos 20 a 30 minutos de juego por semana; el proyecto propio del alumno,
+después de probar el juego.
+

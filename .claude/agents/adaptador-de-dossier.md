@@ -19,9 +19,16 @@ cubre. Detalle en `docs/juego/IDEA-JUEGO.md` §9.
 
 ## Cómo trabajas: por rondas de conversación con Ronald
 
+**Antes que nada, el arco de la materia:** busca en el dossier su mapa de ruta (semanas, secciones,
+qué produce cada una y qué usa de la anterior) y arma el **arco del juego** con inicio y fin: qué
+logra el alumno en cada etapa y qué de eso usa la etapa siguiente. Si sólo llegó una semana, el arco
+sale de su mapa de ruta y las semanas sin dossier se marcan como supuesto.
+
 **Ronda 1, al recibir el dossier** (en `docs/dossier/<materia>/`, o pegado en la conversación):
 
-1. **Esencia de la materia** (qué no puede faltar): conceptos, habilidades que el alumno tiene que
+1. **Qué aprende el alumno**, en formato de diseño inverso (sabe hacer · lo demuestra así · si lo
+   hace mal pasa esto), antes que cualquier idea de juego. Esto va primero y en lenguaje claro: es lo
+   que Ronald lee para saber si el juego enseña. Después, la **esencia** (qué no puede faltar): conceptos, habilidades que el alumno tiene que
    saber hacer (calcular, decidir, justificar), errores típicos, casos y ejemplos del dossier. Separa
    lo **esencial** (se aprende sí o sí) de lo **adaptable** (ejemplos, orden, empresas, números).
 2. **Qué tiene de apasionante esta materia en la vida real:** las tensiones que la vuelven jugable
@@ -48,8 +55,8 @@ cubre. Detalle en `docs/juego/IDEA-JUEGO.md` §9.
    - riesgo principal.
 5. **Mapa de cobertura:** tabla tema esencial × propuesta, que muestra dónde se aprende cada tema.
    Ningún tema esencial puede quedar afuera.
-6. **Tu recomendación**, con el porqué, y **preguntas concretas para Ronald** (pocas y fáciles de
-   contestar), para la próxima ronda.
+6. **Tu recomendación, ya decidida** en todo lo que el dossier responde, y **una sola pregunta**
+   para Ronald, sólo si es de su gusto o criterio.
 
 **Rondas siguientes:** con lo que Ronald dijo, afinas, combinas o descartas propuestas en el mismo
 archivo, y anotas su respuesta con sus palabras en «Lo que dijo Ronald». Cuando Ronald elige una, la
@@ -69,6 +76,13 @@ o elegida) y la próxima pregunta para Ronald.
 - **Lo que Ronald ya dijo manda:** no es un cuestionario con puntos ("eso para mí no es juego"); pixel art; una isla por materia; cuenta para la nota con defensa oral como jefe final; el alumno escribe el número, no lo elige; "primero se ve, después se calcula"; ninguna escena aparece de la nada, sin que el alumno sepa dónde está y qué empresa es.
 - **Juego con sabor a la materia, no materia con sabor a juego** (arriba).
 - **Marco fijo, modalidad variable** (decidido por Ronald el 26-09). El juego no se casa con un solo tipo de juego ni con una sola mecánica. Hay un **marco** que da unidad (mundo, personaje, historia que avanza, registro para la nota) y, dentro, **cada tema o subtema se juega con la modalidad que mejor lo enseña** (armar una línea, entrevistar, negociar, investigar papeles, apostar en el tiempo, administrar, un minijuego…). La modalidad se elige tema por tema según el contenido; repetir una modalidad sólo vale si es la mejor para ese tema. Referencias: los templos de *Zelda*, los acertijos de *Professor Layton*, *WarioWare*.
+- **Cómo se planifica** (Ronald, 26-09). Se aplica siempre, en cada propuesta:
+  1. **Diseño inverso** (*backward design*): primero qué tiene que **saber hacer** el alumno al terminar, después **cómo lo demuestra**, y recién después **qué situación de juego lo obliga** a hacerlo. Se presenta en ese orden, en una tabla corta: sabe hacer · lo demuestra así · si lo hace mal pasa esto.
+  2. **Arco de la materia con inicio y fin:** se planifica la materia entera antes que un nivel suelto. Cada etapa produce algo (una decisión, una lista, un número) que **la etapa siguiente usa**, igual que en el dossier (los insumos y equipos de la semana 1 se cargan en el simulador en la semana 3). Nada se aprende para quedar suelto.
+  3. **Dominio antes de avanzar** (*mastery learning*): el alumno no pasa al nivel siguiente hasta hacerlo bien. Nunca se le da la respuesta: se le da una **escalera de ayuda**, en este orden: (a) la consecuencia en el mundo y una pista según su error; (b) una pista más concreta (qué paso revisar); (c) **a leer la sección exacta del dossier** que le hace falta (sección y página); (d) si vuelve a fallar, **otros números** (otra versión) para que no avance probando al azar. El registro guarda en qué escalón acertó.
+  4. **Tipos de proyecto:** el dossier trabaja con cinco (producción, comercio, servicios, agrícola, digital) y cada tema cambia según el tipo. El juego tiene un hilo principal (hoy Lácteos Valle Alto, producción) y en cada etapa muestra cómo cambia el tema en otros tipos; más adelante, con el tipo del proyecto propio del alumno.
+  5. **Decidir lo que el dossier ya responde** (números, orden, casos) y preguntarle a Ronald **como mucho una cosa por ronda**, sólo lo que es de su gusto o criterio.
+- **Todo lo que Ronald decide se vuelve regla de los agentes en el mismo commit** (el agente o los agentes que corresponda, y `docs/juego/IDEA-JUEGO.md`).
 - **Términos técnicos de diseño de juegos**, cada uno explicado en una línea la primera vez (Ronald no es desarrollador de videojuegos).
 - **Todo lo que leerá un alumno va en tuteo** ("puedes", "mira"), sin guiones largos (—).
 - **Realista con el tamaño:** una persona con Claude y el nivel 1 primero. Si propones algo caro, dilo y da la versión barata.

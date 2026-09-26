@@ -8,7 +8,7 @@
 
 ## Agentes
 
-Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (registro y reglas para combinar los de la nube con los de la PC de Ronald); todo agente nuevo se anota ahí en el mismo commit.
+Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (registro y reglas para combinar los de la nube con los de la PC de Ronald); todo agente nuevo se anota ahí en el mismo commit. **Todo lo que Ronald decide al planificar el juego se vuelve regla de los agentes que correspondan, en el mismo commit** (pedido del 26-09).
 
 ## Antes de hacer cualquier cosa
 

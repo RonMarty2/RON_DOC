@@ -35,6 +35,9 @@ conversación con Ronald hasta que elige** → visión → bucle → aprendizaje
 crítico revisa cada parte antes de llevarla a Ronald. Si al cambiar un agente
 cambian las reglas comunes, se cambian en los seis.
 
+**Regla permanente (Ronald, 26-09):** todo lo que se planifica o decide con Ronald se vuelve regla del
+agente o los agentes que correspondan, en el mismo commit.
+
 ## Registro
 
 | Agente | Para qué | Origen | Fecha | Notas |

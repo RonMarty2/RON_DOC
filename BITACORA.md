@@ -199,7 +199,7 @@ Otra sesión de Claude (desde claude.ai) trabaja en **`ejercicios/`** (cuadernil
 
 ## 7. Qué sigue
 
-**Agentes (pendiente, cuando Ronald esté en la PC):** traer los de `…\1.MATERIAS\RON_DOC\.claude\agents\` sin empujar desde esa copia vieja: clonar limpio (`git clone https://github.com/RonMarty2/RON_DOC.git C:\Users\lmigu\RON_DOC_git`), copiar los `.md` a `.claude\agents\`, subir, y combinarlos con los de la nube según `.claude/agents/LEEME.md`.
+**Agentes: fusión PC + nube hecha el 26-09.** En la copia sincronizada de la PC no había `.claude\agents\`: el único agente de la PC era `revisar-publicacion` (skill en `.claude\skills\`), que pasó a `.claude/agents/` con su script en `scripts/revisar-publicacion.mjs` y quedó en el registro. La copia de trabajo con git en la PC es `C:\Users\lmigu\RON_DOC_trabajo` (fuera de la sincronización, porque git y Synology se pisan); ya no hace falta otro clon.
 
 **El juego:** en curso, ver §0 (decidido el 25-09). La gamificación vieja de la copia de OneDrive **no se subió**: ver §7 del documento.
 

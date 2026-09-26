@@ -12,6 +12,13 @@
 
 > Regla pedida por Ronald: si se cortan los tokens, otra IA tiene que poder seguir desde acá sin rehacer nada. Antes de cada paso se actualiza esta lista, y se sube después de cada paso terminado. Al terminar el trabajo entero, pasa a §6 y esta sección queda vacía.
 
+### Pausado (26-09, pedido de Ronald): la adaptación de Proyectos II
+
+Se está mejorando primero la forma de planificar y los agentes. La adaptación queda en la ronda 2
+(`docs/juego/gdd/00-adaptacion-proyectos-ii.md`); lo siguiente, cuando Ronald la retome, es la
+**ronda 3: sólo la maqueta general** de toda la materia (IDEA-JUEGO §13). Material: dossiers de las
+semanas 1 y 2 y el índice, subidos a la sesión (no al repositorio).
+
 ### El juego: isla Proyectos II, escena 1 (primero, decidido el 25-09)
 
 **Decisiones de Ronald (25-09):** cuentas con **Supabase** (no el código de entrega recomendado), el mismo proyecto de SIMPRO (perfiles, cursos, inscripciones, Google); primera isla **Proyectos II**; arte **dibujado con código** hasta probarlo con un curso; **el juego va antes** que terminar el simulador (pausado abajo, se retoma cuando una escena necesite VAN o TIR). Idea completa y revisión en `docs/juego/IDEA-JUEGO.md` (§8).

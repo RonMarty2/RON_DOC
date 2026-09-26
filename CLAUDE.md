@@ -46,7 +46,7 @@ Si hay que volver a barrer, ojo con dos cosas: los verbos que cambian de raíz n
 3. **Nombrar el paso "obvio"** que en realidad no lo es.
 4. **Prosa corrida dentro de la tarjeta**, con acentos puntuales; nada de grillas de cajitas de colores.
 5. **Orden**: Gancho → Puente → Por qué funciona (un paso por tarjeta) → Aplicándolo → Ojo (error típico) → Generalización → Practícalo tú.
-6. **La fuente es el dossier del docente.** Los números de un caso no se inventan ni se cambian sin revisarlo.
+6. **La fuente es el dossier del docente.** Los números de un caso no se inventan ni se cambian sin revisarlo. (Vale para las láminas. El juego tiene libertad para adaptar el dossier: ver `docs/juego/IDEA-JUEGO.md` §9.)
 7. **Figuras con coordenadas calculadas**, nunca a ojo.
 8. **Usar las piezas compartidas** antes que escribir estilos sueltos en cada lámina.
 9. **Cada lámina lleva al menos un ejemplo numérico completo**, paso a paso.

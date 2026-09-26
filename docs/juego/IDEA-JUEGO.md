@@ -134,3 +134,18 @@ para el nivel 3 (mercado compartido), donde sí hacen falta.
 pruebas) → escena 1 en `/juego/proyectos` como borrador → página de revisión del código de entrega →
 probar con un curso → escena 2 («La cámara de frío que se llenó»). El simulador de §0 de la bitácora
 sigue siendo la base de las escenas con VAN y TIR, así que conviene terminarlo en paralelo.
+
+## 9. Principio rector (26-09): juego con sabor a la materia
+
+Ronald: *«Si bien el contenido base es el material o dossier de la materia, debe existir libertad
+creativa o adaptativa para que se ajuste de mejor manera a un juego; eso debería primar. Necesito un
+juego con sabor a esa materia, que se sienta que aprendemos mientras nos divertimos. No quiero una
+materia con sabor a juego.»*
+
+- Primero el juego; el aprendizaje va dentro de lo que se juega.
+- El dossier es la **base de contenido** (conceptos, errores típicos, casos que inspiran), no un guion
+  que se traspasa: se pueden cambiar el orden, las empresas, los personajes, las situaciones y los números.
+- No se negocia: conceptos y cálculos correctos, desde funciones con pruebas; cada adaptación anota qué
+  tema del dossier cubre, para que Ronald la revise.
+- La regla 6 de las láminas ("los números de un caso no se inventan") **sigue valiendo para las láminas**,
+  no para el juego.

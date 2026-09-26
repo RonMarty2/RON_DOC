@@ -1,10 +1,23 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 1 · 26-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 2 · 26-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
 
-Salen de la revisión de `01-vision.md` v1; se suman a las cinco que esa parte ya lista.
+### De la revisión de `00-adaptacion-aief.md` v1
+
+Son de criterio, no de gusto; la pregunta de gusto del adaptador (A, B o C) sigue siendo la de la ronda.
+
+1. **Dónde vive el final del juego de AIEF**, dado que dictas el Tema 7 antes que el Tema 6 (hallazgo 2).
+   Recomendado: una pieza propia de **Cierre** (D7 §7.12 más "tu cartera como letra A"), que habilitas
+   al último, igual que el dossier deja ese cierre para después del Tema 6.
+2. **El IUE en los casos de D5, D6 y D7** (hallazgo 5). Recomendado: corregir esos ejemplos del dossier
+   para que lleven su línea de IUE; si no, el escalón (c) de la ayuda manda a leer un ejemplo que
+   contradice al juego.
+
+### De la revisión de `01-vision.md` v1
+
+Se suman a las cinco que esa parte ya lista.
 
 1. **Qué hace que la investigación sea un juego y no una ficha repartida en tres lugares** (hallazgo 1).
    Recomendado: la opción B (datos de más y una contradicción que resolver).
@@ -13,6 +26,235 @@ Salen de la revisión de `01-vision.md` v1; se suman a las cinco que esa parte y
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 26-09-2026 · Revisión de `00-adaptacion-aief.md` versión 1 (adaptador-de-dossier, Ronda 1)
+
+**Qué se revisó:** `docs/juego/gdd/00-adaptacion-aief.md` v1 (tres marcos, maqueta de A y
+recomendación), contra `IDEA-JUEGO.md` §9 a §16, `CLAUDE.md` («Estructura»), `LEEME.md` del GDD y la
+revisión anterior. Se leyeron (sin copiarlos ni modificarlos) los siete dossiers `.tex` de AIEF y las
+cinco guías de lectura, para comprobar cobertura, cifras y las inconsistencias de §1.4. Se jugó
+mentalmente el Marco A como tres alumnos de 4.º semestre en un celular: la que sabe, el que no sabe y
+el que quiere terminar rápido; y se leyó como lo leería Ronald.
+
+**Veredicto:** llevar a Ronald **con ajustes**. La lectura del dossier es seria (cobertura completa,
+cifras correctas, siete de ocho hallazgos de §1.4 reales) y A es la mejor de las tres. Pero el bucle de
+A todavía no tiene lo que hace jugar a *Papers, Please*: nada empuja a aprobar, así que "desconfía de
+todos" gana sin entender (hallazgo 1). Y el "inicio y fin de verdad", que es una de las tres razones de
+la recomendación, no sobrevive al orden en que Ronald dicta los temas (hallazgo 2). Esos dos se
+corrigen antes de mostrarlo; el resto puede ir como nota.
+
+### Verificación contra el dossier
+
+- **Cobertura:** los 41 subtemas de los siete dossiers (T1 3, T2 3, T3 3, T4 6, T5 9, T6 5, T7 12)
+  aparecen en la tabla de §3 y en el mapa de §5. Ninguno queda afuera.
+- **Cifras que cita el documento, recalculadas:** reexpresión 120.000 × 1,12 = 134.400 (D1); IUE sobre
+  ventas 200.000 contra 30.000 (D2 dice "casi siete veces"; el documento dice "siete veces", ver
+  hallazgo 9); fuentes 43.000 y aplicaciones 47.000 con caja −4.000, fuentes reales 43.000 − 25.000 =
+  18.000 (41,9 %) y aplicaciones reales 22.000 (D4 §4.2 y §4.3); pronto pago 0,02/0,98 × 365/50 = 14,9 %
+  (D4 §4.6); flujo 40.000 + 12.000 + 2.000 + 4.000 = 58.000 y caja 26.000 + 15.000 = 41.000 (D5 §5.1);
+  razón corriente de La Espiga 48.500/9.600 = 5,05 (D5 §5.9); ROE 40.000/175.000 = 22,9 % contra
+  40.000/40.000 = 100 % (D6 §6.1); ROE de Sumaj Manos 11.000/16.000 = 68,8 % (D7 §7.10); siete puntos de
+  mora hasta perder el patrimonio (D7 §7.3). Todas correctas. Las cuentas inventadas de los "dos
+  minutos" de B (900.000 + 140.000 = 1.040.000) y de C (saldos 56.000, 43.000 y −4.000; faltan 9.000
+  para el mínimo de 5.000; con el pago corrido, 16.000) también cuadran.
+- **Los cruces de calendario de §1.1 son reales:** D4 va en las semanas 4, 6 y 8 y D3 en la 5; D7 en las
+  semanas 14 a 16 (su cierre, §7.12, en la 19) y D6 en la 17; la cabecera de D6 lo marca como
+  dependencia pendiente.
+- **§1.4, inconsistencias del dossier:**
+  1. IUE que aparece y desaparece: **real.** D6 trabaja a Los Cóndores con utilidad operativa 43.000,
+     gastos financieros 3.000 y utilidad neta 40.000, sin impuesto; Amaru: 38.000 − 4.000 = 34.000 y
+     utilidad neta 28.000 (impuesto implícito del 17,6 %).
+  2. D7 §7.7 "las NIIF, en su lectura boliviana": **real**, choca con D1 §1.2.
+  3. D2 §2.3 cita "la cooperativa minera del apartado" cuando el ejemplo del apartado es la de quinua:
+     **real.**
+  4. D3 §3.2, la donación como "transacción con terceros" cuando la definición da sólo dos categorías:
+     **real.**
+  5. D5 §5.1, los 18.000 como "utilidad del año pasado y plata no pagada": **real, con un matiz.** El
+     cobro de cuentas por cobrar (2.000) sí puede leerse como venta del año pasado; lo que la frase
+     omite es la depreciación (12.000), que es dos tercios de la diferencia.
+  6. D6, cajas de trampas y de enlace repetidas al final de §6.5: **real** (dos juegos de errores y dos
+     enlaces, uno hacia el Tema 7 y otro hacia el Hito 5).
+  7. Guías de lectura: **real.** La del Tema 5 dice "otra vez con Los Cóndores" en §5.9 y además ubica el
+     glosario en la página 54 y en la 56 a 57 dentro de la misma guía; la del Tema 4 dice cinco saldos a
+     determinar y el balance de Wara tiene siete; la del Tema 7 promete umbrales verde, amarillo y rojo y
+     la figura sólo colorea los valores de un caso.
+  8. Voseo en D3 a D7: **real**, aunque mezclado con tuteo en el mismo dossier. No afecta al juego.
+  - **Uno más, que §1.4 no anota:** D4 §4.3 dice que las fuentes reales (18.000) "ya se aplicaron casi en
+    su totalidad", pero las aplicaciones reales son 22.000: se aplicó todo y 4.000 más, que salieron de
+    la caja. La escena de A repite la frase ("ya se aplicaron casi todas").
+
+### Hallazgos, de más grave a menos grave
+
+#### 1. (Bloquea) En A, "rechaza a todos" gana sin entender: falta lo que empuja a decir que sí
+
+- **Qué pasa.** El gancho dice que todos traen papeles "que dicen la verdad a medias", y la escena de
+  ejemplo premia desconfiar (la ficha de quien presta los 20 mil sale amarilla; la de quien propone
+  menos sale verde). El alumno que quiere terminar rápido aprende en dos clientes la regla "rechaza o
+  presta menos" y gana todas las fichas verdes sin hacer una cuenta. En *Papers, Please* eso no pasa
+  porque rechazar tiene costo: la mayoría de los papeles están en regla, te pagan por cada persona que
+  atiendes bien y tu familia pasa frío si eres demasiado estricto. En A no hay ningún costo por negar
+  un crédito, y la cartera sólo "se cobra" en el Tema 7, así que tampoco hay tensión durante la
+  materia. Además no se dice de dónde sale el "meses después": si es un resultado escrito a mano para
+  cada opción, la decisión es una opción múltiple con animación.
+- **Por qué importa.** Es el corazón del bucle y la razón de elegir A. Sin costo por decir que no, no es
+  un juego (no hay dilema) y se puede ganar sin entender, que es lo que Ronald rechazó.
+- **Propuesta concreta.** Agregar al marco, en una línea cada uno:
+  - **Una meta de colocación**: la jefa necesita que la agencia preste; un buen cliente rechazado se
+    va a la competencia y su ficha queda gris en la cartera ("cliente perdido"). Verde, rojo y gris
+    pesan igual en el cierre.
+  - **Clientes buenos de verdad**: más o menos la mitad de las carpetas merecen el sí, y la versión de
+    cada alumno sortea cuáles (sin eso, la regla "casi siempre no" vuelve).
+  - **La decisión se escribe**: el alumno escribe el monto que aprueba (y la cuota o la condición), no
+    elige entre "aprobar" y "rechazar". El "meses después" **sale de una función con pruebas** (por
+    ejemplo, cuota contra fuentes reales o contra el flujo de operación de su versión), no de un guion
+    por opción.
+
+#### 2. (Bloquea) El inicio y el fin no sobreviven al orden en que Ronald dicta los temas
+
+- **Qué pasa.** La maqueta (§6.2) cuenta una historia lineal: los Cóndores "llegan por primera vez" en
+  el Tema 3 y "vuelven" en el 4; el comité del Tema 6 te asciende a analista; el Tema 7 es el desenlace
+  con el supervisor, tu cartera como letra A y "ahora con el tuyo". Pero Ronald dicta D4 §4.1 a §4.3
+  antes que D3, y D7 antes que D6. En el orden real, Don Efraín "vuelve" antes de haber llegado, el
+  final se juega antes del comité, y el ascenso llega después del final. §6.4 resuelve los **números**
+  con puntos de control, pero no la **historia**, y la razón 2 de la recomendación ("tiene inicio y fin
+  de verdad") queda en falso.
+- **Por qué importa.** La maqueta es justo lo que Ronald aprueba en esta etapa (IDEA-JUEGO §13). Si el
+  final no puede quedar al final, el arco que se le vende no es el que va a jugar su curso.
+- **Propuesta concreta** (tres cambios chicos, que además suman piezas en vez de rehacer):
+  - **El final es su propia pieza, "Cierre"**: el supervisor mira tu cartera y "ahora con el tuyo"
+    (D7 §7.12). Ronald la habilita al último. El propio dossier ya lo hace así: el cierre de D7 va
+    después del Tema 6.
+  - **El primer encuentro con Los Cóndores es una escena propia** que se juega antes del tema que se
+    abra primero (el 3 o el 4). Las líneas de historia se escriben según lo ya jugado ("la otra vez
+    viniste por..."), no según el número del tema.
+  - **El ascenso deja de ser requisito del Tema 7**: el comité del 6 y el banco del 7 se sostienen
+    solos; si el 6 se juega después, el comité lo lee como "ahora que ya viste un banco por dentro".
+
+#### 3. (Importante) "Tu cartera es la letra A del CAMEL" contradice el punto de control y arrastra el error a lo evaluado
+
+- **Qué pasa.** §6.4 promete que "los números no arrastran el error", pero si la A del CAMEL de tu banco
+  se calcula con tus fichas, el alumno que falló en los Temas 2 a 6 llega al Tema 7 con otros números y
+  otra calificación de su banco. Y quien no jugó todos los temas recibe fichas "por defecto", así que su
+  CAMEL lo decidió el juego. Es el mismo problema que la revisión de `01-vision.md` (hallazgo 3) marcó
+  para la caja y la reputación.
+- **Por qué importa.** El cálculo del Tema 7 (mora contra patrimonio, CAR, dominancia) cuenta para la
+  nota; si depende de errores anteriores, se castiga dos veces, y el "diagnóstico correcto" deja de ser
+  el mismo para dos alumnos con la misma versión.
+- **Propuesta concreta.** El banco del Tema 7 tiene sus números de versión (punto de control, como todo
+  lo demás). La cartera del alumno entra como **historia**, no como cálculo: el supervisor abre tu pared
+  de fichas y comenta las rojas y las grises en dos líneas, y eso pasa al registro para la defensa oral,
+  que es donde Ronald puede preguntar "¿por qué le prestaste a este?". Opción B, más cara: la A se
+  calcula con tu cartera sólo en el Cierre, fuera de lo que se califica.
+
+#### 4. (Importante) Las luces que "se encienden al cuadrar" permiten ganar probando
+
+- **Qué pasa.** La escena de A lo muestra sin querer: el alumno pone las cuentas por cobrar en fuentes,
+  la luz queda gris, las pasa a aplicaciones y "ahora sí". Con una luz que responde en cada movimiento,
+  el que no sabe mueve cuentas de columna hasta que prende. Lo mismo vale para el balance que se
+  enciende (T2.1) y el cuadre doble del estado de cambios (T3).
+- **Por qué importa.** Es "ganar sin entender" dentro de la modalidad, y el registro guarda un acierto
+  que no dice nada. La escalera de ayuda nunca se activa porque el alumno nunca "falla".
+- **Propuesta concreta.** La luz se prende sólo cuando el alumno **cierra** el cuadro y escribe los dos
+  totales; cada cierre fallido cuenta como un intento y sube un escalón de la escalera (primero la
+  consecuencia, "la caja no te cuadra por 4.000"; después "revisa las que subieron del lado izquierdo";
+  después la sección del dossier; después otra versión). El registro guarda cuántos cierres hizo falta.
+
+#### 5. (Importante) El IUE al 25 % es lo correcto, pero choca con el escalón (c) de la ayuda
+
+- **Qué pasa.** La decisión del adaptador es la correcta (la ley boliviana grava con el IUE, y D2 lo
+  enseña así). Pero el juego tendrá utilidades netas con IUE para Los Cóndores y La Espiga, y cuando el
+  alumno falle tres veces la escalera lo manda a leer D5 §5.1 o D6 §6.4, que calculan sin IUE. En ese
+  momento la ayuda contradice al juego. Pasa lo mismo, en menor medida, con D5 §5.1 (hallazgo 5 de
+  §1.4) y con D4 §4.3 (la frase de "casi en su totalidad").
+- **Por qué importa.** Es un cambio de **cálculo** del dossier, que según IDEA-JUEGO §14.3 sí importa.
+  Además Ronald dicta con el dossier: si el curso ve 40.000 en clase y otro número en el juego, pregunta
+  cuál está bien.
+- **Propuesta concreta.** Decisión de Ronald (arriba): **(recomendada)** corregir los ejemplos de D5, D6
+  y D7 para que lleven su línea de IUE; o, si no los corrige, que el escalón (c) de esos subtemas apunte
+  a D2 §2.2 y que la primera pantalla de cada carpeta muestre la línea del IUE a la vista. Anotar en el
+  documento qué escalón (c) apunta a qué sección, para revisarlo cuando cambie el dossier.
+
+#### 6. (Importante) En el celular, la escena de A no entra como está escrita
+
+- **Qué pasa.** La escena de ejemplo pide dos balances lado a lado, arrastrar cuentas a columnas y tener
+  a la vista el manual, la carpeta y la cartera. En 375 px de ancho, con el teclado abierto para escribir
+  las fuentes reales, no hay lugar para dos balances; arrastrar con el dedo en una lista larga, con mala
+  conexión y un celular modesto, es la parte que más falla.
+- **Propuesta concreta.** Un documento por pantalla con pestañas ("antes", "después", "acta"); asignar
+  tocando la cuenta y después la columna, no arrastrando; el manual como una hoja que sube desde abajo.
+  Medirlo en 375×812 con el teclado abierto, como la escena de Proyectos II. Lo de jugar sin red sigue
+  pendiente desde la revisión de `01-vision.md` (hallazgo 4) y vale igual para esta isla.
+
+#### 7. (Importante) El costo de A está contado por tema, pero lo caro es la cadena de Los Cóndores
+
+- **Qué pasa.** §4 dice que lo caro son "los documentos por versión, uno por tema", como `planta.ts`.
+  Pero Los Cóndores atraviesan los Temas 3 a 6 con el cierre de uno como apertura del otro. Con una
+  versión por alumno, eso es un generador de **una empresa entera por alumno** (balances, resultados,
+  acta de socios, flujo, presupuesto, ratios) que tiene que cuadrar en todos los temas y conservar en
+  cada uno su lección (el aporte en especie, las cuentas por cobrar, el error del IVA que no rompe el
+  cuadre, el ROE engañoso). Eso es varias veces `planta.ts`. Y la versión mínima tiene una contradicción:
+  justifica empezar por el Tema 2 porque "todo lo demás usa lo que produce", cuando §6.4 dice que cada
+  tema arranca de su punto de control.
+- **Propuesta concreta.** Decirlo en el costo y ofrecer la versión barata: **cada tema sortea sólo sus
+  datos nuevos** y los de la cadena salen de una familia chica de Cóndores (por ejemplo, cinco familias
+  armadas y probadas una vez), en lugar de generar la cadena entera por alumno. Para la versión mínima,
+  preferir lo que tiene dilema y consecuencia: el hub, la cooperativa que ganó y no paga (T2.3) con su
+  "meses después" y la escena de la máquina (T1.3), antes que clasificar partidas del balance (T2.1),
+  que es lo más escolar de la materia y lo primero que vería el curso.
+
+#### 8. (Menor) Los "dos minutos" del Marco B resuelven un caso del dossier en un repositorio público
+
+- **Qué pasa.** La audiencia de B usa el Caso 3 de D2 (la cooperativa minera, sus 140.000, su
+  patrimonio inicial y el pago a 60 días) y responde sus cuatro consignas. La guía del Hito 2 lo usa
+  como ejemplo de cierre de clase. §1.3 excluye con razón a Wara, Q'ente y Amaru; este no es un
+  entregable, pero queda resuelto a la vista de todos.
+- **Propuesta concreta.** Cambiar empresa y números en el ejemplo de B (el juego puede, §9). Y agregar
+  a §1.3 una regla general: los casos de "Estudio de Casos" del dossier inspiran, pero no se publican
+  con sus números.
+
+#### 9. (Menor) Precisiones
+
+- §1.2, T2: "siete veces más" es "casi siete veces" (200.000 contra 30.000).
+- Escena de A, Tema 4: "ya se aplicaron casi todas" es falso con esos números (se aplicaron 22.000 de
+  18.000). Mejor: "y se gastó todo eso y 4.000 más de la caja".
+- T7.10 a 7.12, mentoría: "eliges dos acciones" es elegir de una lista. Que el alumno escriba, para cada
+  acción, lo que cuesta y con qué la paga la dueña (la viabilidad es el concepto), no sólo cuál elige.
+- §1.4 punto 7: agregar lo del glosario del Tema 5 (dos páginas distintas en la misma guía); punto 8:
+  aclarar que los dossiers mezclan voseo y tuteo.
+
+### Sobre la recomendación
+
+**Se mantiene A**, con los hallazgos 1 y 2 corregidos. Las razones 1 y 3 están bien fundadas: el
+dossier pone al banco como usuario desde D1 y trae literalmente al oficial de crédito con dos
+solicitudes y un cupo (D3, Caso 3); y es el más barato de dibujar. La razón 2 se sostiene sólo con el
+Cierre como pieza propia. B pierde el hilo de Los Cóndores y es el más caro en escritura; C deja fuera
+de lugar al Tema 1 y al 7. Una sugerencia que hace a A más juego: **tomar de B más que la objeción del
+Tema 7**. La escena de Don Efraín ya lo hace sin nombrarlo ("este año generamos 43 mil"): que cada
+cliente traiga una frase que es un "Qué NO se puede afirmar" del dossier, y que desmentirla con un
+número escrito sea el verbo fijo del bucle de A. Da tensión, calza con la esencia de §1.3 ("ningún
+número decide solo") y no cuesta arte.
+
+### Lo que está bien y conviene no tocar
+
+- La tabla de diseño inverso (§1.2) y la esencia de §1.3: claras, verificables y fieles al dossier.
+- La tabla de modalidades por tema (§3): cada una sale del verbo del subtema, con alternativa.
+- Excluir Wara, Q'ente y Amaru, y citar por sección ("D4 §4.3") en vez de copiar texto.
+- Los casos de contraste por tipo de entidad (§6.3): salen del dossier y no se inventan.
+- El Tema 7 como "dar vuelta la mesa": el mejor momento de la propuesta.
+- Tuteo en todo, sin guiones largos, términos explicados, una sola pregunta de gusto, nada en semanas.
+- §6.5 (isla propia, un tema una pieza, la cartera como entradas del registro): cumple la estructura
+  escalable.
+
+### Avisos para otras partes
+
+- `adaptador-de-dossier`: hallazgos 1, 2 y 7 para la ronda 2; el 8 es una regla que conviene sumar a su
+  agente (los casos de "Estudio de Casos" no se publican con sus números).
+- `disenador-de-aprendizaje` (cuando corra): la escalera tiene que anotar a qué sección apunta cada
+  escalón (c), por el hallazgo 5.
+- Dossier (fuera del repositorio, lo decide Ronald): el IUE en D5 a D7, la frase de D4 §4.3 y los
+  ocho puntos de §1.4.
 
 ---
 

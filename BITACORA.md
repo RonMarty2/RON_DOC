@@ -22,7 +22,8 @@ sin subirlos, y se anota su versión. Pasos:
   comunes dejan de nombrar a Proyectos II como si fuera la única materia (queda como ejemplo).
 - [x] 2. Decisión anotada (IDEA-JUEGO §14 y §15, esta bitácora).
 - [x] 3. Adaptador: lee los dossiers de la carpeta de materias sin subirlos y anota su versión en «Dossiers usados» (`scripts/huella-dossier.mjs`, con 4 pruebas; `--comparar` avisa si un dossier cambió). Regla nueva de Ronald en los 7 agentes: **un juego propio por materia** (IDEA-JUEGO §16).
-- [ ] 4. Ronda 1 del adaptador con AIEF → `docs/juego/gdd/00-adaptacion-aief.md`; después, la maqueta general.
+- [x] 4. Ronda 1 del adaptador con AIEF → `docs/juego/gdd/00-adaptacion-aief.md` v1 (7 dossiers leídos enteros, huellas anotadas; tres marcos: **A «La ventanilla»** oficial de créditos, recomendado; B «Caso abierto» perita; C «El mánager de la banda»; con maqueta general, sin fichas). Revisado por el crítico en `06-revisiones.md`: mantiene A con **2 bloqueos** (se gana rechazando a todos; inicio y fin no sobreviven al orden en que se dicta) y 5 importantes. Ambos confirman inconsistencias del dossier de AIEF (IUE 25 % en el Tema 2 y ausente en los casos de los Temas 5 a 7, entre otras): se avisan a Ronald, no se tocan desde acá.
+- [ ] 5. Ronald elige marco (A, B, C o combinación) → ronda 2 del adaptador con los bloqueos del crítico corregidos.
 
 ### Pausado (26-09, pedido de Ronald): la adaptación de Proyectos II
 

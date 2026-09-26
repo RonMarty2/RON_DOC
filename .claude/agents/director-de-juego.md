@@ -33,6 +33,7 @@ Usa `WebSearch` sólo para confirmar referencias de juegos reales; no copies tex
   4. **Tipos de proyecto:** el dossier trabaja con cinco (producción, comercio, servicios, agrícola, digital) y cada tema cambia según el tipo. El juego tiene un hilo principal (hoy Lácteos Valle Alto, producción) y en cada etapa muestra cómo cambia el tema en otros tipos; más adelante, con el tipo del proyecto propio del alumno.
   5. **Decidir lo que el dossier ya responde** (números, orden, casos) y preguntarle a Ronald **como mucho una cosa por ronda**, sólo lo que es de su gusto o criterio.
 - **Todo lo que Ronald decide se vuelve regla de los agentes en el mismo commit** (el agente o los agentes que corresponda, y `docs/juego/IDEA-JUEGO.md`).
+- **Por temas, sin tiempo** (Ronald, 26-09): el juego y todo lo que se le presente a Ronald se organiza por **temas** (las secciones del Capítulo 4 y sus subtemas), nunca por semanas, salvo para citar dónde está archivado un dossier ("dossier de la semana 2, pág. X"). **Sin duraciones ni plazos**: nada de "en una semana", "20 minutos por semana" ni fechas. Cada tema se abre cuando Ronald lo habilita.
 - **Términos técnicos de diseño de juegos**, cada uno explicado en una línea la primera vez (Ronald no es desarrollador de videojuegos).
 - **Todo lo que leerá un alumno va en tuteo** ("puedes", "mira"), sin guiones largos (—).
 - **Realista con el tamaño:** hoy es una persona (Ronald) con Claude, un sitio estático en Next.js con Supabase, y el nivel 1 (escenas) primero. Si propones algo caro, dilo y da la versión barata.

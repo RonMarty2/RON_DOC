@@ -185,6 +185,19 @@ Pedidos de Ronald en la conversación del 26-09, ya reglas de los siete agentes:
 
 Decidido además, por defecto y sin objeción de Ronald: marco "La planta que levantas" (el alumno es el
 socio técnico de Don Mario y arma la planta etapa por etapa); la escena de la planta pasa a la semana 2
-con el precio del dossier; unos 20 a 30 minutos de juego por semana; el proyecto propio del alumno,
+con el precio del dossier; el proyecto propio del alumno,
 después de probar el juego.
+
+## 12. Por temas, sin tiempo (26-09)
+
+Ronald: *«No quiero que me hables en semanas sino por temas, a menos que el dossier esté en semanas;
+no quiero que le pongas temporalidad, como que se debe resolver en una o dos semanas; iniciarán
+cuando les diga.»*
+
+- El juego se organiza por **temas** (secciones del Capítulo 4, Marco propositivo, y sus subtemas).
+  Las semanas sólo sirven para ubicar dónde está archivado cada dossier.
+- **Sin duraciones ni plazos.** Cada tema se abre cuando Ronald lo habilita (en el código, un tema
+  habilitado o no por el docente, no una fecha).
+- El objetivo final de la materia: completar el Capítulo IV, Marco propositivo (4.1 técnico,
+  4.2 administrativo, 4.3 comercial, 4.4 financiero, y lo que agregue el dossier: evaluación y riesgo).
 

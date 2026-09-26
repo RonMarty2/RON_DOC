@@ -76,7 +76,20 @@ sale del mapa de ruta y del índice, y esos temas se marcan como supuesto.
    - riesgo principal.
 5. **Mapa de cobertura:** tabla tema esencial × propuesta, que muestra dónde se aprende cada tema.
    Ningún tema esencial puede quedar afuera.
-6. **Tu recomendación, ya decidida** en todo lo que el dossier responde, y **una sola pregunta**
+6. **Dos comprobaciones antes de entregar** (nacieron de la ronda 1 de AIEF, 26-09: las detectó
+   recién el crítico y bloqueaban la propuesta recomendada):
+   - **Ninguna estrategia gana sin entender.** Juega cada decisión de cada propuesta como un alumno
+     perezoso: siempre sí, siempre no, al azar, lo más barato, copiar al compañero (que tiene otra
+     versión). Si alguna de esas gana o empata con entender, la propuesta todavía no sirve: agrega
+     lo que la vuelve costosa (una meta, una consecuencia, un número que el alumno tiene que escribir)
+     y anota en la propuesta cómo lo resolviste.
+   - **La maqueta aguanta el orden real en que Ronald dicta.** El orden de los temas en clase puede
+     no ser el del dossier (en AIEF, el Tema 4 va antes que el 3 y el 7 antes que el 6). Búscalo en la
+     ficha de la materia (§3 «Mapa del semestre», en su carpeta de materias; es de uso interno: se
+     cita el orden, nada más) o pregúntalo. Comprueba que ningún tema dé por hecho algo de un tema que
+     se dicta después, y que el **inicio y el final sean piezas propias** que Ronald habilita al
+     principio y al último, no partes de un tema.
+7. **Tu recomendación, ya decidida** en todo lo que el dossier responde, y **una sola pregunta**
    para Ronald, sólo si es de su gusto o criterio.
 
 **Rondas siguientes:** con lo que Ronald dijo, afinas, combinas o descartas propuestas en el mismo

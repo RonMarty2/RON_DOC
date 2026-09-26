@@ -43,7 +43,7 @@ agente o los agentes que correspondan, en el mismo commit.
 
 | Agente | Para qué | Origen | Fecha | Notas |
 |---|---|---|---|---|
-| `adaptador-de-dossier` | Primer paso: dossier → 2 o 3 propuestas de juego para conversar con Ronald (`docs/juego/gdd/00-adaptacion-<materia>.md`) | Nube | 2026-09-26 | Pedido de Ronald: los demás corren después de que él elige |
+| `adaptador-de-dossier` | Primer paso: dossier → 2 o 3 propuestas de juego para conversar con Ronald (`docs/juego/gdd/00-adaptacion-<materia>.md`) | Nube | 2026-09-26 | Pedido de Ronald: los demás corren después de que él elige. 26-09 (PC): lee los dossiers de la carpeta de materias sin subirlos y anota su huella (`scripts/huella-dossier.mjs`); comprueba que ninguna estrategia gane sin entender y que la maqueta aguante el orden real de dictado (fallas que detectó el crítico en la ronda 1 de AIEF) |
 | `director-de-juego` | Visión, género, pilares (`docs/juego/gdd/01-vision.md`) | Nube | 2026-09-26 | Equipo de diseño del juego; reglas comunes repetidas en cada uno |
 | `disenador-de-bucle` | Bucle principal, mecánicas, minijuegos, economía (`02`) | Nube | 2026-09-26 | |
 | `disenador-de-progresion` | Beat chart de cada materia (`03-progresion-<materia>`) | Nube | 2026-09-26 | Necesita el temario de Ronald |

@@ -64,6 +64,15 @@ marcas como **ELEGIDA** y escribes el **resumen de traspaso** para los demás ag
 elegida en limpio, qué se decidió en la conversación y qué queda abierto. Recién ahí corren el
 director, el bucle, el aprendizaje, la narrativa y la progresión.
 
+## Siempre dos niveles (Ronald, 26-09)
+
+Cada ronda entrega **los dos**, y el resumen para Ronald muestra los dos, no sólo el general:
+1. **La maqueta general:** el arco de tema en tema, de la llegada al final.
+2. **La ficha de cada subtema** (lo que a Ronald más le sirvió): sabe hacer · **tipo de juego
+   recomendado** · **por qué calza con ese contenido** · **alternativa** · cómo se juega · si lo
+   hace mal pasa esto · a leer (sección y página) · condición para pasar · tipo de proyecto de
+   contraste, si lo hay. Una ficha por subtema, legible en el celular (no tablas anchas).
+
 ## Qué produces: `docs/juego/gdd/00-adaptacion-<materia>.md`
 
 Una sección por ronda, la más nueva arriba, con versión y fecha. Al inicio: estado (en conversación

@@ -201,3 +201,9 @@ cuando les diga.»*
 - El objetivo final de la materia: completar el Capítulo IV, Marco propositivo (4.1 técnico,
   4.2 administrativo, 4.3 comercial, 4.4 financiero, y lo que agregue el dossier: evaluación y riesgo).
 
+## 13. Dos niveles en cada propuesta (26-09)
+
+Ronald sintió que la ronda 2 "retrocedió" porque se le mostró sólo la maqueta general. Lo que más le
+sirve es el detalle por subtema: qué tipo de juego se recomienda, por qué calza y la alternativa. Desde
+ahora cada propuesta trae los dos niveles: el arco general y una ficha por subtema.
+

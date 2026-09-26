@@ -21,7 +21,7 @@ sin subirlos, y se anota su versión. Pasos:
 - [x] 1. Regla de **estructura escalable** en `CLAUDE.md` y en los 7 agentes de diseño; sus reglas
   comunes dejan de nombrar a Proyectos II como si fuera la única materia (queda como ejemplo).
 - [x] 2. Decisión anotada (IDEA-JUEGO §14 y §15, esta bitácora).
-- [ ] 3. Adaptador: leer dossiers locales y anotar su versión (`scripts/huella-dossier.mjs`).
+- [x] 3. Adaptador: lee los dossiers de la carpeta de materias sin subirlos y anota su versión en «Dossiers usados» (`scripts/huella-dossier.mjs`, con 4 pruebas; `--comparar` avisa si un dossier cambió). Regla nueva de Ronald en los 7 agentes: **un juego propio por materia** (IDEA-JUEGO §16).
 - [ ] 4. Ronda 1 del adaptador con AIEF → `docs/juego/gdd/00-adaptacion-aief.md`; después, la maqueta general.
 
 ### Pausado (26-09, pedido de Ronald): la adaptación de Proyectos II
@@ -147,6 +147,7 @@ El aula de las materias que dicta el Mgr. Ronald Martínez Jiménez (Cochabamba)
 | 2026-09-14 | Imagen para compartir generada por página al compilar, con Noto Sans | Los alumnos reciben los enlaces por WhatsApp: sin imagen el enlace pasa desapercibido. Crimson Pro y Atkinson sólo están en woff2, que el generador no lee |
 | 2026-09-14 | Sin internet se guarda todo lo publicado apenas se abre el sitio, no sólo lo visitado | Las láminas se proyectan en aulas sin conexión y el alumno estudia con datos móviles: ~630 kB una vez, a cambio de que funcione todo |
 | 2026-09-14 | La lámina retoma sola donde quedó, con un aviso para volver al inicio | Es lo que hace el Aula. Para proyectar en clase desde la misma computadora: el aviso, el primer punto o la tecla Inicio |
+| 2026-09-26 | **Un juego por materia, ajustado a ella**: cada materia con su marco propio; lo común es la base técnica (cuentas, versiones, registro, ayuda) | Pedido de Ronald. IDEA-JUEGO §16 y regla común de los agentes de diseño |
 | 2026-09-26 | **Primera isla: AIEF** (siete temas con dossier completo); Proyectos II en pausa y su escena queda como demostración. Los dossiers se leen sin subirlos y se anota su versión | Pedido de Ronald: Proyectos II tiene sólo dos semanas de dossier. `docs/juego/IDEA-JUEGO.md` §14 |
 | 2026-09-26 | **Estructura escalable, modificable, ampliable sin romper** para todo el proyecto: se crece sumando piezas | Pedido de Ronald. `CLAUDE.md` «Estructura», IDEA-JUEGO §15 y regla común de los agentes de diseño |
 | 2026-09-26 | Primero la maqueta general de toda la materia (inicio, fin, temas orquestados, dependencias sólo si hacen falta); después tema por tema, decidiendo si cada subtema necesita un juego | Pedido de Ronald. `docs/juego/IDEA-JUEGO.md` §13 y regla de los 7 agentes |

@@ -236,3 +236,14 @@ Pedido de Ronald para todo el proyecto: se crece **sumando piezas**, sin rehacer
 siete reglas están en `CLAUDE.md` («Estructura») y como regla común de los agentes de diseño. Para el
 juego significa: cada materia es una isla con sus propios archivos; el marco y el motor no dependen de
 una materia; las partidas guardadas no se pierden al cambiar el formato.
+
+## 16. Un juego por materia, ajustado a ella (26-09)
+
+Ronald: *«recuerda, armaremos varios juegos ajustados a cada materia»*.
+
+Cada materia tiene **su propio juego**, con el marco (mundo, rol, género) que mejor le queda a su
+contenido; no se fuerza un mismo mundo para todas. Lo común es la **base técnica**, que se
+reutiliza: cuentas con Supabase, datos por versión de cada alumno, registro para la nota, escalera de
+ayuda y pruebas. «Isla» sigue siendo el nombre de cada juego dentro del sitio (y en lo ya guardado,
+`isla: "proyectos"`). Encaja con la estructura escalable (§15): un juego nuevo se suma sin tocar los
+que ya existen.

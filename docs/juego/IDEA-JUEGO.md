@@ -149,3 +149,17 @@ materia con sabor a juego.»*
   tema del dossier cubre, para que Ronald la revise.
 - La regla 6 de las láminas ("los números de un caso no se inventan") **sigue valiendo para las láminas**,
   no para el juego.
+
+## 10. Marco fijo, modalidad variable (26-09)
+
+Ronald: *«Me da miedo que escoja un tipo de juego, modalidad, mecánica y lo mantenga para siempre;
+puede que existan temas, subtemas que se ajusten de mejor manera a cierto tipo.»*
+
+- Un **marco** da unidad: mundo, personaje, historia que avanza, registro para la nota.
+- **Cada tema o subtema se juega con la modalidad que mejor lo enseña** (armar una línea de
+  producción, entrevistar clientes, negociar, investigar papeles, apostar en el tiempo, administrar,
+  un minijuego). Se elige tema por tema según el contenido.
+- Referencias: los templos de *Zelda* (cada uno con su mecánica), los acertijos de *Professor Layton*,
+  la colección de *WarioWare*.
+- Consecuencia técnica: el código de escenas tiene que admitir modalidades distintas bajo el mismo
+  marco (hoy la escena 1 es una sola modalidad; se generaliza cuando llegue la segunda).

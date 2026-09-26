@@ -27,22 +27,28 @@ cubre. Detalle en `docs/juego/IDEA-JUEGO.md` §9.
 2. **Qué tiene de apasionante esta materia en la vida real:** las tensiones que la vuelven jugable
    (arriesgar plata propia, competir por clientes, construir algo que crece, descubrir el error que
    nadie vio, el tiempo que se acaba, apostar con información incompleta). De ahí sale el gancho.
-3. **Dos o tres propuestas de juego distintas entre sí** (no variaciones de la misma), cada una en
-   una página:
+3. **Modalidad por tema:** para cada tema o subtema esencial, qué modalidad de juego lo enseña mejor
+   y por qué (una tabla: tema · qué tiene que hacer el alumno · modalidad que calza · alternativa).
+   Aquí manda el contenido, no la propuesta: un tema de investigar pide una modalidad de
+   investigación; uno de optimizar, una de armar o administrar.
+4. **Dos o tres propuestas de marco distintas entre sí** (no variaciones de la misma): el marco es lo
+   que une todas las modalidades (mundo, rol del jugador, qué avanza entre temas). Cada una en una
+   página:
    - nombre y gancho en una frase (lo que haría que un alumno lo juegue aunque no cuente para la nota);
    - género, con su término técnico, y un juego real de referencia;
-   - qué hace el jugador la mayor parte del tiempo;
+   - cómo cambia el juego de un tema a otro (qué modalidades entran en este marco y cómo se pasa de
+     una a otra sin que se sienta otro juego);
    - **dos minutos jugados**, contados en presente como si lo estuvieras viendo (así Ronald se imagina
      el juego, no una lista);
-   - cómo aparece cada tema esencial dentro del juego (el alumno lo aprende porque lo necesita para
+   - cómo aparece cada tema esencial dentro del juego y con qué modalidad (el alumno lo aprende porque lo necesita para
      ganar, no porque se lo preguntan);
    - qué se adapta o se inventa respecto del dossier;
    - costo de construirlo con lo que hay (una persona con Claude, sitio en Next.js con Supabase,
      pixel art dibujado con código) y la versión mínima jugable;
    - riesgo principal.
-4. **Mapa de cobertura:** tabla tema esencial × propuesta, que muestra dónde se aprende cada tema.
+5. **Mapa de cobertura:** tabla tema esencial × propuesta, que muestra dónde se aprende cada tema.
    Ningún tema esencial puede quedar afuera.
-5. **Tu recomendación**, con el porqué, y **preguntas concretas para Ronald** (pocas y fáciles de
+6. **Tu recomendación**, con el porqué, y **preguntas concretas para Ronald** (pocas y fáciles de
    contestar), para la próxima ronda.
 
 **Rondas siguientes:** con lo que Ronald dijo, afinas, combinas o descartas propuestas en el mismo
@@ -62,6 +68,7 @@ o elegida) y la próxima pregunta para Ronald.
 - **Lee antes de proponer:** `docs/juego/gdd/LEEME.md`, las partes del GDD que ya existan, `docs/juego/IDEA-JUEGO.md`, `BITACORA.md` §0 y `CLAUDE.md`.
 - **Lo que Ronald ya dijo manda:** no es un cuestionario con puntos ("eso para mí no es juego"); pixel art; una isla por materia; cuenta para la nota con defensa oral como jefe final; el alumno escribe el número, no lo elige; "primero se ve, después se calcula"; ninguna escena aparece de la nada, sin que el alumno sepa dónde está y qué empresa es.
 - **Juego con sabor a la materia, no materia con sabor a juego** (arriba).
+- **Marco fijo, modalidad variable** (decidido por Ronald el 26-09). El juego no se casa con un solo tipo de juego ni con una sola mecánica. Hay un **marco** que da unidad (mundo, personaje, historia que avanza, registro para la nota) y, dentro, **cada tema o subtema se juega con la modalidad que mejor lo enseña** (armar una línea, entrevistar, negociar, investigar papeles, apostar en el tiempo, administrar, un minijuego…). La modalidad se elige tema por tema según el contenido; repetir una modalidad sólo vale si es la mejor para ese tema. Referencias: los templos de *Zelda*, los acertijos de *Professor Layton*, *WarioWare*.
 - **Términos técnicos de diseño de juegos**, cada uno explicado en una línea la primera vez (Ronald no es desarrollador de videojuegos).
 - **Todo lo que leerá un alumno va en tuteo** ("puedes", "mira"), sin guiones largos (—).
 - **Realista con el tamaño:** una persona con Claude y el nivel 1 primero. Si propones algo caro, dilo y da la versión barata.

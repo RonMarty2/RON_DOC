@@ -215,3 +215,24 @@ porque a veces no lo será?»*
    una ficha con el tipo de juego recomendado, por qué calza y la alternativa (lo que más le sirvió de
    la ronda 1).
 
+
+## 14. Primera isla: AIEF; el dossier se lee sin subirlo y se anota su versión (26-09)
+
+Ronald: *«siento que Proyectos II no es la mejor opción porque no tiene todo el material todavía,
+mejor apliquemos con AIEF, ese tiene todo el material»*.
+
+1. **La primera isla pasa a ser Análisis e Interpretación de Estados Financieros (AIEF)**: siete
+   temas con dossier completo. Proyectos II queda en pausa (sólo tiene dos semanas de dossier); su
+   escena de Lácteos Valle Alto, que ya guarda en Supabase, **se conserva** como demostración.
+2. **Los dossiers no se suben al repositorio** (es público): en la PC de Ronald el adaptador los lee
+   directo de su carpeta de materias; en la nube, Ronald los pega en la conversación.
+3. **Se anota qué versión de cada dossier se usó** (fecha y huella, con `scripts/huella-dossier.mjs`).
+   Si el dossier cambia, sólo importa cuando cambia un **concepto, una fórmula o la lista de temas**:
+   los ejemplos, los números y el orden del juego son propios (§9), así que no se rompen.
+
+## 15. Estructura escalable, modificable, ampliable sin romper (26-09)
+
+Pedido de Ronald para todo el proyecto: se crece **sumando piezas**, sin rehacer lo que funciona. Las
+siete reglas están en `CLAUDE.md` («Estructura») y como regla común de los agentes de diseño. Para el
+juego significa: cada materia es una isla con sus propios archivos; el marco y el motor no dependen de
+una materia; las partidas guardadas no se pierden al cambiar el formato.

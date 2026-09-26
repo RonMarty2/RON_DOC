@@ -10,6 +10,18 @@
 
 Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (registro y reglas para combinar los de la nube con los de la PC de Ronald); todo agente nuevo se anota ahí en el mismo commit. **Todo lo que Ronald decide al planificar el juego se vuelve regla de los agentes que correspondan, en el mismo commit** (pedido del 26-09).
 
+## Estructura: escalable, modificable, ampliable sin romper (Ronald, 2026-09-26)
+
+Todo lo que se construye (código, contenido, juego, agentes, documentos) se arma para crecer **sumando piezas**, no reescribiendo:
+
+1. **Agregar es sumar archivos.** Una materia, una isla, una escena o una lámina nueva entra con sus propios archivos (datos + funciones con sus pruebas) y una línea en su registro (`content/materias.ts`, `.claude/agents/LEEME.md`, `docs/juego/gdd/LEEME.md`), sin tocar lo que ya funciona.
+2. **Lo común no depende de una materia.** El motor del juego, las piezas visuales y las reglas de los agentes reciben la materia como dato; si traen un ejemplo de una materia, se marca como ejemplo.
+3. **Nombres estables.** Lo que ya se guardó (isla, escena, versión, claves del navegador, columnas de Supabase) no se renombra: lo nuevo se agrega al lado.
+4. **Lo guardado se sigue leyendo.** Si cambia el formato de una partida o de un progreso, el código nuevo lee también el viejo: nunca se pierde lo que un alumno ya jugó.
+5. **Un servicio externo, un solo archivo** (como `src/lib/juego/nube.ts` para Supabase), para poder cambiarlo sin tocar el resto.
+6. **Nada se da por terminado sin pruebas:** `npm test` y `npx tsc --noEmit`; al cambiar algo común corren todas, no sólo las de lo tocado.
+7. **Antes de cambiar algo que otros usan, decir qué se rompe** y preferir la alternativa que agrega a la que modifica.
+
 ## Antes de hacer cualquier cosa
 
 **Revisar las fuentes.** RON_DOC toma piezas de `axiom-simulador` (lo visual y la matemática) y de `simuladorPRO` (lo financiero), y esos dos repos siguen mejorando por su cuenta. Al empezar la sesión, seguir el protocolo de [FUENTES.md](./FUENTES.md): traer lo nuevo con `git fetch`, ver qué cambió desde el último commit revisado, contarle a Ronald en pocas líneas qué vale la pena traer, y anotar la revisión.

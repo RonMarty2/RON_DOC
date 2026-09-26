@@ -11,10 +11,12 @@ queda sólo en tu clase? (sección 4 de la Ronda 2).
 
 ## Ronda 2 · versión 2 · 26-09-2026
 
-**Con qué se trabajó:** dossier de la Semana 1 (33 págs.) y de la Semana 2 (40 págs.), y el índice
-de una tesis real (sólo su estructura). Las semanas 3 a 6 no tienen dossier: esas filas son
-**supuesto** y salen del mapa de ruta del dossier y del índice. Las páginas citadas son las del
-dossier de cada semana ("S1 p. 10" = Semana 1, página 10).
+**Con qué se trabajó:** los dossiers archivados como semana 1 (33 págs.) y semana 2 (40 págs.), y el
+índice de una tesis real (sólo su estructura: Capítulo IV, marco propositivo). Todo va **por temas**,
+las secciones del Capítulo 4. Para ubicar el material se cita así: **"D1 pág. 10"** es el dossier
+archivado como semana 1, página 10; **"D2"**, el de la semana 2. Es sólo una referencia de archivo,
+no un tiempo del juego. Los temas sin dossier todavía (4.3 en adelante) son **supuesto**: salen del
+mapa de ruta del dossier y del índice.
 
 ### Lo que dijo Ronald (sobre la Ronda 1)
 
@@ -22,67 +24,83 @@ dossier de cada semana ("S1 p. 10" = Semana 1, página 10).
 > manual… ¿Por qué me preguntas el número si tienes acceso al dossier?»
 >
 > «Mi materia enseña a llenar o completar el marco propositivo de este índice.»
+>
+> «No quiero que me hables en semanas sino por temas, a menos que el dossier esté en semanas; no
+> quiero que le pongas temporalidad, como que se debe resolver en una o dos semanas; iniciarán
+> cuando les diga.»
 
-**Qué cambia por eso:** esta ronda empieza por lo que el alumno **sabe hacer** y cómo lo demuestra;
-cada etapa del juego es una sección del Capítulo 4; y lo que el dossier responde ya está decidido:
+**Qué cambia por eso:**
 
-- **Tercer tanque: Bs 52.000.** El dossier da los dos precios (S2 p. 20): Bs 45.000 si se instala al
-  inicio y Bs 52.000 si se instala después, con la planta andando, más Bs 6.000 por año de
-  mantenimiento. En el juego la ampliación llega con la planta andando, así que va Bs 52.000.
-- **La escena de la planta pasa a la semana 2 y se ajusta al dossier.** Los 860 pedidos por día eran
-  un dato inventado. Ahora la demanda sale del dossier (150.000 litros el año 1, creciendo 10 % por
-  año) y la pregunta ya no es "¿en cuántos meses recupero el tanque?" sino "**¿en qué año hay que
-  ampliar?**" (S2 p. 18 a 21). La trampa de la envasadora rápida se queda (S2 p. 14 a 15). Cambiar
-  el código de la escena es trabajo aparte, después de esta ronda.
-- **Unos 20 a 30 minutos por semana:** en cada semana, las modalidades más jugables duran unos 5
-  minutos cada una y las otras son escenas cortas de 2 o 3 minutos.
+- Esta ronda empieza por lo que el alumno **sabe hacer** y cómo lo demuestra.
+- Cada etapa del juego es **un tema del Capítulo 4**, sin plazos ni duraciones. **Cada tema se abre
+  cuando tú lo habilitas** para tu curso; dentro del tema, el alumno avanza cuando lo hace bien.
+- Lo que el dossier responde ya está decidido:
+  - **Tercer tanque: Bs 52.000.** El dossier da los dos precios (D2 pág. 20): Bs 45.000 si se
+    instala al inicio y Bs 52.000 si se instala después, con la planta andando, más Bs 6.000 por año
+    de mantenimiento. En el juego la ampliación llega con la planta andando: Bs 52.000.
+  - **La escena de la planta pasa al tema 4.1.7 (capacidad) y se ajusta al dossier.** Los 860
+    pedidos por día eran un dato inventado: ahora la demanda sale del dossier (150.000 litros el
+    primer año, creciendo 10 % por año). La pregunta ya no es "¿en cuántos meses recupero el
+    tanque?" sino "**¿en qué año hay que ampliar?**" (D2 pág. 18 a 21). La trampa de la envasadora
+    rápida se queda (D2 pág. 14 a 15). Cambiar el código de la escena es trabajo aparte.
 
-### 1. El arco del juego, de principio a fin
+### 1. El arco del juego, de tema en tema
 
 **Inicio:** llegas al valle. Don Mario, un lechero con una receta de yogur de frutilla y dos socios,
-te recibe en su lechería: quiere pedir un crédito al banco para levantar una planta y el banco le
+te recibe en su lechería: quiere pedir un crédito al banco para levantar una planta, y el banco le
 pide "la carpeta del proyecto". Tu encargo es armar esa carpeta con él. **Fin:** la carpeta es el
-Capítulo 4 completo (técnico, administrativo, comercial, financiero, evaluación y riesgo), la planta
-está en pie y el alumno la defiende en tu clase (jefe final).
+Capítulo 4 completo, la planta está en pie y el alumno la defiende en tu clase (jefe final).
 
-| Etapa | Qué construye el alumno (Capítulo 4) | Qué produce que usa una etapa posterior | Cómo se ve en el juego |
+Cada tema produce algo que un tema posterior usa; nada queda suelto.
+
+| Tema (sección del Capítulo 4) | Qué construye el alumno | Qué produce que usa un tema posterior | Cómo se ve en el juego |
 |---|---|---|---|
-| **Llegada** (5 min, dentro de la S1) | Nada todavía: conoce a Don Mario, la receta, los socios y el encargo | Sabe de qué es la empresa y qué quiere antes de la primera cuenta | La lechería de Don Mario; una carpeta vacía con seis separadores |
-| **S1 · Los cimientos** | 4.1 cadena de valor; 4.1.1 localización; 4.1.2 ficha técnica; 4.1.3 insumos; 4.1.4 maquinaria | Margen por litro y ventaja (→ misión y FODA en S2, precio en S3); el pueblo y su galpón (→ lay out en S2); vida útil (→ cámara y reparto en S2); costo de insumos por litro (→ costos en S3); tabla de equipos (→ lay out y capacidad en S2, inversión en S4) | Aparece el cartel del pueblo elegido; el galpón vacío; los equipos llegan en cajas y la camioneta, si la compraste |
-| **S2 · La planta toma forma** | 4.1.5 lay out; 4.1.6 proceso y cursograma; 4.1.7 capacidad y tamaño; 4.2.1 filosofía; 4.2.2 a 4.2.7 organización y forma legal | Capacidad instalada (→ lo que se vende en S3 tiene que caber); año de ampliación y su costo (→ inversión en S4); cargos (→ planilla en S3); cronograma de puesta en marcha (→ año 0 del flujo en S4) | Los equipos se instalan en línea, con el lugar del tercer tanque marcado; entra el personal; sale la primera botella |
-| **S3 · Salir a vender** *(supuesto)* | 4.3 estudio comercial (marca, diferenciación, mezcla de marketing, envase, publicidad y su presupuesto); costos y punto de equilibrio; primera carga en el simulador | Precio, ventas por año y costos (→ flujo en S4) | La camioneta sale a las tiendas; el mapa del valle se llena de tiendas que te compran |
-| **S4 · ¿Conviene?** *(supuesto)* | 4.4 estudio financiero (inversión, planilla, costos, capital de trabajo, amortización, flujo de caja) y 4.5 evaluación (VAN, TIR) con el motor de SIMPRO | El flujo y los indicadores (→ riesgo en S5) | La oficina del banco: el comité mira tu flujo por primera vez |
-| **S5 · El valle cambia** *(supuesto)* | 4.6 riesgo y sensibilidad | Hasta dónde aguanta el proyecto (→ defensa en S6) | Eventos en el valle: sequía (la leche sube), la demanda crece menos de lo esperado |
-| **S6 · La defensa** *(supuesto)* | Integración: el Capítulo 4 completo y coherente | La carpeta completa y el registro para tu defensa | La planta terminada; la carpeta con los seis separadores llenos; la defensa en clase |
+| **Llegada** | Conoce a Don Mario, la receta, los socios y el encargo | Sabe de qué es la empresa y qué quiere antes de la primera cuenta | La lechería; una carpeta vacía con sus separadores |
+| **4.1 Cadena de valor** (introducción del estudio técnico) | Costo por actividad, margen y dónde competir | Margen por litro (→ 4.1.7 y 4.4); la ventaja (→ 4.1.1, 4.2.1 y 4.3) | Un litro de leche que viaja de la lechería a la tienda |
+| **4.1.1 Localización** | El pueblo, con factores ponderados | El galpón y sus medidas (→ 4.1.5 y el techo del tamaño en 4.1.7) | El cartel del pueblo elegido y el galpón vacío |
+| **4.1.2 Producto** | La ficha técnica | Composición (→ 4.1.3); frío y vida útil (→ 4.1.4 y la cámara de 4.1.7) | La ficha pegada en la puerta del galpón |
+| **4.1.3 Insumos** | Receta con merma, requerimiento y costo del año | Costo de insumos por litro (→ costos en 4.4); proveedores (→ 4.1.7) | Sacos y bidones en el depósito |
+| **4.1.4 Maquinaria** | Tabla de equipos con capacidad y precio | Los equipos (→ 4.1.5 y 4.1.7); la inversión (→ 4.4) | Los equipos llegan en cajas; la camioneta, si la compraste |
+| **4.1.5 Lay out** | El plano con el recorrido y el lugar para crecer | El orden del proceso (→ 4.1.6) y el lugar del tercer tanque (→ 4.1.7) | Los equipos se instalan en línea; el lugar del tercer tanque queda marcado |
+| **4.1.6 Proceso** | Diagramas y cursograma de un lote | La actividad más larga y el ciclo del tanque (→ 4.1.7); las actividades que alguien tiene que hacer (→ 4.2) | Un lote que recorre la planta con un reloj encima |
+| **4.1.7 Capacidad y tamaño** | Capacidad instalada, utilización, factor que limita y año de ampliación | Lo que se puede vender (→ 4.2.1 y 4.3); la ampliación y su costo (→ 4.4) | Sale la primera botella; la escena de la planta |
+| **4.2 Estudio administrativo** (4.2.1 filosofía; 4.2.2 a 4.2.7 organización y forma legal) | Rumbo, organigrama, cargos, forma legal y trámites en orden | Cargos (→ planilla en 4.4); el cronograma de puesta en marcha (→ año 0 del flujo en 4.4) | Entra el personal; el cartel "S.R.L." si esa fue tu decisión |
+| **4.3 Estudio comercial** *(supuesto)* | Marca, diferenciación, mezcla de marketing, envase, publicidad y su presupuesto | Precio y ventas por año (→ 4.4) | La camioneta sale a las tiendas; el mapa se llena de tiendas que te compran |
+| **4.4 Estudio financiero** y evaluación *(supuesto)* | Inversión, planilla, costos, capital de trabajo, flujo de caja, VAN y TIR con el motor de SIMPRO | El flujo y los indicadores (→ riesgo) | La oficina del banco: el comité mira tu flujo |
+| **Riesgo y sensibilidad** *(supuesto)* | Hasta dónde aguanta el proyecto | Los límites que defenderá | Eventos en el valle: sequía, la demanda crece menos de lo esperado |
+| **Integración y defensa** *(supuesto)* | El Capítulo 4 completo y coherente | La carpeta y el registro para tu defensa | La planta terminada, la carpeta llena, la defensa en clase |
 
-### 2. Semana 1 y Semana 2 en diseño inverso
+### 2. Los temas con dossier, en diseño inverso
 
 **La escalera de ayuda**, igual en todas las filas: (a) la consecuencia en el mundo y una pista según
-su error; (b) una pista más concreta (qué paso revisar); (c) **"lee la sección X, página Y"**, con el
-enlace a la página exacta del dossier (la columna "Escalón c" dice cuál); (d) si vuelve a fallar,
-**otros números** (otra versión del caso). Nunca se le da la respuesta, y el registro guarda en qué
-escalón acertó. **Para pasar a la fila siguiente, tiene que hacerlo bien.**
+su error; (b) una pista más concreta (qué paso revisar); (c) **"lee esta sección, esta página"**
+(la columna "A leer" dice cuál); (d) si vuelve a fallar, **otros números** (otra versión del caso).
+Nunca se le da la respuesta, y el registro guarda en qué escalón acertó. **Para pasar a la fila
+siguiente, tiene que hacerlo bien.**
 
-#### Semana 1 · Los cimientos (unos 25 minutos)
+Las modalidades marcadas **(jugada)** son las más largas; las **(escena corta)**, un diálogo con una
+sola tarea.
 
-| Sabe hacer | Lo demuestra así en el juego (modalidad) | Si lo hace mal, pasa esto | Escalón c: a leer | Condición para pasar |
+#### 4.1 Estudio técnico: de la cadena de valor a la maquinaria
+
+| Sabe hacer | Lo demuestra así en el juego (modalidad) | Si lo hace mal, pasa esto | A leer | Condición para pasar |
 |---|---|---|---|---|
-| **Armar la cadena de valor**: costo por actividad, margen, y elegir **una o dos** actividades donde competir | **Seguir el litro** (escena corta): acompaña un litro desde la lechería hasta la tienda, escribe el costo en cada parada y el margen, y tiene sólo **dos fichas de ventaja** | Si pone la ventaja en la leche ("es lo más caro"), la competencia compra la misma leche al mismo precio y no hay diferencia. Si dice que el margen es la ganancia, la socia contadora le recuerda el alquiler y los sueldos | S1 p. 6 a 8 (costo por actividad y trampas) | Margen correcto y las dos fichas donde el cliente nota la diferencia (en el caso: receta y reparto frío) |
-| **Elegir el lugar por factores ponderados**: pesos antes de calificar, que sumen 1, puntaje, y el cambio de peso que da vuelta la decisión | **Reunión de socios con sobre cerrado** (jugada): sella los pesos, recorre los tres pueblos juntando las notas, calcula, y le responde al socio de Sacaba con el umbral | Si los pesos no suman 1, el sobre no cierra. Si cuenta factores ganados, gana Sacaba y la leche llega más cara y menos fresca: el costo por litro sube en la cadena de valor | S1 p. 10 a 12 (fórmula, "Sacaba gana en más factores y pierde igual", trampas) | Los tres puntajes y el umbral de su versión |
-| **Describir el producto con datos medibles** y saber qué decisión depende de cada fila | **La ventanilla** (escena corta): el registro sanitario le devuelve la ficha del socio entusiasta ("yogur saludable y de calidad"); la reescribe y une cada fila con lo que decide (botella, cámara, reparto) | Si deja la ficha con adjetivos, el proveedor de botellas no sabe qué mandar. Si olvida la vida útil, más adelante hay yogur vencido en la cámara | S1 p. 15 a 16 (ficha y trampas) | Ficha con presentación, composición, conservación, vida útil y norma, cada fila unida a su decisión |
-| **Balance de insumos**: receta con merma × producción; costo del año; que coincida con la cadena de valor; cuántos proveedores | **La orden de compra** (jugada): escribe cuánto pedir de cada insumo para el año y por día; el juego corre un mes | Sin merma, falta leche el día 20. Si calcula con lo que la planta **podría** hacer, compra de más y la plata queda parada. Sin envase, hay yogur sin botella | S1 p. 18 a 21 (fórmula, cálculo paso a paso, trampas) | Costo anual y por litro correctos (tiene que coincidir con la cadena de valor), leche por día y proveedores que alcanzan |
-| **Tabla de equipos**: capacidad necesaria contra la del equipo, precio, los que no producen; justificar el tamaño | **La feria de equipos** (jugada): con presupuesto, arma su tabla (necesito · ofrece · precio) y compra; después llega un evento (un tanque en limpieza, un reparto en frío) | Si olvida la camioneta, no puede repartir y pierde justo la ventaja que eligió en la cadena de valor. Si compra un tanque de 500, en la limpieza se para toda la planta | S1 p. 23 a 26 (método, "dos de 200 o uno de 500", tabla, trampas) | Tabla completa con el total de su versión y el tamaño de los tanques justificado |
+| **4.1 Cadena de valor**: costo por actividad, margen, y elegir **una o dos** actividades donde competir | **Seguir el litro** (escena corta): acompaña un litro desde la lechería hasta la tienda, escribe el costo en cada parada y el margen, y tiene sólo **dos fichas de ventaja** | Si pone la ventaja en la leche ("es lo más caro"), la competencia compra la misma leche al mismo precio y no hay diferencia. Si dice que el margen es la ganancia, la socia contadora le recuerda el alquiler y los sueldos | D1 pág. 6 a 8 (costo por actividad y trampas) | Margen correcto y las dos fichas donde el cliente nota la diferencia (en el caso: receta y reparto frío) |
+| **4.1.1 Localización**: pesos antes de calificar, que sumen 1, puntaje, y el cambio de peso que da vuelta la decisión | **Reunión de socios con sobre cerrado** (jugada): sella los pesos, recorre los tres pueblos juntando las notas, calcula, y le responde al socio de Sacaba con el umbral | Si los pesos no suman 1, el sobre no cierra. Si cuenta factores ganados, gana Sacaba y la leche llega más cara y menos fresca: el costo por litro sube en la cadena de valor | D1 pág. 10 a 12 (fórmula, "Sacaba gana en más factores y pierde igual", trampas) | Los tres puntajes y el umbral de su versión |
+| **4.1.2 Producto**: describirlo con datos medibles y saber qué decisión depende de cada fila | **La ventanilla** (escena corta): el registro sanitario le devuelve la ficha del socio entusiasta ("yogur saludable y de calidad"); la reescribe y une cada fila con lo que decide (botella, cámara, reparto) | Si deja adjetivos, el proveedor de botellas no sabe qué mandar. Si olvida la vida útil, más adelante hay yogur vencido en la cámara | D1 pág. 15 a 16 (ficha y trampas) | Ficha con presentación, composición, conservación, vida útil y norma, cada fila unida a su decisión |
+| **4.1.3 Insumos**: receta con merma × producción; costo del año; que coincida con la cadena de valor; cuántos proveedores | **La orden de compra** (jugada): escribe cuánto pedir de cada insumo para el año y por día; el juego corre un mes de la planta | Sin merma, falta leche a fin de mes. Si calcula con lo que la planta **podría** hacer, compra de más y la plata queda parada. Sin envase, hay yogur sin botella | D1 pág. 18 a 21 (fórmula, cálculo paso a paso, trampas) | Costo anual y por litro correctos (coincide con la cadena de valor), leche por día y proveedores que alcanzan |
+| **4.1.4 Maquinaria**: capacidad necesaria contra la del equipo, precio, los que no producen; justificar el tamaño | **La feria de equipos** (jugada): con presupuesto, arma su tabla (necesito · ofrece · precio) y compra; después llega un evento (un tanque en limpieza, un reparto en frío) | Si olvida la camioneta, no puede repartir y pierde justo la ventaja que eligió en la cadena de valor. Si compra un tanque de 500, en la limpieza se para toda la planta | D1 pág. 23 a 26 (método, "dos de 200 o uno de 500", tabla, trampas) | Tabla completa con el total de su versión y el tamaño de los tanques justificado |
+| **4.1.5 Lay out**: equipos en el orden del proceso, sin retrocesos, con lugar para crecer | **Acomodar el galpón** (jugada): piezas a escala en el galpón de 20 por 12 metros, con entrada de leche y salida de despacho | Si hay retrocesos, el operario cruza el galpón con baldes y el contador de metros sube. Si no deja lugar, al ampliar hay que mover todo | D2 pág. 5 a 6 (método y trampas) | Recorrido sin retrocesos, todos los equipos (también los de apoyo) y el lugar del tercer tanque libre |
+| **4.1.6 Proceso**: seguir un lote, clasificar cada actividad (operación, transporte, inspección, demora, almacenamiento) con su tiempo, y encontrar la más larga | **Seguir un lote con cronómetro** (escena corta): mira un lote de 400 litros en cámara rápida y llena el cursograma | Si anota sólo lo que se hace y no las esperas, su total no coincide con el reloj de la planta. Si propone eliminar la incubación, el yogur no cuaja | D2 pág. 8 a 10 (método, cursograma del lote, trampas) | Resumen por tipo y tiempo total del lote correctos; nombra la incubación como la actividad más larga |
+| **4.1.7 Capacidad**: cuello de botella × horas × días × eficiencia, y el grado de utilización | **La escena de la planta** (jugada, ya existe y se ajusta): calcula la capacidad y la utilización del primer año; el socio insiste con la envasadora rápida y hay que calcular qué sale con ella | Si suma las etapas, promete a las tiendas yogur que no puede hacer. Si olvida la eficiencia, cuenta con litros que la planta no tiene. Si compra la envasadora, Bs 38.000 quedan esperando | D2 pág. 13 a 15 y 21 a 22 (fórmula, "la envasadora que no agregó ni un litro", trampas) | Capacidad y utilización de su versión, y la capacidad con la envasadora nueva (igual a la de antes) |
+| **4.1.7 Tamaño**: qué factor limita, en qué año la demanda alcanza la capacidad, y de qué tamaño va la cámara de frío | **Apostar en el tiempo** (jugada): una línea de años con la demanda creciendo; pone el año del tercer tanque (Bs 52.000) y el juego corre los años del proyecto | Si amplía tarde, las tiendas se quedan sin yogur y se pierde el margen de cada litro no vendido. Si amplía muy temprano, paga años de un tanque vacío. Si dimensiona la cámara para el primer año, no entra la producción | D2 pág. 16 a 20 (seis factores, fórmula del año, cámara de frío) | El año de su versión, la ampliación lista antes, y el factor que limita nombrado |
 
-#### Semana 2 · La planta toma forma (unos 30 minutos)
+#### 4.2 Estudio administrativo
 
-| Sabe hacer | Lo demuestra así en el juego (modalidad) | Si lo hace mal, pasa esto | Escalón c: a leer | Condición para pasar |
+| Sabe hacer | Lo demuestra así en el juego (modalidad) | Si lo hace mal, pasa esto | A leer | Condición para pasar |
 |---|---|---|---|---|
-| **Lay out**: ubicar los equipos en el orden del proceso, sin retrocesos, y reservar el lugar para crecer | **Acomodar el galpón** (jugada): piezas a escala en el galpón de 20 por 12 metros, con entrada de leche y salida de despacho | Si hay retrocesos, el operario cruza el galpón con baldes y el contador de metros sube. Si no deja lugar, al ampliar hay que mover todo | S2 p. 5 a 6 (método y trampas) | Recorrido sin retrocesos, todos los equipos (también los de apoyo) y el lugar del tercer tanque libre |
-| **Cursograma**: seguir un lote, clasificar cada actividad (operación, transporte, inspección, demora, almacenamiento) con su tiempo, y encontrar la más larga | **Seguir un lote con cronómetro** (escena corta): mira un lote de 400 litros en cámara rápida y llena el cursograma | Si anota sólo lo que se hace y no las esperas, su total no coincide con el reloj de la planta. Si propone eliminar la incubación, el yogur no cuaja | S2 p. 8 a 10 (método, cursograma del lote, trampas) | Resumen por tipo y tiempo total del lote correctos; nombra la incubación como la actividad más larga |
-| **Capacidad instalada**: cuello de botella × horas × días × eficiencia, y el grado de utilización | **La escena de la planta** (jugada, ya existe y se ajusta): calcula la capacidad y la utilización del año 1; el socio insiste con la envasadora rápida y hay que calcular qué sale con ella | Si suma las etapas, promete a las tiendas yogur que no puede hacer. Si olvida la eficiencia, se queda corto el día de más trabajo. Si compra la envasadora, Bs 38.000 quedan esperando | S2 p. 13 a 15 y 21 a 22 (fórmula, "la envasadora que no agregó ni un litro", trampas) | Capacidad y utilización de su versión, y la capacidad con la envasadora nueva (igual a la de antes) |
-| **Tamaño y ampliación**: qué factor limita el tamaño, el año en que la demanda alcanza la capacidad y de qué tamaño va la cámara de frío | **Apostar en el tiempo** (jugada): una línea de años con la demanda creciendo; pone la fecha del tercer tanque (Bs 52.000) y el juego corre los años | Si amplía tarde, las tiendas se quedan sin yogur y se pierde el margen de cada litro no vendido. Si amplía muy temprano, paga años de un tanque vacío. Si dimensiona la cámara para el año 1, no entra la producción | S2 p. 16 a 20 (seis factores, fórmula del año, cámara de frío) | El año de su versión, la ampliación lista antes de ese año, y el factor que limita nombrado |
-| **Rumbo de la empresa**: misión, visión, FODA con hechos, FODA cruzado y un objetivo medible que quepa en la capacidad | **La reunión de rumbo** (escena corta): arma el FODA con tarjetas de hechos que juntó en la S1 (la leche sube en época seca, la camioneta propia…), cruza cada estrategia con sus tarjetas y escribe la meta de ventas | Si una estrategia no cita tarjetas, el socio pregunta "¿de dónde sale esto?". Si la meta de ventas supera la capacidad, la planta no la cumple | S2 p. 25 a 27 (método, FODA cruzado, trampas) | Cada estrategia cita sus hechos y la meta de ventas cabe en la capacidad |
-| **Organización y forma legal**: organigrama con personas por turno, área de cada sueldo, forma jurídica y trámites en orden | **Contratar** (jugada): cubre cada actividad del cursograma con alguien y cada turno con su gente; decide la forma legal con los hechos (tres socios, un préstamo, casas que no quieren arriesgar); ordena los trámites en el tiempo | Si pone dos operarios para dos turnos, el segundo turno queda vacío y la capacidad cae a la mitad. Si elige unipersonal, la deuda alcanza la casa de Don Mario. Si desordena los trámites, la primera venta se atrasa | S2 p. 28 a 32 (organigrama, formas jurídicas, manual, trámites, trampas) | Planilla que cubre actividades y turnos (siete personas en el caso del dossier), forma legal justificada y cronograma hasta la primera venta |
+| **4.2.1 Filosofía**: misión, visión, FODA con hechos, FODA cruzado y un objetivo medible que quepa en la capacidad | **La reunión de rumbo** (escena corta): arma el FODA con tarjetas de hechos que juntó en los temas anteriores (la leche sube en época seca, la camioneta propia…), cruza cada estrategia con sus tarjetas y escribe la meta de ventas | Si una estrategia no cita tarjetas, el socio pregunta "¿de dónde sale esto?". Si la meta de ventas supera la capacidad, la planta no la cumple | D2 pág. 25 a 27 (método, FODA cruzado, trampas) | Cada estrategia cita sus hechos y la meta de ventas cabe en la capacidad |
+| **4.2.2 a 4.2.7 Organización y forma legal**: organigrama con personas por turno, área de cada sueldo, forma jurídica y trámites en orden | **Contratar** (jugada): cubre cada actividad del cursograma con alguien y cada turno con su gente; decide la forma legal con los hechos (tres socios, un préstamo, casas que no quieren arriesgar); ordena los trámites | Si pone dos operarios para dos turnos, el segundo turno queda vacío y la capacidad cae a la mitad. Si elige unipersonal, la deuda alcanza la casa de Don Mario. Si desordena los trámites, la primera venta se atrasa | D2 pág. 28 a 32 (organigrama, formas jurídicas, manual, trámites, trampas) | Planilla que cubre actividades y turnos (siete personas en el caso del dossier), forma legal justificada y trámites en orden hasta la primera venta |
 
 **Lo que no es número** (la misión, la justificación de los pesos, la ficha): el juego revisa que
 esté completo y coherente (cita los hechos, cabe en la capacidad, cada fila tiene su decisión); la
@@ -90,29 +108,32 @@ calidad del texto la ves tú en el panel del docente y en la defensa.
 
 ### 3. Tipos de proyecto
 
-El hilo es Lácteos Valle Alto (producción). **Al cerrar cada semana** llega un vecino con otro tipo de
-proyecto: un **encargo corto** (unos 3 minutos) donde aplica **una** cosa de la semana a su negocio.
-Salen de los casos de práctica y de las tablas "lo mismo, en cada tipo de proyecto" del dossier.
+El hilo es Lácteos Valle Alto (producción). **Al cerrar cada tema** puede llegar un vecino con otro
+tipo de proyecto: un **encargo corto** donde aplica **una** cosa del tema a su negocio. Salen de los
+casos de práctica y de las tablas "lo mismo, en cada tipo de proyecto" del dossier, rotando para que
+aparezcan los cinco tipos.
 
-| Semana | Encargo corto | Tipo | Qué cambia respecto de la planta |
+| Tema | Encargo corto | Tipo | Qué cambia respecto de la planta |
 |---|---|---|---|
-| S1 | Las hermanas de la cafetería eligen local (caso 1, S1 p. 30) | Servicios | Pesa el flujo de gente, no la cercanía a la leche |
-| S1 | La tienda en línea de tejidos de Tarabuco arma su cadena de valor (caso 2, S1 p. 30) | Comercio y digital | Casi no tiene operaciones: la ventaja está en otro lado |
-| S2 | La lavandería de la calle Jordán busca su cuello de botella (caso 1, S2 p. 36) | Servicios | El cuello es la persona que plancha, no una máquina |
-| S2 | La granja de pollos de Warnes arma su organigrama (caso 4, S2 p. 37) | Agrícola | Los animales se atienden todos los días; el permiso es otro |
-| S3 a S6 | Un encargo por semana, rotando los tipos que falten | Los cinco | *(supuesto: sale del dossier de cada semana)* |
+| 4.1 Cadena de valor | La tienda en línea de tejidos de Tarabuco (caso 2, D1 pág. 30) | Comercio y digital | Casi no tiene operaciones: la ventaja está en otro lado |
+| 4.1.1 Localización | Las hermanas de la cafetería eligen local (caso 1, D1 pág. 30) | Servicios | Pesa el flujo de gente, no la cercanía a la leche |
+| 4.1.4 Maquinaria | El taller de muebles de Quillacollo: una máquina combinada o dos separadas (caso 3, D1 pág. 30) | Producción, otro rubro | Las mismas razones de los tanques, en otra máquina |
+| 4.1.5 Lay out | Una aplicación: "el lay out no aplica, explica por qué" (D2 pág. 5) | Digital | No hay recorrido físico |
+| 4.1.7 Capacidad | La lavandería de la calle Jordán busca su cuello de botella (caso 1, D2 pág. 36) | Servicios | El cuello es la persona que plancha, no una máquina |
+| 4.2 Organización | La granja de pollos de Warnes arma su organigrama (caso 4, D2 pág. 37) | Agrícola | Los animales se atienden todos los días; el permiso es otro |
+| 4.3 en adelante | Uno por tema, con el tipo que falte | Los cinco | *(supuesto: sale del dossier de cada tema)* |
 
-El tipo **digital** aparece cuando el dossier lo trae (por ejemplo, "el lay out no aplica: explica
-por qué", S2 p. 5). Más adelante, estos encargos pasan a ser el tipo del proyecto propio del alumno.
+Más adelante, estos encargos pasan a ser el tipo del proyecto propio del alumno.
 
 ### 4. Recomendación ya decidida y la única pregunta
 
-**Decidido** (todo sale del dossier o de `IDEA-JUEGO.md` §11): marco "La planta que levantas", con la
-carpeta de seis separadores como hilo; las filas de la sección 2 como lo que el alumno tiene que saber
-hacer en S1 y S2, con la escalera de ayuda y la condición para pasar; la escena de la planta en la S2
-con la demanda del dossier y la pregunta "¿en qué año ampliar?"; tercer tanque Bs 52.000; un encargo
-corto de otro tipo de proyecto al cerrar cada semana. **Primero se construye la S1**, porque todo lo
-demás usa lo que ella produce.
+**Decidido** (sale del dossier o de `IDEA-JUEGO.md` §11): marco "La planta que levantas", con la
+carpeta del Capítulo 4 como hilo; un tema tras otro, cada uno abierto cuando tú lo habilitas; las
+filas de la sección 2 como lo que el alumno tiene que saber hacer, con la escalera de ayuda y la
+condición para pasar; la escena de la planta en el tema 4.1.7, con la demanda del dossier y la
+pregunta "¿en qué año ampliar?"; tercer tanque Bs 52.000; un encargo corto de otro tipo de proyecto
+al cerrar los temas de la tabla 3. **Se construye primero desde la llegada hasta 4.1.4**, porque todo
+lo demás usa lo que esos temas producen.
 
 **La única pregunta, de gusto:** ¿el juego termina con **una presentación ante el comité del banco**
 (el alumno ensaya su defensa dentro del juego) o termina en **la inauguración de la planta** y la
@@ -121,6 +142,9 @@ defensa queda sólo en tu clase?
 ---
 
 ## Ronda 1 · versión 1 · 26-09-2026 (antecedente)
+
+> Reemplazada por la Ronda 2. Aquí se habla en semanas y con duraciones; Ronald pidió hablar por
+> temas y sin plazos, y sus preguntas ya están respondidas arriba.
 
 **Con qué se trabajó:** el dossier de la **Semana 1 de 6** de Proyectos II ("Estudio técnico I: de la
 cadena de valor a la maquinaria"), que Ronald subió a la conversación. No se copió al repositorio

@@ -201,9 +201,17 @@ cuando les diga.»*
 - El objetivo final de la materia: completar el Capítulo IV, Marco propositivo (4.1 técnico,
   4.2 administrativo, 4.3 comercial, 4.4 financiero, y lo que agregue el dossier: evaluación y riesgo).
 
-## 13. Dos niveles en cada propuesta (26-09)
+## 13. Primero la maqueta, después el detalle; no todo tema es un juego (26-09)
 
-Ronald sintió que la ronda 2 "retrocedió" porque se le mostró sólo la maqueta general. Lo que más le
-sirve es el detalle por subtema: qué tipo de juego se recomienda, por qué calza y la alternativa. Desde
-ahora cada propuesta trae los dos niveles: el arco general y una ficha por subtema.
+Ronald: *«¿No sería mejor que comencemos planificando la maqueta general en base a los temas totales
+del dossier, definir inicio y fin (uno que orqueste de excelente manera cada tema, que tenga sentido y
+que use, de ser necesario, el tema anterior para el siguiente, así como proyectos sólo si es necesario
+o se puede), luego de eso recién pasamos tema a tema, subtema a subtema, si es necesario un juego,
+porque a veces no lo será?»*
+
+1. **Maqueta general** de la materia entera: todos los temas, inicio y fin, un orden con sentido; un
+   tema usa otro sólo cuando hace falta (también el contraste con otros tipos de proyecto).
+2. Aprobada la maqueta, **tema por tema**: en cada subtema se decide si necesita un juego. Cuando sí,
+   una ficha con el tipo de juego recomendado, por qué calza y la alternativa (lo que más le sirvió de
+   la ronda 1).
 

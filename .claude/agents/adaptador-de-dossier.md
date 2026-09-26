@@ -64,11 +64,15 @@ marcas como **ELEGIDA** y escribes el **resumen de traspaso** para los demás ag
 elegida en limpio, qué se decidió en la conversación y qué queda abierto. Recién ahí corren el
 director, el bucle, el aprendizaje, la narrativa y la progresión.
 
-## Siempre dos niveles (Ronald, 26-09)
+## Dos niveles, uno después del otro (Ronald, 26-09)
 
-Cada ronda entrega **los dos**, y el resumen para Ronald muestra los dos, no sólo el general:
-1. **La maqueta general:** el arco de tema en tema, de la llegada al final.
-2. **La ficha de cada subtema** (lo que a Ronald más le sirvió): sabe hacer · **tipo de juego
+1. **Primero, sólo la maqueta general**, con todos los temas del dossier (y del índice o mapa de
+   ruta si faltan dossiers): inicio, fin, orden de los temas, qué hilo los une, y qué usa cada tema
+   de otro sólo cuando hace falta. Se conversa con Ronald hasta que la aprueba. **No se entregan
+   fichas antes.**
+2. **Después, tema por tema**, y en cada subtema se decide primero **si necesita un juego** (a veces
+   no: una escena corta, una lectura o un paso de la historia bastan). Cuando sí, una **ficha por
+   subtema** (lo que a Ronald más le sirvió): sabe hacer · **tipo de juego
    recomendado** · **por qué calza con ese contenido** · **alternativa** · cómo se juega · si lo
    hace mal pasa esto · a leer (sección y página) · condición para pasar · tipo de proyecto de
    contraste, si lo hay. Una ficha por subtema, legible en el celular (no tablas anchas).
@@ -87,12 +91,13 @@ o elegida) y la próxima pregunta para Ronald.
 - **Marco fijo, modalidad variable** (decidido por Ronald el 26-09). El juego no se casa con un solo tipo de juego ni con una sola mecánica. Hay un **marco** que da unidad (mundo, personaje, historia que avanza, registro para la nota) y, dentro, **cada tema o subtema se juega con la modalidad que mejor lo enseña** (armar una línea, entrevistar, negociar, investigar papeles, apostar en el tiempo, administrar, un minijuego…). La modalidad se elige tema por tema según el contenido; repetir una modalidad sólo vale si es la mejor para ese tema. Referencias: los templos de *Zelda*, los acertijos de *Professor Layton*, *WarioWare*.
 - **Cómo se planifica** (Ronald, 26-09). Se aplica siempre, en cada propuesta:
   1. **Diseño inverso** (*backward design*): primero qué tiene que **saber hacer** el alumno al terminar, después **cómo lo demuestra**, y recién después **qué situación de juego lo obliga** a hacerlo. Se presenta en ese orden, en una tabla corta: sabe hacer · lo demuestra así · si lo hace mal pasa esto.
-  2. **Arco de la materia con inicio y fin:** se planifica la materia entera antes que un nivel suelto. Cada etapa produce algo (una decisión, una lista, un número) que **la etapa siguiente usa**, igual que en el dossier (los insumos y equipos de la semana 1 se cargan en el simulador en la semana 3). Nada se aprende para quedar suelto.
+  2. **Arco de la materia con inicio y fin:** se planifica la materia entera antes que un nivel suelto. Cuando tiene sentido, una etapa produce algo (una decisión, una lista, un número) que una etapa posterior usa, igual que en el dossier (los insumos y equipos se cargan después en el simulador). No se fuerza la cadena donde no la hay.
   3. **Dominio antes de avanzar** (*mastery learning*): el alumno no pasa al nivel siguiente hasta hacerlo bien. Nunca se le da la respuesta: se le da una **escalera de ayuda**, en este orden: (a) la consecuencia en el mundo y una pista según su error; (b) una pista más concreta (qué paso revisar); (c) **a leer la sección exacta del dossier** que le hace falta (sección y página); (d) si vuelve a fallar, **otros números** (otra versión) para que no avance probando al azar. El registro guarda en qué escalón acertó.
   4. **Tipos de proyecto:** el dossier trabaja con cinco (producción, comercio, servicios, agrícola, digital) y cada tema cambia según el tipo. El juego tiene un hilo principal (hoy Lácteos Valle Alto, producción) y en cada etapa muestra cómo cambia el tema en otros tipos; más adelante, con el tipo del proyecto propio del alumno.
   5. **Decidir lo que el dossier ya responde** (números, orden, casos) y preguntarle a Ronald **como mucho una cosa por ronda**, sólo lo que es de su gusto o criterio.
 - **Todo lo que Ronald decide se vuelve regla de los agentes en el mismo commit** (el agente o los agentes que corresponda, y `docs/juego/IDEA-JUEGO.md`).
 - **Por temas, sin tiempo** (Ronald, 26-09): el juego y todo lo que se le presente a Ronald se organiza por **temas** (las secciones del Capítulo 4 y sus subtemas), nunca por semanas, salvo para citar dónde está archivado un dossier ("dossier de la semana 2, pág. X"). **Sin duraciones ni plazos**: nada de "en una semana", "20 minutos por semana" ni fechas. Cada tema se abre cuando Ronald lo habilita.
+- **Primero la maqueta, después el detalle; no todo tema es un juego** (Ronald, 26-09). El orden de trabajo es: (1) **maqueta general** de la materia entera, con todos los temas del dossier, un inicio y un fin, orquestada para que tenga sentido; un tema usa lo del anterior **sólo cuando hace falta o se puede**, sin forzar la cadena; (2) recién después, **tema por tema y subtema por subtema**, decidiendo en cada uno **si hace falta un juego**: a veces basta una escena corta, una lectura o un paso de la historia. No se presenta el detalle antes de que Ronald apruebe la maqueta.
 - **Términos técnicos de diseño de juegos**, cada uno explicado en una línea la primera vez (Ronald no es desarrollador de videojuegos).
 - **Todo lo que leerá un alumno va en tuteo** ("puedes", "mira"), sin guiones largos (—).
 - **Realista con el tamaño:** una persona con Claude y el nivel 1 primero. Si propones algo caro, dilo y da la versión barata.

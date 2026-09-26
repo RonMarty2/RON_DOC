@@ -54,6 +54,8 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
   const [guardado, setGuardado] = useState<EstadoGuardado>("sin-cambios");
   // Sólo se sube a la cuenta lo que hizo el alumno, no lo que se acaba de leer de ella.
   const pendiente = useRef(false);
+  // Sube en uno para volver a intentar un guardado fallido sin esperar otra respuesta del alumno.
+  const [reintento, setReintento] = useState(0);
 
   const empezarCon = (v: number, guardada: Partida | null) => {
     pendiente.current = false;
@@ -104,7 +106,8 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
   }, [alumnoId, cursoId]);
 
   // Cada cambio del alumno se sube a su cuenta, agrupando los que llegan seguidos.
-  // Si falla, queda pendiente y se reintenta con la próxima respuesta (no en bucle).
+  // Si falla, queda pendiente y se reintenta con la próxima respuesta, a los 15 s o al volver la
+  // conexión: la entrega es la última respuesta, así que sin esto quedaba sin subir hasta recargar.
   useEffect(() => {
     if (!alumnoId || !pendiente.current) return;
     const t = window.setTimeout(() => {
@@ -118,7 +121,18 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
         });
     }, 600);
     return () => window.clearTimeout(t);
-  }, [partida, alumnoId, cursoId]);
+  }, [partida, alumnoId, cursoId, reintento]);
+
+  useEffect(() => {
+    if (guardado !== "error") return;
+    const otraVez = () => setReintento((n) => n + 1);
+    const t = window.setTimeout(otraVez, 15_000);
+    window.addEventListener("online", otraVez);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("online", otraVez);
+    };
+  }, [guardado, reintento]);
 
   const entregada = guardado === "entregada";
 

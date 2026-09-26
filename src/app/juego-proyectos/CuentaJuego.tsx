@@ -90,7 +90,7 @@ const AVISO: Record<EstadoGuardado, string> = {
   "sin-cambios": "",
   guardando: "Guardando en tu cuenta…",
   guardado: "Guardado en tu cuenta ✔",
-  error: "No se pudo guardar en tu cuenta. Sigue en este celular; se intenta de nuevo con tu próxima respuesta.",
+  error: "No se pudo guardar en tu cuenta. Sigue en este celular; se vuelve a intentar solo en unos segundos y cuando vuelva la conexión.",
   entregada: "Escena entregada: tu docente ya la ve y no se puede cambiar.",
 };
 

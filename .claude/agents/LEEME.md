@@ -30,14 +30,16 @@ Hay dos fuentes que se van a juntar:
 
 ## Equipo de diseño del juego
 
-Seis agentes, uno por parte del GDD (`docs/juego/gdd/LEEME.md`). Orden: visión → bucle → aprendizaje →
-mundo → progresión; el crítico revisa cada parte antes de llevarla a Ronald. Si al cambiar un agente
+Siete agentes, uno por parte del GDD (`docs/juego/gdd/LEEME.md`). Orden: **adaptador de dossier →
+conversación con Ronald hasta que elige** → visión → bucle → aprendizaje → mundo → progresión; el
+crítico revisa cada parte antes de llevarla a Ronald. Si al cambiar un agente
 cambian las reglas comunes, se cambian en los seis.
 
 ## Registro
 
 | Agente | Para qué | Origen | Fecha | Notas |
 |---|---|---|---|---|
+| `adaptador-de-dossier` | Primer paso: dossier → 2 o 3 propuestas de juego para conversar con Ronald (`docs/juego/gdd/00-adaptacion-<materia>.md`) | Nube | 2026-09-26 | Pedido de Ronald: los demás corren después de que él elige |
 | `director-de-juego` | Visión, género, pilares (`docs/juego/gdd/01-vision.md`) | Nube | 2026-09-26 | Equipo de diseño del juego; reglas comunes repetidas en cada uno |
 | `disenador-de-bucle` | Bucle principal, mecánicas, minijuegos, economía (`02`) | Nube | 2026-09-26 | |
 | `disenador-de-progresion` | Beat chart de cada materia (`03-progresion-<materia>`) | Nube | 2026-09-26 | Necesita el temario de Ronald |

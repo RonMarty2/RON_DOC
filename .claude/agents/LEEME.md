@@ -36,6 +36,26 @@ conversación con Ronald hasta que elige** → visión → bucle → aprendizaje
 crítico revisa cada parte antes de llevarla a Ronald. Si al cambiar un agente
 cambian las reglas comunes, se cambian en los seis.
 
+**Se usan TODOS, cada uno en su etapa (Ronald, 27-09: «si hacemos juego debe usarse todos los agentes
+que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque parezca rápida:
+
+| Etapa | Agente | Qué deja |
+|---|---|---|
+| **Materia** (una vez) | `adaptador-de-dossier` → Ronald elige el marco → `director-de-juego` → `disenador-de-progresion` | `00-adaptacion-<materia>`, `01-vision`, `03-progresion-<materia>` |
+| **Tema** 1. Ficha | `adaptador-de-dossier` | la ficha del tema, con el dossier verificado |
+| 2. Qué aprende y cómo se evalúa | `disenador-de-aprendizaje` | objetivos, errores típicos, **qué varía por alumno**, registro |
+| 3. Cómo se juega | `disenador-de-bucle` | modalidad y mecánica del tema |
+| 4. Personajes y diálogos | `disenador-narrativo` | quién aparece y qué dice (en tuteo) |
+| 5. Revisión del papel | `critico-de-jugabilidad` | hallazgos; **recién ahí se le muestra a Ronald** y él aprueba |
+| 6. Construcción | Claude (motor con pruebas + pantalla) | el tema jugable en borrador |
+| 7. Revisión de lo jugable | `critico-de-jugabilidad` | hallazgos sobre el juego real, antes de mostrárselo a Ronald |
+| 8. Antes de subir o publicar | `revisar-publicacion` | pruebas, compilación, borradores ocultos, Supabase |
+| 9. Ronald lo juega en su celular | Ronald | aprueba el tema; recién ahí el siguiente |
+
+Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó con las fichas sin pasar
+por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
+Ronald y se anota en la bitácora.
+
 **Regla permanente (Ronald, 26-09):** todo lo que se planifica o decide con Ronald se vuelve regla del
 agente o los agentes que correspondan, en el mismo commit.
 

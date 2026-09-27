@@ -267,3 +267,13 @@ Ronald: *«¿No quedamos en que haríamos tema por tema? ¿Por qué juntaste?»*
 prueba un solo tema; el siguiente empieza cuando Ronald aprueba el anterior; y la maqueta general no se
 da por aprobada sin que Ronald lo diga. Regla de los agentes de diseño.
 
+## 19. Todos los agentes, en su etapa; y nada que se pueda copiar (27-09)
+
+Al construir el Tema 1 de AIEF, Ronald vio dos cosas. Primero, que se había construido sin pasar por
+todos los agentes: *«si hacemos juego debe usarse todos los agentes que creamos, en la etapa que
+corresponde»*. La tabla de etapas quedó en `.claude/agents/LEEME.md`. Segundo, que en 1.1 las
+respuestas eran iguales para todos: *«una vez que sepamos la respuesta siempre será la misma… ¿no
+debería generar casos diferentes?»*. Desde ahora, toda parte que cuenta para la nota da otra respuesta
+correcta a cada alumno (o pesa poco y se dice), y el crítico lo revisa también sobre el tema ya
+construido. Reglas de los siete agentes.
+

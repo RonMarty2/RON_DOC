@@ -3,6 +3,7 @@ import path from "node:path";
 import { MATERIAS } from "@content/materias";
 import { PODCASTS } from "@content/podcasts";
 import { TESIS_RESUMEN } from "@content/tesis";
+import { juegosPublicados } from "@/lib/juegos";
 import type { HerramientaMateria, Materia, Tema } from "@/lib/types";
 
 // Se publica sólo lo que tiene contenido real: mejor ninguna página que una plantilla vacía.
@@ -36,6 +37,11 @@ export function materiasPublicadas(): Materia[] {
 
 export function materiasEnPreparacion(): Materia[] {
   return MATERIAS.filter((m) => !materiaPublicada(m));
+}
+
+/** Con un juego publicado, /juegos pasa a estar en el menú, la portada y el sitemap. */
+export function hayJuegos(): boolean {
+  return juegosPublicados(MATERIAS).length > 0;
 }
 
 export function hayPodcasts(): boolean {

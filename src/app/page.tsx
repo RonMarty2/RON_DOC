@@ -3,7 +3,7 @@ import { PROYECTOS } from "@content/proyectos";
 import { MathText } from "@/components/MathText";
 import { MateriaCard } from "@/components/MateriaCard";
 import { ProyectoCard } from "@/components/ProyectoCard";
-import { materiasEnPreparacion, materiasPublicadas, temasPublicados } from "@/lib/publicado";
+import { hayJuegos, materiasEnPreparacion, materiasPublicadas, temasPublicados } from "@/lib/publicado";
 
 const PASOS = [
   {
@@ -98,6 +98,26 @@ export default function HomePage() {
           </p>
         )}
       </section>
+
+      {hayJuegos() && (
+        <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8">
+          <Link
+            href="/juegos"
+            className="group block rounded-[1.25rem] border border-borde bg-tarjeta p-6 shadow-[0_8px_30px_rgba(0,0,0,0.05)] transition hover:-translate-y-0.5 hover:border-borde-fuerte sm:p-8"
+          >
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-acento">Juegos</p>
+            <h2 className="mt-2 font-serif text-3xl font-semibold tracking-tight">Cada materia es una isla</h2>
+            <p className="mt-3 max-w-2xl leading-relaxed text-tinta-media">
+              Casos que se resuelven calculando, con tus propios números: si el cálculo está mal, la
+              empresa lo paga.
+            </p>
+            <span className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-acento px-5 py-2.5 text-sm font-semibold text-acento-texto transition group-hover:bg-acento-hover">
+              Ver las islas
+              <span aria-hidden className="transition group-hover:translate-x-0.5">→</span>
+            </span>
+          </Link>
+        </section>
+      )}
 
       <section className="border-y border-borde bg-papel-suave">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">

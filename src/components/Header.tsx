@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
-import { hayPodcasts, hayTesis } from "@/lib/publicado";
+import { hayJuegos, hayPodcasts, hayTesis } from "@/lib/publicado";
 
 /**
  * Encabezado del sitio.
@@ -12,6 +12,7 @@ import { hayPodcasts, hayTesis } from "@/lib/publicado";
 export function Header() {
   const enlaces = [
     { href: "/#aulas", label: "Aulas" },
+    ...(hayJuegos() ? [{ href: "/juegos", label: "Juegos" }] : []),
     { href: "/proyectos", label: "Proyectos" },
     ...(hayPodcasts() ? [{ href: "/podcasts", label: "Podcasts" }] : []),
     ...(hayTesis() ? [{ href: "/tesis", label: "Tesis" }] : []),

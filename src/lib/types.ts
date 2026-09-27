@@ -69,6 +69,16 @@ export interface HerramientaMateria {
   tipo?: "aula" | "lamina" | "hoja" | "juego";
   /** Mientras sea true no aparece en ningún lado y su página no se indexa. Publicar = quitarlo. */
   borrador?: boolean;
+  /** Sólo para `tipo: "juego"`: slug de su isla en `content/islas.ts`. */
+  isla?: string;
+}
+
+/** Una isla del juego: normalmente, una materia. Sus juegos se registran en `content/materias.ts`. */
+export interface Isla {
+  slug: string;
+  nombre: string;
+  /** Qué hace el estudiante en la isla, en una frase. */
+  descripcion: string;
 }
 
 export interface Podcast {

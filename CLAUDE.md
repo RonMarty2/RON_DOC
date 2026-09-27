@@ -25,7 +25,7 @@ Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (
 
 Todo lo que se construye (código, contenido, juego, agentes, documentos) se arma para crecer **sumando piezas**, no reescribiendo:
 
-1. **Agregar es sumar archivos.** Una materia, una isla, una escena o una lámina nueva entra con sus propios archivos (datos + funciones con sus pruebas) y una línea en su registro (`content/materias.ts`, `.claude/agents/LEEME.md`, `docs/juego/gdd/LEEME.md`), sin tocar lo que ya funciona.
+1. **Agregar es sumar archivos.** Una materia, una isla, una escena o una lámina nueva entra con sus propios archivos (datos + funciones con sus pruebas) y una línea en su registro (`content/materias.ts`, `content/islas.ts`, `.claude/agents/LEEME.md`, `docs/juego/gdd/LEEME.md`), sin tocar lo que ya funciona.
 2. **Lo común no depende de una materia.** El motor del juego, las piezas visuales y las reglas de los agentes reciben la materia como dato; si traen un ejemplo de una materia, se marca como ejemplo.
 3. **Nombres estables.** Lo que ya se guardó (isla, escena, versión, claves del navegador, columnas de Supabase) no se renombra: lo nuevo se agrega al lado.
 4. **Lo guardado se sigue leyendo.** Si cambia el formato de una partida o de un progreso, el código nuevo lee también el viejo: nunca se pierde lo que un alumno ya jugó.

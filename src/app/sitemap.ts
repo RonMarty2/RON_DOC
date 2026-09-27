@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { hayPodcasts, hayTesis, herramientasPublicadas, materiasPublicadas, temasPublicados } from "@/lib/publicado";
+import { hayJuegos, hayPodcasts, hayTesis, herramientasPublicadas, materiasPublicadas, temasPublicados } from "@/lib/publicado";
 import { SITIO } from "@/lib/seo";
 
 // Necesario para que se genere como archivo estático con `output: "export"`.
@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ...herramientasPublicadas(m).map((h) => `${h.href}/`),
       ...temasPublicados(m).map((t) => `/materias/${m.slug}/${t.slug}/`),
     ]),
+    ...(hayJuegos() ? ["/juegos/"] : []),
     ...(hayPodcasts() ? ["/podcasts/"] : []),
     ...(hayTesis() ? ["/tesis/"] : []),
   ];

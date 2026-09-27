@@ -40,6 +40,20 @@ sin subirlos, y se anota su versión. Pasos:
 - [ ] 9. **Siguiente:** sólo el Tema 1 jugable (Llegada, 1.1, 1.2, 1.3) en la pantalla de «La ventanilla», web y app; probarlo y mostrárselo a Ronald. La maqueta general sigue esperando su aprobación.
 - [x] 8. Fichas de la versión mínima (Llegada, Tema 1, Tema 2) con los ajustes; después, el código común que falta (registro y nube por isla y escena, escalón "otros números", guardado sin conexión) y la primera escena.
 
+### Entrada «Juegos»: una sección por isla (27-09, hecho · Claude, PC RONMARTY)
+
+Pedido de Ronald: el alumno no tenía por dónde llegar a los juegos. Hecho: página **`/juegos`** con una
+sección por isla (`content/islas.ts`: Proyectos II y AIEF, en ese orden) y sus juegos; las islas sin juego
+publicado dicen «En construcción». Cada juego lleva `isla` en `content/materias.ts` (sin isla válida el
+build se corta, `src/lib/juegos.ts` con 4 pruebas). **Mientras ningún juego esté publicado, `/juegos` es
+vista previa del docente** (sin enlaces, `noindex`, muestra también los borradores con un aviso); con el
+primer juego sin `borrador` aparecen solos el botón «Juegos» del menú, la tarjeta de la portada y la
+entrada del sitemap. Regla pasada a los 7 agentes del juego. 592 pruebas; mirada en 375 px sin desborde.
+
+- **Para la sesión de AIEF:** cuando «La ventanilla» tenga ruta, se registra como herramienta
+  `tipo: "juego"`, `isla: "aief"`, `borrador: true`. AIEF todavía no es una materia de
+  `content/materias.ts`: hay que sumarla (sin temas; se publica sola cuando el juego deje de ser borrador).
+
 ### App de Android: entrar con Google dentro de la app (27-09) · **recompilar**
 
 Google no deja iniciar sesión dentro de la vista web de una app, así que en la app el botón «Entrar

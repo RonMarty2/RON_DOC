@@ -87,6 +87,7 @@ export const MATERIAS: Materia[] = [
         titulo: "Valle de los Proyectos: la máquina que no alcanzaba",
         descripcion: "Juego en pixel art: asesoras a una lechera de Punata, calculas su capacidad y decides en qué invertir. Cada alumno tiene sus propios números.",
         tipo: "juego",
+        isla: "proyectos-ii",
         borrador: true,
       },
     ],

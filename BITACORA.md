@@ -23,7 +23,8 @@ sin subirlos, y se anota su versión. Pasos:
 - [x] 2. Decisión anotada (IDEA-JUEGO §14 y §15, esta bitácora).
 - [x] 3. Adaptador: lee los dossiers de la carpeta de materias sin subirlos y anota su versión en «Dossiers usados» (`scripts/huella-dossier.mjs`, con 4 pruebas; `--comparar` avisa si un dossier cambió). Regla nueva de Ronald en los 7 agentes: **un juego propio por materia** (IDEA-JUEGO §16).
 - [x] 4. Ronda 1 del adaptador con AIEF → `docs/juego/gdd/00-adaptacion-aief.md` v1 (7 dossiers leídos enteros, huellas anotadas; tres marcos: **A «La ventanilla»** oficial de créditos, recomendado; B «Caso abierto» perita; C «El mánager de la banda»; con maqueta general, sin fichas). Revisado por el crítico en `06-revisiones.md`: mantiene A con **2 bloqueos** (se gana rechazando a todos; inicio y fin no sobreviven al orden en que se dicta) y 5 importantes. Ambos confirman inconsistencias del dossier de AIEF (IUE 25 % en el Tema 2 y ausente en los casos de los Temas 5 a 7, entre otras): se avisan a Ronald, no se tocan desde acá.
-- [ ] 5. Ronald elige marco (A, B, C o combinación) → ronda 2 del adaptador con los bloqueos del crítico corregidos.
+- [x] 5. Marco elegido el 27-09: **A «La ventanilla»** (Ronald delegó: «hacé todo tú»; era el recomendado por el adaptador y el crítico).
+- [ ] 6. **(en curso)** Ronda 2 del adaptador: sólo la maqueta general corregida (sin estrategia dominante; funciona en el orden de dictado, con el Cierre al final). Los dossiers de AIEF están en la PC de Ronald: lo que haya que verificar queda marcado.
 
 ### App de Android: entrar con Google dentro de la app (27-09) · **recompilar**
 

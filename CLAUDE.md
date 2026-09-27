@@ -6,6 +6,17 @@
 
 **Ronald autoriza subir directo a `main`** cuando `npm test` y `npx tsc --noEmit` pasan: no hace falta preguntar ni abrir PR. Si la sesión trabaja en una rama asignada (las sesiones en la nube la traen), se sube también a `main` con avance directo (`git push origin HEAD:main` después de traer `main`; si `main` avanzó, integrarlo antes, nunca forzar). El deploy a GitHub Pages sale solo con cada push a `main`.
 
+## Cambiar de PC (escritorio ↔ portátil): la sincronización es GitHub, no Synology (2026-09-27)
+
+**Synology sincroniza los archivos de este proyecto, pero NO la carpeta `.git`** (bloquea todo lo que empieza con punto). Resultado: el código en disco puede estar al día en las dos PC, mientras el historial de git de una de ellas queda atrasado sin que nada avise — así estuvo esta PC, 123 commits atrás, el 2026-09-27.
+
+Por eso, en RON_DOC **la sincronización real pasa por GitHub, no por la carpeta compartida**:
+
+1. **Al empezar a trabajar en cualquier PC:** `git pull` antes de tocar nada. Si dice "up to date", perfecto. Si trae commits nuevos, revisarlos (`git log`) antes de seguir.
+2. **Al terminar o cambiar de PC:** dejar todo commiteado y con `git push` hecho — nunca cambios sueltos sin subir. Un `git status` limpio ("nothing to commit, working tree clean" y "up to date with origin/main") es la señal de que se puede apagar o pasar a la otra PC sin perder nada.
+3. **Si al abrir una PC `git status` muestra archivos modificados o sin seguimiento sin que se haya tocado nada a mano**, es este mismo problema (el `.git` local quedó atrás mientras Synology actualizaba los archivos por su cuenta desde otra sesión que sí subió a GitHub). No es trabajo perdido: `git pull` primero para poner el historial al día, y recién ahí mirar qué diferencias reales quedan contra `origin/main` (probablemente ninguna, o algo chico sin subir).
+4. **Nunca asumir por los archivos en disco si algo "está subido".** Los archivos pueden estar sincronizados por Synology y aun así no estar en GitHub (o al revés). La única fuente de verdad de "qué hay en GitHub" es `git status` + `git log origin/main` después de un `git fetch`.
+
 ## Agentes
 
 Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (registro y reglas para combinar los de la nube con los de la PC de Ronald); todo agente nuevo se anota ahí en el mismo commit. **Todo lo que Ronald decide al planificar el juego se vuelve regla de los agentes que correspondan, en el mismo commit** (pedido del 26-09).

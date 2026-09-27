@@ -1,17 +1,236 @@
 # 00 · Adaptación del dossier: Análisis e Interpretación de Estados Financieros (AIEF)
 
-**Estado: en conversación (Ronda 1).** Agente: `adaptador-de-dossier`. Es el **juego propio de AIEF**
-(`IDEA-JUEGO.md` §14 y §16): no comparte mundo, personajes ni género con el de Proyectos II; comparte
-sólo la base técnica (cuentas, versión por alumno, registro para la nota, escalera de ayuda, pruebas).
+**Estado: marco A "La ventanilla" ELEGIDO; maqueta general corregida en revisión (Ronda 2).**
+Agente: `adaptador-de-dossier`. Es el **juego propio de AIEF** (`IDEA-JUEGO.md` §14 y §16): no comparte
+mundo, personajes ni género con el de Proyectos II; comparte sólo la base técnica (cuentas, versión por
+alumno, registro para la nota, escalera de ayuda, pruebas). Las fichas por subtema vienen recién cuando
+apruebes esta maqueta (`IDEA-JUEGO.md` §13).
 
-**Única pregunta para Ronald:** ¿te convence que el alumno sea **el oficial de créditos de un banco
-chico del valle** (propuesta A, recomendada), o te llama más **la investigadora que resuelve casos y
-los defiende en audiencia** (B) o **el administrador financiero de la banda Los Cóndores de Cliza**
-(C)? (sección 7).
+**Única pregunta para Ronald:** ¿te parece justo que **rechazar a un buen cliente cuente como error del
+tema, igual que prestarle a uno malo**, de modo que nadie pase un tema rechazando a todos? (Ronda 2,
+sección R2.7; recomendado: sí).
 
 ---
 
-## Ronda 1 · versión 1 · 26-09-2026
+## Ronda 2 · versión 2 · 27-09-2026 · Maqueta general corregida del marco A
+
+**Con qué se trabajó:** la Ronda 1 (abajo), la revisión del crítico sobre ella (`06-revisiones.md`,
+26-09) y `IDEA-JUEGO.md` §9 a §17. **Los dossiers no estaban en este equipo** (viven en tu PC): todo sale
+de lo que la Ronda 1 ya resumió y citó. Lo que hay que confirmar contra el dossier o contra la ficha de
+la materia va marcado **[verificar en el dossier]** o **[verificar en la ficha de la materia]**; no se
+inventó ninguna página.
+
+**Qué cambia respecto de la Ronda 1:** se corrigen los dos bloqueos del crítico (rechazar a todos ganaba
+sin entender; el inicio y el fin no aguantaban tu orden de dictado) y se toman sus hallazgos 3, 4, 6, 7,
+8 y 9. Sólo es la **maqueta**: qué piezas hay, en qué orden se habilitan, qué hilo las une y qué usa
+cada una de otra. Nada por subtema todavía.
+
+### Lo que dijo Ronald
+
+- **27-09, sobre las tres propuestas de la Ronda 1:** «hacé todo tú». Delegó la elección. Se elige el
+  **Marco A, "La ventanilla"** (oficial de créditos de la agencia de Cliza), el que recomendaban el
+  adaptador y el crítico. De B se toma la **objeción** (desmentir con un número una frase que "no se
+  puede afirmar"); de C, que **Los Cóndores vuelvan** como cliente cuya historia se sigue.
+
+### Palabras de oficio nuevas en esta ronda
+
+- **Estrategia dominante:** una forma de jugar que gana siempre sin pensar (por ejemplo, "rechaza a
+  todos"). Si existe, el juego no enseña: hay que quitarla.
+- **Pieza:** una parte del juego que tú habilitas por separado (el Inicio, cada tema, el Cierre). Tiene
+  sus propios archivos y su punto de control.
+- **Meta de colocación:** cuánto tiene que prestar la agencia. En la vida real es la presión que tiene
+  todo oficial de créditos; en el juego es lo que vuelve costoso decir que no.
+- **Línea condicionada:** una frase de la historia que cambia según lo que el alumno ya jugó ("la otra
+  vez viniste por las luces"), no según el número del tema.
+
+### R2.1 El corazón del bucle: por qué nadie gana sin entender
+
+**La idea en una línea:** la agencia vive de prestar; si no prestas, se pierde el cliente; si prestas
+mal, entra la mora. Sólo el número que el tema te enseña a calcular dice cuánto se puede prestar.
+
+- **La meta de colocación.** Cada tema, tu jefa te fija cuánto tiene que colocar la agencia con las
+  carpetas de ese tema. No la cumples rechazando.
+- **Tres colores en tu pared de cartera**, no dos. **Verde:** prestaste y paga. **Rojo:** prestaste más
+  de lo que podía pagar (mora). **Gris:** era un buen cliente, le dijiste que no (o le ofreciste tan
+  poco que no le servía) y se fue a la cooperativa de enfrente. Rojo y gris pesan igual.
+- **Clientes buenos de verdad.** Más o menos la mitad de las carpetas de cada tema merecen el sí. La
+  versión de cada alumno sortea cuáles, y cuánto.
+- **La decisión se escribe.** No hay botones de "aprobar" y "rechazar": escribes **el monto** que
+  apruebas (cero es rechazar) y la cuota o la condición, junto con **el número que lo sostiene** (las
+  fuentes reales, el flujo de operación, la prueba ácida, según el tema).
+- **El "meses después" sale de una función con pruebas**, no de un guion por opción: compara la cuota
+  con la capacidad de pago de esa versión. Si el monto queda por encima, rojo; si queda por debajo de lo
+  que el cliente necesita, gris; entre los dos, verde.
+- **Cada cliente trae una frase que no se puede afirmar** (las secciones "Qué NO se puede afirmar" del
+  dossier): "este año generamos 43 mil". Desmentirla con un número escrito es el verbo fijo del bucle.
+- **Condición para pasar el tema:** cumplir la meta sin rojos ni grises, con los números bien escritos.
+  Cada rojo o gris es un error y sube un escalón de la ayuda (la consecuencia en el mundo, después una
+  pista concreta, después la sección del dossier, después otra versión).
+
+**El alumno perezoso, jugado:**
+
+- **Siempre no:** grises, meta sin cumplir, no pasa.
+- **Siempre sí, por lo que pide:** la mitad de los que piden de más entra en rojo.
+- **Al azar:** cae en rojo o en gris en casi todas las carpetas.
+- **Prestar poquito a todos (lo más barato):** por debajo de lo que el cliente necesita, se va: gris.
+- **Copiar al compañero:** otra versión, otros montos y otros clientes buenos; lo copiado cae en rojo o
+  gris.
+- **Mover cuentas hasta que se prenda la luz:** la luz de control ya no responde a cada movimiento; se
+  prende sólo cuando **cierras** el cuadro y escribes los totales, y cada cierre fallido cuenta como un
+  intento (hallazgo 4 del crítico).
+
+**Los temas sin crédito también tienen dos lados.** En el Tema 1 decides si aceptas o devuelves el
+balance que trae el cliente como respaldo: devolver uno bien hecho es un cliente perdido; aceptar uno
+mal hecho, una observación del auditor. En el Tema 7 calificas tu propio banco: llamarlo frágil cuando
+está sano desata una corrida que no hacía falta; llamarlo sano cuando no lo está deja pasar la mora que
+se come el capital.
+
+**Cómo se juega en el celular, en pocas frases:** una carpeta por pantalla, con pestañas ("antes",
+"después", "acta"); asignas una cuenta tocándola y después tocando su columna, sin arrastrar; el manual
+es una hoja que sube desde abajo y el botón atrás la cierra sin salir del juego; la decisión es un solo
+campo numérico con el teclado de números, y arriba queda a la vista el dato que estás usando. La pared de
+cartera es una franja de fichas de colores que se abre con un toque. Cada paso se guarda solo en el
+teléfono; si se corta la conexión sigues jugando y se sube al volver.
+
+### R2.2 Las piezas y el orden en que las habilitas
+
+Tu orden de dictado, según la Ronda 1 y la revisión del crítico: el Tema 1, el 2, la primera mitad del 4
+(fondos, D4 §4.1 a §4.3), el 3, la segunda mitad del 4 (capital de trabajo, D4 §4.4 a §4.6), el 5, el 7
+sin su cierre, el 6, y al último el cierre de D7 (§7.12). **[verificar en la ficha de la materia:** en
+qué punto exacto entran la segunda mitad del Tema 4 y el Tema 5**]**. Por eso el Tema 4 se parte en dos
+piezas, y el inicio y el final son piezas propias.
+
+1. **Inicio · La llegada** (la habilitas primero). Tu primer día en la agencia de Cliza del Banco Kusi:
+   la jefa, un manual casi vacío, la pared de cartera vacía y la meta de colocación. "La agencia vive de
+   prestar. Si no prestas, cierra; si prestas mal, también." Ningún número todavía.
+2. **Tema 1 · Las reglas.** Tres personas piden el mismo balance para cosas distintas; operaciones que
+   se resuelven con el manual de las 14 NC; la máquina que "creció" sólo por inflación. Decides aceptar o
+   devolver balances. Deja en el manual la página de NC, NIIF supletoria y unidad de medida.
+3. **Tema 2 · Los dos estados.** La ferretería, la distribuidora y la cooperativa que ganó y no puede
+   pagar. Primeros créditos y primeras fichas. Deja la ecuación y la cascada (con IUE al 25 %) en el
+   manual.
+4. **Escena propia · Don Efraín entra por primera vez.** Corta, sin cálculo: te presentas con Los
+   Cóndores de Cliza. Se juega sola antes de la primera pieza que la necesite (en tu orden, el Tema 4a);
+   si alguna vez habilitas el 3 primero, se juega antes del 3.
+5. **Tema 4a · De dónde vino la plata** (D4 §4.1 a §4.3). Los Cóndores piden 20 mil para las luces
+   ("generamos 43 mil"); cuadro de fondos, control con la caja y el acta de socios con el aporte en
+   especie. Escribes las fuentes reales y el monto. El manual explica "no pasó por caja" sin necesitar
+   todavía el vocabulario del Tema 3.
+6. **Tema 3 · El patrimonio.** Los Cóndores vuelven (línea condicionada) y compiten con el taller Killa
+   por el único cupo; estado de cambios e índice de autofinanciamiento. Dejar a los dos sin cupo es gris.
+7. **Tema 4b · El colchón** (D4 §4.4 a §4.6). Capital de trabajo, su composición, y la contraoferta de
+   pronto pago contra el préstamo: escribes el costo anual.
+8. **Tema 5 · La caja y los porcentajes.** Flujo de Los Cóndores y el mes en rojo (escribes cuánto y
+   cuándo prestar como puente); la banda nacional cuatro veces más grande; La Espiga con su cuaderno y
+   un borrador que cuadra y está mal.
+9. **Tema 7 · El supervisor** (D7 §7.1 a §7.11). Se da vuelta la mesa: ahora leen **tu banco**, con los
+   números de la versión (no los de tu cartera). La mora que se lleva el capital, el CAMEL y la letra que
+   domina, el auditor con su salvedad (objeción), y la mentoría a Sumaj Manos, donde escribes lo que
+   cuesta cada acción y con qué la paga la dueña. Como el Tema 6 todavía no se jugó, la jefa te da la
+   **tarjeta de tres ratios** (ROA, ROE y apalancamiento) que D7 §7.1 ya trae como recordatorio.
+10. **Tema 6 · El comité.** Un crédito grande para Los Cóndores: eliges tres o cuatro ratios, los lees
+    contra una referencia y desarmas el ROE. Se sostiene solo; como ya viste un banco por dentro, el
+    comité te lo recuerda en una línea condicionada.
+11. **Cierre · La revisión del año y "ahora con el tuyo"** (D7 §7.12; lo habilitas al último). El
+    supervisor abre tu pared de fichas y comenta las rojas y las grises en dos líneas cada una. Después,
+    la secuencia de seis preguntas aplicada al emprendimiento del reto del alumno, que ya puede usar los
+    ratios del Tema 6. Todo queda en el registro para **tu defensa oral**, el jefe final.
+
+### R2.3 Qué usa cada pieza de otra (sólo cuando hace falta)
+
+- **Los números no se arrastran nunca:** cada pieza arranca de su **punto de control**, con los números
+  correctos de la versión del alumno. Un error de un tema no cambia los datos del siguiente.
+- **La historia sí se arrastra**, con líneas condicionadas escritas según lo ya jugado, no según el
+  número del tema. Así el orden en que habilitas no rompe nada.
+- **Lo que de verdad se usa:** la ecuación y la cascada (Tema 2) en todos los que siguen; la idea de
+  fuente y aplicación (4a) en el flujo del Tema 5; la tarjeta de tres ratios en el Tema 7; todos los
+  temas en el Cierre, que por eso va al final.
+- **Comprobado en tu orden:** ninguna pieza da por hecho algo de una pieza que se habilita después. El 4a
+  no usa los componentes del patrimonio (Tema 3); el 7 usa sólo tres ratios, que la tarjeta cubre
+  **[verificar en el dossier:** que el diagnóstico de Sumaj Manos, D7 §7.10 y §7.11, no pida otros
+  ratios del Tema 6**]**; el 6 no usa nada del 7.
+- **La cartera es historia, no cálculo** (hallazgo 3 del crítico). La pared se llena tema por tema y se
+  comenta en el Cierre y en la defensa ("¿por qué le prestaste a este?"), pero no entra en ningún número
+  que se califique. El banco del Tema 7 tiene sus propios números de versión. El ascenso a analista de la
+  Ronda 1 se quita: ya no hace falta.
+- **Si un alumno no jugó una pieza**, la pared muestra esa franja vacía (no se llena "por defecto") y tu
+  página del docente lo marca.
+
+### R2.4 El hilo
+
+Doble, como en la Ronda 1: **Los Cóndores de Cliza**, que vuelven del 4a al 6 (el dossier los encadena
+del Tema 3 al 6), y **tu pared de cartera**, que se llena en todas las piezas con crédito y se lee en el
+Cierre. Los clientes de contraste (ferretería, distribuidora, cooperativa, Killa, banda nacional, La
+Espiga, Sumaj Manos) entran y salen en su tema.
+
+### R2.5 Avisos sobre el dossier (para ti; el juego ya tomó posición)
+
+El juego sigue **lo que enseña la regla** y la escalera de ayuda **nunca manda a leer un ejemplo que la
+contradiga**. Los ocho puntos de la Ronda 1 (§1.4) siguen en pie, más uno que encontró el crítico:
+
+- **IUE** (§1.4, punto 1): toda cascada del juego lleva IUE al 25 %. En los temas donde el dossier
+  calcula sin IUE (D5, D6, D7), el escalón de "a leer" apunta a **D2 §2.2** y no al ejemplo del tema.
+  Si corriges esos ejemplos, el escalón vuelve a su sección.
+- **NIIF en D7 §7.7** (punto 2): en la auditoría, el escalón "a leer" del marco normativo apunta a
+  **D1 §1.2**.
+- **D5 §5.1, los 18.000** (punto 5): el escalón apunta a los pasos del método indirecto, no al ejemplo
+  comentado.
+- **Nuevo, D4 §4.3:** dice que las fuentes reales "ya se aplicaron casi en su totalidad", pero las
+  aplicaciones reales (22.000) superan a las fuentes reales (18.000): se gastó todo y 4.000 más de la
+  caja. El juego lo dice así, y el escalón apunta a la regla de fuentes y aplicaciones.
+- **Casos de "Estudio de Casos":** inspiran, pero no se publican con sus números (además de Wara, Q'ente
+  y Amaru, que ya estaban fuera). El juego cambia empresa y números.
+- Qué escalón apunta a qué sección queda anotado en cada ficha, para revisarlo cuando cambie el dossier.
+  Las páginas se completan con el dossier a la vista **[verificar en el dossier]**.
+
+### R2.6 Costo y versión mínima, corregidos
+
+- **Lo caro es la cadena de Los Cóndores** (hallazgo 7): generar una banda entera por alumno que cuadre
+  en cinco piezas es varias veces el trabajo de `planta.ts`. **Versión barata, recomendada:** unas cinco
+  familias de Cóndores armadas y probadas una vez; cada alumno recibe una familia, y cada pieza sortea
+  sólo sus datos nuevos.
+- **Versión mínima jugable:** la Llegada, la escena de la máquina que "creció" (Tema 1) y el Tema 2 con
+  sus tres carpetas, la meta de colocación, la pared de tres colores y el "meses después" calculado. Es
+  lo más chico que ya prueba lo que importa: que rechazar a todos no gane y que el número decida.
+- **Estructura que suma:** cada pieza (Inicio, cada tema, la escena de Don Efraín, el Cierre) es su
+  propio archivo de datos y funciones con pruebas, con su interruptor de habilitación en la página del
+  docente; AIEF es una isla propia (`isla: "aief"`) y no toca lo guardado de Proyectos II. Cada decisión
+  es una entrada nueva del registro: sumar una carpeta no borra lo ya jugado.
+- **Web y app de Android por igual:** todo lo de R2.1 está pensado para el dedo y la pantalla chica
+  (nada que dependa del mouse), el teclado que tapa media pantalla, el botón atrás, la rotación y la
+  conexión que se corta. Se mide en 375×812 con el teclado abierto. Nada de esto necesita algo propio
+  del teléfono.
+
+### R2.7 Recomendación y la única pregunta
+
+**Decidido en esta ronda** (sale del dossier, de la revisión o de lo que delegaste): marco A; meta de
+colocación y pared de tres colores; la decisión se escribe como monto; el "meses después" sale de una
+función con pruebas; el Tema 4 en dos piezas; Inicio y Cierre como piezas propias; la escena del primer
+encuentro con Don Efraín; la cartera como historia y no como cálculo; la tarjeta de tres ratios en el
+Tema 7; los escalones "a leer" que evitan los ejemplos contradictorios.
+
+**La única pregunta, de criterio:** ¿te parece justo que **rechazar a un buen cliente cuente como error
+del tema, igual que prestarle a uno malo**? Recomendado: **sí**, porque es lo que impide pasar
+rechazando a todos y es lo que vive un oficial de créditos de verdad. La alternativa es que el gris sólo
+se vea en la pared y se converse en la defensa, pero entonces "rechaza a todos" vuelve a pasar los temas.
+
+**Si apruebas la maqueta**, la ronda siguiente trae las fichas tema por tema, empezando por la Llegada,
+el Tema 1 y el Tema 2 (la versión mínima), y decide en cada subtema si hace falta un juego o basta una
+escena.
+
+### Resumen de traspaso (provisional, hasta que apruebes la maqueta)
+
+- **Elegida:** Marco A, "La ventanilla": oficial de créditos de la agencia de Cliza del Banco Kusi
+  (nombre provisional). Género: inspección de documentos con consecuencias (*Papers, Please*).
+- **Decidido:** todo lo de R2.7, más lo de la Ronda 1 §7 (IUE al 25 %, marco de D1, sin Wara, Q'ente ni
+  Amaru, el alumno escribe cada número).
+- **Abierto:** la pregunta de R2.7; el punto exacto del dictado donde entran el Tema 4b y el Tema 5; si
+  corriges los ejemplos del dossier sin IUE; las fichas por subtema. El director, el bucle, el
+  aprendizaje, la narrativa y la progresión corren sobre esto cuando apruebes la maqueta.
+
+---
+
+## Ronda 1 · versión 1 · 26-09-2026 (antecedente; la corrige la Ronda 2)
 
 **Con qué se trabajó:** los siete dossiers de AIEF (Temas 1 a 7, archivos `.tex`), leídos completos
 desde la carpeta de materias de Ronald, y las cinco guías de lectura. No se copió nada al
@@ -211,7 +430,7 @@ Aquí manda el contenido, no el marco: cada tema pide un verbo distinto.
 Los tres admiten las modalidades de la sección 3; lo que cambia es **quién eres, qué avanza y qué se
 siente**. Los tres cubren los siete temas (sección 5).
 
-#### Marco A · "La ventanilla" (recomendado)
+#### Marco A · "La ventanilla" (recomendado; ELEGIDO en la Ronda 2)
 
 **Gancho:** *Te acaban de contratar en la agencia de Cliza de un banco chico del valle. Cada cliente
 que se sienta frente a ti trae papeles que dicen la verdad a medias, y cada crédito que firmas queda en
@@ -565,7 +784,7 @@ Los Cóndores** (C)? También vale "A con algo de B".
 
 ### Lo que dijo Ronald
 
-*(Pendiente.)*
+*(Respondió el 27-09: ver la Ronda 2, arriba.)*
 
 ---
 

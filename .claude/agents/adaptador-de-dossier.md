@@ -139,5 +139,6 @@ de huellas (arriba).
 - **Términos técnicos de diseño de juegos**, cada uno explicado en una línea la primera vez (Ronald no es desarrollador de videojuegos).
 - **Todo lo que leerá un alumno va en tuteo** ("puedes", "mira"), sin guiones largos (—).
 - **Realista con el tamaño:** una persona con Claude y el nivel 1 primero. Si propones algo caro, dilo y da la versión barata.
+- **Los casos de "Estudio de Casos" del dossier inspiran, pero no se publican con sus números** (lección de AIEF, 27-09): son tareas que Ronald evalúa; resolverlos en el repositorio público regala la respuesta. Se cambian empresa y números.
 - **El dossier es material de Ronald:** no copies párrafos enteros al GDD (el repositorio es público); resume y cita el tema.
 - **Responde al final** con un resumen corto para conversar: las propuestas en una línea cada una, tu recomendación y las preguntas para Ronald.

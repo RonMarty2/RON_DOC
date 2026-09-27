@@ -40,6 +40,17 @@ El nombre de la app sigue igual (pedido de Ronald).
 - [ ] **Ronald:** en Android Studio, `npm install`, *Gradle sync* y ▶ Run (hay plugins nuevos).
 - [ ] Probar en el teléfono: entrar con Google, elegir la cuenta, volver a la app ya adentro.
 
+### Juego: escalera de ayuda y dominio en la escena de la planta (27-09)
+
+Pieza común `src/lib/juego/escalera.ts` (sirve a cualquier escena de cualquier materia, con pruebas):
+error 1 → pista según el error; 2 → pista concreta del socio (qué revisar, sin el resultado); 3 →
+"lee en tu dossier" con la página exacta. La escena de la planta la usa en capacidad (D2 págs. 13 a
+15), compra (D2 págs. 14 y 15) y recuperación (sin página: el dossier no la trae, sigue la pista
+concreta). **Se quitó "seguir sin resolverlo"**: no se avanza sin hacerlo bien. El registro anota el
+primer momento en que llegó a cada escalón; las ayudas del formato viejo se siguen leyendo. Falta el
+cuarto escalón ("otros números"): necesita que el registro guarde la versión de cada paso. 569 pruebas;
+jugada con Playwright: sin errores y sin forma de saltar un paso.
+
 ### Pausado (26-09, pedido de Ronald): la adaptación de Proyectos II
 
 Se está mejorando primero la forma de planificar y los agentes. La adaptación queda en la ronda 2

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { problemasDeTexto } from "../revision";
+import { ayudaVisible } from "./escalera";
 import * as guion from "./guion-planta";
 import { CASO_DOSSIER, VERSION_MAXIMA, datosDeVersion, type Opcion } from "./planta";
 import { anotar, describir, guardarPartida, leerPartida, partidaNueva } from "./registro";
@@ -30,6 +31,12 @@ function todosLosTextos(d: ReturnType<typeof datosDeVersion>) {
     guion.PIDE_RECUPERACION,
     guion.PIDE_ARGUMENTO,
     guion.FINAL,
+    ...guion.ayudaPasoCapacidad(d).concreta,
+    ...guion.ayudaPasoCompra(d, "envasadora").concreta,
+    ...guion.ayudaPasoCompra(d, "tanque").concreta,
+    ...guion.AYUDA_PASO_RECUPERACION.concreta,
+    ayudaVisible(3, guion.ayudaPasoCapacidad(d)).leer!,
+    ayudaVisible(3, guion.ayudaPasoCompra(d, "tanque")).leer!,
   ];
 }
 
@@ -60,6 +67,9 @@ describe("registro", () => {
     expect(describir(d, { tipo: "capacidad", valor: 720 }).bien).toBe(true);
     expect(describir(d, { tipo: "recuperacion", valor: 3.1 }).bien).toBe(true);
     expect(describir(d, { tipo: "decision", opcion: "envasadora" }).bien).toBe(false);
+    // la ayuda del formato del 25-09 (sin paso ni escalón) se sigue leyendo
+    expect(describir(d, { tipo: "ayuda" }).texto).toBe("Pidió la explicación del socio");
+    expect(describir(d, { tipo: "ayuda", paso: "compra", escalon: "leer" }).texto).toBe("Se lo mandó a leer el dossier (las botellas con la compra)");
   });
 
   it("se guarda y se lee por versión; lo roto o ajeno no se lee", () => {

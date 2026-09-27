@@ -5,6 +5,7 @@
  */
 
 import { bs } from "../formato";
+import type { AyudaDePaso } from "./escalera";
 import {
   capacidadDiaria,
   consecuencia,
@@ -154,3 +155,41 @@ export const PIDE_ARGUMENTO = "Esto lo vas a defender en clase frente al docente
 export const FINAL =
   "Tu decisión, tus cálculos y tu argumento quedaron en el registro. La nota sale de acá más tu defensa en clase. " +
   "Próxima escena: «La cámara de frío que se llenó» (Semana 2).";
+
+// ── Escalera de ayuda de cada paso (escalera.ts) ─────────────────────────────
+// Las páginas son del dossier de Proyectos II archivado como semana 2 (D2), donde está capacidad y
+// cuello de botella (4.1.7). La recuperación de la inversión no está en ese dossier: su tercer escalón
+// repite la pista concreta hasta que Ronald indique dónde leerla.
+
+export function ayudaPasoCapacidad(d: DatosPlanta): AyudaDePaso {
+  return {
+    concreta: ayudaCapacidad(d),
+    leer: { donde: "de Proyectos II (semana 2), páginas 13 a 15", que: "capacidad y cuello de botella" },
+  };
+}
+
+export function ayudaPasoCompra(d: DatosPlanta, opcion: "envasadora" | "tanque"): AyudaDePaso {
+  const concreta =
+    opcion === "envasadora"
+      ? [
+          `Con la envasadora nueva, la línea es: pasteurizador ${litros(d.pasteurizador)} L/h, fermentación como antes, envasadora ${litros(d.envasadoraNueva)} L/h.`,
+          "¿Cambió la etapa más lenta? El ritmo de la planta es el de esa etapa.",
+        ]
+      : [
+          `Con un tanque más, fermentan ${d.tanques + 1} tanques de ${litros(d.litrosPorTanque)} L cada ${d.cicloHoras} h.`,
+          "Calcula ese ritmo por hora, compáralo con las otras etapas y usa el más lento, con las mismas horas y la misma eficiencia.",
+        ];
+  return {
+    concreta,
+    leer: { donde: "de Proyectos II (semana 2), páginas 14 y 15", que: "la envasadora que no agregó ni un litro" },
+  };
+}
+
+export const AYUDA_PASO_RECUPERACION: AyudaDePaso = {
+  concreta: [
+    "Primero: cuántas botellas más vendes por día. No las que puedes hacer: las que te piden.",
+    "Después: cuánto te deja eso por día con el margen de cada litro, y cuánto en un mes de trabajo.",
+    "Al final: el precio del tanque dividido entre lo que te deja en un mes.",
+  ],
+};
+

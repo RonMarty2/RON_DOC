@@ -19,7 +19,9 @@ import {
 
 export type Evento =
   | { tipo: "capacidad"; valor: number }
-  | { tipo: "ayuda" }
+  // Sin `paso` ni `escalon` es el formato del 25-09 (el alumno pidió la ayuda del socio en la
+  // capacidad): se sigue leyendo igual (regla 4 de «Estructura»).
+  | { tipo: "ayuda"; paso?: "capacidad" | "compra" | "recuperacion"; escalon?: "concreta" | "leer" }
   | { tipo: "decision"; opcion: Opcion }
   | { tipo: "compra"; opcion: "envasadora" | "tanque"; valor: number }
   | { tipo: "reintento" }
@@ -61,8 +63,11 @@ export function describir(d: DatosPlanta, e: Evento, { diagnostico = false } = {
       const dx = revisarCapacidad(d, e.valor);
       return { texto: `Capacidad de hoy: escribió ${bs(e.valor)} botellas${cual(dx)}`, bien: dx === "correcta" };
     }
-    case "ayuda":
-      return { texto: "Pidió la explicación del socio" };
+    case "ayuda": {
+      const paso = { capacidad: "la capacidad", compra: "las botellas con la compra", recuperacion: "la recuperación" }[e.paso ?? "capacidad"];
+      if (!e.escalon) return { texto: "Pidió la explicación del socio" };
+      return { texto: e.escalon === "leer" ? `Se lo mandó a leer el dossier (${paso})` : `Recibió la pista concreta del socio (${paso})` };
+    }
     case "decision":
       return { texto: `Decidió: ${NOMBRE_OPCION[e.opcion]}`, bien: e.opcion === "tanque" };
     case "compra": {

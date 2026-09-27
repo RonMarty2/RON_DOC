@@ -16,6 +16,7 @@ import { guardarPartidaNube, leerPartidaNube } from "@/lib/juego/nube";
 import { anotar, describir, guardarPartida, leerPartida, partidaNueva, type Evento, type Partida } from "@/lib/juego/registro";
 import { versionDeAlumno } from "@/lib/juego/version-alumno";
 import { BarraCuenta, useCuenta, type EstadoGuardado } from "./CuentaJuego";
+import { ayudaVisible, escalonDe, type AyudaDePaso } from "@/lib/juego/escalera";
 import { LienzoPlanta } from "./LienzoPlanta";
 
 type Paso = "saludo" | "capacidad" | "decidir" | "compra" | "mes" | "recuperacion" | "defensa" | "final";
@@ -44,7 +45,6 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
   const [mesPasado, setMesPasado] = useState(false);
   const [pista, setPista] = useState("");
   const [fallos, setFallos] = useState(0);
-  const [ayuda, setAyuda] = useState(false);
   const [recuperacionBien, setRecuperacionBien] = useState(false);
   const [texto, setTexto] = useState("");
   const campo = useRef<HTMLInputElement & HTMLTextAreaElement>(null);
@@ -152,13 +152,18 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
     setPaso(p);
     setPista("");
     setFallos(0);
-    setAyuda(false);
     setTexto("");
   };
 
-  const fallar = (mensaje: string) => {
+  /** Un error más en el paso: pista según el error y, desde el segundo, los escalones de ayuda
+   *  (escalera.ts). El registro anota el primer momento en que llegó a cada escalón. */
+  const fallar = (mensaje: string, paso: "capacidad" | "compra" | "recuperacion", ayuda: AyudaDePaso) => {
     setPista(mensaje);
-    setFallos((f) => f + 1);
+    const n = fallos + 1;
+    setFallos(n);
+    const e = escalonDe(n);
+    // "leer" sólo se anota si el paso tiene página del dossier: si no, el alumno sigue viendo la pista concreta.
+    if ((e === "concreta" && n === 2) || (e === "leer" && n === 3 && ayuda.leer)) registrar({ tipo: "ayuda", paso, escalon: e });
     campo.current?.select();
   };
 
@@ -176,7 +181,7 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
     registrar({ tipo: "capacidad", valor: v });
     const dx = revisarCapacidad(d, v);
     if (dx === "correcta") return ir("decidir");
-    fallar(guion.PISTA_CAPACIDAD[dx]);
+    fallar(guion.PISTA_CAPACIDAD[dx], "capacidad", guion.ayudaPasoCapacidad(d));
   };
 
   const decidir = (o: Opcion) => {
@@ -199,7 +204,7 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
       setMesPasado(true);
       return ir("mes");
     }
-    fallar(guion.PISTA_COMPRA[dx]);
+    fallar(guion.PISTA_COMPRA[dx], "compra", guion.ayudaPasoCompra(d, opcion));
   };
 
   const volverADecidir = () => {
@@ -220,7 +225,7 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
       setPista("");
       return;
     }
-    fallar(guion.PISTA_RECUPERACION[dx]);
+    fallar(guion.PISTA_RECUPERACION[dx], "recuperacion", guion.AYUDA_PASO_RECUPERACION);
   };
 
   const enviarArgumento = (ev: FormEvent) => {
@@ -270,27 +275,9 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
           <Campo etiqueta={guion.PREGUNTA_CAPACIDAD} valor={texto} cambiar={setTexto} campo={campo} unidad="botellas" />
           <div className="juego-acciones">
             <Boton tipo="submit">CALCULAR ✔</Boton>
-            {fallos >= 2 && !ayuda && (
-              <Boton
-                alt
-                onClick={() => {
-                  setAyuda(true);
-                  registrar({ tipo: "ayuda" });
-                }}
-              >
-                PEDIR AYUDA AL SOCIO
-              </Boton>
-            )}
           </div>
           <Pista texto={pista} />
-          {ayuda && (
-            <div className="juego-ayuda">
-              <p className="juego-quien">TU SOCIO</p>
-              {guion.ayudaCapacidad(d).map((l) => (
-                <p key={l}>{l}</p>
-              ))}
-            </div>
-          )}
+          <Escalera fallos={fallos} ayuda={guion.ayudaPasoCapacidad(d)} />
         </form>
       );
       break;
@@ -320,6 +307,7 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
             <Boton alt onClick={volverADecidir}>↺ CAMBIAR DE DECISIÓN</Boton>
           </div>
           <Pista texto={pista} />
+          {(opcion === "envasadora" || opcion === "tanque") && <Escalera fallos={fallos} ayuda={guion.ayudaPasoCompra(d, opcion)} />}
         </form>
       );
       break;
@@ -351,13 +339,9 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
           <Campo etiqueta={guion.PIDE_RECUPERACION} valor={texto} cambiar={setTexto} campo={campo} unidad="meses" decimal />
           <div className="juego-acciones">
             <Boton tipo="submit">CALCULAR ✔</Boton>
-            {fallos >= 3 && (
-              <Boton alt onClick={() => ir("defensa")}>
-                SEGUIR SIN RESOLVERLO
-              </Boton>
-            )}
           </div>
           <Pista texto={pista} />
+          <Escalera fallos={fallos} ayuda={guion.AYUDA_PASO_RECUPERACION} />
         </form>
       );
       break;
@@ -514,6 +498,21 @@ function Campo({
         autoComplete="off"
         placeholder={unidad}
       />
+    </div>
+  );
+}
+
+/** Los escalones 2 y 3 de la ayuda: la pista concreta del socio y, después, dónde leer en el dossier. */
+function Escalera({ fallos, ayuda }: { fallos: number; ayuda: AyudaDePaso }) {
+  const { concreta, leer } = ayudaVisible(fallos, ayuda);
+  if (concreta.length === 0 && !leer) return null;
+  return (
+    <div className="juego-ayuda">
+      <p className="juego-quien">TU SOCIO</p>
+      {concreta.map((l) => (
+        <p key={l}>{l}</p>
+      ))}
+      {leer && <p className="juego-leer">📖 {leer}</p>}
     </div>
   );
 }

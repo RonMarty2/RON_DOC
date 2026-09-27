@@ -1,19 +1,29 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 2 · 26-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 3 · 27-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
 
+### De la revisión de `00-adaptacion-aief.md` v2 (Ronda 2)
+
+La pregunta del adaptador (¿rechazar a un buen cliente cuenta como error?) sigue siendo la de la ronda;
+el crítico también recomienda **sí**. Se suma una sola de criterio, porque toca contenido inventado:
+
+1. **Con qué regla se decide el monto en los Temas 1 y 2**, que todavía no enseñan a medir capacidad de
+   pago (hallazgo 3 de la v2). Recomendado: **una regla de la agencia en el manual**, inventada por el
+   juego y marcada como tal, que use el número del tema (por ejemplo, en el Tema 2, "la cuota no pasa de
+   tal parte de la utilidad neta con IUE, y nunca de la caja que hay"). Alternativa: sin crédito en los
+   Temas 1 y 2 (sólo aceptar o devolver balances), con el costo de que la versión mínima ya no prueba el
+   bucle del crédito.
+
 ### De la revisión de `00-adaptacion-aief.md` v1
 
-Son de criterio, no de gusto; la pregunta de gusto del adaptador (A, B o C) sigue siendo la de la ronda.
+La pregunta de gusto (A, B o C) quedó resuelta: Ronald delegó y se eligió A. El final como pieza propia
+de **Cierre** quedó adoptado en la Ronda 2 (hallazgo 2 de la v1), así que sale de esta lista.
 
-1. **Dónde vive el final del juego de AIEF**, dado que dictas el Tema 7 antes que el Tema 6 (hallazgo 2).
-   Recomendado: una pieza propia de **Cierre** (D7 §7.12 más "tu cartera como letra A"), que habilitas
-   al último, igual que el dossier deja ese cierre para después del Tema 6.
-2. **El IUE en los casos de D5, D6 y D7** (hallazgo 5). Recomendado: corregir esos ejemplos del dossier
-   para que lleven su línea de IUE; si no, el escalón (c) de la ayuda manda a leer un ejemplo que
-   contradice al juego.
+1. **El IUE en los casos de D5, D6 y D7** (hallazgo 5 de la v1). Sigue abierta. La Ronda 2 ya lo
+   mitiga (el escalón "a leer" apunta a D2 §2.2), pero lo recomendado sigue siendo corregir esos
+   ejemplos del dossier para que lleven su línea de IUE: el curso ve esos números en clase.
 
 ### De la revisión de `01-vision.md` v1
 
@@ -26,6 +36,211 @@ Se suman a las cinco que esa parte ya lista.
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 27-09-2026 · Revisión de `00-adaptacion-aief.md` versión 2 (adaptador-de-dossier, Ronda 2)
+
+**Qué se revisó:** la Ronda 2 de `docs/juego/gdd/00-adaptacion-aief.md` (maqueta general del Marco A,
+"La ventanilla"), contra `IDEA-JUEGO.md` §9 a §17, la revisión de la v1 (abajo) y lo que ya existe en
+`src/lib/juego/` (`registro.ts`, `nube.ts`, `escalera.ts`). **Los dossiers no estaban en este equipo:**
+se trabajó sobre lo que la Ronda 1 resumió y la revisión de la v1 verificó. Se jugó mentalmente la
+versión mínima (Llegada, máquina del Tema 1, tres carpetas del Tema 2) como seis alumnos: la que sabe,
+el que no sabe, y los perezosos "siempre no", "siempre sí", "al azar", "prestar poco" y "copiar", más
+uno que la Ronda 2 no jugó: **"ajustar por el color"**.
+
+**Veredicto:** **construir la versión mínima con ajustes.** El bloqueo 2 de la v1 (orden de dictado)
+está resuelto de verdad. El bloqueo 1 (estrategia dominante) está resuelto en la idea (meta, gris,
+clientes buenos sorteados, monto escrito), pero la regla de colores tal como está escrita lo reabre por
+dos lados: el monto termina siendo un sí o no disfrazado, y reintentar la misma carpeta con el color a
+la vista deja encontrar el monto sin calcular (hallazgos 1 y 2). Los dos se arreglan con reglas, sin
+tocar la maqueta; conviene fijarlos en la ficha de la versión mínima antes de escribir código.
+
+### Los dos bloqueos de la v1, comprobados
+
+**Orden de dictado (bloqueo 2): resuelto.** Recorrido en el orden de R2.2: Llegada, T1, T2, escena de
+Don Efraín, 4a, T3, 4b, T5, T7, T6, Cierre. Ninguna pieza usa algo de una posterior: el 4a explica "no
+pasó por caja" sin el vocabulario del Tema 3; el 7 trae la tarjeta de tres ratios; el 6 se sostiene
+solo con una línea condicionada; el Cierre va al final y el supervisor ya apareció en el 7. Los números
+salen del punto de control y la historia de líneas condicionadas, así que otro orden (el 3 antes del
+4a) tampoco rompe. Quedan dos cabos chicos (hallazgo 7): qué pasa si un alumno abre un tema sin haber
+jugado la Llegada, y el [verificar] de dónde entran 4b y T5, que no cambia nada porque ninguno depende
+del otro.
+
+**Estrategia dominante (bloqueo 1): resuelta a medias.** Jugado:
+
+| Perezoso | Qué le pasa con la regla de R2.1 | ¿Gana sin entender? |
+|---|---|---|
+| Siempre no | Grises en los buenos; no pasa | No |
+| Siempre sí, lo que pide | Rojo en los que piden más de lo que pueden pagar | No |
+| Al azar | Rojo o gris casi siempre | No, **salvo que reintente** (ver "ajustar por el color") |
+| Prestar poquito | Por debajo de lo que necesita: gris | No |
+| Copiar | Otra versión; con cinco familias de Cóndores comparte familia con uno de cada cinco compañeros (hallazgo 7) | No en la versión mínima |
+| Mover cuentas | La luz sólo se prende al cerrar; cada cierre fallido es un intento | No |
+| **Ajustar por el color** | Presta algo; si sale rojo baja, si sale gris sube; en tres intentos cae en verde | **Sí** (hallazgo 2) |
+
+### Hallazgos, de más grave a menos grave
+
+#### 1. (Bloquea) Con la regla de colores como está, el monto es un "sí o no" disfrazado, y el buen rechazo no tiene color
+
+- **Qué pasa.** R2.1 dice: verde si el monto queda entre "lo que el cliente necesita" y "la capacidad
+  de pago"; gris por debajo de lo que necesita; rojo por encima de la capacidad. Si el cliente pide
+  justo lo que necesita (como Don Efraín, que pide 20 mil para las luces), hay sólo dos casos: si su
+  capacidad alcanza, la única respuesta verde es "lo que pide"; si no alcanza, cualquier monto positivo
+  es rojo o gris, y la única respuesta buena es cero. Escribir el número es entonces elegir entre "lo que
+  pide" y "cero": la opción múltiple que Ronald rechazó, con teclado. Y rechazar a un mal cliente (la
+  respuesta correcta en la mitad de las carpetas) no tiene color: ni verde ("prestaste y paga") ni gris
+  ("era bueno").
+- **Por qué importa.** Es el corazón del bucle. Si el monto no se calcula, el número que "lo sostiene"
+  es un trámite, y la pared no distingue un buen rechazo de una carpeta sin jugar.
+- **Propuesta concreta.** Que cada carpeta tenga tres cifras, sorteadas por versión, y tres casos en
+  proporciones parecidas:
+  - **lo que pide**, **lo mínimo que le sirve** (a la vista o encontrable en la carpeta: la cotización
+    de las luces, la planilla que tiene que pagar) y **lo que puede pagar** (sólo sale del número del
+    tema);
+  - **capacidad por encima de lo que pide:** se presta lo que pide; **capacidad entre el mínimo y lo que
+    pide:** contraoferta, y el monto exacto sale del cálculo (este es el caso que hace pensar);
+    **capacidad por debajo del mínimo:** cero;
+  - un **cuarto resultado en la pared, "bien rechazado"** (ficha verde con otra marca: "se fue a la
+    cooperativa de enfrente y allá cayó en mora"), para que el buen "no" también se vea y se premie.
+  - "Siempre lo que pide" falla en dos de cada tres; "siempre cero" falla en dos de cada tres; sólo el
+    que calcula acierta la contraoferta.
+
+#### 2. (Bloquea) Reintentar la misma carpeta con el color a la vista deja encontrar el monto sin calcular
+
+- **Qué pasa.** R2.1 dice que cada rojo o gris "sube un escalón de la ayuda", pero no qué carpeta se
+  juega después. Si es la misma, el color le dice al alumno para qué lado moverse: rojo, baja; gris,
+  sube. Con una banda verde ancha, tres intentos alcanzan para caer en verde por tanteo, antes de que
+  llegue el escalón (d) "otros números". Es la luz que se enciende al cuadrar (hallazgo 4 de la v1)
+  vuelta a aparecer en la decisión.
+- **Por qué importa.** Es una estrategia dominante: gana sin entender y el registro guarda un verde
+  "al tercer intento" que no dice nada.
+- **Propuesta concreta.** Dos reglas, que además hacen más juego (hallazgo 5):
+  - **El "meses después" llega al final de la jornada**, no carpeta por carpeta: atiendes las carpetas
+    del día y al cerrar la ventanilla se da vuelta la pared, como el resumen del día de *Papers, Please*.
+    Sin color en el momento, no hay hacia dónde tantear.
+  - **Una decisión equivocada no se rehace: llega otro cliente** (otra carpeta con otros números, que es
+    el escalón (d) aplicado de entrada a las decisiones). La consecuencia y la pista de los escalones
+    (a) a (c) acompañan a la carpeta nueva. El número que sostiene la decisión (la utilidad neta, las
+    fuentes reales) sí se corrige en la misma carpeta, con su escalera y **antes** de escribir el monto.
+
+#### 3. (Importante, toca la versión mínima) En los Temas 1 y 2 no hay con qué calcular "lo que puede pagar"
+
+- **Qué pasa.** La función del "meses después" compara el monto con la capacidad de pago, pero la
+  capacidad de pago (flujo de operación, prueba ácida, cobertura) se enseña recién en los Temas 5 y 6.
+  En el Tema 2, lo único que hay es la utilidad neta, y la lección de T2.3 es justamente que **la
+  utilidad no es caja**: si el juego calcula la capacidad con la utilidad, contradice lo que enseña. Y
+  R2.1 pide escribir "la cuota", que necesita tasa y plazo: es Matemática Financiera, no AIEF.
+- **Por qué importa.** La versión mínima es Temas 1 y 2: si ahí el monto no se puede sostener con lo
+  enseñado, lo primero que ve el curso es adivinar.
+- **Propuesta concreta** (decisión pendiente de Ronald, arriba):
+  - **A. Recomendada: una regla de la agencia en el manual**, como el reglamento de *Papers, Please*.
+    Cada tema suma una regla de crédito que usa su número. Tema 1: "la garantía se toma al valor
+    reexpresado, no al que dice el cliente" (la máquina que "creció"); Tema 2: "la cuota no pasa de
+    tal parte de la utilidad neta con IUE, y nunca de la caja que hay" (la cooperativa que ganó y no
+    tiene caja cae sola en la segunda mitad de la regla). Es contenido inventado (§9): se marca así en
+    la ficha y Ronald lo revisa. La regla crece con el manual: en el Tema 5 se reemplaza por el flujo.
+  - **B. Sin crédito en los Temas 1 y 2**: sólo aceptar o devolver balances; el crédito empieza en el
+    4a. Más fiel, pero la versión mínima ya no prueba lo que dice que prueba (que el número decida el
+    monto).
+  - En las dos: **quitar "la cuota"** de lo que escribe el alumno, o dársela hecha en la carpeta.
+
+#### 4. (Importante) La meta de colocación sobra como condición y puede delatar la respuesta
+
+- **Qué pasa.** La condición para pasar es "cumplir la meta sin rojos ni grises". Si no hay grises, ya
+  se le prestó a todos los buenos, así que la meta se cumple sola o no se puede cumplir: sobra. Y si es
+  un número a la vista con tres carpetas ("coloca 45 mil"), el alumno puede deducir cuáles aprobar y por
+  cuánto sumando lo que pide cada uno, sin leer un papel.
+- **Propuesta concreta.** La meta queda como **presión del mundo, no como condición**: la jefa la
+  menciona, se ve cuánto falta y comenta al cierre de la jornada ("este mes nos faltó colocar"). La
+  condición para pasar el tema es sólo "sin rojos ni grises, con los números bien escritos". Si Ronald
+  prefiere que la meta cuente, que sea holgada (varias combinaciones la cumplen) y nunca igual a la suma
+  de los buenos de esa versión.
+
+#### 5. (Importante) Divertido: falta el ritmo de la jornada, y sin él son tres ejercicios con dibujos
+
+- **Qué pasa.** La maqueta tiene lo que da ganas de seguir a lo largo de la materia (Don Efraín que
+  vuelve, la pared que se llena, la mesa que se da vuelta en el Tema 7). Pero dentro de un tema, la
+  versión mínima se juega así: carpeta, número, monto, color; carpeta, número, monto, color. Sin la
+  tensión de *Papers, Please* (una cola que espera, reglas que se suman y se contradicen, el resumen del
+  día que llega de golpe) se siente una hoja de ejercicios en tres pantallas. Y el Tema 1 que entra en
+  la versión mínima es un solo cálculo (la máquina).
+- **Por qué importa.** Ronald pidió un juego con sabor a la materia. La primera prueba con un curso es
+  justo la versión mínima: si ahí se siente una clase con dibujos, se juzga todo el marco por eso.
+- **Propuesta concreta** (barata, casi todo texto):
+  - **La jornada como unidad**: una cola de clientes en la puerta (se ven los que esperan), las
+    carpetas en el orden en que llegan, y el cierre del día con la pared que se da vuelta (hallazgo 2)
+    y dos líneas de la jefa.
+  - **Una regla nueva que choca con la anterior**, una por tema (la del hallazgo 3): es lo que hace
+    pensar en *Papers, Please* y no cuesta arte.
+  - **Una carpeta con sorpresa** en la versión mínima: la cooperativa que ganó y no paga tiene que ser
+    la última del día, para que el "ganó pero no tiene caja" llegue como giro.
+  - **Sin reloj**: la cola da tensión sin castigar por lentitud, que en un celular con el teclado
+    abierto sería injusto.
+
+#### 6. (Importante) Web y app: "sigues jugando sin conexión" está prometido como hecho y hoy no existe
+
+- **Qué pasa.** R2.1 y R2.6 dicen que cada paso se guarda en el teléfono y se sube al volver, y que
+  nada necesita algo propio del teléfono. Lo que hay hoy: `registro.ts` y `nube.ts` están atados a
+  `isla: "proyectos"` y `escena: "planta"` (la clave del navegador, la lectura y el filtro de la tabla);
+  la escalera (`escalera.ts`) no tiene el escalón (d) "otros números", y lo dice en su comentario; el
+  guardado de la escena 1 sólo se reintenta con la próxima respuesta (hallazgo 4 de la revisión de
+  `01-vision.md`); la página del juego no entra en la precarga del service worker; y la app de Android
+  carga el sitio publicado, así que si se abre sin red y la página no quedó guardada, no arranca.
+  Entrar con Google necesita red en las dos.
+- **Por qué importa.** El curso juega en el micro. Si la versión mínima pierde una jornada por un corte
+  de señal, la prueba se juzga por eso y no por el juego.
+- **Propuesta concreta.** Anotarlo en la ficha de la versión mínima como **trabajo de código, que suma y
+  no rompe**:
+  - `registro.ts` y `nube.ts` reciben la isla y la escena como dato; lo guardado con
+    `proyectos`/`planta` se sigue leyendo igual (reglas 2 a 4 de «Estructura»);
+  - una cola de guardado en el teléfono que reintenta al volver la red (también después de entregar);
+  - el registro guarda la versión **de cada carpeta** (lo pide el hallazgo 2) y la escalera suma el
+    escalón (d);
+  - la ruta del juego en la precarga;
+  - se puede jugar sin cuenta y entrar después: la partida local se sube al entrar.
+  - Del lado del celular, dejar escrito: el botón atrás cierra primero la hoja del manual, después la
+    pared, después vuelve de la carpeta al escritorio, y recién ahí pregunta si sales; el campo del
+    monto acepta "20000", "20.000" y "20 000" y muestra el número como lo leyó ("Bs 20.000") antes de
+    firmar; la cifra que estás usando queda fija arriba del campo con el teclado abierto (medido en
+    375×812).
+
+#### 7. (Menor) Precisiones
+
+- **Llegada no jugada:** si un alumno abre el Tema 2 sin haber pasado por la Llegada (entró tarde, o
+  Ronald habilitó varias piezas juntas), la Llegada se juega sola antes. Decirlo en R2.2.
+- **Cinco familias de Cóndores:** en un curso de 40, ocho alumnos comparten familia. Que la familia sólo
+  fije los números de la cadena y que cada pieza sortee **por alumno** qué clientes son buenos, sus
+  montos y la frase a desmentir. No afecta a la versión mínima.
+- **Tema 7, "calificas tu propio banco":** en R2.2 es el supervisor el que califica y tú el que responde.
+  Unificar. Y la "corrida que no hacía falta" también tiene que salir de una función con pruebas, como
+  el "meses después".
+- **La Ronda 1 quedó contradiciendo a la 2** en el mismo archivo: §6.1 ("la letra A es tu cartera"),
+  §6.2 (ascenso a analista), §6.4 ("fichas por defecto") y la razón 2 de §7. Quien construya puede
+  leerlas como vigentes. Poner al inicio de §6 y §7 una línea: "reemplazado por R2.2 y R2.3".
+- **"Desmentir la frase con un número escrito"** es el verbo fijo del bucle, pero no se dice qué pasa si
+  el número está bien y la decisión mal (o al revés). Que el registro los guarde por separado: para la
+  defensa sirven los dos.
+
+### Lo que está bien y conviene no tocar
+
+- El Tema 4 en dos piezas, el Inicio y el Cierre propios, y la escena de Don Efraín que se juega antes
+  de lo primero que la necesite: resuelven el orden de dictado sin rehacer nada.
+- La cartera como historia y no como cálculo, con el banco del Tema 7 en sus propios números.
+- La luz de control que sólo se prende al cerrar el cuadro.
+- Los temas sin crédito con dos lados (aceptar o devolver balances; sano o frágil).
+- El celular de R2.1: una carpeta por pantalla, tocar en vez de arrastrar, el manual como hoja que sube.
+- R2.5: el escalón "a leer" que evita los ejemplos que contradicen al juego, y la frase de D4 §4.3 dicha
+  como es.
+- Una sola pregunta para Ronald, de criterio, con recomendación y alternativa.
+
+### Avisos para otras partes
+
+- `adaptador-de-dossier`: hallazgos 1 a 5 y 7 para las fichas de la versión mínima (Llegada, T1, T2).
+- `disenador-de-bucle` y `disenador-de-aprendizaje` (cuando corran): la jornada con resultado al cierre
+  (hallazgos 2 y 5), los tres casos y el "bien rechazado" (hallazgo 1), y la decisión equivocada que se
+  rehace con otra carpeta (escalón (d) de entrada).
+- Código (no es del GDD): hallazgo 6, todo aditivo.
 
 ---
 

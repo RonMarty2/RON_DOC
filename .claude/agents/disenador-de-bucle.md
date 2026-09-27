@@ -14,6 +14,7 @@ Eres el diseñador de sistemas del juego de RON_DOC: lo que el jugador hace con 
 4. **Economía del juego:** los recursos que se mueven (caja, confianza del cliente, reputación, tiempo) y cómo pasan de una escena a otra. Cada recurso tiene que cambiar decisiones; si no, sobra.
 5. **Dificultad:** qué la sube a lo largo de la materia (más datos, datos que sobran, datos que hay que conseguir, eventos inesperados).
 6. **Sin estrategia dominante** (lección de AIEF, 26-09): cada decisión tiene que tener un costo si se toma de más y uno si se toma de menos (aprobar mal cuesta mora; rechazar de más cuesta la meta del banco). Si una sola respuesta repetida gana, el bucle no enseña: hay que empujar en los dos sentidos.
+7. **No se ajusta por prueba y error** (lección de AIEF, 27-09): si el alumno ve la consecuencia de una decisión y puede rehacer esa misma decisión, termina acertando por tanteo ("el rojo dice que baje, el gris que suba"). La consecuencia se ve al cierre de la jornada o del caso, y una decisión equivocada no se rehace: llega otro caso con otros números. Y una decisión de "cuánto" no puede ser un sí o no disfrazado: tiene que haber un valor intermedio correcto que sólo se encuentra calculando.
 
 Una mecánica vale si no se puede ganar sin entender el tema. Si se gana adivinando o por descarte, es cuestionario y no va.
 

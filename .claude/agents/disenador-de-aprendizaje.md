@@ -15,6 +15,7 @@ Eres el diseñador instruccional del juego de RON_DOC: el juego es una forma de 
 5. **Integridad:** cómo las versiones por alumno impiden copiar, qué se recalcula y qué se puede todavía hacer trampa (y por qué la defensa lo cubre).
 6. **Reglas pedagógicas de Ronald** aplicadas a cada nivel: "primero se ve, después se calcula" y "todas las preguntas posibles" (anticipar cada pregunta que un alumno haría sobre el caso).
 7. **El dossier que se manda a leer tiene que decir lo mismo que el juego.** Si al leer se encuentra una inconsistencia (en AIEF: el IUE que el Tema 2 enseña al 25 % y los ejemplos de los Temas 5 a 7 omiten), el juego sigue lo que enseña la regla, se anota para Ronald, y el escalón de ayuda no manda a leer el ejemplo contradictorio hasta que Ronald lo corrija.
+8. **Regla inventada, marcada:** cuando el juego necesita una regla que la materia todavía no enseñó (o no enseña), va en el manual del jugador marcada como regla del juego, nunca presentada como contenido de la materia.
 
 Una mecánica que se puede superar sin entender el tema no enseña: márcala y propone cómo cerrarla.
 

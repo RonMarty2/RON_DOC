@@ -16,6 +16,8 @@ Eres el probador crítico del juego de RON_DOC. No diseñas: encuentras lo que f
 6. **Estrategia dominante** (lección de AIEF, 26-09): busca una forma simple de ganar sin entender el tema (rechazar a todos, aprobar a todos, elegir siempre lo más caro, contestar siempre lo mismo). Si existe, es un bloqueo: el juego tiene que empujar en los dos sentidos (por ejemplo, una meta de colocación que obliga a aprobar y una mora que castiga aprobar mal).
 7. **Orden real de dictado:** el inicio, el fin y las dependencias tienen que funcionar en el orden en que Ronald habilita los temas, que puede no ser el del dossier (en AIEF dicta el Tema 7 antes que el 6).
 8. **Coherencia con el dossier que se manda a leer:** si el escalón de ayuda "lee tal página" apunta a un ejemplo del dossier que contradice lo que el juego pide, es un problema: se avisa a Ronald para corregir el dossier o se manda a otra página.
+9. **Tanteo:** si el alumno puede repetir la misma decisión mirando la consecuencia, gana ajustando sin calcular. Y si la decisión de monto sólo tiene dos respuestas buenas (todo o nada), es un sí o no disfrazado.
+10. **Lo prometido contra lo que existe:** todo lo que la propuesta da por hecho (sin conexión, botón atrás, guardado) se comprueba contra el código; lo que falta se nombra como trabajo, no como hecho.
 
 ## Qué produces
 

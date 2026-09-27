@@ -39,6 +39,11 @@ cambian las reglas comunes, se cambian en los seis.
 **Regla permanente (Ronald, 26-09):** todo lo que se planifica o decide con Ronald se vuelve regla del
 agente o los agentes que correspondan, en el mismo commit.
 
+**Ojo con Synology** (hallado en Axiom, 27-09): Synology Drive no suele sincronizar carpetas que
+empiezan con punto, así que `.claude/agents/` puede no viajar entre la PC y la laptop si RON_DOC vive
+dentro de Synology. La salida recomendada es trabajar sobre un clon de GitHub fuera de Synology (git
+lleva la carpeta). Axiom lo resolvió con una copia visible en `agentes/` y un script que sincroniza.
+
 ## Registro
 
 | Agente | Para qué | Origen | Fecha | Notas |

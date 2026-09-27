@@ -21,6 +21,7 @@ Todo lo que se construye (código, contenido, juego, agentes, documentos) se arm
 5. **Un servicio externo, un solo archivo** (como `src/lib/juego/nube.ts` para Supabase), para poder cambiarlo sin tocar el resto.
 6. **Nada se da por terminado sin pruebas:** `npm test` y `npx tsc --noEmit`; al cambiar algo común corren todas, no sólo las de lo tocado.
 7. **Antes de cambiar algo que otros usan, decir qué se rompe** y preferir la alternativa que agrega a la que modifica.
+8. **Web y app de Android por igual** (Ronald, 2026-09-27). La app (`android/`, Capacitor) carga el sitio publicado, así que todo lo que se construye tiene que andar igual en las dos: táctil y pantalla chica (nada que dependa del mouse), teclado del celular, botón atrás, conexión que se corta (se sigue usando y se guarda al volver). Lo que necesita algo del teléfono (entrar con Google, compartir, avisos) va detrás de un solo archivo con su versión web y su versión de app, y la web nunca depende de la app. Un cambio en la parte nativa (plugins, permisos, nombre, ícono) obliga a recompilar la app: se anota en la bitácora para que Ronald la reinstale.
 
 ## Antes de hacer cualquier cosa
 

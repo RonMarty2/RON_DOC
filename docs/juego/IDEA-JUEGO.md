@@ -247,3 +247,16 @@ reutiliza: cuentas con Supabase, datos por versión de cada alumno, registro par
 ayuda y pruebas. «Isla» sigue siendo el nombre de cada juego dentro del sitio (y en lo ya guardado,
 `isla: "proyectos"`). Encaja con la estructura escalable (§15): un juego nuevo se suma sin tocar los
 que ya existen.
+
+## 17. Web y Android por igual, y lecciones de AIEF en los agentes (27-09)
+
+Ronald: *«Todo lo nuevo que estamos encontrando, que sirva para mejorar el agente correspondiente, y
+podríamos ajustar para que todo sea nativo en Android además de web, escalable, robusto.»*
+
+- Regla 8 de «Estructura» en `CLAUDE.md` y regla común de los agentes de diseño: web y app de Android
+  por igual.
+- Lecciones de la revisión de AIEF, ya en los agentes: **sin estrategia dominante** (crítico y bucle:
+  rechazar a todos no puede ganar), **orden real de dictado** (crítico y progresión: el final en una
+  pieza que Ronald habilita al último), **el dossier que se manda a leer dice lo mismo que el juego**
+  (crítico y aprendizaje).
+

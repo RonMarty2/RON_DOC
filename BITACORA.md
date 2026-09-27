@@ -45,6 +45,18 @@ sin subirlos, y se anota su versión. Pasos:
   - [ ] 9d. Pruebas, voseo, 375×812 y 1366×768; subir; abrirlo en el celular de Ronald.
 - [x] 8. Fichas de la versión mínima (Llegada, Tema 1, Tema 2) con los ajustes; después, el código común que falta (registro y nube por isla y escena, escalón "otros números", guardado sin conexión) y la primera escena.
 
+### EN CURSO desde 27-09 ~17:45 (Claude, PC RONMARTY): la estructura de entrada, YA (pedido de Ronald)
+
+Ronald abrió la app y vio la portada con la pregunta del Aula de Probabilidad, «Aulas» y «Proyectos»:
+*«ya muestra cosas de una materia ni siquiera escogí qué materias ver… no encuentro la sección del juego
+ni dónde están mis materias; si no tienes suficiente contenido, aunque sea crea placeholders»*. Cambia
+la regla del 14-09 («no se publica nada sin contenido»): **la estructura se muestra entera y lo que
+falta dice «En construcción»**. Pasos:
+- [ ] Inicio que presenta la idea y lleva a **elegir la materia** (todas las de la carpeta de materias).
+- [ ] Página de cada materia con **Estudiar · Jugar · Practicar**; Jugar dividido **por temas** (AIEF: sus 7).
+- [ ] El juego de la lechera pasa a su materia, Proyectos II; «La ventanilla» visible en AIEF como «En prueba».
+- [ ] Se retira `/juegos` y el botón «Juegos» del menú (los juegos viven en su materia).
+
 ### Recorrido del estudiante (27-09, acordado como plan final · **para después: ahora el foco es el juego**)
 
 Ronald notó que nunca se había decidido **qué ve un estudiante al abrir la app**. Acordado: se entra

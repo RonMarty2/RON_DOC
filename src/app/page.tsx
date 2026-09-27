@@ -1,147 +1,115 @@
 import Link from "next/link";
+import { ISLAS } from "@content/islas";
+import { MATERIAS } from "@content/materias";
 import { PROYECTOS } from "@content/proyectos";
-import { MathText } from "@/components/MathText";
-import { MateriaCard } from "@/components/MateriaCard";
 import { ProyectoCard } from "@/components/ProyectoCard";
-import { hayJuegos, materiasEnPreparacion, materiasPublicadas, temasPublicados } from "@/lib/publicado";
+import { juegoDeMateria, juegosDe } from "@/lib/juegos";
+import { paraEstudiar, paraPracticar, temasPublicados } from "@/lib/publicado";
+import type { Materia } from "@/lib/types";
 
-const PASOS = [
+const SECCIONES = [
   {
-    titulo: "Se define",
-    texto: "Cada término aparece corto y una sola vez, justo antes de hacer falta.",
+    titulo: "Estudiar",
+    texto: "Aulas y láminas interactivas: cada concepto se define, se ve funcionar y se comprueba.",
   },
   {
-    titulo: "Se ve",
-    texto: "Un interactivo lo muestra funcionando: tiras el dado, cuentas las fichas, mueves el punto de corte.",
+    titulo: "Jugar",
+    texto: "El juego de la materia, tema por tema. Cada estudiante recibe sus propios números y cuenta para la nota.",
   },
   {
-    titulo: "Se comprueba",
-    texto: "Preguntas con corrección inmediata, y el error típico explicado antes de que lo cometas.",
+    titulo: "Practicar",
+    texto: "Hojas de ejercicios con versiones distintas, para practicar o imprimir.",
   },
 ];
 
+type Estado = "listo" | "prueba" | "construccion";
+
+function estados(m: Materia): Record<"Estudiar" | "Jugar" | "Practicar", Estado> {
+  const juegos = juegoDeMateria(m, ISLAS) ? juegosDe(m) : [];
+  return {
+    Estudiar: paraEstudiar(m).length + temasPublicados(m).length > 0 ? "listo" : "construccion",
+    Jugar: juegos.some((j) => !j.borrador) ? "listo" : juegos.length > 0 ? "prueba" : "construccion",
+    Practicar: paraPracticar(m).length > 0 ? "listo" : "construccion",
+  };
+}
+
+const ETIQUETA: Record<Estado, string> = { listo: "listo", prueba: "en prueba", construccion: "en construcción" };
+
 export default function HomePage() {
-  const publicadas = materiasPublicadas();
-  const enPreparacion = new Intl.ListFormat("es", { type: "conjunction" }).format(
-    materiasEnPreparacion().map((m) => m.nombre)
-  );
+  const materias = MATERIAS.map((m) => ({ m, e: estados(m) }));
+  const avance = (e: Record<string, Estado>) => Object.values(e).filter((x) => x !== "construccion").length;
+  materias.sort((a, b) => avance(b.e) - avance(a.e));
 
   return (
     <>
       <section className="border-b border-borde">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14 lg:px-8">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-acento">
-              Docente universitario · Cochabamba, Bolivia
-            </p>
-            <h1 className="mt-3 font-serif text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              Mgr. Ronald Martínez Jiménez
-            </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-tinta-media">
-              Material interactivo de las materias que dicto. Cada concepto se define, se ve
-              funcionar y se comprueba con datos reales, para proyectarlo en clase o estudiar por
-              tu cuenta.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                href="/#aulas"
-                className="rounded-full bg-acento px-5 py-2.5 text-sm font-semibold text-acento-texto transition hover:bg-acento-hover"
-              >
-                Ver las aulas
-              </Link>
-              <Link
-                href="/proyectos"
-                className="rounded-full border border-borde-fuerte px-5 py-2.5 text-sm font-semibold transition hover:bg-papel-suave"
-              >
-                Proyectos
-              </Link>
-            </div>
-          </div>
-
-          <Link
-            href="/aula-probabilidad"
-            className="group block rounded-[1.25rem] border border-borde bg-tarjeta p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 sm:p-7"
-          >
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.06em] text-aviso">Piensa esto</p>
-            <p className="mt-3 font-serif text-xl italic leading-snug sm:text-2xl">
-              Un cuestionario detecta a 88 de cada 100 estudiantes que tienen depresión. A uno le da
-              positivo. ¿Qué tan probable es que la tenga?
-            </p>
-            <div className="mt-5 flex flex-col gap-2">
-              <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-papel-suave px-4 py-2.5">
-                <span className="text-sm text-tinta-tenue">Lo que sabemos</span>
-                <MathText>{"$P(+ \\mid D) = 0{,}88$"}</MathText>
-              </div>
-              <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border-[1.5px] border-acento/40 bg-acento/10 px-4 py-2.5">
-                <span className="text-sm text-tinta-tenue">Lo que queremos saber</span>
-                <MathText>{"$P(D \\mid +) = \\ ?$"}</MathText>
-              </div>
-            </div>
-            <p className="mt-5 text-sm font-semibold text-acento">
-              La respuesta está en el Aula de Probabilidad{" "}
-              <span aria-hidden className="inline-block transition group-hover:translate-x-0.5">→</span>
-            </p>
-          </Link>
-        </div>
-      </section>
-
-      <section id="aulas" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6 lg:px-8">
-        <Encabezado kicker="Aulas abiertas" titulo="Para usar en clase o estudiar por tu cuenta" />
-        <div className="mt-8 flex flex-col gap-10">
-          {publicadas.map((m) => (
-            <MateriaCard key={m.slug} materia={m} temasPublicados={temasPublicados(m).length} />
-          ))}
-        </div>
-        {enPreparacion && (
-          <p className="mt-10 max-w-3xl border-l-2 border-borde-fuerte pl-4 leading-relaxed text-tinta-tenue">
-            También dicto {enPreparacion}. Su material se publica aquí a medida que esté listo.
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-acento">Docente universitario · Cochabamba, Bolivia</p>
+          <h1 className="mt-3 font-serif text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            Mgr. Ronald Martínez Jiménez
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-tinta-media">
+            Aquí están las materias que dicto. En cada una encuentras tres cosas: material para estudiar, el juego de la
+            materia, tema por tema, y práctica. Elige tu materia para empezar.
           </p>
-        )}
-      </section>
-
-      {hayJuegos() && (
-        <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8">
-          <Link
-            href="/juegos"
-            className="group block rounded-[1.25rem] border border-borde bg-tarjeta p-6 shadow-[0_8px_30px_rgba(0,0,0,0.05)] transition hover:-translate-y-0.5 hover:border-borde-fuerte sm:p-8"
-          >
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-acento">Juegos</p>
-            <h2 className="mt-2 font-serif text-3xl font-semibold tracking-tight">Cada materia es una isla</h2>
-            <p className="mt-3 max-w-2xl leading-relaxed text-tinta-media">
-              Casos que se resuelven calculando, con tus propios números: si el cálculo está mal, la
-              empresa lo paga.
-            </p>
-            <span className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-acento px-5 py-2.5 text-sm font-semibold text-acento-texto transition group-hover:bg-acento-hover">
-              Ver las islas
-              <span aria-hidden className="transition group-hover:translate-x-0.5">→</span>
-            </span>
-          </Link>
-        </section>
-      )}
-
-      <section className="border-y border-borde bg-papel-suave">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <Encabezado kicker="Cómo está hecho" titulo="Como un libro, pero que se puede tocar" />
-          <ol className="mt-8 grid gap-4 sm:grid-cols-3">
-            {PASOS.map((p, i) => (
-              <li key={p.titulo} className="rounded-2xl border border-borde bg-tarjeta p-5">
-                <span className="flex size-8 items-center justify-center rounded-full bg-acento text-sm font-bold text-acento-texto">
-                  {i + 1}
-                </span>
-                <h3 className="mt-3 font-serif text-xl font-semibold">{p.titulo}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-tinta-media">{p.texto}</p>
+          <div className="mt-7">
+            <Link
+              href="/#materias"
+              className="rounded-full bg-acento px-5 py-2.5 text-sm font-semibold text-acento-texto transition hover:bg-acento-hover"
+            >
+              Elegir mi materia
+            </Link>
+          </div>
+          <ol className="mt-10 grid gap-4 sm:grid-cols-3">
+            {SECCIONES.map((s, i) => (
+              <li key={s.titulo} className="rounded-2xl border border-borde bg-tarjeta p-5">
+                <span className="flex size-8 items-center justify-center rounded-full bg-acento text-sm font-bold text-acento-texto">{i + 1}</span>
+                <h2 className="mt-3 font-serif text-xl font-semibold">{s.titulo}</h2>
+                <p className="mt-1.5 text-sm leading-relaxed text-tinta-media">{s.texto}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <Encabezado kicker="Proyectos" titulo="Otras apps con las que enseño" />
-        <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          {PROYECTOS.map((p) => (
-            <ProyectoCard key={p.slug} proyecto={p} />
+      <section id="materias" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6 lg:px-8">
+        <Encabezado kicker="Materias" titulo="Elige tu materia" />
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {materias.map(({ m, e }) => (
+            <Link
+              key={m.slug}
+              href={`/materias/${m.slug}`}
+              className="group flex flex-col gap-3 rounded-2xl border border-borde bg-tarjeta p-5 transition hover:-translate-y-0.5 hover:border-borde-fuerte"
+            >
+              <h3 className="font-serif text-xl font-semibold leading-snug group-hover:text-acento">{m.nombre}</h3>
+              <p className="text-sm leading-relaxed text-tinta-media">{m.descripcion}</p>
+              <ul className="mt-auto flex flex-wrap gap-2">
+                {(Object.keys(e) as (keyof typeof e)[]).map((s) => (
+                  <li
+                    key={s}
+                    className={
+                      e[s] === "construccion"
+                        ? "rounded-full border border-borde px-3 py-1 text-xs text-tinta-tenue"
+                        : "rounded-full bg-acento/10 px-3 py-1 text-xs font-semibold text-acento"
+                    }
+                  >
+                    {s} · {ETIQUETA[e[s]]}
+                  </li>
+                ))}
+              </ul>
+            </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="border-t border-borde bg-papel-suave">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <Encabezado kicker="Proyectos" titulo="Otras apps con las que enseño" />
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {PROYECTOS.map((p) => (
+              <ProyectoCard key={p.slug} proyecto={p} />
+            ))}
+          </div>
         </div>
       </section>
     </>

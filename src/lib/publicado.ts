@@ -3,10 +3,10 @@ import path from "node:path";
 import { MATERIAS } from "@content/materias";
 import { PODCASTS } from "@content/podcasts";
 import { TESIS_RESUMEN } from "@content/tesis";
-import { juegosPublicados } from "@/lib/juegos";
 import type { HerramientaMateria, Materia, Tema } from "@/lib/types";
 
-// Se publica sólo lo que tiene contenido real: mejor ninguna página que una plantilla vacía.
+// Un tema (MDX) se publica cuando deja de tener esta marca. Las materias se muestran todas desde el
+// 27-09 (pedido de Ronald: la estructura se ve entera; lo que falta dice «En construcción»).
 const MARCA_PENDIENTE = "[CONTENIDO PENDIENTE]";
 
 export function temaPublicado(materia: Materia, tema: Tema): boolean {
@@ -27,22 +27,11 @@ export function esBorrador(href: string): boolean {
   return MATERIAS.some((m) => m.herramientas?.some((h) => h.href === href && h.borrador));
 }
 
-export function materiaPublicada(materia: Materia): boolean {
-  return herramientasPublicadas(materia).length > 0 || temasPublicados(materia).length > 0;
-}
+/** Sección ESTUDIAR: aulas y láminas publicadas (los temas en MDX van aparte). */
+export const paraEstudiar = (m: Materia) => herramientasPublicadas(m).filter((h) => h.tipo === undefined || h.tipo === "aula" || h.tipo === "lamina");
 
-export function materiasPublicadas(): Materia[] {
-  return MATERIAS.filter(materiaPublicada);
-}
-
-export function materiasEnPreparacion(): Materia[] {
-  return MATERIAS.filter((m) => !materiaPublicada(m));
-}
-
-/** Con un juego publicado, /juegos pasa a estar en el menú, la portada y el sitemap. */
-export function hayJuegos(): boolean {
-  return juegosPublicados(MATERIAS).length > 0;
-}
+/** Sección PRACTICAR: hojas publicadas. */
+export const paraPracticar = (m: Materia) => herramientasPublicadas(m).filter((h) => h.tipo === "hoja");
 
 export function hayPodcasts(): boolean {
   return PODCASTS.length > 0;

@@ -10,14 +10,14 @@
 
 ## 0. En curso ahora (leer antes que nada)
 
-> **PREGUNTAR A RONALD AL EMPEZAR LA PRÓXIMA SESIÓN (pidió dejarlo para entonces, 27-09):**
-> ¿aprueba la **maqueta general de AIEF** («La ventanilla»)? Mostrarle antes, en pocas líneas y sin
-> tecnicismos, qué es: el alumno es el oficial de créditos recién llegado a la agencia de Cliza de un banco
-> chico; cada cliente trae tres cifras (lo que pide, lo mínimo que le sirve, lo que puede pagar) y el alumno
-> decide prestar todo, contraofertar o rechazar; al cierre del día ve los colores (verde paga, rojo mora,
-> gris buen cliente perdido, bien rechazado); los temas van en su orden de clase (T1 → T2 → T4a → T3 → T4b
-> → T5 → T7 → T6) y el Cierre lo habilita él al final. Detalle: `docs/juego/gdd/00-adaptacion-aief.md`,
-> Ronda 2. Si aprueba: construir **sólo el Tema 1** (IDEA-JUEGO §18) y mostrárselo antes del Tema 2.
+> **ESTADO AL 27-09 ~18:15 (Claude, PC RONMARTY). Tema 1 de AIEF: construido (en prueba) y pasando por
+> las etapas de agentes que se saltaron** (`.claude/agents/LEEME.md`): 2 aprendizaje ✔ (`04-aprendizaje.md`),
+> 3 bucle ✔ (`02-bucle-y-mecanicas.md`); **faltan 4 narrativa, 5/7 crítico (papel y jugable)** y después
+> aplicar al código lo que salga (1.1 que varíe por alumno, delatores de 1.2, índice de compra ≠ 100).
+> **Pregunta abierta a Ronald:** las características de calidad de la información (1.3), ¿entran al juego
+> como hoja de observación (recomendado) o sólo a la defensa oral? En esta sesión los agentes del
+> proyecto no estaban cargados (llegaron con el `git pull`): se corrieron como agente general que lee
+> y sigue su archivo `.md`.
 
 > Regla pedida por Ronald: si se cortan los tokens, otra IA tiene que poder seguir desde acá sin rehacer nada. Antes de cada paso se actualiza esta lista, y se sube después de cada paso terminado. Al terminar el trabajo entero, pasa a §6 y esta sección queda vacía.
 
@@ -45,17 +45,23 @@ sin subirlos, y se anota su versión. Pasos:
   - [ ] 9d. Pruebas, voseo, 375×812 y 1366×768; subir; abrirlo en el celular de Ronald.
 - [x] 8. Fichas de la versión mínima (Llegada, Tema 1, Tema 2) con los ajustes; después, el código común que falta (registro y nube por isla y escena, escalón "otros números", guardado sin conexión) y la primera escena.
 
-### EN CURSO desde 27-09 ~17:45 (Claude, PC RONMARTY): la estructura de entrada, YA (pedido de Ronald)
+### HECHO 27-09 ~18:15 (Claude, PC RONMARTY): la estructura de entrada (pedido de Ronald)
 
 Ronald abrió la app y vio la portada con la pregunta del Aula de Probabilidad, «Aulas» y «Proyectos»:
 *«ya muestra cosas de una materia ni siquiera escogí qué materias ver… no encuentro la sección del juego
 ni dónde están mis materias; si no tienes suficiente contenido, aunque sea crea placeholders»*. Cambia
 la regla del 14-09 («no se publica nada sin contenido»): **la estructura se muestra entera y lo que
 falta dice «En construcción»**. Pasos:
-- [ ] Inicio que presenta la idea y lleva a **elegir la materia** (todas las de la carpeta de materias).
-- [ ] Página de cada materia con **Estudiar · Jugar · Practicar**; Jugar dividido **por temas** (AIEF: sus 7).
-- [ ] El juego de la lechera pasa a su materia, Proyectos II; «La ventanilla» visible en AIEF como «En prueba».
-- [ ] Se retira `/juegos` y el botón «Juegos» del menú (los juegos viven en su materia).
+- [x] Inicio que presenta la idea y lleva a **elegir la materia**: las 11 de `content/materias.ts` (se
+  sumaron Proyectos II, Modelos de Evaluación, Bolsa de Valores, Gestión de Recursos Microfinancieros y
+  Estadística y Análisis de Datos en Psicología, con descripción de una línea; ordenadas por cuánto tienen).
+  Cada tarjeta dice qué sección está lista, en prueba o en construcción. Menú: «Materias» y «Proyectos».
+- [x] Página de cada materia con **Estudiar · Jugar · Practicar**; Jugar **por temas** (`src/lib/juegos.ts`,
+  con pruebas; `content/islas.ts` con `materia` y `temas`; AIEF: sus 7 temas, el 1 con «Jugar (en prueba)»).
+- [x] La lechera pasó a la materia Proyectos II (isla `proyectos-ii`); «Administración Financiera» ahora se
+  llama «Administración Financiera I» (el slug no cambia).
+- [x] Se retiró `/juegos` y el botón «Juegos»; la regla quedó en `CLAUDE.md` y en los 7 agentes.
+- Mirado en 375×812: sin desborde; Bolsa de Valores muestra sus tres secciones en construcción.
 
 ### Recorrido del estudiante (27-09, acordado como plan final · **para después: ahora el foco es el juego**)
 

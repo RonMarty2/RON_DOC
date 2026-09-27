@@ -71,14 +71,20 @@ export interface HerramientaMateria {
   borrador?: boolean;
   /** Sólo para `tipo: "juego"`: slug de su isla en `content/islas.ts`. */
   isla?: string;
+  /** Sólo para `tipo: "juego"`: el número del tema de la materia que juega (la sección Jugar va por temas). */
+  tema?: number;
 }
 
-/** Una isla del juego: normalmente, una materia. Sus juegos se registran en `content/materias.ts`. */
+/** El juego de una materia. Sus escenas se registran en `content/materias.ts`. */
 export interface Isla {
   slug: string;
   nombre: string;
   /** Qué hace el estudiante en la isla, en una frase. */
   descripcion: string;
+  /** Slug de la materia en `content/materias.ts`: sus juegos se ven en la página de esa materia. */
+  materia: string;
+  /** Los temas de la materia, en orden: la sección Jugar muestra uno por fila, con su juego o «En construcción». */
+  temas?: { numero: number; titulo: string }[];
 }
 
 export interface Podcast {

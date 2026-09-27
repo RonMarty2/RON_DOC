@@ -77,20 +77,9 @@ export const MATERIAS: Materia[] = [
   },
   {
     slug: "administracion-financiera",
-    nombre: "Administración Financiera",
+    nombre: "Administración Financiera I",
     descripcion:
       "Análisis de estados financieros, ratios, sistema Du Pont y flujos de fondos para la toma de decisiones empresariales.",
-    // El juego va acá mientras Proyectos II no tenga su materia (moverlo es mover este bloque). Borrador hasta probarlo con un curso.
-    herramientas: [
-      {
-        href: "/juego-proyectos",
-        titulo: "Valle de los Proyectos: la máquina que no alcanzaba",
-        descripcion: "Juego en pixel art: asesoras a una lechera de Punata, calculas su capacidad y decides en qué invertir. Cada alumno tiene sus propios números.",
-        tipo: "juego",
-        isla: "proyectos-ii",
-        borrador: true,
-      },
-    ],
     temas: [
       {
         slug: "introduccion-estados-financieros",
@@ -266,9 +255,52 @@ export const MATERIAS: Materia[] = [
           "Eres oficial de créditos en la agencia de Cliza: revisas con qué norma se hizo cada balance, reexpresas garantías por inflación y decides cuánto prestar. Cada alumno tiene sus propios números.",
         tipo: "juego",
         isla: "aief",
+        tema: 1,
         borrador: true,
       },
     ],
+    temas: [],
+  },
+  // Materias de la carpeta de Ronald que todavía no tienen material en la página: se muestran con
+  // sus secciones «En construcción» (decisión del 27-09: la estructura se ve entera).
+  {
+    slug: "proyectos-ii",
+    nombre: "Proyectos II",
+    descripcion: "Formulación de proyectos de inversión: tamaño, localización, ingeniería del proyecto y su evaluación.",
+    herramientas: [
+      {
+        href: "/juego-proyectos",
+        titulo: "Valle de los Proyectos: la máquina que no alcanzaba",
+        descripcion: "Juego en pixel art: asesoras a una lechera de Punata, calculas su capacidad y decides en qué invertir. Cada alumno tiene sus propios números.",
+        tipo: "juego",
+        isla: "proyectos-ii",
+        borrador: true,
+      },
+    ],
+    temas: [],
+  },
+  {
+    slug: "modelos-evaluacion",
+    nombre: "Modelos de Evaluación de Inversiones en el Mercado de Capitales",
+    descripcion: "Cómo se valoran bonos, acciones y carteras para decidir en qué invertir.",
+    temas: [],
+  },
+  {
+    slug: "bolsa-de-valores",
+    nombre: "Bolsa de Valores",
+    descripcion: "Cómo funciona el mercado de valores y cómo se invierte en él.",
+    temas: [],
+  },
+  {
+    slug: "gestion-recursos-microfinancieros",
+    nombre: "Gestión de Recursos Microfinancieros",
+    descripcion: "Cómo se administran el crédito, el ahorro y el riesgo en las entidades de microfinanzas.",
+    temas: [],
+  },
+  {
+    slug: "estadistica-analisis-datos-psicologia",
+    nombre: "Estadística y Análisis de Datos en Psicología",
+    descripcion: "Cómo se organizan, describen y analizan los datos de una investigación en psicología.",
     temas: [],
   },
 ];

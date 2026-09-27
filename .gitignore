@@ -15,6 +15,23 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Artefactos temporales de LaTeX y compilacion academica
+*.aux
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+
+# Multimedia pesada: enlazar/embeber desde plataformas externas
+*.mp4
+*.m4a
+*.mp3
+*.mov
+*.wav
+
 # Sistema operativo
 .DS_Store
 Thumbs.db

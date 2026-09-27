@@ -21,7 +21,7 @@ import type { CapacitorConfig } from "@capacitor/cli";
  */
 const config: CapacitorConfig = {
   appId: "bo.ronmartinez.aula",
-  appName: "Aula de Probabilidad",
+  appName: "Aula Virtual",
   webDir: "out",
   android: {
     // Deja que la app maneje el botón "atrás" del sistema.

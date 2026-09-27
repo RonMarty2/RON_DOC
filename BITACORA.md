@@ -14,8 +14,11 @@
 > las etapas de agentes que se saltaron** (`.claude/agents/LEEME.md`): 2 aprendizaje ✔ (`04-aprendizaje.md`),
 > 3 bucle ✔ (`02-bucle-y-mecanicas.md`); **faltan 4 narrativa, 5/7 crítico (papel y jugable)** y después
 > aplicar al código lo que salga (1.1 que varíe por alumno, delatores de 1.2, índice de compra ≠ 100).
-> **Pregunta abierta a Ronald:** las características de calidad de la información (1.3), ¿entran al juego
-> como hoja de observación (recomendado) o sólo a la defensa oral? En esta sesión los agentes del
+> **Ronald respondió (27-09):** las características de calidad de la información (1.3) **sí entran al
+> juego** (hoja de observación), pero *«se supone que teníamos que planificar»*: **antes de construir
+> se le muestra el plan completo del Tema 1 en simple** y lo aprueba. También: la app pasa a llamarse
+> **«Aula Virtual»** (recompilada e instalada); **el estilo visual no le termina de gustar** («vamos por
+> buen camino»): queda pendiente, sin tocar hasta que él lo pida. En esta sesión los agentes del
 > proyecto no estaban cargados (llegaron con el `git pull`): se corrieron como agente general que lee
 > y sigue su archivo `.md`.
 
@@ -92,7 +95,7 @@ con Google» abre el navegador del teléfono y vuelve a la app por `bo.ronmartin
 (`src/lib/nativo.ts`, el único archivo que habla con la parte nativa; `nube.ts` lo usa sólo si
 `esApp()`). Plugins nuevos `@capacitor/app` y `@capacitor/browser`, *intent-filter* en el
 AndroidManifest, 4 pruebas nuevas (566). La web no cambia: comprobado que no carga nada de Capacitor.
-El nombre de la app sigue igual (pedido de Ronald).
+El nombre de la app pasó a **«Aula Virtual»** el 27-09 (pedido de Ronald; antes «Aula de Probabilidad»): `capacitor.config.ts` y `android/app/src/main/res/values/strings.xml`.
 
 - [x] Código, plugins y manifiesto.
 - [x] En Supabase → Authentication → URL Configuration → Redirect URLs: agregada

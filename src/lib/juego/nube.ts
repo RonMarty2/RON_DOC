@@ -11,8 +11,8 @@
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { REGRESO_APP, abrirFueraYEsperarRegreso, esApp } from "../nativo";
-import { datosDeVersion } from "./planta";
-import type { Entrada, Partida } from "./registro";
+import { comoPartida, type Escena, type PartidaDe } from "./partida";
+import { ESCENA_PLANTA, type Entrada, type Evento, type Partida } from "./registro";
 
 const URL_NUBE = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 const CLAVE_NUBE = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
@@ -132,37 +132,50 @@ interface Fila {
   terminada: boolean;
 }
 
-/** Convierte una fila de la tabla en partida; null si no tiene la forma esperada. */
-export function partidaDeFila(f: Fila | null | undefined, version: number): Partida | null {
-  if (!f || f.isla !== "proyectos" || f.escena !== "planta" || f.version !== version || !Array.isArray(f.registro)) return null;
-  try {
-    datosDeVersion(f.version);
-  } catch {
-    return null;
-  }
-  return { isla: "proyectos", escena: "planta", version: f.version, eventos: f.registro as Entrada[], terminada: Boolean(f.terminada) };
+/** Convierte una fila de la tabla en partida de esa escena; null si no tiene la forma esperada. */
+export function partidaDeFilaDe<E, I extends string, S extends string>(
+  e: Escena<I, S>,
+  f: Fila | null | undefined,
+  version: number,
+): PartidaDe<E, I, S> | null {
+  return f ? comoPartida<E, I, S>(e, version, { ...f, eventos: f.registro }) : null;
 }
 
-/** La partida guardada en la cuenta para ese curso (o sin curso), o null. */
-export async function leerPartidaNube(alumnoId: string, cursoId: string | null, version: number): Promise<Partida | null> {
+/** La de la planta (nombre de siempre). */
+export function partidaDeFila(f: Fila | null | undefined, version: number): Partida | null {
+  return partidaDeFilaDe<Evento, "proyectos", "planta">(ESCENA_PLANTA, f, version);
+}
+
+/** La partida de una escena guardada en la cuenta para ese curso (o sin curso), o null. */
+export async function leerPartidaNubeDe<E, I extends string, S extends string>(
+  e: Escena<I, S>,
+  alumnoId: string,
+  cursoId: string | null,
+  version: number,
+): Promise<PartidaDe<E, I, S> | null> {
   const sb = await nube();
   let q = sb
     .from("juego_partidas")
     .select("isla, escena, version, registro, terminada")
     .eq("estudiante_id", alumnoId)
-    .eq("isla", "proyectos")
-    .eq("escena", "planta");
+    .eq("isla", e.isla)
+    .eq("escena", e.escena);
   q = cursoId ? q.eq("curso_id", cursoId) : q.is("curso_id", null);
   const { data, error } = await q.maybeSingle();
   if (error) throw error;
-  return partidaDeFila(data as Fila | null, version);
+  return partidaDeFilaDe<E, I, S>(e, data as Fila | null, version);
+}
+
+/** La de la planta (nombre de siempre). */
+export function leerPartidaNube(alumnoId: string, cursoId: string | null, version: number): Promise<Partida | null> {
+  return leerPartidaNubeDe<Evento, "proyectos", "planta">(ESCENA_PLANTA, alumnoId, cursoId, version);
 }
 
 /**
  * Guarda la partida en la cuenta. Una vez entregada (terminada) la base ya no deja cambiarla:
  * lo que ve el docente queda fijo.
  */
-export async function guardarPartidaNube(alumnoId: string, cursoId: string | null, p: Partida) {
+export async function guardarPartidaNube(alumnoId: string, cursoId: string | null, p: PartidaDe<unknown>) {
   const sb = await nube();
   const { error } = await sb.from("juego_partidas").upsert(
     {
@@ -201,8 +214,11 @@ export interface InscritoConPartida {
   partida: { version: number; registro: Entrada[]; terminada: boolean; actualizado: string } | null;
 }
 
-/** Cada inscrito del curso con su partida de la escena, o null si todavía no jugó. */
-export async function partidasDelCurso(cursoId: string): Promise<InscritoConPartida[]> {
+/** Cada inscrito del curso con su partida de la escena (por defecto, la planta), o null si todavía no jugó. */
+export async function partidasDelCurso(
+  cursoId: string,
+  e: Pick<Escena, "isla" | "escena"> = ESCENA_PLANTA,
+): Promise<InscritoConPartida[]> {
   const sb = await nube();
   const [inscritos, partidas] = await Promise.all([
     sb.from("inscripciones").select("estudiante_id, perfiles(nombre, apellido, email)").eq("curso_id", cursoId),
@@ -210,8 +226,8 @@ export async function partidasDelCurso(cursoId: string): Promise<InscritoConPart
       .from("juego_partidas")
       .select("estudiante_id, version, registro, terminada, actualizado_en")
       .eq("curso_id", cursoId)
-      .eq("isla", "proyectos")
-      .eq("escena", "planta"),
+      .eq("isla", e.isla)
+      .eq("escena", e.escena),
   ]);
   if (inscritos.error) throw inscritos.error;
   if (partidas.error) throw partidas.error;

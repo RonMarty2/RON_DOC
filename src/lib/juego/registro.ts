@@ -9,6 +9,17 @@
 
 import { bs } from "../formato";
 import {
+  anotarEn,
+  borrarPartidaDe,
+  guardarPartidaDe,
+  leerPartidaDe,
+  partidaNuevaDe,
+  type Almacen,
+  type ConHora,
+  type Escena,
+  type PartidaDe,
+} from "./partida";
+import {
   datosDeVersion,
   revisarCapacidad,
   revisarCapacidadConCompra,
@@ -28,22 +39,30 @@ export type Evento =
   | { tipo: "recuperacion"; valor: number }
   | { tipo: "argumento"; texto: string };
 
-export type Entrada = Evento & { hora: string };
+export type Entrada = ConHora<Evento>;
 
-export interface Partida {
-  isla: "proyectos";
-  escena: "planta";
-  version: number;
-  eventos: Entrada[];
-  terminada: boolean;
-}
+/** La escena de la planta para la pieza común de partidas (partida.ts). */
+export const ESCENA_PLANTA: Escena<"proyectos", "planta"> = {
+  isla: "proyectos",
+  escena: "planta",
+  versionValida: (v) => {
+    try {
+      datosDeVersion(v);
+      return true;
+    } catch {
+      return false;
+    }
+  },
+};
+
+export type Partida = PartidaDe<Evento, "proyectos", "planta">;
 
 export function partidaNueva(version: number): Partida {
-  return { isla: "proyectos", escena: "planta", version, eventos: [], terminada: false };
+  return partidaNuevaDe<Evento, "proyectos", "planta">(ESCENA_PLANTA, version);
 }
 
 export function anotar(p: Partida, e: Evento, hora = new Date()): Partida {
-  return { ...p, eventos: [...p.eventos, { ...e, hora: hora.toISOString() }] };
+  return anotarEn(p, e, hora);
 }
 
 const NOMBRE_OPCION: Record<Opcion, string> = {
@@ -85,46 +104,19 @@ export function describir(d: DatosPlanta, e: Evento, { diagnostico = false } = {
   }
 }
 
-// ── Guardado en el navegador ─────────────────────────────────────────────────
-
-type Almacen = Pick<Storage, "getItem" | "setItem" | "removeItem">;
-
-const clave = (version: number) => `ron-doc-juego:proyectos:planta:${version}`;
-
-function almacen(): Almacen | null {
-  try {
-    return typeof window === "undefined" ? null : window.localStorage;
-  } catch {
-    return null;
-  }
-}
+// ── Guardado en el navegador (la pieza común, con la misma clave de siempre) ───
 
 /** La partida guardada de esa versión, o null si no hay o no se puede leer. */
-export function leerPartida(version: number, a: Almacen | null = almacen()): Partida | null {
-  try {
-    const crudo = a?.getItem(clave(version));
-    if (!crudo) return null;
-    const p = JSON.parse(crudo) as Partida;
-    if (p?.isla !== "proyectos" || p.escena !== "planta" || p.version !== version || !Array.isArray(p.eventos)) return null;
-    datosDeVersion(p.version);
-    return p;
-  } catch {
-    return null;
-  }
+export function leerPartida(version: number, a?: Almacen | null): Partida | null {
+  return a === undefined ? leerPartidaDe<Evento, "proyectos", "planta">(ESCENA_PLANTA, version) : leerPartidaDe<Evento, "proyectos", "planta">(ESCENA_PLANTA, version, a);
 }
 
-export function guardarPartida(p: Partida, a: Almacen | null = almacen()) {
-  try {
-    a?.setItem(clave(p.version), JSON.stringify(p));
-  } catch {
-    // sin lugar o bloqueado: el juego sigue, sólo que no se recuerda
-  }
+export function guardarPartida(p: Partida, a?: Almacen | null) {
+  if (a === undefined) guardarPartidaDe(p);
+  else guardarPartidaDe(p, a);
 }
 
-export function borrarPartida(version: number, a: Almacen | null = almacen()) {
-  try {
-    a?.removeItem(clave(version));
-  } catch {
-    // ídem
-  }
+export function borrarPartida(version: number, a?: Almacen | null) {
+  if (a === undefined) borrarPartidaDe("proyectos", "planta", version);
+  else borrarPartidaDe("proyectos", "planta", version, a);
 }

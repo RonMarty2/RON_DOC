@@ -15,7 +15,7 @@ Este archivo es la memoria de esa relación: qué se trajo, desde qué commit, y
 
 | Repo | Último commit revisado | Fecha del commit |
 |---|---|---|
-| axiom-simulador | `53ab5dccd4cd08ad303245bfebf1ce228f9df6e0` | 2026-09-18 |
+| axiom-simulador | `9325875ee8b2680361e091ae817cbcd9fe17372e` | 2026-09-27 |
 | simuladorPRO | `8acdc6c2c8f6f1655610da2be697c57eb77cb6ac` | 2026-08-02 |
 
 Se actualiza al terminar cada revisión, aunque no se haya traído nada.
@@ -126,3 +126,4 @@ Supabase, login, pagos y planes, paneles de docente, banco de exámenes UMSS, mo
 | 2026-09-14 | Sin commits nuevos en ninguno de los dos (revisado al empezar y al terminar la tanda de progreso, sin internet, controles, imágenes para compartir y hoja imprimible) | Nada | — |
 | 2026-09-14 | SIMPRO `8acdc6c`, sin cambios | El motor del simulador de proyectos: `types/proyecto.ts`, `flujo-proyecto.ts`, `iva-proyecto.ts`, `escenarios.ts`, `finanzas/` (proyecto-financiero, sensibilidad, api-contract), `laboratorio-viabilidad.ts`, `proyecto-factory.ts`, `plantillas.ts` y sus pruebas, con `scripts/traer-motor-simpro.mjs` | Toda la interfaz (otro stack), login, cursos, entregas, eventos en vivo, podio y exportar a Excel: dependen de Supabase o del rol docente |
 | 2026-09-25 | Axiom `7a5d8ed..53ab5dc` (64 commits); SIMPRO `8acdc6c`, sin cambios | `06b691f`/`3c7ab7b`: detector de voseo generado desde infinitivos, con imperativos con pronombre pegado, en `src/lib/revision.ts` (lista de verbos propia, con los de finanzas; sin el imperativo suelto de -ir, que choca con el pretérito de yo) | Banco de exámenes, figuras de lecciones y `lienzo.tsx` (la rejilla de Ejes: RON_DOC no trajo el lienzo) |
+| 2026-09-27 | Axiom `53ab5dc..9325875` (2 commits); SIMPRO `8acdc6c`, sin cambios | Nada todavía | `a827ddb`: seis agentes de Axiom (transcriptor de exámenes, auditor de figuras, auditor pedagógico, autor de láminas, verificador, cronista). `autor-laminas` y `auditor-pedagogico` pueden servir para las láminas de RON_DOC más adelante. `9325875`: Synology no sincroniza carpetas con punto, así que `.claude/agents/` no viaja entre PC y laptop; Axiom lo resolvió con una copia visible en `agentes/` y un script que sincroniza. Vale para RON_DOC sólo si se trabaja dentro de Synology (la bitácora recomienda un clon limpio fuera) |

@@ -52,7 +52,7 @@ El nombre de la app sigue igual (pedido de Ronald).
 - [x] Código, plugins y manifiesto.
 - [ ] **Ronald:** en Supabase → Authentication → URL Configuration → Redirect URLs, agregar
   `bo.ronmartinez.aula://login`.
-- [ ] **Ronald:** en Android Studio, `npm install`, *Gradle sync* y ▶ Run (hay plugins nuevos).
+- [x] Recompilada e instalada el 27-09 (Claude, PC RONMARTY) sin abrir Android Studio: `npx cap sync android`, `gradlew assembleDebug` con el Java de Android Studio (`jbr`) y `adb install -r` al teléfono de Ronald por USB. El manifiesto compilado trae el esquema `bo.ronmartinez.aula`.
 - [ ] Probar en el teléfono: entrar con Google, elegir la cuenta, volver a la app ya adentro.
 
 ### Juego: escalera de ayuda y dominio en la escena de la planta (27-09)

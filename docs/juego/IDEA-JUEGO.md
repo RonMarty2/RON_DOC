@@ -260,3 +260,10 @@ podríamos ajustar para que todo sea nativo en Android además de web, escalable
   pieza que Ronald habilita al último), **el dossier que se manda a leer dice lo mismo que el juego**
   (crítico y aprendizaje).
 
+## 18. Un tema a la vez (27-09)
+
+Ronald: *«¿No quedamos en que haríamos tema por tema? ¿Por qué juntaste?»* La ronda 3 de AIEF armó una
+"versión mínima" con la Llegada, el Tema 1 y el Tema 2 juntos. Desde ahora: se diseña, construye y
+prueba un solo tema; el siguiente empieza cuando Ronald aprueba el anterior; y la maqueta general no se
+da por aprobada sin que Ronald lo diga. Regla de los agentes de diseño.
+

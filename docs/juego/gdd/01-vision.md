@@ -1,4 +1,162 @@
-# 01 · Visión: qué tipo de juego estamos armando
+# 01 · Visión: qué tipo de juego es cada isla
+
+Agente: `director-de-juego`. Un juego por materia (IDEA-JUEGO §16): cada isla tiene su propia sección,
+la más nueva arriba. Debajo de AIEF sigue la visión de Proyectos II (versión 2, 26-09), en pausa.
+
+---
+
+## AIEF · La ventanilla · versión 1 · 27-09-2026 · Etapa de materia
+
+**Estado:** propuesta para Ronald. Se escribe **después** de la maqueta aprobada (`00-adaptacion-aief.md`,
+Ronda 2 y 3, «ok» del 27-09) y de las etapas 2 a 4 del Tema 1 (`04`, `02`, `05`), que se hicieron antes
+que esta. Por eso esta visión no inventa: **pone por escrito la vara con la que se venía decidiendo** y
+marca dónde lo ya hecho se aparta de ella (V1.8).
+
+### Decisiones pendientes de Ronald
+
+1. **Ninguna.** Ya decidido por Ronald: marco A, maqueta general, regla del 60 %, que la calidad de la
+   información (1.3) entra al juego, y **castellano neutro con tuteo, sin giros del valle** (Ronald en el
+   chat, 27-09: «se supone neutro»; y que el tono es dirección del juego y no se le pregunta).
+
+**Palabras de oficio de esta sección** (las demás están en el §0 de Proyectos II, más abajo):
+- **Juego de inspección de documentos:** el trabajo del jugador es revisar papeles contra un reglamento
+  y decidir; lo que deja pasar vuelve después como consecuencia.
+- **Regla del día que choca:** cada jornada el reglamento cambia, y lo que ayer estaba bien hoy es un
+  error. Es el motor de *Papers, Please*.
+- **Delator:** un detalle de la pantalla que deja acertar sin entender.
+
+### V1.1 Frase de visión
+
+> **Eres el oficial de créditos recién llegado a la agencia de Cliza: cada cliente trae papeles que
+> dicen la verdad a medias; calculas lo que sus estados financieros dicen de verdad y decides cuánto
+> prestarle, sabiendo que cada firma queda en tu pared y que después la defiendes frente al docente.**
+
+En palabras de todos los días: *leer un balance es decidir si le crees a quien lo hizo.*
+
+### V1.2 Género y referencias
+
+**Género:** **juego de inspección de documentos con consecuencias**, con momentos de **objeción**
+(desmentir una frase con una prueba). Es lo que la maqueta ya eligió; aquí sólo se fija qué se toma de
+cada referencia.
+
+| Juego | Qué es | Qué tomamos | Qué no tomamos |
+|---|---|---|---|
+| ***Papers, Please*** (Lucas Pope, 2013) | Inspector de frontera: revisas pasaportes contra un reglamento que cambia cada día; al final del día ves las multas y a tu familia | El **manual que crece** y la **regla del día que choca** con la de ayer; la consecuencia **al cierre del día**, no al instante; la cola que presiona sin reloj que castigue; un juego grande hecho por una persona con pocas pantallas | El reloj que te apura y el tono sombrío: aquí no se pierde por lento y nadie sufre por tu error más que la pared |
+| ***Ace Attorney*** (Capcom, desde 2001) | Abogado: juntas pruebas y en el juicio presentas la que contradice al testigo | La **objeción**: el cliente dice una frase que «no se puede afirmar» (las secciones del dossier) y tú la desarmas con el número que escribiste; en el Tema 7, el informe de auditoría | El juicio largo con muchas pruebas: aquí es una frase y un número por carpeta |
+| ***Good Pizza, Great Pizza*** (TapBlaze, 2014, celular) | Atiendes clientes uno por uno, cada uno con su carácter, y vuelven | **Clientes con cara y nombre** que vuelven (Los Cóndores del Tema 4 al 6); tramos cortos que se juegan en el celular | La economía de la tienda (comprar ingredientes, mejorar el local) |
+
+### V1.3 Pilares (con esto se juzga toda idea nueva de AIEF)
+
+1. **Todo número termina en una firma.** Cada cálculo del tema cambia cuánto se presta o si se acepta un
+   papel. Y **decir que no también cuesta** (la ficha gris): si una idea no cambia ninguna firma, no va.
+2. **El manual es la regla; el cliente es la trampa.** Cada tema suma una hoja al manual que choca con
+   la anterior, y cada cliente trae una frase que suena bien y no se puede afirmar. Nadie pregunta nada
+   antes de que el alumno sepa dónde está, quién es el cliente y qué pide.
+3. **El número se escribe; el criterio se firma sin mirar la respuesta.** Los números (NC, valor de hoy,
+   utilidad, monto) se **escriben** y se corrigen ahí mismo con la escalera. Las decisiones de criterio
+   (aceptar o devolver, qué característica falla, qué decide cada persona) se pueden tocar, pero **no se
+   rehacen, no se ven hasta el cierre y nada en la pantalla las delata**.
+4. **Tu ventanilla no es la del compañero.** Todo lo que cuenta para la nota trae otra respuesta correcta
+   para cada alumno. Si algo no puede variar, pesa poco y se dice.
+5. **La pared se defiende.** Lo que el alumno hizo queda en su registro (números, firmas, colores, la
+   línea al cliente) y es lo que sostiene en voz alta en la defensa. Lo que no queda registrado, no cuenta.
+
+### V1.4 Lo que el juego no es
+
+- **No es un cuestionario de normas** con dibujos: si una pantalla es «elige la opción correcta» y se
+  corrige al instante, no va.
+- **No es contabilidad:** no se hacen asientos ni se lleva un libro. Se **leen** estados que otro preparó.
+- **No es un simulador de banco:** no hay tasas, cuotas ni economía de la agencia que equilibrar; la meta
+  de colocación es presión de la jefa, no un número que haya que administrar.
+- **No es un juego de reflejos:** la cola no tiene reloj; no se pierde por lento.
+- **No castiga dos veces:** un error no arrastra números al tema siguiente; la pared es historia, no nota.
+- **No reemplaza el dossier ni la clase:** la escalera manda a leer la página exacta, y la defensa es tuya.
+- **No es un mundo para caminar:** es un escritorio, una ventanilla y una pared.
+
+### V1.5 Público, contexto y sensación
+
+**Quién:** alumnos de Administración de Cochabamba que están aprendiendo a leer estados financieros;
+muchos nunca estuvieron del otro lado de una ventanilla de banco, pero todos estuvieron del lado del
+cliente (o lo estuvo su familia).
+**Dónde:** en el celular y en la app, a veces sin red (una carpeta por pantalla, todo con el dedo); y en
+clase proyectado cuando se construya esa vista.
+
+**Sensación buscada:** ser el oficial al que los papeles no engañan.
+- **Al abrir la jornada:** intriga. ¿Qué cambia hoy en el manual?
+- **Frente al cliente:** sospecha. La frase suena bien, y la gente es simpática.
+- **Al calcular:** el momento de detective, cuando el número desarma la frase.
+- **Al firmar:** responsabilidad, con la meta de la jefa empujando para prestar.
+- **Al cierre:** dar vuelta la pared, alivio o «ay».
+- **En la defensa:** poder explicar cada ficha de la pared.
+
+**Tono y registro de los diálogos (decidido, 27-09):** **castellano neutro, con tuteo, sin giros del
+valle**, en todo lo que dicen los personajes, las pistas, el manual y los cierres. El lugar lo dan los
+nombres, los negocios, la plaza de Cliza, la cooperativa de enfrente y lo que cada cliente cuenta de su
+vida, no la forma de hablar. Frases cortas: se leen con prisa en el celular.
+
+### V1.6 Cómo se mide en la primera prueba con un curso (el Tema 1)
+
+Como cuenta para la nota, lo van a jugar aunque aburra y van a decir que les gustó. Se mide sobre todo
+lo que queda en el registro.
+
+| Qué se mide | De dónde sale | Señal de que funciona |
+|---|---|---|
+| ¿Saben dónde están antes de calcular? | Pregunta de una línea al final: «¿qué hace tu agencia y qué le pediste a Don Julio?» | Casi todos lo dicen con sus palabras |
+| ¿El manual se usa? | Registro: errores de NC por «supuso el vacío» en la primera carpeta de 1.2 contra la segunda | Bajan de una carpeta a la otra |
+| ¿La regla que choca enseña? | Registro: cuántos usan la regla de ayer (valor en libros) en 1.3 | Algunos caen la primera vez y en el repaso ya no |
+| ¿Las pistas enseñan? | Registro: en qué escalón acertó el valor de hoy | La mayoría acierta antes del escalón «a leer» |
+| ¿Nadie gana sin entender? | Registro: dictámenes de 1.2 y sellos de calidad por alumno | No aparecen alumnos que siempre acepten o siempre devuelvan y pasen |
+| ¿Lo sienten juego? | Registro: quién vuelve a abrir el juego sin que haga falta (después de aprobar, o antes de que lo pidas) | Hay alguno; cero es mala señal |
+| ¿Sostienen la defensa? | Tu rúbrica del Tema 1 (`04`, A1.4) contra tu nota de referencia de un curso anterior en el mismo tema | Igual o mejor, y citando su carpeta («a mi carpintero le presté…») |
+| ¿Se juega en el celular? | Tu prueba en tu teléfono y lo que digan en clase | Nadie se traba con el teclado tapando la cifra ni con el botón atrás |
+
+Si saben dónde están y las pistas funcionan pero la defensa no mejora, el problema no es el género: es el
+registro o la rúbrica (`04`).
+
+### V1.7 Coherencia con la maqueta aprobada
+
+La maqueta (Ronda 2 y 3) **cumple los cinco pilares**: tres cifras por carpeta y la ficha gris (pilar 1);
+reglas de la agencia que chocan tema a tema y frases «Qué NO se puede afirmar» (pilar 2); carpeta que no
+se rehace y color al cierre (pilar 3); versión por alumno y familias de Los Cóndores (pilar 4); pared y
+registro que llegan al Cierre y a la defensa (pilar 5). El orden de piezas, el Tema 7 que «da vuelta la
+mesa» y el Cierre al último no chocan con nada de esta visión.
+
+### V1.8 Dónde lo ya hecho se aparta de la visión (para el crítico y para ti)
+
+Ninguno bloquea; todos se vigilan en la etapa 5:
+
+1. **Tocar opciones frente a «el alumno escribe el número».** En el Tema 1, 1.1 (seis sellos y seis
+   hojas), el dictamen de 1.2 y la hoja de calidad se **tocan**, no se escriben. Es aceptable porque son
+   criterio, no números, y cumplen el pilar 3 (no se rehacen, no delatan, varían por alumno). **Lo que no
+   se acepta:** que un número se vuelva opción para tocar.
+2. **La hoja de calidad corre riesgo de sentirse cuestionario.** Siete sellos más tres botones por carpeta,
+   y el sello equivocado manda al repaso aunque la firma salga bien: eso es corregir una clasificación, no
+   una firma. Pedido al crítico: que cada sello equivocado se **vea en el mundo** al cierre (el auditor o
+   Doña Teresa lo nombra en la ficha), no sólo en el repaso, y que mida si la jornada se hace larga.
+3. **1.1 pasa fuera del trabajo del oficial** (ayudar a Doña Nieves a repartir su balance). El narrativo
+   lo justificó bien y pesa poco (10 %). Queda como la única escena que no termina en una firma del banco
+   (roza el pilar 1): no conviene que se repita en otros temas.
+4. **El Tema 1 tiene un solo crédito** (1.3). Lo demás es revisar papeles. Está bien para la entrada (es
+   *Papers, Please* puro), pero la progresión tiene que cuidar que desde el Tema 2 **el monto sea el centro**.
+5. **La nota bien hecha que razona mal** (`05`, N1.3: el flujo con «como Bolivia ya adoptó las NIIF»).
+   Choca con el pilar 5: en la defensa el alumno tendría que defender como «bien hecho» un papel con una
+   afirmación falsa. Recomiendo limitar esa justificación a las notas mal hechas **si** la prueba de
+   independencia de B1.4 sigue pasando; si no pasa, que el crítico decida.
+
+### V1.9 Lo que esta visión le deja a la etapa siguiente (progresión)
+
+`03-progresion-aief.md` **no existe todavía** y es la que sigue. Tiene que respetar:
+- una hoja del manual por tema que choca con la anterior, y un cliente con frase «Qué NO» por carpeta;
+- desde el Tema 2, el monto como centro de cada jornada; escenas sin firma sólo si son cortas y pesan poco;
+- el orden de piezas de la maqueta (R2.2), sin duraciones ni fechas, un tema a la vez;
+- Los Cóndores como el cliente que vuelve (del 4a al 6) y el Tema 7 como el giro de la materia;
+- en cada tema, qué varía por alumno y cuánto pesa lo que no varía.
+
+**Referencias confirmadas:** las tres están enlazadas al final de la sección de Proyectos II.
+
+---
+
+# Proyectos II · versión 2 · 26-09-2026 (en pausa)
 
 **Versión 2 · 26-09-2026** · Agente: `director-de-juego` · Estado: **propuesta para Ronald** (nada de
 esto está decidido salvo lo que se marca como "ya decidido").

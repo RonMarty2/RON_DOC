@@ -6,10 +6,8 @@ Agente: `disenador-narrativo`. Cada sección nueva va arriba, con su versión y 
 
 ## Decisiones pendientes de Ronald
 
-1. **(La única pregunta de esta ronda)** ¿Los personajes pueden hablar **con giros del valle**
-   («harto», «ya pues», «caserito», «¿no ve?») o prefieres un **castellano neutro**? Recomendado: giros
-   suaves y pocos, uno por personaje como mucho, porque le dan lugar a la agencia sin volver difícil la
-   lectura en el celular. Todo lo de abajo está en castellano neutro para que puedas elegir sin rehacer.
+1. ~~Giros del valle o castellano neutro~~ **Decidido por Ronald (27-09): castellano neutro con tuteo, sin
+   giros regionales.** Todo lo de abajo ya está así.
 
 Lo demás de esta sección queda como propuesta por defecto y pasa al `critico-de-jugabilidad` (etapa 5)
 antes de mostrártelo.

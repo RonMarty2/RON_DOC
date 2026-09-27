@@ -40,7 +40,7 @@ sin subirlos, y se anota su versión. Pasos:
 - [ ] 9. **Siguiente:** sólo el Tema 1 jugable (Llegada, 1.1, 1.2, 1.3) en la pantalla de «La ventanilla», web y app; probarlo y mostrárselo a Ronald. La maqueta general sigue esperando su aprobación.
 - [x] 8. Fichas de la versión mínima (Llegada, Tema 1, Tema 2) con los ajustes; después, el código común que falta (registro y nube por isla y escena, escalón "otros números", guardado sin conexión) y la primera escena.
 
-### Recorrido del estudiante (27-09, acordado · esperando el OK de Ronald para la fase 1)
+### Recorrido del estudiante (27-09, acordado como plan final · **para después: ahora el foco es el juego**)
 
 Ronald notó que nunca se había decidido **qué ve un estudiante al abrir la app**. Acordado: se entra
 por **la materia** (Inicio «Elige tu materia» → su materia con ESTUDIAR, JUGAR y PRACTICAR); primera

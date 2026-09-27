@@ -1,5 +1,10 @@
 # Recorrido del estudiante — qué ve desde que abre la app
 
+> **PRIORIDAD (Ronald, 27-09): ahora el foco es EL JUEGO.** Este recorrido es el **plan final** y se
+> construye **después**: pasar las materias de la carpeta de UNIFRANZ a la página (contenido enlazado,
+> cuestionarios, podcasts y videos enlazados a YouTube e iVoox) y tener el juego dentro. **No empezar
+> la fase 1 hasta que Ronald lo pida.**
+
 > Acordado con Ronald el **2026-09-27** («SI!» a la propuesta). Hasta ese día se construyeron piezas
 > (aula, láminas, juego) sin decidir por dónde entra el estudiante: esto lo decide.
 > **Vale para la web y la app por igual** (la app carga la página).

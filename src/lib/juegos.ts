@@ -28,6 +28,26 @@ export function juegoDeMateria(m: Materia, islas: Isla[]): JuegoDeMateria | null
   return { isla, filas };
 }
 
+/**
+ * El candado de las etapas (Ronald, 27-09): ningún tema tiene juego sin plan aprobado por Ronald, y
+ * nada se publica (sin `borrador`) si es un prototipo o si su isla todavía no tiene temas planificados.
+ */
+function revisarCandado(isla: Isla, j: HerramientaMateria): void {
+  const tema = isla.temas?.find((t) => t.numero === j.tema);
+  const plan = tema?.plan ?? "";
+  const aprobado = /^aprobado \d{4}-\d{2}-\d{2}/.test(plan);
+  const etapas = "Pasa primero por los agentes (.claude/agents/LEEME.md) y que Ronald apruebe el plan.";
+  if (!isla.temas) {
+    if (!j.borrador) throw new Error(`El juego ${j.href} se publica sin temas planificados en la isla ${isla.slug}. ${etapas}`);
+    return;
+  }
+  if (!tema) throw new Error(`El juego ${j.href} no dice de qué tema es (isla ${isla.slug}).`);
+  if (!aprobado && plan !== "prototipo") {
+    throw new Error(`El Tema ${tema.numero} de ${isla.slug} tiene juego sin plan aprobado (plan: «${plan || "pendiente"}»). ${etapas}`);
+  }
+  if (plan === "prototipo" && !j.borrador) throw new Error(`El juego ${j.href} es un prototipo: no se publica hasta que Ronald apruebe su plan.`);
+}
+
 /** Corta el build si un juego no calza: isla inexistente, isla de otra materia o tema que la isla no tiene. */
 export function revisarJuegos(islas: Isla[], materias: Materia[]): void {
   for (const m of materias) {
@@ -38,6 +58,7 @@ export function revisarJuegos(islas: Isla[], materias: Materia[]): void {
       if (j.tema !== undefined && isla.temas && !isla.temas.some((t) => t.numero === j.tema)) {
         throw new Error(`El juego ${j.href} dice tema ${j.tema}, que la isla ${isla.slug} no tiene`);
       }
+      revisarCandado(isla, j);
     }
   }
   for (const i of islas) {

@@ -84,7 +84,15 @@ export interface Isla {
   /** Slug de la materia en `content/materias.ts`: sus juegos se ven en la página de esa materia. */
   materia: string;
   /** Los temas de la materia, en orden: la sección Jugar muestra uno por fila, con su juego o «En construcción». */
-  temas?: { numero: number; titulo: string }[];
+  temas?: {
+    numero: number;
+    titulo: string;
+    /**
+     * El candado de las etapas: un juego de este tema sólo existe si su plan está «aprobado AAAA-MM-DD»
+     * (Ronald lo aprobó después de pasar por los agentes) o es un «prototipo» anterior a la regla del 27-09.
+     */
+    plan?: string;
+  }[];
 }
 
 export interface Podcast {

@@ -1,5 +1,12 @@
 # Punto de entrada para asistentes IA
 
+> **EL JUEGO VA SIEMPRE POR ETAPAS (Ronald, 27-09: «no quiero estarte recordando qué agentes usar»).**
+> Cualquier pedido sobre el juego empieza por el agente `director-de-juego`: dice en qué etapa está y qué
+> agente sigue (tabla de `.claude/agents/LEEME.md`). **Ningún tema se programa sin su plan aprobado por
+> Ronald**, presentado en simple; el candado está en `content/islas.ts` (`plan: "aprobado AAAA-MM-DD"`) y
+> `npm test` no deja subir sin él. Si los agentes no aparecen en la lista de la sesión (llegaron con un
+> `git pull` después de abrirla), se corren como agente general que lee y sigue su archivo `.md`.
+
 **Leer primero [BITACORA.md](./BITACORA.md):** estado, decisiones, trabajo en paralelo y qué sigue. Toda parte terminada se anota ahí en el mismo commit. Ronald pidió avanzar parte por parte sin preguntar.
 
 ## Subir a main (autorizado por Ronald el 2026-09-25)

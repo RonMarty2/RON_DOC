@@ -303,6 +303,31 @@ sube cuando vuelve la red.
 - **Contraste:** asociativa y productiva frente a las dos comerciales del día. Se inspira en el ejemplo
   de D2 §2.3, con otra empresa y otros números; no usa el caso de Estudio de Casos de D2.
 
+### R3.2-bis Verificado en el dossier del Tema 1 (27-09, sesión local con el dossier a la vista)
+
+Ronald aprobó la maqueta general el 27-09 («ok»). Leído el PDF del Tema 1 (huella abajo, págs. impresas);
+el `.tex` sigue igual al de la Ronda 1. Reemplaza los **[verificar en el dossier]** de las fichas del Tema 1:
+
+- **1.1 (págs. 2 a 6; Cuadro 1 en la pág. 4).** Usuarios con su decisión, como los nombra el Cuadro 1:
+  banco (otorgar o negar un crédito, y a qué tasa), inversionista (aportar o retirar capital), proveedor
+  (vender al contado o a 30 días), gerencia (invertir, contratar, fijar precios), SIN (verificar la base
+  imponible declarada), empleado (permanecer o negociar condiciones). **La escena usa proveedor,
+  inversionista (el socio que piensa retirar su parte) y SIN**; la jefa cierra con la del banco.
+- **1.2 (págs. 7 a 12; Cuadro 2, las 14 NC, págs. 8 y 9).** El manual del juego copia el Cuadro 2 tal cual.
+  El único vacío que el dossier nombra es el **estado de flujo de efectivo (NIC 7 supletoria, pág. 7)**:
+  es la única operación sin NC del juego (no se inventan otros vacíos). El dossier subraya que
+  arrendamientos (NC 10) y consolidación (NC 8) sí tienen norma boliviana (pág. 9). Las NIIF/NIC que cita
+  el contador en las notas equivocadas (NIIF 16, NIIF 10, NIC 21, NIC 28, NIC 29, NIC 16, NIC 10, NIC 8)
+  **son del juego, no del dossier**; son las normas internacionales reales de cada operación.
+- **1.3 (págs. 12 a 16; cálculo paso a paso en la pág. 14).** El dossier usa un **índice general de
+  precios** (I₀ = 100, I₁ = 112), no la UFV: V reexpresado = V histórico × I₁ / I₀. El juego muestra los
+  índices igual (compra 100, hoy 115 en la versión 0). La característica que se pierde sin reexpresar es
+  la **relevancia** (el balance de la hiperinflación «cumplía la norma y había dejado de ser relevante»).
+
+| Dossier (relativo a la carpeta de materias) | Fecha del archivo | Huella |
+|---|---|---|
+| `analisis e interpretacion de estados financieros/1_CONTENIDO/TEMA 1/TEMA 1 - DOSSIER.pdf` | 2026-09-06 | `7cbe14e402f8` |
+
 ### R3.3 Qué datos y funciones hay que programar
 
 Todo en la isla `aief` (archivos propios, con su `.test.ts`); lo que sirve también a las láminas va en

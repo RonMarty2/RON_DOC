@@ -40,7 +40,7 @@ sin subirlos, y se anota su versión. Pasos:
 - [x] 8c. **Ronald aprobó la maqueta general de AIEF** («ok», 27-09, después de un resumen simple).
 - [ ] 9. **EN CURSO desde 27-09 16:55 (Claude, PC RONMARTY, sesión local):** sólo el Tema 1 jugable (Llegada, 1.1, 1.2, 1.3) en la pantalla de «La ventanilla», web y app; probarlo y mostrárselo a Ronald en su celular antes del Tema 2. Pasos, cada uno se marca al terminarlo:
   - [x] 9a. (hecho: `00-adaptacion-aief.md` R3.2-bis) Verificar en el dossier de AIEF (en esta PC) lo marcado [verificar en el dossier] de las fichas del Tema 1: usuarios de D1 §1.1, lista y títulos de las NC de §1.2, índice de §1.3 (¿UFV?) y páginas para la escalera. Se anota en `00-adaptacion-aief.md`.
-  - [ ] 9b. Motor del Tema 1 en `src/lib/juego/aief/` con pruebas: datos de 1.1, carpetas de 1.2, revisores del valor reexpresado y de la NC con su diagnóstico.
+  - [x] 9b. (hecho: `tema1.ts`, `guion-tema1.ts` y sus pruebas; decisiones chicas en R3.2-bis) Motor del Tema 1 en `src/lib/juego/aief/` con pruebas: datos de 1.1, carpetas de 1.2, revisores del valor reexpresado y de la NC con su diagnóstico.
   - [ ] 9c. Pantalla en `/juego-aief` (borrador): Llegada, jornada del Tema 1, cierre con la pared, repaso; guardado local y en la cuenta. AIEF como materia en `content/materias.ts` con el juego en la isla `aief`.
   - [ ] 9d. Pruebas, voseo, 375×812 y 1366×768; subir; abrirlo en el celular de Ronald.
 - [x] 8. Fichas de la versión mínima (Llegada, Tema 1, Tema 2) con los ajustes; después, el código común que falta (registro y nube por isla y escena, escalón "otros números", guardado sin conexión) y la primera escena.

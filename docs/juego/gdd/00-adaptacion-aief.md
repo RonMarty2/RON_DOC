@@ -328,6 +328,18 @@ el `.tex` sigue igual al de la Ronda 1. Reemplaza los **[verificar en el dossier
 |---|---|---|
 | `analisis e interpretacion de estados financieros/1_CONTENIDO/TEMA 1/TEMA 1 - DOSSIER.pdf` | 2026-09-06 | `7cbe14e402f8` |
 
+**Decisiones chicas tomadas al programar el Tema 1 (27-09), mostradas a Ronald para que las cambie si quiere:**
+1. Las operaciones de las carpetas de 1.2 (`OPERACIONES` en `src/lib/juego/aief/tema1.ts`) y la norma
+   internacional que cita el contador en las notas equivocadas: del juego, no del dossier.
+2. Nombres: Doña Teresa (jefa), Doña Rosa (práctica), Doña Elena, Don Hugo, la inspectora del SIN,
+   Ferretería San Isidro; clientes de 1.2 de una lista corta.
+3. **Sin barra de meta en el Tema 1:** con un solo crédito en la jornada, la meta delataría el monto.
+   Aparece desde el Tema 2.
+4. La regla de la agencia del 60 % (la «única pregunta» de arriba) se toma como aprobada con el «ok» de
+   Ronald a la maqueta.
+5. En 1.2 cada jornada trae **dos** carpetas, una bien hecha y una para devolver (así «siempre aceptar» o
+   «siempre devolver» pierden); el repaso de 1.2 trae otra vez dos.
+
 ### R3.3 Qué datos y funciones hay que programar
 
 Todo en la isla `aief` (archivos propios, con su `.test.ts`); lo que sirve también a las láminas va en

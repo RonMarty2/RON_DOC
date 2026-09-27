@@ -68,7 +68,7 @@ export const PERSONA: Record<Persona, { nombre: string; dice: string; otraVez: s
     otraVez: "Estoy pensando si pongo más plata o si saco la mía.",
   },
   sin: {
-    nombre: "La inspectora del SIN",
+    nombre: "la inspectora del SIN",
     dice: "Vengo a revisar el balance de la ferretería.",
     otraVez: "Quiero ver si la utilidad que declararon para el impuesto es la real.",
   },
@@ -130,6 +130,7 @@ export const PREGUNTA_DICTAMEN = "Compara la nota del contador con lo que encont
 // ── 1.3 ──────────────────────────────────────────────────────────────────────
 
 export const HOJA_NUEVA = "Última carpeta del día. Antes, una hoja nueva del manual: reemplaza a la regla de ayer.";
+export const RECUERDA_REGLA = "Ahora un carpintero con su sierra. Recuerda la regla del Tema 1:";
 export const REGLA_NUEVA = REGLAS.tema1;
 export const REGLA_CERO = REGLAS.cero;
 

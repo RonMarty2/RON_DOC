@@ -1,0 +1,44 @@
+/*
+ * «La ventanilla» usa la base del juego (juego-proyectos/juego.css, con sus colores ya medidos) y suma
+ * sólo sus piezas: la carpeta, el manual, las reglas y la pared del cierre. Mismos colores de la base.
+ */
+
+.ventanilla .juego-pantalla { background: var(--juego-panel); }
+
+.ventanilla-carpeta {
+  background: var(--juego-leche); color: var(--juego-noche); border: 4px solid var(--juego-borde);
+  padding: 12px 14px; display: grid; gap: 6px; font-size: 15px;
+}
+.ventanilla-carpeta p { margin: 0; }
+.ventanilla-carpeta .juego-quien { color: #6b4a1f; }
+.ventanilla-nota { font-style: italic; border-top: 2px dashed #9c9486; padding-top: 6px; }
+
+.ventanilla-ficha { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+
+.ventanilla-vista { font-family: var(--juego-dialogo); font-size: 22px; color: var(--juego-bien); }
+
+.ventanilla-manual {
+  background: var(--juego-panel); border: 2px solid var(--juego-leche); padding: 12px 14px; display: grid; gap: 10px;
+}
+.ventanilla-manual h2 { font-family: var(--juego-pixel); font-size: 10px; letter-spacing: 0.06em; color: var(--juego-leche); margin: 0; line-height: 1.6; }
+
+.ventanilla-regla { border: 2px solid var(--juego-borde); padding: 8px 10px; display: grid; gap: 4px; font-size: 14px; }
+.ventanilla-regla p { margin: 0; }
+.ventanilla-regla.nueva { border-color: var(--juego-atardecer); }
+.ventanilla-regla.tachada p:last-child { text-decoration: line-through; color: var(--juego-tenue); }
+
+.ventanilla-normas { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 13px; }
+.ventanilla-normas b { color: var(--juego-atardecer); font-variant-numeric: tabular-nums; margin-right: 6px; }
+
+.ventanilla-pared { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.ventanilla-pared li { border-left: 8px solid var(--juego-tenue); background: var(--juego-noche); padding: 8px 10px; display: grid; gap: 2px; font-size: 14px; }
+.ventanilla-pared li b { font-family: var(--juego-pixel); font-size: 9px; letter-spacing: 0.05em; }
+.ventanilla-pared li.verde { border-left-color: var(--juego-bien); }
+.ventanilla-pared li.verde b { color: var(--juego-bien); }
+.ventanilla-pared li.rojo { border-left-color: var(--juego-alerta); }
+.ventanilla-pared li.rojo b { color: var(--juego-alerta); }
+.ventanilla-pared li.gris b { color: var(--juego-tenue); }
+.ventanilla-pared li span { color: var(--juego-texto); }
+
+/* En pantallas anchas el mostrador no empuja el diálogo fuera de la vista (1366×768). */
+.ventanilla .juego-pantalla svg { max-height: 220px; }

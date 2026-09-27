@@ -13,7 +13,7 @@ function textosFijos(): string[] {
     g.PARED_PRIMERA, g.ABRE_T11, ...PERSONAS.flatMap((p) => [g.PERSONA[p].nombre, g.PERSONA[p].dice, g.PERSONA[p].otraVez, g.decision(p)]),
     ...g.AYUDA_T11.concreta, ayudaVisible(3, g.AYUDA_T11).leer!, g.CIERRA_T11, g.ABRE_JORNADA, g.ABRE_REPASO,
     g.PREGUNTA_NC, ...Object.values(g.PISTA_NC), ...g.AYUDA_NC.concreta, ayudaVisible(3, g.AYUDA_NC).leer!, g.PREGUNTA_DICTAMEN,
-    g.HOJA_NUEVA, g.REGLA_NUEVA, g.REGLA_CERO, g.PREGUNTA_HOY, ...Object.values(g.PISTA_HOY), ...g.AYUDA_HOY.concreta,
+    g.HOJA_NUEVA, g.RECUERDA_REGLA, g.REGLA_NUEVA, g.REGLA_CERO, g.PREGUNTA_HOY, ...Object.values(g.PISTA_HOY), ...g.AYUDA_HOY.concreta,
     ayudaVisible(3, g.AYUDA_HOY).leer!, g.PREGUNTA_MONTO, g.ABRE_CIERRE, g.CIERRE_BIEN, g.CIERRE_REPASO, g.FINAL,
     ...Object.values(g.AYUDA_REPASO).flatMap((a) => [...a.concreta, ayudaVisible(3, a).leer!]),
     ...["acepto-mal-hecho", "devolvio-bien-hecho", "regla-de-ayer", "valor-del-cliente", "presto-lo-que-pide", "presto-el-minimo", "rechazo", "otra", "desconocido"].map(g.pistaRepaso),

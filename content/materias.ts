@@ -253,6 +253,24 @@ export const MATERIAS: Materia[] = [
       },
     ],
   },
+  {
+    slug: "analisis-estados-financieros",
+    nombre: "Análisis e Interpretación de Estados Financieros",
+    descripcion:
+      "Cómo se lee un estado financiero boliviano: bajo qué normas se prepara, qué dice cada estado y qué decisiones sostiene.",
+    herramientas: [
+      {
+        href: "/juego-aief",
+        titulo: "La ventanilla: Tema 1",
+        descripcion:
+          "Eres oficial de créditos en la agencia de Cliza: revisas con qué norma se hizo cada balance, reexpresas garantías por inflación y decides cuánto prestar. Cada alumno tiene sus propios números.",
+        tipo: "juego",
+        isla: "aief",
+        borrador: true,
+      },
+    ],
+    temas: [],
+  },
 ];
 
 /** Devuelve la materia por slug (o `undefined`). */

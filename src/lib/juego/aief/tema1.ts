@@ -239,6 +239,8 @@ export function revisarReexpresion(c: CarpetaT13, escrito: number): DiagnosticoR
 export type TipoCarpeta = "t12" | "t13";
 export type CarpetaTema1 = CarpetaT12 | CarpetaT13;
 
+const CLIENTES_T13 = ["Don Víctor, carpintería", "Doña Lidia, carpintería", "Don Rubén, carpintería"];
+
 /** La versión de las carpetas de un repaso: otros números, nunca la del dossier ni la de la jornada anterior. */
 export function versionDeRepaso(version: number, ronda: number): number {
   if (ronda === 0) return version;
@@ -250,7 +252,11 @@ export function carpetasDeRonda(version: number, ronda: number, tipos: TipoCarpe
   const v = versionDeRepaso(version, ronda);
   const r: CarpetaTema1[] = [];
   if (tipos.includes("t12")) r.push(...carpetasT12(v));
-  if (tipos.includes("t13")) r.push(carpetaT13(v));
+  if (tipos.includes("t13")) {
+    const c = carpetaT13(v);
+    // En el repaso llega otro carpintero: el mismo tipo de caso, con otros números y otro nombre.
+    r.push(ronda === 0 ? c : { ...c, cliente: CLIENTES_T13[(ronda - 1) % CLIENTES_T13.length] });
+  }
   return r;
 }
 

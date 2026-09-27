@@ -1,14 +1,376 @@
 # 00 · Adaptación del dossier: Análisis e Interpretación de Estados Financieros (AIEF)
 
-**Estado: marco A "La ventanilla" ELEGIDO; maqueta general corregida en revisión (Ronda 2).**
-Agente: `adaptador-de-dossier`. Es el **juego propio de AIEF** (`IDEA-JUEGO.md` §14 y §16): no comparte
-mundo, personajes ni género con el de Proyectos II; comparte sólo la base técnica (cuentas, versión por
-alumno, registro para la nota, escalera de ayuda, pruebas). Las fichas por subtema vienen recién cuando
-apruebes esta maqueta (`IDEA-JUEGO.md` §13).
+**Estado: marco A "La ventanilla" ELEGIDO; maqueta general (Ronda 2) aceptada con los ajustes del
+crítico; fichas de la versión mínima en revisión (Ronda 3).** Agente: `adaptador-de-dossier`. Es el
+**juego propio de AIEF** (`IDEA-JUEGO.md` §14 y §16): no comparte mundo, personajes ni género con el de
+Proyectos II; comparte sólo la base técnica (cuentas, versión por alumno, registro para la nota,
+escalera de ayuda, pruebas).
 
-**Única pregunta para Ronald:** ¿te parece justo que **rechazar a un buen cliente cuente como error del
-tema, igual que prestarle a uno malo**, de modo que nadie pase un tema rechazando a todos? (Ronda 2,
-sección R2.7; recomendado: sí).
+**Única pregunta para Ronald:** ¿te parecen bien, como **reglas del juego** (no del dossier), las tres
+reglas de crédito de la agencia de R3.1: hasta el 60 % de la garantía (primero en libros, después en
+bolivianos de hoy) y, desde el Tema 2, hasta la mitad de la utilidad neta con IUE y nunca más que la
+caja que hay? (Recomendado: sí; son simples y cada una usa sólo lo que el tema enseña.)
+
+---
+
+## Ronda 3 · versión 3 · 27-09-2026 · Fichas de la versión mínima (Llegada, Tema 1 y Tema 2)
+
+**Con qué se trabajó:** la Ronda 2 (abajo), la revisión del crítico sobre ella (`06-revisiones.md`,
+27-09: "construir la versión mínima con ajustes") y lo que ya existe en `src/lib/juego/`
+(`escalera.ts`, `registro.ts`, `version-alumno.ts`, `planta.ts`). **Los dossiers no estaban en este
+equipo:** las secciones se citan como las citó la Ronda 1 y **ninguna página está escrita**; donde
+hace falta, dice **[verificar en el dossier]**. Todos los números de los ejemplos son del juego, no del
+dossier (el juego tiene los suyos, §9; cada alumno recibe otros).
+
+### Lo que dijo Ronald
+
+- **27-09, sobre la revisión de la Ronda 2:** «hacé todo tú». Volvió a delegar. Quedó decidido así (y
+  con eso se responde también la pregunta de la Ronda 2: rechazar a un buen cliente **sí** es un error):
+  1. Cada carpeta trae **tres cifras** (lo que pide, lo mínimo que le sirve, lo que puede pagar) y hay
+     tres respuestas correctas posibles: **sí completo**, **contraoferta calculada** o **cero**. Un
+     cuarto color, **"bien rechazado"**, premia el buen no.
+  2. La consecuencia se ve **al cierre de la jornada**, no carpeta por carpeta, y una carpeta decidida
+     **no se rehace**: si te equivocaste, llega otro cliente con otros números.
+  3. En los Temas 1 y 2, lo que el cliente puede pagar sale de una **regla de la agencia**, inventada y
+     marcada como regla del juego en el manual.
+  4. La meta de colocación es **presión de la jefa**, no requisito para pasar.
+  5. La jornada tiene ritmo: cola de clientes, una regla nueva por tema que choca con la anterior y un
+     giro al final del día.
+
+### Palabras de oficio nuevas en esta ronda
+
+- **Jornada:** un día en la ventanilla. Es la unidad de juego de cada tema: empieza con la regla del
+  día, sigue con la cola de clientes y termina con el cierre.
+- **Cierre de la jornada:** el resumen del día (como el de *Papers, Please*): recién ahí se da vuelta
+  la pared y ves qué pasó con cada crédito.
+- **Regla del día:** la página nueva del manual que la jefa te da al abrir. Se suma a las anteriores o
+  las reemplaza, y ahí está la trampa.
+- **Giro:** la carpeta del final del día que da vuelta lo que venías haciendo.
+- **Tutorial:** la parte donde el juego te enseña a manejar la pantalla, sin nota.
+
+### R3.1 Reglas comunes a todas las jornadas
+
+**Las tres cifras de cada carpeta.**
+
+- **Lo que pide** el cliente: lo dice él.
+- **Lo mínimo que le sirve:** está en un papel de la carpeta (la cotización, la planilla que tiene que
+  pagar). Por debajo de eso, el crédito no le sirve.
+- **Lo que puede pagar** (el **tope**): no está escrito en ningún lado. Sale de aplicar la regla de la
+  agencia al número que el tema te enseña a calcular.
+
+**El monto correcto** sale de comparar las tres:
+
+- tope igual o mayor que lo que pide: **sí completo** (le prestas lo que pide);
+- tope entre el mínimo y lo que pide: **contraoferta**, por el tope exacto (la agencia presta en
+  múltiplos de Bs 100, redondeando hacia abajo);
+- tope por debajo del mínimo: **cero**.
+
+**Los cuatro colores del cierre** (el crédito que escribiste contra el correcto):
+
+- **Verde:** escribiste el monto correcto y lo devuelve.
+- **Bien rechazado** (verde con sello de "no"): escribiste cero y era cero. "Se fue a la cooperativa de
+  enfrente y allá cayó en mora."
+- **Rojo:** prestaste más que el correcto (o algo cuando era cero). Entra en mora.
+- **Gris:** prestaste menos que el correcto (o cero cuando no lo era). "La cooperativa de enfrente le
+  ofreció lo que sí podía pagar y se fue." Si le ofreciste menos que su mínimo, "no le servía".
+
+**Las reglas de la agencia** (inventadas por el juego, con un sello de "regla del juego" en el manual;
+no son del dossier):
+
+- **Regla cero** (Llegada): prestamos hasta el **60 % del valor de la garantía, tal como figura en sus
+  libros**.
+- **Regla del Tema 1** (choca con la cero): la garantía vale **lo que valdría hoy**, reexpresada por
+  inflación; el valor en libros de hace años ya no sirve.
+- **Regla del Tema 2** (choca con la del 1): "la garantía no paga cuotas". Desde hoy el tope sale de los
+  estados: **la mitad de la utilidad neta del año, después del IUE, y nunca más que la caja que el
+  cliente tiene hoy**. La primera mitad pregunta si el negocio gana; la segunda, si tiene con qué pagar.
+  Juntas dicen lo que enseña D2 §2.3: la utilidad no es caja.
+- En el Tema 5 esta regla se reemplaza por el flujo de efectivo (queda para esa ficha).
+
+**La jornada, en orden.**
+
+1. **Abrir:** la jefa te da la regla del día (la hoja del manual se abre sola, con el sello de "nueva").
+2. **La cola:** en la puerta ves a los que esperan (tres o cuatro siluetas). Atiendes en el orden en
+   que llegaron; no hay reloj, la cola da tensión sin castigar por lento.
+3. **Cada carpeta:** el cliente dice su frase (una de "Qué NO se puede afirmar" del dossier); calculas
+   el número del tema y lo escribes; ese número **sí se corrige ahí mismo**, con la escalera, antes de
+   seguir. Después escribes el monto y firmas. **El monto no se corrige:** la carpeta se archiva.
+4. **El giro:** la última carpeta del día trae la trampa del tema.
+5. **El cierre:** se da vuelta la pared con los colores del día, la barra de la meta muestra cuánto se
+   colocó y la jefa dice dos líneas.
+
+**Si te equivocaste en un monto** (la escalera, aplicada a la decisión):
+
+- la carpeta no se rehace; en la jornada siguiente (**de repaso**) llega **otro cliente del mismo tipo
+  con otros números**, que es el escalón "otros números" puesto de entrada;
+- junto con él llega la ayuda: 1.ª vez, la consecuencia y una pista según tu error (por ejemplo, "usaste
+  la regla de ayer"); 2.ª vez, qué paso revisar; 3.ª vez, a leer (la página del manual si el error fue de
+  la regla; la sección del dossier si fue del concepto);
+- la jornada de repaso trae sólo los tipos de carpeta que fallaste.
+
+**La meta de colocación:** una barra arriba de la cola ("hoy colocamos Bs 41.300 de 50.000"). La jefa la
+nombra al abrir y la comenta al cerrar, **no cuenta para pasar**. Se calcula como el 80 % de lo que
+suman los montos correctos del día, redondeado a mil hacia abajo: jugar bien la cumple, rechazar de más
+no, y como no es igual a ninguna suma exacta no delata qué aprobar.
+
+**Para pasar un tema:** la última carpeta de cada tipo de ese tema, bien decidida (número y monto). El
+registro guarda por separado el número que sostiene la decisión y el monto (para la defensa sirven los
+dos), cuántas carpetas de repaso hicieron falta y en qué escalón acertó.
+
+**Los perezosos, jugados contra estas reglas:**
+
+- **Siempre lo que pide:** rojo en contraofertas y ceros (dos de cada tres casos).
+- **Siempre cero:** gris en sí completos y contraofertas.
+- **Siempre el mínimo:** gris donde había que prestar más, rojo donde era cero.
+- **Al azar:** casi nunca cae en el monto exacto.
+- **Ajustar por el color:** no hay color hasta el cierre y la carpeta no se rehace; la de repaso trae
+  otros números.
+- **Usar la regla de ayer:** la carpeta del choque de reglas lo castiga (ver T2.2).
+- **Copiar:** otra versión, otras tres cifras.
+
+**En el celular:** una carpeta por pantalla, con pestañas para cada papel; asignas tocando, sin
+arrastrar; el manual sube desde abajo; el campo del monto acepta "20000", "20.000" y "20 000" y muestra
+"Bs 20.000" antes de firmar; la cifra que estás usando queda fija arriba del campo con el teclado
+abierto (se mide en 375×812). El botón atrás cierra primero el manual, después la pared, después vuelve
+de la carpeta al escritorio, y recién ahí pregunta si sales. Cada paso se guarda en el teléfono y se
+sube cuando vuelve la red.
+
+**Dos cabos de la maqueta, resueltos** (hallazgo 7 del crítico):
+
+- **Si un alumno abre un tema sin haber jugado la Llegada** (entró tarde, o habilitaste varias piezas
+  juntas), la Llegada se juega sola antes; es corta y no tiene nota.
+- **Las familias de Los Cóndores** fijan sólo los números de la cadena (balances, acta, flujo). Cada
+  pieza sortea **por alumno** qué clientes son buenos, sus tres cifras y la frase a desmentir. No toca a
+  la versión mínima.
+
+### R3.2 Fichas
+
+#### Inicio · La llegada
+
+- **¿Necesita un juego?** No. Es una escena con un tutorial: sin nota y sin errores que registrar.
+- **Sabe hacer al terminar:** dónde está (la agencia de Cliza del Banco Kusi), qué hace (decide cuánto
+  prestar), y cómo se maneja la pantalla: carpeta, manual, cola, pared, campo del monto.
+- **Cómo se juega:** entras a la agencia; la jefa te muestra el escritorio, el manual casi vacío con la
+  regla cero y la pared sin fichas. "La agencia vive de prestar. Si no prestas, cierra; si prestas mal,
+  también." Te pasa una **carpeta de práctica**: una señora que pide Bs 10.000 y deja en garantía una
+  moto que figura en sus libros por Bs 20.000. La jefa te guía: 60 % de 20.000 es 12.000, alcanza para
+  lo que pide, escribes 10.000 y firmas. Esa noche, la pared se da vuelta: tu primera ficha, verde.
+- **Si lo hace mal:** la jefa lo corrige en el momento (es el tutorial); no se registra como error.
+- **Para pasar:** firmar la carpeta de práctica.
+
+#### Tema 1.1 · Quién lee un estado financiero y para qué
+
+- **¿Necesita un juego?** No uno propio: una **escena corta** al abrir la jornada del Tema 1. Es criterio,
+  no cálculo.
+- **Sabe hacer al terminar:** nombrar qué usuario lee un estado y qué decisión toma con él.
+- **Cómo se juega:** tres personas llegan a la ventanilla pidiendo el mismo balance de la misma
+  empresa: un proveedor, un socio que piensa vender su parte y un inspector de impuestos [verificar en el dossier D1 §1.1: que sean usuarios que el dossier nombra]. Cada uno dice
+  para qué lo quiere. Tocas a cada uno y después la decisión que toma con ese balance (fiar o no,
+  cuánto pedir por su parte, cuánto impuesto cobrar). La jefa: "El mismo papel, tres preguntas. La
+  nuestra es otra: si nos devuelven."
+- **Si lo hace mal:** el que quedó mal ubicado vuelve a la fila y lo explica de otra forma; no hay
+  carpeta ni monto.
+- **Escalera:** la pista del personaje; después, a leer **D1 §1.1** [verificar en el dossier: página].
+- **Para pasar:** los tres bien ubicados. Se registra, pero pesa poco: es la entrada al tema.
+
+#### Tema 1.2 · Primero la NC; la NIIF sólo si hay vacío
+
+- **¿Necesita un juego?** Sí.
+- **Sabe hacer al terminar:** buscar primero la norma contable boliviana (NC) que rige una operación, y
+  aceptar una NIIF sólo si ninguna NC la cubre.
+- **Tipo de juego recomendado:** **reglamento**, como *Papers, Please*: revisas papeles contra un manual.
+- **Por qué calza:** la trampa real del subtema es "suponer el vacío". Con el manual abierto, el alumno
+  tiene que demostrar que buscó.
+- **Alternativa:** un auditor que pregunta en voz alta "¿por qué NIIF?" y el alumno escribe la
+  respuesta; más barato de dibujar, menos juego.
+- **Cómo se juega:** dos clientes traen el balance que preparó su contador, para respaldar su pedido.
+  Cada carpeta marca **una** operación con una nota del contador ("valuamos esto según la NIIF tal").
+  Abres el manual, donde está la lista de las 14 NC con su título [verificar en el dossier D1 §1.2: la
+  lista y los títulos]. **Escribes el número de la NC** que rige esa operación, o "0" si ninguna la
+  cubre. Después decides: **aceptar** el balance como respaldo o **devolverlo** para que lo rehagan.
+- **Si lo hace mal:** al cierre, si aceptaste uno mal hecho, el auditor del banco lo observa (**rojo**);
+  si devolviste uno bien hecho, el cliente se ofendió y se fue (**gris**).
+- **Escalera:** el número de la NC se corrige en la carpeta: pista según el error ("esa NC es de otra
+  cosa"; "sí hay una NC: busca por el título"); después, qué revisar ("lee los títulos de la lista antes
+  de ir a la NIIF"); después, **D1 §1.2** [verificar en el dossier: página]. La decisión de aceptar o
+  devolver, si falla, vuelve con otro cliente en el repaso.
+- **Para pasar:** las dos carpetas (o las de repaso) con la NC correcta y la decisión correcta. La
+  versión sortea si la nota del contador está bien o mal.
+
+#### Tema 1.3 · La máquina que "creció" (reexpresión por inflación)
+
+- **¿Necesita un juego?** Sí. Es el **giro** del día y el primer crédito de verdad.
+- **Sabe hacer al terminar:** reexpresar un valor con el índice de inflación (NC 3) y reconocer que un
+  "crecimiento" que sólo es inflación no es crecimiento; saber qué característica de calidad falta
+  cuando la unidad de medida cambia.
+- **Tipo de juego recomendado:** **cálculo con consecuencia**, dentro de una carpeta de crédito.
+- **Por qué calza:** es un solo cálculo y una sola idea (la unidad de medida). La consecuencia en la
+  pared la vuelve decisión.
+- **Alternativa:** la hiperinflación como documento del archivo, para leer; no enseña a calcular.
+- **Cómo se juega:** Don Julio, de una carpintería, pide Bs 70.000. Deja en garantía una sierra que
+  figura en sus libros por Bs 90.000, comprada hace años. La cotización de la madera que tiene que
+  comprar dice Bs 50.000 (su mínimo). Dice: "La sierra ahora vale 130 mil, ¡gané 40 mil sin moverme!".
+  La regla del día (nueva, choca con la cero): la garantía vale lo que valdría hoy. En la carpeta están
+  el índice del día de compra y el de hoy (1,15 veces) [verificar en el dossier D1 §1.3: qué índice usa
+  el dossier, UFV u otro]. Escribes el valor de hoy: **Bs 103.500**. El 60 % es 62.100: menos de lo que
+  pide y más que su mínimo. Escribes la contraoferta: **Bs 62.100**. Y le escribes, en una línea, que
+  la sierra no le dio 40 mil: la misma sierra, en bolivianos de hoy.
+- **Si lo hace mal:** con la regla cero (libros, 90.000) prestas 54.000: **gris**, se va a la cooperativa
+  de enfrente, que le ofreció más. Con lo que dice Don Julio (130.000) prestas los 70.000: **rojo**. Si
+  escribes un valor reexpresado mal, no avanzas hasta corregirlo.
+- **Escalera:** del valor reexpresado, en la carpeta: pista según el error ("multiplicaste por el índice
+  de hoy, no por cuánto subió"; "dividiste al revés"); después, qué revisar ("índice de hoy entre índice
+  de compra"); después, **D1 §1.3** [verificar en el dossier: página]. Del monto, en el repaso: "usaste
+  la regla de ayer" o "usaste el valor que dice el cliente"; después, la página del manual con la regla.
+- **Para pasar:** valor reexpresado y monto correctos en la última carpeta de este tipo.
+
+#### Tema 2.1 · El balance y la ecuación contable
+
+- **¿Necesita un juego?** Sí.
+- **Sabe hacer al terminar:** clasificar partidas en activo, pasivo y patrimonio, verificar que
+  Activo = Pasivo + Patrimonio y no confundir lo que es caja con lo que se va a cobrar.
+- **Tipo de juego recomendado:** **armar**: las partidas sueltas van a su bloque y el balance se cierra.
+- **Por qué calza:** clasificar es donde nacen los errores (el anticipo de un cliente es una deuda, no
+  plata propia). Armar obliga a decidir cada partida.
+- **Alternativa:** un balance con errores para corregir; más rápido, pero es "encuentra el error".
+- **Cómo se juega:** doña Rosa, de una ferretería, pide Bs 30.000; la cotización del lote de herramientas
+  dice Bs 15.000. Trae sus papeles en una caja de zapatos. La regla del día (nueva, choca con la del
+  Tema 1): el tope es la mitad de la utilidad neta con IUE, y nunca más que la caja. Su utilidad neta ya
+  viene con el sello del contador del banco: Bs 70.000. Tocas cada partida y después su bloque. Entre
+  los papeles hay un **anticipo** que le pagó un colegio por un pedido que todavía no entregó, y un
+  **cheque a 60 días** que ella guardó con la plata de la caja [verificar en el dossier D2 §2.1: si el
+  cheque diferido está entre las trampas; el anticipo sí]. Cuando terminas, **cierras** el balance y
+  escribes los totales; recién ahí se prende la luz. Doña Rosa: "Tengo 32 mil en caja y el negocio es
+  todo mío". Escribes su patrimonio y su caja de verdad: **Bs 22.000**. La mitad de la utilidad es
+  35.000, la caja 22.000: el tope es 22.000. Contraoferta: **Bs 22.000**.
+- **Si lo hace mal:** si el cierre no cuadra, cuenta como intento y sube la escalera. Si deja el cheque
+  en la caja, el tope le da 30.000, presta lo que pide: **rojo**. Si presta el mínimo: **gris**.
+- **Escalera:** del cierre: "no te cuadra"; "revisa lo que te pagaron por algo que todavía
+  no entregaste"; **D2 §2.1** [verificar en el dossier: página]; si falla otra vez, otra caja de zapatos.
+  Del monto: en el repaso, con otro cliente.
+- **Para pasar:** balance cerrado, patrimonio y caja bien escritos y monto correcto.
+- **Contraste:** comercial (ferretería), como en el dossier.
+
+#### Tema 2.2 · El estado de resultados y el IUE
+
+- **¿Necesita un juego?** Sí. Es además la carpeta del **choque de reglas**.
+- **Sabe hacer al terminar:** bajar la cascada de ventas a utilidad neta, con el IUE del 25 % sobre la
+  utilidad antes de impuestos (D2 §2.2), y saber en qué nivel se va el margen.
+- **Tipo de juego recomendado:** **cálculo con consecuencia**: escribes cada escalón de la cascada.
+- **Por qué calza:** la cascada es un diagnóstico, dice en qué nivel mirar; y el error típico (el IUE
+  sobre las ventas) cambia el monto de golpe.
+- **Alternativa:** dos empresas con la misma utilidad neta y márgenes distintos; mejor para el Tema 5.
+- **Cómo se juega:** don Óscar, de una distribuidora de bebidas, pide Bs 30.000 para un segundo
+  camión; su mínimo (la cuota inicial del camión) es 18.000. Llega con el camión que ya tiene como
+  garantía, tasado hoy en Bs 100.000, y lo dice con orgullo: "El 60 % de eso es 60 mil, me alcanza
+  sobrado". Su caja, con sello: Bs 40.000. Te pasa su estado de resultados sin terminar: ventas 600.000,
+  costo de ventas 390.000, gastos de operación 130.000, gastos financieros 20.000. Escribes utilidad
+  bruta, operativa, antes de impuestos (60.000), el IUE (15.000) y la **utilidad neta: Bs 45.000**. La
+  mitad es 22.500; la caja alcanza. Contraoferta: **Bs 22.500**. Y le contestas que el camión no paga
+  cuotas: la regla de hoy mira los estados.
+- **Si lo hace mal:** con la regla de ayer (la garantía) prestas los 30.000: **rojo**. Sin IUE, la mitad
+  da 30.000: **rojo**. Con el IUE sobre las ventas la utilidad da negativa y rechazas: **gris**.
+- **Escalera:** de la cascada, en la carpeta: "el impuesto te salió más grande que la ganancia, ¿sobre
+  qué lo calculaste?"; "el IUE va sobre la utilidad antes de impuestos"; **D2 §2.2** [verificar en el
+  dossier: página]. Del monto: en el repaso, con otro cliente.
+- **Para pasar:** utilidad neta y monto correctos.
+
+#### Tema 2.3 · La cooperativa que ganó y no puede pagar (los dos estados juntos)
+
+- **¿Necesita un juego?** Sí. Es el **giro** del día.
+- **Sabe hacer al terminar:** unir los dos estados con Patrimonio final = Patrimonio inicial + Utilidad
+  neta − Dividendos, y ver que la utilidad no es caja.
+- **Tipo de juego recomendado:** **investigar papeles**: la empresa ganó y no puede pagar; buscas dónde
+  está la plata.
+- **Por qué calza:** la lección es un descubrimiento, no una fórmula. Va última para que llegue como
+  sorpresa después de dos carpetas donde la caja no molestó.
+- **Alternativa:** un "meses después" con la cuenta impaga, sin investigación.
+- **Cómo se juega:** doña Justina, presidenta de una cooperativa de quinua, pide Bs 50.000 para pagar a
+  los productores; la planilla dice que necesita al menos 25.000. Trae los dos estados y un sobre de
+  contratos. "Este año ganamos 120 mil, el patrimonio creció, ¿qué más quiere?". Escribes el patrimonio
+  final: 300.000 de inicio, más 120.000, menos 20.000 repartidos: **Bs 400.000**. Cuadra. Entonces
+  buscas la plata: en el balance, casi todo el activo corriente son cuentas por cobrar; en el sobre, el
+  contrato con el exportador que paga a 90 días. Escribes la caja: **Bs 9.000**. La mitad de la
+  utilidad sería 60.000, pero la caja manda: el tope es 9.000, menos que su mínimo. Escribes **cero**.
+- **Si lo hace mal:** si miras sólo la utilidad, prestas los 50.000: **rojo** ("tres meses después, la
+  cooperativa no pagó la primera cuota: el exportador todavía no le paga"). Si prestas los 9.000: **gris**
+  ("no le servía; se fue"). Si escribes cero: **bien rechazado** ("pidió en la cooperativa de enfrente,
+  y allá está en mora").
+- **Escalera:** del patrimonio final, en la carpeta: "¿qué pasó con lo que se repartió?"; "PF = PI + UN
+  − D"; **D2 §2.3** [verificar en el dossier: página]. Del monto, en el repaso: "la utilidad dice que
+  ganó, no que tiene"; después, la página del manual con la segunda mitad de la regla.
+- **Para pasar:** patrimonio final, caja y monto correctos.
+- **Contraste:** asociativa y productiva frente a las dos comerciales del día. Se inspira en el ejemplo
+  de D2 §2.3, con otra empresa y otros números; no usa el caso de Estudio de Casos de D2.
+
+### R3.3 Qué datos y funciones hay que programar
+
+Todo en la isla `aief` (archivos propios, con su `.test.ts`); lo que sirve también a las láminas va en
+`src/lib/finanzas/`. Nada de lo que ya existe se reescribe.
+
+**Funciones comunes (van a `src/lib/finanzas/`, con pruebas):**
+
+- `reexpresar(valor, indiceCompra, indiceHoy)`.
+- `cascada({ ventas, costo, gastosOperacion, gastosFinancieros })`: utilidad bruta, operativa, antes de
+  impuestos, IUE al 25 % (cero si la utilidad antes de impuestos es negativa [verificar en el dossier
+  D2 §2.2]) y utilidad neta.
+- `patrimonio(activo, pasivo)` y `patrimonioFinal(inicial, utilidadNeta, dividendos)`.
+
+**El motor de la jornada (isla `aief`):**
+
+- `montoCorrecto({ pide, minimo, tope })`: sí completo, contraoferta (tope redondeado hacia abajo a Bs 100)
+  o cero.
+- `colorDelCierre(carpeta, escrito)`: verde, bien rechazado, rojo, gris o "no le servía".
+- `topeRegla(regla, datos)`: regla cero (60 % de la garantía en libros), regla 1 (60 % reexpresada),
+  regla 2 (mitad de la utilidad neta, sin pasar la caja).
+- `diagnosticoMonto(carpeta, escrito)`: qué error explica el monto (regla de ayer, valor del cliente,
+  sin IUE, sólo la utilidad, prestó lo que pide, prestó el mínimo, otra), para la pista.
+- `metaDelDia(carpetas)`: 80 % de la suma de los correctos, redondeado a mil hacia abajo.
+
+**Qué genera cada carpeta por versión** (sorteo con semilla, como `planta.ts`; cada tipo tiene su
+`datosDeVersion` y su `versionValida`):
+
+- **Práctica (Llegada):** fija, sin versión.
+- **T1.2:** una operación de una lista fija de situaciones con su NC [verificar en el dossier D1 §1.2], y
+  si la nota del contador está bien o mal.
+- **T1.3:** valor en libros, índices de compra y de hoy, valor que dice el cliente, lo que pide y su
+  mínimo.
+- **T2.1:** las partidas de la ferretería (con un anticipo y un cheque diferido), la utilidad neta con
+  sello, lo que pide y su mínimo.
+- **T2.2:** ventas, costo, gastos, caja con sello, garantía tasada hoy, lo que pide y su mínimo.
+- **T2.3:** patrimonio inicial, utilidad neta, dividendos, caja, cuentas por cobrar, lo que pide y su
+  mínimo.
+
+**Qué revisa `versionValida` en cada carpeta** (es lo que conserva la lección):
+
+- el monto correcto cae en el caso que tocó en el sorteo: T1.3 y T2.1 sortean entre sí completo y
+  contraoferta; T2.2 es siempre contraoferta (para que el choque de reglas se vea); T2.3, cero o
+  contraoferta limitada por la caja;
+- el mínimo queda al menos un 10 % por debajo del correcto (así "prestar el mínimo" nunca acierta);
+- cada error típico da un monto distinto del correcto y cae en otro color: la regla de ayer, el valor del
+  cliente, sin IUE, IUE sobre ventas, el cheque en la caja;
+- en T2.2, la regla de la garantía da siempre más que la regla de los estados (el choque se nota);
+- en T2.3, la mitad de la utilidad cubre lo que pide y la caja queda por debajo del mínimo o entre el
+  mínimo y lo que pide (el giro siempre está);
+- los números son redondos y legibles en un celular (miles o cientos).
+
+**Pruebas que encierran la regla de "nadie gana sin entender":** en 500 versiones, las estrategias
+"siempre lo que pide", "siempre cero", "siempre el mínimo" y "la regla de ayer" no aciertan nunca una
+jornada completa, y el alumno que calcula bien acierta siempre.
+
+**Revisión de lo que el alumno escribe** (como `revisarCapacidad` en `planta.ts`): valor reexpresado,
+NC, totales del balance, patrimonio, caja, cada escalón de la cascada, utilidad neta, patrimonio final.
+Cada revisor devuelve el diagnóstico del error típico para elegir la pista.
+
+**Trabajo de código que suma y no rompe** (del hallazgo 6 del crítico):
+
+- `registro.ts` y `nube.ts` reciben la isla y la escena como dato; lo guardado de `proyectos`/`planta`
+  se sigue leyendo igual.
+- El registro guarda la versión **de cada carpeta**, el número y el monto por separado, y el color del
+  cierre; `escalera.ts` suma el escalón "otros números".
+- Una cola de guardado en el teléfono que reintenta cuando vuelve la red, también después del cierre.
+- La ruta del juego entra en la precarga del sitio, para abrir sin red en la web y en la app.
+- Se puede jugar sin cuenta y entrar después: la partida local se sube al entrar.
 
 ---
 
@@ -44,6 +406,10 @@ cada una de otra. Nada por subtema todavía.
   vez viniste por las luces"), no según el número del tema.
 
 ### R2.1 El corazón del bucle: por qué nadie gana sin entender
+
+*Ajustado en la Ronda 3 (R3.1): tres cifras por carpeta, cuatro colores con "bien rechazado", resultado
+al cierre de la jornada, la carpeta no se rehace, la meta sólo como presión y sin "cuota". Donde este
+apartado diga otra cosa, manda R3.1.*
 
 **La idea en una línea:** la agencia vive de prestar; si no prestas, se pierde el cliente; si prestas
 mal, entra la mora. Sólo el número que el tema te enseña a calcular dice cuánto se puede prestar.
@@ -81,7 +447,7 @@ mal, entra la mora. Sólo el número que el tema te enseña a calcular dice cuá
 
 **Los temas sin crédito también tienen dos lados.** En el Tema 1 decides si aceptas o devuelves el
 balance que trae el cliente como respaldo: devolver uno bien hecho es un cliente perdido; aceptar uno
-mal hecho, una observación del auditor. En el Tema 7 calificas tu propio banco: llamarlo frágil cuando
+mal hecho, una observación del auditor. En el Tema 7 el supervisor califica tu banco y tú respondes con tu propio diagnóstico: llamarlo frágil cuando
 está sano desata una corrida que no hacía falta; llamarlo sano cuando no lo está deja pasar la mora que
 se come el capital.
 
@@ -681,6 +1047,8 @@ Dónde se aprende cada tema esencial en cada marco. Ningún tema queda afuera.
 
 ### 6. Maqueta general (de la propuesta recomendada, A)
 
+*Reemplazado por la Ronda 2 (R2.2 y R2.3) y la Ronda 3 (R3.1). Queda como antecedente; no construir desde aquí.*
+
 Primero la maqueta entera; el detalle por subtema, con sus fichas, recién cuando la apruebes
 (`IDEA-JUEGO.md` §13). Si eliges B o C, esta maqueta conserva el orden de los temas y lo que cada uno
 usa del otro; cambia el vestuario.
@@ -755,6 +1123,8 @@ anterior. Así:
 ---
 
 ### 7. Recomendación ya decidida y la única pregunta
+
+*Reemplazado por la Ronda 2 (R2.7) y la Ronda 3. Queda como antecedente.*
 
 **Recomiendo el marco A, "La ventanilla"**, por tres razones que salen del dossier:
 

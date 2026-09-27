@@ -10,6 +10,15 @@
 
 ## 0. En curso ahora (leer antes que nada)
 
+> **PREGUNTAR A RONALD AL EMPEZAR LA PRÓXIMA SESIÓN (pidió dejarlo para entonces, 27-09):**
+> ¿aprueba la **maqueta general de AIEF** («La ventanilla»)? Mostrarle antes, en pocas líneas y sin
+> tecnicismos, qué es: el alumno es el oficial de créditos recién llegado a la agencia de Cliza de un banco
+> chico; cada cliente trae tres cifras (lo que pide, lo mínimo que le sirve, lo que puede pagar) y el alumno
+> decide prestar todo, contraofertar o rechazar; al cierre del día ve los colores (verde paga, rojo mora,
+> gris buen cliente perdido, bien rechazado); los temas van en su orden de clase (T1 → T2 → T4a → T3 → T4b
+> → T5 → T7 → T6) y el Cierre lo habilita él al final. Detalle: `docs/juego/gdd/00-adaptacion-aief.md`,
+> Ronda 2. Si aprueba: construir **sólo el Tema 1** (IDEA-JUEGO §18) y mostrárselo antes del Tema 2.
+
 > Regla pedida por Ronald: si se cortan los tokens, otra IA tiene que poder seguir desde acá sin rehacer nada. Antes de cada paso se actualiza esta lista, y se sube después de cada paso terminado. Al terminar el trabajo entero, pasa a §6 y esta sección queda vacía.
 
 ### En curso (26-09): el juego para AIEF, primera isla (decidido por Ronald)

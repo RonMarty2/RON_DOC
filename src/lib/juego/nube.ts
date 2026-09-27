@@ -10,6 +10,7 @@
  */
 
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { REGRESO_APP, abrirFueraYEsperarRegreso, esApp } from "../nativo";
 import { datosDeVersion } from "./planta";
 import type { Entrada, Partida } from "./registro";
 
@@ -62,12 +63,44 @@ export async function alCambiarSesion(avisar: () => void): Promise<() => void> {
   return () => data.subscription.unsubscribe();
 }
 
-/** Entra con Google y vuelve a esta misma página (debe estar entre las direcciones de regreso de Supabase). */
+let dejarDeEsperarRegreso: (() => void) | null = null;
+
+/**
+ * Entra con Google.
+ * - En la web: va a Google y vuelve a esta misma página (debe estar entre las direcciones de regreso
+ *   de Supabase).
+ * - En la app de Android: Google no deja iniciar sesión dentro de la vista web de una app, así que se
+ *   abre en el navegador del teléfono y vuelve a la app por `REGRESO_APP` (también en las direcciones
+ *   de regreso de Supabase); ahí se canjea el código por la sesión. Al entrar, `alCambiarSesion` avisa
+ *   igual que en la web.
+ */
 export async function entrarConGoogle() {
   const sb = await nube();
-  const regreso = window.location.href.split(/[?#]/)[0];
-  const { error } = await sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: regreso } });
+  if (!esApp()) {
+    const regreso = window.location.href.split(/[?#]/)[0];
+    const { error } = await sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: regreso } });
+    if (error) throw error;
+    return;
+  }
+  const { data, error } = await sb.auth.signInWithOAuth({
+    provider: "google",
+    options: { redirectTo: REGRESO_APP, skipBrowserRedirect: true },
+  });
   if (error) throw error;
+  // Si el alumno cerró la pestaña sin elegir cuenta y vuelve a intentar, no quedan dos escuchas.
+  dejarDeEsperarRegreso?.();
+  dejarDeEsperarRegreso = await abrirFueraYEsperarRegreso(data.url, (regreso) => {
+    dejarDeEsperarRegreso?.();
+    dejarDeEsperarRegreso = null;
+    const codigo = codigoDelRegreso(regreso);
+    if (codigo) void sb.auth.exchangeCodeForSession(codigo);
+  });
+}
+
+/** El `code` que Supabase agrega a la dirección de regreso (PKCE); null si volvió con error o sin él. */
+export function codigoDelRegreso(regreso: string): string | null {
+  const consulta = regreso.split("?")[1]?.split("#")[0] ?? "";
+  return new URLSearchParams(consulta).get("code");
 }
 
 export async function salir() {

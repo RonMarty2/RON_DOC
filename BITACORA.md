@@ -25,6 +25,21 @@ sin subirlos, y se anota su versión. Pasos:
 - [x] 4. Ronda 1 del adaptador con AIEF → `docs/juego/gdd/00-adaptacion-aief.md` v1 (7 dossiers leídos enteros, huellas anotadas; tres marcos: **A «La ventanilla»** oficial de créditos, recomendado; B «Caso abierto» perita; C «El mánager de la banda»; con maqueta general, sin fichas). Revisado por el crítico en `06-revisiones.md`: mantiene A con **2 bloqueos** (se gana rechazando a todos; inicio y fin no sobreviven al orden en que se dicta) y 5 importantes. Ambos confirman inconsistencias del dossier de AIEF (IUE 25 % en el Tema 2 y ausente en los casos de los Temas 5 a 7, entre otras): se avisan a Ronald, no se tocan desde acá.
 - [ ] 5. Ronald elige marco (A, B, C o combinación) → ronda 2 del adaptador con los bloqueos del crítico corregidos.
 
+### App de Android: entrar con Google dentro de la app (27-09) · **recompilar**
+
+Google no deja iniciar sesión dentro de la vista web de una app, así que en la app el botón «Entrar
+con Google» abre el navegador del teléfono y vuelve a la app por `bo.ronmartinez.aula://login`
+(`src/lib/nativo.ts`, el único archivo que habla con la parte nativa; `nube.ts` lo usa sólo si
+`esApp()`). Plugins nuevos `@capacitor/app` y `@capacitor/browser`, *intent-filter* en el
+AndroidManifest, 4 pruebas nuevas (566). La web no cambia: comprobado que no carga nada de Capacitor.
+El nombre de la app sigue igual (pedido de Ronald).
+
+- [x] Código, plugins y manifiesto.
+- [ ] **Ronald:** en Supabase → Authentication → URL Configuration → Redirect URLs, agregar
+  `bo.ronmartinez.aula://login`.
+- [ ] **Ronald:** en Android Studio, `npm install`, *Gradle sync* y ▶ Run (hay plugins nuevos).
+- [ ] Probar en el teléfono: entrar con Google, elegir la cuenta, volver a la app ya adentro.
+
 ### Pausado (26-09, pedido de Ronald): la adaptación de Proyectos II
 
 Se está mejorando primero la forma de planificar y los agentes. La adaptación queda en la ronda 2

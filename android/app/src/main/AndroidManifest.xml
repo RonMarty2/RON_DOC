@@ -22,6 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+            <!-- Regreso del inicio con Google: Supabase vuelve a bo.ronmartinez.aula://login
+                 y Android abre esta misma app (ver src/lib/nativo.ts). -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="bo.ronmartinez.aula" android:host="login" />
+            </intent-filter>
+
         </activity>
 
         <provider

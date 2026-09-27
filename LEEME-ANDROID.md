@@ -72,6 +72,14 @@ la Aula, nunca.
 Si alguna vez conviene volver al modelo anterior (todo adentro del APK),
 alcanza con comentar `url` en `capacitor.config.ts` y recompilar.
 
+## Entrar con Google dentro de la app
+
+Dentro de la app, «Entrar con Google» abre el navegador del teléfono (Google no permite iniciar
+sesión dentro de la app) y, al elegir la cuenta, vuelve sola a la app. Para que funcione, en
+Supabase (Authentication → URL Configuration → Redirect URLs) tiene que estar
+`bo.ronmartinez.aula://login`. La primera vez después de este cambio (27-09) hay que recompilar:
+`npm install`, *Gradle sync* y ▶ Run.
+
 ## Compilar un APK para repartir
 
 `Build → Build Bundle(s)/APK(s) → Build APK(s)`

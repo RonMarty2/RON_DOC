@@ -1,12 +1,408 @@
 # 00 · Adaptación del dossier: Psicoestadística Descriptiva · juego de Psicología
 
-**Estado: EN CONVERSACIÓN · Ronda 1 (maqueta general, sin fichas).** Tres marcos para elegir; recomendado
-el A, «El Observatorio». Juego de la carrera de **Psicología**; el de Empresariales se adapta después, con
-su propio dossier y en su propio documento.
+**Estado: ELEGIDA (28-09) · Ronda 2 (maqueta general para aprobar, sin fichas).** Marco A «El
+Observatorio», con las personas con nombre de B. Juego de la carrera de **Psicología**; el de
+Empresariales se adapta después, con su propio dossier y en su propio documento.
 
-**Próxima pregunta para Ronald:** ¿te convence que el alumno sea **el analista del Observatorio de la
-ciudad** (A), o te llama más **la psicóloga del colegio** (B) o **el verificador de la redacción** (C)?
-También vale «A con algo de B».
+**Próxima pregunta para Ronald:** ¿apruebas esta maqueta (qué juego tiene cada tema y dónde se juega cada
+subtema, §R2.2 y §R2.3)? No queda ninguna pregunta de gusto.
+
+---
+
+## Ronda 2 · versión 2 · 28-09-2026
+
+**Con qué se trabajó:** lo que dijo Ronald después de la ronda 1 (abajo), la revisión del crítico sobre el
+marco A (`06-revisiones.md` v7) **menos su arreglo 1**, las reglas nuevas de este agente (IDEA-JUEGO §21 y
+§22) y los mismos seis dossiers: `huella-dossier.mjs --comparar` da los ocho archivos iguales a los de la
+ronda 1. De los dossiers se releyeron sólo los lugares que deciden dónde se juega cada subtema: las tablas
+de decisión por nivel de medición (D2 §2.4, D3 §3.5, D6), el «error de escala» del eje (D2 §2.3), la
+condicionada (D5 §5.2, que repite el turno × estrés de D4 §4.2), el cierre de D6 §6.4, y dónde aparecen
+el grupo de control y la regresión a la media (sólo en D1 §1.1 y §1.4; ningún tema posterior los retoma).
+
+### Lo que dijo Ronald (28-09, después de la ronda 1)
+
+- Eligió **A con las personas con nombre de B**: al tocar una figurita aparece quién es, con nombre y una
+  línea de su vida. De B no se toma el colegio como único lugar, ni el rol de psicóloga, ni un elenco grande
+  fijo. *«SI, PARECE BIEN, pero ¿estás seguro que es un juego, no? ¿no sólo un cuestionario bonito?
+  Apliquemos los agentes.»*
+- Sobre el Tema 1: *«siento que este tema introductorio abarca demasiado… abarca mucho, aprieta poco… son
+  temas que se verán después, no debes forzar juegos para cosas que no lo necesitan.»*
+- Sobre el arreglo 1 del crítico (llevar la niebla a todos los temas), lo rechazó: *«¿lo de la niebla es
+  para siempre?… sólo es buenísima idea para un subtema, un punto particular; cada tema, subtema debería
+  tener su idea o forma de juego.»* Y lo precisó: *«tampoco te estoy diciendo que no vuelvas a usar la
+  niebla o x mecánica o forma de juego; si sirve para otro, se usa.»*
+- Orden de dictado: **correlación y regresión antes que probabilidad** (el Tema 4 entero antes que el 5).
+- Sobre el dossier: el juego no usa sus números ni es un dossier interactivo; sus contradicciones sólo
+  importan donde la escalera manda a leer una página. Por ahora la escalera **no manda a leer** Sturges
+  «impar» (D2 §2.2), la covarianza con N (D4 §4.4) ni «R² explica» (D4 §4.5, D6 §6.3); él las corrige
+  cuando vuelva a esos dossiers.
+- Al elegir preguntó si el marco limitaba los temas siguientes; se le explicó que el marco es el mundo y
+  que cada tema se juega a su manera, decidida con él tema por tema.
+
+### Palabras de oficio nuevas en esta ronda
+
+| Término | Qué quiere decir |
+|---|---|
+| **Construir y probar** (*build and test*) | Armas algo y después el juego lo pone a funcionar para ver si aguanta. Como *Poly Bridge*: diseñas el puente y pasa el camión. |
+| **Triage** | Repartir algo que no alcanza para todos, decidiendo a quién primero. |
+| **Rompecabezas de asignación** | Cada recurso va a un solo lugar y el acierto depende de leer bien cada lugar. |
+| **Interrogatorio** | Como en *Ace Attorney*: te hacen una pregunta y respondes mostrando la prueba que la contesta. |
+| **Patrón que se aprende una vez** | Una regla fija («lo que no viste siempre está peor») que, si el juego la cumple siempre, deja ganar sin pensar. |
+| **Semilla** | El número del que sale la versión de cada alumno: la misma semilla da siempre la misma ciudad, la misma gente y los mismos números. |
+
+### R2.0 · Qué aprende el alumno, juego por juego
+
+Lo mismo que la ronda 1 (§1.2), repartido ahora en los juegos de la maqueta. Todo lo que «pasa» pasa en la
+ciudad, no es un mensaje de error.
+
+| Juego | Sabe hacer | Lo demuestra así | Si lo hace mal, pasa esto |
+|---|---|---|---|
+| 1 · La encuesta de sueño | Distinguir muestra y población, estadístico y parámetro; decir quién quedó afuera y hacia dónde sesga; no afirmar más de lo medido | Escribe la proporción de cada colegio medido, quién faltó y si sube o baja; arma la frase | El censo muestra talleres donde no hacían falta y colegios que los necesitaban sin ninguno |
+| 2A · La pila del centro de salud | Declarar el nivel de cada variable; tabla de frecuencias y acumuladas; agrupar con Sturges; leer histograma y ojiva | Escribe n, h, N, H, el umbral, k, la amplitud y los límites; lee el corte | La fila en la puerta: gente sin cupo; una persona fuera del gráfico; una tabla absurda frente al médico |
+| 2B · Lo que el presupuesto no alcanza | Ordenar y cortar un Pareto; calcular ángulos; mostrar un gráfico honesto | Escribe el acumulado del corte y cuántas veces más es de verdad | Se financia lo que pesaba poco; el público descubre el gráfico inflado, o se descarta uno honesto |
+| 3A · Dos grupos, un especialista | Limpiar la planilla; media, mediana, s con n − 1 y CV; qué centro informar | Escribe los números y asigna taller y especialista | Quien necesitaba al especialista no lo tuvo; se borró a una persona real |
+| 3B · ¿Dónde queda Tomás? | Percentil, cuartiles, RIC, atípicos; no confundir percentil con porcentaje | Escribe Q1, Q2, Q3, el RIC y las vallas; decide a quién deriva | Deriva a quien no lo necesita y deja afuera a quien sí |
+| 4A · ¿Entre quiénes? | Conjunta, marginal y condicionada; elegir el denominador | Escribe el porcentaje que responde la pregunta del pedido | La brigada va donde hay muchos y no donde el riesgo es mayor, o al revés |
+| 4B · Pantallas y sueño | Mirar la nube antes de calcular; r, R² y la recta; correlación no es causa; no salir del rango | Escribe el signo, r, R², b, a y ŷ; decide para qué sirve r | La ordenanza no mueve el sueño; la búsqueda falla; faltan cupos en el barrio fuera del rango |
+| 5 · Una sola evaluadora | Prevalencia, árbol, valor predictivo; no invertir la condición | Escribe cuántos positivos habrá y cuántos lo son de verdad | Familias con una carta de «posible dislexia» sin tenerla; la agenda de la evaluadora se gasta mal |
+| 6 · La audiencia | Ordenar el informe; estadístico y gráfico según el tipo; R² honesto; limitaciones antes de que las pregunten | Arma el informe, escribe los estadísticos y responde las repreguntas con la prueba | Le repreguntan justo lo que no dijo y su conclusión se cae |
+
+### R2.1 · Lo elegido, en limpio
+
+- **Mundo:** Wayra Pampa (nombre provisional), una ciudad ficticia de Bolivia, y su **Observatorio de
+  Bienestar**, una oficina municipal chica. **Rol:** el alumno es el analista. Los pedidos los trae un
+  elenco chico que se repite (la concejala, el médico del centro de salud, la directora de un colegio, el
+  dirigente del mercado); no hay un elenco grande fijo.
+- **Hub** (la pantalla a la que se vuelve entre pedidos): el mapa de la ciudad, **fijo y entero en la
+  pantalla del celular** (unos ocho lugares en grilla), que se toca y no se arrastra. Cada pedido se abre
+  en su lugar. Cómo se ve lo propone el director con bocetos y lo elige Ronald.
+- **Personas con nombre (de B):** al tocar una figurita aparece su nombre y una línea de su vida. **Antes de
+  decidir, la línea es una pista, nunca la conclusión** («sale del puesto a la una y entra al colegio a las
+  dos»); **después de la consecuencia, es lo que le pasó** («no le llegó el taller»). Las líneas salen de
+  plantillas con la semilla de la versión, así cambian de un alumno a otro. Algunas personas vuelven en
+  otro tema: sólo historia, nunca números.
+- **Qué une los temas:** la ciudad, el rol y su gente. **No una mecánica.** La niebla y el censo son la
+  forma de juego de la muestra (Tema 1) porque es la que mejor la enseña. Si al hacer las fichas otro
+  subtema se enseña mejor con la niebla (o con cualquier forma ya usada), se usa ahí también; lo que no se
+  hace es llevarla a todos los temas para «dar unidad».
+- **Sin moneda que pase de un tema a otro.** Cada pedido trae su propio recurso (talleres, cupos, un
+  especialista, una brigada, una evaluadora). Lo que se queda es la ciudad: la gente que alcanzaste y la que
+  no, como historia (no cuenta para la nota ni pasa números al tema siguiente).
+- **Siempre hay consecuencia en el mundo, y cada tema la muestra a su manera** (el censo, la fila en la
+  puerta, quién mejoró, el día de la brigada, las cartas a las familias, la repregunta). Nunca con un
+  calendario, que es pieza de AIEF.
+- **Escalera de ayuda, en todos los juegos:** (a) la consecuencia y una pista según el error; (b) qué paso
+  revisar; (c) a leer la sección exacta del dossier (con las excepciones de §R2.7); (d) otra ciudad: otro
+  pedido con otros números. El registro guarda en qué escalón acertó.
+- **Casos de contraste:** no aplica. El dossier no trabaja un tema en variantes de tipo; los campos de la
+  psicología aparecen como pedidos distintos de la ciudad, sin un sistema de variantes (§7.3).
+- **Celular y web por igual:** todo se toca o se escribe, nada se arrastra ni depende de pasar el mouse;
+  los números se escriben en campos cortos que dejan ver el gráfico sobre el teclado; los datos salen de
+  la semilla en el teléfono, así que sin conexión se juega igual y se guarda al volver; el botón atrás
+  cierra la hoja abierta antes de salir del pedido.
+- **Crece sumando:** isla propia, un archivo por juego con sus pruebas, y lo común como motor (§7.4).
+
+### R2.2 · Dónde se juega cada subtema
+
+Regla (IDEA-JUEGO §21): cada concepto se juega en un solo lugar, el que lo trabaja a fondo. «Dossier» quiere
+decir que no tiene juego: se lee y se pregunta en la defensa oral.
+
+| Subtema | Dónde se juega | Por qué ahí |
+|---|---|---|
+| 1.1 Historia de la estadística | Dossier | Es contexto; un juego no la enseña mejor que la lectura |
+| 1.1 y 1.4 Fases, grupo de control, regresión a la media | **Tema 6**, como una prueba tentadora del informe («el programa funcionó») | Sólo D1 lo trata. En el Tema 6 se aprende por consecuencia: la repregunta muestra que los que no recibieron el programa mejoraron igual. Alternativa: sólo dossier |
+| 1.2 Campos de la psicología | Dossier (los pedidos de la ciudad ya son clínicos, escolares, laborales y comunitarios, sin enseñarlo) | Contexto |
+| 1.2 y 1.8 Constructo, indicador y fenómeno (las denuncias que bajan a cero) | **Tema 6**, otra prueba tentadora del informe | Es una limitación que se nombra antes de que la pregunten, que es lo que el Tema 6 enseña |
+| 1.3 Población, muestra, parámetro, estadístico, errores y sesgos | **Tema 1, su único juego** | Es lo único que es sólo suyo y se juega mejor con la niebla |
+| 1.5 Descriptiva e inferencial | **Tema 1**, en la frase que firmas | Es el cierre natural del mismo pedido |
+| 1.6 Niveles de medición | **Tema 2**, primer paso de la pila | D2 abre con qué admite cada nivel (acumular, histograma, Pareto); el Tema 3 y el 6 lo usan |
+| 1.7 Gráficos, barras pegadas o separadas, eje truncado, pictograma | **Tema 2** | D2 §2.3 y §2.4 los trabajan a fondo (el «error de escala» está ahí) |
+| 1.8 Recolección: fuentes | **Tema 1** (cómo consigues los datos) | Es parte de muestrear |
+| 1.8 Recolección: control de calidad | **Tema 3**, limpieza (3.5) | D3 §3.5 lo trabaja a fondo |
+| 1.6 «La Regla de Oro» (chi-cuadrado, t, ANOVA) | Ninguno | Es inferencial (§1.4, punto 7) |
+| 2.1 Frecuencias · 2.2 Intervalos · 2.3 Histograma, polígono, ojiva | **Tema 2, juego A** | Tres pasos de la misma pila, no tres juegos |
+| 2.4 Pareto, sectores, pictograma | **Tema 2, juego B** | Otra decisión: repartir un presupuesto y mostrarlo |
+| 3.1 Centro · 3.2 Dispersión · 3.4 Forma (asimetría por media contra mediana) · 3.5 Limpieza | **Tema 3, juego A** | Lo que decide a qué grupo va cada recurso |
+| 3.4 Curtosis | Dossier | Ninguna decisión del juego depende de ella |
+| 3.3 Posición: percentiles, cuartiles, RIC, caja, atípicos | **Tema 3, juego B** | Otra pregunta: dónde queda una persona en su grupo |
+| 3.5 y 4.7 Excel | Dossier y práctica con software | El juego no enseña menús |
+| 4.1 Tablas de doble entrada · 4.2 Marginales y condicionadas | **Tema 4, juego A** | Se dicta antes que el Tema 5: la condicionada se juega acá una sola vez |
+| 4.3 Nube · 4.4 Covarianza (sólo el signo) · 4.5 r y R² · 4.6 Regresión | **Tema 4, juego B** | Primero se mira, después se calcula y se predice |
+| 5.1 Probabilidad simple | **Tema 5**, un paso (la prevalencia como P(A)) | Sola no pide un juego |
+| 5.1 Falacia del jugador | Dossier | Cabe sólo forzando un sorteo |
+| 5.2 Condicionada: el denominador | Ya jugado en el **Tema 4, juego A** | Mismo concepto, mismo ejemplo de turno × estrés en D4 y D5 |
+| 5.2 Regla del producto, independencia, falacia de la inversa | **Tema 5**, pasos del tamizaje | Son lo que Bayes invierte |
+| 5.3 Bayes y valor predictivo | **Tema 5, su único juego** | |
+| 6.1 a 6.4 Informe, diagnóstico de una y dos variables, defensa | **Tema 6 · La audiencia** (pieza final) | Una sola pieza con repreguntas |
+
+### R2.3 · La maqueta: las piezas en el orden en que Ronald las dicta
+
+Orden: **Llegada → 1 → 2 → 3 → 4 → 5 → 6 (La audiencia)**. Nueve juegos más la Llegada; en la ronda 1 eran
+unas 22 modalidades. Cada tema se califica sobre 100.
+
+**Llegada · «Primer día en el Observatorio»** (escena corta, sin juego ni números). Dónde estás, qué es el
+Observatorio, el mapa de la ciudad y la gente que se puede tocar. Llega el primer pedido.
+
+**Tema 1 · «La encuesta de sueño»** (1.3, 1.5, fuentes de 1.8) · **Forma: muestrear con niebla y
+revelación.**
+La concejala tiene talleres de sueño para tres de ocho colegios y alcanza para 60 encuestas. Sobre los
+colegios está tapada la capa «¿quién duerme mal?». Repartes las encuestas tocando colegio y forma de
+conseguirlas (sorteo en la lista, teléfono del padrón, la puerta a las once); no todos los colegios tienen
+lista ni todas las familias teléfono. Las figuritas encuestadas dan su pista. **Escribes la proporción de
+cada colegio medido** (una tablita): ese número ordena a cuáles de los que viste van los talleres. Para
+los que no viste, **escribes quién quedó afuera y si eso sube o baja** el resultado, y con eso decides. Al
+final **armas la frase** para la concejala con piezas (de quiénes, cuántos, qué verbo): tiene que responder
+lo que ella preguntó y sostenerse con lo que mediste. Se guarda lo firmado. **Consecuencia:** llega el censo
+escolar y se destapa **sólo esa capa**: ves a quién no le llegó el taller y a quién le llegó sin
+necesitarlo.
+
+**Tema 2, juego A · «La pila del centro de salud»** (1.6, 2.1, 2.2, 2.3, barras pegadas) · **Forma:
+construir y probar.**
+El médico te manda una pila de fichas y tiene que decidir cupos de atención. Primero declaras el nivel de
+cada columna (las columnas salen de un repertorio por versión); la herramienta sólo deja hacer lo que ese
+nivel permite, y si te equivocas lo que armas sale absurdo delante del médico. Armas la tabla (n, h, N, H) y
+**respondes el umbral** que decide los cupos («¿cuántos esperan más de…?»). **Escribes k (Sturges), la
+amplitud por exceso y los límites [ )** de los intervalos, y el histograma se redibuja con cada número; si el dato mayor
+queda afuera, una persona de la pila desaparece del gráfico. En la ojiva lees el corte. **Consecuencia:**
+corre la semana con tus cupos y ves la fila en la puerta: quién esperó y quién no entró.
+
+**Tema 2, juego B · «Lo que el presupuesto no alcanza»** (2.4, eje truncado y pictograma de 1.7) ·
+**Forma: triage con presupuesto.**
+Los motivos de consulta y plata para unos pocos programas. Ordenas, acumulas y **escribes el porcentaje
+acumulado** donde se corta el presupuesto: eso decide qué se financia. Después, la concejala quiere
+mostrarlo en su rendición de cuentas con un gráfico que ella armó: **escribes cuántas veces más es de
+verdad** (o los ángulos del sector) y el gráfico se redibuja con tu número. **Consecuencia:** meses después,
+lo que el Pareto no resolvió; y el público reacciona al gráfico que se mostró.
+
+**Tema 3, juego A · «Dos grupos, un especialista»** (3.1, 3.2, forma de 3.4, 3.5) · **Forma:
+rompecabezas de asignación.**
+Dos o tres grupos con su escala, un taller grupal y un solo especialista. Antes de calcular, **limpias la
+planilla**: hay valores imposibles o códigos de «no respondió», y hay extremos que son personas reales con
+un caso severo; tocar a la persona da la pista para saber cuál es cuál. **Escribes media, mediana, s (con
+n − 1) y CV**, eliges qué centro informar según la forma, y asignas: el taller donde el grupo es parejo, el
+especialista donde unos pocos están muy mal. **Consecuencia:** quién mejoró en cada grupo y quién quedó sin
+atender (si borraste a una persona real, es ella).
+
+**Tema 3, juego B · «¿Dónde queda Tomás?»** (3.3; mediana con RIC de la tabla de decisión de 3.5) ·
+**Forma: ubicar a una persona en su grupo.**
+La directora de un colegio quiere derivar a quienes están en el extremo. **Escribes Q1, Q2, Q3 (con
+n + 1), el RIC y las vallas de 1,5 RIC**; la caja se dibuja con tus números y la persona aparece en ella.
+Decides a quién derivas. El mismo puntaje puede ser extremo en un grupo y del montón en otro. **Consecuencia:**
+la línea de cada persona derivada o no.
+
+**Tema 4, juego A · «¿Entre quiénes?»** (4.1, 4.2) · **Forma: cambiar el universo.**
+En el mercado, turno o puesto × estrés, y una sola brigada. Armas la tabla de doble entrada desde las
+planillas; tocar una fila o una columna la vuelve el 100 %. El pedido cambia con la versión: a veces «¿dónde
+está la mayoría de los estresados?» y a veces «¿en qué turno el riesgo es mayor?». **Escribes el porcentaje
+con el denominador que responde esa pregunta**, y con él decides dónde va la brigada. **Consecuencia:** el
+día de la brigada, a quién alcanzó.
+
+**Tema 4, juego B · «Pantallas y sueño»** (4.3 a 4.6) · **Forma: primero se mira, después se predice.**
+La nube se toca: cada punto es una persona. Antes de calcular decides qué hacer con el punto suelto (en unas
+versiones es un error de carga, en otras una persona real) y miras la forma (en algunas, curva). **Escribes
+el signo de la covarianza, r y R²**. El mismo r se usa dos veces: **para buscar a quién ayudar** (válido si r
+es fuerte; si es débil, la búsqueda falla) y **para decidir qué cambiar** (la ordenanza de la concejala, que
+trata r como causa). Con **b, a y ŷ** calculas los cupos de cada barrio; a veces un barrio pedido está fuera del rango
+observado. **Consecuencia:** al año siguiente, el sueño del barrio con ordenanza y los cupos que faltaron o
+sobraron.
+
+**Tema 5 · «Una sola evaluadora»** (5.1, 5.2, 5.3) · **Forma: árbol de frecuencias con capacidad.**
+Tamizaje de lectura en las escuelas, una sola evaluadora y cartas a las familias. **Escribes la prevalencia
+en frecuencias**, las ramas del árbol (regla del producto) y **cuántos de los positivos tienen de verdad el
+trastorno**. Con eso decides a quién evalúa primero y qué carta recibe cada familia. En algunas versiones la
+escuela ya viene filtrada por los profesores (prevalencia alta: el positivo sí suele ser cierto); en otras,
+un proveedor ofrece una prueba rápida cuyos positivos no cambian nada (independencia). **Consecuencia:** qué
+niños tenían el trastorno, cuáles quedaron con la etiqueta y cómo quedó la agenda de la evaluadora. Sin
+universidad ni PHQ-9 (son del Aula de Probabilidad).
+
+**Tema 6 · «La audiencia»** (6.1 a 6.4, más 1.2, 1.4 y 1.8 de arriba) · **Forma: armar el informe e
+interrogatorio.** Es la **pieza final**: Ronald la habilita al último, después de todos los temas.
+El Concejo convoca una audiencia pública con una pregunta que cambia con la versión. Tienes un archivo de
+pruebas sobre la ciudad (datos propios de esta pieza, no lo que respondiste antes). **Armas el informe**:
+qué pruebas lo responden, en qué orden (muestra → una variable → dos variables), qué estadístico y qué
+gráfico para cada variable según su tipo (**los estadísticos los escribes tú**, desde los datos), y la
+frase de R² armada con piezas. Entre las pruebas hay dos
+tentadoras: un registro que cambió su forma de contar (a veces sí cambió, a veces no) y un programa «que
+funcionó» comparando antes y después (a veces con lista de espera, a veces sin comparación). Después, el
+**interrogatorio**: te repreguntan por lo que tu informe no sostiene, y respondes mostrando la prueba o
+nombrando la limitación. Lo que nombraste antes suma; «no hubo limitaciones» es la peor respuesta. Lo que
+escribiste queda en el registro para **la defensa oral en clase**, que es el jefe final.
+
+**Qué usa cada pieza de otra** (sólo donde hace falta; los números de cada tema salen de su **punto de
+control**, que arranca con los números correctos de la versión del alumno):
+
+| Pieza | Usa de antes | Deja |
+|---|---|---|
+| Llegada | Nada | La ciudad y su gente |
+| 1 | Nada | La muestra y su sesgo; gente que vuelve después |
+| 2 | Nada del juego del Tema 1 (el nivel de medición se juega acá) | La tabla y la forma que el Tema 3 nombra |
+| 3 | El nivel (Tema 2), para saber qué centro corresponde | La desviación que el Tema 4 multiplica |
+| 4 | La desviación (Tema 3) | La condicionada y la pregunta «¿entre quiénes?» |
+| 5 | La condicionada (Tema 4, juego A) | La tasa base |
+| 6 | Tema 3 y Tema 4 para describir una y dos variables; los conceptos del Tema 1 que se dictaron primero | El registro para la defensa oral |
+
+**Hilo, sin forzar:** cuando calza, una consecuencia deja la pregunta del pedido siguiente (en el censo del
+Tema 1 aparecen chicos que trabajan de mañana en el mercado; el mercado vuelve en el Tema 4). Nada más se
+encadena.
+
+### R2.4 · Dos comprobaciones antes de entregar
+
+#### Ninguna estrategia gana sin entender
+
+Jugué cada juego como el alumno perezoso (siempre sí, siempre no, al azar, lo más barato, copiar a un
+compañero que tiene otra versión) y con los tres controles nuevos: el **patrón que se aprende una vez**, el
+**número de peaje** (el que se escribe y no cambia nada) y la **frase obvia** (dos botones donde la
+prudente se nota sin calcular).
+
+| Juego | La trampa que se probó | Cómo queda cerrada |
+|---|---|---|
+| 1 | «Pon los talleres donde hay niebla» (patrón) | En la mitad de las versiones lo que no viste está **mejor** (la puerta a las once pesca a los que llegan tarde porque durmieron mal). Sólo sabiendo quién faltó y por qué se sabe hacia dónde empuja |
+| 1 | La proporción como peaje | Se escribe por colegio medido y ordena a cuáles van los talleres |
+| 1 | La frase prudente de siempre («de los 60 encuestados…») | Es cierta pero no responde lo que la concejala preguntó; la que sirve nombra un grupo medido con su número. Se arma con piezas, no con botones |
+| 1 | Probar, ver el censo y repetir | Se califica lo firmado antes del censo; otro intento es otra ciudad |
+| 2A | Cupos de más «por las dudas» | Lo que sobra se le quita a otro servicio, y se ve en la misma semana |
+| 2A | El umbral como peaje | Decide los cupos; «más de» y «hasta» cambian con la versión |
+| 2B | «Siempre las dos primeras barras» | El presupuesto y el punto donde cae el 80 % cambian con la versión |
+| 2B | «El gráfico siempre engaña» | En parte de las versiones el gráfico de la concejala es honesto; lo que se escribe es cuántas veces más es de verdad, y ese número rehace el gráfico |
+| 3A | «Siempre la media», «siempre la mediana» | Grupos simétricos y con cola repartidos entre versiones (D3 §3.5, tabla de decisión) |
+| 3A | «Borra todo lo raro» | Unos extremos son errores y otros personas reales; borrar a una real la deja sin especialista |
+| 3A | «El especialista al de mayor media» | En parte de las versiones el de mayor media es el parejo y necesita el taller |
+| 3B | «Deriva al de mayor puntaje» | El mismo puntaje es extremo en un grupo y del montón en otro |
+| 4A | «La brigada al grupo más grande» o «al de mayor porcentaje» | La pregunta del pedido cambia el denominador; en la mitad de las versiones el grupo más grande no es el de mayor riesgo |
+| 4B | «Nunca firmes la ordenanza» (frase obvia) | Negarse no se califica solo: se califican r, R², ŷ y si r alcanza para buscar a quién ayudar. Con r débil, buscar por pantalla falla; con r fuerte, no usarlo deja gente sin encontrar |
+| 4B | «Nunca predigas» o «predice siempre» | En unas versiones todo barrio pedido está dentro del rango y en otras uno está afuera |
+| 4B | «Borra el punto suelto» | A veces es un error, a veces una persona real; la pista está en su línea |
+| 5 | «Un positivo casi nunca es cierto» (patrón) | Con prevalencia alta sí suele serlo; sólo el número de verdaderos positivos lo dice |
+| 5 | «Evalúa a todos los positivos» | La evaluadora no alcanza: hay que saber cuántos son de verdad para ordenar la agenda |
+| 6 | «Desconfía de toda prueba tentadora» (patrón) | A veces el registro no cambió y el programa sí tenía lista de espera: sin ellas el informe no responde la pregunta |
+| 6 | «Nombra todas las limitaciones» | Se nombran las que tu informe tiene; las que no, suenan a no haber mirado y el tribunal lo repregunta |
+| Todos | Copiar al compañero | Cambian la ciudad, las personas, los números, qué grupo falta, hacia dónde sesga, qué es error y qué es persona, la pregunta del informe. La respuesta del compañero es de otra ciudad |
+
+Lo que no se pudo volver del todo variable: el **orden** del informe (muestra → una variable → dos
+variables) es igual para todos. Pesa poco dentro del Tema 6 y se dirá en su ficha; lo que varía es qué
+pruebas responden la pregunta.
+
+#### La maqueta aguanta el orden real en que Ronald dicta
+
+- **Orden confirmado por Ronald el 28-09:** T1 → T2 → T3 → T4 → T5 → T6 (la ficha y el calendario de
+  EAD-111 dicen lo mismo, con otros nombres; ver §1.4, punto 1). Coincide con el del dossier. El Tema 4 ya
+  no se parte en dos.
+- Ningún tema da por hecho algo que se dicte después: el Tema 2 juega los niveles y los gráficos que el
+  Tema 1 presentó en clase; el Tema 3 usa el nivel (Tema 2); el 4, la desviación (Tema 3); el 5, la
+  condicionada (Tema 4, dictado antes, y D5 dice que viene después de la bidimensional); el 6 usa el 3, el
+  4 y conceptos del 1.
+- **Inicio y fin son piezas propias:** la Llegada, que Ronald habilita al principio, y La audiencia, que es
+  el Tema 6 entero y la habilita al último. No es una parte de un tema: es el tema final completo, y el
+  contenido de D6 es justamente preparar y defender el informe. El caso integrador de su calendario es una
+  evaluación suya, fuera del juego.
+
+### R2.5 · Costo con lo que hay (según `PIEZAS-COMUNES.md`)
+
+- **Se reutiliza del motor:** partidas (`partida.ts`), nube (`nube.ts`, funciones `…De`), versión por alumno
+  (`versionDeAlumno`, semilla `"<isla>:<tema>"`), `azarConSemilla`, escalera (`escalera.ts`), sección Jugar
+  y candados (`content/islas.ts`, `src/lib/juegos.ts`), `nativo.ts`, `problemasDeTexto`, `formato.ts`; y
+  los patrones probados (versiones con `versionValida`, diagnóstico por error típico, prueba del alumno
+  perezoso en 500 versiones, partida reconstruida desde sus eventos, práctica sin nota y después con nota,
+  guion aparte).
+- **Hay que despegar antes:** la página del docente y `resumen.ts`; `useCuenta` y `BarraCuenta` (a
+  `src/components/juego/`); `VERSION_MAXIMA` (a `partida.ts`); y un dato de carrera en la isla para que la
+  sección Jugar muestre los dos juegos de la materia (suma; no toca los que existen).
+- **Nuevo y se hace como motor** (lo aprovechan Empresariales, Inferencial y las láminas): (1)
+  `src/lib/estadistica/` con pruebas: frecuencias, Sturges, cuartiles con n + 1, s con n − 1, CV,
+  covarianza, r, R², regresión, condicionadas, árbol y Bayes con frecuencias naturales; (2) una población
+  con semilla que genera los datos de cada pedido, y sus formas de muestrear (al azar, teléfono, puerta, no
+  respuesta) para el Tema 1 y para Inferencial; (3) gráficos desde datos: histograma con paredes que se
+  mueven, ojiva, Pareto, sectores, pictograma, caja, nube que se toca, árbol.
+- **Nuevo y contenido de este juego:** el mapa en grilla (sin arrastre), las plantillas de personas, el
+  guion de cada tema y las pruebas del Tema 6.
+- **Versión mínima jugable:** la Llegada y el Tema 1, que ahora es **un solo juego** (necesita sólo la
+  proporción de la biblioteca, la población con muestreo, el mapa, la capa tapada y el censo). Más chica que
+  en la ronda 1.
+
+**En qué se distingue de lo que existe:** sin escritorio, ventanilla, cola de clientes, pared ni calendario
+(«La ventanilla» de AIEF); sin planta ni máquinas (el «Valle» de Proyectos II); el Tema 5 no usa universidad
+ni PHQ-9 (Aula de Probabilidad).
+
+**Tamaño:** nueve juegos es mucho para una persona, pero se construyen de a uno (un tema a la vez) y
+comparten el motor nuevo; el más caro es la biblioteca de gráficos desde datos, que se paga una vez. Si un
+juego B de un tema (2B, 3B o 4B) resulta caro al hacer su ficha, la versión barata es volverlo un paso del
+juego A del mismo tema.
+
+**Riesgo principal:** que con nueve formas de juego distintas parezcan nueve juegos sueltos. Remedio: lo
+que se repite es el mundo (el mapa, el elenco que pide, la gente con nombre que vuelve) y la forma de la
+consecuencia (siempre en la ciudad, nunca un mensaje). El riesgo del mapa como decorado se acepta a
+propósito: el mapa es el lugar al que se vuelve, no la mesa donde se decide cada tema.
+
+### R2.6 · Cómo quedaron los arreglos del crítico (`06-revisiones.md` v7)
+
+| Hallazgo | Cómo queda |
+|---|---|
+| 1. Niebla por capas en todos los temas | **Rechazado por Ronald.** Cada tema tiene su forma; la niebla puede volver sólo donde sea la que mejor enseña |
+| 2. «Lo que no viste siempre está peor» | Tomado: el sesgo apunta a los dos lados según la versión (Tema 1) |
+| 3. Dos frases, la prudente obvia | Tomado: frases armadas con piezas; el mismo r se usa para algo válido y algo que no (Tema 4B) |
+| 4. El número del Tema 1 no cambiaba nada | Tomado: proporción por colegio que ordena los talleres |
+| 5. El Tema 1 con cinco juegos | Tomado: un juego (§R2.2) |
+| 6. Demasiadas modalidades | Tomado: nueve juegos; la condicionada se juega una vez (Tema 4); Tema 6 y Audiencia son una pieza |
+| 7. Personas que regalan la respuesta | Tomado: pista antes, consecuencia después, desde plantillas con semilla |
+| 8. Tanteo con la revelación | Tomado: se califica lo firmado antes; otro intento es otra ciudad (vale para toda consecuencia, no sólo el censo) |
+| 9. ¿Qué da ganas de seguir? | Tomado sin mecánica: la gente que alcanzaste queda en la ciudad, y una consecuencia puede abrir el pedido siguiente |
+| 10. Lo que se puede copiar | Tomado: columnas de repertorio por versión (Tema 2A), pregunta del informe por versión (Tema 6); lo que no varía pesa poco |
+| 11. Mapa que se arrastra | Tomado: mapa fijo que se toca |
+| 12. Páginas del dossier que contradicen el juego | Resuelto por Ronald: la escalera no manda a leer esas tres frases (abajo) |
+| 13. Orden supuesto | Resuelto: Tema 4 entero antes que el 5 |
+| 14. Parecidos | Tomado: nada de AIEF, Proyectos II ni el Aula |
+
+### R2.7 · Decidido y abierto
+
+**Decidido** (sale del dossier, de `IDEA-JUEGO.md` o de Ronald): marco A con personas de B; nueve juegos y
+la Llegada, en el orden de §R2.3; mandan los dossiers sobre la ficha en los nombres de los temas; r con la
+fórmula de D6 §6.3 o el mismo denominador arriba y abajo; Sturges al entero más cercano; R² como varianza
+compartida; asimetría por media contra mediana (g₁ no se calcula a mano); ningún caso de práctica ni de
+evaluación de la materia entra al juego; el alumno escribe cada número y la pista sale de su error.
+
+**Adónde manda el escalón «a leer»** (Ronald, 28-09): nunca a la definición de Sturges de D2 §2.2 (manda a
+sus ejemplos), ni a la covarianza con N de D4 §4.4 (manda a D6 §6.3 para r), ni a «R² explica» de D4 §4.5 o
+D6 §6.3 (manda al recuadro «Qué NO se puede afirmar» de D4 §4.5). Ronald corrige esas frases cuando vuelva
+a esos dossiers; el aprendizaje revisa que ninguna ficha mande ahí.
+
+**Abierto, para después de aprobar la maqueta** (no se pregunta ahora): en qué página del sitio aparece el
+juego (Psicoestadística Descriptiva o el curso EAD-111, que usa este material), al construir; los nombres
+de la ciudad, del Observatorio y del elenco (narrativa); el aspecto (bocetos del director).
+
+### R2.8 · Resumen de traspaso para los demás agentes
+
+**Qué se eligió:** marco A «El Observatorio» con las personas con nombre de B (§R2.1). El alumno es el
+analista del Observatorio de Bienestar de una ciudad ficticia; los pedidos llegan de un elenco chico; la
+ciudad es un mapa fijo que se toca; cada persona tiene nombre y una línea (pista antes, consecuencia
+después, desde plantillas con semilla).
+
+**Qué se decidió en la conversación:**
+
+- El marco es el mundo, no una mecánica (IDEA-JUEGO §22): cada tema y subtema tiene la forma de juego que
+  mejor lo enseña; una forma ya usada vuelve sólo si también es la mejor ahí.
+- La maqueta de §R2.3: Llegada, nueve juegos (T1: 1; T2: 2; T3: 2; T4: 2; T5: 1; T6: 1) y La audiencia
+  como Tema 6 y pieza final. Dónde se juega cada subtema: §R2.2.
+- Orden de dictado: T1 → T6, con el 4 entero antes que el 5.
+- Sin moneda entre temas; puntos de control por tema; se califica lo firmado antes de la consecuencia; otro
+  intento es otra ciudad.
+- Los controles de §R2.4 son requisito de cada ficha (sesgo en los dos sentidos, error o persona real,
+  pregunta que cambia el denominador, prevalencia alta y baja, pruebas tentadoras a veces válidas).
+- El escalón «a leer» evita las tres páginas de §R2.7.
+
+**Qué sigue** (etapa de materia de `.claude/agents/LEEME.md`):
+
+1. **Crítico** sobre esta maqueta; lo que encuentre lo corrige este agente y Ronald ve la versión
+   corregida, con una línea de qué se corrigió.
+2. **Ronald aprueba la maqueta** → se marca **APROBADA** con la fecha y ningún agente la reabre.
+3. **Director:** visión y «Aspecto y sensación» en `01-vision.md` con 2 o 3 bocetos de celular (el hub con
+   el mapa fijo y la pantalla del Tema 1), nunca «una imagen fija arriba y texto abajo»; cada tema puede
+   traer después su propia pantalla. → crítico → Ronald elige → la isla queda con `aspecto: "aprobado …"`.
+4. **Progresión:** `03-progresion-psicoestadistica-descriptiva-psicologia.md` sobre esta maqueta. →
+   crítico → Ronald aprueba.
+5. **Después, tema por tema**, empezando por el Tema 1: la idea en simple con Ronald, la ficha (este
+   agente), aprendizaje, bucle, narrativa, crítico; y así con cada tema.
+
+**Queda abierto:** que Ronald apruebe la maqueta; la página del sitio donde va el juego; nombres y aspecto.
 
 ---
 
@@ -210,7 +606,7 @@ que ya existen (`PIEZAS-COMUNES.md` §4): ni la agencia de créditos de Cliza y 
 ventanilla», ni la lechera de Punata del «Valle de los Proyectos». Tampoco el caso de la Universidad con
 fichas PHQ-9 del Aula de Probabilidad (es de Inferencial).
 
-#### Marco A · «El Observatorio» (recomendado)
+#### Marco A · «El Observatorio» (recomendado) · ELEGIDO por Ronald el 28-09, con las personas con nombre de B (en limpio en §R2.1)
 
 **Gancho:** *Eres el analista nuevo del Observatorio de Bienestar de Wayra Pampa. La ciudad está cubierta
 de niebla: sólo ves a la gente que mediste. Cada informe que firmas decide adónde van los psicólogos, y un
@@ -655,3 +1051,60 @@ si ese orden cambia.
 | `Psicoestadística Descriptiva/1_CONTENIDO/Tema 6/Tema 6 - Latex.tex` | 2026-09-05 | `81aeb1a3a882` |
 | `Psicoestadística Descriptiva/FICHA_MATERIA.md` | 2026-09-23 | `160d81193cae` |
 | `Psicoestadística Descriptiva/0_DISENO/QUE SUBIR A MOODLE.md` | 2026-09-23 | `a283cad1f57c` |
+
+**Comparación al empezar la ronda 2 (28-09):** `huella-dossier.mjs --comparar` dio los ocho archivos
+iguales. No cambió ningún concepto, fórmula ni lista de temas.
+
+---
+
+## Lista de salida · ronda 2
+
+Una línea por regla de `.claude/agents/adaptador-de-dossier.md`, con dónde se ve en este documento.
+
+| Regla | ✔/✘ | Dónde se ve |
+|---|---|---|
+| Juego con sabor a la materia (principio que manda) | ✔ | Cada juego decide algo de la ciudad con el número de la materia (§R2.3) |
+| Arco de la materia con inicio y fin | ✔ | §R2.3: Llegada → Temas 1 a 6 → La audiencia; tabla «qué usa cada pieza» |
+| Dossier leído de la carpeta de materias, sin subirlo; versión anotada | ✔ | «Dossiers usados», con la comparación de la ronda 2 |
+| Un juego por carrera, en su propio documento | ✔ | Nombre del archivo y encabezado |
+| Al retomar, comparar huellas y decir si cambió algo | ✔ | «Dossiers usados», última línea |
+| Diseño inverso primero (sabe hacer · lo demuestra · si lo hace mal) | ✔ | §R2.0 (y §1.2 de la ronda 1) |
+| Esencial y adaptable | ✔ | §1.3 (sin cambios en esta ronda) |
+| Modalidad por tema, comparada con los temas posteriores; dónde se juega; tema introductorio con un juego | ✔ | §R2.2 (cada subtema con su lugar); Tema 1 con un solo juego |
+| Marco en una página con costo en tres, distinción y riesgo | ✔ | §4 marco A (ronda 1) y §R2.5 al día |
+| Mapa de cobertura sin temas esenciales afuera | ✔ | §R2.2 (curtosis y falacia del jugador quedan en el dossier; no estaban en la esencia de §1.3) |
+| Ninguna estrategia gana sin entender, con patrón fijo, número de peaje y frase obvia | ✔ | §R2.4, tabla por juego |
+| La maqueta aguanta el orden real de dictado; inicio y fin propios | ✔ | §R2.4, segunda parte |
+| Recomendación decidida y una sola pregunta de gusto | ✔ | Encabezado: sólo la aprobación de la maqueta; ninguna de gusto |
+| Rondas siguientes: ELEGIDA, «Lo que dijo Ronald» con sus palabras, resumen de traspaso | ✔ | Encabezado, §4 marco A, «Lo que dijo Ronald» de la ronda 2, §R2.8 |
+| Primero la maqueta; sin fichas antes de que la apruebe | ✔ | No hay fichas; la próxima pregunta es aprobarla |
+| Ficha por subtema legible en el celular | No aplica aún | Llega después de aprobar la maqueta |
+| Una sección por ronda, la más nueva arriba, con estado y próxima pregunta | ✔ | Encabezado y «Ronda 2 · versión 2» |
+| Ronald decide; nada decidido que no esté en IDEA-JUEGO o la bitácora | ✔ | §R2.7 separa decidido y abierto; lo nuevo de esta ronda es diseño con su alternativa (1.4 al Tema 6 o dossier; los juegos B como pasos del A) |
+| Leer antes de proponer (LEEME, GDD, IDEA-JUEGO, BITACORA §0, CLAUDE.md, PIEZAS-COMUNES) | ✔ | «Con qué se trabajó» de la ronda 1; en esta ronda, `06-revisiones.md` v7 e IDEA-JUEGO §21 y §22 |
+| Lo que Ronald ya dijo: no cuestionario, pixel art, defensa oral como jefe final, escribe el número, primero se ve, nada aparece de la nada | ✔ | §R2.3 (cada juego dice qué número se escribe y qué cambia; el pedido se abre en su lugar del mapa; La audiencia deja el registro para la defensa); el pixel art lo dibuja el director |
+| Un juego por materia, ajustado a ella | ✔ | Marco propio (§R2.1) |
+| Motor común, juego propio («como Doom») | ✔ | §R2.5: motor, despegar, nuevo; en qué se distingue |
+| Lo que cuenta para la nota no se puede copiar | ✔ | §R2.4, última fila; el orden del informe no varía y pesa poco |
+| Individual, cada tema sobre 100, sin reparto de nota | ✔ | §R2.3 (sobre 100); el interrogatorio es con personajes, no con compañeros; no se propone reparto |
+| El juego no es una lección | ✔ | Ninguna pieza explica; todo termina en una consecuencia en la ciudad (§R2.1, §R2.3) |
+| Todos los agentes, cada uno en su etapa | ✔ | §R2.8, «Qué sigue» |
+| La idea al inicio, sin idas y vueltas; no reabrir lo acordado | ✔ | Se parte de la elección de Ronald y de su rechazo al arreglo 1; nada de eso se reabre |
+| El aspecto se acuerda con bocetos | ✔ | §R2.1 (lo propone el director) y §R2.8, paso 3 |
+| Cómo llega el alumno (Jugar por temas, isla) | ✔ | §R2.5: dato de carrera en la isla para la sección Jugar |
+| Marco fijo, modalidad variable; el marco es el mundo; una forma vuelve donde sea la mejor | ✔ | §R2.1 y §R2.3 (nueve formas, la niebla sólo donde enseña mejor, abierta a volver) |
+| Diseño inverso · arco · dominio con escalera · contraste · decidir lo que el dossier responde | ✔ | §R2.0, §R2.3, §R2.1 (escalera y contraste), §R2.7 |
+| El orden de dictado es un dato | ✔ | §R2.4: confirmado por Ronald, no gastó la pregunta |
+| Lo que Ronald decide se vuelve regla de los agentes | ✔ | Sus decisiones del 28-09 ya están en los agentes (IDEA-JUEGO §21 y §22); esta ronda no trae una nueva |
+| Por temas, sin tiempo | ✔ | Sin semanas ni plazos; «meses después» es tiempo dentro del mundo, no del curso |
+| Lo que un tema posterior profundiza se juega allá | ✔ | §R2.2 |
+| Estructura escalable | ✔ | §R2.1, último punto, y §7.4 |
+| Web y Android por igual | ✔ | §R2.1 («Celular y web por igual») |
+| Un tema a la vez; versión mínima = un tema; la maqueta no se da por aprobada | ✔ | §R2.5 (Llegada y Tema 1); encabezado |
+| Lista de salida, crítico antes de Ronald, lo aprobado no se reabre | ✔ | Esta lista; §R2.8 pasos 1 y 2 |
+| Términos técnicos explicados | ✔ | «Palabras de oficio» de las dos rondas |
+| Tuteo, sin guiones largos, castellano neutro en lo que lee el alumno | ✔ | Las líneas de ejemplo están en tuteo neutro; ningún guion largo en el documento (controlado con `buscar_voseo.py` y una búsqueda del carácter) |
+| Realista con el tamaño | ✔ | §R2.5, «Tamaño», con la versión barata |
+| Estudio de Casos no se publican | ✔ | §1 de la ronda 1; esta ronda no usa ninguno |
+| No copiar párrafos del dossier | ✔ | Sólo se citan secciones |
+| Resumen final con qué se elige y tabla tema × lo que vive el alumno | ✔ | En la entrega (no va en el documento) |

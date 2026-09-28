@@ -181,10 +181,11 @@ la vista):
 Preguntas de apoyo para los errores que el juego no ve: «¿el auditor externo trabaja para el
 Estado?» (Error 2 de 1.1) y «¿una resolución del CTNAC es una ley?» (Error 2 de 1.2).
 
-**Peso propuesto (por defecto; Ronald lo cambia si quiere):** del Tema 1, **40 % el registro y 60 %
-la defensa**, como en el resto de sus evaluaciones con coloquio. Dentro del registro: 1.1 10 %, 1.2
-40 %, 1.3 50 % (si entra la hoja de observación, sale de ese 50 %). En qué escalón acertó **no
-resta** en el registro: se muestra en la hoja del alumno para que Ronald lo pregunte en la defensa.
+**Nota (decidido por Ronald, 27-09; reemplaza el «40 % registro, 60 % defensa» que se proponía acá):**
+el juego entrega **una nota sobre 100 por tema**; la final es el promedio sobre 100, y **cómo pondera
+cada cosa lo decide Ronald después**: no se le propone reparto. El juego es **individual**, sin careo ni
+nada en grupo. Cómo se reparten los 100 puntos dentro del Tema 1 (1.1, 1.2, calidad, 1.3) lo propone la
+próxima ronda de esta etapa. En qué escalón acertó **no resta**: se muestra en la hoja del alumno.
 Quien necesitó repasos aprobó igual, porque el dominio antes de avanzar ya se lo exigió.
 
 **Integridad, en resumen:** 1.2 y 1.3 no se copian (otra versión, otras respuestas). 1.1 se copia

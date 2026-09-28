@@ -30,7 +30,7 @@ Por eso, en RON_DOC **la sincronización real pasa por GitHub, no por la carpeta
 
 Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (registro y reglas para combinar los de la nube con los de la PC de Ronald); todo agente nuevo se anota ahí en el mismo commit. **Todo lo que Ronald decide al planificar el juego se vuelve regla de los agentes que correspondan, en el mismo commit** (pedido del 26-09).
 
-**Ronald no elige agentes** (28-09: «¿qué agente debemos usar? ¿cómo sabré cuál usar?»). Cuando pide algo del juego, la sesión mira la tabla de etapas de `.claude/agents/LEEME.md`, le dice en una línea en qué etapa está y qué agente sigue, lo corre, y al terminar le dice cuál viene. Él sólo interviene donde la tabla pide su aprobación. La `description` de todo agente va **entre comillas**: sin ellas, un «: » a mitad de frase hace que el agente no cargue, sin aviso (le pasó al adaptador hasta el 28-09).
+**Ronald no elige agentes** (28-09: «¿qué agente debemos usar? ¿cómo sabré cuál usar?»). Cuando pide algo del juego, la sesión mira la tabla de etapas de `.claude/agents/LEEME.md`, le dice en una línea en qué etapa está y qué agente sigue, lo corre, y al terminar le dice cuál viene. Él sólo interviene donde la tabla pide su aprobación. **Nunca se le muestra la entrega de un agente sin que haya pasado su lista de salida y el crítico** (28-09: la ronda 1 de Psicoestadística se le mostró sin crítico y hubo que rehacerla). La `description` de todo agente va **entre comillas**: sin ellas, un «: » a mitad de frase hace que el agente no cargue, sin aviso (le pasó al adaptador hasta el 28-09).
 
 ## Estructura: escalable, modificable, ampliable sin romper (Ronald, 2026-09-26)
 

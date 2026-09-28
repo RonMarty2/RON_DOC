@@ -41,7 +41,7 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 
 | Etapa | Agente | Qué deja |
 |---|---|---|
-| **Materia** (una vez) | `adaptador-de-dossier` → Ronald elige el marco → `director-de-juego` (visión **y aspecto con 2 o 3 bocetos de pantalla; Ronald elige**) → `disenador-de-progresion` | `00-adaptacion-<materia>`, `01-vision` (con «Aspecto y sensación»), `03-progresion-<materia>`; `aspecto: "aprobado AAAA-MM-DD"` en su isla |
+| **Materia** (una vez) | `adaptador-de-dossier` (propuestas **con un boceto de pantalla de cada marco**, que dibuja el director) → **`critico-de-jugabilidad`** → Ronald elige el marco → `adaptador-de-dossier` (maqueta) → **`critico-de-jugabilidad`** → Ronald aprueba la maqueta → `director-de-juego` (visión **y aspecto con 2 o 3 bocetos de pantalla**) → **`critico-de-jugabilidad`** → Ronald elige → `disenador-de-progresion` → **`critico-de-jugabilidad`** → Ronald aprueba | `00-adaptacion-<materia>`, `01-vision` (con «Aspecto y sensación»), `03-progresion-<materia>`; `aspecto: "aprobado AAAA-MM-DD"` en su isla |
 | **Tema** 0. La idea, CON Ronald | el director la presenta en simple (qué vive el alumno, paso a paso) y, si el tema necesita otra pantalla, su boceto | Ronald la arma y la ajusta **antes** de que los agentes la detallen (Ronald, 27-09: «debería ser al inicio») |
 | 1. Ficha | `adaptador-de-dossier` | la ficha del tema, con el dossier verificado |
 | 2. Qué aprende y cómo se evalúa | `disenador-de-aprendizaje` | objetivos, errores típicos, **qué varía por alumno**, registro |
@@ -56,6 +56,21 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó con las fichas sin pasar
 por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
 Ronald y se anota en la bitácora.
+
+**Nada llega a Ronald sin el crítico, y lo aprobado no se reabre** (Ronald, 28-09: *«estamos volviendo a
+hacer algo que ya hicimos… ¿cómo sé ahora que esta es la buena? ¿No deberías blindar los agentes?»*). La
+ronda 1 de Psicoestadística se le mostró sin pasar por el crítico (la tabla de la etapa de materia no lo
+nombraba); el crítico la revisó después, cuando Ronald ya había elegido, y hubo que rehacerla. Desde ahora:
+
+1. **Toda entrega de un agente pasa por el crítico antes de mostrársela a Ronald**, en la etapa de materia
+   y en la de tema (la tabla de arriba lo marca en cada paso). Lo que el crítico encuentre lo corrige el
+   agente que corresponda, y Ronald ve la versión corregida, con una línea de qué se corrigió.
+2. **Cada agente entrega con su lista de salida**: una línea por regla de su archivo, con ✔ o ✘ y dónde se
+   ve. Una entrega con ✘ no pasa al crítico.
+3. **Una pieza es «la buena» cuando** pasó su lista de salida, el crítico no encontró bloqueos y Ronald la
+   aprobó. Ahí se marca **APROBADA** con la fecha, y ningún agente la reabre: sólo Ronald puede pedir
+   cambiarla. Las rondas que quedan son las que traen una decisión nueva de Ronald, no arreglos que un
+   control debía encontrar antes.
 
 **Cada agente trabaja de cero (Ronald, 28-09: «quiero ver cómo se comportan de cero»).** La sesión no
 hace el trabajo de un agente antes de que corra: no adelanta el análisis de una materia (qué falta, qué

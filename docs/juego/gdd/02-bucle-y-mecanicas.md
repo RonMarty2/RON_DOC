@@ -23,6 +23,14 @@ A2.4 y A2.10) porque la v1 comprobaba y no enseñaba; y el crítico (`06`, 27-09
 imprescindibles. Esta versión **reemplaza** B1.1, B1.6, B1.7 y B1.11 de la v1, y **ajusta** B1.3, B1.4,
 B1.5 y B1.8. Lo que no se nombra aquí de la v1 sigue valiendo (queda abajo, como historia).
 
+**Ajustes del 27-09 tras `06` v5** (revisión del papel de esta versión, hallazgos 1, 2 y 8):
+- **Sin cuenta se juega sólo el ejemplo** (hallazgo 1, grave): nuevo punto **1 bis** de B2.10, al lado de
+  la semilla. Regla completa ahí.
+- **Página del manual «Calidad»** con los dos pisos y los dictámenes (hallazgo 2): nueva en B2.5, con cómo
+  se usa en el dictamen. Aviso a narrativa en B2.11 (sólo pule el tono; el contenido de la regla es este).
+- B2.3 (b) toma la línea de `05` N2.4 para cerrar el campo de NC: «Déjala por hoy. Decide con lo que
+  tienes.» (hallazgo 8).
+
 **Qué leí:** `04` A2.1 a A2.10, `06` (entrada del 27-09 sobre el Tema 1, hallazgos 1 a 12 y los 8
 imprescindibles), `05` N1.2 a N1.4, mi v1, y en el código `tema1.ts`, `ventanilla.ts` y `guion-tema1.ts`.
 
@@ -103,7 +111,8 @@ consecuencia ya era inmediata, así que esta práctica sólo agrega a Doña Niev
 a tiempo y prolija, y en una pestaña un **pagaré firmado** que el pasivo no muestra. La hoja de observación
 todavía no existe: el dictamen es de dos botones, ACEPTAR o DEVOLVER.
 - La NC se busca con la escalera, sin nota. Si falla una vez más después del escalón (c), Doña Teresa
-  cierra el campo sin mostrar el número («Déjala. Mira el resto de la carpeta») y se sigue al dictamen.
+  cierra el campo sin mostrar el número («Déjala por hoy. Decide con lo que tienes.», `05` N2.4; la de
+  antes señalaba el pagaré) y se sigue al dictamen.
   Así la práctica no se traba y nunca se da la respuesta.
 - Firmas → **se adelanta el tiempo**:
   - aceptó: rojo, «En marzo apareció esa deuda. No pagó.» y el pagaré resaltado;
@@ -111,7 +120,8 @@ todavía no existe: el dictamen es de dos botones, ACEPTAR o DEVOLVER.
     prestaron. En marzo apareció esa deuda y dejó de pagarles». La idea se ve igual por los dos caminos.
 - Doña Teresa, una línea: «Desde hoy, además de la norma, mira el resto de la carpeta.» Sube la hoja de
   observación por primera vez (hoja inferior) y el manual suma una línea: «La norma, en la operación
-  marcada. La hoja de observación, en el resto» (`04` A2.7).
+  marcada. La hoja de observación, en el resto» (`04` A2.7) y **la página «Calidad»** (B2.5), en el mismo
+  momento, antes de la primera carpeta con nota.
 - **Regla del sorteo:** el pagaré (deuda que falta en el pasivo, en forma de pagaré) no sale en las
   carpetas con nota de esa jornada. Pueden salir otros defectos o **otra redacción** del mismo tipo (la
   carta de cuota vencida, papel 3 de `05` N1.4), para que se reconozca la idea y no el papel (A2.8).
@@ -189,6 +199,32 @@ la práctica cuando el error es el mismo («¿Te acuerdas de la carpeta de la ma
 Así el sello no delata el dictamen (salvo «fundamental → devolver», que es la idea misma), y ningún dictamen
 repetido gana la jornada. **El papel 2 de `05` N1.4 (la fraternidad) sale**; el papel 1 (garantía con valor
 viejo) sólo en repaso, porque anticipa 1.3.
+
+**Página del manual «Calidad»** (ajuste del 27-09 tras `06` v5, hallazgo 2). Marcada **regla del juego**,
+entra con la hoja de observación después de la práctica del pagaré. Texto completo, sin nada más:
+
+> **Calidad**
+> Fundamentales: relevancia y representación fiel.
+> De mejora: comparabilidad, verificabilidad, oportunidad y comprensibilidad.
+> En la hoja de observación, sella la que falla. Si no falla ninguna: «nada que observar».
+> Norma mal: devuelve.
+> Norma bien y defecto fundamental: devuelve.
+> Norma bien y defecto de mejora: acepta con observación.
+> Norma bien y nada que observar: acepta.
+
+Los pisos salen del Marco Conceptual (dossier Tema 1, 1.3); los tres dictámenes son **regla de la agencia**
+(adaptación: el dossier no dice cuándo se acepta con observación), como el reglamento de *Papers, Please*.
+Se anota en `00` R3.2 para que Ronald la revise.
+
+**Cómo se usa en el dictamen.** Lo que se juega es **ver cuál característica rompe el papel** (un balance
+que llegó en julio es oportunidad; una deuda que no está en el pasivo es representación fiel) y **buscar la
+NC**. El dictamen es la combinación de las dos cosas según la página, y ahí está el cruce que se equivoca el
+que no mira ambas: norma mal con defecto de mejora es **devolver**, no «con observación». Los sellos de la
+hoja siguen mostrando sólo el nombre (sin el piso): el piso se mira en el manual, a un toque. Quien leyó el
+dossier y devolvería un balance de julio encuentra la regla escrita antes de la primera carpeta con nota,
+así que el gris ya no castiga al que sabe: castiga al que no abrió el manual. No se agrega una práctica de
+defecto de mejora (la jornada no crece); la ficha del cierre, si falló, nombra el sello y el dictamen
+(«Llegó en julio: tocaba aceptar con observación»), sin porqué.
 
 **Para que una carpeta salga bien hacen falta las tres cosas:** NC, sello y dictamen. **Al cierre** la
 ficha nombra lo que no se vio, sin teoría: «El auditor anotó que no viste que el balance llegó en julio»;
@@ -277,6 +313,25 @@ práctica y no entran al puntaje.
 1. **Semilla propia de AIEF y generación de carpetas guardada en la partida** (imprescindible 8). Va
    primero porque todo lo que sigue cambia el sorteo; una partida sin ese dato se lee con la generación de
    hoy, que se conserva al lado.
+
+   **1 bis. Sin cuenta se juega sólo el ejemplo, y el número de versión no se ve** (ajuste del 27-09 tras
+   `06` v5, hallazgo 1, grave). Va junto con la semilla porque toca cómo se elige la versión.
+   - **Sin sesión:** siempre la versión 0 (caso de ejemplo, igual para todos), rotulada «Partida de
+     ejemplo: no cuenta para la nota». `#v=N` se ignora. La versión 0 cumple las condiciones de B2.6
+     (contraoferta, I₀ distinto de 100) para no sembrar el atajo del 100; como es la misma para todos y
+     nunca da nota, no hay nada que copiar.
+   - **Con sesión de alumno:** la versión sale sólo de su cuenta; `#v=N` se ignora y la pantalla **no
+     muestra el número** («TUS DATOS: VERSIÓN N» sale). El número va en la hoja de Ronald.
+   - **`#v=N` sólo para la cuenta de docente** (Ronald), para revisar la versión de un alumno.
+   - **Guardado:** la partida de ejemplo se guarda con su propia clave, al lado de las de hoy (nombres
+     estables), y **nunca se sube a una cuenta**. La partida local de un alumno lleva la marca de su
+     cuenta: sólo esa se sube al volver la red (así sigue valiendo «se juega sin conexión y se guarda al
+     volver»). Una partida local vieja sin marca no se borra, pero tampoco se sube como partida con nota.
+   - **Prueba:** sin sesión, con cualquier `#v=`, las carpetas son las de la versión 0; con sesión de
+     alumno, `#v=` no cambia nada; ningún texto de pantalla del alumno contiene su número de versión.
+   - Igual en la web y en la app (la app carga el sitio publicado; no hay nada nativo que tocar).
+   - **Qué queda:** un compañero con la cuenta y la clave del alumno puede jugar por él. Eso ya no es del
+     juego sino de la cuenta; lo cubre la defensa oral.
 2. **Ningún ✔ de decisiones a la vista del alumno antes del cierre** (imprescindible 4). Cambio chico en
    la pantalla y en `describir`.
 3. **1.3 con nota siempre contraoferta, valor de hoy múltiplo de Bs 500** (condiciones nuevas en
@@ -322,6 +377,12 @@ práctica y no entran al puntaje.
   1.2, cuatro en la de 1.3), el pagaré, las líneas de Doña Nieves, la frase 2 del inversionista sin la
   tienda, la línea de Doña Teresa que cierra el campo de NC en la práctica, las redacciones del punto 14, y
   el corte de textos. La justificación «como Bolivia ya adoptó las NIIF» sale de las notas (N1.3).
+  **27-09 tras `06` v5:** la página «Calidad» del manual está en B2.5; puedes pulir el tono, no la regla ni
+  sumarle porqués. La línea que cierra el campo de NC queda la tuya («Déjala por hoy…»).
+- **`adaptador-de-dossier` (`00` R3.2):** anotar como adaptación los tres dictámenes de la página
+  «Calidad» (regla de la agencia, no del dossier).
+- **Construcción:** B2.10 punto 1 bis (sin cuenta, sólo el ejemplo) toca `EscenaVentanilla.tsx`,
+  `version-alumno.ts` y el guardado local (`leerLocal`); corren todas las pruebas.
 - **`disenador-de-aprendizaje` (`04`):** nada cambia de A2.5. Aviso: la NC que se pierde por el escalón (d)
   hace caer la carpeta entera; conviene que el puntaje la cuente como acierto en el escalón de la carpeta
   de repaso donde salga bien (el registro lo permite).

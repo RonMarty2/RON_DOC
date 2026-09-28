@@ -343,8 +343,9 @@ export function queFuePaso(c: CarpetaTema1, color: Color, final: FinalT12 | stri
     case "fundamental-aceptado":
       return falla === "relevancia" ? "La garantía valía lo que costó hace años, no lo de hoy. No alcanzó." : "Eso no estaba en el balance, y era verdad. No pagó.";
     case "sano-observado":
+      return "No había nada que observar. Se molestó y se fue enfrente.";
     case "devolvio-uno-bueno":
-      return "No había por qué devolverlo ni observarlo. Se molestó y se fue enfrente.";
+      return falla === "nada" ? "No había por qué devolverlo. Se molestó y se fue enfrente." : "Se podía aceptar con observación. Se molestó y se fue enfrente.";
     case "mejora-no-vista":
     case "sello-equivocado":
       return falla === "nada" ? "No había nada que observar." : (AUDITOR_MEJORA[falla as Caracteristica] ?? "Eso no estaba en el balance, y era verdad.");

@@ -1,8 +1,14 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 5 · 27-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 6 · 28-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
+
+### De la revisión de lo jugable del Tema 1 de AIEF (etapa 7, 28-09)
+
+Ninguna pregunta nueva. Lo que se arregla es construcción y texto. El hallazgo 4 (tanteo en los repasos
+de 1.2) se resuelve con diseño (recomendado: repaso con el par) o con la nota, que es la pregunta ya
+abierta de `04` A2.5.
 
 ### De la revisión del Tema 1 de AIEF, versión 2 (papel)
 
@@ -52,6 +58,96 @@ Se suman a las cinco que esa parte ya lista.
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 28-09-2026 · AIEF Tema 1 «La ventanilla»: revisión de lo jugable (etapa 7)
+
+**Qué se revisó.** El código construido (commit `fa90763`): `src/lib/juego/aief/tema1.ts`,
+`guion-tema1.ts`, `src/app/juego-aief/EscenaVentanilla.tsx`, `tema1.test.ts`, contra `02` B2.10 puntos 1
+a 13. Lo jugué leyendo el código con la versión 0 (el ejemplo, que ya se probó en 375×812) y razonando el
+sorteo de las versiones 417 y 5 (no ejecuté código: las cifras exactas de esas dos no se comprobaron aquí).
+
+**Veredicto.** Los 13 puntos están, con dos faltas parciales (1 bis y 12, abajo). El diseño se sostiene
+en el código: ningún ✔ de decisiones antes del cierre, escalón (d) en NC y valor de hoy, 1.3 siempre
+contraoferta con los perezosos probados en las 999 versiones, el par «una se queda, una se devuelve»
+con la prueba de que ningún dictamen repetido gana la jornada. Se lee como juego: nadie explica y cada
+error es algo que le pasa a alguien. **Hay tres defectos que conviene arreglar antes de que Ronald lo
+pruebe** (1 a 3; los tres son baratos) y el resto puede esperar a los puntos 14 a 16.
+
+### Arreglar antes de que Ronald lo pruebe
+
+1. **Una ficha del cierre enseña lo contrario** (grave, texto). **Qué pasa:** norma bien + defecto de
+   mejora (lo correcto es aceptar con observación) y el alumno devuelve: `finalT12` da
+   `devolvio-uno-bueno` y `queFuePaso` escribe «No había por qué devolverlo ni observarlo». Observarlo era
+   justo lo que tocaba. **Por qué importa:** es la carpeta del cruce que el tema quiere enseñar, y la
+   consecuencia le dice al alumno que la regla está mal. **Propuesta:** para ese caso, una línea propia:
+   «No había por qué devolverlo. Se molestó y se fue enfrente.» (dejar la actual sólo para el sano), y
+   una prueba que recorra las 5 formas × 3 dictámenes y compruebe que ninguna línea contradice el
+   dictamen correcto.
+2. **«El cliente se fue» aparece en el cliente siguiente** (bug de pantalla). **Qué pasa:** al cuarto
+   fallo se llama `setAviso(g.SE_FUE)`, pero el aviso no se borra al cambiar de carpeta (el efecto de
+   `clavePaso` borra texto y pista, no el aviso). Si se va el segundo cliente de 1.2, la frase «El cliente
+   se fue sin respuesta» sale arriba del campo del cliente de 1.3, que recién llega. **Propuesta:**
+   mostrar la salida como un momento propio (la frase y «SEGUIR ▶», con el nombre de quien se fue) y
+   borrar el aviso al cambiar de carpeta.
+3. **El botón que manda la NC se llama «BUSCAR EN EL MANUAL ✔»** (al lado de «📖 MANUAL»). **Qué pasa:**
+   quien lo toca para abrir el manual con un número tentativo escrito gasta un intento, y con el escalón
+   (d) cuatro intentos hacen que el cliente se vaya. **Propuesta:** «ANOTAR LA NC ✔».
+
+### Puede esperar (puntos 14 a 16 o antes de que cuente para la nota)
+
+4. **Tanteo en los repasos de 1.2.** La jornada está cerrada, pero el repaso trae **una** carpeta y los
+   repasos no tienen tope: «aceptar + nada que observar» siempre acierta la forma «bien y sano» (1 de 4
+   repasos), así que el que quiere terminar sin pensar aprueba en unos cuatro repasos, siempre que
+   acierte la NC (y la NC se busca en el manual). **Propuesta (recomendada):** que el repaso de 1.2
+   traiga también el par (una se queda, una se devuelve); la prueba que ya existe lo deja en 0 %. Cuesta
+   una carpeta más por repaso. Alternativa: que la nota cuente los repasos (queda en `04` A2.5 y en el
+   punto 16).
+5. **Punto 1 bis a medias.** Está: sin cuenta, siempre la versión 0 rotulada «no cuenta para la nota»;
+   con cuenta, sin número a la vista; la versión 0 nunca se sube. **Falta:** `#v=N` para la cuenta de
+   docente (hoy Ronald no puede abrir la versión de un alumno) y la marca de cuenta en la partida local.
+   Además, el guardado en la nube es un `upsert`: si el alumno abre sin red un celular con una partida
+   local vieja y juega un paso, al volver la red esa partida corta **pisa** la más avanzada que hizo en
+   otro equipo. **Propuesta:** subir sólo si la local tiene al menos tantos eventos como la de la nube (o
+   unir por hora), con prueba. Entra con el punto 15.
+6. **Toques sin vuelta atrás en 1.2.** El sello de calidad (7 botones en grilla) y el dictamen se
+   registran al primer toque; en 1.1 hay «CAMBIAR EL SELLO», aquí no. Un dedo que se resbala cuesta un
+   repaso. **Propuesta:** elegir sello y dictamen y firmar con un botón aparte (sigue sin ✔). Punto 15.
+7. **Celular (punto 15, ya previsto):** el manual es una sección debajo del diálogo, no una hoja
+   inferior, y el botón atrás sale del juego en vez de cerrarlo; al pasar a la segunda carpeta de 1.2 el
+   campo toma el foco y en Android el teclado tapa la carpeta; el chip de arriba explica «entra con tu
+   cuenta» sólo al pasar el mouse (`title`).
+8. **Redacciones que repiten el título de su NC** (punto 14): «Ajustó todo el balance por inflación»
+   (NC 3, «ajuste por inflación») y «Un perito revalorizó la maquinaria» (NC 4, «Revalorización técnica»,
+   y es la del ejemplo). Buscan por palabra, no por idea. El comentario de `Operacion.redacciones` dice
+   que ninguna repite el título: no es cierto.
+9. **Menores del plan:** la práctica del carpintero no tiene las dos barras (B2.3 c, «si alcanza»); Doña
+   Teresa no dice la regla del monto en la Llegada (está en el manual, que se abre solo). No bloquean.
+
+### ¿Se puede copiar?
+
+- **1.2 y 1.3:** no. Operación, redacción, norma citada, papel, orden y todas las cifras de 1.3 salen de
+  la versión; dos compañeros comparan y sus respuestas no coinciden. Con 40 alumnos puede tocar una
+  versión repetida (la prueba de `version-alumno` admite hasta dos coincidencias): riesgo chico, se
+  acepta.
+- **1.1:** los nombres y el orden se sortean, pero cada frase (15 en total) delata su rol, así que una
+  lista «si dice esto, tal sello y tal hoja» sirve para todos. Es aprender el Cuadro 1 de memoria y 1.1
+  pesa poco; se acepta como está y se dice en la ficha. Más frases por rol (punto 14) lo diluyen.
+
+### Los tres alumnos, en corto (versión 0)
+
+- **El que sabe:** pasa todo en una jornada; en el carpintero usa la regla de ayer, sale gris y ve cuánto
+  le prestó la cooperativa: es el momento que enseña, funciona.
+- **El que no sabe:** en 1.2 encuentra la NC recorriendo los títulos (fácil en el ejemplo, por el
+  hallazgo 8), aprende el pagaré por la práctica y cae en el cruce «norma mal con defecto de mejora» si
+  no abre la página «Calidad»; ahí es donde el hallazgo 1 le daría la lección equivocada.
+- **El que quiere terminar rápido:** en 1.1 no hay atajo (cada falla trae otra persona); en 1.3 ningún
+  número fijo gana; en 1.2 el único atajo es el del hallazgo 4.
+
+**No tocar:** las prácticas con «se adelanta el tiempo» (se leen como juego, no como escena), la línea
+del carpintero con la cifra de la cooperativa, el registro sin ✔ en decisiones, `t13Valida` y la prueba
+de que ningún dictamen repetido gana la jornada.
 
 ---
 

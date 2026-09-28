@@ -302,6 +302,14 @@ describe("avance", () => {
     expect(a.paso.paso === "t12" && a.paso.i).toBe(1);
   });
 
+  it("el repaso de 1.2 trae el par: «aceptar y nada que observar» nunca aprueba un repaso", () => {
+    for (const v of VERSIONES.slice(1)) {
+      const par = carpetasDeRonda(v, 1, ["t12"]) as CarpetaT12[];
+      expect(par).toHaveLength(2);
+      expect(par.filter((c) => dictamenCorrecto(c) === "devolver")).toHaveLength(1);
+    }
+  });
+
   it("las versiones de repaso nunca repiten la de la ronda anterior", () => {
     for (const v of VERSIONES) for (let r = 1; r < 5; r++) expect(versionDeRepaso(v, r)).not.toBe(versionDeRepaso(v, r - 1));
   });

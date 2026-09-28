@@ -454,7 +454,20 @@ export function carpetasT12(version: number): [CarpetaT12, CarpetaT12] {
   return azar() < 0.5 ? [queda, devuelve] : [devuelve, queda];
 }
 
-/** La carpeta de un repaso de 1.2: una sola, que se queda o se devuelve (sorteado aparte). */
+/**
+ * El repaso de 1.2 trae también el par (una se queda, una se devuelve): con una sola carpeta, «aceptar y
+ * nada que observar» aprobaba en unos pocos repasos (06 v6). Puede traer los papeles de relevancia.
+ */
+export function carpetasT12Repaso(version: number): [CarpetaT12, CarpetaT12] {
+  revisarVersion(version);
+  const azar = azarDe(version, "t12-repaso-par");
+  const clientes = barajar(azar, CLIENTES_T12);
+  const queda = armarT12(azar, version, elegir(azar, QUEDAN), true, [], clientes[0]);
+  const devuelve = armarT12(azar, version, elegir(azar, SE_DEVUELVEN), true, [queda.operacion], clientes[1]);
+  return azar() < 0.5 ? [queda, devuelve] : [devuelve, queda];
+}
+
+/** Una carpeta suelta de repaso de 1.2 (la usan las pruebas de papeles de relevancia). */
 export function carpetaT12Repaso(version: number): CarpetaT12 {
   revisarVersion(version);
   const azar = azarDe(version, "t12-repaso");
@@ -694,7 +707,7 @@ export function carpetasDeRonda(version: number, ronda: number, tipos: TipoCarpe
     return r;
   }
   const v = versionDeRepaso(version, ronda);
-  if (tipos.includes("t12")) r.push(carpetaT12Repaso(v));
+  if (tipos.includes("t12")) r.push(...carpetasT12Repaso(v));
   if (tipos.includes("t13")) r.push(carpetaT13(v, ronda));
   return r;
 }

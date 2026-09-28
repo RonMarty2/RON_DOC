@@ -24,7 +24,12 @@
 > (las de `05` N2.5 ya están cargadas; faltan las de calidad por papel si el crítico lo pide), manual y hoja
 > como hojas inferiores con el botón atrás del celular, `/juego-aief` en la precarga sin red, **la hoja del
 > docente para la defensa** (página del docente de AIEF, con escalón y puntos por ítem sobre 100). Y el
-> crítico sobre lo jugable (etapa 7) antes de mostrárselo a Ronald como terminado.
+> crítico sobre lo jugable (etapa 7) antes de mostrárselo a Ronald como terminado. **Hecho (`06` v6):** cumple los 13
+> puntos; se corrigieron sus tres arreglos previos a la prueba (línea de cierre de «devolvió uno con observación»,
+> aviso «se fue» que quedaba pegado, botón «ANOTAR LA NC») y el repaso de 1.2 pasó a traer el par. **Quedan para
+> 14 a 16** (`06` v6): `#v=N` sólo para el docente y la marca de cuenta en la partida local; que una partida local
+> más corta no pise la de la nube al volver la red; poder corregir sello y dictamen antes de firmar; manual como
+> hoja inferior; dos redacciones que repiten el título de su NC.
 > Nota: la ayuda que baja o no la nota (`04` A2.5) no hace falta resolverla ahora: el registro guarda el
 > escalón y el puntaje va con la hoja del docente (punto 16). Ronald no quiere preguntas de ponderación.
 > **Ronald respondió (27-09):** las características de calidad de la información (1.3) **sí entran al

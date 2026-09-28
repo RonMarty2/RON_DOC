@@ -126,13 +126,16 @@ export function EscenaVentanilla({ fuentePixel }: { fuentePixel: string }) {
   const a = avanceDe(version, partida.eventos);
   const p = a.paso;
 
-  const registrar = (e: EventoTema1, terminada = false) =>
+  // El aviso «el cliente se fue» dura hasta la siguiente acción del alumno, no más.
+  const registrar = (e: EventoTema1, terminada = false) => {
+    setAviso("");
     setPartida((x) => {
       const n = { ...anotarEn(x, e), ...(terminada ? { terminada: true } : {}) };
       guardarPartidaDe(n);
       pendiente.current = true;
       return n;
     });
+  };
 
   // Cada paso nuevo empieza con el campo y la pista vacíos.
   const clavePaso = JSON.stringify([p.paso, "i" in p ? p.i : null, a.ronda, p.paso === "t12" ? [p.nc.bien, p.sello] : null, p.paso === "t13" ? p.hoy.bien : null]);
@@ -347,7 +350,7 @@ export function EscenaVentanilla({ fuentePixel }: { fuentePixel: string }) {
           <form onSubmit={enviarNcPractica} className="grid gap-3">
             <Campo etiqueta={g.PREGUNTA_NC} valor={texto} cambiar={setTexto} campo={campo} />
             <div className="juego-acciones">
-              <Boton tipo="submit">BUSCAR EN EL MANUAL ✔</Boton>
+              <Boton tipo="submit">ANOTAR LA NC ✔</Boton>
               <Boton alt onClick={() => setManual(true)}>📖 MANUAL</Boton>
             </div>
             <Pista texto={pista} />
@@ -402,10 +405,9 @@ export function EscenaVentanilla({ fuentePixel }: { fuentePixel: string }) {
       if (!p.nc.bien) {
         zona = (
           <form onSubmit={enviarNc} className="grid gap-3">
-            {aviso && <p className="juego-pista">{aviso}</p>}
             <Campo etiqueta={g.PREGUNTA_NC} valor={texto} cambiar={(v) => (setTexto(v), setAviso(""))} campo={campo} />
             <div className="juego-acciones">
-              <Boton tipo="submit">BUSCAR EN EL MANUAL ✔</Boton>
+              <Boton tipo="submit">ANOTAR LA NC ✔</Boton>
               <Boton alt onClick={() => setManual(true)}>📖 MANUAL</Boton>
             </div>
             <Pista texto={pista} />
@@ -510,7 +512,6 @@ export function EscenaVentanilla({ fuentePixel }: { fuentePixel: string }) {
       ficha = <Cifras filas={g.fichaT13(c)} />;
       zona = !p.hoy.bien ? (
         <form onSubmit={enviarHoy} className="grid gap-3">
-          {aviso && <p className="juego-pista">{aviso}</p>}
           <Campo etiqueta={g.PREGUNTA_HOY} valor={texto} cambiar={(v) => (setTexto(v), setAviso(""))} campo={campo} vista />
           <div className="juego-acciones">
             <Boton tipo="submit">CALCULAR ✔</Boton>
@@ -605,6 +606,7 @@ export function EscenaVentanilla({ fuentePixel }: { fuentePixel: string }) {
         {ficha}
 
         <div className="juego-dialogo" aria-live="polite">
+          {aviso && <p className="juego-pista">{aviso}</p>}
           <p className="juego-quien">{quien}</p>
           <p className="juego-dice">{dice}</p>
           <div>{zona}</div>

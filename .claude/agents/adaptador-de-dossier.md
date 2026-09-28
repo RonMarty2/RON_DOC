@@ -133,6 +133,21 @@ director, el bucle, el aprendizaje, la narrativa y la progresión.
    hace mal pasa esto · a leer (sección y página) · condición para pasar · tipo de proyecto de
    contraste, si lo hay. Una ficha por subtema, legible en el celular (no tablas anchas).
 
+**La maqueta tiene profundidad, no sólo cobertura** (Ronald, 28-09, al ver liviana la de Psicoestadística:
+la moda lejos de media y mediana, las distribuciones con dos modas fuera del juego, un solo caso por tema).
+Que cada subtema tenga un lugar no alcanza:
+- **Cada concepto se practica**, varias veces y con variación, no se toca una vez.
+- **Los conceptos hermanos se juegan juntos** (media, mediana y moda en el mismo juego); no se reparten
+  entre temas para llenar huecos.
+- **Cada tema es una serie de casos que sube de dificultad**, no un caso único, y el último trae la trampa
+  que el dossier advierte.
+- **Práctica abierta:** cada tema se puede volver a jugar con datos nuevos, sin nota; sólo cuenta la vez
+  oficial.
+- En el resumen para Ronald, cada tema dice **qué conceptos se practican** y **qué cambia de un alumno a
+  otro** (no sólo los números: también qué respuesta es la correcta).
+
+Después de ti, el de aprendizaje revisa esa profundidad como experto de la materia, antes del crítico.
+
 ## Qué produces: `docs/juego/gdd/00-adaptacion-<materia>.md`
 
 Una sección por ronda, la más nueva arriba, con versión y fecha. Al inicio: estado (en conversación

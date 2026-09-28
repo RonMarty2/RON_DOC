@@ -323,3 +323,16 @@ que se aprende una vez sirve siempre, cada número que escribe el alumno cambia 
 elegir entre dos frases obvias. Orden de dictado de la materia, confirmado por Ronald: **correlación y
 regresión antes que probabilidad**.
 
+## 23. Profundidad, no sólo cobertura; y un revisor experto de la materia (28-09)
+
+Ronald vio liviana la maqueta 2.1 de Psicoestadística: *«lo siento muy light, muy cerrado… no veo
+profundidad: media, mediana, moda; podría estar en el juego darle tres grupos… mostrarle conclusiones
+posibles, alguna puede que esté mal o bien»*. Y lo importante: *«yo sé que son importantes esos temas, ¿qué
+tal con otros temas que no domino? ¿No deberías haberlo captado? Mejora el agente correspondiente»*.
+Desde ahora: cada concepto se practica varias veces y con variación; los conceptos hermanos se juegan juntos;
+cada tema es una serie de casos que sube de dificultad; hay práctica abierta con datos nuevos (sólo cuenta la
+vez oficial). Y en la etapa de materia, después del adaptador y antes del crítico, **el de aprendizaje
+revisa la profundidad como experto de la materia**, para que no dependa de que Ronald la domine. Su idea
+para el Tema 3 (tres grupos de forma distinta, media, mediana y moda, y conclusiones posibles que sólo se
+juzgan calculando, distintas por alumno) va a la ronda 3.
+

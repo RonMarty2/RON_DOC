@@ -65,8 +65,14 @@
 >   números de peaje; la lista de salida los daba por ✔ sin comprobarlos) → **versión 2.1 corregida**:
 >   71 subtemas con lugar, 23 números que escribe el alumno y cada uno cambia algo, secciones de la ronda 1
 >   marcadas SUPERADA. Regla nueva en los 7 agentes: un ✔ vale sólo con la prueba contada.
-> - [ ] k. **Esperando a Ronald:** que apruebe la maqueta 2.1 (seis juegos fuertes y tres pasos cortos).
->   Después: director (visión y aspecto) → crítico → Ronald → progresión → crítico → Ronald.
+> - [x] k. Ronald **no aprobó** la 2.1: «muy light, muy cerrado… no veo profundidad: media, mediana, moda».
+>   Propuso para el Tema 3 tres grupos de forma distinta con conclusiones que se juzgan calculando. Y: «¿qué
+>   tal con otros temas que no domino? ¿No deberías haberlo captado? Mejora el agente correspondiente». Hecho
+>   (IDEA-JUEGO §23): el de aprendizaje entra en la etapa de materia como revisor experto de la profundidad,
+>   antes del crítico; el adaptador, con reglas de profundidad (practicar, hermanos juntos, serie de casos,
+>   práctica abierta, y el resumen dice qué se practica y qué cambia por alumno).
+> - [ ] l. **EN CURSO:** ronda 3 del adaptador (decisión nueva de Ronald) → aprendizaje (profundidad) →
+>   crítico → Ronald aprueba. Después: director → crítico → Ronald → progresión → crítico → Ronald.
 >   Con su elección, ronda 2 del adaptador (maqueta con las reglas nuevas) y después el director. Queda para
 >   cuando se construya: en qué página del sitio va el juego (Descriptiva o EAD-111, el curso que este
 >   semestre usa ese material).

@@ -2,7 +2,7 @@
 
 Agente: `disenador-narrativo`. Cada sección nueva va arriba, con su versión y fecha.
 
-**Versión 2 · 27-09-2026**
+**Versión 2.1 · 27-09-2026**
 
 ## Decisiones pendientes de Ronald
 
@@ -25,6 +25,12 @@ ve en el momento, y fuera todo texto que explique. Esta versión **reemplaza** N
 momentos), N1.3 (justificación de la nota) y N1.5 (lista de cambios), **ajusta** N1.2 y N1.4, y **agrega**
 lo que dicen los personajes en las prácticas y sus consecuencias. Lo que no se nombra aquí de la v1 sigue
 valiendo.
+
+**Ajustes del 27-09 tras `06` v5** (nada para Ronald): (1) las 15 frases de 1.1 reescritas en una tabla
+(N2.3), cada una con una pista de hoja que sólo ella usa según el Cuadro 1 del dossier; salen «¿gana así
+todos los años?» y «somos dos para atender», y otras tres que cruzaban hojas (hallazgo 3); (2) la página
+«Calidad» del manual con el tono pulido, mismas reglas que `02` B2.5 (N2.4, hallazgo 2); (3) «plata» por
+«dinero» y Don Rolando «de Potosí» (hallazgo 7).
 
 **Qué leí:** `04` A2.1 a A2.10, `02` B2.1 a B2.11, `06` (revisión del Tema 1, hallazgos 5 a 12), mi v1, y
 en el código `guion-tema1.ts` y `tema1.ts` (operaciones, `CLIENTES_T12`, `CLIENTES_T13`).
@@ -94,12 +100,30 @@ rol al lado). Van con su género, para la reacción «tranquila» o «tranquilo�
 Evitan los nombres ya usados: Rosa, Teresa, Nieves, Beatriz, Mario (Proyectos II), Julio y Efraín (maqueta
 de AIEF), Ramiro, Carmen, Silvia, Marcelo (1.2), Víctor, Lidia, Rubén (práctica de 1.3).
 
-**Frases de cada persona:** las de N1.2, con dos cambios:
-- **Inversionista 2** (reescrita sobre su propia plata, `06` hallazgo 7): «Mi parte de la ferretería me dejó
-  buena plata el año pasado. ¿Fue suerte, o gana así todos los años? De eso depende si pongo más.»
-- **Gerencia 2** pierde «Soy yo quien organiza la tienda» si el nombre sorteado no calza con esa voz; queda:
-  «En diciembre la gente hace fila en el mostrador y somos dos para atender. No sé si nos alcanza para
-  sumar a alguien.» (La v1 hacía de Rodrigo el hijo de Doña Nieves; con nombres sorteados eso sale.)
+**Frases de cada persona** (ajuste del 27-09 tras `06` v5, hallazgo 3; **reemplazan las de N1.2**). Cada
+frase trae una pista de su decisión y **una pista de la hoja**, que sólo esa persona usa (columna «Qué mira
+primero» del Cuadro 1 del dossier). Ninguna dice quién es ni nombra la decisión; siguen valiendo las
+palabras prohibidas de N1.2.
+
+| Rol (sólo registro) · hoja | Pista de hoja, sólo suya | Frases |
+|---|---|---|
+| Inversionista · rentabilidad y patrimonio | «lo que puse», «me rinde», «cuánto vale hoy mi parte» | 1. «Hace cinco años puse mis ahorros en esta ferretería. Mi hermano dice que saque lo mío y me compre un minibús. Antes quiero saber cuánto me rinde lo que puse y cuánto vale hoy mi parte.» · 2. «Tengo una parte de la ferretería y me piden que ponga más dinero. Antes quiero ver si lo que ya puse me está rindiendo, y cuánto vale hoy.» · 3. «Fundé esta ferretería con Doña Nieves y la mitad es mía. ¿Sigo poniendo dinero o saco lo que me toca? Depende de cuánto me rinde y de cuánto vale hoy mi mitad.» |
+| Proveedor · pago de corto plazo | «pagarme», «cobrar el mes que viene» | 1. «Cada mes les traigo cemento de la fábrica. Ahora me piden que les deje la carga y se la cobre el mes que viene. ¿Van a tener con qué pagarme?» · 2. «Les entrego clavos y tornillos desde hace años. El último pedido me lo pagaron tarde, y el que viene es el doble.» · 3. «Me encargaron veinte rollos de alambre para la siembra. Si se los dejo sin cobrar, ¿me van a poder pagar cuando vendan?» |
+| Gerencia · márgenes por línea | comparar lo que se vende: «cuál de los dos nos deja más» | 1. «Cada mañana abro la tienda. Vendemos mucha pintura, pero no sé si con ella ganamos algo o sólo movemos dinero.» · 2. «Para diciembre tengo que elegir qué traer más, cemento o herramientas. Quiero saber cuál de los dos nos deja más por cada venta.» · 3. «Nos ofrecen una mezcladora para alquilarla a los constructores. La compraría la ferretería. Antes quiero ver si lo que ya alquilamos nos deja más que lo que vendemos.» |
+| SIN · utilidad antes de impuestos | «lo que presentó», «antes de pagarle al Estado» | 1. «Traigo el formulario que la ferretería presentó en abril. Quiero ver si lo que pusieron ahí coincide con lo que dice su balance.» · 2. «Mi oficina revisa este mes a los comercios de la provincia. Según lo que presentó, la ferretería casi no ganó nada. Quiero ver cuánto ganó antes de pagarle al Estado.» · 3. «Tengo una orden de fiscalización con el nombre de la ferretería.» (la fácil: sale poco, como decía N1.2) |
+| Empleado · continuidad y resultados del año | «este año», «seguir abierta» | 1. «Trabajo en el depósito hace ocho años. Me ofrecieron un puesto en una ferretería de Punata y tengo que responder el lunes. Antes quiero saber cómo le fue a esta tienda este año.» · 2. «Somos seis en la tienda y este año no hubo aumento. Doña Nieves dice que las ventas bajaron; quiero verlo con mis propios ojos antes de hablar con ella.» · 3. «Me ofrecieron otro trabajo, con menos sueldo pero seguro. Quiero saber si esta ferretería va a seguir abierta el año que viene.» |
+
+**Prueba de «una sola hoja por frase»** (hecha frase por frase contra el Cuadro 1; va también como prueba
+en la construcción, con la lista de pistas de la tabla):
+- Ninguna pista se repite en otra fila: «año» como pregunta sólo en el empleado («hace cinco años» y «hace
+  ocho años» son historia, no pregunta); «pagar» sólo en el proveedor (el SIN dice «pagarle al Estado», que
+  es otra cosa y lleva su palabra «presentó»); «nos deja» sólo en la gerencia (el inversionista dice «me
+  rinde»: lo suyo, no lo de la tienda).
+- Salen las frases que cruzaban: «¿gana así todos los años?» (llevaba al empleado); «somos dos para atender»
+  (llevaba a pagar un sueldo); «cuadro la caja» (llevaba al pago de corto plazo); «tiene el depósito lleno»
+  (llevaba a inventarios); «la última palabra es mía» (sin pista de hoja).
+- «Plata» sale de todas (castellano neutro, `06` hallazgo 7). Con nombres sorteados, la v1 ya no hace de
+  Rodrigo el hijo de Doña Nieves.
 
 **Doña Nieves empuja una hoja** (en la práctica y en una persona con nota, sorteada). Se asoma antes de que
 selles; una de estas, sorteada:
@@ -146,6 +170,19 @@ frase señala el pagaré antes de firmar y le quita a la práctica justo lo que 
 observación y el manual suma: «La norma, en la operación marcada. La hoja de observación, en el resto.
 Cada carpeta trae como mucho un defecto.»
 
+**La página «Calidad» del manual** (ajuste del 27-09 tras `06` v5: tono pulido de `02` B2.5; **las reglas
+son las mismas**, sin porqués). Entra junto con la hoja de observación:
+
+> **Calidad** · regla de la agencia
+> Fundamentales: relevancia y representación fiel.
+> De mejora: comparabilidad, verificabilidad, oportunidad y comprensibilidad.
+> En la hoja de observación, sella la que falla. Si no falla ninguna, sella «nada que observar».
+> Si la norma está mal, devuelve.
+> Si la norma está bien:
+> · falla una fundamental: devuelve;
+> · falla una de mejora: acepta con observación;
+> · no falla ninguna: acepta.
+
 ### N2.5 1.2 · Carpetas con nota: redacciones para que no se copie
 
 Hacen falta antes de que cuente para la nota (`02` B2.10 punto 14). Ningún texto dice el título de su NC
@@ -169,7 +206,7 @@ con las mismas palabras; todos son hechos de la empresa.
 
 **Notas para la construcción:**
 - Las dos nuevas traen **cliente propio**, porque el rubro tiene que calzar: NC 5 con «Don Rolando,
-  cooperativa minera»; NC 12 con cualquier cliente de la lista que importe o exporte («Doña Silvia,
+  de Potosí, cooperativa minera» (dice de dónde viene: `06` v5, hallazgo 7); NC 12 con cualquier cliente de la lista que importe o exporte («Doña Silvia,
   panadería» no calza con la quinua: usar «Don Anselmo, exportadora de quinua» o «Don Gregorio, transporte»
   para los repuestos). NC confusa sugerida: la 5 con la 9 (la otra industria); la 12 con la 6.
 - **NC 9 (petrolera) no la agrego:** una empresa petrolera pidiendo crédito en la agencia de Cliza no calza
@@ -272,10 +309,10 @@ Reemplaza N1.5. Sin tocar los archivos (etapa 6). En `guion-tema1.ts` salvo que 
 | # | Dónde | Hoy | Queda | De |
 |---|---|---|---|---|
 | 1 | `PERSONA[p].nombre` | Nombre con el rol | Nombre sorteado de la lista de N2.3; el rol va a un campo que sólo lee `describir` | N1.5 #1, `06` h. 6 |
-| 2 | `PERSONA` (dice, otraVez) | Tres roles, dos frases | Cinco roles, tres frases (N1.2 con los cambios de N2.3) | N1.5 #5 |
+| 2 | `PERSONA` (dice, otraVez) | Tres roles, dos frases | Cinco roles, tres frases (la tabla de N2.3, que reemplaza las de N1.2) | N1.5 #5 |
 | 3 | `ABRE_T11` | Tres personas llegan al banco | N2.3 apertura | N1.5 #4, más corta |
 | 4 | Agregar | | Las tres frases de Doña Nieves que empuja y su línea de hombros (N2.3) | nueva |
-| 5 | `AYUDA_T11.concreta[1]` | La clave de las tres personas | «Piensa qué va a hacer esa persona mañana con lo que lea: ¿cobrar algo, poner o sacar plata, quedarse en su trabajo, decidir algo de la tienda?» | N1.5 #6 |
+| 5 | `AYUDA_T11.concreta[1]` | La clave de las tres personas | «Piensa qué va a hacer esa persona mañana con lo que lea: ¿cobrar algo, poner o sacar dinero, quedarse en su trabajo, decidir algo de la tienda?» | N1.5 #6 |
 | 6 | `CIERRA_T11` | «…tres preguntas… otorgar o negar un crédito…» | N2.3 cierre | N1.5 v1 |
 | 7 | `LLEGADA[0]` | «Bienvenido…» | «Te damos la bienvenida a la agencia de Cliza del Banco Kusi. Aquí decides cuánto prestarle a cada cliente.» | N1.5 #7 |
 | 8 | `LLEGADA` (agregar) | | La frase de Doña Teresa de N2.2 y la de la cooperativa: «¿Ves la cooperativa de enfrente? Si le prestas de menos a un buen cliente, se va allá. Y si le prestas a uno que no puede pagar, vuelve aquí a no pagar.» | N1.5 #8 |

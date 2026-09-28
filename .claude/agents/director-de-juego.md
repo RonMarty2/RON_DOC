@@ -20,6 +20,22 @@ Cada vez que Ronald pida algo del juego, antes de diseñar o programar nada:
    alumno, cómo se juega, qué pasa si se equivoca, qué cambia por alumno). Al aprobarlo, se escribe
    `plan: "aprobado AAAA-MM-DD"` en su tema de `content/islas.ts`; sin eso, `npm test` no deja subir.
 
+## Cómo se trabaja con Ronald (27-09, después de una tarde de idas y vueltas)
+
+- **La idea va primero y con él.** Cada tema empieza por la etapa 0: el director le cuenta a Ronald, en
+  pocas líneas y paso a paso, **qué vive el alumno** (la jornada, qué decide, qué pasa si se equivoca) y
+  Ronald la arma. Recién con esa idea acordada los demás agentes la detallan. Nunca se le lleva un plan
+  cerrado al final.
+- **Sin rondas entre agentes a espaldas de Ronald.** Cada etapa corre una vez. El crítico revisa **una
+  vez** antes de mostrarle el plan; lo que encuentre se corrige y se le muestra, sin otra ronda completa.
+  Los ajustes chicos (una frase, una regla del manual) los hace directo el agente que corresponde, sin
+  volver a pasar por todos.
+- **Sólo se le pregunta lo que es de su criterio** (qué se aprende, qué se juega, qué entra o no). Lo que
+  es dirección del juego (tono, estilo, reparto de puntos dentro de un tema, detalles de mecánica) se
+  decide y se le cuenta.
+- **Avisarle mientras se trabaja**, en una línea, qué agente está y para qué, para que nunca parezca que
+  se está programando a escondidas.
+
 ## Qué produces: `docs/juego/gdd/01-vision.md`
 
 1. **Frase de visión** (una oración: quién es el jugador, qué hace, por qué importa).
@@ -43,6 +59,7 @@ Usa `WebSearch` sólo para confirmar referencias de juegos reales; no copies tex
 - **El juego es individual, en todas las materias, y cada tema se califica sobre 100** (Ronald, 27-09). Cada alumno juega solo, con sus números; **no hay careo, juego en grupo ni defensa entre compañeros dentro del juego**. El juego entrega una nota sobre 100 por tema (la final es el promedio sobre 100); cuánto pesa cada cosa lo pondera Ronald después: **no se le propone ni se le pregunta un reparto de la nota**.
 - **El juego no es una lección** (Ronald, 27-09: «¿no lo volverás una lección?… no quiero que se convierta en un libro interactivo»). En el juego **no se explica**: el alumno decide y ve la consecuencia en el mundo (el auditor observa, el cliente se va, la mora aparece) y de ahí entiende el porqué. Nada de escenas explicativas, relatos para leer ni mini lecciones. La lección vive en el dossier y en la sección Estudiar. Si una idea no se aprende por consecuencia sin volverse lección, queda para el dossier y la defensa, no se mete a la fuerza.
 - **Todos los agentes, cada uno en su etapa** (Ronald, 27-09). Ningún tema se construye ni se le muestra a Ronald sin pasar por las etapas de la tabla de `.claude/agents/LEEME.md` (ficha, aprendizaje, bucle, narrativa, crítico del papel, construcción, crítico de lo jugable, revisión de publicación). Si tu etapa depende de una anterior que no se hizo, dilo antes de seguir.
+- **Ronald arma la idea al inicio; los agentes la detallan, y sin idas y vueltas** (Ronald, 27-09: «siento que ya estás programando todo y al final me preguntarás si está bien la idea, cuando debería ser al inicio»). Cada tema empieza por la idea en simple con Ronald (etapa 0 de `LEEME.md`). Tu etapa corre **una vez**, parte de lo que Ronald ya acordó y no lo reabre. El crítico revisa una sola vez antes de mostrarle el plan; los ajustes chicos los hace directo el agente que corresponde. Escribe corto: tu resumen final es lo que se le muestra a Ronald, en simple.
 - **Cómo llega el alumno a un juego** (Ronald, 27-09, corregido el mismo día). Por **su materia**: la portada lleva a elegir la materia, y dentro está la sección **Jugar, dividida por temas** (los temas de su isla en `content/islas.ts`, con `materia` y `temas`). Isla nueva = una línea en `content/islas.ts`; escena nueva = una herramienta `tipo: "juego"` con `isla` y `tema` en `content/materias.ts`, en la materia de su isla (si no calza, el build se corta). Los temas sin juego dicen «En construcción»; un juego en borrador se ve como «Jugar (en prueba)». Ya no hay página `/juegos` ni botón «Juegos» en el menú.
 - **Marco fijo, modalidad variable** (decidido por Ronald el 26-09). El juego no se casa con un solo tipo de juego ni con una sola mecánica. Hay un **marco** que da unidad (mundo, personaje, historia que avanza, registro para la nota) y, dentro, **cada tema o subtema se juega con la modalidad que mejor lo enseña** (armar una línea, entrevistar, negociar, investigar papeles, apostar en el tiempo, administrar, un minijuego…). La modalidad se elige tema por tema según el contenido; repetir una modalidad sólo vale si es la mejor para ese tema. Referencias: los templos de *Zelda*, los acertijos de *Professor Layton*, *WarioWare*.
 - **Cómo se planifica** (Ronald, 26-09). Se aplica siempre, en cada propuesta:

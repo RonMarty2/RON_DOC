@@ -57,6 +57,13 @@ Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó
 por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
 Ronald y se anota en la bitácora.
 
+**Cada agente trabaja de cero (Ronald, 28-09: «quiero ver cómo se comportan de cero»).** La sesión no
+hace el trabajo de un agente antes de que corra: no adelanta el análisis de una materia (qué falta, qué
+temas tiene, qué no calza) en el catálogo, la bitácora ni la conversación. El agente lee el dossier y el
+código por su cuenta y lo encuentra él. Así Ronald ve lo que el agente sabe hacer, y lo que no encuentra
+se vuelve una mejora del agente. Tampoco se empieza a construir nada de una materia hasta que Ronald lo
+diga.
+
 **Regla permanente (Ronald, 26-09):** todo lo que se planifica o decide con Ronald se vuelve regla del
 agente o los agentes que correspondan, en el mismo commit.
 

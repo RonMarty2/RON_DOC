@@ -22,15 +22,21 @@
 >   Synology, horas después. Subido sin conectar a la pantalla (nadie lo importa todavía).
 > - [x] b. Catálogo `docs/juego/PIEZAS-COMUNES.md`: motor listo (§1), patrones probados (§2), motor
 >   todavía atado a una materia (§3: página del docente y resumen sólo leen la planta; la cuenta en
->   pantalla vive en la carpeta de Proyectos II), contenido de cada juego que no se reutiliza (§4) y lo que
->   falta para Psicoestadística (§5: **no hay funciones de estadística descriptiva con pruebas**; la
->   sección Jugar admite hoy una sola isla por materia; `materias.ts` lista 5 temas y el dossier tiene 0 a 6).
+>   pantalla vive en la carpeta de Proyectos II; la sección Jugar toma una isla por materia), contenido de
+>   cada juego que no se reutiliza (§4) y cálculos probados por disciplina (§5). Sin nada de una materia en
+>   particular: el análisis de cada materia es del adaptador (ver abajo).
 > - [x] c. Regla «motor común, juego propio, como Doom» y «un juego por carrera» en los 7 agentes (común),
 >   más lo propio de cada uno: adaptador (costo en motor / despegar / nuevo, y en qué se distingue),
 >   director (bocetos que no repiten el aspecto de otro juego), bucle (lógica reutilizada, vestida
 >   distinta), aprendizaje (patrones probados), narrativa (ningún personaje ni parecido de otro juego),
 >   crítico (punto 13). `LEEME.md` (etapa 6 y registro) e IDEA-JUEGO §20.
-> - [ ] d. Después, con el OK de Ronald: ronda 1 del adaptador con Psicoestadística Descriptiva (Psicología).
+> - [x] e. Ronald, 28-09: en las sesiones del juego **no se revisan Axiom ni SimuladorPRO** (excepción en
+>   `CLAUDE.md`); al empezar, `git pull` y avisar lo que haya sin subir (`CLAUDE.md`, «Antes de hacer
+>   cualquier cosa», punto 1); y **cada agente trabaja de cero** (`LEEME.md`): la sesión no le adelanta el
+>   análisis de la materia.
+> - [ ] d. **Esperando a Ronald.** No se empieza nada de estadística (ni funciones, ni ronda del adaptador)
+>   hasta que él diga que quedamos claros o que los agentes están listos. Cuando lo diga: ronda 1 del
+>   adaptador con Psicoestadística Descriptiva (Psicología), de cero, y ver cómo se comporta.
 >
 > Nota de esta PC: `git stash@{0}` guarda el trabajo suelto que había en el disco antes del `git pull` del
 > 28-09 (casi todo ya estaba en GitHub; lo único propio es un borrador de escalera de ayuda para la escena

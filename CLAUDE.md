@@ -45,9 +45,11 @@ Todo lo que se construye (código, contenido, juego, agentes, documentos) se arm
 
 ## Antes de hacer cualquier cosa
 
-**Revisar las fuentes.** RON_DOC toma piezas de `axiom-simulador` (lo visual y la matemática) y de `simuladorPRO` (lo financiero), y esos dos repos siguen mejorando por su cuenta. Al empezar la sesión, seguir el protocolo de [FUENTES.md](./FUENTES.md): traer lo nuevo con `git fetch`, ver qué cambió desde el último commit revisado, contarle a Ronald en pocas líneas qué vale la pena traer, y anotar la revisión.
+**1. Traer lo último y ver qué quedó sin subir** (Ronald, 28-09: una mañana de trabajo llegó a la otra PC sólo por Synology, sin subir, y esa PC estaba 53 commits atrás). Antes que nada: `git pull --ff-only` y `git status`. Si hay archivos sin subir, se le dice a Ronald **qué son y de cuándo** antes de tocar nada; si son de una sesión cortada (más de una hora), se suben después de correr las pruebas. Nunca se trabaja sobre un `main` atrasado.
 
-No saltearlo aunque el pedido de la sesión parezca no tener relación: un arreglo de celular en Axiom o una corrección del motor en SimuladorPRO puede ser justo lo que falta acá.
+**2. Revisar las fuentes.** RON_DOC toma piezas de `axiom-simulador` (lo visual y la matemática) y de `simuladorPRO` (lo financiero), y esos dos repos siguen mejorando por su cuenta. Al empezar la sesión, seguir el protocolo de [FUENTES.md](./FUENTES.md): traer lo nuevo con `git fetch`, ver qué cambió desde el último commit revisado, contarle a Ronald en pocas líneas qué vale la pena traer, y anotar la revisión.
+
+No saltearlo aunque el pedido de la sesión parezca no tener relación: un arreglo de celular en Axiom o una corrección del motor en SimuladorPRO puede ser justo lo que falta acá. **Excepción (Ronald, 28-09):** en las sesiones del juego no se revisan («estamos creando el juego, no es necesario ver Axiom ni SimuladorPRO»).
 
 ## Qué es RON_DOC (decidido el 2026-09-14)
 

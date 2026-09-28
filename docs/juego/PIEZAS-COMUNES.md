@@ -79,6 +79,7 @@ pruebas) y se suma a este catálogo: así la paga una materia y la aprovechan la
 | Cuenta en pantalla | `useCuenta`, `BarraCuenta` en `src/app/juego-proyectos/CuentaJuego.tsx` | Es motor, pero vive en la carpeta de Proyectos II (AIEF la importa de ahí) | Pasarla a `src/components/juego/` cuando un juego nuevo la use |
 | Funciones de la planta en la nube | `leerPartidaNube`, `partidaDeFila`, el valor por defecto de `partidasDelCurso` | Suponen la escena de la planta | Usar las versiones `…De` |
 | Tope de versiones | `version-alumno.ts` toma `VERSION_MAXIMA` de `planta.ts` (999) | Funciona para todos, pero depende de un archivo de Proyectos II | Pasar el 999 a `partida.ts` cuando se toque |
+| Sección Jugar | `juegoDeMateria` en `src/lib/juegos.ts` | Toma **una** isla por materia | Para un juego por carrera: un dato de carrera en la isla y que la sección Jugar muestre los dos (suma: los juegos que existen no cambian) |
 
 ## 4. Contenido de cada juego (no se reutiliza)
 
@@ -90,23 +91,16 @@ pruebas) y se suma a este catálogo: así la paga una materia y la aprovechan la
 Un juego nuevo **no usa** estos nombres, personajes, frases ni dibujos, ni «parecidos» (otra agencia,
 otra jefa que se asoma). El crítico lo revisa.
 
-## 5. Lo que falta para Psicoestadística Descriptiva (28-09)
+## 5. Cálculos probados que existen, por disciplina
 
-- **Cálculos de estadística descriptiva con pruebas: no existen.** `src/lib/` sólo tiene finanzas. Van en
-  `src/lib/estadistica/`, con sus `.test.ts` (frecuencias, tendencia central, dispersión, posición,
-  Pearson, regresión simple). Son **motor**: los usan el juego de Psicología, el de Empresariales y,
-  después, Inferencial.
-- **El Aula de Probabilidad** (`src/components/aula-probabilidad/calculos.ts`) calcula media, desviación,
-  puntuación z y normal sobre su dataset de 200 estudiantes (PHQ-9, GAD-7). Está atada a ese dataset y se
-  verifica en el navegador (`verificarVerdades`), no con `npm test`. Se puede tomar la fórmula; las
-  funciones nuevas van con sus pruebas. **El dataset y su caso son contenido del Aula**: el juego no los
-  reutiliza.
-- **Dos juegos en una misma materia:** hoy `juegoDeMateria` toma **una** isla por materia
-  (`islas.find(i => i.materia === m.slug)`). Para Psicología y Empresariales hace falta un dato de carrera
-  en la isla y que la sección Jugar muestre los dos. Es un cambio que suma: Proyectos II y AIEF no cambian.
-  Se hace al construir, no antes.
-- **A verificar por el adaptador:** `content/materias.ts` lista 5 temas de Psicoestadística Descriptiva
-  y el dossier tiene del Tema 0 al 6.
+| Disciplina | Dónde | ¿Con pruebas en `npm test`? |
+|---|---|---|
+| Finanzas | `src/lib/finanzas/` (interés, anualidades, bonos, depreciación, estados financieros) y el motor de SIMPRO en `src/lib/simpro/` (no se edita: ver `FUENTES.md`) | Sí |
+| Probabilidad | `src/components/aula-probabilidad/calculos.ts` | No: está atado al dataset del Aula y se verifica en el navegador (`verificarVerdades`). Se puede tomar la fórmula; el dataset y su caso son contenido del Aula |
+| Otras disciplinas | No hay | No hay |
+
+Un juego que necesite cálculos de una disciplina sin fila acá los construye como motor, con sus pruebas,
+y suma la fila.
 
 ## Cómo se mantiene
 

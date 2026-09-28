@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boceto B · La psicóloga del colegio · Psicoestadística Descriptiva (Psicología)</title>
+<style>
+  :root { --fondo:#f6f5f1; --tinta:#1f2328; --suave:#5b6168; --borde:#c9c6bd; --acento:#b0303b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fondo:#15181c; --tinta:#e8e6e1; --suave:#a3a9b0; --borde:#3a3f46; --acento:#e98a92; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fondo); color:var(--tinta); font:16px/1.5 system-ui, sans-serif; }
+  main { max-width:920px; margin:0 auto; padding:20px 16px 40px; }
+  h1 { font-size:1.3rem; margin:0 0 4px; }
+  .marca { color:var(--suave); font-size:.85rem; margin:0 0 12px; }
+  .frase { border-left:4px solid var(--acento); padding:6px 12px; margin:0 0 20px; }
+  .pantallas { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:28px; }
+  figure { margin:0; }
+  figure h2 { font-size:1rem; margin:0 0 8px; }
+  svg.cel { width:100%; max-width:340px; height:auto; display:block; margin:0 auto; color:var(--tinta); }
+  figcaption { font-size:.92rem; margin-top:10px; }
+  figcaption p { margin:4px 0; }
+  .otros { margin-top:28px; border-top:1px solid var(--borde); padding-top:12px; font-size:.92rem; }
+  .otros ul { margin:6px 0; padding-left:20px; }
+  .pie { color:var(--suave); font-size:.82rem; margin-top:14px; }
+</style>
+</head>
+<body>
+<main>
+<h1>B · «La psicóloga del colegio»</h1>
+<p class="marca">Boceto para elegir el marco. Dibujo simple, no arte final. Números ilustrativos.</p>
+<p class="frase"><b>Eres la psicóloga nueva de la Unidad Educativa Kantuta.</b> Lo que une a los temas son <b>los chicos con nombre</b>: cada número de tus planillas es alguien que saludas en el patio, y al final de cada trimestre ves qué le pasó por lo que decidiste.</p>
+
+<div class="pantallas">
+
+<!-- ============ TEMA 1 ============ -->
+<figure>
+<h2>Tema 1 · La encuesta y a quién no llegaste</h2>
+<svg class="cel" viewBox="0 0 375 812" role="img" aria-label="Pantalla del Tema 1: patio del colegio partido en turno mañana y turno tarde, y el legajo de un chico al que no llegó la encuesta" font-family="system-ui, sans-serif">
+  <defs>
+    <!-- chico en pixel art; la polera toma el color de cada uno (en el juego, cara y colores salen de su nombre) -->
+    <symbol id="nino" viewBox="0 0 16 28" shape-rendering="crispEdges">
+      <rect x="3" y="0" width="10" height="4" fill="#2b1d14"/>
+      <rect x="3" y="3" width="10" height="9" fill="#c99a72"/>
+      <rect x="5" y="6" width="2" height="2" fill="#2b1d14"/><rect x="9" y="6" width="2" height="2" fill="#2b1d14"/>
+      <rect x="2" y="12" width="12" height="10" fill="currentColor"/>
+      <rect x="4" y="22" width="3" height="6" fill="#33415c"/><rect x="9" y="22" width="3" height="6" fill="#33415c"/>
+    </symbol>
+  </defs>
+  <rect x="2" y="2" width="371" height="808" rx="38" fill="#efe3cf" stroke="currentColor" stroke-width="3"/>
+  <rect x="2" y="2" width="371" height="104" rx="38" fill="#7c2230"/>
+  <rect x="2" y="60" width="371" height="46" fill="#7c2230"/>
+  <text x="24" y="70" fill="#fff4e0" font-size="17" font-weight="700">U.E. Kantuta · Patio</text>
+  <text x="24" y="94" fill="#f3c1a6" font-size="13">Fin del trimestre 1 · tu encuesta de sueño</text>
+
+  <!-- cielo: mañana | tarde -->
+  <rect x="14" y="116" width="173" height="100" fill="#a9d3ea"/>
+  <rect x="187" y="116" width="174" height="100" fill="#f0a868"/>
+  <circle cx="50" cy="146" r="16" fill="#f7d44c"/>
+  <circle cx="330" cy="200" r="18" fill="#e9663c"/>
+  <!-- fachada -->
+  <rect x="14" y="170" width="347" height="90" fill="#d9a67a"/>
+  <rect x="120" y="176" width="135" height="22" fill="#7c2230"/>
+  <text x="187" y="192" text-anchor="middle" fill="#fff4e0" font-size="12" font-weight="700">U.E. KANTUTA</text>
+  <g fill="#7fa8c9"><rect x="30" y="210" width="26" height="20"/><rect x="74" y="210" width="26" height="20"/><rect x="274" y="210" width="26" height="20"/><rect x="318" y="210" width="26" height="20"/></g>
+  <rect x="170" y="214" width="34" height="46" fill="#6b4a2f"/>
+  <!-- piso del patio -->
+  <rect x="14" y="260" width="347" height="208" fill="#cfc3ad"/>
+  <line x1="187" y1="116" x2="187" y2="468" stroke="#7c2230" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="100" y="284" text-anchor="middle" fill="#33415c" font-size="13" font-weight="700">turno mañana</text>
+  <text x="274" y="284" text-anchor="middle" fill="#7c2230" font-size="13" font-weight="700">turno tarde</text>
+
+  <!-- mañana: encuestados -->
+  <g>
+    <use href="#nino" x="28" y="320" width="32" height="56" style="color:#3c8d50"/>
+    <use href="#nino" x="72" y="340" width="32" height="56" style="color:#f0b429"/>
+    <use href="#nino" x="116" y="316" width="32" height="56" style="color:#c8323c"/>
+    <use href="#nino" x="60" y="400" width="32" height="56" style="color:#4a78b0"/>
+    <use href="#nino" x="130" y="396" width="32" height="56" style="color:#3c8d50"/>
+    <g fill="#3c8d50"><circle cx="44" cy="308" r="8"/><circle cx="88" cy="328" r="8"/><circle cx="132" cy="304" r="8"/><circle cx="76" cy="388" r="8"/><circle cx="146" cy="384" r="8"/></g>
+    <g stroke="#fff" stroke-width="2" fill="none"><path d="M40 308l3 3 5-6"/><path d="M84 328l3 3 5-6"/><path d="M128 304l3 3 5-6"/><path d="M72 388l3 3 5-6"/><path d="M142 384l3 3 5-6"/></g>
+  </g>
+  <!-- tarde: no encuestados, ahora aparecen -->
+  <g>
+    <use href="#nino" x="204" y="324" width="32" height="56" style="color:#8a6bb0"/>
+    <use href="#nino" x="296" y="318" width="32" height="56" style="color:#3c8d50"/>
+    <use href="#nino" x="226" y="400" width="32" height="56" style="color:#c8323c"/>
+    <use href="#nino" x="310" y="398" width="32" height="56" style="color:#4a78b0"/>
+    <use href="#nino" x="252" y="334" width="32" height="56" style="color:#f0b429"/>
+    <rect x="246" y="326" width="44" height="72" rx="6" fill="none" stroke="#f0b429" stroke-width="3"/>
+    <g fill="#7c2230" font-size="12" font-weight="700"><text x="212" y="316">zzz</text><text x="304" y="310">zzz</text><text x="232" y="394">zzz</text><text x="318" y="392">zzz</text><text x="258" y="320">zzz</text></g>
+  </g>
+
+  <!-- legajo (carpeta con pestaña) -->
+  <path d="M14 488 h110 l14 -12 h60 l14 12 h149 v310 h-347z" fill="#f7eedb" stroke="#7c2230" stroke-width="2"/>
+  <use href="#nino" x="26" y="500" width="40" height="70" style="color:#f0b429"/>
+  <text x="78" y="520" fill="#2b1d14" font-size="16" font-weight="700">Kevin Mamani</text>
+  <text x="78" y="540" fill="#5a4a3a" font-size="13">4.º B · turno tarde</text>
+  <text x="78" y="562" fill="#2b1d14" font-size="13">Trabaja en el mercado de 5 a 12.</text>
+  <text x="26" y="592" fill="#2b1d14" font-size="13">Duerme unas 4 horas.</text>
+  <text x="26" y="612" fill="#7c2230" font-size="13" font-weight="700">No estaba en tu encuesta: la hiciste a las</text>
+  <text x="26" y="630" fill="#7c2230" font-size="13" font-weight="700">10 de la mañana.</text>
+  <line x1="26" y1="646" x2="349" y2="646" stroke="#d6c7a8"/>
+  <text x="26" y="668" fill="#2b1d14" font-size="13">Tu informe: «un tercio duerme mal».</text>
+  <text x="26" y="690" fill="#2b1d14" font-size="13">En el turno tarde:</text>
+  <text x="148" y="690" fill="#b0303b" font-size="16" font-weight="700">7 de cada 10</text>
+  <text x="26" y="712" fill="#2b1d14" font-size="13">El taller fue al turno mañana.</text>
+  <rect x="44" y="736" width="287" height="42" rx="21" fill="#7c2230"/>
+  <text x="187" y="763" text-anchor="middle" fill="#fff4e0" font-size="15" font-weight="700">Ver a los otros 11</text>
+</svg>
+<figcaption>
+  <p><b>Qué tocas:</b> antes, en el patio eliges qué cursos y a qué hora encuestas; ves a quién alcanzas y a quién no hay a esa hora.</p>
+  <p><b>Qué haces:</b> escribes la proporción, firmas el informe y decides a qué turno va el taller.</p>
+  <p><b>Cómo reacciona el mundo:</b> al cerrar el trimestre aparecen los chicos que no viste, con su nombre y su historia: el que paga tu muestra es Kevin.</p>
+</figcaption>
+</figure>
+
+<!-- ============ TEMA 4 ============ -->
+<figure>
+<h2>Tema 4 · Nube de puntos, r y lo que no se puede afirmar</h2>
+<svg class="cel" viewBox="0 0 375 812" role="img" aria-label="Pantalla del Tema 4: nube de puntos dibujada con tiza en la pizarra, cada punto es un chico" font-family="system-ui, sans-serif">
+  <defs>
+    <symbol id="nino2" viewBox="0 0 16 28" shape-rendering="crispEdges">
+      <rect x="3" y="0" width="10" height="4" fill="#2b1d14"/>
+      <rect x="3" y="3" width="10" height="9" fill="#c99a72"/>
+      <rect x="5" y="6" width="2" height="2" fill="#2b1d14"/><rect x="9" y="6" width="2" height="2" fill="#2b1d14"/>
+      <rect x="2" y="12" width="12" height="10" fill="currentColor"/>
+      <rect x="4" y="22" width="3" height="6" fill="#33415c"/><rect x="9" y="22" width="3" height="6" fill="#33415c"/>
+    </symbol>
+    <!-- carita de tiza: un punto que es un chico -->
+    <symbol id="cara" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5.5" fill="#f4f1e6"/><rect x="3.5" y="4" width="1.6" height="1.6" fill="#2f4f3a"/><rect x="7" y="4" width="1.6" height="1.6" fill="#2f4f3a"/></symbol>
+  </defs>
+  <rect x="2" y="2" width="371" height="808" rx="38" fill="#efe3cf" stroke="currentColor" stroke-width="3"/>
+  <rect x="2" y="2" width="371" height="104" rx="38" fill="#7c2230"/>
+  <rect x="2" y="60" width="371" height="46" fill="#7c2230"/>
+  <text x="24" y="70" fill="#fff4e0" font-size="17" font-weight="700">U.E. Kantuta · Aula de 5.º</text>
+  <text x="24" y="94" fill="#f3c1a6" font-size="13">40 chicos: horas de pantalla y de sueño</text>
+
+  <!-- pizarra -->
+  <rect x="14" y="116" width="347" height="330" rx="4" fill="#8a5a36"/>
+  <rect x="24" y="126" width="327" height="310" fill="#2f4f3a"/>
+  <g stroke="#e9e5d6" stroke-width="2" fill="none"><line x1="60" y1="400" x2="336" y2="400"/><line x1="60" y1="400" x2="60" y2="140"/></g>
+  <text x="200" y="424" text-anchor="middle" fill="#e9e5d6" font-size="12">horas de pantalla</text>
+  <text x="40" y="270" text-anchor="middle" fill="#e9e5d6" font-size="12" transform="rotate(-90 40 270)">horas de sueño</text>
+  <g>
+    <use href="#cara" x="72" y="150" width="12" height="12"/><use href="#cara" x="88" y="166" width="12" height="12"/><use href="#cara" x="104" y="158" width="12" height="12"/>
+    <use href="#cara" x="120" y="182" width="12" height="12"/><use href="#cara" x="136" y="174" width="12" height="12"/><use href="#cara" x="150" y="198" width="12" height="12"/>
+    <use href="#cara" x="166" y="192" width="12" height="12"/><use href="#cara" x="182" y="216" width="12" height="12"/><use href="#cara" x="198" y="210" width="12" height="12"/>
+    <use href="#cara" x="214" y="236" width="12" height="12"/><use href="#cara" x="230" y="228" width="12" height="12"/><use href="#cara" x="246" y="256" width="12" height="12"/>
+    <use href="#cara" x="262" y="250" width="12" height="12"/><use href="#cara" x="278" y="276" width="12" height="12"/><use href="#cara" x="294" y="270" width="12" height="12"/>
+    <use href="#cara" x="310" y="296" width="12" height="12"/><use href="#cara" x="140" y="200" width="12" height="12"/><use href="#cara" x="256" y="232" width="12" height="12"/>
+  </g>
+  <!-- el punto suelto: Daniela -->
+  <use href="#cara" x="84" y="370" width="14" height="14"/>
+  <circle cx="91" cy="377" r="13" fill="none" stroke="#f0b429" stroke-width="2.5"/>
+  <rect x="112" y="332" width="222" height="60" rx="8" fill="#f4f1e6"/>
+  <polygon points="112,366 100,374 112,374" fill="#f4f1e6"/>
+  <text x="122" y="352" fill="#2b1d14" font-size="12" font-weight="700">Daniela, 5.º A</text>
+  <text x="122" y="370" fill="#2b1d14" font-size="12">«Casi no uso el celular. Cuido a</text>
+  <text x="122" y="383" fill="#2b1d14" font-size="12">mi hermanito de noche.»</text>
+
+  <!-- campo de r -->
+  <text x="22" y="476" fill="#2b1d14" font-size="15" font-weight="700">r =</text>
+  <rect x="54" y="458" width="120" height="30" rx="4" fill="#ffffff" stroke="#7c2230" stroke-width="2"/>
+  <text x="64" y="479" fill="#2b1d14" font-size="16">−0,58</text>
+  <rect x="112" y="464" width="2" height="18" fill="#2b1d14"/>
+  <text x="186" y="478" fill="#5a4a3a" font-size="12">lo escribes tú</text>
+
+  <!-- el director -->
+  <use href="#nino2" x="20" y="508" width="40" height="70" style="color:#33415c"/>
+  <rect x="70" y="506" width="291" height="70" rx="10" fill="#fff8ea" stroke="#7c2230" stroke-width="2"/>
+  <text x="84" y="528" fill="#7c2230" font-size="12" font-weight="700">Director Quispe</text>
+  <text x="84" y="547" fill="#2b1d14" font-size="13">«Prohibamos los celulares en el</text>
+  <text x="84" y="565" fill="#2b1d14" font-size="13">colegio. ¿Lo pongo en tu informe?»</text>
+
+  <!-- opciones -->
+  <rect x="14" y="594" width="347" height="52" rx="8" fill="#ffffff" stroke="#7c2230" stroke-width="2"/>
+  <text x="28" y="625" fill="#2b1d14" font-size="13">Escribir: la pantalla les quita el sueño</text>
+  <rect x="14" y="656" width="347" height="62" rx="8" fill="#ffffff" stroke="#7c2230" stroke-width="2"/>
+  <text x="28" y="681" fill="#2b1d14" font-size="13">Escribir: van juntas en este curso; con</text>
+  <text x="28" y="699" fill="#2b1d14" font-size="13">esto no se sabe si una causa la otra</text>
+  <text x="187" y="752" text-anchor="middle" fill="#5a4a3a" font-size="12">Al final del trimestre verás cómo duermen</text>
+  <text x="187" y="770" text-anchor="middle" fill="#5a4a3a" font-size="12">Daniela y los demás.</text>
+</svg>
+<figcaption>
+  <p><b>Qué tocas:</b> cada punto de la pizarra es un chico; tocas el que está suelto y te cuenta su historia antes de que calcules.</p>
+  <p><b>Qué haces:</b> escribes r y decides qué frase va al informe que lee el director.</p>
+  <p><b>Cómo reacciona el mundo:</b> si escribes que la pantalla causa, se prohíben los celulares y al trimestre los chicos duermen igual; Daniela sigue cansada, porque lo suyo era otra cosa.</p>
+</figcaption>
+</figure>
+
+</div>
+
+<div class="otros">
+<b>El mismo colegio, otros juegos adentro</b> (marco fijo, modalidad variable):
+<ul>
+  <li><b>Tema 2:</b> las notas de un curso con dos jorobas; pones las paredes de los intervalos y el histograma se redibuja.</li>
+  <li><b>Tema 3:</b> dos cursos con la misma media y un solo taller; y el percentil de un chico para decidir si lo derivas.</li>
+  <li><b>Tema 5:</b> el tamizaje de lectura: de los 84 marcados, cuántos la tienen, y qué carta reciben las familias.</li>
+  <li><b>Tema 6:</b> la junta de padres donde defiendes tu informe del año.</li>
+</ul>
+</div>
+<p class="pie"><b>Referencias:</b> <i>Stardew Valley</i> (la gente recuerda lo que hiciste); <i>Two Point Campus</i> (gestionar una institución). <b>Costo:</b> medio en arte (patio, aula y muchas caras), el más alto en texto: cada chico con nombre necesita su historia. Ojo de escala: un solo colegio alcanza justo para temas que piden grupos grandes.</p>
+</main>
+</body>
+</html>

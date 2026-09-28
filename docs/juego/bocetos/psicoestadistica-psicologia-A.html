@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boceto A · El Observatorio · Psicoestadística Descriptiva (Psicología)</title>
+<style>
+  :root { --fondo:#f6f5f1; --tinta:#1f2328; --suave:#5b6168; --borde:#c9c6bd; --acento:#2f6f8f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fondo:#15181c; --tinta:#e8e6e1; --suave:#a3a9b0; --borde:#3a3f46; --acento:#7fbcd9; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fondo); color:var(--tinta); font:16px/1.5 system-ui, sans-serif; }
+  main { max-width:920px; margin:0 auto; padding:20px 16px 40px; }
+  h1 { font-size:1.3rem; margin:0 0 4px; }
+  .marca { color:var(--suave); font-size:.85rem; margin:0 0 12px; }
+  .frase { border-left:4px solid var(--acento); padding:6px 12px; margin:0 0 20px; }
+  .pantallas { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:28px; }
+  figure { margin:0; }
+  figure h2 { font-size:1rem; margin:0 0 8px; }
+  svg.cel { width:100%; max-width:340px; height:auto; display:block; margin:0 auto; color:var(--tinta); }
+  figcaption { font-size:.92rem; margin-top:10px; }
+  figcaption p { margin:4px 0; }
+  .otros { margin-top:28px; border-top:1px solid var(--borde); padding-top:12px; font-size:.92rem; }
+  .otros ul { margin:6px 0; padding-left:20px; }
+  .pie { color:var(--suave); font-size:.82rem; margin-top:14px; }
+</style>
+</head>
+<body>
+<main>
+<h1>A · «El Observatorio»</h1>
+<p class="marca">Boceto para elegir el marco. Dibujo simple, no arte final. Números ilustrativos.</p>
+<p class="frase"><b>Eres el analista nuevo del Observatorio de Bienestar de Wayra Pampa.</b> La ciudad está bajo niebla: sólo ves a la gente que mediste. Lo que une a los temas es <b>el mapa</b>: cada informe decide adónde van los psicólogos, y meses después la ciudad te muestra a quién no viste.</p>
+
+<div class="pantallas">
+
+<!-- ============ TEMA 1 ============ -->
+<figure>
+<h2>Tema 1 · La encuesta y a quién no llegaste</h2>
+<svg class="cel" viewBox="0 0 375 812" role="img" aria-label="Pantalla del Tema 1: mapa con niebla que se levanta al llegar el censo" font-family="system-ui, sans-serif" shape-rendering="crispEdges">
+  <defs>
+    <!-- figurita que duerme bien (verde) y que duerme mal (roja), pixel art 6x10 -->
+    <symbol id="aB" viewBox="0 0 6 10"><rect x="1" y="0" width="4" height="4" fill="#f1d3b3"/><rect x="0" y="4" width="6" height="6" fill="#3f9b5a"/></symbol>
+    <symbol id="aM" viewBox="0 0 6 10"><rect x="1" y="0" width="4" height="4" fill="#f1d3b3"/><rect x="0" y="4" width="6" height="6" fill="#d2453b"/></symbol>
+    <pattern id="gOk" width="30" height="24" patternUnits="userSpaceOnUse">
+      <use href="#aB" x="2" y="2" width="6" height="10"/><use href="#aB" x="14" y="4" width="6" height="10"/><use href="#aM" x="22" y="12" width="6" height="10"/><use href="#aB" x="7" y="13" width="6" height="10"/>
+    </pattern>
+    <pattern id="gMal" width="30" height="24" patternUnits="userSpaceOnUse">
+      <use href="#aM" x="2" y="2" width="6" height="10"/><use href="#aM" x="14" y="4" width="6" height="10"/><use href="#aB" x="22" y="12" width="6" height="10"/><use href="#aM" x="7" y="13" width="6" height="10"/>
+    </pattern>
+    <symbol id="cole" viewBox="0 0 40 34"><polygon points="0,12 20,2 40,12" fill="#8a4b32"/><rect x="3" y="12" width="34" height="22" fill="#e9dcc3"/><rect x="16" y="22" width="8" height="12" fill="#6b4a2f"/><rect x="7" y="16" width="6" height="5" fill="#7fa8c9"/><rect x="27" y="16" width="6" height="5" fill="#7fa8c9"/><rect x="19" y="0" width="2" height="6" fill="#333"/></symbol>
+  </defs>
+
+  <!-- marco del celular -->
+  <rect x="2" y="2" width="371" height="808" rx="38" fill="#d9c9a3" stroke="currentColor" stroke-width="3"/>
+  <!-- barra superior -->
+  <rect x="2" y="2" width="371" height="104" rx="38" fill="#1d2f3f"/>
+  <rect x="2" y="60" width="371" height="46" fill="#1d2f3f"/>
+  <text x="24" y="70" fill="#f2efe6" font-size="17" font-weight="700">Observatorio · Wayra Pampa</text>
+  <text x="24" y="94" fill="#b9cad6" font-size="13">Pedido: talleres de sueño en 3 colegios</text>
+
+  <!-- aviso de revelación -->
+  <rect x="14" y="116" width="347" height="40" rx="6" fill="#f3c74b"/>
+  <text x="187" y="141" text-anchor="middle" fill="#2a2310" font-size="15" font-weight="700">Meses después: llega el censo escolar</text>
+
+  <!-- mapa -->
+  <rect x="14" y="164" width="347" height="376" fill="#cdb98a"/>
+  <rect x="180" y="164" width="14" height="376" fill="#e8dcc0"/>
+  <rect x="14" y="350" width="347" height="12" fill="#e8dcc0"/>
+  <text x="97" y="182" text-anchor="middle" fill="#1d2f3f" font-size="12" font-weight="700">donde mediste</text>
+  <text x="278" y="182" text-anchor="middle" fill="#7a1f18" font-size="12" font-weight="700">sin lista · turno tarde</text>
+
+  <!-- 4 colegios medidos (izquierda) -->
+  <g>
+    <use href="#cole" x="22" y="194" width="40" height="34"/><rect x="66" y="192" width="104" height="66" fill="url(#gOk)"/>
+    <use href="#cole" x="22" y="270" width="40" height="34"/><rect x="66" y="268" width="104" height="66" fill="url(#gOk)"/>
+    <use href="#cole" x="22" y="372" width="40" height="34"/><rect x="66" y="370" width="104" height="66" fill="url(#gOk)"/>
+    <use href="#cole" x="22" y="450" width="40" height="34"/><rect x="66" y="448" width="104" height="66" fill="url(#gOk)"/>
+    <rect x="18" y="188" width="158" height="340" fill="none" stroke="#1d2f3f" stroke-width="2" stroke-dasharray="6 5" shape-rendering="auto"/>
+  </g>
+  <!-- 4 colegios sin lista (derecha), niebla que se va -->
+  <g>
+    <use href="#cole" x="202" y="194" width="40" height="34"/><rect x="246" y="192" width="108" height="66" fill="url(#gMal)"/>
+    <use href="#cole" x="202" y="270" width="40" height="34"/><rect x="246" y="268" width="108" height="66" fill="url(#gMal)"/>
+    <use href="#cole" x="202" y="372" width="40" height="34"/><rect x="246" y="370" width="108" height="66" fill="url(#gMal)"/>
+    <use href="#cole" x="202" y="450" width="40" height="34"/><rect x="246" y="448" width="108" height="66" fill="url(#gMal)"/>
+  </g>
+  <g fill="#ffffff" opacity=".55" shape-rendering="auto">
+    <circle cx="340" cy="210" r="30"/><circle cx="360" cy="250" r="26"/><circle cx="330" cy="470" r="34"/><circle cx="355" cy="520" r="30"/><circle cx="300" cy="530" r="22"/>
+  </g>
+  <text x="330" y="360" text-anchor="middle" fill="#1d2f3f" font-size="10" opacity=".8">la niebla se va</text>
+
+  <!-- tarjeta de resultado -->
+  <rect x="14" y="552" width="347" height="190" rx="10" fill="#fbf7ee" stroke="#1d2f3f" stroke-width="2"/>
+  <text x="30" y="580" fill="#1d2f3f" font-size="13">Tú escribiste</text>
+  <text x="30" y="604" fill="#1d2f3f" font-size="17" font-weight="700">21 de 60 duermen mal: 0,35</text>
+  <text x="30" y="630" fill="#1d2f3f" font-size="13">Tu frase en la radio: «un tercio duerme mal»</text>
+  <line x1="30" y1="644" x2="345" y2="644" stroke="#c9bfa8"/>
+  <text x="30" y="666" fill="#1d2f3f" font-size="13">El censo, donde no llegaste:</text>
+  <text x="30" y="690" fill="#b1322a" font-size="17" font-weight="700">la mitad duerme mal</text>
+  <text x="30" y="716" fill="#1d2f3f" font-size="13">2 de tus 3 talleres fueron a colegios</text>
+  <text x="30" y="733" fill="#1d2f3f" font-size="13">que casi no los necesitaban.</text>
+  <rect x="44" y="752" width="287" height="42" rx="21" fill="#1d2f3f"/>
+  <text x="187" y="779" text-anchor="middle" fill="#f2efe6" font-size="15" font-weight="700">Toca un colegio rojo para ver quién</text>
+</svg>
+<figcaption>
+  <p><b>Qué tocas:</b> antes, arrastras tus 60 encuestas sobre el mapa (sortear en las listas, pararte en una puerta, llamar al padrón); sólo se despeja lo que mediste.</p>
+  <p><b>Qué haces:</b> escribes la proporción y firmas una frase; pones los talleres en tres colegios.</p>
+  <p><b>Cómo reacciona el mundo:</b> meses después la niebla se levanta de toda la ciudad y ves, figurita por figurita, a quién no llegó tu encuesta.</p>
+</figcaption>
+</figure>
+
+<!-- ============ TEMA 4 ============ -->
+<figure>
+<h2>Tema 4 · Nube de puntos, r y lo que no se puede afirmar</h2>
+<svg class="cel" viewBox="0 0 375 812" role="img" aria-label="Pantalla del Tema 4: nube de puntos de horas de pantalla y horas de sueño de un barrio" font-family="system-ui, sans-serif">
+  <defs>
+    <symbol id="aB2" viewBox="0 0 6 10"><rect x="1" y="0" width="4" height="4" fill="#f1d3b3"/><rect x="0" y="4" width="6" height="6" fill="#3f9b5a"/></symbol>
+    <symbol id="casa" viewBox="0 0 20 18"><polygon points="0,7 10,0 20,7" fill="#8a4b32"/><rect x="2" y="7" width="16" height="11" fill="#e9dcc3"/></symbol>
+  </defs>
+  <rect x="2" y="2" width="371" height="808" rx="38" fill="#d9c9a3" stroke="currentColor" stroke-width="3"/>
+  <rect x="2" y="2" width="371" height="104" rx="38" fill="#1d2f3f"/>
+  <rect x="2" y="60" width="371" height="46" fill="#1d2f3f"/>
+  <text x="24" y="70" fill="#f2efe6" font-size="17" font-weight="700">Observatorio · Wayra Pampa</text>
+  <text x="24" y="94" fill="#b9cad6" font-size="13">Barrio Norte: 40 jóvenes, pantalla y sueño</text>
+
+  <!-- tira del mapa: el barrio medido, el resto con niebla -->
+  <g shape-rendering="crispEdges">
+    <rect x="14" y="116" width="347" height="120" fill="#cdb98a"/>
+    <use href="#casa" x="30" y="130" width="20" height="18"/><use href="#casa" x="62" y="150" width="20" height="18"/><use href="#casa" x="96" y="128" width="20" height="18"/><use href="#casa" x="128" y="160" width="20" height="18"/><use href="#casa" x="40" y="190" width="20" height="18"/><use href="#casa" x="110" y="196" width="20" height="18"/>
+    <use href="#aB2" x="58" y="130" width="6" height="10"/><use href="#aB2" x="90" y="172" width="6" height="10"/><use href="#aB2" x="150" y="138" width="6" height="10"/><use href="#aB2" x="76" y="206" width="6" height="10"/><use href="#aB2" x="140" y="200" width="6" height="10"/>
+  </g>
+  <g fill="#ffffff" opacity=".8">
+    <circle cx="230" cy="150" r="34"/><circle cx="275" cy="190" r="40"/><circle cx="330" cy="140" r="36"/><circle cx="345" cy="210" r="30"/><circle cx="205" cy="215" r="26"/>
+  </g>
+  <text x="20" y="230" fill="#1d2f3f" font-size="11" font-weight="700">Barrio Norte</text>
+  <!-- las figuritas bajan a la nube -->
+  <path d="M90 236 C 90 256, 140 256, 150 276" fill="none" stroke="#1d2f3f" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- pasos -->
+  <g font-size="12" font-weight="700">
+    <rect x="14" y="246" width="110" height="26" rx="13" fill="#1d2f3f"/><text x="69" y="264" text-anchor="middle" fill="#f2efe6">1 Mira la nube</text>
+    <rect x="132" y="246" width="100" height="26" rx="13" fill="#fbf7ee" stroke="#1d2f3f"/><text x="182" y="264" text-anchor="middle" fill="#1d2f3f">2 Calcula r</text>
+    <rect x="240" y="246" width="121" height="26" rx="13" fill="#fbf7ee" stroke="#1d2f3f"/><text x="300" y="264" text-anchor="middle" fill="#1d2f3f">3 Firma la frase</text>
+  </g>
+
+  <!-- nube de puntos: cada punto es alguien del barrio -->
+  <rect x="14" y="280" width="347" height="262" rx="10" fill="#fbf7ee" stroke="#1d2f3f" stroke-width="2"/>
+  <line x1="56" y1="500" x2="345" y2="500" stroke="#1d2f3f" stroke-width="2"/>
+  <line x1="56" y1="500" x2="56" y2="296" stroke="#1d2f3f" stroke-width="2"/>
+  <text x="200" y="528" text-anchor="middle" fill="#1d2f3f" font-size="12">horas de pantalla al día</text>
+  <text x="30" y="400" text-anchor="middle" fill="#1d2f3f" font-size="12" transform="rotate(-90 30 400)">horas de sueño</text>
+  <g fill="#3f9b5a">
+    <circle cx="78" cy="318" r="5"/><circle cx="92" cy="332" r="5"/><circle cx="104" cy="326" r="5"/><circle cx="118" cy="346" r="5"/><circle cx="130" cy="338" r="5"/>
+    <circle cx="146" cy="360" r="5"/><circle cx="158" cy="352" r="5"/><circle cx="170" cy="376" r="5"/><circle cx="186" cy="370" r="5"/><circle cx="198" cy="392" r="5"/>
+    <circle cx="212" cy="384" r="5"/><circle cx="226" cy="408" r="5"/><circle cx="238" cy="400" r="5"/><circle cx="252" cy="424" r="5"/><circle cx="266" cy="418" r="5"/>
+    <circle cx="280" cy="440" r="5"/><circle cx="294" cy="432" r="5"/><circle cx="308" cy="456" r="5"/><circle cx="322" cy="450" r="5"/><circle cx="140" cy="372" r="5"/>
+  </g>
+  <circle cx="96" cy="478" r="5" fill="#d2453b"/>
+  <circle cx="96" cy="478" r="13" fill="none" stroke="#d2453b" stroke-width="2"/>
+  <text x="114" y="474" fill="#b1322a" font-size="12" font-weight="700">¿y este?</text>
+  <text x="114" y="489" fill="#b1322a" font-size="11">toca para ver quién es</text>
+
+  <!-- campo de r -->
+  <text x="22" y="570" fill="#1d2f3f" font-size="15" font-weight="700">r =</text>
+  <rect x="54" y="552" width="120" height="30" rx="4" fill="#ffffff" stroke="#1d2f3f" stroke-width="2"/>
+  <text x="64" y="573" fill="#1d2f3f" font-size="16">−0,62</text>
+  <rect x="112" y="558" width="2" height="18" fill="#1d2f3f"/>
+  <text x="186" y="572" fill="#1d2f3f" font-size="12">lo escribes tú</text>
+
+  <!-- pedido de la concejala -->
+  <rect x="14" y="596" width="347" height="200" rx="10" fill="#1d2f3f"/>
+  <text x="30" y="622" fill="#f3c74b" font-size="13" font-weight="700">Concejala Marisol</text>
+  <text x="30" y="644" fill="#f2efe6" font-size="14">«Prohibamos el celular después de las 22.</text>
+  <text x="30" y="662" fill="#f2efe6" font-size="14">Firma que la pantalla les quita el sueño.»</text>
+  <rect x="26" y="678" width="323" height="46" rx="8" fill="#fbf7ee"/>
+  <text x="40" y="706" fill="#1d2f3f" font-size="13">Firmar: la pantalla les quita el sueño</text>
+  <rect x="26" y="734" width="323" height="46" rx="8" fill="#fbf7ee"/>
+  <text x="40" y="755" fill="#1d2f3f" font-size="13">Firmar: van juntas; con esto no se</text>
+  <text x="40" y="771" fill="#1d2f3f" font-size="13">sabe si una causa la otra</text>
+</svg>
+<figcaption>
+  <p><b>Qué tocas:</b> las figuritas del barrio bajan a la nube, cada una es un punto; tocas el punto suelto y ves quién es antes de calcular.</p>
+  <p><b>Qué haces:</b> escribes r y decides qué frase firmas para la ordenanza.</p>
+  <p><b>Cómo reacciona el mundo:</b> si firmas que la pantalla causa, la ordenanza sale y meses después el mapa muestra el sueño del barrio igual que antes; los psicólogos que movías para eso no estuvieron donde hacían falta.</p>
+</figcaption>
+</figure>
+
+</div>
+
+<div class="otros">
+<b>El mismo mapa, otros juegos adentro</b> (marco fijo, modalidad variable):
+<ul>
+  <li><b>Tema 2:</b> el centro de salud manda la pila de registros; pones las paredes de los intervalos y el histograma se redibuja; con el Pareto repartes un presupuesto que no alcanza.</li>
+  <li><b>Tema 3:</b> dos barrios con la misma media y un solo especialista; decides dónde va mirando la dispersión.</li>
+  <li><b>Tema 5:</b> un tamizaje de lectura en las escuelas con una sola evaluadora: cuántos positivos lo son de verdad.</li>
+  <li><b>Tema 6:</b> una audiencia pública donde te repreguntan tu informe y presentas la prueba.</li>
+</ul>
+</div>
+<p class="pie"><b>Referencias:</b> la niebla de <i>Civilization</i>; la ciudad que sufre tus decisiones de <i>Frostpunk</i>. <b>Costo:</b> el más alto en arte (un mapa por barrios que se mueve con el dedo, con niebla); a cambio, casi todo el Tema 1 sale de un mismo mecanismo que después usan los demás temas.</p>
+</main>
+</body>
+</html>

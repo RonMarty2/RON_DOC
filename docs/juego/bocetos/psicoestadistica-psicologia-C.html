@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boceto C · Verificado · Psicoestadística Descriptiva (Psicología)</title>
+<style>
+  :root { --fondo:#f6f5f1; --tinta:#1f2328; --suave:#5b6168; --borde:#c9c6bd; --acento:#4b3fb8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fondo:#15181c; --tinta:#e8e6e1; --suave:#a3a9b0; --borde:#3a3f46; --acento:#a99cf0; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fondo); color:var(--tinta); font:16px/1.5 system-ui, sans-serif; }
+  main { max-width:920px; margin:0 auto; padding:20px 16px 40px; }
+  h1 { font-size:1.3rem; margin:0 0 4px; }
+  .marca { color:var(--suave); font-size:.85rem; margin:0 0 12px; }
+  .frase { border-left:4px solid var(--acento); padding:6px 12px; margin:0 0 20px; }
+  .pantallas { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:28px; }
+  figure { margin:0; }
+  figure h2 { font-size:1rem; margin:0 0 8px; }
+  svg.cel { width:100%; max-width:340px; height:auto; display:block; margin:0 auto; color:var(--tinta); }
+  figcaption { font-size:.92rem; margin-top:10px; }
+  figcaption p { margin:4px 0; }
+  .otros { margin-top:28px; border-top:1px solid var(--borde); padding-top:12px; font-size:.92rem; }
+  .otros ul { margin:6px 0; padding-left:20px; }
+  .pie { color:var(--suave); font-size:.82rem; margin-top:14px; }
+</style>
+</head>
+<body>
+<main>
+<h1>C · «Verificado»</h1>
+<p class="marca">Boceto para elegir el marco. Dibujo simple, no arte final. Números ilustrativos.</p>
+<p class="frase"><b>Trabajas en la mesa de verificación de «Dato Claro», un diario digital.</b> Lo que une a los temas es <b>el muro de publicaciones virales</b> sobre la salud mental de la ciudad: rehaces cada número con sus datos, le pegas tu nota de contexto y ves qué decide la ciudad con lo que publicaste.</p>
+
+<div class="pantallas">
+
+<!-- ============ TEMA 1 ============ -->
+<figure>
+<h2>Tema 1 · La encuesta y a quién no llegó</h2>
+<svg class="cel" viewBox="0 0 375 812" role="img" aria-label="Pantalla del Tema 1: publicación viral con una encuesta, y la mesa donde comparas quién contestó con quién vive en la ciudad" font-family="system-ui, sans-serif">
+  <rect x="2" y="2" width="371" height="808" rx="38" fill="#f1f0fa" stroke="currentColor" stroke-width="3"/>
+  <rect x="2" y="2" width="371" height="104" rx="38" fill="#2d2a6e"/>
+  <rect x="2" y="60" width="371" height="46" fill="#2d2a6e"/>
+  <text x="24" y="70" fill="#ffffff" font-size="17" font-weight="700">Dato Claro · verificación</text>
+  <text x="24" y="94" fill="#c9c4f2" font-size="13">Lectores que te creen</text>
+  <rect x="170" y="84" width="180" height="12" rx="6" fill="#4b4694"/>
+  <rect x="170" y="84" width="130" height="12" rx="6" fill="#39c2b0"/>
+
+  <!-- publicación viral -->
+  <rect x="14" y="116" width="347" height="170" rx="12" fill="#ffffff" stroke="#d6d3ea" stroke-width="2"/>
+  <circle cx="40" cy="142" r="14" fill="#e4574b"/>
+  <text x="62" y="140" fill="#1f1d3d" font-size="13" font-weight="700">JuventudHoy</text>
+  <text x="62" y="156" fill="#6c6993" font-size="11">4.200 compartidos</text>
+  <text x="28" y="186" fill="#1f1d3d" font-size="15" font-weight="700">Un tercio de los jóvenes de la</text>
+  <text x="28" y="206" fill="#1f1d3d" font-size="15" font-weight="700">ciudad duerme mal</text>
+  <circle cx="310" cy="238" r="34" fill="#d6d3ea"/>
+  <path d="M310 238 L310 204 A34 34 0 0 1 339.4 255 Z" fill="#e4574b"/>
+  <text x="28" y="250" fill="#e4574b" font-size="30" font-weight="800">33 %</text>
+  <text x="28" y="272" fill="#6c6993" font-size="11">Fuente: encuesta propia</text>
+
+  <!-- la fuente -->
+  <rect x="14" y="296" width="347" height="48" rx="8" fill="#e6e4f5"/>
+  <text x="28" y="316" fill="#2d2a6e" font-size="12" font-weight="700">LA FUENTE</text>
+  <text x="28" y="334" fill="#1f1d3d" font-size="12">60 alumnos, puerta del Colegio Central, 11:00</text>
+
+  <!-- mesa: quién contestó y quién vive -->
+  <text x="20" y="372" fill="#1f1d3d" font-size="13" font-weight="700">¿Quién contestó y quién hay en la ciudad?</text>
+  <text x="20" y="398" fill="#1f1d3d" font-size="12">Contestaron</text>
+  <rect x="120" y="386" width="230" height="20" fill="#4b78c9"/>
+  <text x="235" y="401" text-anchor="middle" fill="#ffffff" font-size="11">turno mañana</text>
+  <text x="20" y="432" fill="#1f1d3d" font-size="12">Jóvenes de</text>
+  <text x="20" y="446" fill="#1f1d3d" font-size="12">la ciudad</text>
+  <rect x="120" y="422" width="126" height="20" fill="#4b78c9"/>
+  <rect x="246" y="422" width="81" height="20" fill="#e4574b"/>
+  <rect x="327" y="422" width="23" height="20" fill="#a39e6a"/>
+  <text x="183" y="437" text-anchor="middle" fill="#ffffff" font-size="11">mañana</text>
+  <text x="286" y="437" text-anchor="middle" fill="#ffffff" font-size="11">tarde</text>
+  <text x="246" y="466" fill="#e4574b" font-size="11" font-weight="700">nadie les preguntó</text>
+  <path d="M290 454 L290 445" stroke="#e4574b" stroke-width="2"/>
+  <text x="338" y="466" text-anchor="middle" fill="#6b6740" font-size="10">sin colegio</text>
+
+  <!-- número que escribe el alumno -->
+  <text x="20" y="506" fill="#1f1d3d" font-size="13">De los 60, duermen mal</text>
+  <rect x="180" y="488" width="60" height="28" rx="4" fill="#ffffff" stroke="#2d2a6e" stroke-width="2"/>
+  <text x="196" y="508" fill="#1f1d3d" font-size="15">21</text>
+  <text x="250" y="506" fill="#1f1d3d" font-size="13">proporción</text>
+  <rect x="180" y="524" width="80" height="28" rx="4" fill="#ffffff" stroke="#2d2a6e" stroke-width="2"/>
+  <text x="192" y="544" fill="#1f1d3d" font-size="15">0,35</text>
+  <rect x="226" y="530" width="2" height="16" fill="#1f1d3d"/>
+
+  <!-- nota de contexto -->
+  <rect x="14" y="566" width="347" height="170" rx="10" fill="#ffffff" stroke="#39c2b0" stroke-width="3"/>
+  <text x="28" y="590" fill="#0f7f72" font-size="12" font-weight="700">TU NOTA DE CONTEXTO</text>
+  <text x="28" y="612" fill="#1f1d3d" font-size="13">Es de 60 alumnos del turno mañana de</text>
+  <text x="28" y="630" fill="#1f1d3d" font-size="13">un colegio. No dice nada de los del turno</text>
+  <text x="28" y="648" fill="#1f1d3d" font-size="13">tarde ni de los que no van al colegio.</text>
+  <g font-size="12" font-weight="700">
+    <rect x="28" y="668" width="96" height="30" rx="15" fill="#ffffff" stroke="#2d2a6e"/><text x="76" y="688" text-anchor="middle" fill="#2d2a6e">Se sostiene</text>
+    <rect x="132" y="668" width="120" height="30" rx="15" fill="#2d2a6e"/><text x="192" y="688" text-anchor="middle" fill="#ffffff">Falta contexto</text>
+    <rect x="260" y="668" width="88" height="30" rx="15" fill="#ffffff" stroke="#2d2a6e"/><text x="304" y="688" text-anchor="middle" fill="#2d2a6e">Es falso</text>
+  </g>
+  <text x="28" y="722" fill="#6c6993" font-size="11">La nota se pega a la publicación y la ven todos.</text>
+  <rect x="44" y="750" width="287" height="42" rx="21" fill="#39c2b0"/>
+  <text x="187" y="777" text-anchor="middle" fill="#0d2e2a" font-size="15" font-weight="700">Publicar mi nota</text>
+</svg>
+<figcaption>
+  <p><b>Qué tocas:</b> abres la fuente de la publicación y armas con sus datos la barra de quién contestó contra quién hay en la ciudad.</p>
+  <p><b>Qué haces:</b> escribes la proporción, eliges si la frase se sostiene y escribes tu nota de contexto.</p>
+  <p><b>Cómo reacciona el mundo:</b> tu nota se pega a la publicación; si la dejas pasar, el municipio pone los talleres donde no hacen falta; si la desmientes sin razón, pierdes lectores.</p>
+</figcaption>
+</figure>
+
+<!-- ============ TEMA 4 ============ -->
+<figure>
+<h2>Tema 4 · Nube de puntos, r y lo que no se puede afirmar</h2>
+<svg class="cel" viewBox="0 0 375 812" role="img" aria-label="Pantalla del Tema 4: publicación viral que dice que estudiar causa mejores notas, y la nube que rehaces con la planilla" font-family="system-ui, sans-serif">
+  <rect x="2" y="2" width="371" height="808" rx="38" fill="#f1f0fa" stroke="currentColor" stroke-width="3"/>
+  <rect x="2" y="2" width="371" height="104" rx="38" fill="#2d2a6e"/>
+  <rect x="2" y="60" width="371" height="46" fill="#2d2a6e"/>
+  <text x="24" y="70" fill="#ffffff" font-size="17" font-weight="700">Dato Claro · verificación</text>
+  <text x="24" y="94" fill="#c9c4f2" font-size="13">Lectores que te creen</text>
+  <rect x="170" y="84" width="180" height="12" rx="6" fill="#4b4694"/>
+  <rect x="170" y="84" width="118" height="12" rx="6" fill="#39c2b0"/>
+
+  <!-- publicación viral con gráfico pulido -->
+  <rect x="14" y="116" width="347" height="150" rx="12" fill="#ffffff" stroke="#d6d3ea" stroke-width="2"/>
+  <circle cx="40" cy="142" r="14" fill="#f0a830"/>
+  <text x="62" y="140" fill="#1f1d3d" font-size="13" font-weight="700">AcademiaTop</text>
+  <text x="62" y="156" fill="#6c6993" font-size="11">9.800 compartidos</text>
+  <text x="28" y="186" fill="#1f1d3d" font-size="15" font-weight="700">Estudiar más horas CAUSA</text>
+  <text x="28" y="206" fill="#1f1d3d" font-size="15" font-weight="700">mejores notas</text>
+  <path d="M40 252 C 120 248, 200 226, 330 196" fill="none" stroke="#f0a830" stroke-width="4"/>
+  <text x="250" y="250" fill="#6c6993" font-size="10">(sin puntos, sin ejes)</text>
+
+  <!-- la fuente -->
+  <rect x="14" y="276" width="347" height="44" rx="8" fill="#e6e4f5"/>
+  <text x="28" y="295" fill="#2d2a6e" font-size="12" font-weight="700">LA FUENTE</text>
+  <text x="28" y="312" fill="#1f1d3d" font-size="12">40 alumnos: horas de estudio y promedio</text>
+
+  <!-- mesa: rehaces la nube -->
+  <rect x="14" y="330" width="347" height="236" rx="10" fill="#ffffff" stroke="#2d2a6e" stroke-width="2"/>
+  <text x="28" y="352" fill="#1f1d3d" font-size="12" font-weight="700">Rehaz el gráfico: toca cada fila</text>
+  <text x="340" y="352" text-anchor="end" fill="#6c6993" font-size="11">34 de 40</text>
+  <g stroke="#1f1d3d" stroke-width="2"><line x1="54" y1="530" x2="346" y2="530"/><line x1="54" y1="530" x2="54" y2="366"/></g>
+  <text x="200" y="554" text-anchor="middle" fill="#1f1d3d" font-size="11">horas de estudio por semana</text>
+  <text x="32" y="448" text-anchor="middle" fill="#1f1d3d" font-size="11" transform="rotate(-90 32 448)">promedio</text>
+  <g fill="#4b78c9">
+    <circle cx="74" cy="480" r="5"/><circle cx="86" cy="500" r="5"/><circle cx="98" cy="462" r="5"/><circle cx="112" cy="490" r="5"/><circle cx="124" cy="450" r="5"/>
+    <circle cx="136" cy="484" r="5"/><circle cx="150" cy="440" r="5"/><circle cx="162" cy="470" r="5"/><circle cx="176" cy="430" r="5"/><circle cx="188" cy="478" r="5"/>
+    <circle cx="200" cy="420" r="5"/><circle cx="214" cy="456" r="5"/><circle cx="226" cy="410" r="5"/><circle cx="240" cy="446" r="5"/><circle cx="252" cy="402" r="5"/>
+    <circle cx="266" cy="470" r="5"/><circle cx="278" cy="420" r="5"/><circle cx="292" cy="396" r="5"/><circle cx="304" cy="452" r="5"/><circle cx="316" cy="410" r="5"/>
+  </g>
+  <g fill="none" stroke="#4b78c9" stroke-width="2" stroke-dasharray="3 2"><circle cx="110" cy="420" r="5"/><circle cx="230" cy="490" r="5"/><circle cx="286" cy="440" r="5"/></g>
+  <circle cx="330" cy="512" r="5" fill="#e4574b"/>
+  <circle cx="330" cy="512" r="12" fill="none" stroke="#e4574b" stroke-width="2"/>
+  <text x="318" y="498" text-anchor="end" fill="#e4574b" font-size="11" font-weight="700">¿y este?</text>
+
+  <!-- r y R² los escribe el alumno -->
+  <text x="20" y="596" fill="#1f1d3d" font-size="14" font-weight="700">r =</text>
+  <rect x="50" y="578" width="74" height="28" rx="4" fill="#ffffff" stroke="#2d2a6e" stroke-width="2"/>
+  <text x="60" y="598" fill="#1f1d3d" font-size="15">0,41</text>
+  <text x="140" y="596" fill="#1f1d3d" font-size="14" font-weight="700">R² =</text>
+  <rect x="178" y="578" width="74" height="28" rx="4" fill="#ffffff" stroke="#2d2a6e" stroke-width="2"/>
+  <rect x="190" y="584" width="2" height="16" fill="#1f1d3d"/>
+  <text x="262" y="596" fill="#6c6993" font-size="11">lo escribes tú</text>
+
+  <!-- nota de contexto -->
+  <rect x="14" y="618" width="347" height="178" rx="10" fill="#ffffff" stroke="#39c2b0" stroke-width="3"/>
+  <text x="28" y="642" fill="#0f7f72" font-size="12" font-weight="700">TU NOTA DE CONTEXTO</text>
+  <text x="28" y="664" fill="#1f1d3d" font-size="13">Van juntas, pero flojo. Y eso no muestra</text>
+  <text x="28" y="682" fill="#1f1d3d" font-size="13">que estudiar más cause las notas: puede</text>
+  <text x="28" y="700" fill="#1f1d3d" font-size="13">haber algo detrás de las dos.</text>
+  <g font-size="12" font-weight="700">
+    <rect x="28" y="716" width="96" height="30" rx="15" fill="#ffffff" stroke="#2d2a6e"/><text x="76" y="736" text-anchor="middle" fill="#2d2a6e">Se sostiene</text>
+    <rect x="132" y="716" width="120" height="30" rx="15" fill="#2d2a6e"/><text x="192" y="736" text-anchor="middle" fill="#ffffff">Falta contexto</text>
+    <rect x="260" y="716" width="88" height="30" rx="15" fill="#ffffff" stroke="#2d2a6e"/><text x="304" y="736" text-anchor="middle" fill="#2d2a6e">Es falso</text>
+  </g>
+  <text x="28" y="770" fill="#6c6993" font-size="11">Si publicas «se sostiene», el colegio duplica la tarea;</text>
+  <text x="28" y="785" fill="#6c6993" font-size="11">en un trimestre verás si las notas se movieron.</text>
+</svg>
+<figcaption>
+  <p><b>Qué tocas:</b> cada fila de la planilla de la fuente; su punto cae en la nube y tú ves la forma, que la publicación escondía detrás de una línea bonita.</p>
+  <p><b>Qué haces:</b> escribes r y R², eliges el veredicto y escribes tu nota.</p>
+  <p><b>Cómo reacciona el mundo:</b> si dices que se sostiene, el colegio duplica la tarea y un trimestre después las notas siguen igual; el diario publica una corrección y pierdes lectores.</p>
+</figcaption>
+</figure>
+
+</div>
+
+<div class="otros">
+<b>El mismo muro, otros juegos adentro</b> (marco fijo, modalidad variable):
+<ul>
+  <li><b>Tema 2:</b> un pictograma que «duplicó las atenciones»: lo rehaces con figuras del mismo tamaño; un Pareto viral que acumulas tú.</li>
+  <li><b>Tema 3:</b> «el estudiante promedio tiene ansiedad moderada»: rehaces la media y la mediana de un grupo con un caso extremo.</li>
+  <li><b>Tema 5:</b> «un test que acierta el 90 %»: armas las frecuencias y dices cuántos positivos lo son de verdad.</li>
+  <li><b>Tema 6:</b> una entrevista en vivo donde defiendes tu verificación.</li>
+</ul>
+</div>
+<p class="pie"><b>Referencias:</b> <i>Headliner: NoviNews</i> (lo que publicas cambia el pueblo); las notas de contexto de las redes sociales. <b>Costo:</b> el más bajo en arte (un muro y una mesa); el riesgo es de diseño: que se vuelva «encuentra el error», y que la lógica de revisar y dictaminar se parezca a la de «La ventanilla».</p>
+</main>
+</body>
+</html>

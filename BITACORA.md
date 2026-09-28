@@ -20,9 +20,16 @@
 > - [x] a. Rescatado `src/app/juego-aief/piezas.tsx` (piezas del aspecto A: cara con gestos, nota
 >   adhesiva, sumadora…): se creó el 28-09 a las 06:24 y **nunca se había subido**; llegó a esta PC sólo por
 >   Synology, horas después. Subido sin conectar a la pantalla (nadie lo importa todavía).
-> - [ ] b. Catálogo `docs/juego/PIEZAS-COMUNES.md`: qué es motor (se reutiliza), qué es patrón, qué está
->   atado a una materia y qué falta para Psicoestadística.
-> - [ ] c. Regla en los 7 agentes, `LEEME.md` e IDEA-JUEGO §20.
+> - [x] b. Catálogo `docs/juego/PIEZAS-COMUNES.md`: motor listo (§1), patrones probados (§2), motor
+>   todavía atado a una materia (§3: página del docente y resumen sólo leen la planta; la cuenta en
+>   pantalla vive en la carpeta de Proyectos II), contenido de cada juego que no se reutiliza (§4) y lo que
+>   falta para Psicoestadística (§5: **no hay funciones de estadística descriptiva con pruebas**; la
+>   sección Jugar admite hoy una sola isla por materia; `materias.ts` lista 5 temas y el dossier tiene 0 a 6).
+> - [x] c. Regla «motor común, juego propio, como Doom» y «un juego por carrera» en los 7 agentes (común),
+>   más lo propio de cada uno: adaptador (costo en motor / despegar / nuevo, y en qué se distingue),
+>   director (bocetos que no repiten el aspecto de otro juego), bucle (lógica reutilizada, vestida
+>   distinta), aprendizaje (patrones probados), narrativa (ningún personaje ni parecido de otro juego),
+>   crítico (punto 13). `LEEME.md` (etapa 6 y registro) e IDEA-JUEGO §20.
 > - [ ] d. Después, con el OK de Ronald: ronda 1 del adaptador con Psicoestadística Descriptiva (Psicología).
 >
 > Nota de esta PC: `git stash@{0}` guarda el trabajo suelto que había en el disco antes del `git pull` del

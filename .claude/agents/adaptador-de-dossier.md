@@ -30,6 +30,10 @@ sale del mapa de ruta y del índice, y esos temas se marcan como supuesto.
   su carpeta de materias** (la ruta te la da la sesión; el dossier suele ser el `.tex` de cada tema,
   y si sólo hay PDF, el PDF). En la nube, Ronald los pega en la conversación. `docs/dossier/` queda
   sólo para lo que Ronald decida publicar.
+- **Si la materia tiene un juego por carrera** (Psicoestadística Descriptiva: Psicología y
+  Empresariales), cada juego se adapta **con el dossier de su carrera** y en su propio documento
+  (`00-adaptacion-<materia>-<carrera>.md`). El segundo lee el documento del primero para saber qué motor
+  y qué lógica de modalidades ya existen, nunca para copiar su mundo ni sus casos.
 - **Anota la versión de cada dossier que usaste**, en una sección «Dossiers usados» del documento de
   adaptación, con la tabla que imprime:
 
@@ -72,7 +76,12 @@ sale del mapa de ruta y del índice, y esos temas se marcan como supuesto.
      ganar, no porque se lo preguntan);
    - qué se adapta o se inventa respecto del dossier;
    - costo de construirlo con lo que hay (una persona con Claude, sitio en Next.js con Supabase,
-     pixel art dibujado con código) y la versión mínima jugable;
+     pixel art dibujado con código) y la versión mínima jugable, **separado en tres** según
+     `docs/juego/PIEZAS-COMUNES.md` (Ronald, 28-09, «como Doom»): **qué se reutiliza del motor**
+     (con el nombre de la pieza), **qué hay que despegar** de otra materia antes de usarlo y **qué es
+     nuevo** (y si lo nuevo sirve después a otras materias, se hace como motor);
+   - **en qué se distingue de los juegos que ya existen** (§4 del catálogo): mundo, rol, personajes y
+     aspecto propios. Si se parece a otro juego del sitio, cámbiala antes de presentarla;
    - riesgo principal.
 5. **Mapa de cobertura:** tabla tema esencial × propuesta, que muestra dónde se aprende cada tema.
    Ningún tema esencial puede quedar afuera.
@@ -123,7 +132,9 @@ de huellas (arriba).
 - **Lee antes de proponer:** `docs/juego/gdd/LEEME.md`, las partes del GDD que ya existan, `docs/juego/IDEA-JUEGO.md`, `BITACORA.md` §0 y `CLAUDE.md`.
 - **Lo que Ronald ya dijo manda:** no es un cuestionario con puntos ("eso para mí no es juego"); pixel art; **un juego propio por materia** (su «isla»); cuenta para la nota con defensa oral como jefe final; el alumno escribe el número, no lo elige; "primero se ve, después se calcula"; ninguna escena aparece de la nada, sin que el alumno sepa dónde está y qué empresa es.
 - **Juego con sabor a la materia, no materia con sabor a juego** (arriba).
-- **Un juego por materia, ajustado a ella** (Ronald, 26-09; IDEA-JUEGO §16). Cada materia tiene **su propio juego**: su marco (mundo, rol del jugador, género) se elige para su contenido, sin forzarlo a parecerse al de otra materia. El «marco fijo» de la regla de abajo es el de **cada** juego. Lo que comparten todos es la base técnica (cuentas, versiones por alumno, registro para la nota, escalera de ayuda, pruebas), que se reutiliza sin copiarla.
+- **Un juego por materia, ajustado a ella** (Ronald, 26-09; IDEA-JUEGO §16). Cada materia tiene **su propio juego**: su marco (mundo, rol del jugador, género) se elige para su contenido, sin forzarlo a parecerse al de otra materia. El «marco fijo» de la regla de abajo es el de **cada** juego.
+- **Motor común, juego propio, «como Doom»** (Ronald, 28-09; IDEA-JUEGO §20). Con el motor de *Doom* se hicieron decenas de juegos distintos: cambiaban personajes, diálogos, armas y escenarios, y el motor era el mismo. Acá se reutiliza **el motor**, la parte invisible (partidas, cuentas, versiones por alumno, escalera de ayuda, registro y página del docente, cálculos probados), importándolo y nunca copiándolo; **nunca el contenido de otro juego**: personajes, nombres, diálogos, escenarios, casos ni aspecto, tampoco «parecidos» (otra agencia, otra jefa que se asoma). **Cada juego tiene que sentirse distinto.** La técnica sí se toma (pixel art en grilla, caras que salen del nombre); la pieza dibujada no. Qué es motor, qué está atado a una materia y qué es contenido de cada juego: `docs/juego/PIEZAS-COMUNES.md`, que lees **antes de proponer**. Reutilizar no baja la vara: la modalidad la elige lo que mejor enseña; reutilizar sólo decide entre opciones que enseñan igual de bien. Si la mejor necesita una pieza que no existe, se hace como motor y la aprovechan las materias que vienen.
+- **Una materia puede tener un juego por carrera** (Ronald, 28-09; IDEA-JUEGO §20). Psicoestadística Descriptiva tiene dos: **Psicología** primero y **Empresariales** después, cada uno con el dossier de su carrera. Comparten el motor y pueden compartir la lógica de una modalidad; cada uno tiene su mundo, sus personajes, sus casos y su aspecto, y sus documentos llevan la carrera en el nombre (`00-adaptacion-<materia>-<carrera>.md`).
 - **Lo que cuenta para la nota no se puede copiar** (Ronald, 27-09). Toda parte que cuenta para la nota tiene que dar **otra respuesta correcta a cada alumno** (otra versión con la misma lógica: otros casos, personas, números u orden de lo que se decide). Si una parte no puede variar, pesa poco en la nota y se dice en la ficha. Cambiar sólo el orden de las opciones no alcanza. Lo revisa el crítico, también sobre el tema ya construido, antes de mostrárselo a Ronald.
 - **El juego es individual, en todas las materias, y cada tema se califica sobre 100** (Ronald, 27-09). Cada alumno juega solo, con sus números; **no hay careo, juego en grupo ni defensa entre compañeros dentro del juego**. El juego entrega una nota sobre 100 por tema (la final es el promedio sobre 100); cuánto pesa cada cosa lo pondera Ronald después: **no se le propone ni se le pregunta un reparto de la nota**.
 - **El juego no es una lección** (Ronald, 27-09: «¿no lo volverás una lección?… no quiero que se convierta en un libro interactivo»). En el juego **no se explica**: el alumno decide y ve la consecuencia en el mundo (el auditor observa, el cliente se va, la mora aparece) y de ahí entiende el porqué. Nada de escenas explicativas, relatos para leer ni mini lecciones. La lección vive en el dossier y en la sección Estudiar. Si una idea no se aprende por consecuencia sin volverse lección, queda para el dossier y la defensa, no se mete a la fuerza.

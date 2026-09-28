@@ -277,3 +277,24 @@ debería generar casos diferentes?»*. Desde ahora, toda parte que cuenta para l
 correcta a cada alumno (o pesa poco y se dice), y el crítico lo revisa también sobre el tema ya
 construido. Reglas de los siete agentes.
 
+## 20. Motor común, juego propio («como Doom»); y un juego por carrera (28-09)
+
+Ronald pausa AIEF (*«al momento de jugar el juego del Tema 1 de AIEF no domino el tema»*) y prueba el
+equipo de agentes en **Psicoestadística Descriptiva**, una materia que domina. Dos decisiones:
+
+- **Reutilizar el motor, nunca el contenido.** *«Al crear un juego puedes hacer como Doom: podemos
+  cambiar personajes, diálogos, pistolas, escenarios, volverlo otra cosa diferente, pero hay cosas que
+  reutilizamos… cuidado reutilices los diálogos o personas… cada juego debe sentirse diferente.»* Y:
+  *«debemos optimizar nuestro uso de recursos, pero no te digo que resumas o hagas cosas mediocres.»*
+  Precisa el §16: lo que se reutiliza es el motor (partidas, cuentas, versiones por alumno, escalera,
+  registro, página del docente, cálculos probados); personajes, nombres, diálogos, escenarios, casos y
+  aspecto son de cada juego, sin parecidos. Reutilizar no baja la vara: la modalidad la elige lo que
+  mejor enseña. El catálogo de qué es motor y qué es de cada juego está en `docs/juego/PIEZAS-COMUNES.md`.
+- **Una materia puede tener un juego por carrera.** Psicoestadística Descriptiva tendrá uno para
+  **Psicología** (primero) y otro para **Empresariales** (después, con el dossier de esa carrera).
+  Comparten motor y pueden compartir la lógica de una modalidad; cada uno tiene su mundo, sus personajes,
+  sus casos y su aspecto.
+
+Reglas de los siete agentes (la común y lo propio del adaptador, el director, el bucle, el aprendizaje,
+la narrativa y el crítico).
+

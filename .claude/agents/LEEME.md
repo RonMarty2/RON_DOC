@@ -48,7 +48,7 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 | 3. Cómo se juega | `disenador-de-bucle` | modalidad y mecánica del tema |
 | 4. Personajes y diálogos | `disenador-narrativo` | quién aparece y qué dice (en tuteo) |
 | 5. Revisión del papel | `critico-de-jugabilidad` | hallazgos; **recién ahí se le muestra a Ronald** y él aprueba |
-| 6. Construcción | Claude (motor con pruebas + pantalla) | el tema jugable en borrador |
+| 6. Construcción | Claude (motor con pruebas + pantalla) | el tema jugable en borrador, **sobre el motor de `docs/juego/PIEZAS-COMUNES.md`** (se importa, no se copia); lo nuevo que sirva a otros juegos se hace como motor y se anota ahí en el mismo commit; personajes, textos y dibujos son del juego (Ronald, 28-09, «como Doom») |
 | 7. Revisión de lo jugable | `critico-de-jugabilidad` | hallazgos sobre el juego real, antes de mostrárselo a Ronald |
 | 8. Antes de subir o publicar | `revisar-publicacion` | pruebas, compilación, borradores ocultos, Supabase |
 | 9. Ronald lo juega en su celular | Ronald | aprueba el tema; recién ahí el siguiente |
@@ -69,7 +69,7 @@ lleva la carpeta). Axiom lo resolvió con una copia visible en `agentes/` y un s
 
 | Agente | Para qué | Origen | Fecha | Notas |
 |---|---|---|---|---|
-| `adaptador-de-dossier` | Primer paso: dossier → 2 o 3 propuestas de juego para conversar con Ronald (`docs/juego/gdd/00-adaptacion-<materia>.md`) | Nube | 2026-09-26 | Pedido de Ronald: los demás corren después de que él elige. 26-09 (PC): lee los dossiers de la carpeta de materias sin subirlos y anota su huella (`scripts/huella-dossier.mjs`); comprueba que ninguna estrategia gane sin entender y que la maqueta aguante el orden real de dictado (fallas que detectó el crítico en la ronda 1 de AIEF) |
+| `adaptador-de-dossier` | Primer paso: dossier → 2 o 3 propuestas de juego para conversar con Ronald (`docs/juego/gdd/00-adaptacion-<materia>.md`) | Nube | 2026-09-26 | Pedido de Ronald: los demás corren después de que él elige. 26-09 (PC): lee los dossiers de la carpeta de materias sin subirlos y anota su huella (`scripts/huella-dossier.mjs`); comprueba que ninguna estrategia gane sin entender y que la maqueta aguante el orden real de dictado (fallas que detectó el crítico en la ronda 1 de AIEF). 28-09 (PC): el costo de cada propuesta se separa en motor que se reutiliza, lo que hay que despegar y lo nuevo, según `docs/juego/PIEZAS-COMUNES.md`; cada propuesta dice en qué se distingue de los juegos que ya existen; un juego por carrera cuando la materia lo pide (Psicoestadística Descriptiva). La regla «como Doom» quedó también en los otros seis |
 | `director-de-juego` | Visión, género, pilares (`docs/juego/gdd/01-vision.md`) | Nube | 2026-09-26 | Equipo de diseño del juego; reglas comunes repetidas en cada uno |
 | `disenador-de-bucle` | Bucle principal, mecánicas, minijuegos, economía (`02`) | Nube | 2026-09-26 | |
 | `disenador-de-progresion` | Beat chart de cada materia (`03-progresion-<materia>`) | Nube | 2026-09-26 | Necesita el temario de Ronald |

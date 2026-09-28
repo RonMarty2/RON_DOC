@@ -41,10 +41,16 @@
 >   B «La psicóloga del colegio», C «Verificado». Avisa cuatro cosas del dossier (verificadas en el `.tex`:
 >   varianza con n − 1 en el Tema 3 y covarianza con N en el Tema 4; Sturges «impar» y ejemplos que no;
 >   ficha y dossiers nombran distinto los Temas 4 a 6; R² «explica»). No se tocan desde acá.
-> - [ ] f. **Esperando a Ronald:** que elija marco (A, B, C o mezcla). Después: director (visión y bocetos).
->   Dudas del adaptador sobre sus propias instrucciones, para decidir con Ronald si se mejora el agente:
->   «una sola pregunta» contra «pregunta el orden de dictado»; nombre del archivo; en qué materia del sitio va
->   el juego (Descriptiva o EAD-111).
+> - [x] g. Mejoras a los agentes por lo visto en la ronda 1 (Ronald: «debemos mejorar los agentes mientras
+>   hacemos»): **el orden de dictado es un dato** (se busca en el calendario; si no está claro, se pregunta
+>   aparte, sin gastar la pregunta de la ronda) y **lo que un tema posterior profundiza se juega allá** (la
+>   ronda 1 dio cinco escenas al Tema 1, una introducción; Ronald: «abarca mucho y aprieta poco»). En los 7
+>   agentes, más lo propio del adaptador y de progresión; IDEA-JUEGO §21. Ronald también aclaró que el juego
+>   no usa los números del dossier: sus inconsistencias sólo importan donde el juego manda a leer una página.
+> - [ ] f. **Esperando a Ronald:** que elija marco (A, B, C o mezcla), o ver antes un boceto de cada uno.
+>   Con su elección, ronda 2 del adaptador (maqueta con las reglas nuevas) y después el director. Queda para
+>   cuando se construya: en qué página del sitio va el juego (Descriptiva o EAD-111, el curso que este
+>   semestre usa ese material).
 >
 > Nota de esta PC: `git stash@{0}` guarda el trabajo suelto que había en el disco antes del `git pull` del
 > 28-09 (casi todo ya estaba en GitHub; lo único propio es un borrador de escalera de ayuda para la escena

@@ -298,3 +298,14 @@ equipo de agentes en **Psicoestadística Descriptiva**, una materia que domina. 
 Reglas de los siete agentes (la común y lo propio del adaptador, el director, el bucle, el aprendizaje,
 la narrativa y el crítico).
 
+## 21. Lo que un tema posterior profundiza, se juega allá (28-09)
+
+La ronda 1 de Psicoestadística le dio cinco escenas al Tema 1, que es una introducción: historia, campos
+de aplicación, muestra y sesgos, fases, descriptiva e inferencial, niveles de medición, gráficos y
+recolección. Ronald: *«este tema introductorio abarca mucho y aprieta poco… podemos reutilizar la
+planificación, porque son temas que se verán después; no debes forzar juegos para cosas que no lo
+necesitan»*. Desde ahora, cada subtema dice dónde se juega (en su tema, en uno posterior o en ninguno), un
+concepto se juega en un solo lugar, el que lo trabaja a fondo, y un tema introductorio suele quedar con un
+solo juego. Y Ronald: *«debemos mejorar los agentes mientras hacemos»*: cada cosa que falla al usarlos se
+vuelve regla del agente en ese momento.
+

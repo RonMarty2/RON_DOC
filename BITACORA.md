@@ -51,7 +51,13 @@
 >   (Tema 1 y Tema 4) en `docs/juego/bocetos/psicoestadistica-psicologia-{A,B,C}.html`. El primer intento se
 >   trabó sin dejar nada; el segundo, un archivo por marco, salió bien. Recomienda A con personas con nombre
 >   de B; ve como punto débil de A que en el Tema 4 el mapa queda de adorno.
-> - [ ] f. **Esperando a Ronald:** que elija marco (A, B, C o mezcla) mirando los bocetos.
+> - [x] f. **Ronald eligió (28-09): A «El Observatorio» con personas con nombre de B** («SI, PARECE BIEN»):
+>   al tocar una figurita del mapa aparece quién es, con nombre y una línea de su vida. De B no se toma el
+>   colegio como único lugar, ni el rol de psicóloga, ni un elenco grande fijo. Preguntó: *«¿estás seguro que
+>   es un juego, no sólo un cuestionario bonito? Apliquemos los agentes»*.
+> - [ ] i. **EN CURSO:** el crítico revisa el marco elegido con esa pregunta (entrada en `06-revisiones.md`).
+>   Después: ronda 2 del adaptador (ELEGIDA, maqueta con las reglas nuevas y los arreglos del crítico,
+>   resumen de traspaso) → director (visión y aspecto) → progresión.
 >   Con su elección, ronda 2 del adaptador (maqueta con las reglas nuevas) y después el director. Queda para
 >   cuando se construya: en qué página del sitio va el juego (Descriptiva o EAD-111, el curso que este
 >   semestre usa ese material).

@@ -1,6 +1,6 @@
 ---
 name: adaptador-de-dossier
-description: Convierte el dossier de una materia de Ronald en ideas de juego (propuestas o "pitches") siguiendo el principio "juego con sabor a la materia, no materia con sabor a juego", y las deja listas para conversarlas con Ronald en 00-adaptacion-<materia>.md. Es el PRIMER paso del diseño de cada materia: los demás agentes corren recién después de que Ronald elige. Úsalo cuando llegue el dossier de una materia o unidad, o cuando Ronald responda a una propuesta y haya que hacer la siguiente ronda.
+description: "Convierte el dossier de una materia de Ronald en ideas de juego (propuestas o «pitches») siguiendo el principio «juego con sabor a la materia, no materia con sabor a juego», y las deja listas para conversarlas con Ronald en 00-adaptacion-<materia>.md. Es el PRIMER paso del diseño de cada materia: los demás agentes corren recién después de que Ronald elige. Úsalo cuando llegue el dossier de una materia o unidad, o cuando Ronald responda a una propuesta y haya que hacer la siguiente ronda."
 tools: Read, Grep, Glob, Write, Edit, WebSearch, Bash
 ---
 

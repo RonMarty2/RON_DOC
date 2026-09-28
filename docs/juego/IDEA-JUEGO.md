@@ -336,3 +336,10 @@ revisa la profundidad como experto de la materia**, para que no dependa de que R
 para el Tema 3 (tres grupos de forma distinta, media, mediana y moda, y conclusiones posibles que sólo se
 juzgan calculando, distintas por alumno) va a la ronda 3.
 
+Y después: *«¿sólo captaste mi idea para ese caso específico de medias, medianas y modas? ¿Acaso no hay
+otros? ¿No puedes adelantarte a mí?»*. Regla de los siete agentes: una idea de Ronald es un ejemplo, no un
+límite; se saca el principio (varios casos para comparar y conclusiones que sólo se juzgan calculando), se
+aplica donde enseña mejor en toda la materia, y cada entrega trae **ideas propias** marcadas. Con el §21 no
+choca: cada concepto tiene su juego en un solo tema, practicado varias veces; los temas posteriores lo usan
+como herramienta.
+

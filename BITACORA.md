@@ -29,6 +29,11 @@
 > - [ ] 11 · índice de compra distinto de 100 y sus diagnósticos
 > - [ ] 12 · registro por ítem con escalón; prácticas aparte
 > - [ ] 13 · pruebas de `02` B2.8 y lectura de partidas viejas
+> **Avance 28-09 (Claude, PC RONMARTY):** motor nuevo del Tema 1 hecho y probado (`src/lib/juego/aief/tema1.ts`,
+> escena `tema1-g2`, 3.025 pruebas: puntos 1, 3, 5, 6, 7, 8, 9 y 11 en el motor). Falta: textos
+> (`guion-tema1.ts`), pantalla (`EscenaVentanilla.tsx`) y sus pruebas. **Mientras tanto el motor vive en la rama
+> `wip-aief-tema1` de GitHub** (no se publica): quien siga, la trae con `git fetch` y `git merge
+> origin/wip-aief-tema1`; `main` recién la recibe cuando todo compile y pase.
 > Nota: la ayuda que baja o no la nota (`04` A2.5) no hace falta resolverla ahora: el registro guarda el
 > escalón y el puntaje va con la hoja del docente (punto 16). Ronald no quiere preguntas de ponderación.
 > **Ronald respondió (27-09):** las características de calidad de la información (1.3) **sí entran al

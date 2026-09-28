@@ -1,18 +1,24 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 4 · 27-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 5 · 27-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
+
+### De la revisión del Tema 1 de AIEF, versión 2 (papel)
+
+Ninguna pregunta nueva del crítico. La única abierta es la de `04` A2.5: **si la ayuda baja la nota del
+tema**. No se responde aquí; el hallazgo 5 de abajo trae un dato que conviene tener a la vista al decidirla.
 
 ### De la revisión del Tema 1 de AIEF (papel y prototipo, etapas 5 y 7)
 
 Ninguna pregunta nueva: lo que se corrige abajo es diseño (delegado) y no cambia nada que hayas
-aprobado. Siguen abiertas dos que no son de esta etapa y conviene mostrarte en el plan simple del Tema 1:
+aprobado. Sigue abierta una que no es de esta etapa y conviene mostrarte en el plan simple del Tema 1:
 
 1. La de `03-progresion-aief.md` (si el alumno escribe en el juego el borrador de su emprendimiento).
    Opinión en una línea: el borrador sin nota es lo sensato; cuesta un campo de texto y no pisa el reto.
-2. **Cuánto pesa el juego en la nota del tema.** `04` A1.4 lo deja por defecto en 40 % el registro y
-   60 % la defensa. Es criterio tuyo y todavía no lo dijiste: va en el plan como pregunta, no como hecho.
+2. ~~Cuánto pesa el juego en la nota del tema (40 % registro, 60 % defensa)~~ **Sale de la lista:** regla
+   de Ronald del 27-09, el juego entrega una nota sobre 100 por tema y la ponderación la hace él; no se le
+   propone ni se le pregunta un reparto.
 
 ### De la revisión de `00-adaptacion-aief.md` v2 (Ronda 2)
 
@@ -46,6 +52,164 @@ Se suman a las cinco que esa parte ya lista.
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 27-09-2026 · AIEF Tema 1, versión 2: revisión del papel (etapa 5)
+
+**Qué se revisó.** `04` «AIEF · Tema 1 · versión 2» (A2.1 a A2.10), `02` «Tema 1 · versión 2» (B2.1 a
+B2.11), `05` «Tema 1 · versión 2» (N2.1 a N2.9), contra mis 8 imprescindibles de la entrada de abajo, la
+maqueta (`00` R3.2) y las reglas del 27-09. Para lo que el papel da por hecho miré el código de hoy:
+`EscenaVentanilla.tsx` (cómo elige la versión), `version-alumno.ts`, `ventanilla.ts` y `guion-tema1.ts`
+(`valorDelCliente`). Es revisión de papel: la v2 todavía no está construida.
+
+**Veredicto.** Las tres partes son coherentes entre sí y la v2 hace lo que Ronald pidió: **se aprende por
+consecuencia y no hay lección** (cada cosa que se agrega es una línea de hecho o una regla, nunca un
+porqué). Siete de los ocho imprescindibles quedan resueltos en el papel; el 7 queda a medias. Aparecen
+**un hueco grave que ninguna parte vio** (hallazgo 1, en el código de hoy) y dos de texto (2 y 3).
+
+### Respuestas a lo pedido, en corto
+
+1. **Imprescindibles.** 1 (1.3 siempre contraoferta, valor de hoy múltiplo de 500): sí. 2 (regla del monto
+   en el manual): sí. 3 (NC con escalón d): sí, y en la práctica se cierra el campo sin dar el número. 4 (sin
+   ✔ antes del cierre): sí. 5 (1.2 sin delatores): sí. 6 (par «una se queda, una se devuelve», sello que
+   cuenta y nombrado al cierre, fuera el papel 2): sí, pero falta el texto del manual que lo hace jugable
+   (hallazgo 2). 7 (1.1 con nombres sorteados, cinco hojas, inversionista reescrito): **a medias**, la frase
+   reescrita apunta a otra hoja (hallazgo 3). 8 (semilla propia y generación guardada): sí, primero en B2.10.
+2. **Coherencia.** Las tres partes cuentan la misma jornada con el mismo orden y los mismos pesos. Los dos
+   puntos donde `05` se aparta de `02` **están bien y valen los de `05`**: «Déjala por hoy» es mejor que
+   «Mira el resto de la carpeta» (esa frase señalaba el pagaré antes de firmar); y la carpeta con nota de
+   1.3 con otro rubro es lo que ya pedía `04` A2.2. Con la maqueta: nada de lo aprobado cambia de lugar,
+   pero la sierra de Don Julio (`00` R3.2) pasa a ser sólo la práctica: va en el plan simple como cambio,
+   en una línea (hallazgo 8).
+3. **¿Se aprende sin lección?** Sí. Las tres prácticas son decidir, un toque y una línea de hecho («No
+   pagó», «Se fue enfrente»); ninguna pasa de dos líneas. La línea gris con el monto T de la cooperativa
+   **enseña y no regala**: deja ver que por la misma sierra alguien prestó más, y sus números no sirven para
+   la carpeta con nota. Recomiendo dejarla con la cifra. La línea de hombros de Doña Nieves se lee como
+   personaje, no como explicación. **Saltar una práctica** no se puede (son paso obligado), pero se puede
+   pasar a toques sin pensar; no cuesta puntos y la consecuencia se ve igual, así que no es trampa. **Explotar
+   una práctica**, sólo por el hueco del hallazgo 1.
+4. **¿Se puede copiar algo que dé puntos?** Valor de hoy, monto, dictamen y sello cambian por alumno: no se
+   dictan. La NC y 1.1 dejan una «lista de claves» (alquiler → 10; «quiero saber si me cobra» → proveedor),
+   pero esa lista **es** el concepto (una versión corta del manual y del Cuadro 1); con 20 y 15 puntos y la
+   defensa preguntando con otra operación, se acepta. El copiado real es el del hallazgo 1.
+5. **¿La jornada quedó corta?** Sí: del mismo largo que la v1 (unos 25 toques y 6 números en 375×812), con
+   una línea de texto menos y varios párrafos menos. No crece.
+
+### Hallazgos, de más grave a menos grave
+
+**1. 🔴 Cualquiera puede jugar tu versión sin cuenta, ensayar las carpetas con nota y ver la pared.**
+- *Qué pasa.* Sin sesión, `EscenaVentanilla.tsx` toma la versión de la dirección (`#v=N`, de 0 a 999), y
+  con sesión la pantalla muestra «TUS DATOS: VERSIÓN N». Basta abrir `/juego-aief#v=N` en otra pestaña
+  privada o en el celular de un compañero: se juegan **las mismas carpetas con nota**, se da vuelta la pared
+  y se vuelve a la cuenta con todas las respuestas. Además, si ese ensayo quedó en el mismo navegador y la
+  nube está vacía, `leerLocal(v)` lo sube como la partida del alumno.
+- *Por qué importa.* Anula «la carpeta no se rehace», el escalón en que acertó (y con eso cualquier
+  respuesta a la pregunta de A2.5) y la regla del 27-09 de que lo que da puntos no se copia: un compañero
+  juega tu versión por ti. Ninguna parte del papel lo trata; la semilla propia (imprescindible 8) no lo
+  arregla, porque el número igual se ve en pantalla.
+- *Propuesta (recomendada, barata):* sin cuenta se juega **sólo la versión 0**, el caso de ejemplo sin nota
+  (o una versión al azar que no se puede elegir); `#v=` queda sólo para la cuenta de Ronald; la pantalla
+  del alumno no muestra el número de versión (va en la hoja de Ronald); y una partida local jugada sin
+  cuenta nunca se sube a una cuenta. Suma un punto al principio de B2.10, junto con la semilla.
+
+**2. 🟠 El manual no tiene el texto de la calidad: nadie le dice al alumno qué es «aceptar con observación».**
+- *Qué pasa.* `04` A2.1 y A2.7 cuentan con una herramienta en el manual («los seis sellos en sus dos
+  pisos» y «la tabla de dictámenes, regla del juego»), y la hoja de observación no dice qué característica es
+  fundamental (B2.5). Pero `05` N2.4 sólo escribe tres líneas («La norma, en la operación marcada…», «como
+  mucho un defecto») y ninguna parte escribe cuáles son los dos pisos ni cuándo se acepta con observación.
+  La práctica del pagaré muestra una fundamental; **ninguna muestra una de mejora**. La primera vez que el
+  alumno ve un defecto de mejora, cuenta, y la respuesta (aceptar con observación y no devolver) es una
+  regla de la agencia que el dossier no trae.
+- *Por qué importa.* Castiga al que sabe (quien leyó el dossier puede devolver un balance de julio con buena
+  razón y sale gris) y vuelve azar 10 de los 20 puntos del dictamen.
+- *Propuesta.* Narrativa escribe la hoja del manual, sin explicar: «Fundamentales: relevancia y
+  representación fiel. De mejora: comparabilidad, verificabilidad, oportunidad y comprensibilidad. Norma
+  mal o defecto fundamental: devuelve. Defecto de mejora con la norma bien: acepta con observación.»
+  Marcada **regla del juego**. Aparece junto con la hoja de observación, después del pagaré.
+
+**3. 🟠 1.1: la frase nueva del inversionista pide la hoja del empleado.**
+- *Qué pasa.* «¿Fue suerte, o gana así todos los años?» pregunta si los resultados se sostienen: es la hoja
+  «continuidad y resultados» (la del empleado), no «rentabilidad y patrimonio». Y «Gerencia 2» («somos dos
+  para atender, no sé si nos alcanza para sumar a alguien») suena a capacidad de pagar un sueldo, no a
+  «márgenes por línea». Sacar la hoja del banco resolvió el choque proveedor y banco, pero quedan cuatro
+  hojas vecinas y las frases tienen que apuntar a una sola.
+- *Por qué importa.* «Sello bien y hoja mal cuenta como falla»: con una frase que apunta a otra hoja, el que
+  entiende falla. Es el imprescindible 7 a medias.
+- *Propuesta.* Inversionista 2: «Puse dinero en la ferretería. ¿Cuánto me rinde lo que puse y cuánto vale
+  hoy mi parte? De eso depende si pongo más.» Gerencia 2: «¿Qué nos deja más, los clavos o la pintura? Quiero
+  saber qué traer más para diciembre.» Y una prueba de construcción: cada frase de 1.1 revisada contra la
+  columna «Qué mira primero» del Cuadro 1, una sola hoja defendible por frase.
+
+**4. 🟡 En el par de 1.2, la primera carpeta dice de qué lado cae la segunda.**
+- *Qué pasa.* Como siempre es «una se queda, una se devuelve», quien está seguro de la primera sabe si la
+  segunda se queda o se va. Si la primera se queda, la segunda es DEVOLVER en sus tres formas.
+- *Por qué importa.* Regala hasta 5 puntos (un dictamen); la NC y el sello de la segunda siguen haciendo
+  falta, y cualquier otro armado del par reabre «devolver siempre».
+- *Propuesta.* Se acepta y se dice en la ficha (es el costo de cerrar la estrategia dominante). Si se
+  quiere cerrar del todo: que el repaso de 1.2 traiga una carpeta sorteada sin pareja, y que la rúbrica de
+  la defensa pida el dictamen de la segunda con su porqué.
+
+**5. 🟡 Tres cabos del puntaje (A2.5).**
+- Cuando la NC cae por el escalón (d), la carpeta entera se pierde: `02` B2.11 pidió una regla y `04` no la
+  escribió. Propuesta: los tres ítems de esa carpeta se cuentan con el escalón de la carpeta de repaso donde
+  salgan bien.
+- A2.5 pone la calidad y medio dictamen en «1.3» (subtema del dossier) y `02` dice «la calidad pesa en 1.2»
+  (parte del juego). No es un choque de fondo; basta decir en A2.5 que las etiquetas son del dossier.
+- **Dato para la pregunta abierta (no la responde):** con el piso de 50, quien termina moliendo repasos
+  (la NC probando cuatro números por carpeta, el valor de hoy siguiendo las pistas) llega a 50 sin entender;
+  y sin descuento llega a 100. El registro guarda el escalón en los dos casos.
+
+**6. 🟡 La tercera frase del cliente de 1.3 mezcla precio de venta con reexpresión.**
+- *Qué pasa.* «Si hoy vendo mi [garantía] me pagan Bs C» afirma un precio de mercado real. Un alumno atento
+  puede razonar que entonces el valor de hoy es C. (En el código, C = `valorDelCliente`, siempre mayor que el
+  valor de hoy: no regala la respuesta, pero confunde la idea.)
+- *Propuesta.* Cambiarla por algo que sea opinión del cliente: «Mi cuñado dice que hoy vale Bs C. Eso ya
+  es ganancia, ¿no?».
+
+**7. 🟡 Castellano neutro.** «Plata» por dinero en la frase del inversionista (`05` N2.3) y en la pista
+concreta de 1.1 (N2.8 #5): va «dinero». «Don Rolando, cooperativa minera» en la agencia de Cliza choca con
+el mismo motivo por el que `05` descartó la petrolera; alcanza con que diga de dónde viene («de Potosí,
+cooperativa minera»).
+
+**8. 🟡 Alineaciones de papel antes de construir.**
+- `02` B2.3 (b) todavía dice «Mira el resto de la carpeta»: se construye con la línea de `05` N2.4.
+- La sierra de Don Julio queda sólo en la práctica: se anota como adaptación en `00` R3.2 y va en el plan
+  simple como cambio, en una línea.
+- `04` A1.4 (40 % registro, 60 % defensa) y lo que `03` P3.3 herede de ahí quedan sin efecto por la regla
+  del 27-09 (el juego entrega 100 por tema; la ponderación es de Ronald). Saqué la pregunta de mi lista.
+
+### Los tres alumnos, en la v2 (versión 417 y 5, con las reglas del sorteo)
+
+- **La que sabe:** en 1.1 acierta salvo con el inversionista de la frase nueva (hallazgo 3). En la práctica
+  del pagaré puede caer como todos, y lo entiende en una línea. En 1.2 no sabe qué hacer con un defecto de
+  mejora si el manual no lo dice (hallazgo 2). En 1.3 calcula y sale verde. Pasa con una jornada y un repaso.
+- **El que no sabe:** las tres prácticas le muestran lo que tiene que mirar, y las pistas (a) le recuerdan
+  la práctica. Es el camino que más mejoró frente a la v1.
+- **El que quiere terminar rápido:** hoy su mejor jugada no está en la ventanilla sino fuera: abrir
+  `#v=N` sin cuenta, ver la pared y volver (hallazgo 1). Cerrado eso, sólo le queda moler repasos, que el
+  registro muestra.
+
+### Lo que está bien y no conviene tocar
+
+- El patrón práctica sin nota, consecuencia en el momento, una línea de la jefa, herramienta nueva.
+- «Déjala por hoy» y el pagaré excluido de las carpetas con nota de la misma jornada.
+- La línea gris con el monto T de la cooperativa.
+- Sacar la línea escrita al cliente y pasarla a la defensa.
+- El orden de recorte de A2.4 (nunca las prácticas de 1.2 y 1.3).
+
+### Qué falta para mostrárselo a Ronald
+
+**No está listo todavía.** Falta, en este orden:
+
+1. Decidir y anotar en B2.10 que sin cuenta sólo se juega el ejemplo, sin número de versión a la vista
+   (hallazgo 1).
+2. El texto de la hoja del manual de calidad, con los dos pisos y los tres dictámenes (hallazgo 2).
+3. Las frases de inversionista 2 y gerencia 2 reescritas, con la prueba de «una sola hoja por frase»
+   (hallazgo 3).
+
+Con esos tres, **listo para mostrarle a Ronald**, con la pregunta de A2.5 como única pregunta. Lo demás
+(hallazgos 4 a 8) se corrige en la construcción sin volver a esta etapa.
 
 ---
 

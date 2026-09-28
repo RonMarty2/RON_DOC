@@ -1,10 +1,18 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 7 · 28-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 8 · 28-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
 
+### De la revisión de la maqueta de Psicoestadística Descriptiva · Psicología, ronda 2 (papel, 28-09)
+
+Ninguna pregunta nueva. Los hallazgos son de diseño y los corrige el adaptador antes de que veas la
+maqueta; recibes la versión corregida con una línea de qué cambió.
+
 ### De la revisión del marco A de Psicoestadística Descriptiva · Psicología (papel, 28-09)
+
+**Resueltas por Ronald el 28-09** (quedan por historia): el Tema 4 entero antes que el 5, y el escalón «a
+leer» no manda a esas tres páginas.
 
 Lo de fondo (hallazgos 1 a 6) es diseño y lo resuelve la ronda 2 del adaptador sin reabrir tu elección.
 Quedan dos cosas tuyas, y ninguna es de gusto:
@@ -71,6 +79,237 @@ Se suman a las cinco que esa parte ya lista.
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 28-09-2026 · Psicoestadística Descriptiva (Psicología), maqueta de la ronda 2: ¿juego o cuestionario bonito? (papel, v8)
+
+**Qué se revisó.** La ronda 2 de `00-adaptacion-psicoestadistica-descriptiva-psicologia.md` (§R2.0 a
+§R2.8 y su «Lista de salida · ronda 2»), contra la v7 de este archivo (menos el arreglo 1, que Ronald
+rechazó), IDEA-JUEGO §21 y §22 y `PIEZAS-COMUNES.md`. Lo que la maqueta da por hecho para el reintento, el
+celular y la conexión se comprobó contra el código: `version-alumno.ts`, `escalera.ts`, `partida.ts`,
+`nativo.ts`, `EscenaPlanta.tsx` y `EscenaVentanilla.tsx`. No hay nada construido de esta isla.
+
+**Veredicto.** Mucho mejor que la ronda 1: el Tema 1 tiene un solo juego, el sesgo apunta a los dos lados,
+la condicionada se juega una vez, el mapa no se arrastra y la maqueta aguanta el orden de dictado. A la
+pregunta de Ronald, la respuesta honesta hoy es **«seis juegos y tres ejercicios con consecuencia»**: el 1,
+3A, 4B, 5 y 6 (y en parte el 2B) tienen una decisión que el cálculo informa pero no dicta, y algo que
+sorprende; en el **2A, 3B y 4A** la «decisión» es la salida del cálculo. Además quedan números de peaje
+que la lista de salida da por cerrados, y subtemas esenciales sin lugar en §R2.2, que es justo la tabla
+que Ronald va a aprobar. **Dos bloqueos**; los dos se arreglan con líneas, sin cambiar la maqueta.
+
+### La lista de salida del adaptador, comprobada
+
+| Línea de su lista | ¿Es cierto? | Por qué |
+|---|---|---|
+| Mapa de cobertura sin temas esenciales afuera | ✘ | Hallazgo 1: percentil, marca de clase y centro agrupado, moda, fases del análisis y error muestral no tienen lugar |
+| Ninguna estrategia gana sin entender (patrón, número de peaje, frase obvia) | ✘ en parte | Hallazgos 2, 5 y 6 |
+| Lo que Ronald ya dijo: «cada juego dice qué número se escribe y qué cambia» | ✘ en parte | Hallazgo 2 |
+| Juego con sabor a la materia: «cada juego decide algo de la ciudad con el número» | ✘ en parte | Hallazgo 3: en tres juegos el número decide solo |
+| Realista con el tamaño; web y Android | ✘ en parte | Hallazgo 4: «otro intento es otra ciudad», el botón atrás y el guardado al volver se dan por hechos |
+| Las demás (orden de dictado, copia, individual, no es lección, lo que dijo Ronald, traspaso, tuteo y sin guiones largos) | ✔ | Comprobadas; guiones largos y voseo: 0 en el documento |
+
+### Hallazgos, de más grave a menos grave
+
+**Bloqueos (no se le muestra a Ronald así):**
+
+1. **§R2.2 deja subtemas esenciales sin lugar, y lo que Ronald aprueba es esa tabla.** **Qué pasa:** la
+   esencia (§1.3) pide percentil con n + 1, marca de clase, media y mediana agrupadas, moda, fases del
+   análisis «y por qué no se reordenan» y error muestral contra no muestral. En la ronda 2: el
+   **percentil** no se juega en ningún lado (3B pide sólo cuartiles, RIC y vallas), aunque la propia tabla
+   §R2.0 dice que 3B enseña «no confundir percentil con porcentaje»; la **marca de clase y el centro
+   agrupado** desaparecieron (la ronda 1 los tenía entre el Tema 2 y el 3; la tabla «qué usa cada pieza» ya
+   no); la **moda** no aparece; las **fases** se mandan al Tema 6 en la fila de 1.1 y 1.4, pero la
+   descripción del Tema 6 sólo juega el grupo de control; el **error muestral** no se nombra (el Tema 1
+   juega sólo el sesgo). **Por qué importa:** Ronald aprobaría una tabla incompleta y el ✔ de cobertura es
+   falso. **Propuesta:** una fila por cada uno en §R2.2. Recomendado: percentil en **3B** (Tomás «sacó
+   85»; escribes su percentil y la derivación depende de él, no del puntaje); marca de clase y centro
+   agrupado como último paso de **2A**, o dossier si no se quiere alargar 2A (y decirlo); moda en **3A**
+   junto a media y mediana, o dossier; fases, **dossier** (el Tema 6 no las juega); error muestral en el
+   **Tema 1** (hallazgo 6).
+
+2. **Quedan números de peaje, y la lista dice que no.** **Qué pasa**, número por número: en **4B**, el
+   signo de la covarianza (es el signo de r, ya visible en la nube, y r se pide con la fórmula de D6 §6.3,
+   que no la necesita) y **R²** (no mueve nada en 4B; la frase de R² está en el Tema 6); en **2A**, «en la
+   ojiva lees el corte» sin decir qué decide ese corte; en **3A**, «eliges qué centro informar» sin
+   consecuencia (el «si lo hace mal» de §R2.0 no la trae); en **2B**, si el presupuesto alcanza para K
+   programas, ordenar basta para saber qué se financia y el acumulado no decide nada. **Por qué importa:**
+   es la pregunta de Ronald y el control del 28-09 («cada número que escribe el alumno cambia lo que
+   pasa»). **Propuesta:** cada número se ata a algo o sale. **4B:** el signo de la covarianza sale del
+   juego (dossier); R² entra en la frase para la concejala («comparten tal parte de su variación»), armada
+   con piezas, que decide si financia la búsqueda, o sale de 4B y queda sólo en el Tema 6. **2A:** el
+   médico da los cupos y tú lees en la ojiva desde qué espera se atiende primero: el corte decide quién
+   entra. **3A:** el centro que informas clasifica al grupo («leve» o «moderado», como el paciente que
+   arrastra la media en D3 §3.1) y con eso recibe el recurso de ese nivel. **2B:** el acumulado es lo que la
+   concejala anuncia («resolvemos el X %»); si escribes 80 donde era 62, meses después la promesa se cae en
+   público. O los programas cuestan distinto y el corte no es «los K primeros».
+
+**Importantes:**
+
+3. **En tres juegos la decisión es la salida del cálculo (2A, 3B, 4A).** **Qué pasa:** jugando como el que
+   sabe, en 2A llenas la tabla y el umbral y los cupos salen de ese número; en 3B escribes cuartiles y
+   vallas y derivar es «quien pasa la valla»; en 4A lees qué pregunta el pedido, eliges el denominador y la
+   brigada va sola. No hay nada que el número informe y tú decidas: con dibujos y consecuencia, pero es la
+   forma de un cuestionario. **Por qué importa:** es lo que Ronald preguntó; si se le dice «nueve juegos»,
+   espera nueve juegos. **Propuesta**, dentro de la modalidad de cada tema (no se trae mecánica de otro):
+   **2A**, lo del hallazgo 2 (cupos fijos, el corte lo eliges en la ojiva); **3B**, pocas derivaciones para
+   dos grupos, el mismo puntaje extremo en uno y del montón en otro, y el percentil de Tomás contra el
+   «sacó 85 %»: hay que decidir a quién, no sólo marcar a los de afuera; **4A**, el mismo pedido usa los dos
+   denominadores: la brigada va al turno de mayor riesgo (por fila) y los materiales se calculan por
+   cantidad de estresados (conjunta); mezclarlos deja al turno correcto sin materiales o al grande con la
+   brigada. Y en el resumen para Ronald, decir qué juegos son fuertes y cuáles son pasos cortos, sin
+   venderlos iguales.
+
+4. **Se da por hecho lo que el motor no tiene.** **Qué pasa:** el cierre del tanteo en los nueve juegos es
+   «otro intento es otra ciudad» (§R2.1, §R2.4, §R2.6 punto 8), y el escalón (d) es «otro pedido con otros
+   números». En el código, `versionDeAlumno` da **una sola versión por alumno y por semilla**, y
+   `escalera.ts` dice que el cuarto escalón «queda para cuando el registro guarde la versión de cada paso
+   (hoy toda la partida usa una sola versión)». «El botón atrás cierra la hoja abierta»: ningún juego
+   maneja el botón atrás (`nativo.ts` sólo escucha el regreso del inicio de sesión). El guardado al volver
+   la conexión existe, pero **copiado** dentro de `EscenaPlanta.tsx` y `EscenaVentanilla.tsx`, no en el
+   motor. **Por qué importa:** la versión mínima (Tema 1) necesita las tres cosas; si no están en el costo,
+   aparecen al construir. **Propuesta:** sumar a §R2.5, en «nuevo y se hace como motor», la versión por
+   intento (semilla `"<isla>:<tema>:<intento>"`) guardada en la partida y leída por el registro y la página
+   del docente, y el botón atrás que cierra la hoja; en «hay que despegar», el guardado con reintento de
+   las dos escenas a una pieza común.
+
+5. **Dos decisiones que se ganan con un patrón.** **Qué pasa:** (a) en 4B la ordenanza trata r como causa
+   **en todas las versiones**, así que «nunca firmes lo que propone la concejala» acierta siempre (mi
+   arreglo 3 de la v7 la dejó así); el alumno aprende «la concejala se equivoca», no «r no es causa». (b)
+   En el Tema 5, «qué carta recibe cada familia» no dice cómo se arma: si son dos cartas («posible
+   dislexia» o «le haremos una evaluación»), la prudente se nota sin calcular. **Propuesta:** (a) en 4B la
+   concejala trae **dos o tres usos del mismo dato**, cada uno válido o no según la versión: buscar por
+   pantalla (válido si r es fuerte), prever cupos con ŷ (válido dentro del rango), la ordenanza (nunca
+   válida, pero mezclada con las otras); «rechaza todo» y «aprueba todo» pierden. (b) En el 5 la carta se
+   arma con piezas y lleva **tu número** («de cada 10 niños con este resultado, X…»); con prevalencia alta
+   o baja, la carta correcta cambia.
+
+6. **El Tema 1 (la versión mínima) mezcla dos «lo que no viste».** **Qué pasa:** «para los que no viste,
+   escribes quién quedó afuera y si eso sube o baja el resultado». Un colegio **sin encuestas** no tiene
+   sesgo que corregir: no tiene datos. El sesgo es de los colegios que mediste **con un método que deja
+   gente afuera** (la puerta, el teléfono). Falta decir qué es acertar: con 60 encuestas repartidas, un
+   buen método puede errar por azar y el censo lo va a mostrar. Y «sube o baja» es un sí o no: al azar se
+   acierta la mitad. **Por qué importa:** es la primera pieza que se construye y el concepto central de la
+   materia. **Propuesta**, para la ficha: (a) la dirección del sesgo corrige la proporción de los colegios
+   medidos con puerta o teléfono; de los colegios sin encuestas no se afirma nada (la frase no puede
+   cubrirlos), y repartir las 60 es la decisión de cubrir más colegios o medir mejor cada uno; (b) se
+   califica lo razonado con tus datos, no lo que muestre el censo, y la consecuencia distingue «tu método
+   dejó gente afuera» (sesgo) de «te tocó una muestra rara» (error muestral, que así queda jugado); (c)
+   «sube o baja» sólo puntúa junto con una colocación coherente con esa dirección.
+
+7. **El Tema 6 vuelve a calcular los Temas 3 y 4.** **Qué pasa:** «los estadísticos los escribes tú, desde
+   los datos», para cada variable del informe: otra vez medias, desviaciones, porcentajes y r, en la pieza
+   más larga, al final. **Por qué importa:** «un concepto, un solo lugar» (§21) y cansancio justo antes del
+   cierre; lo propio del Tema 6 es qué estadístico y qué gráfico corresponde, en qué orden, cómo se dice y
+   qué limitación se nombra. **Propuesta:** el archivo de pruebas trae los estadísticos ya calculados,
+   **algunos mal elegidos para su variable** (la media de una ordinal, una torta con doce sectores), y tú
+   escribes sólo lo que la repregunta ataca (el n de la muestra, el R² de la frase).
+
+8. **Carga de escritura en el celular (2A).** **Qué pasa:** n, h, N y H por fila, más k, amplitud, límites y
+   umbral: unos 30 campos con el teclado del teléfono. **Propuesta:** escribes lo que decide (el umbral, k,
+   la amplitud, los primeros límites y una o dos filas que el juego elige por versión); el resto de la
+   tabla se llena desde tus paredes. Como criterio de toda ficha: contar los campos que se escriben.
+
+9. **Lo que da ganas de seguir sigue sin forma.** **Qué pasa:** §R2.6 punto 9 lo da por tomado («la gente
+   que alcanzaste queda en la ciudad»), pero no dice cómo se ve. **Propuesta, barata:** cada lugar del mapa
+   guarda a la gente de su pedido, tocable, con la línea de lo que le pasó, y se enciende cuando cierras su
+   pedido. Lo detalla la progresión; la maqueta sólo tiene que decirlo en una línea.
+
+**Menores:**
+
+10. **La ronda 1 sigue diciendo lo contrario, y el director la va a leer.** El gancho y el género del marco A
+    (§4) venden la niebla en toda la ciudad, «horas de psicólogo», el mapa «que se mueve con el dedo» y «el
+    mapa guarda las nubes»; §7 y §8 parten el Tema 4 en dos. **Propuesta:** una línea al inicio de §4, §7 y
+    §8 («donde contradiga a la ronda 2, manda la ronda 2») y el gancho y el género del juego entero en
+    §R2.1, sin la niebla como marco.
+11. **El hub tiene unos ocho lugares y el Tema 1 necesita ocho colegios.** Decir que el Tema 1 se abre en
+    su propia pantalla (la zona de los colegios) desde el hub.
+12. **D6 §6.3 es a la vez la página recomendada para r y una de las prohibidas** («la motivación explica el
+    42 %»). El escalón «a leer» manda a la fórmula o al ejemplo de r, con su página, no a la sección entera.
+13. **«La fila en la puerta» (2A) se parece a la cola de clientes de La ventanilla.** Dibujar la
+    consecuencia de otra forma (la sala de espera vista desde arriba, la agenda del médico), nunca gente en
+    fila ante un mostrador.
+14. **Un tema con dos juegos entrega una nota sobre 100:** que la progresión diga cómo, sin preguntarle a
+    Ronald un reparto.
+15. **Redibujos y tablas que calculan solos.** En 4A, «tocar una fila la vuelve el 100 %» marca el total,
+    pero no muestra los porcentajes: los escribes tú. Los gráficos que se redibujan con tu número (2A, 2B,
+    3B) muestran si alguien queda afuera, no el valor correcto: se califica el valor exacto. En 4B, decir
+    qué se decide cuando la nube es curva (hoy se mira y no pasa nada).
+
+### Los arreglos de la v7: ¿resueltos o sólo nombrados?
+
+| v7 | Cómo quedó |
+|---|---|
+| 2. Sesgo en un solo sentido | Resuelto en el Tema 1; falta separar colegios sin datos de colegios medidos con sesgo (hallazgo 6) |
+| 3. Frase obvia | Resuelto en el Tema 1; en 4B a medias (ordenanza siempre inválida) y en el 5 sin tratar (hallazgo 5) |
+| 4. Número de peaje | Resuelto en el Tema 1; quedan en 2A, 2B, 3A y 4B (hallazgo 2) |
+| 5 y 6. Cinco juegos en el Tema 1; demasiadas modalidades | Resueltos |
+| 7. Personas que regalan la respuesta | Resuelto como regla |
+| 8. Tanteo con la revelación | Resuelto en el diseño; el motor no lo tiene (hallazgo 4) |
+| 9. Ganas de seguir | Sólo nombrado (hallazgo 9) |
+| 10. Copia | Resuelto: varía todo lo que cuenta; el orden del informe pesa poco y se dice |
+| 11. Mapa que se arrastra | Resuelto |
+| 12 y 13. Páginas del dossier; orden de dictado | Resueltos por Ronald; un detalle en el hallazgo 12 |
+| 14. Parecidos | Resuelto, salvo la fila (hallazgo 13) |
+
+### Los tres alumnos, en corto
+
+- **El que sabe:** disfruta el 1, el 3A (error o persona real), el 4B (el punto suelto y para qué sirve r),
+  el 5 y la audiencia. En el 2A llena treinta casillas; en el 3B y el 4A termina sin haber decidido nada;
+  en el 6 vuelve a calcular lo del 3 y el 4.
+- **El que no sabe:** en el 1 ve que su método dejó gente afuera, pero si el censo le muestra un error por
+  azar no sabe si fue culpa suya (hallazgo 6). En el 4A, si lee bien el pedido, el pedido le dice el
+  denominador: aprende a leer, no a condicionar (hallazgo 3).
+- **El que quiere terminar rápido:** con calculadora y escalera pasa los números; «nunca firmes la
+  ordenanza» y «la carta prudente» le dan puntos sin entender (hallazgo 5); «sube o baja» al azar acierta
+  la mitad (hallazgo 6). Lo demás lo frena.
+
+**No tocar:** un solo juego en el Tema 1, con la niebla sólo ahí; el sesgo en los dos sentidos; error o
+persona real en 3A y 4B; la condicionada una sola vez, en el 4A; las pruebas tentadoras a veces válidas
+del Tema 6; el mapa fijo que se toca; los puntos de control; «se califica lo firmado antes de la
+consecuencia».
+
+### Lista de salida del crítico (v8)
+
+| Regla | ✔/✘ | Dónde se ve |
+|---|---|---|
+| 1. Tres alumnos | ✔ | «Los tres alumnos» |
+| 2. ¿Divertido? ¿monótono o sin marco? | ✔ | Veredicto; hallazgos 3 y 9 |
+| 3. Contra la visión y los pedidos (cuestionario, elige en vez de calcular, se ve antes) | ✔ | Hallazgos 2, 3 y 5 (`01-vision.md` de esta isla todavía no existe) |
+| 4. Contra el aprendizaje (ganar sin entender, pista, registro) | ✔ | Hallazgos 1, 6 y 7 |
+| 5. Contra la realidad (celular, conexión, una persona, retomar) | ✔ | Hallazgos 4 y 8 |
+| 6. Estrategia dominante, patrón, peaje, frase obvia; cuidado con el propio arreglo | ✔ | Hallazgos 2, 5 y 6; ninguna propuesta lleva la niebla ni otra mecánica a otro tema; el 5a corrige un arreglo mío de la v7 |
+| 7. Orden real de dictado | ✔ | Comprobado T1 → T6 con el 4 antes del 5: sin hallazgo |
+| 8. Coherencia con el dossier que se manda a leer | ✔ | Hallazgo 12 |
+| 9. Tanteo | ✔ | Hallazgos 4, 6 y 15 |
+| 10. Lo prometido contra lo que existe | ✔ | Hallazgo 4, contra el código |
+| 11. ¿Se puede copiar?, parte por parte | ✔ | Tabla de arreglos, fila 10: sin hallazgo nuevo |
+| 12. Revisar lo jugable | No aplica | Nada construido de esta isla |
+| 13. ¿Otro juego? ¿se reutilizó bien? | ✔ | Hallazgos 13 (la fila) y 4 (guardado copiado en dos escenas) |
+| Ronald decide; lo aprobado no se reabre | ✔ | Ninguna decisión suya se reabre; nada estaba APROBADO; ninguna pregunta nueva |
+| Lee antes de proponer | ✔ | «Qué se revisó» |
+| Lo que Ronald ya dijo (no cuestionario, escribe el número, primero se ve) | ✔ | Hallazgos 2, 3 y 15 |
+| Juego con sabor a la materia | ✔ | Veredicto; hallazgo 3 |
+| Un juego por materia y por carrera; motor común «como Doom» | ✔ | Hallazgos 4 y 13 |
+| Lo que cuenta para la nota no se puede copiar | ✔ | Regla 11 |
+| Individual, sobre 100, sin reparto | ✔ | Hallazgo 14 (no se propone reparto) |
+| El juego no es una lección | ✔ | Toda propuesta es una decisión con consecuencia; ninguna explica |
+| Todos los agentes en su etapa; sin idas y vueltas | ✔ | Revisión única antes de Ronald; corrige el adaptador |
+| Aspecto con bocetos | ✔ | Hallazgos 10, 11 y 13 son para que el director no dibuje lo reemplazado |
+| Cómo llega el alumno | ✔ | Sin cambios |
+| Marco fijo, modalidad variable; el marco es el mundo | ✔ | Cada propuesta queda dentro de la modalidad de su tema; que un tema no use la niebla no se anotó |
+| Cómo se planifica (diseño inverso, arco, escalera, contraste, lo que responde el dossier) | ✔ | Hallazgos 1 y 4 |
+| Lo que Ronald decide se vuelve regla | ✔ | No hubo decisión nueva |
+| Por temas, sin tiempo | ✔ | Sin plazos ni duraciones |
+| Primero la maqueta; lo que un tema posterior profundiza se juega allá | ✔ | Hallazgos 1 y 7 |
+| Estructura escalable | ✔ | Hallazgo 4: lo copiado pasa al motor |
+| Web y Android por igual | ✔ | Hallazgos 4 y 8 |
+| Un tema a la vez | ✔ | La versión mínima sigue siendo el Tema 1 |
+| Lista de salida; nada llega a Ronald sin el crítico | ✔ | Esta lista; la del adaptador, comprobada arriba |
+| Términos técnicos explicados | ✔ | Los que uso ya están explicados en el documento revisado |
+| Tuteo, sin guiones largos, castellano neutro | ✔ | Sin guiones largos en esta entrada |
+| Realista con el tamaño | ✔ | Hallazgos 4 y 8 |
+| Escribir en su archivo con versión, fecha y pendientes | ✔ | Encabezado v8 y «Decisiones pendientes» |
 
 ---
 

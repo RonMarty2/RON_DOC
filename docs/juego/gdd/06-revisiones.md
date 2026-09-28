@@ -1,8 +1,21 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 6 · 28-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 7 · 28-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
+
+### De la revisión del marco A de Psicoestadística Descriptiva · Psicología (papel, 28-09)
+
+Lo de fondo (hallazgos 1 a 6) es diseño y lo resuelve la ronda 2 del adaptador sin reabrir tu elección.
+Quedan dos cosas tuyas, y ninguna es de gusto:
+
+1. **El orden en que dictas los Temas 4 y 5** (es un dato, no gasta la pregunta de la ronda): ¿el Tema 4
+   entero y después probabilidad, como el dossier, o probabilidad antes que correlación y regresión, como
+   el calendario de EAD-111? De eso depende dónde se juega la probabilidad condicionada (hallazgo 6).
+2. **Tres páginas del dossier que dicen otra cosa que el juego** (hallazgo 12): Sturges «impar» (D2 §2.2),
+   la covarianza dividida por N (D4 §4.4) y «R² explica» (D4 §4.5 y D6 §6.3). Recomendado: el escalón «a
+   leer» manda a otra página (los ejemplos de D2 §2.2, D6 §6.3, el recuadro «Qué NO» de D4 §4.5) y tú
+   corriges esas frases cuando vuelvas a tocar esos dossiers.
 
 ### De la revisión de lo jugable del Tema 1 de AIEF (etapa 7, 28-09)
 
@@ -58,6 +71,180 @@ Se suman a las cinco que esa parte ya lista.
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 28-09-2026 · Psicoestadística Descriptiva (Psicología), marco A «El Observatorio»: ¿es un juego? (papel)
+
+**Qué se revisó.** El marco elegido por Ronald (A con las personas con nombre de B) en
+`00-adaptacion-psicoestadistica-descriptiva-psicologia.md` (ronda 1: §3 modalidades, §4 marco A, §6
+comprobaciones, §7 maqueta) y los bocetos `bocetos/psicoestadistica-psicologia-A.html` (y `-B.html` por
+las personas), contra IDEA-JUEGO §9 a §21 y `PIEZAS-COMUNES.md`. No hay nada construido de esta isla: todo
+lo que la propuesta da por hecho (estadística con pruebas, población con semilla, gráficos desde datos,
+mapa) es trabajo, no hecho. La pregunta de Ronald: *«¿estás seguro que es un juego, no sólo un
+cuestionario bonito?»*.
+
+**Veredicto.** **En el Tema 1 sí es un juego:** apuestas sin ver toda la ciudad y la ciudad te muestra
+después en qué te equivocaste; eso no se puede hacer en un cuestionario. **Del Tema 2 al 6, tal como está
+escrito, es sobre todo llenar números con el mapa de fondo y, al final, elegir la frase prudente entre
+dos:** un cuestionario bonito en varios tramos. Se arregla sin cambiar la elección de Ronald (hallazgos 1
+a 4), y la maqueta todavía no aplica la regla del 28-09 (hallazgo 5).
+
+### Hallazgos, de más grave a menos grave
+
+1. **La niebla sólo juega en el Tema 1, y el censo la gasta ahí mismo.** **Qué pasa:** el «Dos minutos
+   jugados» dice que al llegar el censo «la niebla se levanta de toda la ciudad»; §4 dice que «el mapa
+   guarda las nubes de los colegios que nunca miraste». Las dos no pueden ser. Si el censo destapa todo, del
+   Tema 2 en adelante no queda niebla. Y aunque quedara: en el Tema 2 los datos son los registros completos
+   del centro de salud, en el 5 un tamizaje, en el 6 un informe; nada se decide sobre el mapa. El propio
+   director lo vio en el boceto del Tema 4 («el mapa queda de adorno»). **Por qué importa:** el marco que
+   Ronald eligió es el mapa; si el mapa no decide nada del Tema 2 en adelante, lo que queda son pantallas de
+   cálculo, que es justo lo que Ronald teme. **Propuesta:** **niebla por capas**: cada pedido es otra
+   pregunta sobre la ciudad (sueño, estrés en el mercado, lectura, espera en el centro de salud). Los
+   lugares que ya conoces se ven, pero lo que el pedido pregunta vuelve a estar tapado hasta que lo mides.
+   Y en cada tema, una **decisión que se pone en el mapa** y un **«meses después» que se ve en el mapa**:
+
+   | Tema | Qué pones en el mapa | Qué muestra el «meses después» |
+   |---|---|---|
+   | 1 | Dónde encuestas y dónde van los talleres | El censo escolar, sólo de la capa «sueño» |
+   | 2 | Camas o turnos del centro de salud; el presupuesto por motivo (Pareto) | La fila en la puerta del centro de salud: quién esperó y por qué motivo |
+   | 3 | Taller grupal o especialista en cada barrio | Quién mejoró y quién quedó sin atender en cada barrio |
+   | 4a | La brigada en un turno o puesto del mercado | El estrés del mercado, por turno |
+   | 5 | A quiénes evalúa la única evaluadora y qué carta recibe cada familia | Qué niños tenían el trastorno y cuáles quedaron con la etiqueta |
+   | 4b | A quién buscas con el dato (válido) y si firmas la ordenanza (no) | El sueño del barrio al año siguiente; los cupos que faltaron en el barrio fuera de rango |
+   | 6 y Audiencia | Nada: la ciudad es tu evidencia | Te repreguntan por lo que la ciudad mostró |
+
+   Donde no haya decisión en el mapa (6), se dice, y el mapa es el archivo de la evidencia, no un menú.
+
+2. **Estrategia dominante nacida del marco: «lo que no viste siempre está peor».** **Qué pasa:** en el
+   ejemplo, el censo castiga a los colegios sin lista. Si la revelación siempre muestra que lo no medido
+   estaba peor (y es lo que hace falta para que la lección «golpee»), el alumno que quiere terminar rápido
+   aprende en el primer pedido a poner la ayuda donde hay niebla, sin razonar el sesgo. **Por qué
+   importa:** el dossier pide saber **hacia dónde** sesga (sube o baja, D1 §1.3), y así el juego premia una
+   regla fija. Es la lección de AIEF del 26-09 (rechazar a todos). **Propuesta:** en la mitad de las
+   versiones, el grupo que la muestra deja afuera **está mejor** (por ejemplo, la encuesta en la puerta a
+   las once pesca a los que llegan tarde porque durmieron mal: la muestra exagera y lo no visto está mejor).
+   La pista para saber hacia dónde está en el mundo: **quién quedó afuera y por qué** (hallazgo 7). Lo que
+   se califica: el alumno escribe la dirección del sesgo y pone la ayuda de acuerdo con ella. Prueba del
+   perezoso: «siempre a la niebla» y «siempre a lo medido» pierden en la mitad de las versiones.
+
+3. **Decidir entre dos frases es una pregunta de opción múltiple con la respuesta obvia.** **Qué pasa:** en
+   el boceto del Tema 4 la decisión son dos botones: «la pantalla les quita el sueño» o «van juntas; con
+   esto no se sabe si una causa la otra». Cualquiera elige la segunda sin mirar la nube ni calcular r. El
+   mismo documento lo anticipa (§6.1, «firmar siempre la frase prudente… no decide nada») pero el boceto no
+   lo resuelve. Además choca con «el alumno escribe, no elige». **Por qué importa:** es el momento que
+   enseña «correlación no es causa», y así se gana sin entenderlo. **Propuesta:** que el **mismo r** se use
+   dos veces y empuje en los dos sentidos: (a) **para buscar a quién ayudar** (quien usa mucha pantalla
+   probablemente duerme poco: buscarlo ahí es válido, y si te niegas a usar el dato, la brigada no los
+   encuentra); (b) **para decidir qué cambiar** (la ordenanza: no válido; si la firmas, al año siguiente
+   el sueño está igual). La frase, cuando haga falta, se **arma con piezas** (de quiénes, cuántos, qué
+   verbo: «van juntas», «causa», «explica») que cambian con la versión; nunca dos botones.
+
+4. **En el Tema 1, el número que escribes no cambia lo que pasa.** **Qué pasa:** escribes 0,35 (21 de 60)
+   y después pones los talleres; lo que decide si aciertas es cómo muestreaste, no el número. El cálculo es
+   un peaje antes de la decisión. **Por qué importa:** es la diferencia entre juego y cuestionario con
+   dibujos: en AIEF se corrigió igual («calcular la consecuencia», IDEA-JUEGO §8.2). **Propuesta:** que el
+   alumno calcule la proporción **por colegio medido** (una tablita chica) y que ese número ordene dónde van
+   los talleres entre lo que viste; y que para lo que no viste decida con la dirección del sesgo
+   (hallazgo 2). Del Tema 2 al 5 el número sí alimenta la decisión (umbral y camas, s y a qué barrio, el
+   porcentaje por fila y el turno, el VPP y a quién se evalúa): conservarlo.
+
+5. **La maqueta no aplica la regla del 28-09: el Tema 1 sigue con cinco juegos.** **Qué pasa:** §7.2 le da
+   al Tema 1 la encuesta y el censo, las denuncias de acoso, el gráfico de la concejala, los diez peores y la
+   clasificación de columnas. **Por qué importa:** Ronald ya lo dijo de esta misma ronda: «abarca mucho y
+   aprieta poco». **Propuesta** (dónde se juega cada subtema; lo confirma el adaptador en la ronda 2):
+
+   | Subtema del Tema 1 | Dónde se juega |
+   |---|---|
+   | 1.3 muestra y sesgos, 1.5 la frase que se sostiene | **Tema 1: su único juego** (la encuesta con niebla) |
+   | 1.6 niveles de medición | Tema 2: primer paso de ordenar la pila (el nivel decide la tabla y el gráfico); el «colegio promedio 3,4» cabe ahí o en el Tema 3 |
+   | 1.7 gráficos y eje truncado | Tema 2.3 y 2.4, junto con el pictograma engañoso (el gráfico de la concejala se rehace ahí) |
+   | 1.2 y 1.8 indicador y fenómeno (las denuncias) | Tema 6: una repregunta de limitaciones («¿qué mide tu indicador?»); si no calza, dossier |
+   | 1.1 y 1.4 grupo de control, regresión a la media | Ningún tema posterior lo profundiza. Recomendado: repregunta de la Audiencia («¿contra qué lo comparas?»). Alternativa: sólo dossier |
+   | 1.1 historia, campos de la psicología | Dossier |
+
+   Además, la versión mínima jugable queda en un tamaño que una persona puede construir y probar.
+
+6. **Demasiadas modalidades, y algunas repetidas.** **Qué pasa:** §3 tiene unas 22 modalidades distintas
+   para seis temas; cada una es otra pantalla que construir (armar tabla, paredes, ojiva, Pareto, caja,
+   nube, árbol…). Y hay dobles: la condicionada se juega en 4.2 y en 5.2 («la misma lógica que 4.2»); la
+   repregunta se juega en 6.2 y 6.3, en 6.4 y en la Audiencia final. **Por qué importa:** el riesgo de «tan
+   variado que parecen juegos distintos», el costo para una persona, y la regla «un concepto, un solo
+   lugar». **Propuesta:** uno o dos juegos por tema; lo demás son **pasos del mismo pedido** (Tema 2: tabla,
+   paredes y ojiva son tres pasos de la misma pila, no tres juegos). La condicionada se juega en el tema que
+   se dicte primero (4a o 5; depende del dato que se le pide a Ronald) y el otro la usa. El Tema 6 y la
+   Audiencia son **una sola pieza** con repreguntas.
+
+7. **Las personas con nombre pueden regalar la respuesta o quedar de adorno.** **Qué pasa:** la línea de
+   ejemplo que eligió Ronald («trabaja en el mercado y por eso no estaba en la encuesta») es la conclusión
+   del sesgo. Si se lee antes de decidir, la dice por el alumno; si nadie la toca, es decoración. **Por qué
+   importa:** es lo que Ronald tomó de B para que el número tenga cara. **Propuesta:** dos tipos de línea.
+   **Antes de decidir, una pista, no una conclusión** («sale del puesto a la una y entra al colegio a las
+   dos»; «en su casa no hay teléfono»). **Después del «meses después», la consecuencia** («no le llegó el
+   taller»; «quedó con la etiqueta»). Las líneas salen de plantillas con la semilla de la versión (como las
+   caras que salen del nombre), así no hay elenco fijo ni texto a mano por persona, y cambian de un alumno
+   a otro. Algunas personas vuelven en temas siguientes (la chica del turno tarde reaparece en el mercado):
+   da hilo sin encadenar números.
+
+8. **Tanteo con la revelación.** **Qué pasa:** el censo muestra la respuesta. Si el alumno puede volver al
+   mismo pedido con la misma versión (o cerrar y reabrir antes de que se guarde), repite ajustando sin
+   razonar. **Propuesta:** lo que se califica es lo firmado **antes** de la revelación, y se guarda en ese
+   momento; un nuevo intento después de ver el censo es **otra ciudad** (el escalón «otros números», que el
+   documento ya llama «otro pedido, en otro barrio»). Ninguna línea de persona ni capa del mapa se destapa
+   antes de firmar.
+
+9. **¿Qué da ganas de seguir?** **Qué pasa:** §4 dice que la progresión es «la gente que tu trabajo
+   alcanzó», pero no dice cómo se ve, y del Tema 2 en adelante nada se suma al mapa. **Propuesta, barata:**
+   una capa del mapa que se queda de un tema a otro con **la gente que alcanzaste y la que no** (sólo
+   historia, no cuenta para la nota ni pasa números al tema siguiente), y que cada revelación deje una
+   pregunta abierta que es el pedido siguiente («¿y en el mercado?»). No son puntos: es la ciudad.
+
+10. **¿Se puede copiar?, parte por parte.** Los números de los Temas 2 a 5 salen de la versión: bien. **Se
+    copia:** (a) en el Tema 1, «pon los talleres donde hay niebla» si no se aplica el hallazgo 2; (b) la
+    clasificación de columnas si las columnas son siempre las mismas (horas de sueño, turno, colegio,
+    escala 1 a 5): que salgan de un repertorio por versión; (c) el orden del informe del Tema 6 (muestra,
+    una variable, dos variables) es igual para todos: que varíe la pregunta del informe, y con ella qué
+    evidencia la responde, o que esa parte pese poco y se diga en la ficha; (d) las frases de dos botones
+    (hallazgo 3).
+
+11. **Celular y costo del mapa.** **Qué pasa:** §4 pide un mapa por barrios «que se mueve con el dedo» y el
+    boceto dice «arrastras tus 60 encuestas sobre el mapa». Arrastrar en un celular pelea con el
+    desplazamiento de la página y es lo más caro del arte. **Propuesta:** un **mapa fijo que entra en la
+    pantalla** (ocho lugares en grilla, como ya dibuja el boceto), sin desplazarlo; las encuestas se asignan
+    tocando un lugar (de a 10), no arrastrando. La población con semilla se genera en el teléfono, así que
+    sin conexión se juega igual; eso está bien pensado.
+
+12. **Páginas del dossier que contradicen el juego** (la escalera manda a leer). El adaptador ya las halló
+    (§1.4, puntos 2, 3 y 5); aquí sólo importa adónde manda el escalón «a leer»: Sturges «impar» en la
+    definición de D2 §2.2 (el juego pide el entero más cercano), la covarianza con N en D4 §4.4 junto a la
+    s con n − 1 de D3 §3.2 (da un r que no es el de Pearson) y «R² explica» en D4 §4.5 y D6 §6.3.
+    **Propuesta:** mandar a los ejemplos de D2 §2.2, a D6 §6.3 para r y al recuadro «Qué NO» de D4 §4.5; y
+    que Ronald corrija esas frases cuando vuelva a tocar los dossiers (pendiente arriba).
+
+13. **Orden de dictado supuesto.** §6.2 toma como supuesto «T4 partido y T5 antes de T4b». Por la regla del
+    28-09 es un dato: se le pregunta a Ronald aparte, en una línea (pendiente arriba), antes de que la ronda
+    2 fije las piezas.
+
+14. **Parecidos (punto 13).** Nada de AIEF ni de Proyectos II. Dos cuidados: el tamizaje del Tema 5 comparte
+    concepto con el del Aula de Probabilidad (PHQ-9 en una universidad); está bien mientras el juego no use
+    universidad, PHQ-9 ni frases del Aula. Y el «meses después» no se dibuja con un calendario (es pieza de
+    AIEF): aquí es la niebla que se va.
+
+### Los tres alumnos, en corto
+
+- **El que sabe (Tema 1 y Tema 4 del boceto):** disfruta la apuesta del Tema 1 y la revelación; en el Tema
+  4 calcula r, toca el punto suelto y después elige una frase que habría elegido sin calcular. Se aburre
+  en el 4.
+- **El que no sabe:** en el Tema 1 se equivoca, ve el censo y entiende que su muestra dejó gente afuera;
+  eso enseña. Pero con el ejemplo actual aprende «la niebla está peor», no «este grupo faltó por esto y
+  empuja hacia acá» (hallazgo 2).
+- **El que quiere terminar rápido:** escribe los números con la escalera, pone la ayuda donde hay niebla y
+  firma siempre la frase prudente. Hoy, con eso, pasa casi todo. Con los hallazgos 2, 3 y 8, no.
+
+**No tocar:** la niebla y el censo como juego del Tema 1 (es la forma exacta de muestra y población); tocar
+el punto suelto de la nube y ver quién es antes de calcular (Tema 4, «primero se mira»); los dos barrios con
+la misma media (Tema 3); el tamizaje con una sola evaluadora (Tema 5); los puntos de control por tema; las
+decisiones del §1.4 sobre qué fórmula pide el juego.
 
 ---
 

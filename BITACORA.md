@@ -34,9 +34,17 @@
 >   `CLAUDE.md`); al empezar, `git pull` y avisar lo que haya sin subir (`CLAUDE.md`, «Antes de hacer
 >   cualquier cosa», punto 1); y **cada agente trabaja de cero** (`LEEME.md`): la sesión no le adelanta el
 >   análisis de la materia.
-> - [ ] d. **Esperando a Ronald.** No se empieza nada de estadística (ni funciones, ni ronda del adaptador)
->   hasta que él diga que quedamos claros o que los agentes están listos. Cuando lo diga: ronda 1 del
->   adaptador con Psicoestadística Descriptiva (Psicología), de cero, y ver cómo se comporta.
+> - [x] d. Paso 1 de la materia: ronda 1 del adaptador con Psicoestadística Descriptiva (Psicología), de
+>   cero, ya como agente propio → `docs/juego/gdd/00-adaptacion-psicoestadistica-descriptiva-psicologia.md`
+>   (6 dossiers leídos enteros, huellas anotadas). Tres marcos: **A «El Observatorio»** (analista de
+>   bienestar de una ciudad, mapa con niebla, el censo revela a quién no llegó la ayuda; recomendado),
+>   B «La psicóloga del colegio», C «Verificado». Avisa cuatro cosas del dossier (verificadas en el `.tex`:
+>   varianza con n − 1 en el Tema 3 y covarianza con N en el Tema 4; Sturges «impar» y ejemplos que no;
+>   ficha y dossiers nombran distinto los Temas 4 a 6; R² «explica»). No se tocan desde acá.
+> - [ ] f. **Esperando a Ronald:** que elija marco (A, B, C o mezcla). Después: director (visión y bocetos).
+>   Dudas del adaptador sobre sus propias instrucciones, para decidir con Ronald si se mejora el agente:
+>   «una sola pregunta» contra «pregunta el orden de dictado»; nombre del archivo; en qué materia del sitio va
+>   el juego (Descriptiva o EAD-111).
 >
 > Nota de esta PC: `git stash@{0}` guarda el trabajo suelto que había en el disco antes del `git pull` del
 > 28-09 (casi todo ya estaba en GitHub; lo único propio es un borrador de escalera de ayuda para la escena

@@ -20,6 +20,23 @@ Cada vez que Ronald pida algo del juego, antes de diseñar o programar nada:
    alumno, cómo se juega, qué pasa si se equivoca, qué cambia por alumno). Al aprobarlo, se escribe
    `plan: "aprobado AAAA-MM-DD"` en su tema de `content/islas.ts`; sin eso, `npm test` no deja subir.
 
+## El aspecto se acuerda con bocetos, al inicio (Ronald, 28-09: «esto debería hacerse al inicio»)
+
+El Tema 1 de AIEF se construyó con una imagen fija arriba y texto abajo; Ronald lo vio y dijo que se
+veía «horrible o muy básico» y que nunca lo habían planificado. **El aspecto es parte de la visión y
+va en la etapa de materia, antes de cualquier tema:**
+
+1. Junto con el marco del juego, le muestras a Ronald **2 o 3 bocetos de pantalla de celular**
+   (dibujos simples, no código), cada uno con: qué se ve, qué se toca con el dedo, cómo reacciona el
+   mundo, una referencia real y cuánto cuesta construirlo. Recomiendas uno.
+2. Ronald elige o mezcla. Lo escribes en `01-vision.md` como **«Aspecto y sensación»**: disposición de
+   la pantalla, qué es un objeto que se toca, cómo se muestran los personajes y sus reacciones, qué se
+   anima, y lo que no va.
+3. Se anota en su isla de `content/islas.ts`: `aspecto: "aprobado AAAA-MM-DD"`. **Sin eso, ningún
+   juego de esa isla se publica** (`npm test` lo frena).
+4. Cada tema nuevo usa ese aspecto; si un tema necesita otro (un minijuego distinto), se muestra su
+   boceto a Ronald en la etapa 0 del tema, antes de detallarlo.
+
 ## Cómo se trabaja con Ronald (27-09, después de una tarde de idas y vueltas)
 
 - **La idea va primero y con él.** Cada tema empieza por la etapa 0: el director le cuenta a Ronald, en
@@ -60,6 +77,7 @@ Usa `WebSearch` sólo para confirmar referencias de juegos reales; no copies tex
 - **El juego no es una lección** (Ronald, 27-09: «¿no lo volverás una lección?… no quiero que se convierta en un libro interactivo»). En el juego **no se explica**: el alumno decide y ve la consecuencia en el mundo (el auditor observa, el cliente se va, la mora aparece) y de ahí entiende el porqué. Nada de escenas explicativas, relatos para leer ni mini lecciones. La lección vive en el dossier y en la sección Estudiar. Si una idea no se aprende por consecuencia sin volverse lección, queda para el dossier y la defensa, no se mete a la fuerza.
 - **Todos los agentes, cada uno en su etapa** (Ronald, 27-09). Ningún tema se construye ni se le muestra a Ronald sin pasar por las etapas de la tabla de `.claude/agents/LEEME.md` (ficha, aprendizaje, bucle, narrativa, crítico del papel, construcción, crítico de lo jugable, revisión de publicación). Si tu etapa depende de una anterior que no se hizo, dilo antes de seguir.
 - **Ronald arma la idea al inicio; los agentes la detallan, y sin idas y vueltas** (Ronald, 27-09: «siento que ya estás programando todo y al final me preguntarás si está bien la idea, cuando debería ser al inicio»). Cada tema empieza por la idea en simple con Ronald (etapa 0 de `LEEME.md`). Tu etapa corre **una vez**, parte de lo que Ronald ya acordó y no lo reabre. El crítico revisa una sola vez antes de mostrarle el plan; los ajustes chicos los hace directo el agente que corresponde. Escribe corto: tu resumen final es lo que se le muestra a Ronald, en simple.
+- **El aspecto se acuerda al inicio, con bocetos** (Ronald, 28-09: «esto debería hacerse al inicio»). Cómo se ve y cómo se toca el juego lo muestra el director con 2 o 3 bocetos de pantalla de celular en la etapa de materia, y Ronald elige; queda en `01-vision.md` («Aspecto y sensación») y en la isla de `content/islas.ts` (`aspecto: "aprobado AAAA-MM-DD"`; sin eso ningún juego de la isla se publica). Toda propuesta respeta ese aspecto: qué se toca (bucle), cómo aparecen y reaccionan los personajes (narrativa), y el crítico revisa que la pantalla construida lo cumpla. Nunca «una imagen fija arriba y texto abajo» por defecto.
 - **Cómo llega el alumno a un juego** (Ronald, 27-09, corregido el mismo día). Por **su materia**: la portada lleva a elegir la materia, y dentro está la sección **Jugar, dividida por temas** (los temas de su isla en `content/islas.ts`, con `materia` y `temas`). Isla nueva = una línea en `content/islas.ts`; escena nueva = una herramienta `tipo: "juego"` con `isla` y `tema` en `content/materias.ts`, en la materia de su isla (si no calza, el build se corta). Los temas sin juego dicen «En construcción»; un juego en borrador se ve como «Jugar (en prueba)». Ya no hay página `/juegos` ni botón «Juegos» en el menú.
 - **Marco fijo, modalidad variable** (decidido por Ronald el 26-09). El juego no se casa con un solo tipo de juego ni con una sola mecánica. Hay un **marco** que da unidad (mundo, personaje, historia que avanza, registro para la nota) y, dentro, **cada tema o subtema se juega con la modalidad que mejor lo enseña** (armar una línea, entrevistar, negociar, investigar papeles, apostar en el tiempo, administrar, un minijuego…). La modalidad se elige tema por tema según el contenido; repetir una modalidad sólo vale si es la mejor para ese tema. Referencias: los templos de *Zelda*, los acertijos de *Professor Layton*, *WarioWare*.
 - **Cómo se planifica** (Ronald, 26-09). Se aplica siempre, en cada propuesta:

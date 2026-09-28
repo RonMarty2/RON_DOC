@@ -41,8 +41,8 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 
 | Etapa | Agente | Qué deja |
 |---|---|---|
-| **Materia** (una vez) | `adaptador-de-dossier` → Ronald elige el marco → `director-de-juego` → `disenador-de-progresion` | `00-adaptacion-<materia>`, `01-vision`, `03-progresion-<materia>` |
-| **Tema** 0. La idea, CON Ronald | el director la presenta en simple (qué vive el alumno, paso a paso) | Ronald la arma y la ajusta **antes** de que los agentes la detallen (Ronald, 27-09: «debería ser al inicio») |
+| **Materia** (una vez) | `adaptador-de-dossier` → Ronald elige el marco → `director-de-juego` (visión **y aspecto con 2 o 3 bocetos de pantalla; Ronald elige**) → `disenador-de-progresion` | `00-adaptacion-<materia>`, `01-vision` (con «Aspecto y sensación»), `03-progresion-<materia>`; `aspecto: "aprobado AAAA-MM-DD"` en su isla |
+| **Tema** 0. La idea, CON Ronald | el director la presenta en simple (qué vive el alumno, paso a paso) y, si el tema necesita otra pantalla, su boceto | Ronald la arma y la ajusta **antes** de que los agentes la detallen (Ronald, 27-09: «debería ser al inicio») |
 | 1. Ficha | `adaptador-de-dossier` | la ficha del tema, con el dossier verificado |
 | 2. Qué aprende y cómo se evalúa | `disenador-de-aprendizaje` | objetivos, errores típicos, **qué varía por alumno**, registro |
 | 3. Cómo se juega | `disenador-de-bucle` | modalidad y mecánica del tema |

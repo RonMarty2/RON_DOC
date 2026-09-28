@@ -58,11 +58,19 @@ describe("revisarJuegos", () => {
   });
 
   it("candado de las etapas: un prototipo o una isla sin temas planificados no se publican", () => {
-    const proto: Isla = { ...isla, temas: [{ numero: 1, titulo: "Uno", plan: "prototipo" }] };
+    const proto: Isla = { ...isla, aspecto: "aprobado 2026-09-28", temas: [{ numero: 1, titulo: "Uno", plan: "prototipo" }] };
     expect(() => revisarJuegos([proto], [materia([juego("/a", { tema: 1 })])])).toThrow(/prototipo/);
-    const sinTemas: Isla = { ...isla, temas: undefined };
+    const sinTemas: Isla = { ...isla, aspecto: "aprobado 2026-09-28", temas: undefined };
     expect(() => revisarJuegos([sinTemas], [materia([juego("/a")])])).toThrow(/sin temas planificados/);
     expect(() => revisarJuegos([sinTemas], [materia([juego("/a", { borrador: true })])])).not.toThrow();
+  });
+
+  it("candado del aspecto: sin aspecto aprobado por Ronald, ningún juego se publica", () => {
+    const conPlan: Isla = { ...isla, temas: [{ numero: 1, titulo: "Uno", plan: "aprobado 2026-09-27" }] };
+    const publicado = materia([juego("/a", { tema: 1 })]);
+    expect(() => revisarJuegos([conPlan], [publicado])).toThrow(/aspecto/);
+    expect(() => revisarJuegos([{ ...conPlan, aspecto: "aprobado 2026-09-28" }], [publicado])).not.toThrow();
+    expect(() => revisarJuegos([conPlan], [materia([juego("/a", { tema: 1, borrador: true })])])).not.toThrow();
   });
 
   it("todo el sitio calza: cada juego en la materia de su isla y con un tema que existe", () => {

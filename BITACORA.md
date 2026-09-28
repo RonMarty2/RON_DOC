@@ -10,6 +10,14 @@
 
 ## 0. En curso ahora (leer antes que nada)
 
+> **28-09, después de probarlo en el navegador tamaño celular: a Ronald no le gusta el aspecto** («una
+> imagen estática arriba, texto abajo, se ve horrible o muy básico… RECUERDA PLANIFIQUEMOS»). Nunca se
+> había planificado cómo se ve. Se le mostraron tres bocetos (A escritorio tipo *Papers, Please*, B escena
+> con personajes tipo *Ace Attorney*, C agencia que se recorre); recomendado A con caras que reaccionan de
+> B. **Esperando su elección.** Regla nueva en los 7 agentes, `LEEME.md`, `CLAUDE.md` y en el código: el
+> aspecto se acuerda al inicio con bocetos y sin `aspecto: "aprobado …"` en la isla ningún juego se publica.
+> Con su elección: el director escribe «Aspecto y sensación» en `01-vision.md` y recién ahí se rehace la
+> pantalla (el motor y las reglas no se tocan).
 > **HECHO 28-09 (Claude, PC RONMARTY): el Tema 1 de AIEF construido según su plan aprobado**, sobre el
 > prototipo (se reutilizaron motor de montos y colores, escalera, guardado, cuenta, mostrador, manual y
 > registro). Los 13 puntos de `02` B2.10 están hechos: semilla propia de AIEF y escena `tema1-g2` (las

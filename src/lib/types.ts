@@ -83,6 +83,11 @@ export interface Isla {
   descripcion: string;
   /** Slug de la materia en `content/materias.ts`: sus juegos se ven en la página de esa materia. */
   materia: string;
+  /**
+   * El aspecto del juego (cómo se ve y se toca), elegido por Ronald entre bocetos: «aprobado AAAA-MM-DD».
+   * Sin eso, ningún juego de la isla se publica (candado de `src/lib/juegos.ts`).
+   */
+  aspecto?: string;
   /** Los temas de la materia, en orden: la sección Jugar muestra uno por fila, con su juego o «En construcción». */
   temas?: {
     numero: number;

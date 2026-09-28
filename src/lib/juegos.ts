@@ -37,6 +37,9 @@ function revisarCandado(isla: Isla, j: HerramientaMateria): void {
   const plan = tema?.plan ?? "";
   const aprobado = /^aprobado \d{4}-\d{2}-\d{2}/.test(plan);
   const etapas = "Pasa primero por los agentes (.claude/agents/LEEME.md) y que Ronald apruebe el plan.";
+  if (!j.borrador && !/^aprobado \d{4}-\d{2}-\d{2}/.test(isla.aspecto ?? "")) {
+    throw new Error(`El juego ${j.href} se publica sin el aspecto aprobado por Ronald en la isla ${isla.slug} (bocetos del director, 01-vision.md).`);
+  }
   if (!isla.temas) {
     if (!j.borrador) throw new Error(`El juego ${j.href} se publica sin temas planificados en la isla ${isla.slug}. ${etapas}`);
     return;

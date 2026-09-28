@@ -10,30 +10,21 @@
 
 ## 0. En curso ahora (leer antes que nada)
 
-> **EN CURSO desde 27-09 ~20:30 (Claude, PC RONMARTY): construir el Tema 1 de AIEF según su plan
-> aprobado.** Ronald aprobó la idea («me gusta la idea») y pidió **seguir sobre el prototipo, sin
-> rehacerlo de cero**. `content/islas.ts` Tema 1: `plan: "aprobado 2026-09-27"`. Plan vigente: `04` v2,
-> `02` v2 (+ ajustes tras `06` v5), `05` v2.1, `06` v5. **La lista de trabajo es `02` B2.10, puntos 1 a
-> 13** (antes de que Ronald lo pruebe); 14 a 16 van antes de que cuente para la nota. Cada punto se marca
-> aquí al terminarlo y se sube:
-> - [ ] 1 y 1 bis · semilla de AIEF, generación en la partida; sin cuenta sólo el ejemplo, sin número a la vista
-> - [ ] 2 · sin ✔ de decisiones antes del cierre
-> - [ ] 3 · 1.3 siempre contraoferta, valor de hoy múltiplo de 500, perezosos sobre el Tema 1 solo
-> - [ ] 4 · regla del monto completa en el manual y la Llegada
-> - [ ] 5 · escalón (d): pasado «leer», el cliente se va (NC y valor de hoy)
-> - [ ] 6 · 1.2 sin delatores (nota única, frase aparte, acierto neutro, flujo 1 de 4)
-> - [ ] 7 · hoja de observación y dictamen de tres botones (página «Calidad»)
-> - [ ] 8 · 1.1 como mostrador (6 sellos, 5 hojas, nombres sorteados, Doña Nieves)
-> - [ ] 9 · las tres carpetas de práctica con «se adelanta el tiempo»
-> - [ ] 10 · textos de `05` v2.1 (cortes, pistas que recuerdan la práctica, sin línea al cliente)
-> - [ ] 11 · índice de compra distinto de 100 y sus diagnósticos
-> - [ ] 12 · registro por ítem con escalón; prácticas aparte
-> - [ ] 13 · pruebas de `02` B2.8 y lectura de partidas viejas
-> **Avance 28-09 (Claude, PC RONMARTY):** motor nuevo del Tema 1 hecho y probado (`src/lib/juego/aief/tema1.ts`,
-> escena `tema1-g2`, 3.025 pruebas: puntos 1, 3, 5, 6, 7, 8, 9 y 11 en el motor). Falta: textos
-> (`guion-tema1.ts`), pantalla (`EscenaVentanilla.tsx`) y sus pruebas. **Mientras tanto el motor vive en la rama
-> `wip-aief-tema1` de GitHub** (no se publica): quien siga, la trae con `git fetch` y `git merge
-> origin/wip-aief-tema1`; `main` recién la recibe cuando todo compile y pase.
+> **HECHO 28-09 (Claude, PC RONMARTY): el Tema 1 de AIEF construido según su plan aprobado**, sobre el
+> prototipo (se reutilizaron motor de montos y colores, escalera, guardado, cuenta, mostrador, manual y
+> registro). Los 13 puntos de `02` B2.10 están hechos: semilla propia de AIEF y escena `tema1-g2` (las
+> partidas del prototipo, `tema1`, sólo pruebas, quedan guardadas sin tocar); sin cuenta sólo la partida
+> de ejemplo, rotulada «no cuenta para la nota», sin número de versión a la vista y con «jugar de nuevo»;
+> sin ✔ de decisiones antes del cierre; 1.3 siempre contraoferta con valor de hoy múltiplo de 500 e índice
+> de compra distinto de 100; regla del monto en el manual; escalón (d) en NC y valor de hoy; 1.2 sin
+> delatores; hoja de observación y dictamen de tres botones con la página «Calidad»; 1.1 como mostrador;
+> las tres prácticas con «se adelanta el tiempo»; textos de `05` v2.1. 3.625 pruebas; jugado entero en
+> 375×812 (con errores a propósito, repaso y aprobación) y mirado en 1366×768: sin desborde ni errores.
+> **Antes de que cuente para la nota o lo juegue un curso (`02` B2.10, 14 a 16):** más redacciones
+> (las de `05` N2.5 ya están cargadas; faltan las de calidad por papel si el crítico lo pide), manual y hoja
+> como hojas inferiores con el botón atrás del celular, `/juego-aief` en la precarga sin red, **la hoja del
+> docente para la defensa** (página del docente de AIEF, con escalón y puntos por ítem sobre 100). Y el
+> crítico sobre lo jugable (etapa 7) antes de mostrárselo a Ronald como terminado.
 > Nota: la ayuda que baja o no la nota (`04` A2.5) no hace falta resolverla ahora: el registro guarda el
 > escalón y el puntaje va con la hoja del docente (punto 16). Ronald no quiere preguntas de ponderación.
 > **Ronald respondió (27-09):** las características de calidad de la información (1.3) **sí entran al

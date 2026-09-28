@@ -42,3 +42,16 @@
 
 /* En pantallas anchas el mostrador no empuja el diálogo fuera de la vista (1366×768). */
 .ventanilla .juego-pantalla svg { max-height: 220px; }
+
+/* Generación 2: grilla de sellos (2 columnas, botones de 48 px), pestañas de la carpeta y el sello de aprobado. */
+.ventanilla-grilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.ventanilla-grilla .juego-opcion { grid-template-columns: 1fr; min-height: 48px; font-size: 14px; }
+.ventanilla-pestana { border-top: 2px dashed #9c9486; padding-top: 6px; display: grid; gap: 4px; }
+.ventanilla-pestana.resaltada { background: #f7d9a8; outline: 3px solid var(--juego-atardecer); padding: 6px 8px; }
+.ventanilla-sello {
+  font-family: var(--juego-pixel); font-size: 11px; letter-spacing: 0.06em; color: var(--juego-bien);
+  border: 3px solid var(--juego-bien); padding: 8px 10px; width: fit-content; transform: rotate(-2deg); margin: 0;
+}
+
+/* El rótulo de ejemplo es largo: en el celular se parte en dos líneas en vez de ensanchar la página. */
+.ventanilla .juego-chip { white-space: normal; line-height: 1.6; max-width: 100%; }

@@ -317,7 +317,8 @@ temas la niebla que funcionaba en el Tema 1. Ronald: *«¿lo de la niebla es par
 automáticamente estás queriendo ajustar todos los demás temas a la niebla, cuando en realidad sólo es
 buenísima idea para un subtema… cada tema, subtema debería tener su idea o forma de juego, ¿no quedamos
 ya?»*. Precisa el «marco fijo, modalidad variable»: lo que une es el mundo, el rol y la gente; la mecánica
-de un subtema no se estira a los demás. Del crítico quedan como controles de los agentes: ningún patrón
+de un subtema no se estira a los demás para dar unidad. Pero tampoco se prohíbe repetirla: *«tampoco te
+estoy diciendo que no vuelvas a usar la niebla o x mecánica o forma de juego; si sirve para otro, se usa»*. Del crítico quedan como controles de los agentes: ningún patrón
 que se aprende una vez sirve siempre, cada número que escribe el alumno cambia lo que pasa, y nada de
 elegir entre dos frases obvias. Orden de dictado de la materia, confirmado por Ronald: **correlación y
 regresión antes que probabilidad**.

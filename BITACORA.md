@@ -10,6 +10,11 @@
 
 ## 0. En curso ahora (leer antes que nada)
 
+> **EN CURSO desde 28-09 (Claude, PC RONMARTY): rehacer la pantalla de «La ventanilla» con el aspecto A**
+> que Ronald aprobó («OK» a la pantalla de 1.2 explicada): `01-vision.md` V1.10 (tres franjas: ventanilla
+> con cara que reacciona, escritorio con papeles que se tocan, bandeja con libreta, sellos y sumadora;
+> manual como hoja inferior con el registro como última pestaña; «se adelanta el tiempo»; pared que se da
+> vuelta). Sólo `src/app/juego-aief/` (pantalla y estilos); el motor `src/lib/juego/aief/` no se toca.
 > **28-09, después de probarlo en el navegador tamaño celular: a Ronald no le gusta el aspecto** («una
 > imagen estática arriba, texto abajo, se ve horrible o muy básico… RECUERDA PLANIFIQUEMOS»). Nunca se
 > había planificado cómo se ve. Se le mostraron tres bocetos (A escritorio tipo *Papers, Please*, B escena

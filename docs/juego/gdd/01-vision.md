@@ -12,6 +12,9 @@ Ronda 2 y 3, «ok» del 27-09) y de las etapas 2 a 4 del Tema 1 (`04`, `02`, `05
 que esta. Por eso esta visión no inventa: **pone por escrito la vara con la que se venía decidiendo** y
 marca dónde lo ya hecho se aparta de ella (V1.8).
 
+**28-09:** se suma **V1.10 «Aspecto y sensación»** (el escritorio, boceto A elegido por Ronald), con la
+pantalla de cada subtema del Tema 1 y qué se rehace del código de pantalla.
+
 ### Decisiones pendientes de Ronald
 
 1. **Ninguna.** Ya decidido por Ronald: marco A, maqueta general, regla del 60 %, que la calidad de la
@@ -153,6 +156,219 @@ Ninguno bloquea; todos se vigilan en la etapa 5:
 - en cada tema, qué varía por alumno y cuánto pesa lo que no varía.
 
 **Referencias confirmadas:** las tres están enlazadas al final de la sección de Proyectos II.
+
+### V1.10 Aspecto y sensación · versión 1 · 28-09-2026
+
+**Decidido por Ronald (28-09, «ME GUSTA A»):** boceto A, **el escritorio** (todo es un objeto que se toca,
+como *Papers, Please*), con las **caras que reaccionan** del boceto B (*Ace Attorney*). Anotado en
+`content/islas.ts` como `aspecto: "aprobado 2026-09-28"`. Ronald recordó también que **la manera de jugar
+puede cambiar de tema a tema o de subtema a subtema**: el escritorio es el marco fijo; lo que pasa encima
+de él (la modalidad) cambia.
+
+**Decisiones pendientes de Ronald:** ninguna. Lo de abajo es dirección del juego.
+
+**Palabras de oficio:**
+- **Marco fijo:** lo que está siempre en pantalla, pase lo que pase (aquí: ventanilla, escritorio, bandeja).
+- **Tocar y soltar** (*tap to place*): tocas un objeto (se levanta, con sombra) y después tocas dónde va. Hace
+  lo mismo que arrastrar, pero con un dedo y sin precisión: en el celular nunca se arrastra.
+- **Hoja inferior** (*bottom sheet*): un panel que sube desde abajo y tapa medio escritorio; el botón atrás lo
+  baja primero.
+- **Sprite:** un dibujo chico de pixel art (una cara, un sello) que cambia de cuadro para animarse.
+
+#### A.1 El marco fijo: qué hay siempre en pantalla (375×812, vertical)
+
+```
+┌─────────────────────────────┐  ≈ 40 px  barra fina: cuenta y guardado (la de hoy, BarraCuenta)
+│ VENTANILLA         [PARED]  │  ≈ 260 px el vidrio con el CLIENTE en busto grande (cara 48×48 px
+│  ┌──────────┐      ▣▣▣▢▢   │           de pixel art, 5 gestos) y su GLOBO de diálogo encima;
+│  │  (cara)  │  ◖◖◖ cola    │           detrás, cabecitas de la COLA (cuántos faltan);
+│  └──────────┘      📅 reloj │           a la derecha, la PARED con fichas boca abajo y el CALENDARIO
+│  «globo: 1 o 2 líneas»      │           Doña Teresa se asoma por el borde izquierdo cuando habla
+├─────────────────────────────┤
+│ ESCRITORIO (madera, visto   │  ≈ 360 px lo que está en juego ahora: la carpeta con sus papeles,
+│  desde arriba)              │           las hojas del balance, la solicitud, la tarjeta de índices
+│  papeles que se tocan       │
+├─────────────────────────────┤
+│ BANDEJA  📒 manual  🗳 sellos│  ≈ 150 px al alcance del pulgar: la LIBRETA (manual), el SOPORTE DE
+│   🧮 sumadora   [ acción ]  │           SELLOS, la SUMADORA y la bandeja de salida (carpetas boca abajo)
+└─────────────────────────────┘
+```
+
+- **Ventanilla (arriba).** El cliente es el protagonista de la mitad de arriba: busto grande, no un muñeco de
+  12 px. Cinco gestos por personaje: **neutro, hablando, contento, impaciente, se va** (de espaldas). El
+  globo lleva **como mucho dos líneas** (unos 90 caracteres); si el guion trae más, se parte en varios
+  globos que se pasan con un toque en el globo. La cola son cabecitas detrás del vidrio que avanzan una
+  cuando se va alguien. La pared es chica aquí (fichas boca abajo, se ve cuántas llevas) y el calendario
+  muestra el día.
+- **Escritorio (medio).** Todo lo que se lee es **un papel**: la operación marcada, la nota del contador, el
+  papel suelto, la solicitud de crédito. Los papeles se ven apilados con la esquina asomando; **tocar un
+  papel lo pone arriba** (eso son las «pestañas» de B2.5). Un papel arriba muestra su texto completo; nunca
+  más de unas 6 líneas por papel.
+- **Bandeja (abajo).** Siempre los mismos objetos en el mismo lugar, para que el pulgar los aprenda:
+  - **Libreta (manual):** al tocarla sube como hoja inferior, con pestañas de colores por página (Regla
+    cero, El monto, NC, Calidad, Hoja nueva). Una página nueva llega con la esquina doblada y la libreta
+    brilla hasta que la abres. El **registro** (lo que ve el docente) pasa a ser la última pestaña de la
+    libreta: deja de estar como lista de texto debajo del juego.
+  - **Soporte de sellos:** los sellos del momento, con su nombre en el mango (letra grande, 48 px de alto
+    como mínimo).
+  - **Sumadora:** el teclado numérico **del juego**, en pantalla, con forma de sumadora de oficina. Reemplaza
+    al teclado del celular, que tapa media pantalla: así la cifra que se usa sigue a la vista. El campo
+    real sigue existiendo (escribir con teclado físico o con lector de pantalla funciona igual).
+  - **Botón de acción** (FIRMAR, SEGUIR): uno solo, grande, abajo a la derecha, y sólo cuando hace falta.
+- **Doña Teresa** no ocupa lugar fijo: se asoma por el borde de la ventanilla con su cara y su globo, o deja
+  una **nota adhesiva** pegada en el papel del que habla (así llega la escalera de ayuda, ver A.3).
+- **En horizontal y proyectado** (1366×768 y más): ventanilla a la izquierda, escritorio a la derecha,
+  bandeja abajo a lo ancho. Mismo dibujo, otra disposición.
+
+#### A.2 Cómo se toca (dedo, sin arrastrar)
+
+| Gesto | Qué hace |
+|---|---|
+| Tocar un papel | lo pone arriba de la pila |
+| Tocar un sello, después tocar el papel | el sello baja y **golpea** (marca de tinta que queda) |
+| Tocar una casilla de un papel | la marca con lápiz (hoja de observación) o la activa para escribir (se abre la sumadora) |
+| Teclas de la sumadora | la cifra aparece escrita en la casilla, a mano |
+| Tocar la línea de firma o FIRMAR | firma que se dibuja; la carpeta se cierra y cae boca abajo en la bandeja de salida |
+| Tocar el globo | pasa al globo siguiente |
+| Tocar la libreta | sube el manual; atrás o tocar fuera la baja |
+| Tocar una ficha de la pared (en el cierre) | se da vuelta y dice su línea |
+
+Nada depende de pasar el mouse ni de arrastrar. Un sello levantado se suelta tocándolo de nuevo. Todo
+objeto tocable mide 48 px o más.
+
+#### A.3 Qué se anima (poco, corto, barato)
+
+Animaciones de 150 a 400 ms, con CSS sobre el dibujo en SVG; con «reducir movimiento» del teléfono activado
+quedan en un cambio de cuadro.
+- El cliente **entra** desde la cola y **se va** de espaldas; la cola avanza una cabecita.
+- La **cara cambia de gesto** según lo que pasa (ver regla de abajo).
+- El **sello golpea**: baja, la pantalla tiembla 2 px, queda la tinta.
+- Los papeles se **deslizan** al escritorio cuando llega la carpeta; la carpeta se **cierra** al firmar.
+- La **libreta brilla** cuando suma una página.
+- **La escalera de ayuda es de objetos:** (a) el cliente pone cara de impaciente y dice la consecuencia en su
+  globo, más la pista; (b) Doña Teresa pega una nota adhesiva con la pista concreta; (c) la nota dice
+  «Dossier Tema 1, págs. X a Y»; (d) el cliente dice «Vuelvo otro día» y se va de espaldas.
+
+**Regla de las caras (pilar 3): la cara nunca delata una decisión de criterio.** Reacciona a lo que se
+corrige en el momento (la NC y el valor de hoy: impaciente si falla, neutra si acierta) y a las
+consecuencias que ya son inmediatas (1.1 y las carpetas de práctica). **Al firmar un dictamen o un monto de
+una carpeta con nota, todos los clientes hacen el mismo gesto** (asienten, «Gracias», se van), sea cual sea
+la firma. La verdad llega recién en el cierre.
+
+**«Se adelanta el tiempo»** (la consecuencia, sin texto de teoría):
+1. Toque en el calendario de la pared (o en SEGUIR). La ventanilla se oscurece y **el calendario pasa hojas**
+   (tres o cuatro cuadros: «marzo», «abril»…).
+2. La ficha de esa carpeta **baja al escritorio en grande y se da vuelta**: su color (verde, rojo, gris) y
+   **una línea** («En marzo apareció esa deuda. No pagó.»).
+3. Al lado, en miniatura, **el papel que lo avisaba, resaltado** con un círculo de tinta roja (el pagaré).
+4. Doña Teresa se asoma con su línea; la libreta brilla (página nueva). La ficha vuela a la pared.
+
+#### A.4 Lo que no va
+
+- **Nada de «imagen fija arriba y texto abajo».** Si una pantalla es un dibujo que no cambia más un bloque de
+  texto con botones, está mal hecha: el dibujo tiene que ser donde se juega.
+- **Nada de párrafos largos:** globos de dos líneas como máximo, papeles de seis líneas; lo que no entra se
+  parte en globos o va a la libreta.
+- **Nada de botones de opción de examen** (listas de frases para elegir): las decisiones son sellos, casillas y
+  firmas sobre papeles.
+- **Nada de ✔, ✗, puntos ni «¡Correcto!»** en el escritorio. El color sólo aparece en la pared.
+- **Nada que dependa del teclado del celular** para ver la cifra, ni de arrastrar, ni de pasar el mouse.
+- **Nada de rótulos de instrucción** («Pon el sello», «¿Qué NC rige…?») cuando el objeto ya lo dice: la
+  casilla «NC N.º ___» es la pregunta.
+
+#### A.5 Tema 1: una modalidad por subtema, dentro del escritorio
+
+Las mecánicas son las de `02` «Tema 1 · versión 2»; aquí sólo cómo se ven y se tocan. **Las cinco caben en
+el escritorio**; ninguna pide otro marco (1.1 pasa en la misma agencia, antes de abrir).
+
+**Llegada · Doña Rosa (la regla cero).**
+- Arriba: Doña Teresa en el vidrio, globos cortos (bienvenida, «tú siéntate de aquel lado», la cooperativa de
+  enfrente, que se ve por la ventana de la pared). Después entra Doña Rosa.
+- Medio: la libreta cae sobre el escritorio (toque: se abre en «Regla cero» y «El monto»). Luego la
+  **solicitud de Doña Rosa**: tres cifras grandes (pide, su mínimo, garantía) y la casilla «Monto aprobado
+  Bs ___» con la línea de firma.
+- Abajo: libreta, sumadora, FIRMAR.
+- Al tocar: la casilla abre la sumadora; FIRMAR dibuja la firma y la carpeta cae a la bandeja. Si el monto
+  está mal, Doña Teresa corrige en su globo (es de práctica). Bien: se adelanta el tiempo por primera vez,
+  la ficha verde sube a la pared, y Doña Teresa presenta la pared.
+
+**1.1 · El mostrador: sello y hoja.**
+- Arriba: la persona de la fila (cara y nombre sorteado, nunca su rol) con su frase en el globo. En la
+  práctica y en una sorteada, **Doña Nieves se asoma** y su globo señala una hoja.
+- Medio: el **balance de Doña Nieves partido en cinco hojas** en abanico sobre el escritorio (cada una con su
+  título grande y dos o tres renglones de cifras de muestra) y, a la derecha, una **ficha de atención** en
+  blanco con el recuadro «Va a decidir: ___».
+- Abajo: el soporte con los **seis sellos** (2 × 3), cada uno con su decisión en el mango.
+- Al tocar: sello → ficha de atención (golpe, queda la tinta; tocar otro sello lo tacha y sella encima);
+  después una hoja del abanico → se levanta y **se desliza por la ranura del vidrio** a la persona. Ahí
+  mismo la persona reacciona (en 1.1 la consecuencia es inmediata): contenta y se va, o «esto no me dice lo
+  que necesito» y se va sin respuesta. Entra la siguiente. Si siguió a Doña Nieves, ella se encoge de hombros.
+
+**1.2 · La carpeta contra el manual: NC, hoja de observación y dictamen.**
+- Arriba: el cliente con su frase (sorteada aparte del dictamen).
+- Medio: la **carpeta abierta**, con tres papeles apilados: la operación marcada (con un recuadro de
+  resaltador), la nota del contador (letra de máquina, firma del contador) y el papel suelto (el pagaré, la
+  carta de la cuota vencida, el balance que llegó en julio…). Encima de todo, la **hoja de la agencia** con
+  la casilla «NC N.º ___».
+  - Paso 1: tocar la casilla → sube la sumadora (sólo dígitos) y la operación marcada **se pega arriba de la
+    casilla** para que se vea mientras escribes. ANOTAR. Si falla, la escalera de A.3.
+  - Paso 2 (desde que entra la hoja de observación): se desliza una **hoja de observación** con siete casillas
+    (las seis características y «nada que observar»), sólo con el nombre. Tocar una casilla la marca con
+    lápiz; tocar otra cambia la marca. Para mirar qué piso es cada una, la libreta, página «Calidad».
+  - Paso 3: el soporte de sellos cambia a **tres sellos grandes de dictamen**: ACEPTAR, CON OBSERVACIÓN,
+    DEVOLVER (en la práctica del pagaré, sólo dos). Sello → tapa de la carpeta: golpe, la carpeta se cierra
+    y cae boca abajo. El cliente hace el gesto de siempre y se va.
+- Abajo: libreta, sumadora o sellos según el paso.
+- La práctica del pagaré termina en **se adelanta el tiempo** con el pagaré resaltado; Doña Teresa desliza la
+  hoja de observación nueva y la libreta suma «Calidad».
+
+**1.3 · La reexpresión: tarjeta de índices, sumadora y solicitud.**
+- Arriba: el cliente (en la práctica, el carpintero) con su frase; en la carpeta con nota dice «¡Gané Bs X!».
+- Medio, de izquierda a derecha:
+  - la **garantía dibujada** (la sierra, la moto…) con su etiqueta colgando: «En libros: Bs X»;
+  - la **tarjeta de índices**: dos barras de pixel, **al comprar** y **hoy**, con su número encima y la altura
+    calculada en proporción (la de hoy más alta se ve de un golpe: primero se ve, después se calcula). No
+    lleva la fórmula ni el resultado;
+  - debajo, la **solicitud** con: pide · su mínimo · casilla «Valor de hoy Bs ___» (sólo después de que entra
+    la fórmula) · casilla «Monto aprobado Bs ___» · línea de firma.
+- Abajo: la sumadora **con × ÷ =** y una tirita de papel que muestra lo que tecleaste (sólo en pantalla;
+  guardarla en el registro sería un evento nuevo, no ahora). Lo que va a la casilla es el número que
+  anotas, no el que calcula sola: tocas la casilla, tecleas o haces la cuenta, ANOTAR. El número se sigue
+  escribiendo; la sumadora sólo ahorra papel.
+- Al tocar: valor de hoy con su escalera (A.3); monto con FIRMAR (gesto neutro, sin color). En la práctica
+  del carpintero sólo está la casilla del monto; al firmar, **se adelanta el tiempo** (gris: «Se fue
+  enfrente…», y la cooperativa de la ventana se ilumina). Doña Teresa pega en la libreta la hoja nueva y la
+  anterior queda **tachada** con una raya.
+
+**Cierre · la pared.**
+- Arriba: la ventanilla se cierra (persiana baja, el cartel dice CERRADO). La **pared pasa a ocupar la pantalla
+  de arriba en grande**: una ficha por carpeta, boca abajo, en el orden en que se atendió; las de práctica ya
+  vueltas, con una marca de «práctica».
+- Medio: Doña Teresa, una línea. Tocas cada ficha: se da vuelta (verde, rojo, gris, bien rechazado) con **una
+  línea** de lo que pasó («El auditor anotó que no viste que el balance llegó en julio»); si falló un sello,
+  lo nombra.
+- Abajo: un botón. Todas bien: **sello APROBADO** que golpea la hoja del día y TERMINAR EL TEMA 1. Si algo
+  falló: CERRAR LA JORNADA, y al día siguiente Doña Teresa trae las carpetas de repaso (otra persona, otros
+  números), con su nota adhesiva de pista antes de abrir.
+
+#### A.6 Qué pasa con el código de pantalla de hoy
+
+El **motor no se toca** (`src/lib/juego/aief/`: `tema1.ts`, `ventanilla.ts`, `guion-tema1.ts` y sus pruebas).
+Sólo cambia cómo se dibuja.
+
+| Archivo | Se reutiliza | Se reemplaza |
+|---|---|---|
+| `EscenaVentanilla.tsx` | **Todo el estado y la lógica** (líneas de versión por cuenta, guardado local y en la nube, reintento, `registrar`, `anotarAyuda`, los `enviar…`, `firmar`, `entregarHoja`), `avanceDe` y el `switch` por paso **como fuente de qué se muestra**; `leerEntero`, `CLASE_COLOR`, `ayudaVisible` para la escalera, `BarraCuenta` | **Todo lo que devuelve para dibujar**: la columna «dibujo → carpeta de texto → diálogo con botones → manual → registro». Conviene partirlo: el componente de escena queda con el estado y pasa a piezas nuevas `Ventanilla` (vidrio, cliente, globo, cola, pared chica), `Escritorio` (papeles apilados), `Bandeja` (libreta, sellos, sumadora, acción), `Libreta` (hoja inferior con pestañas y registro), `Sumadora`, `HojaObservacion`, `TarjetaIndices`, `AdelantaTiempo` y `ParedCierre`. `Carpeta`, `Cifras`, `Campo` y los botones de opción salen |
+| `Mostrador.tsx` | La técnica (pixel art con rectángulos en SVG, grilla de 4 px, coordenadas calculadas, sin archivos de imagen: anda sin red), la paleta y `TONO` de las fichas | La escena: personitas de 12 px y cola de muñecos pasan a busto grande con gestos, y la pared se vuelve pieza propia |
+| `ventanilla.css` | Los colores de la base (`juego-proyectos/juego.css`), los colores de la pared, `.ventanilla-sello`, `.resaltada`, `.tachada`, el rótulo de ejemplo que se parte | La carpeta como bloque de texto, `.ventanilla-grilla` de botones, el manual como sección al pie, la ficha de cifras; entran las tres zonas fijas, la hoja inferior y las animaciones con «reducir movimiento» |
+
+**Aviso a narrativa (`05`)**: algunas líneas del guion pasan de dos globos (`ABRE_T11`, `LLEGADA` 3). La
+pantalla las parte por oración; si igual quedan largas, narrativa las corta. Los rótulos de pregunta
+(`PREGUNTA_SELLO`, `PREGUNTA_NC`…) dejan de mostrarse: la casilla hace la pregunta.
+
+**Costo:** medio. La parte cara son los sprites (cada personaje con cinco gestos). Versión barata para la
+primera prueba: **una cara base con los cinco gestos y ropa, pelo y sombrero que cambian por cliente**, más
+Doña Teresa y Doña Nieves propias. Se mide en 375×812 y en 1366×768 antes de mostrarlo.
 
 ---
 

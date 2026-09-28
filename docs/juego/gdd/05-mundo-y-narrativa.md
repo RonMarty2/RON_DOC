@@ -2,15 +2,331 @@
 
 Agente: `disenador-narrativo`. Cada sección nueva va arriba, con su versión y fecha.
 
-**Versión 1 · 27-09-2026**
+**Versión 2 · 27-09-2026**
 
 ## Decisiones pendientes de Ronald
+
+**Ninguna nueva en esta ronda.** La única abierta del Tema 1 es la de `04` A2.5 (si la ayuda baja la
+nota); los textos de abajo sirven con cualquiera de las dos respuestas.
 
 1. ~~Giros del valle o castellano neutro~~ **Decidido por Ronald (27-09): castellano neutro con tuteo, sin
    giros regionales.** Todo lo de abajo ya está así.
 
 Lo demás de esta sección queda como propuesta por defecto y pasa al `critico-de-jugabilidad` (etapa 5)
 antes de mostrártelo.
+
+---
+
+## AIEF · Tema 1 · versión 2 · 27-09-2026 · Etapa 4 rehecha: que se vea, no que se explique
+
+**Por qué se rehace.** La etapa 2 (`04` «Tema 1 · versión 2», A2.3 y A2.10) y la 3 (`02` «Tema 1 ·
+versión 2», B2.3 y B2.11) cambiaron el tema: tres **carpetas de práctica** sin nota cuya consecuencia se
+ve en el momento, y fuera todo texto que explique. Esta versión **reemplaza** N1.1 (Doña Teresa y los
+momentos), N1.3 (justificación de la nota) y N1.5 (lista de cambios), **ajusta** N1.2 y N1.4, y **agrega**
+lo que dicen los personajes en las prácticas y sus consecuencias. Lo que no se nombra aquí de la v1 sigue
+valiendo.
+
+**Qué leí:** `04` A2.1 a A2.10, `02` B2.1 a B2.11, `06` (revisión del Tema 1, hallazgos 5 a 12), mi v1, y
+en el código `guion-tema1.ts` y `tema1.ts` (operaciones, `CLIENTES_T12`, `CLIENTES_T13`).
+
+**La regla de escritura de esta versión, en una línea:** nadie en la agencia explica. Doña Teresa dice
+**la regla**, nunca el porqué; el porqué ya lo mostró la consecuencia. Una consecuencia es **lo que le
+pasó a alguien**, en una línea, con un hecho y sin teoría («No pagó», «Se fue enfrente»).
+
+**Palabra de oficio nueva:**
+- **Voz de pantalla (UI):** lo que dice el juego y no un personaje (un botón, un rótulo, «Jugar el tema
+  siguiente»). Es el único lugar donde puede aparecer el docente o el tema, porque no es ficción.
+
+### N2.1 Qué se quita
+
+| Qué | Dónde estaba | Por qué sale |
+|---|---|---|
+| El recuerdo de 1985 («contábamos los billetes por bultos») y que Doña Teresa **justifique cada regla con algo que vivió** | N1.1 (ficha y momento 1.3), N1.5 #11 | Es un relato para leer. La regla nueva de 1.3 ya tiene motivo: el carpintero que se fue enfrente. Queda de ella un rasgo, en una frase (N2.2) |
+| La explicación del auditor al abrir la jornada («el año pasado el auditor nos observó…») y la línea que anuncia la hoja de observación | N1.5 #10 | Es el porqué dicho de antemano. La hoja de observación entra **después** del pagaré (B2.3 b) |
+| «Con el valor de libros habrías decidido con un número que ya no dice nada de hoy» | N1.5 #13 | Es una mini lección. No se agrega |
+| La línea al cliente (libre o guiada) | `pideLinea`, N1.5 #15 | Sale del juego (A2.3 cambio 4); la pregunta pasa a la defensa |
+| El resumen del final («ya sabes preguntar quién lee…») | `FINAL`, N1.5 #16 | Es un resumen de lección |
+| «Es la misma sierra; sólo cambió la unidad de medida» y «así que la NIIF entra como supletoria» | `aciertoHoy`, `aciertoNC` | Explican. El acierto queda en «Bien.» |
+| «Como Bolivia ya adoptó las NIIF» como justificación de la nota del contador | N1.3 | Decidido en `06` hallazgo 11: sale de las notas y queda sólo en frases del cliente (grupo B) |
+| El papel 2 (el balance de la fraternidad) | N1.4 | Decidido en `06` hallazgo 5: se lee también como representación fiel |
+| Nombres fijos por rol en 1.1 (Doña Elena siempre proveedora) | N1.2 | `06` hallazgo 6: se dicta entre compañeros. Ahora se sortean (N2.3) |
+
+### N2.2 Personajes: lo que cambia
+
+**Doña Teresa, jefa de agencia** (reemplaza su ficha de N1.1)
+
+| | |
+|---|---|
+| Quién es | Unos cuarenta años detrás del mismo vidrio; empezó de cajera. Eso es todo lo que cuenta de sí misma, una vez, en la Llegada |
+| Qué le importa | Que la pared no se llene de rojo **ni de gris**: perder un buen cliente con la cooperativa le duele igual que prestarle a uno que no paga |
+| Cómo habla | Una línea por vez. Dice la regla o hace una pregunta. **Nunca dice por qué**: si el alumno necesita el porqué, lo vio pasar hace un minuto |
+| Aparece en | Llegada, cierre de 1.1, apertura de la jornada, después de cada práctica (una línea), cierre |
+
+Su única frase de personaje, en la Llegada: «Llevo cuarenta años detrás de este vidrio. Tú siéntate de
+aquel lado.»
+
+**Doña Nieves, Ferretería San Isidro** (ajusta N1.1). Ahora además **no es neutral**: quiere que su
+ferretería se vea bien y empuja la hoja más linda. Nunca la que la persona necesita (B2.3 a). No se le
+pone ningún texto que diga que eso está mal: se ve cuando la persona se va sin respuesta.
+
+**Cliente de la práctica de 1.2: Doña Beatriz, Librería Mi Cuaderno** (nueva). Pide un crédito para
+surtir la librería antes de que empiecen las clases. Trae su balance en regla y un pagaré que su balance no
+muestra. Aparece sólo en esa práctica.
+
+**Cliente de la práctica de 1.3: el carpintero con su sierra** (se mantiene, y ahora es **sólo** la
+práctica). Nombre sorteado de `CLIENTES_T13` actual (Don Víctor, Doña Lidia, Don Rubén: la lista pasa a
+ser sólo de la práctica). La carpeta con nota y los repasos traen **otro rubro y otra garantía** (N2.6), como
+pide `04` A2.2.
+
+### N2.3 1.1 · El mostrador: práctica y personas con nota
+
+**Apertura** (reemplaza `ABRE_T11`, más corta que N1.5 #4): «Antes de abrir entra Doña Nieves, de la
+Ferretería San Isidro, con su balance recién hecho. Detrás de ella, gente que se lo pidió. "Yo sé vender
+clavos, no leer balances. ¿Me ayudas?"»
+
+**Nombres, sorteados aparte del rol** (la versión elige cinco de la lista; el registro de Ronald guarda el
+rol al lado). Van con su género, para la reacción «tranquila» o «tranquilo»:
+
+| Mujeres | Hombres |
+|---|---|
+| Doña Elena · Doña Wilma · Doña Marta · Doña Julia | Don Hugo · Don Óscar · Don Fausto · Don Aurelio |
+
+Evitan los nombres ya usados: Rosa, Teresa, Nieves, Beatriz, Mario (Proyectos II), Julio y Efraín (maqueta
+de AIEF), Ramiro, Carmen, Silvia, Marcelo (1.2), Víctor, Lidia, Rubén (práctica de 1.3).
+
+**Frases de cada persona:** las de N1.2, con dos cambios:
+- **Inversionista 2** (reescrita sobre su propia plata, `06` hallazgo 7): «Mi parte de la ferretería me dejó
+  buena plata el año pasado. ¿Fue suerte, o gana así todos los años? De eso depende si pongo más.»
+- **Gerencia 2** pierde «Soy yo quien organiza la tienda» si el nombre sorteado no calza con esa voz; queda:
+  «En diciembre la gente hace fila en el mostrador y somos dos para atender. No sé si nos alcanza para
+  sumar a alguien.» (La v1 hacía de Rodrigo el hijo de Doña Nieves; con nombres sorteados eso sale.)
+
+**Doña Nieves empuja una hoja** (en la práctica y en una persona con nota, sorteada). Se asoma antes de que
+selles; una de estas, sorteada:
+- «Dale esa, que salió linda.»
+- «Muéstrale esa, que ahí quedamos bien parados.»
+- «Esa, esa. Es la que mejor se ve.»
+
+**Consecuencias** (las reacciones de N1.2, sin cambios, más una de Doña Nieves):
+- Se va conforme: «Con esto ya sé qué hacer. Gracias.» · «Justo lo que necesitaba ver.» · «Esto me
+  contesta. Me voy tranquila.» (o «tranquilo»).
+- Se va sin lo que necesitaba: «Con esto no decido nada de lo mío.» · «Esta hoja no me contesta lo que vine
+  a preguntar.» · «Me voy igual que llegué.»
+- **Sólo si entregaste la hoja que ella sugirió** y la persona se va sin respuesta, Doña Nieves, encogiéndose
+  de hombros: «Pues a mí me parecía la más linda.» No dice nada más; el alumno une las dos cosas solo.
+
+**Cierre de 1.1:** `CIERRA_T11` de la v1 («El mismo papel, cinco preguntas distintas. La nuestra es otra: si
+le prestamos, cuánto y a qué tasa. Abramos la ventanilla.»), con el número de personas que salió en la
+versión.
+
+### N2.4 1.2 · La práctica del pagaré
+
+**Apertura de la jornada** (reemplaza `ABRE_JORNADA`; sólo la regla, sin el auditor ni la hoja de
+observación): «Hoy los clientes traen el balance que preparó su contador. Revisa la operación marcada:
+primero la NC; la NIIF, sólo si ninguna NC la regula.»
+
+**La carpeta de Doña Beatriz** (números de la versión, sin nota):
+- Frase: del grupo A de N1.3 (por ejemplo, «Te traigo el balance del año. Lo necesito para el préstamo.»).
+- Operación marcada y nota del contador **bien hechas** (una de las formas «nc-correcta»).
+- Pestaña «Pasivo»: dos renglones, «Proveedores Bs A» y «Préstamo del Banco Kusi Bs B». Nada más.
+- Pestaña «Papeles sueltos»: «PAGARÉ. Debo y pagaré a la orden de Fortunato Rojas la suma de Bs X, el 15 de
+  marzo. Cliza, 10 de noviembre. Firmado: Beatriz …». Firmado antes del cierre del año, así que el pasivo al
+  31 de diciembre tendría que mostrarlo. X, A y B salen de la versión.
+- Dictamen de dos botones: ACEPTAR · DEVOLVER.
+
+**Si falla la NC después del escalón (c)**, Doña Teresa cierra el campo sin el número: «Déjala por hoy.
+Decide con lo que tienes.» (`02` B2.3 proponía «Mira el resto de la carpeta»: **lo cambio**, porque esa
+frase señala el pagaré antes de firmar y le quita a la práctica justo lo que tiene que mostrar.)
+
+**Se adelanta el tiempo** (la ficha se da vuelta con el pagaré resaltado):
+- Aceptó, rojo: «En marzo apareció esa deuda. No pagó.»
+- Devolvió, color de buen rechazo: «Enfrente le prestaron. En marzo apareció esa deuda y dejó de pagarles.»
+
+**Doña Teresa, una línea:** «Desde hoy, además de la norma, mira el resto de la carpeta.» Sube la hoja de
+observación y el manual suma: «La norma, en la operación marcada. La hoja de observación, en el resto.
+Cada carpeta trae como mucho un defecto.»
+
+### N2.5 1.2 · Carpetas con nota: redacciones para que no se copie
+
+Hacen falta antes de que cuente para la nota (`02` B2.10 punto 14). Ningún texto dice el título de su NC
+con las mismas palabras; todos son hechos de la empresa.
+
+**Operaciones, dos o tres redacciones cada una** (la primera es la de hoy en `tema1.ts`):
+
+| NC | Redacciones |
+|---|---|
+| 10 · arrendamientos (NIIF 16) | El local de la tienda es alquilado, con contrato a cinco años. · Usa un camión que no es suyo: lo tiene en *leasing*, con cuotas mensuales y opción de comprarlo al final. · Alquila una máquina tejedora por tres años, con cuota fija cada mes. |
+| 8 · consolidación (NIIF 10) | La empresa es dueña de otra y presenta un solo balance de las dos juntas. · Tiene el 80 % de una distribuidora y presenta un balance con las cifras de las dos sumadas. · Compró el taller que le hacía los repuestos y ahora muestra todo en un solo balance. |
+| 6 · diferencias de cambio (NIC 21) | Tiene una deuda en dólares y registró lo que subió al moverse el tipo de cambio. · Le debe en dólares a un proveedor de Chile y anotó la pérdida porque ahora necesita más bolivianos para pagarle. · Tiene ahorros en dólares y registró cuánto más valen en bolivianos desde que cambió la cotización. |
+| 7 · inversiones permanentes (NIC 28) | Compró acciones de otra empresa para conservarlas muchos años. · Tiene el 30 % de una empresa de transporte y no piensa venderlo. · Compró una parte del molino que le vende la harina, para quedarse como socia por años. |
+| 2 · hechos posteriores (NIC 10) | Se quemó un depósito después del cierre del año, antes de entregar el balance. · En enero, con el año ya cerrado, quebró su principal cliente y le quedó debiendo. · En febrero perdió un juicio que venía del año pasado; el balance todavía no estaba entregado. |
+| 4 · revalorización técnica (NIC 16) | Un perito revalorizó la maquinaria de la empresa. · Hizo tasar su edificio por un perito y subió su valor en el balance. · Un ingeniero tasó de nuevo los camiones y el balance muestra el valor nuevo. |
+| 3 · moneda constante (NIC 29) | Ajustó todo el balance por inflación. · Actualizó todas las cifras del balance con el índice de precios del año. · Rehízo el balance del año pasado en bolivianos de este año para compararlo. |
+| 13 · cambios contables (NIC 8) | Cambió el método de depreciación respecto del año pasado. · Dejó de depreciar sus camiones en línea recta y pasó a hacerlo por kilómetro recorrido. |
+| 0 · flujo de efectivo (NIC 7) | Presenta el estado de flujo de efectivo. · Agregó un estado que muestra cuánta plata entró y salió de caja en el año. · Suma un cuadro con lo que cobró y pagó en efectivo, separado por actividad. |
+| **5 · industria minera** (NIIF 6), nueva | Una cooperativa minera anotó lo que gastó en buscar una veta nueva, antes de saber si rinde. · Una empresa minera registró lo que pagó por los estudios de un yacimiento de zinc. |
+| **12 · más de un tipo de cambio** (NIC 21), nueva | Importa repuestos y en el año pagó sus dólares a dos cotizaciones: la oficial y la de las casas de cambio. · Exporta quinua y cobra en dólares; este año hubo dos cotizaciones y registró con una de ellas. |
+
+**Notas para la construcción:**
+- Las dos nuevas traen **cliente propio**, porque el rubro tiene que calzar: NC 5 con «Don Rolando,
+  cooperativa minera»; NC 12 con cualquier cliente de la lista que importe o exporte («Doña Silvia,
+  panadería» no calza con la quinua: usar «Don Anselmo, exportadora de quinua» o «Don Gregorio, transporte»
+  para los repuestos). NC confusa sugerida: la 5 con la 9 (la otra industria); la 12 con la 6.
+- **NC 9 (petrolera) no la agrego:** una empresa petrolera pidiendo crédito en la agencia de Cliza no calza
+  con el mundo. NC 1, 11 y 14 tampoco: son de presentación general (`06` hallazgo 11).
+- Lo de NC 13 lleva dos, no tres: una tercera (un cambio de estimación) depende de lo que el dossier
+  incluya en la NC 13, y no lo arriesgo.
+- `CLIENTES_T12`: «Don Efraín, transporte» pasa a «Don Gregorio, transporte» y «Don Ramiro, ferretería» a
+  «Don Ramiro, imprenta»; como ya existe «Don Marcelo, imprenta», este pasa a «Don Marcelo, lavandería»
+  (sigue N1.5 #17).
+
+**Papeles de calidad, dos o tres redacciones por defecto** (ajusta N1.4; montos y meses de la versión):
+
+| Característica (piso) | Redacciones |
+|---|---|
+| Relevancia (fundamental; **sólo en repaso**) | Papel 1 de N1.4 (el galpón de 2009). · «Respaldo el crédito con mi terreno, que figura en el balance por Bs X, lo que pagué en 1998.» |
+| Representación fiel (fundamental) | Papel 3 (carta de cuota vencida, sin deuda en el pasivo). · Contrato de compra de un camión a plazos, con doce cuotas por pagar; en el pasivo no figura. · Papel 4 (cuentas por cobrar de una empresa que cerró). · En activos, un camión por Bs X; en la carpeta, la denuncia policial de su robo, de octubre. **El pagaré no sale en las carpetas con nota de la jornada** (B2.3 b) |
+| Oportunidad (mejora) | Papel 5 (solicitud de marzo, balance de julio). · Solicitud de octubre, para la campaña de Navidad; el balance que la respalda es el de hace casi dos años |
+| Verificabilidad (mejora) | Papel 6 (inventarios «como el contador creyó conveniente»). · Nota de cuentas por cobrar: «Se dejó una reserva prudente para lo que no se cobre.» No dice cuánto ni cómo |
+| Comparabilidad (mejora) | Papel 7 (fletes). · Este año las ventas se muestran sin IVA; el año pasado, con IVA. La columna anterior no se rehízo |
+| Comprensibilidad (mejora) | Papel 8 (nota 7 ilegible). · El balance trae las cuentas sólo con códigos: «1.1.2.03 … Bs X», sin nombre. El cliente tampoco sabe qué son |
+| Sanos | S1, S2 y S3 de N1.4. · S4: Nota de activos fijos: «Depreciados en línea recta, a las mismas tasas que el año pasado.» |
+
+Con la operación de NC 13 (cambio de método) no sale S4 ni el papel 7, para que la carpeta no traiga dos
+cambios que se confundan.
+
+**Al cierre, la ficha nombra lo que no se vio** (una línea por caso; sin teoría):
+
+| Caso | Línea |
+|---|---|
+| Norma mal aceptada | «El auditor del banco observó este balance: la operación la rige la NC N.» (N sale de la carpeta) |
+| Aceptó con un defecto fundamental | Representación fiel: «Esa deuda existía y no estaba en el balance. No pagó.» o «Eso nunca se iba a cobrar. No pagó.» · Relevancia: «La garantía valía lo que costó hace años, no lo de hoy. No alcanzó.» |
+| No vio un defecto de mejora | «El auditor anotó que el balance llegó en julio.» · «…que no se sabe cómo se valuó el inventario.» · «…que los dos años no se pueden comparar.» · «…que nadie supo qué decía la nota 7.» (el que corresponda a la redacción) |
+| Observó o devolvió uno sano | «No había nada que observar. Se molestó y se fue enfrente.» |
+| Sello equivocado, dictamen bien | La línea del defecto que sí tenía, igual que arriba |
+
+### N2.6 1.3 · La práctica del carpintero y la carpeta con nota
+
+**Antes de la práctica** (reemplaza `HOJA_NUEVA`; ya no hay hoja nueva: se juega con la regla de ayer):
+«Última parte del día. Entra un carpintero con su sierra.»
+
+**Lo que dice el carpintero** (una, sorteada; números de su carpeta):
+- «Necesito Bs P para comprar madera. Te dejo mi sierra.»
+- «Me salió un pedido grande de muebles. Con Bs P compro la madera, y la sierra queda de garantía.»
+
+La ficha muestra libros, índice al comprar e índice de hoy, con sus dos barras (B2.3 c). Nadie comenta la
+ficha.
+
+**Se adelanta el tiempo:**
+
+| Firmó | Color | Línea |
+|---|---|---|
+| Con la regla de ayer (60 % de libros) | gris | «Se fue enfrente. La cooperativa le prestó Bs T por la misma sierra.» |
+| Lo que pide | rojo | «No pudo pagar. Remataron la sierra y no alcanzó para la deuda.» |
+| El tope con valor de hoy | verde | «Pagó todas sus cuotas.» |
+| Otro monto | el que dé el motor | la línea de `queFuePaso` que ya existe para ese color |
+
+**Recomendado: la línea gris dice el monto T de la cooperativa** (el tope con el valor de hoy, redondeado,
+sale de la versión). Es la consecuencia más clara posible: el alumno ve que por la misma sierra alguien
+prestó más y puede preguntarse de dónde salió. No da puntos ni sirve para la carpeta con nota (otros
+números). Alternativa: «le prestó más», sin cifra; se ve menos. Lo marco para el crítico.
+
+**Doña Teresa, una línea:** «Desde hoy, la garantía se mira en bolivianos de hoy.» El manual suma la
+fórmula y la regla del 60 % sobre ese valor.
+
+**Carpeta con nota: otro rubro, otra garantía** (reemplaza `CLIENTES_T13` en la jornada y los repasos; el
+mínimo de la ficha deja de decir «madera»):
+
+| Cliente | Garantía | Su mínimo, en la ficha |
+|---|---|---|
+| Doña Paola, costura | una máquina de coser industrial | Cotización de la tela |
+| Don Ernesto, panadería | un horno | Cotización de la harina |
+| Doña Sonia, taller de motos | un compresor | Cotización de los repuestos |
+| Don Teodoro, encuadernación | una guillotina de papel | Cotización del papel |
+
+**Antes de la carpeta con nota** (sigue N1.5 #12): «Recuerda la hoja nueva de tu manual:».
+
+**Lo que dice el cliente** (una, sorteada; sigue N1.5 #14 con la garantía de la carpeta): «Compré mi
+[garantía] en Bs L y ahora vale Bs C. ¡Gané Bs G sin moverme!» (G = C menos L, calculado) · «Mi [garantía] rindió más que un
+ahorro en el banco: de Bs L a Bs C.» · «Si hoy vendo mi [garantía] me pagan Bs C. Eso ya es ganancia, ¿no?»
+
+Aciertos: «Bien.» (valor de hoy). Firma: sin reacción; el color se ve al cierre.
+
+### N2.7 Cierre y final
+
+- `CIERRE_BIEN`: «Buen día: todo lo que firmaste hoy se sostiene.» El «aprobado» va como voz de pantalla (un
+  sello o un rótulo), no en boca de nadie.
+- `CIERRE_REPASO`: sin cambios.
+- `FINAL`: Doña Teresa: «Buen trabajo. Mañana te toca otra ventanilla.» Voz de pantalla debajo: «El tema
+  siguiente se abre cuando tu docente lo habilite.»
+- **Pistas del repaso que recuerdan la práctica** (A2.6 punto 1): regla de ayer, «Ayer usaste la regla de
+  ayer, como con el carpintero: se fue enfrente.»; defecto fundamental aceptado, «Ayer aceptaste un balance
+  que no decía todo. ¿Te acuerdas del pagaré?»; sano observado, «Ayer observaste un balance que no tenía
+  nada que observar, y el cliente se fue.»; sello equivocado, «Ayer anotaste un problema que no era el de
+  esa carpeta.»
+
+### N2.8 La lista final: frases del juego actual a cambiar
+
+Reemplaza N1.5. Sin tocar los archivos (etapa 6). En `guion-tema1.ts` salvo que se diga otra cosa.
+
+| # | Dónde | Hoy | Queda | De |
+|---|---|---|---|---|
+| 1 | `PERSONA[p].nombre` | Nombre con el rol | Nombre sorteado de la lista de N2.3; el rol va a un campo que sólo lee `describir` | N1.5 #1, `06` h. 6 |
+| 2 | `PERSONA` (dice, otraVez) | Tres roles, dos frases | Cinco roles, tres frases (N1.2 con los cambios de N2.3) | N1.5 #5 |
+| 3 | `ABRE_T11` | Tres personas llegan al banco | N2.3 apertura | N1.5 #4, más corta |
+| 4 | Agregar | | Las tres frases de Doña Nieves que empuja y su línea de hombros (N2.3) | nueva |
+| 5 | `AYUDA_T11.concreta[1]` | La clave de las tres personas | «Piensa qué va a hacer esa persona mañana con lo que lea: ¿cobrar algo, poner o sacar plata, quedarse en su trabajo, decidir algo de la tienda?» | N1.5 #6 |
+| 6 | `CIERRA_T11` | «…tres preguntas… otorgar o negar un crédito…» | N2.3 cierre | N1.5 v1 |
+| 7 | `LLEGADA[0]` | «Bienvenido…» | «Te damos la bienvenida a la agencia de Cliza del Banco Kusi. Aquí decides cuánto prestarle a cada cliente.» | N1.5 #7 |
+| 8 | `LLEGADA` (agregar) | | La frase de Doña Teresa de N2.2 y la de la cooperativa: «¿Ves la cooperativa de enfrente? Si le prestas de menos a un buen cliente, se va allá. Y si le prestas a uno que no puede pagar, vuelve aquí a no pagar.» | N1.5 #8 |
+| 9 | `PARED_PRIMERA` | «Esa noche… pagó sus cuotas» | «Esta es la pared. Aquí adelantamos el tiempo: cada ficha te muestra cómo terminó el crédito. Doña Rosa pagó todas sus cuotas.» | N1.5 #9 |
+| 10 | `ABRE_JORNADA` | La norma con explicación | N2.4 apertura (sólo la regla) | cambia N1.5 #10 |
+| 11 | Agregar | | Práctica de 1.2: Doña Beatriz, sus pestañas, el pagaré, la línea que cierra la NC, las dos consecuencias, la línea de Doña Teresa y la del manual (N2.4) | nueva |
+| 12 | `diceClienteT12` | «Bolivia ya adoptó» sólo en las para devolver | Grupos A, B y C de N1.3, sorteados aparte de la nota | N1.5 #2 |
+| 13 | `textoNota` (`tema1.ts`) | «Como Bolivia ya adoptó las NIIF, lo registramos…» | Forma única «Registrado según la [norma]. [Justificación].»; con NIIF, sólo «Porque ninguna NC boliviana lo regula.» | `06` h. 11 |
+| 14 | `aciertoNC` | «…así que la NIIF entra como supletoria.» | «Bien.» | N1.5 #3, más corto |
+| 15 | `OPERACIONES` (`tema1.ts`) | Una redacción por operación, nueve operaciones | Las redacciones y las dos operaciones nuevas de N2.5 | nueva |
+| 16 | `CLIENTES_T12` (`tema1.ts`) | Efraín transporte, Ramiro ferretería | N2.5 notas | N1.5 #17 |
+| 17 | `PREGUNTA_DICTAMEN` | «¿Aceptas… o lo devuelves…?» | «¿Qué haces con este balance?» (los tres botones ya dicen las opciones) | nueva |
+| 18 | `queFuePaso` (t12) | Dos caminos | Las líneas de cierre de N2.5, con aceptar con observación | nueva |
+| 19 | `HOJA_NUEVA` | «…una hoja nueva del manual: reemplaza a la regla de ayer.» | N2.6 antes de la práctica | cambia N1.5 #11 (sin 1985) |
+| 20 | Agregar | | Práctica de 1.3: frases del carpintero, las cuatro consecuencias, la línea de Doña Teresa (N2.6) | nueva |
+| 21 | `RECUERDA_REGLA` | «Ahora un carpintero… la regla del Tema 1:» | «Recuerda la hoja nueva de tu manual:» | N1.5 #12 |
+| 22 | `CLIENTES_T13` y `fichaT13` (`tema1.ts`) | Tres carpinterías; «Cotización de la madera» | Carpinterías sólo en la práctica; la tabla de N2.6 para la jornada y los repasos, con el mínimo de cada rubro | nueva |
+| 23 | `diceClienteT13` | Una frase, con «sierra» | Tres frases con la garantía de la carpeta (N2.6) | N1.5 #14 |
+| 24 | `aciertoHoy` | «Bien: la sierra vale hoy… sólo cambió la unidad…» | «Bien.» | A2.3 |
+| 25 | `pideLinea` | La línea al cliente | **Se borra.** El evento `linea` se sigue leyendo en `describir` | A2.3 cambio 4 |
+| 26 | `PISTA_REPASO` | Sin calidad ni recuerdo de la práctica | Las de N2.7 | A2.6 |
+| 27 | `AYUDA_REPASO.t12.concreta[1]` | «Si coinciden… acéptalo. Si no, devuélvelo.» (casi la respuesta, y con dos botones) | «Compara la norma que citó con la que encontraste. Después mira el papel que sobra: ¿cambia lo que decides?» | nueva |
+| 28 | `AYUDA_REPASO.t13.leer.donde` | «tu manual, la regla del Tema 1…» | «tu manual (la hoja nueva) y el dossier del Tema 1, pág. 14» | ficción |
+| 29 | `CIERRE_BIEN` | «…Tema 1 aprobado.» | N2.7 | `06` h. 12 |
+| 30 | `FINAL` | Resumen del tema y «el Tema 2» | N2.7 | cambia N1.5 #16 |
+
+**Lo que no se toca:** `LUGAR`, `JEFA`, `LLEGADA[1]`, `practica` y `correccionPractica` (la Llegada de Doña
+Rosa), `PISTA_NC`, `AYUDA_NC`, `PISTA_HOY`, `AYUDA_HOY`, `queFuePaso` de t13, `ABRE_REPASO`,
+`CIERRE_REPASO`.
+
+**Qué se rompe al cambiarlos:** todo son textos, salvo 15, 16 y 22, que cambian lo que se sortea (van
+con la generación de carpetas guardada en la partida, `02` B2.10 punto 1, para que una partida vieja se lea
+como se jugó). El 1 cambia lo que ve el docente si el rol no pasa a un campo aparte. El 25 no borra nada
+guardado.
+
+### N2.9 Avisos para otras partes
+
+- **`disenador-de-bucle` (`02`):** cambio la línea que cierra el campo de NC en la práctica de 1.2 («Déjala
+  por hoy. Decide con lo que tienes.» en lugar de «Mira el resto de la carpeta», que señalaba el pagaré). La
+  carpeta con nota de 1.3 deja de ser una carpintería (la sierra queda para la práctica); la pista de B1.5
+  que dice «la sierra» pasa a «la garantía».
+- **`adaptador-de-dossier` (`00` R3.2):** Don Julio y su sierra siguen como historia; en el juego la sierra
+  es la práctica y la carpeta con nota trae otro rubro. Cubre el mismo tema (1.3, reexpresión). Hay que
+  anotarlo como adaptación.
+- **`critico-de-jugabilidad`:** (1) si la línea gris con el monto de la cooperativa enseña o regala; (2) la
+  línea de hombros de Doña Nieves, que no se lea como explicación; (3) NC 12 frente a NC 6, que es una
+  distinción fina pero es la del dossier; (4) que ninguna consecuencia de las prácticas pase de una línea en
+  375×812.
+- **Construcción (etapa 6):** prueba de palabras prohibidas (N1.2) sobre las frases nuevas; que el pagaré
+  no salga en las carpetas con nota; que S4 y el papel 7 no salgan con la operación de NC 13; los montos de
+  la práctica de 1.2 (X, A, B) y la T de 1.3 desde la versión.
 
 ---
 

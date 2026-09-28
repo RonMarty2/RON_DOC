@@ -27,8 +27,8 @@ export const ISLAS: Isla[] = [
     materia: "analisis-estados-financieros",
     // Títulos de los dossiers de Ronald (carpeta 1_CONTENIDO de la materia).
     temas: [
-      // Construido el 27-09 antes de pasar por las etapas: queda como prototipo hasta que Ronald apruebe su plan.
-      { numero: 1, titulo: "Normas internacionales financieras y marco de la información financiera", plan: "prototipo" },
+      // Plan aprobado por Ronald el 27-09 («me gusta la idea») después de pasar por todos los agentes.
+      { numero: 1, titulo: "Normas internacionales financieras y marco de la información financiera", plan: "aprobado 2026-09-27" },
       { numero: 2, titulo: "Análisis e interpretación de los estados financieros básicos" },
       { numero: 3, titulo: "Patrimonio y movimientos patrimoniales" },
       { numero: 4, titulo: "Origen y aplicación de fondos y capital de trabajo" },

@@ -10,13 +10,27 @@
 
 ## 0. En curso ahora (leer antes que nada)
 
-> **ESTADO AL 27-09 (Claude, PC RONMARTY). AIEF: todas las etapas de planificación hechas** (materia:
-> visión `01` y progresión `03`; Tema 1: aprendizaje `04`, bucle `02`, narrativa `05`, crítico `06` v4 sobre
-> el papel y el prototipo). **Se le presentó a Ronald el plan simple del Tema 1; esperando su aprobación**
-> y su respuesta a cuánto pesa el juego en la nota (propuesta 40 % juego, 60 % defensa). Con su «sí»: se
-> escribe `plan: "aprobado AAAA-MM-DD"` en `content/islas.ts` y se aplican al prototipo los 8 cambios
-> imprescindibles de `06` («Qué cambiar en el Tema 1»). Borrador del emprendimiento al final de la materia:
-> sin nota, por defecto (lo recomiendan progresión y crítico).
+> **EN CURSO desde 27-09 ~20:30 (Claude, PC RONMARTY): construir el Tema 1 de AIEF según su plan
+> aprobado.** Ronald aprobó la idea («me gusta la idea») y pidió **seguir sobre el prototipo, sin
+> rehacerlo de cero**. `content/islas.ts` Tema 1: `plan: "aprobado 2026-09-27"`. Plan vigente: `04` v2,
+> `02` v2 (+ ajustes tras `06` v5), `05` v2.1, `06` v5. **La lista de trabajo es `02` B2.10, puntos 1 a
+> 13** (antes de que Ronald lo pruebe); 14 a 16 van antes de que cuente para la nota. Cada punto se marca
+> aquí al terminarlo y se sube:
+> - [ ] 1 y 1 bis · semilla de AIEF, generación en la partida; sin cuenta sólo el ejemplo, sin número a la vista
+> - [ ] 2 · sin ✔ de decisiones antes del cierre
+> - [ ] 3 · 1.3 siempre contraoferta, valor de hoy múltiplo de 500, perezosos sobre el Tema 1 solo
+> - [ ] 4 · regla del monto completa en el manual y la Llegada
+> - [ ] 5 · escalón (d): pasado «leer», el cliente se va (NC y valor de hoy)
+> - [ ] 6 · 1.2 sin delatores (nota única, frase aparte, acierto neutro, flujo 1 de 4)
+> - [ ] 7 · hoja de observación y dictamen de tres botones (página «Calidad»)
+> - [ ] 8 · 1.1 como mostrador (6 sellos, 5 hojas, nombres sorteados, Doña Nieves)
+> - [ ] 9 · las tres carpetas de práctica con «se adelanta el tiempo»
+> - [ ] 10 · textos de `05` v2.1 (cortes, pistas que recuerdan la práctica, sin línea al cliente)
+> - [ ] 11 · índice de compra distinto de 100 y sus diagnósticos
+> - [ ] 12 · registro por ítem con escalón; prácticas aparte
+> - [ ] 13 · pruebas de `02` B2.8 y lectura de partidas viejas
+> Nota: la ayuda que baja o no la nota (`04` A2.5) no hace falta resolverla ahora: el registro guarda el
+> escalón y el puntaje va con la hoja del docente (punto 16). Ronald no quiere preguntas de ponderación.
 > **Ronald respondió (27-09):** las características de calidad de la información (1.3) **sí entran al
 > juego** (hoja de observación), pero *«se supone que teníamos que planificar»*: **antes de construir
 > se le muestra el plan completo del Tema 1 en simple** y lo aprueba. También: la app pasa a llamarse

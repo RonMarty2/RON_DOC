@@ -4,12 +4,331 @@ Agente: `disenador-de-bucle`. Cada sección nueva va arriba, con su versión y f
 
 ## Decisiones pendientes de Ronald
 
-1. **Ninguna nueva en esta ronda.** Sigue abierta la de `04-aprendizaje.md` (si las características de
-   calidad entran al juego como hoja de observación o quedan sólo para la defensa). Aquí va diseñada su
-   versión jugable (B1.6), marcada **«si Ronald aprueba»**, para que decida viendo cómo se jugaría.
+1. **Ninguna nueva en esta ronda (v2 del Tema 1).** La única abierta que toca esta parte es la de
+   `04-aprendizaje.md` sobre la ayuda y la nota (A2.5); la mecánica funciona igual con cualquiera de las
+   dos respuestas, porque el registro guarda el escalón de cada ítem.
 
-Si no dices otra cosa, lo demás de esta sección queda como propuesta por defecto y pasa al
-`disenador-narrativo` (etapa 4) y después al crítico (etapa 5), antes de mostrártelo.
+~~Si la calidad entra al juego~~ **Decidido por Ronald (27-09): entra.** B1.6 deja de ser «si Ronald
+aprueba»; su versión vigente es B2.5.
+
+Si no dices otra cosa, lo demás queda como propuesta por defecto y pasa a narrativa (etapa 4) y al crítico
+(etapa 5) antes de mostrártelo.
+
+---
+
+## AIEF · Tema 1 · versión 2 · 27-09-2026 · Etapa 3 rehecha: práctica que se ve, nota que no se tantea
+
+**Por qué se rehace.** La etapa 2 rehízo el tema (`04` «AIEF · Tema 1 · versión 2», sobre todo A2.1,
+A2.4 y A2.10) porque la v1 comprobaba y no enseñaba; y el crítico (`06`, 27-09) pidió 8 cambios
+imprescindibles. Esta versión **reemplaza** B1.1, B1.6, B1.7 y B1.11 de la v1, y **ajusta** B1.3, B1.4,
+B1.5 y B1.8. Lo que no se nombra aquí de la v1 sigue valiendo (queda abajo, como historia).
+
+**Qué leí:** `04` A2.1 a A2.10, `06` (entrada del 27-09 sobre el Tema 1, hallazgos 1 a 12 y los 8
+imprescindibles), `05` N1.2 a N1.4, mi v1, y en el código `tema1.ts`, `ventanilla.ts` y `guion-tema1.ts`.
+
+**Palabras de oficio nuevas:**
+- **Carpeta de práctica:** la primera de cada tipo; no da puntos y su ficha se da vuelta en el momento.
+- **«Se adelanta el tiempo»:** un toque y la pantalla pasa las hojas del calendario; aparece la ficha de
+  esa carpeta, con el color y el papel que lo avisaba resaltado. Es la consecuencia, sin texto de teoría.
+- **Estrategia dominante:** una respuesta que, repetida siempre, gana sin entender. Hay que cerrarla.
+
+### B2.1 Los tres bucles del Tema 1, versión 2
+
+**El gesto (segundos):** igual que la v1: mirar un papel, tocar o escribir, el mundo responde. Nunca
+«correcto, +10». Novedad: **ningún ✔ ni ✗ de una decisión se ve antes del cierre** (imprescindible 4).
+
+**La carpeta tiene dos formas:**
+
+```
+PRÁCTICA (la primera de cada tipo, sin nota)
+decides con lo que tienes → firmas → [toque] se adelanta el tiempo
+  → la ficha se da vuelta YA: color + el papel que lo avisaba, resaltado
+  → la jefa dice UNA línea y el manual suma la herramienta que faltaba
+  → no se rehace: la siguiente carpeta es otra persona con otros números
+
+CON NOTA
+llega el cliente y dice su frase → abres la carpeta (un papel por pestaña)
+  → escribes EL NÚMERO del paso (NC o valor de hoy)   ← se corrige ahí, escalera (a)(b)(c)
+       └ un fallo después de (c): el cliente se cansa y se va (escalón d)
+  → tocas el sello de la hoja de observación (sólo 1.2) ← no se corrige ahí
+  → decides y firmas (dictamen o monto)                  ← no se corrige ahí, no se rehace
+  → la carpeta se archiva boca abajo; pasa el siguiente
+```
+
+**La jornada:**
+
+```
+Llegada (Doña Rosa: regla cero completa, ficha verde al momento)          [ya existe]
+→ 1.1 MOSTRADOR
+    persona de práctica (Doña Nieves empuja una hoja) → se va conforme o sin respuesta
+    → 3 personas con nota (en una, sorteada, Doña Nieves vuelve a sugerir)
+    → Doña Teresa: «La nuestra es otra…»
+→ 1.2 VENTANILLA
+    carpeta de práctica: NC + aceptar/devolver; norma bien puesta, un pagaré en una pestaña
+    → se adelanta el tiempo: «En marzo apareció esa deuda. No pagó.» (pagaré resaltado)
+    → Doña Teresa, una línea; ENTRA la hoja de observación
+    → 2 carpetas con nota: NC · sello · dictamen de 3 botones (una se queda, una se devuelve)
+→ 1.3 VENTANILLA
+    carpeta de práctica: el carpintero, sólo el monto, con la regla de ayer
+    → se adelanta el tiempo: gris, «Se fue enfrente…»
+    → Doña Teresa: «Desde hoy, la garantía se mira en bolivianos de hoy»; ENTRA la fórmula
+    → 1 carpeta con nota: valor de hoy · monto (siempre contraoferta)
+→ CIERRE: se da vuelta la pared (las con nota; las de práctica ya estaban vueltas, con su marca)
+→ si algo falló: repaso con OTRAS carpetas del tipo que falló (sin prácticas) → hasta que salga bien
+```
+
+**La materia:** sin cambios (pared de fichas y manual que crece).
+
+### B2.2 Diseño inverso (actualiza B1.2)
+
+| Sabe hacer | Lo demuestra así | Si lo hace mal pasa esto |
+|---|---|---|
+| 1.1 Decir qué decide cada usuario y qué mira primero, y no dejarse llevar por quien preparó el balance | Sello y hoja a 3 personas sorteadas que no dicen quién son; ignora la sugerencia de Doña Nieves cuando no contesta | La persona se va sin respuesta; llega otra, con otro papel. Pista según el error |
+| 1.2 Buscar la NC antes de aceptar una NIIF | Escribe el número de NC y dictamina contra la nota del contador | NC: se corrige ahí; pasado (c), el cliente se va. Dictamen: color al cierre, repaso |
+| 1.2 y 1.3 Ver que cumplir la norma no alcanza (fundamental frente a mejora) | Sello de observación y dictamen de tres botones | Al cierre: rojo si aceptó un defecto fundamental; gris si observó o devolvió uno sano. El sello equivocado se nombra en la ficha |
+| 1.3 Reexpresar y prestar con la regla nueva | Escribe el valor de hoy (I₀ distinto de 100) y el monto | Valor: se corrige ahí. Monto: color al cierre, repaso con otros números |
+
+### B2.3 Las tres carpetas de práctica
+
+Las tres usan números de la versión del alumno, **no dan puntos** y no se rehacen. Lo que el alumno hace
+en ellas se guarda (Ronald lo ve en su hoja), pero no suma ni resta.
+
+**(a) 1.1 · la primera persona.** Igual que una persona con nota (B2.4), con una diferencia: antes de que
+selle, Doña Nieves se asoma desde el mostrador y señala una hoja («Dale esa, que salió linda»). La hoja
+sugerida es **siempre una de las que esa persona no necesita** (sorteada entre las otras cuatro). Si la
+entrega, la persona se va sin respuesta en el momento; si entrega la correcta, se va conforme. En 1.1 la
+consecuencia ya era inmediata, así que esta práctica sólo agrega a Doña Nieves y quita la nota.
+
+**(b) 1.2 · la de calidad (el pagaré).** Una carpeta completa de 1.2 con la norma **bien** puesta, entregada
+a tiempo y prolija, y en una pestaña un **pagaré firmado** que el pasivo no muestra. La hoja de observación
+todavía no existe: el dictamen es de dos botones, ACEPTAR o DEVOLVER.
+- La NC se busca con la escalera, sin nota. Si falla una vez más después del escalón (c), Doña Teresa
+  cierra el campo sin mostrar el número («Déjala. Mira el resto de la carpeta») y se sigue al dictamen.
+  Así la práctica no se traba y nunca se da la respuesta.
+- Firmas → **se adelanta el tiempo**:
+  - aceptó: rojo, «En marzo apareció esa deuda. No pagó.» y el pagaré resaltado;
+  - devolvió: el color del buen rechazo (`bien-rechazado`), con el mismo pagaré resaltado y «Enfrente le
+    prestaron. En marzo apareció esa deuda y dejó de pagarles». La idea se ve igual por los dos caminos.
+- Doña Teresa, una línea: «Desde hoy, además de la norma, mira el resto de la carpeta.» Sube la hoja de
+  observación por primera vez (hoja inferior) y el manual suma una línea: «La norma, en la operación
+  marcada. La hoja de observación, en el resto» (`04` A2.7).
+- **Regla del sorteo:** el pagaré (deuda que falta en el pasivo, en forma de pagaré) no sale en las
+  carpetas con nota de esa jornada. Pueden salir otros defectos o **otra redacción** del mismo tipo (la
+  carta de cuota vencida, papel 3 de `05` N1.4), para que se reconozca la idea y no el papel (A2.8).
+
+**(c) 1.3 · el carpintero con la regla de ayer.** El manual todavía tiene la regla de ayer (60 % del valor
+en libros). La ficha muestra lado a lado **valor en libros · índice al comprar · índice de hoy**, con dos
+barras si alcanza (B1.5), sin fórmula ni texto. Se escribe **sólo el monto**.
+- Los números se sortean para que los tres caminos se distingan: 60 % de libros **<** tope con valor de
+  hoy **<** lo que pide, todo por encima del mínimo, en múltiplos de Bs 100 (es contraoferta, como la
+  carpeta con nota). Así:
+  - regla de ayer → **gris**: «Se fue enfrente. La cooperativa le prestó más por la misma sierra»;
+  - lo que pide → **rojo**: «No pudo pagar, y la sierra no alcanzó para cubrir el préstamo»;
+  - el tope con valor de hoy (si alguien lo intuye) → verde, «Bien.»;
+  - cualquier otro → el color que corresponda con su línea de hoy.
+- Doña Teresa: «Desde hoy, la garantía se mira en bolivianos de hoy.» El manual suma la fórmula
+  V × I₁ / I₀ y la regla del 60 % sobre ese valor.
+- Índice de compra distinto de 100 también aquí: si la práctica usara 100, sembraría el atajo «dividir
+  entre 100» justo antes de la carpeta con nota.
+
+### B2.4 1.1 · El mostrador (ajusta B1.3; imprescindible 7)
+
+Se mantiene todo B1.3 (sellos y hojas que no se gastan, persona que se va y llega otra, sin reintento sobre
+la misma persona, tres bien atendidas para pasar), con estos cambios:
+
+- **Nombres sorteados aparte del rol** (hallazgo 6 de `06`): cada persona toma un nombre de una lista común
+  (sólo texto). El registro de Ronald guarda el rol al lado. Nada en pantalla dice el rol.
+- **Seis sellos, cinco hojas** (hallazgo 7): el sello del banco queda como distractor; su hoja («liquidez y
+  endeudamiento») sale de la lista porque el banco nunca llega a la fila y se pisaba con la del proveedor.
+  Las cinco hojas van en lista vertical; los seis sellos en grilla de 2 × 3.
+- **Doña Nieves sugiere** en una de las tres personas con nota (sorteada), igual que en la práctica.
+  Entregar la hoja sugerida cuenta como falla, con su pista (`04` A2.6 punto 2).
+- La frase 2 del inversionista (la tienda en Tolata) se reescribe sobre su propia plata (narrativa).
+- **Pista (a) conectada con la práctica:** «Pasó lo mismo que con la primera persona».
+- Sin «No es esa» ni reacción que confirme la opción: las reacciones de `05` N1.2 no dicen cuál era.
+
+**Riesgo que se acepta:** la sugerencia de Doña Nieves siempre es equivocada, así que descarta una hoja de
+cinco en una de tres personas. Es justo la idea del subtema (quien prepara no es neutral) y 1.1 pesa 15.
+
+### B2.5 1.2 · Norma, observación y dictamen (reemplaza B1.6; ajusta B1.4; imprescindibles 3, 5 y 6)
+
+**Qué ve y qué toca en cada carpeta con nota, en este orden (375×812):**
+1. Frase del cliente arriba (fija); la carpeta en pestañas: operación marcada, nota del contador, un papel
+   más (**siempre**, también en las sanas, `05` N1.4).
+2. Escribe la **NC** (teclado numérico; la operación marcada queda fija arriba del campo). Se corrige ahí.
+3. **Hoja de observación** (sube desde abajo, sin teclado): 7 sellos en grilla de 2 columnas, las 6
+   características y «nada que observar», con el nombre y **sin** decir si es fundamental o de mejora.
+4. **Dictamen:** ACEPTAR · ACEPTAR CON OBSERVACIÓN · DEVOLVER, en columna, botones de 48 px como mínimo.
+5. Se archiva boca abajo. Ni ✔, ni color, ni frase que confirme.
+
+**La NC con escalón (d)** (imprescindible 3): (a) consecuencia y pista según el error; (b) pista concreta;
+(c) a leer págs. 8 a 10; **un fallo más: «Vuelvo otro día», el cliente se va**. La carpeta cuenta como
+fallada (en la pared, gris: «se fue sin respuesta»), y el repaso trae otra operación. La pista (a) recuerda
+la práctica cuando el error es el mismo («¿Te acuerdas de la carpeta de la mañana?»).
+
+**Sin delatores** (imprescindible 5, B1.4 con el hallazgo 11 de `06`):
+- Nota del contador de forma única: «Registrado según la [norma]. [Justificación].» Con NIIF, la única
+  justificación es «Porque ninguna NC boliviana lo regula» (verdad en la bien hecha, error en la mal hecha).
+  **«Como Bolivia ya adoptó las NIIF» sale de las notas** y queda sólo en frases del cliente (grupo B de
+  `05` N1.3).
+- Frase del cliente sorteada de su grupo, independiente del dictamen.
+- Acierto de la NC neutro: «Bien.» (sin «así que la NIIF entra»).
+- Flujo de efectivo en una de cada cuatro jornadas, con dos caras; en la cara «mal» el contador cita una NC
+  claramente ajena, nunca la 1, 11 ni 14.
+
+**El par de la jornada: una se queda, una se devuelve** (imprescindible 6), en orden sorteado:
+
+| Carpeta | Norma | Papel más | Sello correcto | Dictamen |
+|---|---|---|---|---|
+| Se queda (una de dos formas) | bien | sano | nada que observar | aceptar |
+| | bien | defecto de mejora | esa característica | aceptar con observación |
+| Se devuelve (una de tres formas) | mal | sano | nada que observar | devolver |
+| | mal | defecto de mejora | esa característica | devolver |
+| | bien | defecto fundamental | esa característica | devolver |
+
+Así el sello no delata el dictamen (salvo «fundamental → devolver», que es la idea misma), y ningún dictamen
+repetido gana la jornada. **El papel 2 de `05` N1.4 (la fraternidad) sale**; el papel 1 (garantía con valor
+viejo) sólo en repaso, porque anticipa 1.3.
+
+**Para que una carpeta salga bien hacen falta las tres cosas:** NC, sello y dictamen. **Al cierre** la
+ficha nombra lo que no se vio, sin teoría: «El auditor anotó que no viste que el balance llegó en julio»;
+«Llegó a tiempo, pero no decía la verdad». El repaso de 1.2 trae **una** carpeta nueva (se queda o se
+devuelve, sorteado aparte), con otro defecto u otra redacción.
+
+**Colores al cierre** (sin cambios frente a B1.6): aceptar (con o sin observación) un fundamental → rojo;
+devolver u observar uno sano → gris; devolver uno de mejora con norma bien → gris; norma mal aceptada →
+rojo, «El auditor del banco observó este balance: la operación la rige la NC N».
+
+**Redacciones** (A2.3 cambio 6, necesario antes de que cuente para la nota): 2 o 3 por operación de 1.2,
+operaciones para las NC que faltan, y 2 o 3 por papel de calidad. Lo escribe narrativa.
+
+### B2.6 1.3 · Valor de hoy y monto (ajusta B1.5; imprescindibles 1 y 2)
+
+- **Siempre contraoferta** en la carpeta con nota y en cada repaso: el tope (60 % del valor de hoy) queda
+  entre el mínimo y lo que pide. El sí completo ya lo enseña Doña Rosa.
+- **Tope en múltiplos de Bs 100:** se pide que el **valor de hoy sea múltiplo de Bs 500** (el 60 % de un
+  múltiplo de 500 es múltiplo de 300, y por tanto de 100). Con eso el redondeo nunca decide un color.
+- **Índice de compra distinto de 100** en la jornada y en la práctica (B1.5; tabla de errores de B1.5 sin
+  cambios). La versión 0 de ejemplo sigue como hoy.
+- **Regla del monto completa en el manual** (imprescindible 2), desde la Llegada: «Nunca prestes más de lo
+  que pide. Si tu tope no llega a su mínimo, no le prestas (0). La agencia presta en múltiplos de Bs 100,
+  hacia abajo.» Marcada **regla del juego**. Doña Teresa la dice en la Llegada con las tres cifras de Doña
+  Rosa.
+- El cliente dice «¡Gané Bs X!» (el ajuste leído como ganancia); prestar por su cifra sale rojo o gris al
+  cierre (A2.2).
+- **Valor de hoy con escalón (d)** como la NC (recomendado, no imprescindible: el espacio de respuestas es
+  grande, pero así la regla es una sola para todo número que se corrige ahí).
+- **La línea escrita al cliente sale** (A2.3 cambio 4). Pasa a la defensa (criterio 2 de A2.8). Los
+  eventos viejos de esa línea se siguen leyendo; simplemente no se piden más.
+
+### B2.7 Ritmo de la jornada en 375×812 (reemplaza B1.7)
+
+| Parte | Gestos | Teclado | Texto para leer |
+|---|---|---|---|
+| Llegada | 3 «seguir» + 1 número | numérico | regla cero completa, en el manual |
+| 1.1 | práctica 2 toques + 3 personas × 2 = **8 toques** (más si falla) | no | frase de cada persona |
+| 1.2 práctica | 1 NC + 1 dictamen + 1 «se adelanta» | numérico | una línea de consecuencia, una de la jefa |
+| 1.2 con nota | 2 NC + 2 × (sello + dictamen) = 2 números + 4 toques | numérico en la NC | frase, nota, un papel |
+| 1.3 práctica | 1 número + 1 «se adelanta» | numérico | una línea de consecuencia, una de la jefa |
+| 1.3 con nota | 2 números | numérico | frase del cliente |
+| Cierre | 1 toque + pasar fichas | no | una línea por ficha |
+
+Frente a la v1 con calidad: **2 números y 3 toques más** (las prácticas), **ninguna línea de texto**
+(sale la del cliente) y los textos largos de `05` N1.5 cortados a una línea o a «Bien.». Queda del mismo
+largo y se lee menos (`04` A2.4). Orden de recorte si aun así se siente larga: el de A2.4 (1.1 a dos
+personas; después fundir su práctica con la primera con nota; nunca las prácticas de 1.2 y 1.3).
+
+**Pantalla:** el manual y la hoja de observación son **hojas inferiores** (el botón atrás las cierra
+primero); con el teclado abierto, la cifra que se usa queda fija arriba del campo (operación en 1.2;
+libros, I₀ e I₁ en 1.3); los botones van en columna o en grilla de 2; nada depende de pasar el mouse. Se
+mide en 375×812 y en horizontal antes de mostrarlo.
+
+### B2.8 Nadie gana sin entender (actualiza B1.8)
+
+| Perezoso | 1.1 | 1.2 | 1.3 |
+|---|---|---|---|
+| Probar números | no hay números | NC: pasado (c), el cliente se va y la carpeta cae | valor de hoy: pistas, y (d) recomendado |
+| Mirar el ✔ | no hay ✔ | no hay ✔ ni color hasta el cierre | igual |
+| Saber el patrón «una y una» | no aplica | sabe que una se devuelve, pero no cuál ni con qué sello; el sello cuenta | una sola carpeta |
+| Siempre lo mismo | un sello acierta 1 de 6 | «devolver siempre» pierde la que se queda; «nada que observar» falla todo defecto | lo que pide → rojo siempre (contraoferta); regla de ayer → gris; mínimo o 0 → gris |
+| Seguir a Doña Nieves | falla | no aplica | no aplica |
+| Copiar | nombres, frases, orden sorteados | operación con 2 o 3 redacciones, nota, papel, orden | cliente, garantía, índices |
+| Tantear con la práctica | la práctica no se rehace; la siguiente es otra persona | la práctica muestra el pagaré, no el dictamen de las con nota | la práctica tiene otros números |
+
+**Pruebas que lo encierran (sobre la jornada del Tema 1 sola, no mezclada con el Tema 2):** en las 999
+versiones, «lo que pide», «cero», «el mínimo», «la regla de ayer» y «el valor del cliente» no aciertan
+nunca la carpeta con nota de 1.3; «siempre aceptar», «siempre devolver», «siempre con observación» y «el
+patrón una y una adivinando la primera» no pasan 1.2 en más del 30 % de las versiones (con el sello
+contando, bastante menos); el defecto de la práctica no se repite con el mismo papel en las carpetas con
+nota; frase del cliente y justificación independientes del dictamen (B1.4).
+
+### B2.9 Economía y registro
+
+Economía sin cambios (B1.9): pared y cola, ningún recurso nuevo. **El registro que ve el alumno** muestra
+qué firmó, sin ✔ ni ✗ de decisiones hasta el cierre. **El de Ronald** guarda por ítem: qué escribió o tocó,
+en qué escalón acertó y, en 1.1, cuántas personas hicieron falta; así sirve para cualquier respuesta a la
+pregunta abierta de `04` A2.5 y para la hoja de la defensa. Las prácticas se guardan marcadas como
+práctica y no entran al puntaje.
+
+### B2.10 Qué hay que construir o cambiar en el prototipo, en orden
+
+**Antes de que Ronald lo pruebe** (los 8 imprescindibles de `06` más lo que pide la v2 de `04`):
+
+1. **Semilla propia de AIEF y generación de carpetas guardada en la partida** (imprescindible 8). Va
+   primero porque todo lo que sigue cambia el sorteo; una partida sin ese dato se lee con la generación de
+   hoy, que se conserva al lado.
+2. **Ningún ✔ de decisiones a la vista del alumno antes del cierre** (imprescindible 4). Cambio chico en
+   la pantalla y en `describir`.
+3. **1.3 con nota siempre contraoferta, valor de hoy múltiplo de Bs 500** (condiciones nuevas en
+   `versionValida` y `carpetaT13`), con **la prueba de perezosos sobre la jornada del Tema 1 sola**
+   (imprescindible 1).
+4. **Regla del monto completa** en la hoja del manual y en la Llegada (imprescindible 2).
+5. **Escalón (d) de la NC**: pasado (c), el cliente se va y la carpeta cuenta como fallada; en la práctica,
+   Doña Teresa cierra el campo sin dar el número (imprescindible 3). Mismo mecanismo para el valor de hoy.
+6. **1.2 sin delatores**: nota de forma única sin «como Bolivia ya adoptó», frase del cliente sorteada
+   aparte, acierto neutro, flujo 1 de cada 4 con dos caras, y su prueba de independencia (imprescindible 5).
+7. **Hoja de observación y dictamen de tres botones**: el papel más en toda carpeta de 1.2, el evento del
+   sello, el par «una se queda, una se devuelve», los colores, el sello nombrado en la ficha al cierre, el
+   repaso de una carpeta; sin el papel 2 y con el papel 1 sólo en repaso (imprescindible 6).
+8. **1.1 como el mostrador**: seis sellos y cinco hojas que no se gastan, personas y nombres sorteados
+   aparte del rol, la cola que trae otra persona tras una falla, Doña Nieves en una sorteada, un evento
+   nuevo con el viejo todavía leído (imprescindible 7).
+9. **Las tres carpetas de práctica** con «se adelanta el tiempo» y la ficha que se da vuelta al momento;
+   la hoja de observación entra **después** de la práctica de 1.2 y la fórmula **después** de la de 1.3;
+   el pagaré excluido de las carpetas con nota de esa jornada (A2.1, A2.3 cambios 1 y 2).
+10. **Textos**: cortar los de `04` A2.3 cambio 3 (lo escribe narrativa); pistas (a) que recuerdan la
+    práctica; **quitar la línea al cliente** de 1.3.
+11. **Índice de compra distinto de 100** en la jornada y en la práctica de 1.3, con los diagnósticos «restó
+    los índices» e «ignoró el de compra» y «al revés» corregido (B1.5). El crítico lo dejó para después,
+    pero la práctica de 1.3 de la v2 lo necesita para no sembrar el atajo del 100.
+12. **Registro por ítem con escalón** (B2.9), y las prácticas marcadas aparte.
+13. **Pruebas de B2.8** completas, y que una partida vieja se siga leyendo con el resultado que tenía.
+
+**Antes de que cuente para la nota o lo juegue un curso en la app:**
+
+14. **Redacciones**: 2 o 3 por operación de 1.2, operaciones para las NC que faltan, 2 o 3 por papel de
+    calidad (A2.3 cambio 6; narrativa las escribe, construcción las carga).
+15. **Celular**: manual y hoja de observación como hojas inferiores, botón atrás, cifras fijas con el
+    teclado abierto, `/juego-aief` en la precarga sin red (`public/sw.js`), medición en 375×812.
+16. **La hoja de Ronald para la defensa** con escalón y puntos por ítem (el puntaje se ajusta a lo que
+    responda en `04` A2.5).
+
+**Se reutiliza sin tocar:** lo que lista B1.11 (motor de montos y colores, `escalera.ts`, `partida.ts`,
+`nube.ts`, `versionDeRepaso`, `avanceDe` con sus rondas, la pared, el `Mostrador`, el manual de las 14 NC).
+
+### B2.11 Avisos para otras partes
+
+- **`disenador-narrativo` (`05`):** las líneas de consecuencia de las tres prácticas (dos caminos en la de
+  1.2, cuatro en la de 1.3), el pagaré, las líneas de Doña Nieves, la frase 2 del inversionista sin la
+  tienda, la línea de Doña Teresa que cierra el campo de NC en la práctica, las redacciones del punto 14, y
+  el corte de textos. La justificación «como Bolivia ya adoptó las NIIF» sale de las notas (N1.3).
+- **`disenador-de-aprendizaje` (`04`):** nada cambia de A2.5. Aviso: la NC que se pierde por el escalón (d)
+  hace caer la carpeta entera; conviene que el puntaje la cuente como acierto en el escalón de la carpeta
+  de repaso donde salga bien (el registro lo permite).
+- **`03` P3.3:** los pesos son los de `04` A2.5; la calidad pesa en 1.2, no en 1.3 (hallazgo 10 de `06`).
+- **`critico-de-jugabilidad`:** revisar que las prácticas no se lean como escenas, la cara «devolvió» de la
+  práctica de 1.2, el riesgo de Doña Nieves siempre equivocada, y el conteo de B2.7 ya construido en
+  375×812.
 
 ---
 

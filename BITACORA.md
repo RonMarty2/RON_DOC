@@ -10,10 +10,13 @@
 
 ## 0. En curso ahora (leer antes que nada)
 
-> **ESTADO AL 27-09 ~18:15 (Claude, PC RONMARTY). Tema 1 de AIEF: construido (en prueba) y pasando por
-> las etapas de agentes que se saltaron** (`.claude/agents/LEEME.md`): 2 aprendizaje ✔ (`04-aprendizaje.md`),
-> 3 bucle ✔ (`02-bucle-y-mecanicas.md`); **faltan 4 narrativa, 5/7 crítico (papel y jugable)** y después
-> aplicar al código lo que salga (1.1 que varíe por alumno, delatores de 1.2, índice de compra ≠ 100).
+> **ESTADO AL 27-09 (Claude, PC RONMARTY). AIEF: todas las etapas de planificación hechas** (materia:
+> visión `01` y progresión `03`; Tema 1: aprendizaje `04`, bucle `02`, narrativa `05`, crítico `06` v4 sobre
+> el papel y el prototipo). **Se le presentó a Ronald el plan simple del Tema 1; esperando su aprobación**
+> y su respuesta a cuánto pesa el juego en la nota (propuesta 40 % juego, 60 % defensa). Con su «sí»: se
+> escribe `plan: "aprobado AAAA-MM-DD"` en `content/islas.ts` y se aplican al prototipo los 8 cambios
+> imprescindibles de `06` («Qué cambiar en el Tema 1»). Borrador del emprendimiento al final de la materia:
+> sin nota, por defecto (lo recomiendan progresión y crítico).
 > **Ronald respondió (27-09):** las características de calidad de la información (1.3) **sí entran al
 > juego** (hoja de observación), pero *«se supone que teníamos que planificar»*: **antes de construir
 > se le muestra el plan completo del Tema 1 en simple** y lo aprueba. También: la app pasa a llamarse

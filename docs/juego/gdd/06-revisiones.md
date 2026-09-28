@@ -1,8 +1,18 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 3 · 27-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 4 · 27-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
+
+### De la revisión del Tema 1 de AIEF (papel y prototipo, etapas 5 y 7)
+
+Ninguna pregunta nueva: lo que se corrige abajo es diseño (delegado) y no cambia nada que hayas
+aprobado. Siguen abiertas dos que no son de esta etapa y conviene mostrarte en el plan simple del Tema 1:
+
+1. La de `03-progresion-aief.md` (si el alumno escribe en el juego el borrador de su emprendimiento).
+   Opinión en una línea: el borrador sin nota es lo sensato; cuesta un campo de texto y no pisa el reto.
+2. **Cuánto pesa el juego en la nota del tema.** `04` A1.4 lo deja por defecto en 40 % el registro y
+   60 % la defensa. Es criterio tuyo y todavía no lo dijiste: va en el plan como pregunta, no como hecho.
 
 ### De la revisión de `00-adaptacion-aief.md` v2 (Ronda 2)
 
@@ -36,6 +46,236 @@ Se suman a las cinco que esa parte ya lista.
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 27-09-2026 · AIEF Tema 1: revisión del papel (etapa 5) y del prototipo jugable (etapa 7)
+
+**Qué se revisó.** El papel: `00-adaptacion-aief.md` (R3.1, R3.2, R3.2-bis, maqueta R2), `01-vision.md`
+(AIEF v1), `03-progresion-aief.md` (v1), y para el Tema 1 `04-aprendizaje.md`, `02-bucle-y-mecanicas.md`
+y `05-mundo-y-narrativa.md`. Lo jugable: `src/lib/juego/aief/tema1.ts`, `ventanilla.ts`,
+`guion-tema1.ts`, sus tres `.test.ts`, `src/app/juego-aief/EscenaVentanilla.tsx` y `ventanilla.css`,
+`version-alumno.ts`, `public/sw.js`, `content/islas.ts`.
+
+**Cómo se jugó.** Con la versión 0 (Don Julio: 90.000, índices 100 y 115; Don Ramiro arrendamiento
+mal hecho, Doña Carmen flujo bien hecho), la 417 y la 5, como la que sabe, el que no sabe y el que quiere
+terminar rápido. **Límite honesto:** en esta etapa no tengo cómo ejecutar código, así que de la 417 y la 5
+no saqué las cifras exactas: las jugué con las reglas del generador, que valen para todas las versiones
+distintas de 0 (libros de 40.000 a 150.000 en pasos de 5.000, índice de hoy de 110 a 140 en pasos de 5,
+índice de compra siempre 100, mitad sí completo y mitad contraoferta; en 1.2, un par «una bien hecha y una
+para devolver» sacado de 9 operaciones). Los hallazgos no dependen de la cifra exacta.
+
+**Veredicto.** El papel es coherente con la maqueta aprobada y entre sus cinco partes, salvo los choques
+menores de los hallazgos 10 y 11. **El prototipo no está listo para mostrárselo a un curso ni para contar
+en la nota:** hay tres formas de pasar el Tema 1 sin entender (hallazgos 1 a 3) que **ninguna de las
+partes del papel detectó**, porque la prueba de los perezosos mira la jornada mezclada del Tema 2 y no la
+del Tema 1. Todo se arregla sumando reglas al sorteo y a la pantalla, sin tocar la maqueta.
+
+### Hallazgos, de más grave a menos grave
+
+**1. 🔴 En el único crédito del Tema 1, «prestar siempre lo que pide» gana la mitad de las veces.**
+- *Qué pasa.* La carpeta de 1.3 sortea mitad sí completo y mitad contraoferta (`carpetaT13`). En la mitad
+  de sí completo, escribir lo que pide es el monto correcto, sin haber aplicado el 60 % (y escribir lo que
+  dice el cliente también, `comunValida` lo permite). El perezoso calcula el valor de hoy porque la
+  pantalla lo obliga, y después firma «lo que pide»: 50 % de pasar en la jornada, 75 % sumando un repaso.
+  La prueba «nadie gana una jornada sin entender» (`ventanilla.test.ts`) pasa porque mira la jornada
+  t13 + t22 + t23 juntas, donde el t22 siempre es contraoferta; **el Tema 1 no tiene t22**.
+- *Por qué importa.* Es la estrategia dominante del punto 6: la decisión que cierra el tema se gana sin
+  usar la regla del día. Y es la carpeta que pesa 50 % del registro (`04` A1.4).
+- *Propuesta.* En el Tema 1, la carpeta de 1.3 es **siempre contraoferta** (el tope queda entre el
+  mínimo y lo que pide), en la jornada y en cada repaso. El sí completo ya lo enseña la Llegada con Doña
+  Rosa. Y una prueba propia del Tema 1: en las 999 versiones, «lo que pide», «cero», «el mínimo», «la regla
+  de ayer» y «el valor del cliente» no aciertan nunca la carpeta de 1.3.
+
+**2. 🔴 El número de NC se puede sacar probando del 0 al 14.**
+- *Qué pasa.* El campo de la NC se corrige en el momento y no tiene tope de intentos (`enviarNC`): la
+  escalera llega a «leer» y ahí se queda. Son 15 números posibles, y las pistas («supusiste el vacío»,
+  «ese es el de la norma internacional») achican la búsqueda. Y como el dictamen sale casi solo una vez que
+  se tiene la NC correcta (si la norma citada no es esa NC, devolver), **quien prueba números pasa 1.2
+  sin haber abierto el manual**.
+- *Por qué importa.* Buscar la NC en el manual es lo que 1.2 enseña (`04` A1.1). Es el tanteo del punto 9.
+  El registro guarda cada intento, así que tú lo verías en la defensa, pero el juego lo deja pasar.
+- *Propuesta.* El escalón (d) de la escalera, que el papel no aplicó a la NC: después del escalón «leer»,
+  un fallo más y **el cliente se cansa de esperar y se va** («vuelvo otro día»). La carpeta cuenta como
+  fallada y el repaso trae otra operación. Así probar al azar cuesta una jornada, no diez segundos. Lo
+  mismo, más adelante, para el valor de hoy (hoy es menos grave: el espacio de respuestas es enorme).
+
+**3. 🔴 La pantalla muestra si acertaste antes del cierre, y en 1.2 eso regala la segunda carpeta.**
+- *Qué pasa.* El panel «REGISTRO · lo ve el docente» está a la vista del alumno y pone ✔ al lado de cada
+  dictamen y de cada monto apenas se firman (`describir` devuelve `bien`). Como el par de 1.2 trae
+  **siempre una para aceptar y una para devolver**, el que adivina la primera y mira si salió el ✔ sabe la
+  respuesta de la segunda. Aun sin el ✔, el que descubre que siempre viene «una y una» acierta la jornada
+  el 50 % de las veces, no el 25 % que calcula `02` B1.8.
+- *Por qué importa.* Rompe el pilar 3 de la visión («no se ven hasta el cierre, nada las delata») y el
+  «resultado al cierre» que Ronald aprobó en R3.1. En 1.1 del prototipo pasa lo mismo, y cuando entre la
+  hoja de calidad también delataría el sello.
+- *Propuesta.* (a) El registro que ve el alumno no marca nada de las decisiones (dictamen, sello, monto)
+  hasta que se da vuelta la pared; lo completo lo ve Ronald en su hoja. (b) El par de 1.2 deja de ser
+  «una y una» en el dictamen y pasa a ser «**una que se queda y una que se devuelve**», donde quedarse
+  puede ser aceptar o aceptar con observación, y devolver puede ser por la norma o por un defecto
+  fundamental (hallazgo 5). (c) Sumar a las pruebas al perezoso que conoce el patrón.
+
+**4. 🟠 El manual no dice cómo se decide el monto: se puede calcular bien y salir en rojo por Bs 50.**
+- *Qué pasa.* El manual muestra la regla cero y la del Tema 1 («presta hasta el 60 %»), pero no dice
+  tres cosas que el juego corrige: que nunca se presta más de lo que piden, que por debajo del mínimo es
+  cero, y que la agencia presta **en múltiplos de Bs 100 hacia abajo**. Sólo aparecen en la pista del
+  repaso, después de fallar. Con los pasos del generador, más o menos uno de cada cinco topes termina en
+  50 (60 % de 95.000 × 1,15 = 65.550): quien escribe el 60 % exacto (65.550) sale **rojo** por Bs 50 y
+  va al repaso con la pista «el monto no salió de la regla del día», que es falsa.
+- *Por qué importa.* Castiga al que sabe, y la pista le enseña algo equivocado.
+- *Propuesta.* La hoja de la regla cero ya trae las tres cifras (lo que pide, su mínimo, el tope) y el
+  redondeo, con el sello de «regla del juego», y Doña Teresa lo dice en la Llegada. Además, en el Tema 1 el
+  tope sale siempre en múltiplos de Bs 100 (una condición más en `versionValida`): el redondeo no enseña
+  nada de reexpresión y no tiene por qué decidir un color.
+
+**5. 🟠 La hoja de calidad aprobada no tiene definido cómo se arma el par de 1.2.**
+- *Qué pasa.* `02` B1.6 y `05` N1.4 suman un defecto sorteado y tres dictámenes (aceptar, aceptar con
+  observación, devolver), pero nadie dice cómo queda el par de dos carpetas. Si se sigue sorteando «una bien
+  normada y una mal normada», la bien normada con defecto fundamental también se devuelve, y «devolver
+  siempre» acierta la jornada alrededor de una vez de cada tres (sin contar el sello).
+- *Por qué importa.* Reabre la estrategia dominante que R3.2-bis había cerrado.
+- *Propuesta.* El par de la jornada es siempre **una que se queda (aceptar o con observación) y una que se
+  devuelve (por la norma o por un defecto fundamental)**; el sello de calidad **cuenta para pasar**
+  (como ya dice B1.6); y el sello equivocado se **nombra en la ficha de la pared** al cierre («el auditor
+  anotó que no viste que el balance llegó en julio»), como pidió la visión (V1.8 punto 2), no sólo en el
+  repaso. Cortar el papel 2 de N1.4 (el balance de la fraternidad): se lee igual de bien como falla de
+  representación fiel, y una respuesta discutible en un sello que cuenta es injusta.
+
+**6. 🟠 En 1.1, el nombre de la persona dice su papel, en el prototipo y en el plan.**
+- *Qué pasa.* El prototipo muestra «Doña Elena, le vende clavos y tornillos a la ferretería» arriba de la
+  pregunta (el rol, que es la respuesta; ya lo vio `05` N1.5 punto 1). Pero el arreglo de `05` N1.2 deja
+  **cada nombre fijo por rol en todas las versiones** (Doña Elena siempre es la proveedora): un compañero
+  le dicta al otro «a Doña Elena, vender a 30 días y la hoja de corto plazo». Y el prototipo es, además, un
+  cuestionario de tres opciones con «No es esa» al instante y reintento sobre la misma persona.
+- *Por qué importa.* Regla del 27-09: lo que cuenta para la nota no se copia. 1.1 pesa poco, pero pesa.
+- *Propuesta.* Los nombres se sortean por versión, aparte del rol (son sólo texto). Y construir 1.1 como
+  `02` B1.3 (sellos y hojas que no se gastan, persona que se va y llega otra), sin el «No es esa».
+
+**7. 🟠 En 1.1, las seis hojas «qué mira primero» se pisan entre sí.**
+- *Qué pasa.* «Capacidad de pago de corto plazo» (proveedor) y «liquidez y endeudamiento» (banco) son casi
+  lo mismo para un alumno; «rentabilidad y patrimonio», «márgenes por línea», «utilidad antes de
+  impuestos» y «continuidad y resultados» también se tocan. Y la frase 2 del inversionista («abrir otra
+  tienda en Tolata») suena a la decisión de la gerencia, «invertir».
+- *Por qué importa.* «Sello bien y hoja mal cuenta como falla» (`02` B1.3): si dos hojas son defendibles,
+  la falla es azar, no ignorancia.
+- *Propuesta.* Como el banco nunca llega a la fila, su hoja sale de la lista (cinco hojas, no seis); y la
+  hoja se revisa contra la columna del Cuadro 1 aceptando la vecina cuando el dossier la comparte
+  (proveedor: corto plazo o liquidez). Reescribir la frase 2 del inversionista sobre **su** plata, sin la
+  tienda nueva.
+
+**8. 🟠 El número de NC se copia con una lista de nueve renglones.**
+- *Qué pasa.* Las carpetas de 1.2 salen de 9 operaciones con un solo texto cada una, y la NC de cada
+  operación es la misma para todos. Una lista del tipo «alquiler: 10; dueña de otra: 8; dólares: 6…»
+  resuelve la NC de cualquier versión sin abrir el manual. Sólo se usan 8 de las 14 NC.
+- *Por qué importa.* Punto 11: lo que cambia por alumno es cuál operación le toca, no la respuesta a esa
+  operación. Y la NC es lo que sostiene el 40 % del registro.
+- *Propuesta.* Dos o tres redacciones por operación con otros detalles (el alquiler del local, el de un
+  camión, el de una máquina), y operaciones para las NC que faltan con clientes que calzan (una cooperativa
+  minera para la NC 5, una distribuidora de combustible para la NC 9, dos tipos de cambio para la NC 12).
+  La lista para copiar se vuelve tan larga como el manual, que es lo que se busca.
+
+**9. 🟡 Tres cosas del celular prometidas en el papel que el código todavía no hace.**
+- El manual no es una hoja que sube desde abajo: aparece **debajo** del diálogo, y con la NC hay que ir y
+  volver con el dedo entre el campo y la lista de 14 normas.
+- El botón atrás no está manejado: sale de `/juego-aief`. No se pierde nada (cada paso se guarda), pero
+  se repiten las pantallas de introducción.
+- La franja de cifras de 1.3 va **arriba** del diálogo; con el teclado abierto en 375×812 se va de la
+  pantalla. Y `/juego-aief` no está en la precarga de `public/sw.js`, así que sin red sólo abre si ya se
+  había abierto antes.
+- *Propuesta:* trabajo de construcción, ya pedido por `02` B1.10; se mide en 375×812 antes de mostrarlo.
+
+**10. 🟡 Choques menores entre las partes del papel.**
+- La calidad se juega en 1.2 (`02` B1.6, `05` N1.4), pero `03` P2 dice que la «deja» 1.3, y `04` A1.4
+  saca su peso del 50 % de 1.3. Corrección: la calidad pesa dentro de 1.2 (o aparte), no dentro de 1.3.
+- `04` A1.1 sigue con «cambió el método de depreciación» como defecto de comparabilidad; `05` N1.4 lo
+  cambió por los fletes. Vale el de `05`.
+- `01` V1.7 todavía dice «familias de Los Cóndores» y `00` R3.1 también; `03` las reemplazó por montos por
+  alumno (bien hecho: las familias se copiaban). Hay que alinear esas dos líneas.
+- `03` mueve Sumaj Manos del Tema 7 al Cierre y parte el Tema 5 en tres piezas. Está bien fundado en el
+  dossier, pero **cambia la maqueta que Ronald aprobó**: tiene que ir en el plan como cambio, no escondido
+  en «decidido en esta etapa».
+
+**11. 🟡 La nota bien hecha que razona mal (pedido de `01` V1.8 punto 5 y `05` N1.3).**
+- *Decisión de esta etapa:* la justificación «como Bolivia ya adoptó las NIIF» **sale de las notas del
+  contador** y queda sólo en las frases del cliente (grupo B de N1.3, que ya salen igual con carpetas para
+  aceptar y para devolver). Las notas usan una sola justificación con NIIF, «porque ninguna NC boliviana lo
+  regula», que es verdad en la bien hecha y es justo el error («supuso el vacío») en la mal hecha. Así no
+  hay delator y nadie defiende como bien hecho un papel con una frase falsa.
+- En la cara «mal» del flujo (`02` B1.4), el contador no cita la NC 1, 11 ni 14 (son de presentación
+  general y un alumno podría defenderlas); cita una claramente ajena.
+
+**12. 🟡 Cosas chicas del prototipo que el papel ya pidió y conviene no olvidar.**
+- «Don Efraín, transporte» en 1.2 (obligatorio cambiarlo, `03` P7.2); «Bienvenido» con género; el final
+  que anuncia «el Tema 2»; «Tema 1 aprobado» y «regla del Tema 1» rompen la ficción (`05` N1.5).
+- La versión del alumno se calcula con la semilla de Proyectos II (`versionDeAlumno(alumnoId)` sin
+  semilla propia): cada alumno tiene la misma versión en las dos islas. No rompe nada hoy; conviene una
+  semilla `aief` antes de que alguien juegue con cuenta, porque después cambiarla le cambia las carpetas.
+- La línea al cliente acepta cualquier texto de 20 letras. Como es evidencia y no nota, alcanza con la
+  línea guiada de `05` N1.5 punto 15.
+
+**Sobre las reglas «propuesta» de la progresión (pedido de `03` P9), en una línea cada una, para sus
+fichas:** la regla 3 («un solo cupo») es elegir entre dos: sin un monto escrito que también decida, es un
+sí o no disfrazado. El Tema 7 sin crédito tiene que pedir un número escrito (mora sobre patrimonio, CAR
+ajustado) antes de «sano o frágil», o se vuelve cuestionario de dos botones. «Siempre la regla de ayer» y
+«siempre el mínimo» hay que probarlos en cada tema por separado, no en una jornada mezclada (lección del
+hallazgo 1).
+
+### Los tres alumnos, en el prototipo de hoy
+
+- **La que sabe** (versión 417 o 5): la Llegada, tres toques en 1.1, busca las dos NC en el manual (tiene
+  que bajar y subir la pantalla), compara con la nota y dictamina bien, calcula el valor de hoy y firma el
+  60 %. Si su tope termina en 50 sale roja por no redondear una regla que nadie le dijo (hallazgo 4). Si no,
+  pasa en una jornada. Nota que el registro le avisa con un ✔ antes del cierre y la pared ya no sorprende.
+- **El que no sabe:** en 1.1 descarta de a una opción («No es esa») y pasa en tres toques. En la NC, las
+  pistas enseñan de verdad («esa NC regula otra cosa; lee su título»). En 1.3 cae en el valor en libros o
+  en el del cliente, las pistas lo llevan a la fórmula, y el monto con la regla de ayer sale gris con una
+  pista precisa en el repaso. **Este camino funciona bien:** es lo mejor del prototipo.
+- **El que quiere terminar rápido:** tres toques en 1.1; la NC probando del 0 al 14; el dictamen por el ✔
+  de la primera carpeta; el valor de hoy siguiendo la pista que dicta la fórmula; el monto «lo que pide»;
+  la línea «aaaaaaaaaaaaaaaaaaaaaa». Pasa el Tema 1 en una o dos jornadas sin haber abierto el manual ni
+  aplicado el 60 %. Con los hallazgos 1 a 3 arreglados, este camino se cierra.
+
+### Lo que está bien y no conviene tocar
+
+- El motor de montos y colores (`montoCorrecto`, `colorDelCierre`, `diagnosticoMonto`) con sus pruebas, y
+  la regla «la carpeta no se rehace, el repaso trae otros números» (`versionDeRepaso`).
+- Las pistas del valor de hoy y de la NC: cada una nombra el error concreto sin dar el número.
+- Rehacer todo el avance desde los eventos (`avanceDe`): se retoma donde quedó y tú puedes recalcular el
+  registro.
+- La regla que choca (libros contra valor de hoy) y el «gris» de la cooperativa de enfrente: se entiende
+  sin explicarlo.
+- El guardado local por evento y el reintento a la nube cuando vuelve la red.
+
+### Qué cambiar en el Tema 1 para construirlo según el plan
+
+**Imprescindible (antes de mostrarlo a un curso o de que cuente para la nota):**
+
+1. 1.3 siempre contraoferta en el Tema 1, con el tope en múltiplos de Bs 100, y la prueba de los
+   perezosos sobre la jornada del Tema 1 (hallazgos 1 y 4).
+2. La regla del monto completa en el manual: lo que pide, su mínimo, el tope y el redondeo (hallazgo 4).
+3. La NC con escalón (d): pasado «leer», un fallo más y el cliente se va (hallazgo 2).
+4. Ningún ✔ de decisiones a la vista del alumno antes del cierre (hallazgo 3).
+5. 1.2 sin delatores: nota con forma única y sin «como Bolivia ya adoptó», frase del cliente sorteada
+   aparte, acierto de la NC neutro, flujo menos frecuente y con dos caras (hallazgo 11, `02` B1.4).
+6. La hoja de calidad con el par «una se queda, una se devuelve», el sello que cuenta y se ve en la pared,
+   sin el papel 2 (hallazgo 5).
+7. 1.1 como `02` B1.3, con nombres sorteados aparte del rol, cinco hojas y la frase del inversionista
+   reescrita (hallazgos 6 y 7).
+8. Semilla propia de AIEF para la versión y la partida que guarda con qué generación de carpetas se jugó
+   (hallazgo 12, `02` B1.11 punto 1): las dos cuestan poco hoy y mucho después.
+
+**Puede esperar (se hace, pero no bloquea la primera prueba):**
+
+- Más operaciones y redacciones en 1.2 (hallazgo 8); mientras tanto, la defensa pregunta la NC con otra
+  operación.
+- Índice de compra distinto de 100 (`02` B1.5).
+- La Llegada como pieza aparte y lo que el Cierre tiene que leer de la pared (`03` P7.1 y P7.4): hacen
+  falta cuando se construya la segunda pieza, no antes.
+- Manual como hoja inferior, botón atrás, cifras fijas con el teclado y precarga sin red (hallazgo 9):
+  imprescindibles antes de que lo juegue un curso en la app, no antes de que tú lo pruebes.
+- La hoja por alumno para tu defensa (`04` A1.4): imprescindible antes de que cuente para la nota.
+- Los textos de `05` N1.5 que no son delatores (Doña Nieves, cooperativa en la Llegada, recuerdo de 1985,
+  línea guiada).
 
 ---
 

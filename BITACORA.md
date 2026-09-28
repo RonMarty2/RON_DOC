@@ -10,6 +10,25 @@
 
 ## 0. En curso ahora (leer antes que nada)
 
+> **EN CURSO desde 28-09 11:45 (Claude, PC RonMarty): mejorar los agentes antes de probarlos en
+> Psicoestadística Descriptiva.** Ronald pausa AIEF (*«al jugar el Tema 1 de AIEF no domino el tema»*) y
+> prueba el equipo en una materia que domina. Decisiones suyas del 28-09, que pasan a regla:
+> (1) **motor común, juego propio, «como Doom»**: se reutiliza lo invisible (guardado, cuentas, versiones
+> por alumno, escalera, registro, cálculos probados); nunca personajes, nombres, diálogos, escenarios ni
+> aspecto: cada juego se siente distinto; (2) **Psicoestadística Descriptiva tiene dos juegos, uno por
+> carrera**: Psicología ahora; Empresariales después, con su propio dossier. Pasos:
+> - [x] a. Rescatado `src/app/juego-aief/piezas.tsx` (piezas del aspecto A: cara con gestos, nota
+>   adhesiva, sumadora…): se creó el 28-09 a las 06:24 y **nunca se había subido**; llegó a esta PC sólo por
+>   Synology, horas después. Subido sin conectar a la pantalla (nadie lo importa todavía).
+> - [ ] b. Catálogo `docs/juego/PIEZAS-COMUNES.md`: qué es motor (se reutiliza), qué es patrón, qué está
+>   atado a una materia y qué falta para Psicoestadística.
+> - [ ] c. Regla en los 7 agentes, `LEEME.md` e IDEA-JUEGO §20.
+> - [ ] d. Después, con el OK de Ronald: ronda 1 del adaptador con Psicoestadística Descriptiva (Psicología).
+>
+> Nota de esta PC: `git stash@{0}` guarda el trabajo suelto que había en el disco antes del `git pull` del
+> 28-09 (casi todo ya estaba en GitHub; lo único propio es un borrador de escalera de ayuda para la escena
+> de Proyectos II). El stash **no viaja** a la otra PC.
+
 > **EN CURSO desde 28-09 (Claude, PC RONMARTY): rehacer la pantalla de «La ventanilla» con el aspecto A**
 > que Ronald aprobó («OK» a la pantalla de 1.2 explicada): `01-vision.md` V1.10 (tres franjas: ventanilla
 > con cara que reacciona, escritorio con papeles que se tocan, bandeja con libreta, sellos y sumadora;

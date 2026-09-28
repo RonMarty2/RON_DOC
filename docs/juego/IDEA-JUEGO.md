@@ -309,3 +309,16 @@ concepto se juega en un solo lugar, el que lo trabaja a fondo, y un tema introdu
 solo juego. Y Ronald: *«debemos mejorar los agentes mientras hacemos»*: cada cosa que falla al usarlos se
 vuelve regla del agente en ese momento.
 
+## 22. El marco es el mundo, no una mecánica (28-09)
+
+Ronald eligió para Psicoestadística (Psicología) **«El Observatorio» con personas con nombre**. El
+crítico encontró que del Tema 2 al 6 la propuesta era un cuestionario bonito, y propuso llevar a todos los
+temas la niebla que funcionaba en el Tema 1. Ronald: *«¿lo de la niebla es para siempre?… si decido eso,
+automáticamente estás queriendo ajustar todos los demás temas a la niebla, cuando en realidad sólo es
+buenísima idea para un subtema… cada tema, subtema debería tener su idea o forma de juego, ¿no quedamos
+ya?»*. Precisa el «marco fijo, modalidad variable»: lo que une es el mundo, el rol y la gente; la mecánica
+de un subtema no se estira a los demás. Del crítico quedan como controles de los agentes: ningún patrón
+que se aprende una vez sirve siempre, cada número que escribe el alumno cambia lo que pasa, y nada de
+elegir entre dos frases obvias. Orden de dictado de la materia, confirmado por Ronald: **correlación y
+regresión antes que probabilidad**.
+

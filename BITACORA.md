@@ -47,7 +47,11 @@
 >   ronda 1 dio cinco escenas al Tema 1, una introducción; Ronald: «abarca mucho y aprieta poco»). En los 7
 >   agentes, más lo propio del adaptador y de progresión; IDEA-JUEGO §21. Ronald también aclaró que el juego
 >   no usa los números del dossier: sus inconsistencias sólo importan donde el juego manda a leer una página.
-> - [ ] f. **Esperando a Ronald:** que elija marco (A, B, C o mezcla), o ver antes un boceto de cada uno.
+> - [x] h. Bocetos para elegir (Ronald: «esperar bocetos»): el director dibujó dos pantallas por marco
+>   (Tema 1 y Tema 4) en `docs/juego/bocetos/psicoestadistica-psicologia-{A,B,C}.html`. El primer intento se
+>   trabó sin dejar nada; el segundo, un archivo por marco, salió bien. Recomienda A con personas con nombre
+>   de B; ve como punto débil de A que en el Tema 4 el mapa queda de adorno.
+> - [ ] f. **Esperando a Ronald:** que elija marco (A, B, C o mezcla) mirando los bocetos.
 >   Con su elección, ronda 2 del adaptador (maqueta con las reglas nuevas) y después el director. Queda para
 >   cuando se construya: en qué página del sitio va el juego (Descriptiva o EAD-111, el curso que este
 >   semestre usa ese material).

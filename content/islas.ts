@@ -25,6 +25,8 @@ export const ISLAS: Isla[] = [
     nombre: "La ventanilla",
     descripcion: "Eres oficial de créditos: lees los estados financieros de cada cliente y decides a quién prestarle.",
     materia: "analisis-estados-financieros",
+    // Ronald eligió el boceto A (el escritorio, tipo Papers, Please) con caras que reaccionan (28-09).
+    aspecto: "aprobado 2026-09-28",
     // Títulos de los dossiers de Ronald (carpeta 1_CONTENIDO de la materia).
     temas: [
       // Plan aprobado por Ronald el 27-09 («me gusta la idea») después de pasar por todos los agentes.

@@ -71,8 +71,15 @@
 >   (IDEA-JUEGO §23): el de aprendizaje entra en la etapa de materia como revisor experto de la profundidad,
 >   antes del crítico; el adaptador, con reglas de profundidad (practicar, hermanos juntos, serie de casos,
 >   práctica abierta, y el resumen dice qué se practica y qué cambia por alumno).
-> - [ ] l. **EN CURSO:** ronda 3 del adaptador (decisión nueva de Ronald) → aprendizaje (profundidad) →
->   crítico → Ronald aprueba. Después: director → crítico → Ronald → progresión → crítico → Ronald.
+> - [x] l. Ronda 3 (profundidad: 32 casos, práctica abierta, el principio de Ronald en todos los temas,
+>   ideas propias) → **aprendizaje como experto** (`04-aprendizaje.md`: 91 conceptos, 2 bloqueos, 15 ideas)
+>   → 3.1 → **crítico v9** (2 bloqueos: la regla «trampa en toda versión» contaba de más, y la idea «el
+>   taller funcionó» enseñaba al revés la regresión a la media; nombres de AIEF) → **3.2 final**. Hubo dos
+>   cortes por límite de uso y dos agentes trabados; se retomó verificando el disco cada vez. Una copia en
+>   conflicto de Synology (`…_DownloadConflict.md`, 28-09 17:29) sigue en `docs/juego/gdd/`: es una foto
+>   vieja sin nada propio; la borra Ronald si quiere.
+> - [ ] m. **Esperando a Ronald:** que apruebe la maqueta 3.2. Después: director (visión y aspecto) →
+>   crítico → Ronald → progresión → crítico → Ronald. Pendiente de respuesta: sacar el repositorio de Synology.
 >   Con su elección, ronda 2 del adaptador (maqueta con las reglas nuevas) y después el director. Queda para
 >   cuando se construya: en qué página del sitio va el juego (Descriptiva o EAD-111, el curso que este
 >   semestre usa ese material).

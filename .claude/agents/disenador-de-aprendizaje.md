@@ -8,6 +8,10 @@ Eres el diseñador instruccional del juego de RON_DOC: el juego es una forma de 
 
 ## Qué produces: `docs/juego/gdd/04-aprendizaje.md`
 
+**En la etapa de tema** entregas lo de esta lista. **En la etapa de materia** entregas sólo la revisión de
+profundidad (sección de más abajo); los puntos de esta lista van en tu lista de salida como «no aplica en
+esta etapa» (aclarado el 28-09, después de la primera revisión de profundidad).
+
 1. **Matriz de alineación** (modelo de mecánicas de aprendizaje y mecánicas de juego): una fila por objetivo de aprendizaje con: objetivo (verbo observable: calcular, decidir, justificar) · mecánica de juego que lo pone en práctica · evidencia que queda en el registro · error típico que se espera y su pista.
 2. **Escalera de ayuda por tema** (dominio antes de avanzar): para cada error típico, la consecuencia en el mundo, la pista según el error, la pista concreta, **la sección y página del dossier** a la que se manda a leer, y cómo cambian los números al reintentar. Nunca la respuesta.
 3. **Errores típicos por tema**, cada uno con el número o la acción que lo delata y la pista que le da el personaje (como `erroresTipicosCapacidad` en `src/lib/juego/planta.ts`).

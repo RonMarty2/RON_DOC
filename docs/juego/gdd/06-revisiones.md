@@ -1,8 +1,13 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 8 · 28-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 9 · 29-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
+
+### De la revisión de la maqueta de Psicoestadística Descriptiva · Psicología, ronda 3.1 (papel, 29-09)
+
+Ninguna pregunta nueva. Los dos bloqueos y los importantes son de diseño: los corrige el adaptador antes de
+que veas la maqueta, y recibes la versión corregida con una línea de qué cambió.
 
 ### De la revisión de la maqueta de Psicoestadística Descriptiva · Psicología, ronda 2 (papel, 28-09)
 
@@ -79,6 +84,244 @@ Se suman a las cinco que esa parte ya lista.
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 29-09-2026 · Psicoestadística Descriptiva (Psicología), maqueta ronda 3.1: ¿sigue siendo juego con 32 casos? (papel, v9)
+
+**Qué se revisó.** La ronda 3, versión 3.1, de `00-adaptacion-psicoestadistica-descriptiva-psicologia.md`
+(§R3.0-bis a §R3.9 y su «Lista de salida · ronda 3.1»), con lo que sigue vigente de la ronda 2 (§R2.1, §R2.4,
+§R2.5, §R2.6, §R2.7), contra la revisión de profundidad del de aprendizaje (`04-aprendizaje.md`, PD.1 a PD.8),
+la v8 de este archivo y `PIEZAS-COMUNES.md` §4. Contra el código: `version-alumno.ts` sigue dando una sola
+versión por alumno y semilla, y `src/lib/estadistica/` no existe; la maqueta los nombra como trabajo (§R2.5,
+§R3.7), no como hecho. No hay nada construido de esta isla. No se usó la copia en conflicto de Synology.
+
+**Veredicto.** Los conteos de la lista de salida **cuadran**: los reconté a mano, tabla por tabla, y dan lo
+mismo (abajo). La profundidad que pidió Ronald está: los hermanos juntos, cada tema sube, las trampas del
+dossier tienen caso. **Sigue siendo juego** en el Tema 1, 2A caso 3, 2B caso 3, 3A, 4B caso 4, el Tema 5 y la
+audiencia. **En 3B y 4B se vuelve un cuestionario largo con dibujos:** caso tras caso, calcular a mano y
+después aprobar o frenar frases (hallazgo 5). Hay **dos bloqueos**: la regla 7 («cada trampa en toda
+versión») se da por cumplida en 39 de 39 y en cuatro trampas sigue siendo «a veces», justo lo que el I1 del de
+aprendizaje pedía cerrar; y la idea P5 («el taller funcionó») enseña al revés la regresión a la media en la
+mitad de las versiones. Los dos se arreglan con líneas, sin casos nuevos.
+
+### La lista de salida del adaptador, comprobada
+
+| Línea de su lista | ¿Es cierto? | Por qué |
+|---|---|---|
+| Cada número decide: 58, 58 con consecuencia | ✔ en el conteo, ✘ en parte en el fondo | Recontado: 58 filas (1: 3 · 2A: 7 · 2B: 7 · 3A: 6 · 3B: 8 · 4A: 5 · 4B: 9 · 5: 8 · 6: 5) y los campos de cada caso de §R3.3 están todos en la tabla. Pero en dos filas el número no cambia la decisión (27 y 44, hallazgo 4) y en dos la consecuencia es sólo un dibujo (12 y 14, hallazgo 8) |
+| Cada trampa en toda versión: 39 de 39 | ✘ | Recontado: 39 filas. En 4 de ellas lo que cambia de un alumno a otro es **si la trampa muerde**, en su único lugar (hallazgo 1) |
+| Ninguna estrategia gana sin entender: 43 trampas | ✔ en el conteo, ✘ en parte | Recontado: 43 filas, 17 marcadas 3.1. Falta la estrategia nueva que nace de las reglas 3 y 6 juntas (hallazgo 3) y las decisiones de respuesta fija (hallazgo 4) |
+| El patrón que se aprende una vez | ✘ en parte | Hallazgo 4: 3B caso 3, el asistente de 5 caso 2 y la compra del test siempre tienen la misma respuesta, fuera de la regla 5 |
+| Revisión del de aprendizaje, corregida: 2 de 2, 14 de 14 | ✘ en parte | B1a, B1b y B2 resueltos de verdad. I1 resuelto en 3 casos y no en otros 4 (hallazgo 1). I3 tomado con un grupo de comparación que no compara (hallazgo 2). Los demás, resueltos |
+| Cobertura: 71 filas, 0 sin lugar | ✔ | Recontado: Tema 1: 6 · 2A: 9 · 2B: 6 · 3A: 8 · 3B: 5 · 4A: 3 · 4B: 7 · 5: 8 · 6: 9 · ya jugada: 1 · dossier: 8 · ninguno: 1 = 71. Detalles de rótulos en el hallazgo 9 |
+| Profundidad: 61 con juego, 52 en dos o más, 9 en una | ✔ | Recontado: las 9 de una vez son 3, 24, 39, 50, 58, 59, 66, 70 y 71 |
+| Cada tema, una serie: 32 casos, 9 con ayuda | ✔ | 3, 3, 3, 4, 4, 3, 4, 4, 4; los 9 casos 1 con ayuda |
+| Ideas propias: 12 del adaptador, 14 del de aprendizaje | ✔ | Contadas en §R3.1 |
+| Motor común «como Doom» | ✘ en parte | Hallazgo 6: dos nombres de AIEF |
+| Orden de dictado; web y Android; tuteo y sin guiones largos; lo que dijo Ronald; individual; no es lección | ✔ | Comprobadas; ningún caso usa algo que se dicte después; máximo de campos 10 (3A caso 2) |
+
+### Hallazgos, de más grave a menos grave
+
+**Bloqueos (no se le muestra a Ronald así):**
+
+1. **La regla 7 cuenta de más: en cuatro trampas lo que cambia es si la trampa está.** **Qué pasa:** la propia
+   tabla «En toda versión» lo dice en su columna «qué cambia»:
+   - **El tamaño no arregla el método** (T1 caso 3, único lugar): «en parte de las versiones la grande es la
+     sorteada». Ahí el alumno que cree que lo grande es mejor elige la grande y acierta: nunca lo muerde.
+   - **La forma depende de las paredes** (2A caso 3, único lugar): «si el pico se muda». Donde no se muda, no hay
+     trampa.
+   - **La moda no es la mayoría** (3A caso 2, único lugar): «si llega a la mitad». Donde llega, «moda = mayoría»
+     acierta.
+   - **La relación vive en las celdas** (4A caso 3, único lugar): «en parte de las versiones, en los dos o en
+     ninguno». Donde los dos mercados son iguales, «mismo total, mismo problema» se aprueba y se premia el
+     razonamiento que D4 §4.2 prohíbe.
+
+   **Por qué importa:** es exactamente el defecto que el I1 del de aprendizaje mandó cerrar («deja alumnos que
+   nunca la enfrentan en su vez oficial»), y la lista da ✔ 39 de 39. Es el mismo criterio del B2: un ✔ vale
+   sólo con la prueba contada, y aquí la prueba cuenta cuatro filas que no cumplen. **Propuesta**, con el
+   patrón que la 3.1 ya usa bien en 3A caso 3 y en las tortas de 2B caso 2 (**dos instancias en el mismo caso:
+   una muerde y otra no; cuál, cambia**):
+   - **T1 caso 3:** la encuesta grande tiene **siempre** un método que deja gente afuera. Lo que cambia es si
+     la chica está bien sorteada (se anuncia la chica) o tiene su propio sesgo en el otro sentido (no se
+     anuncia ninguna como cifra de la ciudad: se dice lo que sí se midió, o se espera el censo). Así «siempre
+     la chica» también pierde.
+   - **2A caso 3:** el director trae su polígono para **dos pares** de centros; en un par el pico se muda con
+     tus paredes y en el otro no; cuál par, cambia.
+   - **3A caso 2:** «la mayoría puntúa X» llega sobre **dos cursos**; en uno la moda reúne a más de la mitad y
+     en el otro no; cuál, cambia.
+   - **4A caso 3:** en toda versión un mercado depende del turno y el otro no (cuál, cambia). «Tienen el mismo
+     problema: sus totales son iguales» pasa a ser de las que nunca se sostienen (su «porque» es la trampa), con
+     poco peso, y lo que decide es la brigada de cada mercado, con tus cuatro porcentajes.
+   - Y la regla 7 aclara su última frase: «si la frase que la usa es cierta» vale **sólo si en el mismo caso
+     hay otra instancia donde la trampa muerde**, o si el alumno escribe el número que la decide (como en el
+     cambio de las denuncias o el percentil de Tomás, que están bien).
+
+2. **La idea P5 («el taller funcionó») enseña al revés la regresión a la media.** **Qué pasa:** en 3B caso 4 se
+   compara cuánto bajaron los derivados (todos sobre el D9) con cuánto bajaron, sin taller, «los que quedaron
+   justo debajo del D9», y «en unas versiones los derivados bajaron mucho más (el taller funcionó) y en otras lo
+   mismo (regresión a la media)». Pero la regresión a la media es **mayor cuanto más lejos del centro está el
+   puntaje**: los derivados, más extremos, bajan más que los de justo debajo **aunque el taller no haga nada**.
+   Con ese grupo de comparación, «bajaron más» no prueba que funcionó, e «igual» sugeriría que el taller hizo
+   daño. **Por qué importa:** los conceptos correctos no se negocian, y aquí la versión «funcionó» premia la
+   falacia que D1 §1.4 enseña a evitar; Ronald no puede verlo en la maqueta si no domina el tema. **Propuesta**
+   (recomendada): el grupo de comparación tiene que ser **igual de extremo**. Como hay tres cupos para dos
+   cursos, la directora **sortea los cupos entre los que pasan el D9** (regla del juego, marcada); al trimestre
+   escribes cuánto bajaron **los que pasaron el D9 y no salieron sorteados**. Es la asignación aleatoria y el
+   grupo de control de D1 §1.4, jugados. En las versiones sin efecto los dos grupos bajan parecido (regresión);
+   en las con efecto, los del taller bajan más. `versionValida` asegura que siempre haya más alumnos sobre el D9
+   que cupos. Alternativa: sacar P5 de 3B y dejar la regresión sólo en la lista de espera sorteada del Tema 6
+   (costo: la fila 8 vuelve a un caso, lo que el I3 pedía subir).
+
+**Importantes:**
+
+3. **Con la regla 6, las frases que citan un número se juzgan buscando si ese número está en la pantalla.**
+   **Qué pasa:** la regla 3 dice que las conclusiones citan tu número, «a veces el correcto y a veces el que da
+   un error típico (la media con n, el límite en lugar de la marca)». La regla 6 abre la mesa con tus números
+   ya corregidos. Juntas, una frase con «la media con n» se frena porque el número **no coincide** con ninguno
+   de los tuyos: el alumno que quiere terminar rápido aprende «si el número está en mi pantalla, apruebo
+   señalándolo; si no está, freno». Eso no mide lectura (el error de cuenta ya lo cobró la escalera) y es un
+   patrón que se aprende una vez. **Por qué importa:** la mesa es la mecánica central de la ronda 3 y la regla 2
+   («menos de una vez en diez al azar») supone que elegir la prueba cuesta. **Propuesta:** la regla 3 cambia: el
+   número equivocado de una frase es **siempre otro número tuyo o una lectura equivocada** (la media donde iba
+   la mediana, r donde iba r², el porcentaje donde iba el percentil, el conteo donde iba la proporción, la fila
+   donde iba la columna), nunca un error de cuenta. Y parte de las frases afirman un umbral o una comparación
+   («más de la mitad», «B es el más parejo»), no un valor que se copia. Así el número de la frase **siempre**
+   está en tu pantalla y hay que saber si es el que corresponde.
+
+4. **Decisiones con respuesta fija fuera de la regla 5, y dos números que no deciden.** **Qué pasa:**
+   - **3B caso 3:** llega un caso extremo; la directora dice «empeoró: la dispersión se duplicó» o «sigue igual
+     de parejo». Con un solo extremo la respuesta es siempre la misma (el grupo no cambió; lo muestra el RIC),
+     cambie la frase o no. Tu s con el caso (fila 27) no cambia esa decisión: es un peaje de hecho. Y la s de
+     antes no la escribe nadie: no se dice de dónde sale.
+   - **4B caso 4:** «tres barrios cuyas tablas dan un r parecido» y escribes los tres r (fila 44). Si son
+     parecidos, no deciden nada entre barrios: decide la forma. Son tres Pearson a mano en el celular para
+     confirmar lo que la consigna ya dijo.
+   - **5 caso 2:** el asistente siempre se equivoca («el próximo seguro es real»): «nunca aceptes lo del
+     asistente» gana. Y si la escuela que nombra es justo la que merece ir primero, aceptar sería la acción
+     correcta por mala razón.
+   - **4B caso 3:** comprar el test es siempre un error.
+
+   **Por qué importa:** con la práctica abierta antes de la vez oficial, toda respuesta fija se aprende en la
+   práctica y se dicta a un compañero. La regla 5 lo acepta sólo para las frases «Qué NO», con poco peso; estas
+   no están declaradas así. **Propuesta:** 3B caso 3, en unas versiones llega **un** caso extremo (s salta, el
+   RIC no: el grupo sigue igual y esa persona va a derivación por tu valla) y en otras llegan **varios** que
+   abren al grupo (los dos crecen: empeoró de verdad); la s de antes la da la herramienta. 4B caso 4, la
+   concejala trae el r de los tres barrios (herramienta: ya lo calculaste en los casos 1 a 3) y escribes r sin
+   el punto (1 campo) y, en la loma, el ŷ de un extremo que la recta no alcanza (1 campo). 5 caso 2, el
+   asistente propone dos cambios de orden: uno por «el próximo seguro» (nunca) y otro por los positivos reales
+   por hora de evaluación (a veces vale), y la escuela del primero nunca es la que merece ir primero. 4B caso 3,
+   la compra se declara de las que nunca se sostienen, con poco peso, y la fila 43 dice lo que el número decide
+   (la frase «comparten el X %»), no «si se compra».
+
+5. **En 3B y 4B el ritmo es «calcula y juzga frases» caso tras caso.** **Qué pasa:** jugando como el que sabe,
+   3B tiene mesa en los casos 2, 3 y 4, y 4B en los casos 2, 3 (dos mesas: los estudios y el test) y 4. El Tema
+   3 suma 8 casos, unos 34 campos oficiales (sin contar los casos con ayuda) y 5 mesas; y los campos más pesados
+   son de cálculo a mano (tres s y tres CV en 3B caso 2; cuatro r en 4B caso 4). Los campos están contados; el
+   **cálculo** no. **Por qué importa:** Ronald pidió profundidad, no una guía de ejercicios con veredictos; el
+   riesgo que §R3.7 nombra («que juzgar se sienta un verdadero o falso») aparece justo donde la mesa se repite
+   sin la forma de su juego. **Propuesta:** **una mesa por juego**, en el caso donde vive su trampa; en los otros
+   casos el número decide la acción propia del juego (a quién va el especialista, quién se deriva, los cupos)
+   sin frases. En 3B: el caso 2 decide el especialista con el CV y sus dos frases pasan a la mesa del caso 4. En
+   4B: el caso 3 se parte en dos firmas en dos pantallas (como 3B caso 4). Y cada ficha dice **cuántos datos
+   tiene cada grupo** y qué suma la herramienta después del caso con ayuda, con el criterio de la propia
+   maqueta: lo que ya se practicó en el juego pasa a herramienta.
+
+6. **Dos nombres de AIEF.** **Qué pasa:** «Rosa, que usa 5 horas, dormirá X» (4B caso 2) y «a Julia la llamaron
+   al celular de su tía» (§R2.1). Doña Rosa y Doña Julia son clientas de «La ventanilla»
+   (`src/lib/juego/aief/tema1.ts`). **Por qué importa:** regla «como Doom»: un alumno que jugó los dos no puede
+   reconocer a nadie. **Propuesta:** cambiar los dos ejemplos, y que las plantillas de nombres de esta isla
+   excluyan los de `PIEZAS-COMUNES.md` §4 (una prueba que lo compruebe).
+
+**Menores:**
+
+7. **5 caso 3 no dice qué es «la buena».** «Cuál de las tres opciones se compra depende de la prevalencia, de la
+   capacidad y de cuántos coinciden»: falta qué se busca con la agenda fija (ver a todos los que tienen el
+   trastorno si caben; si no, a la mayor cantidad de reales). Va como regla del juego, marcada (M6).
+8. **El ángulo del sector sólo dibuja** (filas 12 y 14). Que tenga efecto en el mundo: la torta impresa con tu
+   ángulo muestra un motivo más chico de lo que es y el programa de ese motivo reclama en la prensa.
+9. **Rótulos que no siguieron a la 3.1.** Los encabezados de §R3.3 no listan las filas sumadas (2B: 11, 17 y 18;
+   3B: 8; 4B: 11). Las filas 8 y 17 dicen «Tema 6» aunque su caso con campo está antes (3B, 2B): decir cuál es
+   su tema de casa. La fila 36 todavía dice «en parte de las versiones». §R3.2 dice que a 3A caso 2 «le sigue
+   3B caso 4 (7)», pero 2A caso 2 llega a 8. La fila 38 cuenta la ojiva de 2A caso 2 como percentil, que se
+   dicta en D3 (no cambia el conteo: 3B caso 4 ya tiene tres).
+10. **2B caso 3, orden de los gráficos.** Si los cinco van siempre en el mismo orden, «el cuarto se frena»
+    se aprende en la práctica: el orden cambia con la versión.
+11. **4B caso 2, la mediana del turno.** Una mediana sola no decide a qué turno va la charla: decir con qué se
+    compara (las de los otros turnos, que llegan dadas).
+
+### Los bloqueos anteriores: ¿resueltos o sólo nombrados?
+
+| Bloqueo | Cómo quedó |
+|---|---|
+| v8 1 · subtemas sin lugar | Resuelto: 71 filas, 0 sin lugar, recontadas |
+| v8 2 · números de peaje | Resuelto en lo que la v8 nombró; la 3.x trajo dos peajes de hecho nuevos (hallazgo 4) |
+| De aprendizaje B1a · «el doble» sin cero | Resuelto: en toda versión, y «el doble» de razón a veces es cierto (orden, hallazgo 10) |
+| De aprendizaje B1b · r alto no prueba validez | Resuelto: en toda versión, con un campo que decide «comparten el X %» |
+| De aprendizaje B2 · §R3.5 contaba de más | Resuelto: ángulo en 2B casos 1 y 2; cuartiles en 3B casos 3 y 4 |
+| De aprendizaje I1 · trampas «a veces» | A medias: resuelto en la ordinal, las escalas y el rango; quedan cuatro (hallazgo 1) |
+| De aprendizaje I3 · regresión a la media | Tomado con un error de concepto (hallazgo 2) |
+| De aprendizaje I13 · error arrastrado | Tomado; deja un patrón nuevo junto con la regla 3 (hallazgo 3) |
+
+### Los tres alumnos, en corto
+
+- **El que sabe:** disfruta el Tema 1, las paredes del director, las tres formas, los tres barrios y la
+  audiencia. En 3B y 4B pasa de calcular a juzgar frases tres veces seguidas y hace cuatro Pearson para ver
+  que dan igual (hallazgos 4 y 5).
+- **El que no sabe:** la escalera lo lleva a los números correctos y la mesa lo obliga a elegir cuál decide:
+  eso enseña. Si su versión trae la encuesta grande sorteada, los mercados iguales o la moda que sí es mayoría,
+  termina creyendo lo que el dossier prohíbe (hallazgo 1); si trae «el taller funcionó», aprende la regresión
+  al revés (hallazgo 2).
+- **El que quiere terminar rápido:** juega la práctica abierta, aprende que el asistente, la compra del test,
+  el grupo que «empeoró» y las frases que generalizan tienen siempre la misma respuesta, y en la vez oficial
+  frena por coincidencia de números (hallazgos 3 y 4). Lo demás lo frena.
+
+**No tocar:** el Tema 1 con un solo juego; las tres formas de 3A caso 2; las dos tablas de 3A caso 3 y las dos
+tortas de 2B caso 2 (el patrón «una muerde y otra no»); «el doble» con y sin cero; las paredes del director; la
+unión con sillas vacías; la regla 6 como idea (mide la lectura, no la cuenta); la práctica abierta con semilla
+aparte; los conteos con script, que esta vez cuadran.
+
+### Lista de salida del crítico (v9)
+
+| Regla | ✔/✘ | Dónde se ve |
+|---|---|---|
+| 1. Tres alumnos | ✔ | «Los tres alumnos» |
+| 2. ¿Divertido? ¿monótono o sin marco? | ✔ | Veredicto; hallazgo 5 |
+| 3. Contra la visión (cuestionario, elige en vez de calcular, se ve antes) | ✔ | Hallazgos 3 y 5 (`01-vision.md` de esta isla todavía no existe) |
+| 4. Contra el aprendizaje (ganar sin entender, pista, registro) | ✔ | Hallazgos 1, 2 y 3 |
+| 5. Contra la realidad (celular, conexión, una persona, retomar) | ✔ | Hallazgo 5 (cálculo en el celular); motor nuevo comprobado contra `version-alumno.ts` y `src/lib/estadistica/` |
+| 6. Estrategia dominante, patrón, peaje, frase obvia; cuidado con el propio arreglo | ✔ | Hallazgos 3 y 4; ninguna propuesta lleva una mecánica a otro tema: el patrón «una muerde y otra no» ya es de cada caso |
+| 7. Orden real de dictado | ✔ | Comprobado T1 → T6 con el 4 antes del 5, también la propuesta del hallazgo 2 (D1 antes que D3) |
+| 8. Coherencia con el dossier que se manda a leer | ✔ | Sin hallazgo nuevo; PD.5 ya en §R3.8 |
+| 9. Tanteo | ✔ | Hallazgo 4 (respuestas fijas que se aprenden en la práctica) |
+| 10. Lo prometido contra lo que existe | ✔ | «Qué se revisó»: motor nuevo nombrado como trabajo |
+| 11. ¿Se puede copiar?, parte por parte | ✔ | Hallazgo 4; lo demás varía (columna «qué cambia», recontada) |
+| 12. Revisar lo jugable | No aplica | Nada construido de esta isla |
+| 13. ¿Otro juego? ¿se reutilizó bien? | ✔ | Hallazgo 6 |
+| Ronald decide; lo aprobado no se reabre | ✔ | Nada APROBADO en la ronda 3; ninguna pregunta nueva |
+| Lee antes de proponer | ✔ | «Qué se revisó» |
+| Lo que Ronald ya dijo (no cuestionario, escribe el número, primero se ve) | ✔ | Hallazgos 3 y 5 |
+| Juego con sabor a la materia; conceptos correctos | ✔ | Veredicto; hallazgo 2 |
+| Un juego por materia y carrera; motor «como Doom» | ✔ | Hallazgo 6 |
+| Lo que cuenta no se puede copiar | ✔ | Hallazgo 4 |
+| Individual, sobre 100, sin reparto | ✔ | Ninguna propuesta reparte la nota; «poco peso» es la regla 5 ya escrita |
+| El juego no es una lección | ✔ | Las propuestas son decisiones y números con consecuencia |
+| Todos los agentes en su etapa; sin idas y vueltas | ✔ | Revisión única antes de Ronald; corrige el adaptador |
+| Aspecto con bocetos; cómo llega el alumno | No aplica | La maqueta no toca aspecto ni páginas |
+| Marco fijo, modalidad variable; el marco es el mundo | ✔ | Hallazgo 5 pide menos mesa, no otra mecánica |
+| Cómo se planifica (diseño inverso, arco, escalera, contraste) | ✔ | Hallazgos 1 y 2 |
+| Lo que Ronald decide se vuelve regla | ✔ | No hubo decisión nueva |
+| Por temas, sin tiempo | ✔ | Sin plazos ni duraciones; «al trimestre» es tiempo del mundo |
+| Primero la maqueta; un concepto, su tema de casa | ✔ | Hallazgo 9 |
+| Estructura escalable | ✔ | 0 casos nuevos en las propuestas |
+| Web y Android por igual | ✔ | Hallazgo 5 |
+| Un tema a la vez | ✔ | La versión mínima sigue siendo el Tema 1 |
+| Lista de salida con prueba contada | ✔ | Esta lista; la del adaptador, recontada arriba |
+| Una idea de Ronald es un ejemplo | ✔ | El patrón «una muerde y otra no» y el sorteo de cupos (hallazgos 1 y 2) salen de la propia maqueta y de D1 §1.4 |
+| Términos técnicos explicados | ✔ | Los que uso ya están en el documento revisado |
+| Tuteo, sin guiones largos, castellano neutro | ✔ | Sin guiones largos en esta entrada |
+| Realista con el tamaño | ✔ | Todo con líneas y restricciones de `versionValida`; hallazgo 5 baja cálculo |
+| Escribir en su archivo con versión, fecha y pendientes | ✔ | Encabezado v9 y «Decisiones pendientes» |
 
 ---
 

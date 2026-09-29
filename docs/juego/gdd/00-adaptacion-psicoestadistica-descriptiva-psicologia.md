@@ -1,14 +1,16 @@
 # 00 · Adaptación del dossier: Psicoestadística Descriptiva · juego de Psicología
 
-**Estado: ELEGIDA (28-09) · Ronda 3, versión 3.0 (maqueta general con profundidad, para aprobar; sin
+**Estado: ELEGIDA (28-09) · Ronda 3, versión 3.1 (maqueta general con profundidad, para aprobar; sin
 fichas).** Marco A «El Observatorio», con las personas con nombre de B. Juego de la carrera de
 **Psicología**; el de Empresariales se adapta después, con su propio dossier y en su propio documento.
-**Falta antes de mostrársela a Ronald:** la revisión de profundidad del de aprendizaje y la del crítico.
+La 3.1 corrige la 3.0 con la revisión de profundidad del de aprendizaje (`04-aprendizaje.md`, PD.1 a
+PD.8): no hay decisión nueva de Ronald. **Falta antes de mostrársela a Ronald:** la revisión del crítico.
 
 **Próxima pregunta para Ronald:** ¿apruebas esta maqueta (qué juego tiene cada tema, qué casos trae cada
 uno y dónde se juega cada subtema, §R3.3 y §R3.5)? No queda ninguna pregunta de gusto.
 
-> **Cómo leer este documento:** manda la **ronda 3** (arriba). De la ronda 2 siguen vigentes §R2.1 (el
+> **Cómo leer este documento:** manda la **ronda 3, en su versión 3.1** (arriba; lo que cambió está en
+> §R3.0-bis). De la ronda 2 siguen vigentes §R2.1 (el
 > mundo, el hub, las personas, la escalera y el celular), §R2.5 (costo, al que la ronda 3 suma piezas),
 > §R2.6 (arreglos del crítico), §R2.7 (con los cambios de §R3.8) y la tabla de trampas de §R2.4 para los
 > casos que vienen de la 2.1. Quedan **SUPERADAS** por la ronda 3: §R2.0, §R2.2, §R2.3, la tabla «cada
@@ -16,9 +18,59 @@ uno y dónde se juega cada subtema, §R3.3 y §R3.5)? No queda ninguna pregunta 
 
 ---
 
-## Ronda 3 · versión 3.0 · 28-09-2026
+## Ronda 3 · versión 3.1 · 28-09-2026 (corrige la 3.0; no es ronda nueva)
 
-### R3.0 · Qué cambió y por qué
+### R3.0-bis · Qué cambió en la 3.1 (la revisión de profundidad del de aprendizaje)
+
+El de aprendizaje revisó la 3.0 como experto de la materia (`04-aprendizaje.md`, sección «Psicoestadística
+Descriptiva (Psicología) · revisión de profundidad», PD.1 a PD.8): 91 conceptos de los seis dossiers, 2
+bloqueos, 14 importantes, 9 menores y 15 ideas propias. Todo se corrige aquí, en el lugar donde vive; esta
+tabla dice dónde. **Siguen: 9 juegos, 32 casos, 0 casos nuevos.** Lo que se suma son números que se escriben y
+conclusiones de repertorio en casos que ya existían.
+
+**Los dos bloqueos**
+
+| Hallazgo | Qué se hizo | Dónde |
+|---|---|---|
+| **B1a · Intervalo contra razón sin caso** (D1 1.6: «las dos distinciones que más cuestan») | En la rendición de cuentas (2B caso 3), **en toda versión**, llega un gráfico de un puntaje de escala con «el doble» o «la mitad»; se frena con la pieza «el cero de esta escala no es ausencia». Al lado, la frase de «el doble» de una variable de razón (atenciones, minutos de espera), que a veces es cierta: se juzga con el número que escribes. Qué variable es de escala y cuál de razón cambia con la versión | §R3.3 2B caso 3 (idea P1) |
+| **B1b · «r alto con el test de referencia prueba validez», sin caso** (D4, Qué NO 4.5: «el error más caro de toda la unidad») | En 4B caso 3, **en toda versión**, un proveedor ofrece un test de sueño nuevo «que correlaciona r con el de la clínica: es válido». **Escribes cuánta variación comparten los dos tests** (1 campo): la mesa trae «comparten el X %», que a veces cita r como si fuera porcentaje (error típico) y a veces r²; la de validez se frena con la pieza «coincidir con otro test no prueba que mida lo correcto»; y una prudente falsa («no sirve: coincide poco» cuando r es alto) | §R3.3 4B caso 3 (idea P2, con un campo que el de aprendizaje no pedía: sin él, «comparten el X %» no tenía número que la decida) |
+| **B2 · §R3.5 contaba de más** | **El ángulo del sector** ahora se escribe: en 2B caso 1 (con ayuda) y en 2B caso 2, donde además una de las dos tortas pedidas no corresponde (sus porcentajes suman más de 100). **Cuartiles, RIC y vallas** ahora se calculan en dos casos: 3B caso 3 y 3B caso 4 (Q1 y Q3 de cada curso, cajas lado a lado). Las filas 29 y 37 de §R3.5, la fila 2B de §R3.4, la tabla de §R3.6 y la lista de salida se **rehicieron contadas con script** (§R3.6, «Cómo se contó») | §R3.3, §R3.4, §R3.5, §R3.6 (ideas P3 e I9) |
+
+**Los 14 importantes**
+
+| # | Qué se hizo | Dónde |
+|---|---|---|
+| I1 | **Regla nueva de la mesa (regla 7):** cada trampa del dossier está en **toda** versión oficial al menos una vez; lo que cambia de un alumno a otro es dónde está, en qué sentido y si la frase que la usa es cierta. Aplicada: los dos Paretos (nominal y ordinal) en 2B caso 2; siempre un grupo con otra escala en 3B caso 2; siempre un pedido fuera del rango en 4B caso 2; y la tabla «En toda versión» de §R3.6, trampa por trampa | §R3.1 regla 7, §R3.3, §R3.6 |
+| I2 | Indicador y fenómeno, también en 2B caso 3: «bajamos las denuncias a la mitad» con el pie «desde marzo sólo se registran las graves» (P4) | §R3.3 2B caso 3 |
+| I3 | Regresión a la media, también en 3B caso 4: «el taller funcionó», con los que quedaron justo debajo del D9 sin taller (P5) | §R3.3 3B caso 4 |
+| I4 | «No afirmar más allá de lo medido»: todo repertorio trae una frase que pasa de estos grupos a la población (P11), y cada versión la encuentra en al menos dos mesas | §R3.1 regla 8 |
+| I5 | Sturges dos veces y «la forma depende de las paredes»: en 2A caso 3 armas tú las paredes comunes de los tres centros y el director trae su polígono con otras (P6) | §R3.3 2A caso 3 |
+| I6 | Eje truncado y pictograma como herramienta en la audiencia: uno de los gráficos del archivo trae uno de los dos (por versión), y la repregunta lo ataca | §R3.3 Tema 6 caso 4 |
+| I7 | Marca de clase y media agrupada dos veces: 3A caso 3 trae **dos** colegios vecinos con tablas de distinta amplitud; en una el error del límite cambia el nivel y en la otra no | §R3.3 3A caso 3 |
+| I8 | Centro y dispersión juntos: en 3B caso 4 eliges el par que se informa de cada curso (media y s, o mediana y RIC); en la audiencia, entre los estadísticos mal elegidos, siempre una media sin su dispersión | §R3.3 3B caso 4 y Tema 6 caso 4 |
+| I9 | Cuartiles en dos casos: en 3B caso 4 escribes Q1 y Q3 de cada curso y las dos cajas se ponen lado a lado (la recomendada; la alternativa barata, la caja del grupo con cola en 3B caso 2, no se tomó porque usa la caja para un grupo y no para comparar) | §R3.3 3B caso 4 |
+| I10 | r con una variable cualitativa: en 4B caso 2 la concejala pide «el r entre el turno (1, 2 o 3) y el sueño»; no se calcula y escribes la mediana de sueño del turno que ella señala (P7) | §R3.3 4B caso 2 |
+| I11 | La unión «A o B»: en 5 caso 3, aplicar las dos pruebas y evaluar a quien dé positivo en cualquiera; escribes cuántos niños llegan a la agenda (P9). La fila 58 deja de ser «dossier» | §R3.3 5 caso 3; §R3.5 fila 58 |
+| I12 | Falacia del jugador, sin sorteo: «los últimos cuatro positivos de la rural fueron falsos; el próximo seguro es real», en la agenda de 5 caso 2 (P10). La fila 59 deja de ser «dossier» | §R3.3 5 caso 2; §R3.5 fila 59 |
+| I13 | **Regla nueva de la mesa (regla 6):** la mesa se abre cuando los números del caso ya quedaron bien (la escalera los corrige antes y el registro guarda en qué escalón). Así el veredicto mide la lectura y no cobra dos veces la misma cuenta (*error arrastrado*, en «Palabras de oficio») | §R3.1 regla 6; aviso al bucle en §R3.9 |
+| I14 | Sturges: `versionValida` sólo acepta los n donde el entero más cercano **ya es impar**, en 2A caso 2 y en las paredes de 2A caso 3, hasta que Ronald corrija la definición de D2 §2.2 | §R3.3 2A casos 2 y 3; §R3.7 |
+
+**Las ideas propias del de aprendizaje (P1 a P15)**: entran P1 a P14, cada una marcada «(idea del de
+aprendizaje)» en §R3.3. Ajustes: P2 lleva un campo (arriba); P3 va en 2B caso 2 y no en el 3 (el caso 3 ya
+trae cinco gráficos) y, por la regla 7, **una** de las dos tortas pedidas no corresponde en toda versión (cuál,
+cambia); P11 va en todo **repertorio** y no en toda **mesa** (la regla 5 deja como mucho una conclusión que
+nunca se sostiene por mesa); P12 va en 3B caso 3. **P15 (la puntuación z) no entra al juego:** no está en el
+dossier; queda en «Abierto, para Ronald» (§R3.8).
+
+**Las dos notas del dossier (PD.5)** van a la escalera (§R3.8): D6 pág. 8 se cita sólo por su recuadro «Qué
+NO se puede afirmar», primer punto; D3 pág. 5 no se cita (la moda va a la pág. 4). Y §R3.1 ya no cita la
+pág. 8 como fuente del «centro vacío» sin decir que el juego lo toma sólo donde los datos lo muestran.
+
+**Los 9 menores**, también tomados: M1 (2A casos 1 y 3), M2 (2A caso 3), M3 (3A casos 2 y 4), M4 (4B caso 3),
+M5 (5 caso 4), M6 (reglas del juego marcadas, §R3.8), M7 (regla 8 de §R3.1), M8 (3B caso 2), M9 (página del
+docente, §R3.7).
+
+### R3.0 · Qué cambió y por qué (versión 3.0)
 
 Ronald vio liviana la 2.1 y tenía razón. Revisé los seis temas con las reglas de profundidad (este agente,
 «La maqueta tiene profundidad, no sólo cobertura»; IDEA-JUEGO §23) y lo que él vio en el Tema 3 estaba en
@@ -89,6 +141,8 @@ escalón «a leer» salen de los PDF (§R3.8). No se usó ningún caso de práct
 | **Práctica abierta** | Volver a jugar un tema entero con otra ciudad y otros números, las veces que quieras, sin nota. |
 | **Juzgar conclusiones con la prueba** | Alguien del mundo quiere actuar según una conclusión (anunciarla, asignar un taller, mandar una carta). La apruebas o la frenas, y en los dos casos muestras el número tuyo que la sostiene o la tumba. Como el «¡Protesto!» de *Ace Attorney*, que sólo vale con la prueba. |
 | **El cuarteto de Anscombe** | Cuatro nubes de puntos que dan el mismo r y se ven completamente distintas (recta, curva, un punto que manda). Es el ejemplo clásico de «primero se mira, después se calcula» (Anscombe, 1973). |
+| **Error arrastrado** (3.1) | Un error de cuenta que se arrastra a la decisión siguiente: si la mesa juzga con un número mal calculado, cobra dos veces la misma cuenta y no mide la lectura. Por eso la mesa se abre con los números ya corregidos (regla 6 de §R3.1). |
+| **Regla del juego** (3.1) | Una regla que pone el juego para que la decisión tenga consecuencia y que el dossier no trae (el umbral del taller, derivar sobre el D9). Se marca así en el manual, para no confundirla con contenido de la materia. |
 
 ### R3.1 · La idea de Ronald como principio: dónde calza y dónde no
 
@@ -99,7 +153,8 @@ puede afirmar». Por eso en cada tema toma la forma de su mundo (el informe del 
 tablero del equipo de la directora, los usos del dato de la concejala, la agenda de la evaluadora, las
 repreguntas de la audiencia) y no aparece donde otra forma enseña mejor.
 
-**Cómo se juzga una conclusión** (reglas para todas las mesas; controlan la frase obvia y el azar):
+**Cómo se juzga una conclusión** (reglas para todas las mesas; controlan la frase obvia y el azar; la 3.1
+suma las reglas 6, 7 y 8):
 
 1. **Cada conclusión es un acto de alguien**, nunca una afirmación suelta: si la apruebas, pasa en la ciudad
    (se anuncia, se asigna, se envía). Así no se vuelve un verdadero o falso.
@@ -113,7 +168,29 @@ repreguntas de la audiencia) y no aparece donde otra forma enseña mejor.
    real» en la escuela ya derivada): «todo sí», «todo no» y «frena lo audaz» pierden.
 5. **Las que nunca se sostienen** (causa desde una tabla, «el test es malo», decir quiénes son los de cada
    joroba sin un dato que lo muestre) son el «Qué NO» del dossier: aprenderlas es aprender la materia.
-   Aparecen en parte de las versiones, como mucho una por mesa, y pesan poco.
+   Como mucho una por mesa, y pesan poco. (3.1: ya no «en parte de las versiones»: la regla 7 manda.)
+6. **La mesa se abre con los números del caso ya bien** (3.1, I13 del de aprendizaje). Si un número salió
+   mal, la escalera lo corrige antes (consecuencia y pista, pista concreta, a leer, otros números) y el
+   registro guarda en qué escalón acertó. Así el veredicto mide si sabes **qué número decide la frase**, y un
+   error de cuenta no se cobra dos veces (*error arrastrado*). La nota de la cuenta ya quedó en su escalón.
+7. **Cada trampa del dossier, en toda versión oficial** (3.1, I1 del de aprendizaje). Ningún alumno se salva de
+   enfrentarla en su vez oficial: está al menos una vez en la serie de cada uno. Lo que cambia de un alumno a
+   otro es **dónde está** (qué curso, qué gráfico, qué pedido), **en qué sentido** y **si la frase que la usa es
+   cierta**. «A veces» sólo vale para una trampa que ese alumno ya enfrenta en otro caso de la materia (las
+   dos jorobas, que siempre están en 3A caso 2; la escuela derivada, siempre en 5 caso 2). La tabla «En toda
+   versión» de §R3.6 lo recorre trampa por trampa.
+8. **Las frases hablan de estos grupos** (3.1, M7 e I4 del de aprendizaje): «en estos tres cursos», nunca «los
+   adolescentes de la ciudad» (D1 1.5). Todo repertorio trae **una frase que generaliza** a la población, que
+   nunca se sostiene y se frena con la pieza «esto describe a estos grupos, no a todos» (idea del de
+   aprendizaje, P11); cuenta como la única que nunca se sostiene de su mesa (regla 5), y el generador cuida que
+   cada versión la encuentre en al menos dos mesas de la materia.
+
+   **Cómo conviven las reglas 5, 7 y 8.** Un repertorio puede traer varias que nunca se sostienen; en cada
+   versión la mesa saca **una**, por turno. Salen **siempre** las que son el único lugar de su trampa en la
+   materia: «el doble» de un puntaje de escala (2B caso 3) y «es válido porque correlaciona» (4B caso 3). Las
+   demás (la que generaliza, la causa desde una tabla, «Rosa dormirá X», «arriba hay más chicos», «en C conviene
+   el taller del promedio») se turnan en las mesas donde viven, porque su trampa ya la enfrenta todo alumno en
+   otro caso, como decisión y no como frase (la tabla «En toda versión» de §R3.6 dice dónde).
 
 **Tema por tema:**
 
@@ -121,13 +198,13 @@ repreguntas de la audiencia) y no aparece donde otra forma enseña mejor.
 |---|---|---|---|
 | 1 · Muestra | **En el caso 3** (idea propia) | Dos encuestas ya hechas sobre los mismos colegios: una grande y otra chica, cada una con su método | Cuál usa la concejala y por qué la otra erró. La trampa del dossier: «una muestra mal elegida de 10.000 es peor que una bien elegida de 1.000» (D1 §1.3); en parte de las versiones la grande es la sorteada. En los casos 1 y 2 no calza: ahí se decide **dónde medir**, y la niebla lo enseña mejor |
 | 2 · Organizar (2A) | **En el caso 3** (idea propia) | Tres centros de salud de tamaños muy distintos, con sus polígonos superpuestos | «El centro más grande es el que más hace esperar» (conteo contra proporción); «en tal centro hay dos grupos de pacientes» (dos jorobas); «son los de la mañana y los de la tarde» (el polígono no dice quiénes, D2 pág. 18). En los casos 1 y 2 no calza: se construye y se prueba |
-| 2 · Gráficos (2B) | **En el caso 3** | Tres gráficos de la rendición de cuentas, cada uno con su frase | «Duplicamos las atenciones» (eje truncado), «en el Sur la ansiedad pesa más» (dos tortas de distinto total, idea propia), «resolvemos el 80 %» (el Pareto ordena causas declaradas, D2 pág. 19) |
-| 3 · Centro y forma (3A) | **Sí, es su corazón** (idea de Ronald) | Tres grupos del mismo test: simétrico, con cola, con dos modas | «Los grupos A y B están igual: promedian lo mismo», «la mitad de B puntúa arriba de X», «en C conviene el taller del promedio» (el centro está vacío, D6 pág. 8, idea propia), «este test siempre da cola» (la forma depende de a quién se aplica, D3 §3.4, idea propia) |
-| 3 · Dispersión y posición (3B) | **En los casos 2 a 4** | Tres grupos con escalas distintas; un grupo antes y después de un caso extremo; dos cursos | «B es el grupo más parejo» (s o CV), «la dispersión se duplicó» (s sí, el RIC no: idea propia), «Tomás está en el 15 % de arriba» (percentil contra porcentaje), «el 78 vale lo mismo en los dos cursos» |
+| 2 · Gráficos (2B) | **En el caso 3** | Los gráficos de la rendición de cuentas, cada uno con su frase | «Duplicamos las atenciones» (eje truncado), «en el Sur la ansiedad pesa más» (dos tortas de distinto total, idea propia), «resolvemos el 80 %» (el Pareto ordena causas declaradas, D2 pág. 19); en la 3.1, «el Sur tiene el doble de ansiedad» (un puntaje de escala: el cero no es ausencia, D1 1.6) y «bajamos las denuncias a la mitad» (cambió lo que se registra, D1 1.8), ideas del de aprendizaje |
+| 3 · Centro y forma (3A) | **Sí, es su corazón** (idea de Ronald) | Tres grupos del mismo test: simétrico, con cola, con dos modas | «Los grupos A y B están igual: promedian lo mismo», «la mitad de B puntúa arriba de X», «en C conviene el taller del promedio» (el centro está vacío; se afirma sólo porque los datos de C, a la vista, lo muestran, que es lo que permite el recuadro «Qué NO» de D6 pág. 8; idea propia), «este test siempre da cola» (la forma depende de a quién se aplica, D3 §3.4, idea propia); en la 3.1, «la mayoría de A puntúa X» (la moda no siempre llega a la mitad; idea del de aprendizaje) |
+| 3 · Dispersión y posición (3B) | **En los casos 2 a 4** | Tres grupos con escalas distintas; un grupo antes y después de un caso extremo; dos cursos | «B es el grupo más parejo» (s o CV), «la dispersión se duplicó» (s sí, el RIC no: idea propia), «Tomás está en el 15 % de arriba» (percentil contra porcentaje), «el 78 vale lo mismo en los dos cursos»; en la 3.1, «arriba hay más chicos: el bigote es más largo» (cada tramo tiene la misma cantidad de gente, D3 §3.3) y «el taller funcionó» (regresión a la media, D1 1.4), ideas del de aprendizaje |
 | 4 · Tablas (4A) | **En el caso 3** (idea propia) | Dos mercados con los **mismos totales** y distinto interior | «Tienen el mismo problema: sus totales son iguales» (la relación vive en las celdas, D4 §4.2), «en tal mercado el riesgo es igual en todos los turnos», «el turno noche causa el estrés» (tres lecturas, D4 pág. 20) |
-| 4 · Nube y recta (4B) | **Sí, en los casos 2 a 4** | Dos estudios en unidades distintas; tres barrios con el mismo r y nubes distintas (Anscombe, idea propia) | Los usos del dato de la concejala por barrio (buscar, prever cupos, ordenanza, cerrar el programa); «Rosa dormirá X horas» (la recta da el promedio, no a la persona); «en el estudio A la relación es más fuerte: su covarianza es 60 veces mayor» |
-| 5 · Probabilidad | **Sí, en los casos 2 a 4** | El mismo test en tres escuelas de prevalencia distinta; dos pruebas (idea propia) | «El test es malo: en la escuela rural casi todos los positivos son falsos» (D5 pág. 15), «en tal escuela más de la mitad de los positivos es real», «alcanza evaluar a todos los positivos», «acierta el 90 %» en la carta (la inversa) |
-| 6 · Informe | **Sí, en los casos 2 a 4** | La misma media y desviación con tres formas posibles (idea propia) | «Hay dos grupos de familias» (sólo si el histograma lo muestra, D6 pág. 8), «la cohesión es baja» (sólo con baremo), «el estudiante típico tiene X», y las repreguntas de la audiencia |
+| 4 · Nube y recta (4B) | **Sí, en los casos 2 a 4** | Dos estudios en unidades distintas; tres barrios con el mismo r y nubes distintas (Anscombe, idea propia) | Los usos del dato de la concejala por barrio (buscar, prever cupos, ordenanza, cerrar el programa); «Rosa dormirá X horas» (la recta da el promedio, no a la persona); «en el estudio A la relación es más fuerte: su covarianza es 60 veces mayor»; en la 3.1, «el test nuevo es válido: correlaciona con el de la clínica» (D4, Qué NO 4.5) y «la covarianza es negativa: a más pantalla, menos sueño» (su signo sí se lee), del de aprendizaje |
+| 5 · Probabilidad | **Sí, en los casos 2 a 4** | El mismo test en tres escuelas de prevalencia distinta; dos pruebas (idea propia) | «El test es malo: en la escuela rural casi todos los positivos son falsos» (D5 pág. 15), «en tal escuela más de la mitad de los positivos es real», «alcanza evaluar a todos los positivos», «acierta el 90 %» en la carta (la inversa); en la 3.1, «el próximo seguro es real» (falacia del jugador, D5 5.1), idea del de aprendizaje |
+| 6 · Informe | **Sí, en los casos 2 a 4** | La misma media y desviación con tres formas posibles (idea propia) | «Hay dos grupos de familias» (sólo si el histograma lo muestra: D6 pág. 8, recuadro «Qué NO se puede afirmar», primer punto), «la cohesión es baja» (sólo con baremo), «el estudiante típico tiene X», y las repreguntas de la audiencia; en la 3.1, «la distribución es normal», «el grupo tiene burnout» por pasar el corte en una dimensión y una media con cuatro decimales (D6 6.1 y 6.2), del de aprendizaje |
 
 **Ideas propias** (que Ronald no pidió; cada una se apoya en una página del dossier): la encuesta grande
 contra la chica (T1); tres centros de distinto tamaño, donde el conteo engaña y la proporción no (T2); dos
@@ -136,6 +213,14 @@ se aplica el test (T3); el RIC que no se mueve cuando llega un caso extremo (T3)
 derivación (T3); dos mercados con los mismos totales (T4); el cuarteto de Anscombe (T4); dos pruebas,
 ¿cuál para qué escuela? (T5); la misma media y desviación con tres formas (T6); y la mecánica de juzgar con la
 prueba, que impide acertar al azar.
+
+**Ideas del de aprendizaje** (3.1; revisión de profundidad, `04-aprendizaje.md` PD.4; cada una con su sección
+del dossier): «el doble» con y sin cero (P1, 2B); coincidir no es medir bien (P2, 4B); la torta que no
+corresponde (P3, 2B); «bajamos las denuncias a la mitad» (P4, 2B); «el taller funcionó» (P5, 3B); las
+paredes del director (P6, 2A); el r que no corresponde (P7, 4B); «¿y quien no usa pantalla?» (P8, 4B); las dos
+pruebas a la vez (P9, 5); «el próximo seguro es real» (P10, 5); la conclusión que generaliza (P11, todas las
+mesas); «arriba hay más chicos» (P12, 3B); tres frases de tribunal (P13, 6); «la mayoría puntúa X» (P14, 3A).
+La P15 (puntuación z) no está en el dossier y no entra: va para Ronald en §R3.8.
 
 **Lo que no entró, aunque un docente lo pensaría:** la paradoja de Simpson (una tabla que se da vuelta al
 separar por una tercera variable) no está en el dossier; D4 sólo dice que una tercera variable puede explicar
@@ -159,7 +244,8 @@ la tabla, y eso sí se juega (4A, caso 3). No se inventa contenido fuera del dos
   **vez oficial** es la partida con la versión del alumno (`versionDeAlumno`), la que Ronald habilita. Necesita
   motor nuevo (§R3.7).
 - **En el celular, cada caso dice cuántos campos se escriben** (§R3.3). El que más tiene es el de las tres
-  formas (3A, caso 2): 9 o 10, con los datos a la vista sobre el teclado.
+  formas (3A, caso 2): 9 o 10, con los datos a la vista sobre el teclado. Con la 3.1 le sigue 3B caso 4: 7
+  campos y 1 más en su segunda firma, que es otra pantalla (§R3.6 los cuenta caso por caso).
 
 ### R3.3 · La maqueta, tema por tema
 
@@ -194,38 +280,76 @@ el caso es el juego entero de la 2.1, que pasa a ser un caso de la serie; sus tr
 - **Caso 1 · Ataques por mes** (con ayuda). Una variable discreta. Declaras el nivel de cuatro columnas
   tocándolas; la herramienta cuenta n y **escribes cuántos superan el umbral** y **qué proporción son** (2
   campos). El conteo abre los cupos de este centro; la proporción es lo que el médico manda a la red para el
-  otro centro, que es de otro tamaño, y la consecuencia muestra también ese centro.
+  otro centro, que es de otro tamaño, y la consecuencia muestra también ese centro. Además (3.1, M1 del de
+  aprendizaje), el médico pide «cuántos hay hasta ansiedad» sobre la columna del motivo de consulta, que es
+  nominal: no se acumula (alerta de D2 2.1), y lo que corresponde es un toque, «no corresponde». Qué columna es
+  nominal cambia con la versión.
 - **Caso 2 · Tiempos de espera** (= 2.1). Continua: k, amplitud por exceso y primer límite; n y H de una o
-  dos filas; el corte leído en la ojiva para los cupos prioritarios. Variantes por versión: un dato cae justo
-  en un límite (el corchete decide a qué intervalo va), y el mayor queda afuera si la amplitud se redondea
-  para abajo. 6 a 8 campos.
+  dos filas; el corte leído en la ojiva para los cupos prioritarios. En toda versión (regla 7) un dato cae
+  justo en un límite (el corchete decide a qué intervalo va; qué dato y qué límite, cambia) y los datos están
+  hechos para que el mayor quede afuera si la amplitud se redondea para abajo. `versionValida` sólo acepta n
+  donde el entero más cercano de Sturges **ya es impar** (3.1, I14: así el alumno que estudió el «impar» de D2
+  §2.2 en clase no queda marcado mal). 6 a 8 campos.
 - **Caso 3 · Tres centros** (idea propia; principio de Ronald). Los tiempos de espera de tres centros de
-  tamaños muy distintos, en los mismos intervalos; sus **polígonos se superponen** (D2 §2.3: el polígono es el
-  gráfico que sirve para eso) y se dibujan en conteos. Hay una sola enfermera extra, para el centro con mayor
-  **proporción** de pacientes que esperan más de cierto tiempo. **Escribes ese porcentaje en cada centro** (3
-  campos). El director de la red trae tres conclusiones de un repertorio: «el centro más grande es el que más
+  tamaños muy distintos. **Primero armas tú las paredes comunes** con los datos de los tres juntos (3.1, idea
+  del de aprendizaje P6, «las paredes del director»): **escribes k y la amplitud** (2 campos), con otro n que en
+  el caso 2 y el mismo `versionValida` de Sturges (I14). Con tus paredes, sus **polígonos se superponen** (D2
+  §2.3: el polígono es el gráfico que sirve para eso) y se dibujan en conteos, y al lado sus **ojivas**. Hay una
+  sola enfermera extra, para el centro con mayor **proporción** de pacientes que esperan más de cierto tiempo
+  (ese tiempo es una de tus paredes, y el porcentaje se lee en la ojiva de cada centro, M2). **Escribes ese
+  porcentaje en cada centro** (3 campos; el caso queda en 5). El director de la red trae **su** polígono, hecho
+  con otras paredes, y en parte de las versiones el pico de un centro se muda de intervalo entre el suyo y el
+  tuyo: «esos dos centros atienden igual» se juzga con tus paredes (Qué NO de D2 2.2 y 2.3: la forma depende de
+  las paredes). Las conclusiones salen de un repertorio: «el centro más grande es el que más
   hace esperar» (a veces cierta, a veces sólo en conteo), «en tal centro hay dos grupos de pacientes» (dos
   jorobas en su polígono, en parte de las versiones), «esos dos grupos son los de la mañana y los de la
   tarde» (se sostiene sólo en las versiones donde la planilla trae el turno y lo muestra; si no, el gráfico
-  no dice quiénes son) y «esos dos centros atienden igual: su pico está en el mismo intervalo». Juzgas con la
-  prueba. **Consecuencia:** las salas de espera de los tres centros, vistas desde arriba, al mes.
+  no dice quiénes son) y «esos dos centros atienden igual: su pico está en el mismo intervalo»; y en la 3.1 (M1
+  y M2 del de aprendizaje) «el centro chico empeoró: pasó del X al Y %», en toda versión (el centro chico tiene
+  n = 20: cada paciente mueve 5 puntos, Qué NO de D2 2.1; en unas versiones el cambio es un paciente y se frena
+  con su n, en otras son varios y se sostiene), «en 25 minutos hay como 13 pacientes» (leída entre dos puntos del polígono, que no se lee ahí) y la
+  frase que generaliza (regla 8). Juzgas con la prueba. **Consecuencia:** las salas de espera de los tres
+  centros, vistas desde arriba, al mes.
 
 #### Tema 2, juego B · «Lo que el presupuesto no alcanza» (filas 14 y 27 a 31) · triage con presupuesto · 3 casos
 
 - **Caso 1 · Los motivos del año** (con ayuda). Ordenas las barras tocándolas y **escribes el acumulado**
-  hasta el último programa que alcanza (1 campo): es lo que la concejala anuncia.
-- **Caso 2 · El 80 no es una ley** (D2 §2.4). Otra lista, y el cruce del 80 % cae en la primera barra o hacen
-  falta cinco, según la versión. En parte de las versiones ella trae una variable **ordinal** (gravedad:
-  leve, moderado, severo) y quiere su Pareto: ahí no se reordena (tabla de decisión de D2) y el acumulado que
-  escribes es el de la escala («moderado o más»), que dice cuántos cupos se abren. 1 campo.
+  hasta el último programa que alcanza (1 campo): es lo que la concejala anuncia. El folleto lleva además la
+  torta de esos motivos: **escribes el ángulo del sector mayor** (1 campo; α = h × 360°, D2 2.4), con la
+  ayuda a la vista (h de cada motivo en su columna). La torta del folleto se dibuja con tu ángulo (3.1, B2 e
+  idea del de aprendizaje P3).
+- **Caso 2 · El 80 no es una ley** (D2 §2.4). **Dos listas en toda versión** (3.1, I1): una nominal (motivos
+  de consulta) y una **ordinal** (gravedad: leve, moderado, severo), en orden sorteado, y ella quiere el Pareto
+  de las dos. En la nominal el cruce del 80 % cae en la primera barra o hacen falta cinco, según la versión; en
+  la ordinal no se reordena (tabla de decisión de D2) y el acumulado es el de la escala («moderado o más»).
+  **Escribes el acumulado de cada una** (2 campos): cuántos programas entran y cuántos cupos se abren. Después,
+  la nota de prensa lleva **las tortas de motivos de dos centros** (idea del de aprendizaje P3, «la torta que no
+  corresponde»): en toda versión, **una** de las dos viene de una pregunta donde se podía marcar más de un
+  motivo y sus porcentajes suman más de 100 (D2 2.4: «¿las partes suman el todo?»); cuál de las dos, cambia.
+  Esa no se dibuja (un toque) y va en barras; de la otra **escribes el ángulo del sector mayor** (1 campo). El
+  caso queda en 3 campos. Si se dibuja la que suma más de 100, la prensa publica una torta con sectores que se
+  pisan.
 - **Caso 3 · La rendición de cuentas** (la trampa: un gráfico honesto en sus cifras que engaña, D1 §1.7 y D2
-  §2.3; idea propia en las tortas). Tres gráficos con su frase cada uno: barras con un eje que no empieza en
-  cero («duplicamos las atenciones»), un pictograma que crece en área («triplicamos los talleres») y dos tortas
-  de distritos con distinto total («en el Sur la ansiedad pesa más que en el Norte»). Cada uno es honesto en
-  parte de las versiones. **Escribes cuántas veces más es de verdad** (1 o 2 campos) y **cuántos casos hay
-  detrás de cada sector comparado** (2 campos); apruebas o frenas cada frase con tu número, y armas con piezas
-  la frase del Pareto («resolvemos el X %» o «el X % de las consultas se concentra en…», D2 pág. 19).
-  **Consecuencia:** la prensa, y meses después lo que de verdad se resolvió.
+  §2.3; idea propia en las tortas; ideas del de aprendizaje P1 y P4). Cinco gráficos con su frase cada uno, uno
+  por pantalla:
+  1. barras con un eje que puede no empezar en cero («duplicamos las atenciones»);
+  2. un pictograma que crece en área («triplicamos los talleres»);
+  3. dos tortas de distritos con distinto total («en el Sur la ansiedad pesa más que en el Norte»);
+  4. **(3.1, P1, «el doble» con y sin cero)** un gráfico de un **puntaje de escala** (ansiedad, bienestar o
+     autoestima, según la versión) con «el Sur tiene el doble de ansiedad» o «el bienestar se duplicó»: se
+     frena con la pieza «el cero de esta escala no es ausencia» (D1 1.6: el CI de 130 no es el doble de 65).
+     La frase del gráfico 1 dice también «el doble», pero de una variable de razón, y a veces es cierta: por eso
+     «frena todo lo que diga el doble» pierde;
+  5. **(3.1, P4, «bajamos las denuncias a la mitad»)** las denuncias del año, con el pie «desde marzo sólo se
+     registran las graves» (indicador y fenómeno, sesgo de reporte, D1 1.8). **Escribes el cambio contando sólo
+     las graves los dos años** (1 campo): en unas versiones sí bajaron y en otras no.
+
+  De los gráficos 1 a 3, **en toda versión al menos uno engaña y al menos uno es honesto** (regla 7); cuál,
+  cambia. **Escribes cuántas veces más es de verdad** (1 o 2 campos), **cuántos casos hay detrás de cada sector
+  comparado** (2 campos) y el cambio de las denuncias (1 campo): de 4 a 5 campos. Apruebas o frenas cada frase
+  con tu número o su pieza, y armas con piezas la frase del Pareto («resolvemos el X %» o «el X % de las
+  consultas se concentra en…», D2 pág. 19). **Consecuencia:** la prensa, y meses después lo que de verdad se
+  resolvió.
 
 #### Tema 3, juego A · «Tres grupos, un taller para cada uno» (filas 21, 23, 32 a 34, 40, 42 y 44) · comparar y asignar · 4 casos
 
@@ -240,16 +364,24 @@ el caso es el juego entero de la 2.1, que pasa a ser un caso de la serie; sus tr
   de unas diez armadas con tus números: «A y B están igual: promedian lo mismo» (medias iguales, medianas
   distintas en parte de las versiones), «la mitad de B puntúa arriba de X» (la mediana), «lo más común en C es
   X» (una moda o dos), «en A el promedio representa bien al grupo», «B tiene unos pocos casos que tiran del
-  promedio», «en C conviene el taller del promedio» (idea propia: el centro está vacío, D6 pág. 8), «este test
-  siempre da cola, así que siempre la mediana» (idea propia: la forma depende de a quién se aplica, D3 §3.4).
-  Juzgas cada una con tu número. Los valores están a uno o dos puntos: el ojo no alcanza. **Consecuencia:** al
-  trimestre, quién mejoró en cada curso; en el de dos modas, el taller del promedio no le sirvió a nadie.
-- **Caso 3 · Sólo la tabla.** El colegio vecino manda sólo su tabla agrupada. **Escribes su media con las
-  marcas de clase** (1 campo) y tocas su intervalo modal; el centro decide su taller. Con el límite en lugar
-  de la marca, la media se corre media amplitud y en parte de las versiones cambia de nivel.
+  promedio», «en C conviene el taller del promedio» (idea propia: el centro está vacío donde los datos lo muestran), «este test
+  siempre da cola, así que siempre la mediana» (idea propia: la forma depende de a quién se aplica, D3 §3.4),
+  y en la 3.1 «la mayoría de A puntúa X» (idea del de aprendizaje P14: llama «mayoría» a la moda; se sostiene
+  sólo si la moda reúne a más de la mitad, y eso cambia con la versión; se frena con tu conteo) y la frase que
+  generaliza (regla 8). Juzgas cada una con tu número. Los valores están a uno o dos puntos: el ojo no alcanza.
+  En toda versión uno de los cursos tiene n par (3.1, M3: la mediana promedia los dos centrales). En el centro
+  vacío la conclusión se sostiene porque los datos de C, a la vista, lo muestran, no porque lo diga D6 pág. 8.
+  **Consecuencia:** al trimestre, quién mejoró en cada curso; en el de dos modas, el taller del promedio no le
+  sirvió a nadie.
+- **Caso 3 · Sólo la tabla.** **Dos colegios vecinos** mandan sólo su tabla agrupada, cada una con otra
+  amplitud (3.1, I7 del de aprendizaje). **Escribes la media de cada uno con las marcas de clase** (2 campos) y
+  tocas su intervalo modal; el centro decide el taller de cada colegio. Con el límite en lugar de la marca, la
+  media se corre media amplitud: en toda versión, en una de las dos tablas ese error cambia el nivel del taller
+  y en la otra no (cuál, cambia), así que el error se ve en el mundo al menos una vez.
 - **Caso 4 · La planilla sucia** (la trampa: GIGO y el tipo de variable, D3 §3.5 y su tabla de decisión).
   Una planilla con un valor imposible (un 200 donde va 20), códigos de «no respondió», una persona real con un
-  caso severo, una columna nominal codificada 1, 2, 3 (motivo de consulta; el programa devuelve su «media») y
+  caso severo (3.1, M3: cuál de los dos extremos es el error y cuál la persona real cambia con la versión; el
+  error puede ser el más bajo), una columna nominal codificada 1, 2, 3 (motivo de consulta; el programa devuelve su «media») y
   una Likert («¿cuánto te ayudó el taller?»). Limpias tocando (la persona da la pista) y **escribes el centro
   que corresponde a cada columna**: media y mediana del puntaje limpio, mediana de la Likert y moda de la
   nominal (4 campos). La moda decide qué charla se da primero; la mediana de la Likert, si el taller se repite.
@@ -261,21 +393,33 @@ el caso es el juego entero de la 2.1, que pasa a ser un caso de la serie; sus tr
 - **Caso 1 · La misma media** (con ayuda). Dos grupos con la misma media (los dos ríos de D3 §3.2); las
   desviaciones dibujadas como rayitas. **Escribes la desviación típica de cada uno, con n − 1** (2 campos):
   el especialista va al más disperso.
-- **Caso 2 · Otra escala.** Tres grupos; en parte de las versiones dos se midieron con escalas distintas.
-  **Escribes s y CV de cada uno** (6 campos). El especialista va al más heterogéneo; donde las escalas
-  difieren, s engaña y decide el CV. Conclusiones: «B es el grupo más parejo», «A y C varían igual», con tu
-  número.
+- **Caso 2 · Otra escala.** Tres grupos; **en toda versión** uno se midió con otra escala (3.1, I1; cuál, y si
+  es la de números más grandes o más chicos, cambia). **Escribes s y CV de cada uno** (6 campos). El
+  especialista va al más heterogéneo; donde las escalas difieren, s engaña y decide el CV. Conclusiones: «B es
+  el grupo más parejo», «A y C varían igual», con tu número. Los valores que deciden están cerca (3.1, M8), como
+  en 3A caso 2: el ojo no alcanza.
 - **Caso 3 · El que llegó tarde** (idea propia: el RIC no se mueve, D3 §3.3). Un grupo con su caja: **escribes
   Q1 y Q3 (con n + 1) y la valla superior** (3 campos); la caja se dibuja y aparece quién queda afuera (va a
   derivación). Después llega un caso muy extremo y **escribes la desviación típica con él** (1 campo). La
   directora quiere anunciar «el grupo empeoró: su dispersión se duplicó» o «el grupo sigue igual de parejo»,
-  según la versión; juzgas con s y con el RIC, y decides qué par se informa (mediana y RIC).
+  según la versión; juzgas con s y con el RIC, y decides qué par se informa (mediana y RIC). En la 3.1 (idea del
+  de aprendizaje P12) el equipo trae además «arriba hay más chicos: ese bigote es más largo», que se frena con
+  la pieza «cada tramo de la caja tiene la misma cantidad de gente» (D3 3.3); qué bigote es el largo, cambia.
 - **Caso 4 · Tomás** (la trampa: percentil no es porcentaje, D3 §3.3; idea propia en el decil). Dos cursos y
-  tres cupos; la regla es derivar a quien queda por encima del **decil 9** de su curso. **Escribes el D9 de
-  cada curso y el percentil de Tomás** (3 campos). La directora dice «Tomás sacó 85 de 100: está en el 15 % de
-  arriba»; a veces lo está y a veces no, y el mismo puntaje es del montón en un curso y extremo en el otro.
-  Conclusiones: esa frase, y «el 78 de Ana y el 78 de Luis valen lo mismo». **Consecuencia:** la línea de
-  cada persona derivada o no, al trimestre.
+  tres cupos; la regla es derivar a quien queda por encima del **decil 9** de su curso (regla del juego).
+  **Escribes Q1 y Q3 de cada curso** (4 campos; 3.1, I9: las dos cajas se ponen lado a lado, el uso clásico de
+  la caja para comparar, Tukey en la bibliografía de D3) **y el D9 de cada curso y el percentil de Tomás** (3
+  campos): 7 campos. La directora dice «Tomás sacó 85 de 100: está en el 15 % de arriba»; a veces lo está y a
+  veces no, y el mismo puntaje es del montón en un curso y extremo en el otro (las cajas lo muestran).
+  Conclusiones: esa frase, y «el 78 de Ana y el 78 de Luis valen lo mismo». **El informe de cada curso** (3.1,
+  I8): eliges el par que se informa, media y s o mediana y RIC (un toque por curso); en toda versión uno de los
+  dos cursos tiene cola y ahí la media y s engañan. **Segunda firma, al trimestre** (3.1, idea del de
+  aprendizaje P5, «el taller funcionó»): los derivados sobre el D9 bajaron su puntaje y la directora quiere
+  extender el taller a toda la escuela. **Escribes cuánto bajaron, sin taller, los que quedaron justo debajo
+  del D9** (1 campo) y firmas: en unas versiones los derivados bajaron mucho más (el taller funcionó) y en otras
+  lo mismo (regresión a la media: los extremos vuelven hacia el centro solos, D1 1.1 y 1.4). **Consecuencia:**
+  la línea de cada persona derivada o no, al trimestre; y el taller extendido a toda la escuela, que sirve o
+  gasta el presupuesto del año.
 
 #### Tema 4, juego A · «¿Entre quiénes?» (filas 45 a 47, 53 y 62) · cambiar el universo · 3 casos
 
@@ -300,16 +444,32 @@ el caso es el juego entero de la 2.1, que pasa a ser un caso de la serie; sus tr
   **Escribes r** (1 campo, con la fórmula de D6 §6.3) y decides si sirve buscar a quién ayudar por sus horas
   de pantalla.
 - **Caso 2 · Los cupos de cada barrio.** Decides qué hacer con el punto suelto (error de carga o persona real:
-  la pista está en su línea). **Escribes b y a, y ŷ de dos barrios pedidos** (4 campos); en parte de las
-  versiones uno está fuera del rango y no se predice. Conclusiones: «Rosa, que usa 5 horas, dormirá X» (la
-  recta da el promedio de los que usan 5 horas, no a Rosa, D4 pág. 20) y «los que usan 5 horas duermen en
-  promedio X» (se sostiene si X es tu ŷ, y a veces trae el de un error típico).
+  la pista está en su línea). **Escribes b y a, y ŷ de dos barrios pedidos** (4 campos); **en toda versión**
+  uno de los dos pedidos está fuera del rango o es x = 0 («¿y quien no usa pantalla?», 3.1, I1 e idea del de
+  aprendizaje P8: a sólo tiene sentido si x = 0 es posible, D4 4.6), y en ese campo va «no se predice»; cuál de
+  los dos, cambia. Conclusiones: «Rosa, que usa 5 horas, dormirá X» (la recta da el promedio de los que usan 5
+  horas, no a Rosa, D4 pág. 20) y «los que usan 5 horas duermen en promedio X» (se sostiene si X es tu ŷ, y a
+  veces trae el de un error típico). **El r que no corresponde** (3.1, I10 e idea del de aprendizaje P7): la
+  concejala pide además «el r entre el turno (1, 2 o 3) y las horas de sueño»; el turno es nominal, así que lo
+  que corresponde es no calcularlo (un toque) y **escribir la mediana de sueño del turno que ella señala** (1
+  campo; tabla de decisión de D4, fila «una cualitativa y una cuantitativa»); con esa mediana decide a qué
+  turno va la charla. Qué turno señala y cuál duerme menos cambian con la versión. El caso queda en 5 campos.
 - **Caso 3 · Cuánto comparten.** **Escribes R²** (1 campo) y armas la frase «comparten el X % de su
   variación» (nunca «explica»: la escalera manda a D4 pág. 20). La concejala trae dos estudios, uno medido en
   minutos y otro en horas, con sus covarianzas (una mucho mayor): «en el estudio A la relación es mucho más
   fuerte». **Escribes r de cada estudio** desde sus datos resumidos, con el mismo denominador arriba y abajo (2
   campos); a veces sí es más fuerte y a veces es la misma relación. La covarianza no se escribe: se juzga lo
-  que se dice de ella (D4 pág. 20).
+  que se dice de ella (D4 pág. 20), y en la 3.1 también su **signo** (M4): «la covarianza es negativa: a más
+  pantalla, menos sueño» se sostiene o no según el signo que muestran tus r. **Coincidir no es medir bien**
+  (3.1, B1b e idea del de aprendizaje P2), en toda versión: un proveedor ofrece un test de sueño nuevo, «que
+  correlaciona r con el de la clínica: es válido, cómpralo» (r cambia con la versión). **Escribes cuánta
+  variación comparten los dos tests** (1 campo, en porcentaje). La mesa trae tres frases: «el test nuevo es
+  válido porque coincide con el de la clínica» (nunca se sostiene: se frena con la pieza «coincidir con otro
+  test no prueba que mida lo correcto», D4, Qué NO 4.5); «los dos tests comparten el X % de su variación» (a
+  veces X es tu número y a veces es r leído como porcentaje, el error típico); y «no sirve: coincide poco»
+  (prudente falsa cuando r es alto). El caso queda en 4 campos. **Consecuencia:** si se compra por la
+  correlación, al año el test nuevo copia lo que el de la clínica medía mal (en parte de las versiones, el de
+  la clínica medía las horas en cama y no el sueño), y los dos se equivocan juntos.
 - **Caso 4 · Tres barrios, el mismo r** (la trampa: primero se mira, tabla de decisión de D4; idea propia:
   Anscombe). Tres barrios cuyas tablas dan un r parecido: en uno la nube es recta, en otro es una loma, y en
   otro un solo punto fabrica la relación (o la tapa). **Escribes r de cada barrio** (3 campos) y, donde el
@@ -328,16 +488,28 @@ el caso es el juego entero de la 2.1, que pasa a ser un caso de la serie; sus tr
   escuela, cuántos positivos habrá y cuántos lo son de verdad** (6 campos) y ordenas la agenda de la
   evaluadora, que no alcanza para todos. Conclusiones: «el test es malo: en la rural casi todos los positivos
   son falsos», «en tal escuela más de la mitad de los positivos es real», «en tal escuela alcanza evaluar a
-  todos los positivos».
+  todos los positivos». En la 3.1 (I12 e idea del de aprendizaje P10), en toda versión, el asistente propone
+  **cambiar el orden de la agenda**: «los últimos cuatro positivos de la escuela X fueron falsos; el próximo
+  seguro es real, pongámoslo primero». Es una decisión de la agenda, no una frase de la mesa: se rechaza con
+  el número que ya escribiste de esa escuela (de sus positivos, cuántos son reales), porque cada niño no
+  recuerda al anterior (falacia del jugador, D5 5.1). Si se acepta, la evaluadora gasta su primera hora en un
+  falso positivo. Qué escuela, cambia.
 - **Caso 3 · Dos pruebas** (idea propia; D5 pág. 15, «un negativo no descarta»). El proveedor ofrece una
   prueba muy sensible y poco específica, y otra al revés. **Escribes, con cada prueba, cuántos positivos
-  habría y cuántos niños con el trastorno darían negativo** (4 campos). Con la agenda fija, decides cuál se
-  compra; cuál es la buena depende de la prevalencia y de la capacidad, y cambia con la versión.
-  **Consecuencia:** los positivos que no se pudieron ver y los niños que el negativo dejó afuera.
+  habría y cuántos niños con el trastorno darían negativo** (4 campos). **Las dos a la vez** (3.1, I11 e idea
+  del de aprendizaje P9): la tercera opción es aplicar las dos y evaluar a quien dé positivo en cualquiera; el
+  proveedor informa cuántos dieron positivo en las dos, y **escribes cuántos niños llegan a la agenda** (1
+  campo; «A o B» es A más B menos los de las dos, D5 5.1 y su tabla de decisión). Sumar sin restar reserva
+  sillas que quedan vacías. Con la agenda fija, decides cuál de las tres opciones se compra; cuál es la buena
+  depende de la prevalencia, de la capacidad y de cuántos coinciden, y cambia con la versión. El caso queda en 5
+  campos. **Consecuencia:** los positivos que no se pudieron ver, las sillas vacías y los niños que el negativo
+  dejó afuera.
 - **Caso 4 · La carta** (la trampa: la falacia de la inversa y la tasa base). El folleto dice «acierta el 90
   %» (es la sensibilidad) y la concejala quiere ponerlo en la carta; además ofrecen una prueba rápida cuyos
   positivos no cambian nada (independencia). **Escribes de cada 10 niños con positivo, cuántos tienen el
-  trastorno, y lo mismo con la prueba rápida** (2 campos), y armas la carta con piezas y tu número. En algunas
+  trastorno, y lo mismo con la prueba rápida** (2 campos), y armas la carta con piezas y tu número. Entre las
+  piezas de la carta está, desde la 3.1 (M5), «si tu hijo dio negativo en esta prueba, puede tener otra
+  dificultad que esta prueba no busca» (D5, Qué NO 5.3). En algunas
   versiones la escuela ya viene derivada y la carta prudente de siempre se queda corta. **Consecuencia:** qué
   familias pidieron la evaluación que necesitaban y cuáles quedaron con una etiqueta. Sin universidad ni
   PHQ-9 (son del Aula de Probabilidad).
@@ -347,24 +519,33 @@ el caso es el juego entero de la 2.1, que pasa a ser un caso de la serie; sus tr
 - **Caso 1 · De quiénes habla** (con ayuda). El archivo de pruebas con su muestra: **escribes el n** y armas
   quiénes son; una variable nominal llega con su «media» y **escribes su moda** (2 campos). Una repregunta de
   prueba.
-- **Caso 2 · El centro vacío** (idea propia; D6 §6.2, pág. 8). La cohesión familiar llega con su media en el
+- **Caso 2 · El centro vacío** (idea propia; D6 §6.2, pág. 8, recuadro «Qué NO se puede afirmar», primer punto: dos grupos y centro vacío sólo si los datos los muestran). La cohesión familiar llega con su media en el
   medio de la escala y una desviación enorme; **escribes su CV** (1 campo). En unas versiones el archivo trae
   su histograma (dos jorobas, plano, o unos pocos extremos) y en otras no. Decides qué frases van al informe:
   «hay dos grupos de familias» (sólo si el histograma muestra dos jorobas), «la cohesión es baja» (sólo si el
   archivo trae un baremo y queda por debajo), «el estudiante típico tiene X» (no, si el centro está vacío),
-  «el grupo es muy heterogéneo» (se sostiene con tu CV).
+  «el grupo es muy heterogéneo» (se sostiene con tu CV; «más de 30 %» es la convención de D6 pág. 7), y en la
+  3.1 (idea del de aprendizaje P13) «la distribución es normal» (simétrica no es normal, D6 6.2) y la media
+  escrita con cuatro decimales (falsa precisión, D6 6.2), que no va así al informe (un toque; sin campo).
 - **Caso 3 · Dos variables.** El archivo trae r y la nube; **escribes R²** (1 campo) y armas la frase
   (comparten, no explica; asociadas, no causa). En parte de las versiones la nube es curva y la frase lineal no
   va.
 - **Caso 4 · La audiencia** (= 2.1). La pregunta del Concejo por versión, las pruebas tentadoras (el registro
   que cambió su forma de contar; el programa con o sin lista de espera sorteada), los estadísticos mal
   elegidos, el gráfico que no se lee a tres metros, las limitaciones antes de que las pregunten y el
-  interrogatorio. **Escribes sólo lo que la repregunta ataca** (2 o 3 campos). Lo escrito queda para la
-  defensa oral en clase, que es el jefe final.
+  interrogatorio. **Escribes sólo lo que la repregunta ataca** (2 o 3 campos). Desde la 3.1: entre los
+  estadísticos mal elegidos está **siempre una media sin su dispersión** (I8: centro y dispersión se informan
+  juntos, alerta de la tabla de decisión de D3); uno de los gráficos del archivo trae **el eje truncado o el
+  pictograma que crece en área** (I6; cuál, cambia), y corregirlo es lo que la repregunta ataca; y el
+  interrogatorio suma «¿entonces el grupo tiene burnout?» cuando el archivo sólo muestra que pasó el corte en
+  una dimensión (D6 6.1, idea del de aprendizaje P13). Lo escrito queda para la defensa oral en clase, que es
+  el jefe final.
 
 **Qué usa cada pieza de otra** (igual que en la 2.1, más las herramientas): el Tema 3 usa el nivel y la
 marca de clase (Tema 2); el 4, la desviación (Tema 3); el 5, la condicionada (Tema 4); el 6 usa la moda y el
-CV (Tema 3) y R² (Tema 4) como herramientas. Cada tema arranca con los números correctos de la versión del
+CV (Tema 3) y R² (Tema 4) como herramientas. Desde la 3.1, además: 2B caso 3 usa el nivel de medición de
+D1 (intervalo contra razón) y el indicador de D1 1.8; 3B caso 4 usa la regresión a la media de D1 1.4; 4B
+caso 2 usa la mediana (Tema 3); el Tema 6 usa el eje truncado y el pictograma (2B). Cada tema arranca con los números correctos de la versión del
 alumno (punto de control). **Hilo, sin forzar:** el censo del Tema 1 muestra chicos que trabajan de mañana en
 el mercado, y el mercado vuelve en el Tema 4.
 
@@ -390,21 +571,24 @@ Todo lo que «pasa» pasa en la ciudad, no es un mensaje de error.
 | Juego | Sabe hacer | Lo demuestra así | Si lo hace mal, pasa esto |
 |---|---|---|---|
 | 1 · La encuesta de sueño | Muestra y población, estadístico y parámetro; nombrar el sesgo de cada método y hacia dónde empuja; separar sesgo de azar; saber que el tamaño no arregla el método | Escribe proporciones en tres casos; arma quién faltó y la dirección; elige entre una encuesta grande y una chica y lo explica | El censo muestra talleres donde no hacían falta; la radio repite la cifra de la encuesta grande y sesgada |
-| 2A · La pila del centro de salud | Declarar el nivel; frecuencias absolutas, relativas y acumuladas; agrupar con Sturges; leer la ojiva; comparar grupos de distinto tamaño con proporciones; leer dos jorobas sin inventar quiénes son | Escribe conteo y proporción, las paredes, filas de la tabla, el corte, y el porcentaje de cada centro; juzga las frases del director | Cupos de más o de menos; una persona fuera del gráfico; la enfermera va al centro grande y no al que más hace esperar |
-| 2B · Lo que el presupuesto no alcanza | Pareto (y cuándo no se hace); ángulos; gráficos honestos; tortas de distinto total | Escribe acumulados, cuántas veces más es de verdad y cuántos casos hay detrás de cada sector; arma la frase del Pareto | La promesa se cae en público; la prensa descubre el gráfico inflado o la comparación de tortas |
-| 3A · Tres grupos | Media, mediana y moda (sueltas y agrupadas); elegir cuál informar según la forma; reconocer dos modas y el centro vacío; limpiar; el centro según el tipo de variable | Escribe los tres centros en tres formas distintas, la media agrupada y el centro de cada columna; juzga las conclusiones del equipo con sus números | Un grupo recibe el taller de otro nivel; el taller «del promedio» no le sirve a nadie; se borra a una persona real; se lee «motivo promedio 1,7» en la reunión |
-| 3B · Quién necesita más | Desviación típica con n − 1, CV, cuartiles, RIC, vallas, deciles y percentil; el par centro y dispersión que corresponde | Escribe s, CV, Q1, Q3, la valla, el D9 y el percentil; juzga «se duplicó la dispersión» y «Tomás está en el 15 % de arriba» | El especialista va al grupo equivocado; se anuncia que el grupo empeoró por una sola persona; deriva a quien no lo necesita |
+| 2A · La pila del centro de salud | Declarar el nivel (y no acumular una nominal); frecuencias absolutas, relativas y acumuladas; agrupar con Sturges dos veces; saber que la forma depende de las paredes; leer la ojiva; comparar grupos de distinto tamaño con proporciones; leer dos jorobas sin inventar quiénes son | Escribe conteo y proporción, las paredes (en el caso 2 y en el 3), filas de la tabla, el corte, y el porcentaje de cada centro leído en su ojiva; juzga las frases del director, también la de su polígono con otras paredes | Cupos de más o de menos; una persona fuera del gráfico; la enfermera va al centro grande y no al que más hace esperar; se da por iguales dos centros que sólo lo parecían con otras paredes |
+| 2B · Lo que el presupuesto no alcanza | Pareto de una nominal y de una ordinal (que no se reordena); el ángulo del sector y cuándo una torta no corresponde; gráficos honestos; tortas de distinto total; «el doble» sólo con cero absoluto; indicador y fenómeno | Escribe acumulados, el ángulo del sector mayor (casos 1 y 2), cuántas veces más es de verdad, cuántos casos hay detrás de cada sector y el cambio de las denuncias contando lo mismo los dos años; frena «el doble» de una escala; arma la frase del Pareto | La promesa se cae en público; la prensa publica una torta con sectores que se pisan; la prensa descubre el gráfico inflado, la comparación de tortas, «el doble de ansiedad» o la baja de denuncias que era un cambio de registro |
+| 3A · Tres grupos | Media, mediana y moda (sueltas y agrupadas); elegir cuál informar según la forma; reconocer dos modas y el centro vacío; que la moda no es «la mayoría»; limpiar; el centro según el tipo de variable | Escribe los tres centros en tres formas distintas, la media agrupada de dos colegios y el centro de cada columna; juzga las conclusiones del equipo con sus números | Un grupo recibe el taller de otro nivel; el taller «del promedio» no le sirve a nadie; se borra a una persona real; se lee «motivo promedio 1,7» en la reunión |
+| 3B · Quién necesita más | Desviación típica con n − 1, CV, cuartiles, RIC, vallas, cajas para comparar, deciles y percentil; el par centro y dispersión que corresponde; no confundir un taller que funcionó con la regresión a la media | Escribe s, CV, Q1 y Q3 (en dos casos), la valla, el D9 y el percentil, y cuánto bajaron los que no tuvieron taller; elige el par de cada curso; juzga «se duplicó la dispersión», «arriba hay más chicos», «Tomás está en el 15 % de arriba» y «el taller funcionó» | El especialista va al grupo equivocado; se anuncia que el grupo empeoró por una sola persona; deriva a quien no lo necesita; se extiende a toda la escuela un taller que no hizo nada |
 | 4A · ¿Entre quiénes? | Celda, margen, condicionada por fila y por columna; ver que la relación está en las celdas; asociación no es causa | Escribe la celda y el margen, porcentajes por fila y por columna, y por fila en dos mercados | Kits de más; la brigada al turno grande y no al de riesgo; el mismo programa en dos mercados que no lo necesitaban igual |
-| 4B · Pantallas y sueño | Mirar la nube; r, recta, ŷ dentro del rango, R² como varianza compartida; qué se puede decir de la covarianza; correlación no es causa | Escribe r en cuatro casos, b, a, ŷ y R²; aprueba o rechaza los usos del dato por barrio | La búsqueda falla; faltan cupos fuera del rango; se firma una ordenanza que no cambia el sueño; se cierra un programa que servía |
-| 5 · Una sola evaluadora | Laplace, regla del producto, sensibilidad, especificidad, valor predictivo con frecuencias; tasa base; falsos negativos; independencia; no invertir la condición | Escribe el árbol en una escuela, los positivos reales en tres, los positivos y los negativos falsos de dos pruebas, y el número de la carta | Familias con una carta que promete de más o de menos; la agenda se gasta mal; niños con el trastorno sin evaluar |
-| 6 · La audiencia | Describir la muestra; estadístico según el tipo; no afirmar dos grupos sin el histograma; R² honesto; ordenar el informe; limitaciones antes | Escribe n, moda, CV, R² y el estadístico que corrige; arma frases e informe; responde repreguntas con la prueba | Le repreguntan justo lo que no dijo y su conclusión se cae |
+| 4B · Pantallas y sueño | Mirar la nube; r, recta, ŷ dentro del rango (y no con x = 0 si no es posible), R² como varianza compartida; qué se puede decir de la covarianza (su signo); correlación no es causa; r no corresponde con una cualitativa; coincidir con otro test no prueba validez | Escribe r en cuatro casos, b, a, ŷ, R², la mediana del turno y la variación que comparten dos tests; aprueba o rechaza los usos del dato por barrio y la compra del test nuevo | La búsqueda falla; faltan cupos fuera del rango; se firma una ordenanza que no cambia el sueño; se cierra un programa que servía; se compra un test que copia los errores del viejo |
+| 5 · Una sola evaluadora | Laplace, regla del producto, sensibilidad, especificidad, valor predictivo con frecuencias; tasa base; falsos negativos; independencia; la unión «A o B» sin contar dos veces; la falacia del jugador; no invertir la condición | Escribe el árbol en una escuela, los positivos reales en tres, los positivos y los negativos falsos de dos pruebas, cuántos llegan con las dos a la vez, y el número de la carta | Familias con una carta que promete de más o de menos; la agenda se gasta mal o queda con sillas vacías; niños con el trastorno sin evaluar |
+| 6 · La audiencia | Describir la muestra; estadístico según el tipo, y el centro con su dispersión; no afirmar dos grupos sin el histograma, ni normalidad por simetría, ni un diagnóstico por un corte; R² honesto; un gráfico honesto; ordenar el informe; limitaciones antes | Escribe n, moda, CV, R² y el estadístico que corrige; arma frases e informe; responde repreguntas con la prueba | Le repreguntan justo lo que no dijo y su conclusión se cae |
 
 ### R3.5 · Dónde se juega cada subtema, y cuántas veces
 
 Mismas 71 filas que §R2.2 (salen de recorrer los seis dossiers sección por sección, con sus tablas de
 decisión), con el lugar de la ronda 3 y **en cuántos casos se practica y con qué variación**. «Dossier» quiere
 decir que no tiene juego: se lee y se pregunta en la defensa oral. Los casos se cuentan sin la práctica
-abierta, que repite todo.
+abierta, que repite todo. **En la 3.1 se cuentan como el de aprendizaje (`04` PD.1): veces en que el
+alumno produce algo con el concepto (escribe un número o toma una decisión que depende de él) en la serie
+oficial; un caso con dos tablas o dos pedidos del mismo cálculo cuenta dos; lo que la herramienta sólo dibuja
+no cuenta.** Las filas que cambiaron en la 3.1 lo dicen.
 
 **Tema 1 · Introducción (D1)**
 
@@ -417,53 +601,53 @@ abierta, que repite todo.
 | 5 | 1.3 Error muestral | Tema 1 | 3 · el colegio del caso 1; el censo que lo separa del sesgo; la encuesta chica sorteada |
 | 6 | 1.3 Sesgos de cobertura, no respuesta y respuesta | Tema 1 | 2 · cuatro métodos, dirección a los dos lados; la encuesta grande sesgada o sorteada |
 | 7 | 1.4 Fases del análisis | Dossier y defensa | El Tema 1 las hace vivir sin calificarlas |
-| 8 | 1.4 Grupo de control, asignación aleatoria, regresión a la media | Tema 6 | 1 · programa con o sin lista de espera sorteada |
-| 9 | 1.5 Descriptiva e inferencial | Tema 1 | 2 · la frase no pasa de lo medido (casos 2 y 3); el Tema 6 lo retoma en el alcance |
+| 8 | 1.4 Grupo de control, asignación aleatoria, regresión a la media | Tema 6 | 2 · programa con o sin lista de espera sorteada (T6 caso 4); «el taller funcionó», con los que quedaron justo debajo del D9 sin taller (3B caso 4, 3.1) |
+| 9 | 1.5 Descriptiva e inferencial | Tema 1 | 2 en el Tema 1 · la frase no pasa de lo medido (casos 2 y 3); desde la 3.1, la frase que generaliza en todo repertorio de mesa (regla 8 de §R3.1), cada versión en al menos 2 mesas; el Tema 6 lo retoma en el alcance |
 | 10 | 1.6 Cualitativa y cuantitativa; discreta y continua | Tema 2A | 2 · discreta (caso 1), continua (caso 2) |
-| 11 | 1.6 Niveles de Stevens y lo que prohíbe cada uno | Tema 2A | 4 · columnas por versión en los casos 1 y 2 de 2A; la ordinal de 2B (caso 2); la nominal y la Likert de 3A (caso 4) |
+| 11 | 1.6 Niveles de Stevens y lo que prohíbe cada uno (con intervalo contra razón) | Tema 2A | 6 · columnas por versión en 2A casos 1 y 2 (y la nominal que no se acumula, caso 1); la ordinal de 2B caso 2, en toda versión; «el doble» de una escala sin cero absoluto (2B caso 3, 3.1); la nominal y la Likert de 3A caso 4; el turno 1, 2, 3 al que no se le calcula r (4B caso 2, 3.1) |
 | 12 | 1.6 «La Regla de Oro» | Ninguno | Es inferencial |
 | 13 | 1.7 Gráfico según la variable; barras separadas contra pegadas | Tema 2A | 2 · barras (caso 1), histograma (caso 2) |
-| 14 | 1.7 Anatomía de un gráfico honesto | Tema 2B | 1 · tres gráficos, cada uno honesto en parte de las versiones |
+| 14 | 1.7 Anatomía de un gráfico honesto | Tema 2B | 2 · cinco gráficos de la rendición, en toda versión al menos uno que engaña (2B caso 3); el gráfico del archivo con eje truncado o pictograma (Tema 6 caso 4, 3.1) |
 | 15 | 1.8 Fuentes primarias y secundarias; técnicas | Tema 1 | 2 · la lista y la encuesta; las dos encuestas ya hechas |
 | 16 | 1.8 Deseabilidad social; sesgo del observador | Tema 1 | 2 · el tutor en el aula (caso 2) y la encuesta hecha en el aula (caso 3); el observador, dossier |
-| 17 | 1.8 Indicador y fenómeno | Tema 6 | 1 · el registro que cambió su forma de contar |
-| 18 | Tabla de decisión de D1 | Tema 2A | 4 · 2A casos 1 y 2; 3A caso 4; Tema 6 caso 1 |
+| 17 | 1.8 Indicador y fenómeno | Tema 6 | 2 · «bajamos las denuncias a la mitad» con el registro que cambió (2B caso 3, 3.1); el registro de la audiencia (Tema 6 caso 4) |
+| 18 | Tabla de decisión de D1 | Tema 2A | 5 · 2A casos 1 y 2; «el doble» sólo con cero absoluto (2B caso 3, 3.1); 3A caso 4; Tema 6 caso 1 |
 
 **Tema 2 · Organización de datos (D2)**
 
 | # | Subtema | Dónde se juega | Casos · variación |
 |---|---|---|---|
 | 19 | 2.1 Frecuencias n, h, N, H | Tema 2A | 3 · umbral y proporción; n y H agrupadas; proporciones para comparar tres centros |
-| 20 | 2.2 Rango, Sturges, amplitud, límites [ ) | Tema 2A | 1 · con variantes (dato en el límite, el mayor afuera); se repite en la práctica abierta |
-| 21 | 2.2 Marca de clase | Tema 3A | 1 · la media agrupada; el error del límite en lugar de la marca |
-| 22 | 2.3 Histograma | Tema 2A | 2 · se redibuja con tus paredes (2A); llega hecho o no llega (Tema 6, caso 2) |
-| 23 | 2.3 Forma: pico, cola, ancho, dos jorobas | Tema 3A | 3 · se ve en los polígonos (2A caso 3); se calcula en tres formas (3A caso 2); no se afirma sin histograma (Tema 6 caso 2) |
-| 24 | 2.3 Polígono de frecuencias | Tema 2A | 1 · tres centros superpuestos |
-| 25 | 2.3 Ojiva | Tema 2A | 1 · el corte de los cupos prioritarios |
+| 20 | 2.2 Rango, Sturges, amplitud, límites [ ) | Tema 2A | 2 · la tabla del caso 2 (dato en el límite y el mayor afuera si se redondea mal, en toda versión); las paredes comunes de los tres centros (caso 3, 3.1); n con el entero más cercano ya impar |
+| 21 | 2.2 Marca de clase | Tema 3A | 2 · las dos tablas del caso 3 (3.1), de distinta amplitud; en una el límite en lugar de la marca cambia el nivel y en la otra no |
+| 22 | 2.3 Histograma | Tema 2A | 3 · se construye con tus paredes (2A caso 2); las paredes cambian la forma (2A caso 3, 3.1); llega hecho o no llega (Tema 6, caso 2) |
+| 23 | 2.3 Forma: pico, cola, ancho, dos jorobas | Tema 3A | 3 · se ve en los polígonos y el pico se muda con otras paredes (2A caso 3); se calcula en tres formas (3A caso 2); no se afirma sin histograma (Tema 6 caso 2) |
+| 24 | 2.3 Polígono de frecuencias | Tema 2A | 1 · tres centros superpuestos, con la lectura entre dos puntos que se frena (3.1); el de aprendizaje lo da por suficiente: su uso es superponer |
+| 25 | 2.3 Ojiva | Tema 2A | 2 · el corte de los cupos prioritarios (caso 2); el porcentaje de cada centro leído en su ojiva (caso 3, 3.1) |
 | 26 | 2.3 Tallo y hojas | Dossier | No decide nada |
-| 27 | 2.3 Error de escala | Tema 2B | 1 · barras con eje truncado |
-| 28 | 2.4 Pareto | Tema 2B | 3 · con ayuda; cruce en la primera o en la quinta barra; la frase del Pareto |
-| 29 | 2.4 Sectores | Tema 2B | 1 · dos tortas de distinto total, o el ángulo |
-| 30 | 2.4 Pictograma | Tema 2B | 1 · el que crece en área |
-| 31 | Tabla de decisión de D2 | Tema 2B | 3 · la ordinal que no se reordena (2B caso 2); columnas de 2A casos 1 y 2 |
+| 27 | 2.3 Error de escala | Tema 2B | 2 · barras con eje truncado (2B caso 3); herramienta en el Tema 6 caso 4 (3.1) |
+| 28 | 2.4 Pareto | Tema 2B | 3 · con ayuda; dos Paretos, nominal y ordinal, con el cruce en la primera o en la quinta barra (caso 2); la frase del Pareto (caso 3) |
+| 29 | 2.4 Sectores | Tema 2B | 3 (1 sin nota) · el ángulo del sector mayor con ayuda (caso 1); el ángulo y la torta que no corresponde, en toda versión (caso 2); dos tortas de distinto total (caso 3). La 3.0 decía 1 y no se escribía ningún ángulo (B2) |
+| 30 | 2.4 Pictograma | Tema 2B | 2 · el que crece en área (2B caso 3); herramienta en el Tema 6 caso 4 (3.1) |
+| 31 | Tabla de decisión de D2 | Tema 2B | 3 · la ordinal que no se reordena, en toda versión (2B caso 2); columnas de 2A casos 1 y 2, con la nominal que no se acumula |
 
 **Tema 3 · Estadística unidimensional (D3)**
 
 | # | Subtema | Dónde se juega | Casos · variación |
 |---|---|---|---|
 | 32 | 3.1 Media y mediana | Tema 3A | 3 · un grupo con un extremo; tres formas; la columna limpia |
-| 33 | 3.1 Moda (única de una nominal; puede haber dos) | Tema 3A | 3 · una moda; dos modas; la moda de la nominal; el Tema 6 la usa |
-| 34 | 3.1 Media agrupada | Tema 3A | 1 · el colegio vecino |
+| 33 | 3.1 Moda (única de una nominal; puede haber dos) | Tema 3A | 3 · una moda; dos modas y «la mayoría puntúa X» (3.1); la moda de la nominal; el Tema 6 la usa |
+| 34 | 3.1 Media agrupada | Tema 3A | 2 · los dos colegios vecinos del caso 3 (3.1) |
 | 35 | 3.2 Varianza y desviación típica con n − 1 | Tema 3B | 3 · misma media; tres grupos; con el caso que llega tarde |
 | 36 | 3.2 CV | Tema 3B | 2 · tres grupos con escalas distintas en parte de las versiones (3B caso 2); la cohesión del Tema 6 (caso 2) |
-| 37 | 3.3 Cuartiles, RIC, vallas, caja, atípicos | Tema 3B | 2 · la caja antes y después del caso extremo (3B caso 3); la mediana con su RIC que corrige al archivo (Tema 6 caso 4); el extremo real contra el error, también en 3A caso 4 |
+| 37 | 3.3 Cuartiles, RIC, vallas, caja, atípicos | Tema 3B | 2 · Q1, Q3 y la valla de un grupo, antes y después del caso extremo (3B caso 3); Q1 y Q3 de dos cursos con las cajas lado a lado (3B caso 4, 3.1). La 3.0 decía 2 contando el Tema 6 y 3A caso 4, donde no se calcula ningún cuartil (B2) |
 | 38 | 3.3 Percentil con n + 1; percentil contra porcentaje | Tema 3B | 2 · tres percentiles (dos D9 y Tomás) en dos cursos (3B caso 4); leído en la ojiva (2A caso 2) |
-| 39 | 3.3 Deciles | Tema 3B | 1 · la regla del decil 9 |
+| 39 | 3.3 Deciles | Tema 3B | 1 · la regla del decil 9, que la segunda firma del caso 4 (3.1) vuelve a usar; el de aprendizaje lo da por suficiente: es el mismo cálculo de posición que cuartiles y percentil |
 | 40 | 3.4 Asimetría por media contra mediana | Tema 3A | 3 · el extremo del caso 1; cola a un lado o al otro en el caso 2; el caso que llega tarde (3B) |
 | 41 | 3.4 Curtosis, g₁ y g₂ | Dossier | Ninguna decisión depende de ellas |
-| 42 | 3.5 Codificación, matriz, limpieza | Tema 3A | 2 · la planilla sucia; el punto suelto de 4B |
+| 42 | 3.5 Codificación, matriz, limpieza | Tema 3A | 2 · la planilla sucia, con el error y la persona real que cambian de lado (3.1); el punto suelto de 4B |
 | 43 | 3.5 Excel | Dossier | El juego no enseña menús |
-| 44 | Tabla de decisión de D3 | Tema 3A | 4 · el centro de cada columna (3A caso 4); el par mediana y RIC (3B caso 3); Tema 6 casos 1 y 4 |
+| 44 | Tabla de decisión de D3 | Tema 3A | 5 · el centro de cada columna (3A caso 4); el par mediana y RIC (3B caso 3); el par de cada curso (3B caso 4, 3.1); Tema 6 casos 1 y 4, con la media sin su dispersión (3.1) |
 
 **Tema 4 · Estadística bidimensional (D4)**
 
@@ -474,27 +658,27 @@ abierta, que repite todo.
 | 47 | 4.2 Condicionadas y el denominador | Tema 4A | 2 · por fila y por columna; por fila en dos mercados; el Tema 5 la usa |
 | 48 | 4.3 Nube de puntos | Tema 4B | 3 · seis puntos; el punto suelto; recta, loma y un punto que manda |
 | 49 | 4.4 Vector de medias | Dossier | La recta lo usa por dentro |
-| 50 | 4.4 Covarianza: sólo el signo, depende de las unidades | Tema 4B | 1 · se juzga lo que se dice de ella con r; no se escribe |
-| 51 | 4.5 r de Pearson | Tema 4B | 3 · una nube; dos estudios; tres barrios más r sin el punto |
-| 52 | 4.5 R² como varianza compartida | Tema 4B | 2 · la frase de 4B; el Tema 6 caso 3 |
+| 50 | 4.4 Covarianza: sólo el signo, depende de las unidades | Tema 4B | 1 · se juzga lo que se dice de su tamaño y, desde la 3.1, de su signo; no se escribe |
+| 51 | 4.5 r de Pearson; un r alto con el test de referencia no prueba validez | Tema 4B | 3 · una nube; dos estudios; tres barrios más r sin el punto; y en toda versión el test nuevo «válido porque correlaciona» (4B caso 3, 3.1) |
+| 52 | 4.5 R² como varianza compartida | Tema 4B | 3 · la frase de 4B; la variación que comparten los dos tests (4B caso 3, 3.1); el Tema 6 caso 3 |
 | 53 | 4.5 Correlación no es causa | Tema 4B | 3 · la ordenanza (4B caso 4); el turno noche (4A caso 3); la frase del Tema 6 |
-| 54 | 4.6 Recta: b, a, ŷ; extrapolación | Tema 4B | 2 · dos barrios, uno a veces fuera del rango; el uso «prever cupos» del caso 4 |
+| 54 | 4.6 Recta: b, a, ŷ; extrapolación | Tema 4B | 2 · dos barrios, uno fuera del rango o con x = 0 en toda versión (3.1); el uso «prever cupos» del caso 4 |
 | 55 | 4.7 Excel | Dossier | El juego no enseña menús |
-| 56 | Tabla de decisión de D4 (nube curva) | Tema 4B | 2 · la loma del caso 4; la nube curva del Tema 6 |
+| 56 | Tabla de decisión de D4 (nube curva; r con una cualitativa) | Tema 4B | 3 · la loma del caso 4; el r del turno que no corresponde (4B caso 2, 3.1); la nube curva del Tema 6 |
 
 **Tema 5 · Probabilidad (D5)**
 
 | # | Subtema | Dónde se juega | Casos · variación |
 |---|---|---|---|
 | 57 | 5.1 Laplace | Tema 5 | 2 · la prevalencia desde el conteo, en una escuela y en tres |
-| 58 | 5.1 Axiomas, excluyentes | Dossier | No deciden nada |
-| 59 | 5.1 Falacia del jugador | Dossier | Cabe sólo forzando un sorteo |
+| 58 | 5.1 Axiomas, excluyentes, la unión «A o B» | Tema 5 | 1 · las dos pruebas a la vez: cuántos llegan a la agenda (5 caso 3, 3.1). La 3.0 decía «dossier» |
+| 59 | 5.1 Falacia del jugador | Tema 5 | 1 · «el próximo seguro es real», en toda versión, en la agenda (5 caso 2, 3.1). La 3.0 decía «dossier» |
 | 60 | 5.2 Probabilidad condicionada | Ya jugada en 4A | El árbol del Tema 5 la usa |
 | 61 | 5.2 Regla del producto | Tema 5 | 3 · una escuela; tres escuelas; dos pruebas |
 | 62 | 5.2 Independencia | Tema 5 | 2 · la prueba rápida (caso 4); «el riesgo es igual en todos los turnos», sin el nombre (4A caso 3) |
 | 63 | 5.2 y 5.3 Falacia de la inversa | Tema 5 | 2 · «el test es malo» (caso 2); «acierta el 90 %» en la carta (caso 4) |
 | 64 | 5.3 Prevalencia, sensibilidad, especificidad | Tema 5 | 4 · una escuela; tres prevalencias; sensible contra específica; la carta |
-| 65 | 5.3 Verdaderos y falsos positivos y negativos; valor predictivo; tasa base | Tema 5 | 4 · los mismos, con los falsos negativos en el caso 3 |
+| 65 | 5.3 Verdaderos y falsos positivos y negativos; valor predictivo; tasa base | Tema 5 | 4 · los mismos, con los falsos negativos en el caso 3 y la pieza «un negativo puede tener otra dificultad» en la carta (3.1) |
 
 **Tema 6 · Investigación y estadística (D6)**
 
@@ -502,9 +686,9 @@ abierta, que repite todo.
 |---|---|---|---|
 | 66 | 6.1 Arquitectura del argumento | Tema 6 | 1 · la audiencia; la pregunta cambia por versión |
 | 67 | 6.1 Caracterización de la muestra | Tema 6 | 2 · casos 1 y 4 |
-| 68 | 6.2 Diagnóstico de una variable | Tema 6 | 3 · la moda de la nominal; el centro vacío; los estadísticos mal elegidos |
+| 68 | 6.2 Diagnóstico de una variable | Tema 6 | 3 · la moda de la nominal; el centro vacío, «es normal» y la falsa precisión (3.1); los estadísticos mal elegidos |
 | 69 | 6.3 Dos variables: dirección, fuerza, R² honesto | Tema 6 | 2 · casos 3 y 4 |
-| 70 | 6.4 Economía visual | Tema 6 | 1 · el gráfico que no se lee a tres metros (y los de 2B) |
+| 70 | 6.4 Economía visual | Tema 6 | 1 · el gráfico que no se lee a tres metros y, desde la 3.1, el eje truncado o el pictograma del archivo |
 | 71 | 6.4 Guion, tribunal, limitaciones | Tema 6 | 1 · el interrogatorio, y la defensa oral en clase |
 
 **Filas que quedan con un solo caso, y por qué** (para que el de aprendizaje las juzgue): son de dos clases.

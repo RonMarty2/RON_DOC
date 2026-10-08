@@ -31,6 +31,11 @@
 > líneas por etapa. **Regla corregida por Ronald (08-10):** las referencias a juegos famosos que lo hicieron bien **sí**
 > (se proponen 1 a 3 por materia y se dice qué se toma y qué se cambia); no se copia arte, personajes, nombres ni música de
 > un juego comercial, ni el contenido de otro juego de RON_DOC. Pasada a los 7 agentes y a `REGLAS-COMUNES-AGENTES.md`.
+> **CORRECCIÓN DE ORDEN (08-10, Ronald):** el plan de arriba tenía el arte (paso 2) antes de analizar el tema, y la sesión
+> eligió referencias por su cuenta; Ronald lo frenó: **primero el análisis del dossier del tema y recomendar cómo aprender
+> jugando, después él dice qué le gusta, al final referencias, aspecto, arte y sonido.** Regla escrita en los 7 agentes y en
+> `REGLAS-COMUNES-AGENTES.md`. El paso 2 del plan (arte) queda **en pausa**; en curso: análisis de cero del Tema 1 por el
+> adaptador → `docs/juego/gdd/00-tema1-de-cero-psicoestadistica.md` (fase A sin leer la maqueta; fase B la compara).
 > **Dos mejoras a los agentes por casos de hoy (08-10):** (a) en los 7 y en `REGLAS-COMUNES-AGENTES.md`: lo ya decidido no se
 > vuelve a preguntar y no se entrega con un ✘ (el director repitió preguntas contestadas y recomendó lo contrario de un plan
 > aprobado); (b) en `director-de-juego`: los bocetos de aspecto se hacen con arte real y en el motor propuesto, no con

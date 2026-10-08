@@ -7,7 +7,7 @@
 
 1. `git pull --ff-only` y `git status`. Si hay archivos sin subir, di cuáles y de cuándo antes de tocar nada.
 2. Lee `BITACORA.md` §0 (lo más nuevo, arriba) y esta nota.
-3. Estado al cortar (08-10): aprendizaje y bucle del Tema 1 **hechos**; **nada en curso**. Sigue la lista «Lo que sigue» desde el punto 2 (narrativa). Verifica en el disco que `02-bucle-y-mecanicas.md` y `04-aprendizaje.md` traen su sección del Tema 1.
+3. Estado al cortar (08-10, 18:51): **diseño en papel del Tema 1 COMPLETO** (ideas, forma, aspecto, aprendizaje v2.1, bucle v2, narrativa v3, sonido v1) y **revisado por el crítico (v15 en `06-revisiones.md`, línea 108): 2 bloqueos + 7 importantes SIN corregir**. **Nada en curso.** NO rehacer narrativa ni sonido: ya existen (`05-mundo-y-narrativa.md`, `07-sonido.md`). Sigue la lista «Lo que sigue» desde el punto 1 nuevo (corregir hallazgos de v15). Verifica en el disco antes de editar.
 4. No empieces nada nuevo: pregúntale a Ronald en qué punto quiere seguir **solo si los archivos no lo dicen**.
 
 ## 1. Qué es el proyecto
@@ -58,11 +58,12 @@ Agentes en `.claude/agents/` (viajan por git). Registro y etapas: `.claude/agent
 
 **Decisión de Ronald (08-10, 12:2x): «probemos todo con el primer tema de esta materia y vemos qué tal»** (le da miedo trabajar en vano). Se recorre **toda la cadena con el Tema 1 y nada más** antes de tocar otro tema u otra materia.
 
-**Lo que sigue, en orden (de aquí en adelante):**
-1. ~~Terminar el bucle~~ **hecho** (arriba). Ronald pidió **parar aquí** (08-10): la narrativa NO está lanzada.
-2. **Narrativa** (`disenador-narrativo`): voz y pistas de cada personaje (editora, madre, colega «a ojo», Dani), textos de los papeles y diálogos, todo en tuteo. Es lo que hará que el juego «diga algo»: Ronald lo notó en el boceto («no siento que diga nada el juego»).
-3. **Sonido** (`disenador-de-sonido`, etapa 4-bis): una hoja de sonido por escena con prompt para Flow Music. **Nada se integra** hasta que Ronald revise la licencia.
-4. **Crítico** (`critico-de-jugabilidad`), con Bash: recuenta con script los conteos del aprendizaje y del bucle; los arreglos van antes de mostrar nada.
+**Lo que sigue, en orden (actualizado 08-10 18:5x; lo anterior —bucle, narrativa, sonido, crítico— ya está HECHO):**
+HECHO el 08-10: bucle v2, narrativa v3 (`05`, líneas 20 a 786), sonido v1 (`07-sonido.md`), crítico v15 (`06`, línea 108). No repetir.
+1. **Corregir los hallazgos del crítico v15** (tabla «Quién lo arregla» al final de su entrada en `06`). **Bloquean (B1, B2):** ficha F3a dice «se pudo presentar» aunque el rango quedó en un anexo (falta la variable «con/sin pieza» en `04` y en `ramas_t1.py`); ficha F5h dice «el taller sí cambió un poco» y es falsa en 57 % de sus apariciones (`E5d` mide ρ, no el efecto real δ). **Importantes (7):** códigos de error y hábitos que no cuadran entre `02` y `04` (I1); la jefa se parece a la de AIEF, vidrio y sello (I2); sonidos y líneas que juzgan o dan la respuesta (I4, C6: timbres de E04, ronquido de Dani, turno 2 del caso 5, líneas de la jefa y de Ugarte); caso 5 turno 1 (I7); «titular» en dos títulos de caso (C1); el paso 1 deja colgado el encargo de la jefa. Orden: `disenador-de-aprendizaje` → `disenador-de-bucle` si toca → `disenador-narrativo` (copia textos con `armar_nt19.py`) → `disenador-de-sonido`.
+2. **Dos preguntas de gusto para Ronald, en simple, con valor recomendado:** (a) la jefa se parece a la de AIEF: recomendado sacarle vidrio y sello; (b) caso 5, turno 1: mantener la trampa pero que la aprobación venga de Beto o del director, no de la jefa.
+3. **Crítico otra vez** sobre lo corregido (punto 15 de su lista), con Bash. Pendiente además: simulaciones E-S3 a E-S10 y medir legibilidad con `medir_legibilidad.py` al construir.
+4. (Ronald, 08-10 tarde, frustrado por tanto papel sin juego jugable) **Propuesta de la sesión, sin OK todavía:** corregir solo B1 y B2, construir ya el **Caso 2 completo y jugable en el celular** (el del boceto) y que Ronald lo juegue antes de seguir con los otros 7 casos y con los 7 importantes. Preguntarle si quiere esto.
 5. **Plan en simple a Ronald** y su aprobación (candado `plan:` en `content/islas.ts`; el aspecto ya está aprobado). Sin eso no se programa.
 6. **Construir el Tema 1 como borrador** (PixiJS, reutilizando `src/lib/juego/`), `npm test` + `npx tsc --noEmit`, `revisar-publicacion`, y que Ronald lo juegue en el celular. Medir las fichas y pantallas con `medir_legibilidad.py`.
 7. Con lo aprendido de este tema se **mejoran los agentes** antes de pasar al Tema 2. Un tema a la vez.

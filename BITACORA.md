@@ -50,7 +50,7 @@
 > escalera de ayuda (hoy «lee la sección del dossier», en `src/lib/juego/escalera.ts` y en el guion de AIEF): pasa a ayuda dentro del juego. **El código existente no se
 > toca sin su OK** (afecta `escalera.ts`, `guion-tema1.ts` de AIEF y sus pruebas). Regla en los 7 agentes y `REGLAS-COMUNES-AGENTES.md`.
 > **DECIDIDO (08-10, Ronald):** el juego **no enseña software** (ni jamovi, EViews ni menús o comandos). Regla en los 7 agentes y `REGLAS-COMUNES-AGENTES.md`.
-> **Propuesta de Ronald, a confirmar:** que cada materia **empiece descubriendo para qué sirve** lo que se verá, ajustado al dossier de esa materia (no la misma mecánica).
+> **CONFIRMADO por Ronald (08-10):** cada materia **empieza descubriendo para qué sirve** lo que se verá, ajustado al dossier (la mecánica cambia por materia). Regla en los 7 agentes y `REGLAS-COMUNES-AGENTES.md`.
 > **Dos mejoras a los agentes por casos de hoy (08-10):** (a) en los 7 y en `REGLAS-COMUNES-AGENTES.md`: lo ya decidido no se
 > vuelve a preguntar y no se entrega con un ✘ (el director repitió preguntas contestadas y recomendó lo contrario de un plan
 > aprobado); (b) en `director-de-juego`: los bocetos de aspecto se hacen con arte real y en el motor propuesto, no con

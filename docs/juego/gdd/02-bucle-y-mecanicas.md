@@ -16,6 +16,511 @@ Si no dices otra cosa, lo demás queda como propuesta por defecto y pasa a narra
 
 ---
 
+## Psicoestadística Descriptiva (Psicología) · Tema 1 «La mesa de verificación» · bucle y mecánicas · versión 1 · 08-10-2026
+
+> **Estado:** entrega de la etapa de bucle, para el crítico. Autor: diseñador de bucle. **Sin nota** en este tema (decidido; no se pregunta): lo que se guarda es registro.
+> **Parte de:** las 8 ideas APROBADAS, la ficha ELEGIDA `00-tema1-forma1-ficha.md` (las cifras de la ficha mandan salvo donde la sección 14 dice que este documento las ajusta), el aprendizaje `04-aprendizaje.md` (secc. «Tema 1 · aprendizaje v1», T1.1 a T1.9) y el aspecto A «La redacción de noche», con el boceto vivo `docs/juego/bocetos/motores/aspecto-A/index.html` (Caso 2) como lo único que existe visualmente. Nada de eso se reabre.
+> **Decisiones pendientes de Ronald: ninguna.** Hay dos valores por defecto que él puede cambiar cuando lo juegue (marcados DEFECTO en 8.3 y 8.4); no bloquean nada.
+> **Qué NO se hizo:** en esta tarea no hubo terminal. Ningún script se corrió. Las cuentas de abajo son **exactas a mano** (combinatoria y cotas) y están marcadas así; las simulaciones de estrategias perezosas con las tablas nuevas están **especificadas en 11.5 y pendientes de correr** por quien tenga terminal, antes de que el crítico dé su veredicto sobre ellas.
+> **Dónde se juega qué:** cada mecánica de abajo vive en un solo caso (nada se estira a otro tema). Dos piezas nacen como motor porque el Tema 6 las va a necesitar: la carpeta de papeles con presupuesto y el armador de frases por piezas.
+
+**Palabras de oficio, una línea cada una:**
+- **Evento:** un hecho guardado de la partida («abrió el papel 3», «escribió 7»); desde los eventos se reconstruye todo, incluso el registro.
+- **Semilla:** el número que fija qué versión recibe el alumno; la misma semilla da siempre la misma versión.
+- **Tope (*clamp*):** un medidor no baja de 0 ni sube de 100.
+- **Papel clave / refuerzo / señuelo:** el que destapa el problema o confirma que no lo hay / el que da una cifra o fecha para la frase / el verosímil que no destapa nada.
+- **Acierto sin evidencia:** decidir bien sin haber abierto lo que lo justificaba (suerte o instinto); se premia a medias y no cuenta como «descubrió».
+- **Hábito:** el mismo tipo de error repetido en dos casos distintos (por ejemplo, decidir sin abrir el papel clave).
+
+---
+
+### 1. Los tres bucles
+
+**1.1 De segundos (una acción y su respuesta).**
+
+```
+mirar la afirmación o el papel  →  tocar (abrir un papel, sacar una tanda, escribir un número)
+   →  el mundo se mueve (el papel sube bajo la lámpara, la ficha se voltea, el corcho clava el papel)
+   →  mirar de nuevo  →  ...  →  sellar una decisión (Publicar, Armar la frase, Retener)
+```
+
+Regla de este bucle: **la respuesta del mundo muestra qué hiciste, nunca si estuvo bien.** Nada resplandece en el papel clave; los medidores no se mueven mientras abres. Eso se ve solo al cierre (regla 7: la consecuencia llega al cierre del caso y la decisión sellada no se rehace).
+
+**1.2 De una escena (un caso; el *core loop* del Tema 1, 7 pasos).** Es la misma idea de los 7 pasos de la escena de `esquema.html` §3, pero con piezas propias de esta materia.
+
+```
+1 ENTRA la afirmación con tono de certeza (titular) y se ven C, L y las fichas (3, o 2 si C o L ≤ 25)
+   →  2 MIRA la carpeta: 6 papeles que no dicen de qué sirven
+   →  3 GASTA fichas: abre papeles, o saca tandas (caso 3), o pone papeles en la mesa (caso 8); no alcanza para todo
+   →  4 ESCRIBE lo que el caso pide con números (rango, conteo, diferencia, cuánto subió) o ARMA la frase con piezas
+   →  5 SELLA: Publicar / Armar la frase / Retener (o A, B, ninguna; o financiar, no, esperar). Un toque y un "¿sellar?"
+   →  6 SALE LA EDICIÓN: corte de 2 segundos; C y L se mueven; reacciona alguien (la editora, una madre, un lector, el colega)
+   →  7 NOTA: si hubo error, un sobre de la editora con una pregunta (escalón 2); "Siguiente caso" siempre habilitado
+```
+
+**1.3 De la materia (qué se acumula de caso en caso).**
+
+```
+Paso 1 (sin medidores, asombro)  →  Caso 2 (siempre con problema: el primer golpe)
+   →  casos 3, 4, 5, 6, 7 en orden barajado por alumno (C y L pasan de uno a otro; el registro anota qué papeles abrió y qué dejó)
+   →  Caso 8 (usa lo que aprendiste a pedir: con qué comparar, cuántos eran)
+   →  cierre de edición (C ≥ 60 y L ≥ 60: mesa fija; si no, "otro trimestre de prueba": no bloquea)
+   →  revelación: 8 fichas boca abajo  →  el camino ("esto apenas empieza")  →  práctica abierta
+```
+
+Se acumulan **tres cosas** entre casos: (a) los dos medidores (decisión de cuánto arriesgar), (b) las fichas, que **no** pasan de un caso a otro (cada caso las repone) salvo por el umbral de 25, y (c) el registro (hábitos y qué ficha se dio vuelta). No se acumula ningún conocimiento «desbloqueable»: no hay objetos ni mejoras que se compren.
+
+---
+
+### 2. Reglas generales (se programan una vez, valen para los casos 2 a 8)
+
+| Id | Regla |
+|---|---|
+| G1 | Al empezar el caso 2: C = 50 y L = 50. Los dos tienen tope 0 y 100. Todo efecto es un entero y se aplica **al sellar** (no antes). |
+| G2 | Fichas del caso: `fichasDelCaso(C, L) = (C ≤ 25 o L ≤ 25) ? 2 : 3`, calculado **al empezar el caso** con los valores de ese momento. En el caso 5 vale para los dos turnos. |
+| G3 | Abrir un papel cuesta 1 ficha. Reabrir un papel ya abierto no cuesta. Sin fichas no se abre nada. En el caso 3 sacar una tanda cuesta 1 ficha. Leer, escribir, armar y sellar no cuestan. |
+| G4 | La decisión sellada no se rehace. El «¿sellar?» pide un segundo toque; después no hay vuelta. |
+| G5 | **Acierto sin evidencia:** si un caso define su papel o papeles clave y la decisión fue correcta sin haberlos abierto (o sin haberlos puesto en la mesa, caso 8), el efecto es el de la tabla del caso para ese supuesto (mitad o menos) y el registro lo marca. |
+| G6 | Cierre de edición (después del caso 8): `mesaFija = (C ≥ 60 y L ≥ 60)`. Solo cambia el último diálogo de la editora y el registro. No hay nota. |
+| G7 | Tipos por versión. Casos 3, 6 y 7 salen de **una** de estas 10 tiradas uniformes (c3, c6, c7): (B,B,P) (B,P,P) (P,B,P) (B,A,P) (A,B,P) (P,P,B) (P,B,B) (B,P,B) (P,A,B) (A,P,B), con P = con problema, B = bien, A = aún no se sabe. Cumplen: al menos un B, al menos un P, a lo más un A, y el caso 7 nunca es A. Cuenta: caso 3 es P 4, B 4, A 2 de 10; caso 6 igual; caso 7 es P 5, B 5. Caso 2 y caso 5 no tienen tipo variable (siempre problema). Caso 4: el estudio bueno es A o B, 50 %. Caso 5: efecto real δ = 0 o δ = 3 puntos, 50 %. Caso 8: financiar, no financiar o aún no, 1/3 cada uno. |
+| G8 | Orden: Paso 1, caso 2 y caso 8 son fijos. Los casos 3, 4, 5, 6 y 7 salen en una permutación uniforme de las 120 posibles. |
+| G9 | Sorteo: `semilla = versionDeAlumno(id, "psicoestadistica-descriptiva-psicologia:tema1")`. Un generador por rubro, `azarConSemilla(semilla + k)`: k=1 tipos, k=2 orden, k=3 papeles que entran a cada carpeta y su orden, k=10+caso cifras y textos de ese caso. Cambiar un rubro no cambia los otros. |
+| G10 | Carpeta: cada caso tiene un **fondo de 9 papeles**; la versión recibe 6 con su papel clave dentro. En los casos 6 y 7 hay además una **hoja adjunta** (la lista de 60, la hoja de datos) que no gasta ficha y no cuenta entre los 6. |
+| G11 | Los medidores y su sentido: lo que atrae Lectores cuesta Credibilidad si estaba mal; la prudencia da Credibilidad y cede Lectores. Los marcos 25 y 60 se dibujan en los tubos. A 25 o menos el tubo titila y la lámpara baja; a 26 o más no hay aviso numérico. |
+| G12 | La editora **no corrige durante el caso**. Habla solo en la entrada (qué trae la agencia) y en el cierre (nota). |
+
+*Por qué 3 fichas (ficha, secc. 2):* con 6 papeles y un clave, abrir 3 al azar da con él 3/6 = 0,50; con 2 fichas, 2/6 = 0,33. Con dos claves de los que basta uno (caso 4) es 1 − C(4,3)/C(6,3) = 1 − 4/20 = 0,80 con 3 fichas y 1 − 6/15 = 0,60 con 2. Con dos claves que se necesitan los dos (caso 8) es 4/20 = 0,20 con 3 fichas y 1/15 = 0,07 con 2 (cuentas a mano).
+
+---
+
+### 3. Catálogo de modalidades y mecánicas del Tema 1
+
+Tipos: **cálculo** (escribir un número), **decisión** (elegir con consecuencias), **exploración** (conseguir datos), **minijuego** (una acción corta que hace ver la idea). «Código» dice si ya existe (motor en `PIEZAS-COMUNES.md` §1 y §2, pantalla en `src/app/juego-<isla>/`). Pantallas de esta materia no existen todavía: lo único dibujado es el boceto del caso 2.
+
+| Id | Mecánica | Tipo | Qué hace el alumno | Qué contenido la vuelve necesaria | Cómo se ve (aspecto A) | Código |
+|---|---|---|---|---|---|---|
+| M1 | **Carpeta con presupuesto** | exploración | Toca papeles; cada uno gasta una ficha; no alcanza para todos | Idea 2 a 8: lo importante no está a la vista y hay que decidir qué pedir | 6 papeles en abanico bajo el cono de luz; ficha de latón que se voltea | Boceto vivo (papeles, fichas, lector). Lógica **nueva**, pieza propia `carpeta.ts`; nace como motor (el Tema 6 la usa) |
+| M2 | **Dos medidores que se empujan** | decisión | Ve C y L; decide cuánto arriesgar | Idea 8 y todas: publicar de más y retener de más cuestan por lados opuestos | Dos tubos de tinta, azul y ámbar, con marcas en 25 y 60 | Boceto dibuja los tubos. Lógica **nueva**: `medidores.ts` |
+| M3 | **Armar la frase con piezas** | decisión + armado | Arrastra 2 o 3 piezas a una línea; las específicas existen solo si abrió el papel que las trae | Idea 2, 3 (caso A), 6: decir lo que se sabe y hasta donde llega | Tira de piezas de imprenta que se arrastran | **Nueva**: `armador.ts`; nace como motor (Tema 6) |
+| M4 | **Corcho por fecha** | exploración | Cada papel abierto se clava en una línea del tiempo; ve si algo cambió justo antes del cero | Idea 2: alguien cambió la forma de contar | Pared de corcho con hilos rojos | **Nueva**, solo caso 2 |
+| M5 | **Máquina de tandas** | minijuego + cálculo | Gasta una ficha, sale una tanda de 10 con su media; ve que cambian entre sí | Idea 3: con pocos se habla de muchos | Tambor de lotería que suelta 10 bolitas | **Nueva**: `tandas.ts`, sorteo con `azarConSemilla` |
+| M6 | **Rango «entre __ y __»** | cálculo | Escribe dos números a partir de las tandas | Idea 3: la cifra de pocos se mueve; hay que decir cuánto | Dos casillas numéricas en un papel de frase | **Nueva**, dentro de `tandas.ts` |
+| M7 | **Dos estudios, uno solo sale** | decisión + exploración | Abre listas de quién respondió y elige A, B o ninguna | Idea 4: importa quién responde | Dos carpetas, una gorda y una delgada | **Nueva**, solo caso 4 |
+| M8 | **Aconsejar y verificar lo tuyo (dos turnos)** | decisión + cálculo | Turno 1: elige a quién llamar. Turno 2: compara y escribe cuánto subió por el taller | Idea 5: lo que mejora solo | Hoja de 60 con puntajes; sorteo con el mismo tambor; segunda hoja un mes después | **Nueva**: `bienestar.ts` (generador con regresión por regla) |
+| M9 | **Contar y titular** | cálculo + armado | Cuenta en la lista de 60 y arma el titular con piezas | Idea 6: lo medido no es lo de todos | Hoja de la agencia + tira de piezas | **Nueva**, caso 6 |
+| M10 | **Lector primero, luego rótulo** | decisión + cálculo | Decide a ojo con el gráfico; después escribe la diferencia de la hoja y decide qué publicar | Idea 7: un gráfico miente con datos verdaderos | Recorte pegado en la pizarra; gráfico dibujado por código con eje | **Nueva**: `grafico.ts` |
+| M11 | **Defender ante la dirección** | decisión + exploración | Abre papeles, pone sobre la mesa los que sostienen su recomendación, y ve su año y el del colega | Idea 8: decidir con datos bien leídos | Mesa de reunión, dos calendarios lado a lado | **Nueva**, caso 8 |
+| M12 | **Las ocho fichas** | cierre | Da vuelta la que quiere; ve su momento y su nombre | Revelación: «esto apenas empieza» | Ocho cartas de cartulina bajo la lámpara | **Nueva**, pieza propia |
+| M13 | **El archivo de La Pizarra** | ayuda | Abre un recorte viejo de otra edición | Escalón 3 de la escalera (8.3) | Cajón del archivo con recortes amarillentos | **Nueva**, pieza propia |
+| M14 | **El primer encargo con Dani** | exploración | Responde tres preguntas (o deja que Dani lo haga) y busca la cifra en el archivo | Idea 1: los datos están en todas partes | Silueta de Dani en la silla del fondo | **Nueva**, paso 1 |
+
+**Reutilizado del motor, sin reescribir** (nombres de `PIEZAS-COMUNES.md` §1 y §2): `partida.ts` (`partidaNuevaDe`, `anotarEn`, `leerPartidaDe`, `guardarPartidaDe`) para la partida por eventos; `version-alumno.ts` (`versionDeAlumno`) con semilla propia; `azarConSemilla` de `src/lib/finanzas/ejercicios.ts`; `nube.ts` (funciones `…De`) para guardar; `problemasDeTexto` de `src/lib/revision.ts` en la prueba del guion; `formato.ts` si hiciera falta. Patrones: «diagnóstico por error típico», «prueba del alumno perezoso», «partida reconstruida desde sus eventos», «guion aparte del motor» y «escena nueva sin pisar partidas viejas». **No se usa `escalera.ts`**: cuenta fallos seguidos en un mismo paso y su tercer escalón manda a leer el dossier; este tema no repite casos. La escalera del tema es la pieza propia `ayuda.ts` (secc. 8). **Hay que despegar**: la página del docente (`resumen.ts`/`PanelDocente.tsx`) solo lee la planta de Proyectos II (`PIEZAS-COMUNES.md` §3); el registro de la secc. 12 necesita que reciba la escena y su función `describir`. Ni un personaje, caso ni pantalla de otro juego se copia (nada de la ventanilla de AIEF).
+
+---
+
+### 4. Paso 1 · «El primer encargo» (idea 1; sin medidores; exploración)
+
+| Id | Regla |
+|---|---|
+| P1.1 | La editora pide una cifra cotidiana: «¿cuántas horas duermen los de 4.º?». Antes, **3 preguntas fijas**: horas dormidas anoche (0 a 14, de 0,5 en 0,5), minutos de celular antes de dormir (0 a 300), cómo te fue ayer (0 a 100). |
+| P1.2 | Por defecto responde **Dani** (silueta) con valores sorteados con k=10. Botón «poner las mías»: el alumno escribe los tres; fuera de rango, la casilla se marca y no deja seguir. **Esos tres números no entran en ningún cálculo de ningún caso** (único número sin consecuencia, a propósito: sin medidores, sin nota; aceptado en la revisión v12). No se envían a la nube; se guarda solo `datosPropios: true/false`. |
+| P1.3 | Archivo del colegio: fondo de 9 papeles, 6 en la carpeta; **2 de los 6 traen horas de sueño** (se sortean entre 3 candidatos: cuaderno de la enfermería, encuesta anual de la secretaría, informe del orientador). 3 fichas, sin castigo posible. |
+| P1.4 | Al abrir el **primer** papel con sueño: asombro. Se muestran dos filas con las mismas tres columnas: «Tú, hoy» (o la de Dani) y «Archivo, hace un año» (fecha visible). No aparece ningún nombre técnico. |
+| P1.5 | Si gasta las 3 fichas sin abrir uno con sueño: la editora dice «¿seguro que ahí no había nada?» **una sola vez** y regala 1 ficha. Si aun así no lo abre, Dani lo abre por él (el registro anota `ayudado`). Así **todos** ven el asombro. |
+| P1.6 | Al cerrar el paso: la editora dice «A partir de hoy firmas tú» y **recién entonces aparecen los tubos** (C = 50, L = 50). |
+
+---
+
+### 5. Los casos 2 a 8, uno por uno
+
+Cada caso: qué hace el alumno, qué se escribe y qué cambia, y la tabla de efectos. Los efectos se escriben `C/L`. Todo se aplica al sellar y con tope (G1).
+
+#### 5.1 Caso 2 · «El colegio sin denuncias» (idea 2) · siempre con problema · exploración + decisión
+
+- **Alumno:** abre papeles (se clavan en el corcho por fecha), arma la frase o decide.
+- **Corcho (M4):** cada papel tiene una fecha. Se clava en una línea del tiempo bajo la gráfica de denuncias por mes. **La fecha del papel clave cae siempre en el mes anterior a la caída, y al menos 2 señuelos también caen en esa ventana** (el calendario, la lista de tutores), para que la cercanía de fecha no delate el clave. Los hilos salen de **todos** los papeles clavados.
+- **Claves posibles (uno por versión):** correo de la dirección, libro de registro de la secretaría, informe del orientador. **Refuerzo:** el buzón anónimo.
+- **Piezas de la frase (M3):** siempre disponibles, 3 genéricas (G1 «según fuentes del colegio», G2 «datos preliminares», G3 «la agencia informa»). Cada papel abierto agrega **una** pieza de hecho: el clave agrega dos («las denuncias *registradas* bajaron a cero» con el hecho concreto del papel y «no sabemos cuántos hechos hubo»), el refuerzo una, cada señuelo una verdadera e irrelevante. La frase lleva 2 o 3 piezas.
+
+| Id | Condición al sellar | C/L |
+|---|---|---|
+| R2.1 | Publicar tal cual | −20/+10 |
+| R2.2 | Retener | +6/−8 |
+| R2.3 | Frase que contiene una pieza del papel clave | +8/+4 (+10/+4 si lleva también la del refuerzo) |
+| R2.4 | Frase sin ninguna pieza del clave | −8/+4 |
+
+- **Error diagnosticado:** `E2a` publicó tal cual · `E2b` retuvo sin abrir el clave · `E2c` frase sin pieza clave.
+
+#### 5.2 Caso 3 · «La cifra de los de 4.º» (idea 3) · cálculo + minijuego
+
+- **Alumno:** gasta fichas en papeles y/o en **tandas** (cada tanda: 10 estudiantes al azar de un registro generado de 480; se ve la media de esa tanda y una tira que acumula las medias de las tandas ya sacadas, para ver que se mueven). Después escribe un **rango** «entre a y b» (horas, de 0,1 en 0,1, con a ≤ b) o decide sin rango.
+- **Generador (`tandas.ts`):** registro de 480 con media μ ∈ [5,5; 7,5] y desvío 1,1 h; media de una tanda con desvío ≈ 0,35 h (ficha: 3 tandas dan ancho medio 0,59 h). Las tandas salen sin reposición del registro, con k=10+3 y el índice de tanda: reabrir la partida da las mismas tandas. La cifra de la agencia: tipo P, a más de 1,0 h de μ (entre 1,0 y 1,6); tipo B, a 0,15 h o menos; tipo A, a 0,5 h o menos de la media del registro, que en A es de la semana de exámenes.
+- **Puerta del rango:** el botón «Armar rango» se habilita con **2 o más tandas sacadas**. Con 0 o 1, la editora dice «con una tanda no sabes cuánto se mueve» y quedan Publicar tal cual y Retener. (Cierra que alguien escriba «5,9 ± 0,6» sin haber visto nada.)
+- **Papeles:** clave en P: la ficha de cómo se obtuvo la cifra («una tanda de 10 del turno tarde») o la hoja del turno tarde. En B: la ficha («150 al azar de los 480»). En A: el acta de la semana de exámenes o la ficha («9 respuestas»). La pieza de frase del clave sirve solo en A.
+- **Cubre (H2 cerrado):** `cubre(a,b,μ) = a − 0,25 ≤ μ ≤ b + 0,25` (holgura 0,25 h). Con 3 tandas y rango mínimo-máximo cubre 97,5 %, con 2 tandas 88,7 % (ficha, secc. 2 y su `.py`). Un rango centrado en la media de 2 tandas con ancho 1,2 cubre 99,9 % (z = (0,6 + 0,25)/0,246 = 3,45, cuenta a mano). Por eso el aviso al registro: si el rango es el mínimo-máximo de ≥ 3 tandas vistas y no cubre, se marca `razonoBienNoCubrio` (no es engaño, pasa 2,5 % del tiempo).
+- **Nivel del rango `n(a,b,μ)`, en este orden:** si no cubre → `noCubre`; si no, si `b − a > 2,0` → `ancho`; si no, si `b − a ≤ 1,2` → `ok`; si no → `flojo`.
+
+| Id | Tipo | Tal cual | Retener | Rango `ok` | Rango `flojo` | `noCubre` | `ancho` |
+|---|---|---|---|---|---|---|---|
+| R3.P | con problema | −20/+10 | +6/−8 | +8/+4 | +3/0 | −10/+4 | 0/−2 |
+| R3.B | bien | +10/+10 | 0/−15 | 0/+4 | 0/+2 | −10/+4 | 0/−2 |
+| R3.A.sin | aún no (rango sin la pieza del clave) | −20/+10 | 0/−10 | −8/+4 | −8/+4 | −10/+4 | 0/−2 |
+| R3.A.con | aún no (rango con la pieza del clave) | igual que arriba | igual | +8/+4 | +3/0 | −10/+4 | 0/−2 |
+
+- En A, μ es la media del registro (semana de exámenes): el rango tiene que describirlo bien **y** la pieza tiene que decir de qué semana es. Solo con las dos cosas sube.
+- **Error diagnosticado:** `E3a` tal cual con ≤ 1 tanda · `E3b` rango `noCubre` · `E3c` rango `ancho` · `E3d` retener en tipo B · `E3e` rango en A sin la pieza.
+- **Acierto sin evidencia:** tal cual en B sin haber abierto la ficha.
+
+#### 5.3 Caso 4 · «Dos encuestas, un titular» (idea 4) · decisión + exploración
+
+- **Alumno:** abre papeles de la carpeta y elige A, B o ninguna. No escribe número.
+- **Papeles:** de los 6, **2 son claves**, elegidos entre 4 posibles (lista de quienes respondieron A, la de B, cómo se invitó a A, cómo se invitó a B); con uno basta para saber cuál es el bueno, porque exactamente uno lo es. Los otros 4: ficha técnica común, tabla de resultados, matrícula, mensajes de padres, acta del consejo (se sortean).
+- **Quién es el bueno:** A en el 50 % de las versiones (la plataforma obligatoria, casi toda la matrícula) y B en el otro 50 % (A se aplicó solo en el club de apoyo).
+
+| Id | Condición | C/L |
+|---|---|---|
+| R4.1 | Elige el estudio bueno y es A | +10/+10 |
+| R4.2 | Elige el estudio bueno y es B | +8/+4 |
+| R4.3 | Elige el malo y es A | −20/+10 |
+| R4.4 | Elige el malo y es B | −20/+4 |
+| R4.5 | Ninguna | 0/−10 |
+
+- **Error diagnosticado:** `E4a` eligió sin abrir ninguno de los 4 papeles que destapan · `E4b` eligió B siendo A el bueno habiendo abierto un papel que lo mostraba (sobrecorrección «la chica siempre») · `E4c` ninguna.
+- **Acierto sin evidencia:** eligió el bueno sin abrir ningún clave.
+
+#### 5.4 Caso 5 · «El taller de pausas» (idea 5) · decisión + cálculo en dos turnos
+
+**Turno 1, aconsejas.** Ve la hoja de bienestar de 60 estudiantes (puntajes 0 a 100, sin gastar fichas). 13 cupos. Elige:
+(a) los 13 de peor puntaje · (b) los 13 que se anotaron primero · (c) un sorteo entre los 26 de peor puntaje: 13 al taller y 13 de comparación (animación con el tambor del caso 3).
+
+| Id | Opción | C/L al sellar el turno 1 |
+|---|---|---|
+| R5.1 | (a) o (b) | 0/0 (la editora lo elogia en una línea) |
+| R5.2 | (c) | 0/−6 (la dirección protesta: «¿por qué dejas a 13 sin ayuda?») |
+
+**Generador (`bienestar.ts`), pensado para que la regresión salga de una regla y no pegada:** nivel real T ~ N(60, 10), medición = T + ruido N(0, 8). Primera medición de los 60; segunda = T + ruido nuevo + δ si va al taller (δ = 0 o 3). Con esa regla los 13 peores suben alrededor de 7 puntos sin taller y los otros 47 bajan alrededor de 2 (cuenta del propio modelo: confiabilidad 100/164 = 0,61; ficha del dossier usa otras cifras y aquí no coinciden). Luego se **re-sortea hasta cumplir las invariantes** (se prueban en `.test.ts`):
+- I1: en (c), `ρ_c = Δ_taller − Δ_grupo` queda a 0,8 o menos de δ.
+- I2: en (a), `ρ_a = Δ_taller − Δ_vecino` queda a 2,0 o menos de δ (el vecino es otro colegio: peor comparación) y `Δ_vecino ≥ 4`.
+- I3: en (b), los que se anotaron primero traen un sesgo de **+2,5** aun sin taller (el informe del tallerista lo dice: «los primeros en anotarse ya venían subiendo»); `ρ_b = Δ_taller − Δ_demás − 2,5` queda a 0,8 o menos de δ.
+- I4: para cada opción, la distancia entre la banda de la cuenta buena (`ρ ± 1,0`) y la de la subida bruta (`Δ_taller ± 1,0`) y la inflada es mayor que 0 (las bandas no se tocan).
+
+**Turno 2, un mes después, verificas lo tuyo.** 3 fichas (o 2, G2). Fondo de 9 papeles: segunda medición de los llamados · de los demás · del grupo de comparación · colegio vecino · lista de asistencia · calendario de exámenes · informe del tallerista · quejas de padres · acta de la dirección. **La carpeta de 6 siempre trae lo que la opción elegida necesita** (a: llamados + vecino; b: llamados + demás + informe; c: llamados + grupo); el resto se sortea. El alumno escribe `x` = «cuántos puntos subió por el taller» y publica, o retiene.
+
+**Evaluación de `x` (se aplica la primera regla que cumple, en este orden). `Δ_t` = cambio medio de los llamados, y las bandas valen ±1,0.**
+
+| Id | Condición | C/L |
+|---|---|---|
+| R5.3 | Retener | +2/−6 |
+| R5.4 | Papel de los llamados abierto, `|x − Δ_t| ≤ 1,0` y `x` fuera de la banda buena (**subida bruta**) | −20/+4 |
+| R5.5 | Opción (a) o (b), papel de los demás abierto, `|x − (Δ_t − Δ_demás)| ≤ 1,0` y fuera de la banda buena (**inflado**) | −20/+4 |
+| R5.6 | Papeles requeridos de la opción abiertos y `|x − ρ| ≤ 1,0`, con (c) | +12/+6 |
+| R5.7 | Ídem R5.6 con (a) o (b) | +6/+3 |
+| R5.8 | Sin los papeles requeridos y `|x − δ| ≤ 1,0` (**acierto sin evidencia**) | +4/+2 |
+| R5.9 | Cualquier otro caso | −10/+4 |
+
+- **Los tres caminos tienen costo distinto, ninguno domina:** (a) 2 fichas, 0 Lectores, techo +6/+3; (b) las 3 fichas, 0 Lectores, techo +6/+3; (c) 2 fichas, −6 Lectores en el turno 1, techo +12/+6 (neto C +12, L 0). Con 2 fichas (castigo), (b) no se puede cerrar. Azar de dar con los papeles requeridos con 3 fichas: (a) 0,20, (b) 0,05, (c) 0,20 (cuentas a mano, como en G).
+- **«Escribir 0»:** es correcto (R5.6 a R5.8) solo en las versiones con δ = 0, que son la mitad; con δ = 3 cae en R5.9 (−10/+4). Escribir 0 sin papeles es R5.8 o R5.9 y se marca.
+- **Error diagnosticado:** `E5a` subida bruta (R5.4) · `E5b` inflado (R5.5) · `E5c` sin comparar (R5.8 o R5.9 sin los papeles) · `E5d` escribió 0 con δ = 3 habiendo abierto la comparación.
+
+#### 5.5 Caso 6 · «El titular de los 480» (idea 6) · cálculo + armado
+
+- **Alumno:** la hoja de la agencia (adjunta, no cuesta ficha) trae la lista de 60 con las horas de sueño. Abre papeles de la carpeta (3 fichas) y decide.
+- **Claves posibles (3):** cómo se eligieron los 60; composición del colegio por curso; acta de la semana de exámenes. En P sirven los dos primeros (los 60 son de 4.º B, y el colegio tiene ocho cursos); en B el primero («sorteo entre los 480»); en A el tercero o el primero («12 respondieron»).
+- **Botones:** Publicar tal cual (la frase original de la editora, sin número) · **Armar el titular** · Retener.
+- **Armar el titular:** primero el alumno **cuenta** en la lista cuántos duermen menos de 6 horas y lo escribe (`N`, entero; en el tipo A la lista tiene 60 filas pero solo 12 con respuesta y se cuenta entre esas 12). La base queda escrita: «{N} de los {den} duermen menos de 6 horas». Luego elige **una** extensión:
+  - `ninguna` (solo lo medido).
+  - `podrían` (genérica): «y podrían ser uno de cada cuatro en el colegio».
+  - `grupo` (solo si abrió un papel clave): P «y todos son de 4.º B» · B «elegidos por sorteo entre los 480: aproximadamente uno de cada cuatro» · A «con 12 respuestas en semana de exámenes aún no se sabe».
+- **Conteo:** si `N` no coincide con la lista, se suma **−10 a C** («ese número no sale de tu hoja») sobre lo que dé la tabla, en cualquier extensión.
+
+| Id | Opción | Tipo P | Tipo B | Tipo A |
+|---|---|---|---|---|
+| R6.1 | Publicar tal cual (sin `N`) | −20/+10 | +10/+10 | −20/+10 |
+| R6.2 | Retener | +6/−8 | 0/−15 | 0/−10 |
+| R6.3 | Base + `ninguna` | +4/+2 | 0/+4 | 0/+2 |
+| R6.4 | Base + `podrían` | −8/+4 | 0/+4 | −8/+4 |
+| R6.5 | Base + `grupo` | +8/+4 | +10/+10 | +8/+4 |
+| R6.6 | `N` mal contado (se suma a lo anterior) | C −10 | C −10 | C −10 |
+
+- **Piezas de la tira (H1 cerrado):** las cuatro opciones de arriba son **todas** las piezas del caso. `podrían` nunca toca el hueco (sin clave); `grupo` solo existe con el papel clave abierto.
+- **Error diagnosticado:** `E6a` `N` mal contado · `E6b` tal cual en P o A · `E6c` `podrían` en P o A · `E6d` retener en B.
+- **Acierto sin evidencia:** tal cual en B, sin haber abierto el clave.
+
+#### 5.6 Caso 7 · «El gráfico de la agencia» (idea 7) · decisión + cálculo · tipos P o B
+
+- **Primero eres el lector.** Antes de entrar a la mesa ves el recorte con dos columnas, A y B (sin números en el eje), y en pocos segundos eliges a cuál **recortar** el presupuesto: A, B o ninguno. Esa elección **no se juzga**: se guarda. Al cerrar el caso se vuelve a mostrar el mismo dato dibujado honesto y se pregunta, con dos toques, si recortarías el mismo; también se guarda, sin efecto en los medidores.
+- **Mesa:** la hoja de datos de la agencia está **adjunta y no gasta ficha**: trae los dos valores (por ejemplo A 64,8 y B 63,0). Los papeles que gastan ficha dicen cómo se dibujó el gráfico. **Claves (3 posibles):** correo de la agencia, captura del gráfico original, ficha técnica de la hoja. En P dicen que el eje empieza arriba de cero; en B, que empieza en cero o que la diferencia es grande.
+- **Número:** el alumno escribe `x` = «cuántos puntos de diferencia hay entre A y B» (decimales de 0,1). Correcto si `|x − |A−B|| ≤ 0,1`. **Todo lo que se publica lleva `x` como rótulo debajo del gráfico**, así el número decide en cada rama.
+- **Rediseñar (H1 cerrado):** vuelve a dibujar el gráfico con la base en cero y con `x` como rótulo. En tipo P es lo mejor; **en tipo B no hace falta y cuesta**.
+
+| Id | Opción | Tipo P (eje truncado) | Tipo B (bien) |
+|---|---|---|---|
+| R7.1 | Publicar tal cual, `x` correcto | −10/+10 | +10/+10 |
+| R7.2 | Publicar tal cual, `x` incorrecto | −20/+10 | +4/+10 |
+| R7.3 | Rediseñar con la base en cero, `x` correcto | +8/+4 | 0/−4 |
+| R7.4 | Rediseñar con la base en cero, `x` incorrecto | −8/+4 | −6/−4 |
+| R7.5 | Retener | +6/−8 | 0/−15 |
+
+- **Ajuste a la ficha (ver 14):** la ficha daba −20/+10 a «publicar tal cual» en P; aquí baja a −10/+10 si el rótulo es correcto, porque el dato sí está a la vista aunque el dibujo engañe. Sin eso el número no habría cambiado nada en esa rama.
+- **Error diagnosticado:** `E7a` `x` incorrecto (escribió lo que se ve) · `E7b` tal cual en P · `E7c` rediseñar o retener en B.
+
+#### 5.7 Caso 8 · «La dirección decide» (idea 8) · decisión + exploración
+
+- **Alumno:** el director decide si **financia** el taller el año que viene; el colega propone decidir «a ojo». El alumno abre papeles (3 fichas, o 2), **pone sobre la mesa los papeles que sostienen su recomendación (hasta 2, solo de los que abrió)** y sella: **financiar**, **no financiar**, **esperar un trimestre**.
+- **Papeles (6):** 2 claves y los 4 restantes se sortean. K1 = la tabla de seguimiento con grupo que no tuvo taller. K2 = la lista por grupo con tamaños y cuándo se midió. Los nombres de los papeles dicen qué documento es, no lo que prueba (la redacción final es de narrativa; no pueden llamarse «resultados con grupo de control»).
+- **Contenido por tipo:** *financiar*: K1 muestra una diferencia clara con comparación y K2 grupos de 40 contra 40 durante un semestre. *No financiar*: K1 muestra diferencia casi cero con K2 igual de sólido. *Aún no*: K1 muestra una diferencia atractiva pero K2 dice 9 contra 9 y tres semanas.
+- **Evidencia:** `e` = cantidad de papeles puestos sobre la mesa que sean K1 o K2 (0, 1 o 2). Un señuelo puesto cuenta 0.
+- **El colega:** propone la decisión correcta con probabilidad 1/3 y, si no, una de las otras dos con igual probabilidad. Se ven **los dos años** lado a lado (el tuyo y el del colega); es solo imagen, no mueve medidores.
+
+| Id | Condición | C/L |
+|---|---|---|
+| R8.1 | Decisión correcta, `e = 2` | +12/+8 |
+| R8.2 | Decisión correcta, `e = 1` | +6/+4 |
+| R8.3 | Decisión correcta, `e = 0` (acierto sin evidencia) | +2/0 |
+| R8.4 | Financiar cuando era «no financiar» | −20/+6 |
+| R8.5 | Financiar cuando era «aún no» (valor nuevo, la ficha no lo traía) | −15/+6 |
+| R8.6 | No financiar cuando era «financiar» | −15/−8 |
+| R8.7 | No financiar cuando era «aún no» | −10/−6 |
+| R8.8 | Esperar cuando era «financiar» o «no financiar» | 0/−4 |
+
+- **H3 cerrado:** quien abre un solo clave y acierta por suerte cobra la mitad y el registro lo marca; quien no abre ninguno cobra +2/0 y también. «Parecer que entendió» ya no sale gratis ni en la hoja de Ronald ni en los medidores.
+- **Error diagnosticado:** `E8a` decidió con `e < 2` · `E8b` esperó cuando se podía decidir · `E8c` financió o no financió contra la evidencia · `E8d` coincidió con el colega o lo contradijo contra lo que decía la evidencia (se registra, no tiene pista propia).
+
+---
+
+### 6. La revelación (M12)
+
+| Id | Regla |
+|---|---|
+| V1 | Al cerrar la edición aparecen **8 cartas boca abajo**, una por idea, en el orden en que el alumno jugó. Se dan vuelta con un toque, en cualquier orden. No cuesta nada. |
+| V2 | Cada carta muestra el **momento** de ese caso (el papel que abrió o el que dejó, el número que escribió, lo que selló) y debajo las tres líneas de `04-aprendizaje.md` T1.7 según la **rama**. |
+| V3 | **Rama** = clasificación de T1.5 de esa idea: `descubrió solo` y `descubrió con pista` usan el texto «hiciste»; `se dejó engañar` usa el texto «no lo abrió»; `sobrecorrigió`, `no había problema` y `acierto sin evidencia` **piden un texto que T1.7 aún no trae** (tres huecos por carta: queda para narrativa). |
+| V4 | El nombre técnico solo se dice para lo que el alumno hizo o dejó de hacer. En un tipo B la carta lo dice («esta vez no había problema») y no nombra nada. |
+| V5 | Cuando las 8 están boca arriba aparece el **camino** (cierre general de T1.7): solo el Tema 2 se nombra. Siempre hay un «Salir». Se registra qué cartas se dieron vuelta y en qué orden. |
+| V6 | Desde el camino, cada carta ofrece «probar este caso con otras cifras» (8.4). |
+
+---
+
+### 7. Retroalimentación y dominio
+
+**7.1 Qué pasa cuando acierta, cuando se equivoca y cuando se traba.**
+
+| Situación | Qué ve el alumno | Qué se registra |
+|---|---|---|
+| **Acierta con evidencia** | Medidores suben, la editora asiente, un recorte de portada con su frase. Sin nota. | clase `descubrió solo` |
+| **Acierta sin evidencia** | Medidores suben menos (G5). La editora pregunta una cosa: «¿en qué papel te apoyaste?» y deja tocar los papeles abiertos. Es opcional. | `acierto sin evidencia` |
+| **Se equivoca** | Los medidores bajan al cierre, reacciona alguien del mundo (la madre que llama, un lector, el colega, el vecino) y llega un **sobre con una pregunta** (escalón 2). | la clase de T1.5 y el código `E…` |
+| **Se traba** (3 fichas sin abrir lo que importa, o no sabe qué escribir) | No hay pantalla de error. Las fichas se acaban, el alumno sella con lo que tiene y el costo llega al cierre. En el paso 1 solo, la editora regala una ficha (P1.5). | `fichas agotadas sin clave` |
+
+**7.2 Este tema no bloquea.** Como no mide nota y su fin es el asombro, **nadie queda atrapado en un caso**. «No se avanza sin hacerlo bien» vale en los temas que miden y en la práctica abierta; aquí el dominio vive en que cada caso hace sentir el error y la revelación lo nombra.
+
+---
+
+### 8. Escalera de ayuda sin bloquear (cierra el pendiente 4)
+
+Los cuatro escalones de `04-aprendizaje.md` T1.2, con **dónde aparece cada uno**. Pieza propia `ayuda.ts` (no `escalera.ts`).
+
+| Escalón | Qué es | Cuándo aparece | Bloquea |
+|---|---|---|---|
+| 1 · Consecuencia | Medidores, corte de imprenta, reacción de alguien | Siempre, al cierre | No |
+| 2 · Pista de personaje | Un **sobre de la editora** cae sobre la mesa con una pregunta de una o dos líneas, elegida por el código `E…` (los textos de T1.3, con voz de narrativa; ninguno nombra el concepto) | Después de una decisión que no fue «acierto con evidencia», **antes del botón «Siguiente caso»**. Se lee o se ignora con un toque | No |
+| 3 · Un caso parecido ya resuelto | El **archivo de La Pizarra** (M13): un recorte viejo de otra edición, con otro colegio y otras cifras, que muestra en tres tiempos qué papel se abrió, qué se publicó y qué pasó. Sin explicar | Ver 8.3 | No |
+| 4 · Otros números | Otra versión: otro tipo, otro clave, otras cifras | Solo en práctica abierta (8.4) | No |
+
+**8.1 Cómo se elige la pista.** `ayuda.ts` recibe `{caso, codigo}` y devuelve `{pistaId}`. Un código por caso y error, los de las secciones 5.x (`E2a` a `E8d`). Si hay varios errores en el mismo caso, se muestra el de mayor costo en C.
+
+**8.2 Hábito.** Se cuenta por clases: `H1` decidir sin abrir el clave (errores `E2a`, `E2b`, `E3a`, `E4a`, `E5c`, `E8a`), `H2` publicar de más (`E2a`, `E3a`, `E4a`, `E6b`, `E7b`), `H3` retener o dudar de más (`E3d`, `E4b`, `E4c`, `E6d`, `E7c`, `E8b`). Un hábito se cumple cuando la misma clase aparece en **dos casos distintos**.
+
+**8.3 DEFECTO · El archivo en la partida oficial.** La ficha de aprendizaje (T1.2, H5) dejaba el escalón 3 solo para la práctica abierta. Este diseño propone que **también en la oficial** aparezca, pero solo al cumplirse un hábito, solo al cierre del caso (nunca antes de decidir, así no se resuelve el caso con él) y como una pestaña que se toca si se quiere. Un recorte por hábito y por papel (6 recortes, 2 por hábito, sorteados con k=10+caso; los escribe narrativa). En la práctica abierta aparece después de **cualquier** error. Si Ronald prefiere que la oficial no lo muestre, se apaga con un solo valor en `reglas-t1.ts`.
+
+**8.4 DEFECTO · Práctica de un solo caso.** Desde el camino, cada carta ofrece «probar este caso con otras cifras»: ese caso solo, con C = 50, L = 50, 3 fichas, una semilla nueva (`semilla + intento`), sin tocar la partida oficial. Es el escalón 4. Costo bajo: los generadores de cada caso ya son independientes.
+
+**8.5 Sin bloqueo, probado:** ningún escalón deshabilita «Siguiente caso». Se prueba en `.test.ts`: para cada caso y cada código, el estado tras la nota admite avanzar.
+
+---
+
+### 9. Economía
+
+| Recurso | Cómo se mueve | Qué decisión cambia | Pasa al caso siguiente |
+|---|---|---|---|
+| **Credibilidad (C)** | Sube con frase bien armada, con el estudio bueno, con el número bien calculado; baja con la réplica | Frena publicar de más; si cae a 25 o menos, el caso siguiente tiene 2 fichas | Sí |
+| **Lectores (L)** | Sube al publicar; baja al retener o con la frase tímida; el sorteo (c) del caso 5 cuesta 6 | Frena retener de más y empuja a decidir; a 25 o menos, 2 fichas | Sí |
+| **Fichas de tiempo** | 3 por caso (2 si C o L ≤ 25); se gastan al abrir o al sacar tanda | Obliga a elegir qué mirar y qué dejar | **No**: se reponen cada caso |
+| **Papeles abiertos** | Se guardan en el registro | Cambia qué piezas hay y qué evidencia vale | Solo para el registro (hábitos) |
+| ~~Reputación, caja~~ | No existen en este tema | | Sobran: no cambiarían ninguna decisión que ya cambien C y L |
+
+**Cada recurso cambia decisiones.** C lo hace porque su caída baja las fichas y porque la meta lo pide en 60; L también. Si uno solo importara, «publicar siempre» o «retener siempre» ganarían.
+
+---
+
+### 10. Dificultad
+
+El orden de 3 a 7 se baraja, así que **la dificultad no sube con la posición**; sube con lo que cada caso pide y con lo que el propio alumno se hace:
+
+| Palanca | Dónde |
+|---|---|
+| **Más datos**: 6 papeles por caso y nunca se abre todo | todos |
+| **Datos que sobran**: 4 de los 6 son señuelos con fecha o cifra verosímil (en el caso 2, 2 señuelos caen en la ventana del cambio) | todos |
+| **Datos que hay que conseguir**: el clave no está a la vista; en el caso 8 hacen falta **dos** | 2 al 8 |
+| **Cuentas**: rango (2 números) en el 3, conteo de 60 filas en el 6, diferencia en el 7, comparar dos mediciones en el 5 | 3, 5, 6, 7 |
+| **Eventos**: el castigo de 2 fichas al caer un medidor a 25; el colega que a veces acierta; el segundo turno del caso 5 un mes después | 5, 8 |
+| **Práctica abierta**: sin la ayuda del paso 1 y con el archivo después de cualquier error | práctica |
+
+---
+
+### 11. Que ninguna estrategia gane sin entender
+
+**11.1 Costo por los dos lados.** Cada decisión de abajo tiene un costo si se toma de más y otro si se toma de menos:
+- Publicar de más: C −20 (casos 2, 3, 4, 6 en P o A), −10 (caso 7 en P con rótulo bueno).
+- Retener de más: L −8 a −15 (casos 2, 3, 6, 7), 0/−10 (caso 4), 0/−4 (caso 8).
+- Rediseñar de más (caso 7 en B): 0/−4. Rango ancho: 0/−2 y sin ganar. Esperar de más (caso 8): 0/−4. Elegir «la chica» siempre (caso 4): 50 % de −20.
+
+**11.2 Sin prueba y error.** La consecuencia llega al cierre; la decisión sellada no se rehace; en la práctica abierta se rehace **con otro caso** (otra semilla). Los medidores no se mueven mientras se abre. En ninguna rama de la secc. 5 hay una pantalla donde el alumno vea el efecto de una decisión y pueda cambiarla.
+
+**11.3 El número decide y no hay patrón fijo.** Enumeración de cada número que escribe el alumno:
+
+| Número | Dónde | Qué cambia en el mundo |
+|---|---|---|
+| Las 3 respuestas del paso 1 | Paso 1 | **Nada** (único peaje, a propósito; ver P1.2) |
+| `a` y `b` | Caso 3 | Cuatro niveles de efecto (R3) |
+| `x` (cuánto subió) | Caso 5 | Seis niveles de efecto (R5.4 a R5.9) |
+| `N` (conteo) | Caso 6 | −10 a C si falla, y entra en el titular |
+| `x` (diferencia) | Caso 7 | Rótulo del gráfico: distinto efecto en R7.1 a R7.4 |
+
+Total: 5 números de decisión (los 5 campos: `a`, `b`, `x`, `N`, `x`) y 3 de adorno. Ningún caso se decide eligiendo entre dos frases donde la prudente se nota sin calcular: las frases se arman con piezas que solo existen si abriste el papel (casos 2, 3-A y 6), y la «prudente» sin papel (`podrían`, G1 a G3) cuesta −8. **Patrón que se aprende:** el tipo no se repite (G7: ni «el último es aún no», ni «el grande es el malo» (50/50 en el caso 4), ni «un solo caso está bien»), y el clave cambia por versión. Las únicas constantes son el caso 2 y el 5, que son siempre problema porque son el primer golpe y la vergüenza.
+
+**11.4 Valor intermedio que solo se encuentra calculando.** Caso 3: el rango bueno es el que cubre y no pasa de 1,2 h; escribir muy angosto arriesga (no cubre: −10/+4), muy ancho no gana (0/−2). Caso 5: la cuenta buena queda a ±1,0 de `ρ`, entre la subida bruta (muy lejos) y escribir 0 (solo vale con δ = 0).
+
+**11.5 Estrategias perezosas.**
+
+*Exactas a mano (probadas sin simulación):*
+- **E-S1 «No abrir nada y publicar tal cual siempre»** (caso 3 y 6: tal cual; caso 4: siempre A; caso 5: opción (a) y un número cualquiera; caso 7: tal cual con `x` de la hoja; caso 8: financiar siempre; caso 2: tal cual): **pasa 0,0 %**. Prueba: C al final ≤ 56. En el caso 2 el efecto es −20 fijo. Para los casos 3, 6 y 7 las 10 tiradas de G7 dan sumas de C de 10, −20, −20, −20, −20, −30, 0, 0, −30, −30 (máximo 10). Sumando lo mejor posible del caso 4 (+10), el 5 (+4: acierto sin evidencia) y el 8 (+2): 50 − 20 + 10 + 10 + 4 + 2 = **56 < 60**. Con el tope en 0 el valor final es la suma de los aumentos que vienen después del punto más bajo, y todos los aumentos posibles juntos son 10 + 10 + 4 + 10 + 10 + 2 = 46 < 60. En ninguna ruta se alcanza 60.
+- **E-S2 «Retener siempre»** (caso 4: ninguna; caso 8: esperar; caso 5: retener): **pasa 0,0 %**. Prueba: todos los efectos de «retener» en L son 0 o negativos (−8, −15, −10, −10, −6, −8, −15, 0 o −4), así que L ≤ 50 < 60.
+
+*Pendientes de correr (las tablas de arriba cambiaron respecto a las que simuló la ficha, secc. 8, así que **hay que volver a correr toda esa tabla** con estas reglas antes del veredicto del crítico):*
+
+| Estrategia | Qué hace | Hay que mirar |
+|---|---|---|
+| E-S3 | No abre papeles; siempre la opción intermedia (frase, `ninguna`, rango con 2 tandas ancho 1,2, rótulo con `x` de la hoja) | No pasa; cuánto le falta |
+| E-S4 | Abre 3 al azar y, si no halla nada, publica | La ficha dio 22,0 %; reescribir con R2 a R8 |
+| E-S5 | Abre 3 al azar y, si no halla nada, retiene | La ficha dio 22,4 % |
+| E-S6 | Rediseña siempre en el caso 7 y, en lo demás, hace lo correcto | Pierde 10/10 en B |
+| E-S7 | Siempre escribe 0 en el caso 5 | R5.8/R5.9 |
+| E-S8 | Siempre esperar en el 8 y en lo demás hace lo correcto | Pierde en 2 de cada 3 |
+| E-S9 | Copiar las decisiones de otro compañero (otra versión) | La ficha dio 0,5 % |
+| E-S10 | Entender: acierto del clave p = 0,50, 0,65, 0,80, 0,95 | La ficha dio 12,5 / 32,9 / 64,6 / 94,8 % |
+
+**Cota de quien entiende (exacta a mano):** con todo bien, C suma 8 + 8 + 8 + 12 + 8 + 8 + 12 = 64 (queda en 100 por el tope) y L suma 4 + 4 + 4 + 0 + 4 + 4 + 8 = 28 (queda en 78). Un error de «retener de más» le cuesta unos 12 puntos de L (de +4 a −8): con uno llega a 66 y pasa; con dos llega a 54 y no. Un error de «publicar de más» le cuesta 28 de C: con uno sigue por encima de 60; con dos, depende del orden por el tope. **La meta tolera un error, no tres:** premia haber entendido, no no haberse equivocado jamás.
+
+**11.6 Un arreglo se vuelve a probar (regla 10).** Esta versión arregla tres hallazgos del aprendizaje (H1, H2, H3); cada arreglo se jugó **como alumno perezoso** antes de darlo por cerrado:
+- H1 (rediseñar): probado «rediseñar siempre» (E-S6, secc. 11.5): en P iguala a lo correcto y en B pierde 10 de C y 10 de L; no gana.
+- H2 (holgura): probado «rango de 1,2 centrado en la media de 2 tandas» (cubre 99,9 %, cuenta a mano). **Creaba una estrategia dominante nueva** (siempre ancho 1,2 con 2 tandas y nunca fallar), y se cerró con tres cosas: la puerta de 2 tandas, el nivel `flojo` para 1,2 a 2,0 y que la cifra de la agencia en P quede a más de 1,0 h de la media, de modo que «cifra de la agencia ± 0,6» sin mirar tandas no cubre.
+- H3 (caso 8): probado «esperar siempre» (E-S8) y «poner cualquier papel como evidencia»: solo cuentan K1 y K2 puestos sobre la mesa, y poner señuelos da 0.
+
+---
+
+### 12. Qué queda registrado (sin puntaje)
+
+Eventos que guarda la partida (se reconstruye todo desde ellos; el docente recalcula sin confiar en lo guardado):
+
+| Evento | Datos |
+|---|---|
+| `p1.respuestas` | `propias: bool` (no los valores) |
+| `p1.abrio` / `p1.ayudado` | papel, ficha gastada |
+| `caso.entra` | caso, tipo, fichas, C, L |
+| `abrir` | caso, papel, rol (clave, refuerzo, señuelo) |
+| `tanda` | caso 3, índice, media |
+| `escribir` | caso, campo, valor, correcto (sí/no/banda) |
+| `armar` | caso, piezas |
+| `evidencia` | caso 8, papeles puestos |
+| `lector` | caso 7, antes y después |
+| `sella` | caso, decisión, C/L aplicados, código `E…` si lo hay |
+| `nota` | escalón visto |
+| `archivo` | recorte abierto |
+| `carta` | idea, orden |
+| `cierre` | `mesaFija`, C, L |
+| `practica` | caso, intento |
+
+Con eso `registro-t1.ts` calcula, por idea, la clase de T1.5 (`descubrió solo`, `descubrió con pista`, `se dejó engañar`, `acierto sin evidencia`, `sobrecorrigió`), el escalón en que acertó, los hábitos (8.2) y el cambio de opinión (abrió en el caso siguiente el tipo de papel que había saltado). **Sin nube del paso 1:** solo `propias`. La página del docente muestra una línea por alumno con 8 casillas, como pide T1.5.
+
+---
+
+### 13. Qué hay que construir y en qué orden (etapa 6)
+
+Cada pieza nueva, con su `.test.ts`; las pruebas fijan las propiedades de abajo.
+
+| # | Pieza | Pruebas mínimas |
+|---|---|---|
+| 1 | `tipos.ts` (G7, G8, G9): sorteo de tipos, claves, 6 de 9, orden | Las 10 tiradas se cumplen; conteos P4 B4 A2 del caso 3; que la misma semilla da lo mismo |
+| 2 | `medidores.ts` (G1, G2, G6) | Tope; umbral 25 baja a 2 fichas; mesa fija con 60 y 60 |
+| 3 | `carpeta.ts` (G3, G10) | Gasto; reabrir no cuesta; con 3 de 6 hay clave con prob. 0,50 |
+| 4 | `armador.ts` (M3) | Pieza clave solo existe con el papel abierto; 2 a 3 piezas |
+| 5 | `reglas-t1.ts`: las tablas R2 a R8 como datos | Cada caso tiene todas sus filas; `E…` mapeados |
+| 6 | `tandas.ts` | Cobertura 50 % y 75 % del rango mínimo-máximo con 2 y 3 tandas, 88,7 % y 97,5 % con holgura (la ficha ya los calculó); puerta de 2 tandas |
+| 7 | `bienestar.ts` | Invariantes I1 a I4 del caso 5 en 1.000 versiones; que los 13 peores suban sin taller |
+| 8 | `grafico.ts` y titular (casos 6 y 7) | `N` correcto; `x` correcto; sesgo del eje |
+| 9 | `ayuda.ts` | Siempre se puede avanzar (8.5); un hábito se cumple con dos clases en dos casos |
+| 10 | `registro-t1.ts` | Clasifica en las 5 clases; acierto sin evidencia en caso 8 con `e < 2` |
+| 11 | Simulación de perezosos | Las estrategias de 11.5 con las tablas de esta sección |
+| 12 | `guion-t1.ts` | `problemasDeTexto` sin voseo ni guiones largos |
+
+**Lectura y tamaño de letra (regla del texto que se lee).** Esta entrega no dibuja ninguna pantalla: lo medible se mide en construcción. Se fija aquí lo que las pantallas nuevas deben cumplir: letra mínima de **6 px lógicos en el lienzo del boceto, que son unos 12 px en un celular de 375 px de ancho** (`MIN_LOGICO = 6` en `medir_legibilidad.py`); contraste mínimo 4.5 a 1. Con la paleta del boceto, calculado a mano con `(L1 + 0,05)/(L2 + 0,05)`: etiquetas de los tubos `#b8d4ff` sobre `#07060d` = 13,3 a 1; `#ffdc94` sobre `#07060d` = 15,3 a 1. Los demás textos se miden con el script. **Estados que `?medir=1` debe recorrer:** entrada de cada caso, papel abierto, tira de piezas, casilla numérica con teclado abierto, nota de la editora, carta dada vuelta. Los dos riesgos que ya ocurrieron (sello que tapa el titular, números que se pisan con «TIEMPO») se vigilan en la entrada y el cierre de cada caso.
+
+---
+
+### 14. Ajustes que este documento hace a la ficha (para que el crítico los mire)
+
+| # | Ajuste | Por qué |
+|---|---|---|
+| 1 | Casos 6 y 7: la **hoja** (lista de 60 y hoja de datos) va **adjunta**, no entre los 6 papeles; la ficha tenía la lista de 60 y la hoja con la escala entre los 9 | Sin esa hoja no se puede escribir el número; los claves de 7 pasan a ser correo, captura y ficha técnica |
+| 2 | Caso 3: puerta de 2 tandas, nivel `flojo`, tabla por tipo (R3) | H2 y la estrategia dominante nueva que crea una holgura sola |
+| 3 | Caso 5: tres caminos con costos distintos, sesgo +2,5 en (b), bandas ±1,0, orden de reglas R5.3 a R5.9 | Que la regresión salga de una regla y que (a), (b) y (c) no se dominen |
+| 4 | Caso 6: base de titular con `N` siempre; cuatro extensiones; `podrían` ≡ sin clave | H1 y que el número decida en toda rama |
+| 5 | Caso 7: rótulo con `x` en toda publicación; tal cual en P baja a −10/+10 con rótulo correcto | H1 y el número que decide |
+| 6 | Caso 8: poner papeles sobre la mesa; `e` escala el efecto; «financiar cuando aún no» = −15/+6 | H3 |
+| 7 | Escalón 3 en la partida oficial al cumplirse un hábito (DEFECTO) | H5 |
+| 8 | «Probar este caso con otras cifras» (DEFECTO) | Es el escalón 4; la ficha dejaba repetir «el juego» entero |
+| 9 | Tablas de estrategias de la ficha, secc. 8: hay que volver a correrlas | Las tablas R2 a R8 cambiaron |
+
+---
+
+### 15. Avisos para otras partes
+
+- **Narrativa:** escribir las pistas de T1.3 por código `E…`; los 6 recortes del archivo; los textos que faltan en las cartas (V3); los nombres de los papeles del caso 8 sin delatar; la línea de la editora en la puerta de las tandas, en el «¿sellar?» y en el cierre de la edición con y sin mesa fija.
+- **Crítico:** mirar los 9 ajustes de la secc. 14 y correr las simulaciones de 11.5.
+- **Construcción:** `reglas-t1.ts` es **datos**, no lógica suelta, para ajustar números tras la primera prueba sin tocar reglas; el umbral 60 y 25 y todos los efectos pueden cambiar después de probar con alumnos.
+- **Código existente:** no se tocó `escalera.ts` ni nada de AIEF; el cambio de su tercer escalón sigue esperando el OK de Ronald.
+- **Sonido:** el sonido de cada acción (papel, ficha, sello) queda para `07-sonido.md`.
+
+---
+
+### Lista de salida · Tema 1 · bucle v1
+
+Conteos **a mano** en este documento (sin terminal en la tarea). Las comprobaciones de texto se hicieron con búsquedas sobre el archivo; sus resultados están en la última línea.
+
+- ✔ **Bucles en tres escalas con flechas:** secc. 1.1, 1.2 (7 pasos numerados), 1.3. 3 de 3.
+- ✔ **Catálogo con ficha por mecánica:** secc. 3, 14 filas M1 a M14; cada una con tipo, qué hace, contenido que la vuelve necesaria, cómo se ve y código. Tipos presentes: cálculo (M6, M9, M10), decisión (M2, M3, M7, M8, M10, M11), exploración (M1, M4, M14), minijuego (M5). 4 de 4.
+- ✔ **Retroalimentación:** secc. 7.1 (acierta con evidencia, acierta sin evidencia, se equivoca, se traba: 4 filas) y escalera de 4 escalones en la secc. 8; ningún escalón bloquea (8.5).
+- ✔ **Economía:** secc. 9, 4 recursos y 2 descartados con motivo; C y L cambian decisiones (cada uno baja las fichas a 2 al caer a 25).
+- ✔ **Dificultad:** secc. 10, 6 palancas con dónde aplica.
+- ✔ **Sin estrategia dominante:** 11.1 (costo por los dos lados); dos estrategias **exactas**: E-S1 (56 < 60, 10 tiradas sumadas una por una) y E-S2 (L ≤ 50). Las otras 8 (E-S3 a E-S10) **quedan especificadas y sin correr**: lo dice la cabecera, 11.5 y el aviso a crítico. **Esto no es un ✔ de simulación: es un ✔ de las dos pruebas exactas y de la especificación del resto.**
+- ✔ **No se ajusta por prueba y error:** 11.2; los medidores no se mueven al abrir y la decisión sellada no se rehace (G4); 0 pantallas con consecuencia visible y decisión rehacible en la secc. 5.
+- ✔ **El número decide:** 11.3 enumera los 8 números del tema: 5 deciden, 3 son de adorno (paso 1), y el paso 1 lo dice a propósito. Frases con piezas que solo existen abriendo el papel en 3 casos (2, 3-A y 6).
+- ✔ **Cada subtema, su juego:** 8 mecánicas de caso distintas (M4, M5 + M6, M7, M8, M9, M10, M11, M3) y ninguna se estira a otro caso salvo M3 (frase por piezas) en los casos 2, 3-A y 6 y el tambor reutilizado del 3 en el sorteo del 5, ambos usos donde la pieza es la que mejor enseña.
+- ✔ **Los 4 pendientes del aprendizaje cerrados:** (1) rediseñar (R7.3, R7.4, tabla 5.6) y piezas del titular (5.5); (2) holgura de 0,25 h (5.2); (3) caso 8 (5.7, H3); (4) escalera sin bloquear (secc. 8). 4 de 4.
+- ✔ **Un arreglo se vuelve a probar:** 11.6, 3 arreglos con su prueba; el de H2 encontró y cerró una estrategia dominante nueva.
+- ✔ **Tabla de reglas programable:** G1 a G12, P1.1 a P1.6, R2.1 a R8.8 (R2: 4, R3: 4 filas por tipo, R4: 5, R5: 9, R6: 6, R7: 5, R8: 8), V1 a V6; cada una con condición y efecto numérico.
+- ✔ **Sin nota:** ningún efecto cuenta como puntaje (G6, secc. 12).
+- ✔ **Cada alumno tiene su respuesta correcta:** G7 a G9: tipo de 3 casos, estudio bueno del 4, δ del 5 y tipo del 8 cambian la respuesta correcta; 120 órdenes y papeles por semilla.
+- ✔ **Individual:** no hay careo ni juego en grupo; el colega «a ojo» es un personaje (R8, 5.7).
+- ✔ **No manda a leer y no enseña software:** una búsqueda sobre el archivo de nombres de programas de estadística y de la frase «según el dossier» no halló ninguno en esta sección (salvo esta línea, que los nombra para decir que no están); «dossier» aparece solo en dos notas del equipo (secc. 3 sobre `escalera.ts` y caso 5), nunca en un texto del alumno.
+- ✔ **Tuteo, sin guiones largos, sin voseo:** búsqueda del guion largo sobre el archivo: 1 hallazgo en esta sección (11.3), corregido; segunda búsqueda: 0 en la sección. Búsqueda de formas de voseo comunes (tenés, podés, vos, mirá, contá, elegí, abrí, sabés, querés, hacé, poné, usá, fijate): 0. No se corrió `buscar_voseo.py` (sin terminal): pendiente para quien lo tenga.
+- ✔ **Legibilidad:** ✔ (no aplica la medición: esta entrega no dibuja pantallas). Se dejan fijados 6 px lógicos (12 px a 375), contraste 4.5 a 1 y 2 contrastes calculados a mano (13,3 y 15,3), más los 6 estados a medir (secc. 13).
+- ✔ **Lo aprobado no se reabre:** ideas, forma elegida y aspecto A intactos; los 9 cambios de la secc. 14 se declaran como ajustes que el crítico revisa, no como decisiones tomadas.
+- ✔ **Archivos tocados:** solo `docs/juego/gdd/02-bucle-y-mecanicas.md`, sección nueva al principio. La sección AIEF de abajo no se editó.
+
+---
+
 ## AIEF · Tema 1 · versión 2 · 27-09-2026 · Etapa 3 rehecha: práctica que se ve, nota que no se tantea
 
 **Por qué se rehace.** La etapa 2 rehízo el tema (`04` «AIEF · Tema 1 · versión 2», sobre todo A2.1,

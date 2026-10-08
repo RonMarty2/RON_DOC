@@ -23,6 +23,14 @@
 > materias sin copiar el estilo** (finanzas, estadística y bolsa se enseñan distinto). **Antes de hacer nada: acordar el plan
 > con él.** Pendiente: confirmar qué materia, qué entra en «de cero» y un inventario simple de lo que se puede reutilizar.
 > La maqueta 3.6 de Psicoestadística Descriptiva (Psicología) sigue sin aprobar.
+> **Plan aprobado por Ronald (08-10), de a un paso:** (1) visión en una página → **hecha:** `docs/juego/VISION-RONALD.md`
+> (confirmada por Ronald; frases citadas verificadas contra los archivos); (2) arte con paquetes de pixel art de uso libre
+> (licencia a verificar paquete por paquete) y una pantalla de prueba del Tema 1 con PixiJS, comparada con el boceto A;
+> (3) ajustar la maqueta tema por tema; (4) construir el Tema 1 como borrador. Materia: Psicoestadística Descriptiva
+> (Psicología); «de cero» = aspecto y motor visual; se conservan motor invisible, agentes y maqueta. Avance: resumen de 5
+> líneas por etapa. **Regla corregida por Ronald (08-10):** las referencias a juegos famosos que lo hicieron bien **sí**
+> (se proponen 1 a 3 por materia y se dice qué se toma y qué se cambia); no se copia arte, personajes, nombres ni música de
+> un juego comercial, ni el contenido de otro juego de RON_DOC. Pasada a los 7 agentes y a `REGLAS-COMUNES-AGENTES.md`.
 
 > **EN CURSO desde 28-09 11:45 (Claude, PC RonMarty): mejorar los agentes antes de probarlos en
 > Psicoestadística Descriptiva.** Ronald pausa AIEF (*«al jugar el Tema 1 de AIEF no domino el tema»*) y

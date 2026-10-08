@@ -7,7 +7,7 @@
 
 1. `git pull --ff-only` y `git status`. Si hay archivos sin subir, di cuáles y de cuándo antes de tocar nada.
 2. Lee `BITACORA.md` §0 (lo más nuevo, arriba) y esta nota.
-3. Mira si existe `docs/juego/gdd/aspecto-psicoestadistica-tema1-propuestas.md` (ver §4, «En curso»). Si no existe y la última sesión se cortó, hay que volver a lanzar al director (§4).
+3. Mira en §4 la fila «Bucle y mecánicas del Tema 1» (era lo que estaba en curso al cortar, 08-10 ~12:25) y **verifica en el disco** si `docs/juego/gdd/02-bucle-y-mecanicas.md` ya trae su sección del Tema 1 con lista de salida. Después sigue la lista «Lo que sigue».
 4. No empieces nada nuevo: pregúntale a Ronald en qué punto quiere seguir **solo si los archivos no lo dicen**.
 
 ## 1. Qué es el proyecto
@@ -53,7 +53,19 @@ Agentes en `.claude/agents/` (viajan por git). Registro y etapas: `.claude/agent
 
 **La forma elegida, en una línea:** carpeta de 6 papeles por caso (sacados de un fondo de 9, con 3 claves posibles y 1 por versión), 3 acciones por caso (2 si un medidor cae a 25 o menos), dos medidores que se empujan (Credibilidad y Lectores, meta 60), arranque con personaje de reserva Dani (su número no altera nada), revelación en 8 fichas boca abajo. Simulación de estrategias perezosas: publicar siempre, retener siempre y no abrir nada pasan la meta 0 %; entender 68,9 % (el 80 % de acierto de quien entiende es una **estimación**, solo se mide con alumnos reales).
 
-**Lo que sigue, en orden:** (1) cuando el director entregue, mostrarle a Ronald las 3 direcciones en simple y **que él elija**; (2) bocetos con arte real y PixiJS de la dirección elegida; (3) aprendizaje, bucle, narrativa y sonido sobre la ficha; (4) crítico; (5) construir el Tema 1 como borrador y que Ronald lo juegue en el celular. Un tema a la vez, plan aprobado antes de programar.
+| **Aprendizaje del Tema 1** (qué enseña cada caso, registro sin nota, 8 fichas de la revelación) | `docs/juego/gdd/04-aprendizaje.md`, sección «Tema 1 · aprendizaje v1» al principio | **Hecho 08-10** (agente `disenador-de-aprendizaje`). Conteos hechos a mano: el crítico los recuenta con script. Dos «voseo» que marca `buscar_voseo.py` son falsas alarmas (primera persona en notas del equipo) |
+| **Bucle y mecánicas del Tema 1** (8 casos con reglas numéricas programables) | `docs/juego/gdd/02-bucle-y-mecanicas.md`, sección propia del Tema 1 | **EN CURSO, lanzado 08-10 ~12:20** al agente `disenador-de-bucle`. **Primero verifica en el disco:** si la sección del Tema 1 ya existe y trae lista de salida, está hecho (no la rehagas); si no existe, relanza al agente con este encargo: «cierra lo que dejó el de aprendizaje: (1) efecto de “rediseñar” en el caso 7 y de las piezas del titular en el caso 6, (2) holgura de 0,25 h en el rango del caso 3 (25 % de azar castiga a quien razonó bien), (3) caso 8: quien abre un solo papel clave y acierta por suerte parece haber entendido, (4) cómo se presenta la escalera de ayuda sin bloquear; tabla de reglas programable tal cual» |
+
+**Decisión de Ronald (08-10, 12:2x): «probemos todo con el primer tema de esta materia y vemos qué tal»** (le da miedo trabajar en vano). Se recorre **toda la cadena con el Tema 1 y nada más** antes de tocar otro tema u otra materia.
+
+**Lo que sigue, en orden (de aquí en adelante):**
+1. Terminar el **bucle** (arriba).
+2. **Narrativa** (`disenador-narrativo`): voz y pistas de cada personaje (editora, madre, colega «a ojo», Dani), textos de los papeles y diálogos, todo en tuteo. Es lo que hará que el juego «diga algo»: Ronald lo notó en el boceto («no siento que diga nada el juego»).
+3. **Sonido** (`disenador-de-sonido`, etapa 4-bis): una hoja de sonido por escena con prompt para Flow Music. **Nada se integra** hasta que Ronald revise la licencia.
+4. **Crítico** (`critico-de-jugabilidad`), con Bash: recuenta con script los conteos del aprendizaje y del bucle; los arreglos van antes de mostrar nada.
+5. **Plan en simple a Ronald** y su aprobación (candado `plan:` en `content/islas.ts`; el aspecto ya está aprobado). Sin eso no se programa.
+6. **Construir el Tema 1 como borrador** (PixiJS, reutilizando `src/lib/juego/`), `npm test` + `npx tsc --noEmit`, `revisar-publicacion`, y que Ronald lo juegue en el celular. Medir las fichas y pantallas con `medir_legibilidad.py`.
+7. Con lo aprendido de este tema se **mejoran los agentes** antes de pasar al Tema 2. Un tema a la vez.
 
 ## 5. Pendientes de Ronald y propuestas sin decidir
 

@@ -20,6 +20,246 @@ pregunta nada: tiene **1 bloqueo y 4 importantes** que corrige el adaptador.
 
 ---
 
+## Psicoestadística Descriptiva (Psicología) · Tema 1 «La mesa de verificación» · aprendizaje · versión 1 · 08-10-2026
+
+> **Parte de:** las 8 ideas APROBADAS (08-10), la ficha ELEGIDA `00-tema1-forma1-ficha.md` y el aspecto A («La redacción de noche»). Nada de eso se reabre. **Sin nota** en este Tema 1: lo que sigue es **registro**, no calificación. Nada que ve el alumno manda a leer el dossier ni dice «según el dossier»; no hay software. Los números de esta sección salen de la ficha (secc. 2 y 4); aquí no se inventó ninguno nuevo salvo los marcados «propuesta».
+> **Decisiones pendientes de Ronald de esta sección: ninguna.**
+> **Qué NO se hizo:** no reabrí el `.tex` del dossier; los errores típicos vienen de las ideas aprobadas (ya verificadas contra el `.tex` el 08-10) y de la ficha. Los conteos de abajo son **a mano**, sin script: en esta tarea no hubo terminal; se anota en la lista de salida.
+> **Términos de diseño:** *escalón de ayuda* = cada nivel de pista antes de dar nada más; *semilla* = el número que decide qué versión recibe el alumno; *acierto sin evidencia* = decidir bien sin haber abierto el papel que lo justificaba (suerte).
+
+### T1.1 · Lo que el alumno demuestra (diseño inverso)
+
+| Sabe reconocer | Lo demuestra así (en el juego) | Si no lo reconoce pasa esto |
+|---|---|---|
+| 1 Que lo cotidiano ya deja dato | Abre en el archivo el papel que trae horas de sueño | Gasta las acciones en papeles sin dato; la editora lo deja abrir otro |
+| 2 Que alguien decidió qué contar | Abre el papel que muestra el cambio de registro antes de publicar «cero» | La madre llama; el titular se publica y cae |
+| 3 Que pocos dan cifras que se mueven | Saca tandas y escribe un rango que cubre y es útil | Rango que no cubre o tan ancho que nadie lo lee |
+| 4 Que importa quién responde | Abre la lista de quienes respondieron antes de elegir el estudio | Publica el grande y llega la réplica |
+| 5 Que quien está peor mejora solo | Compara con un grupo que no tuvo taller y escribe una mejora cercana a lo real | Se felicita por su consejo y lo ve caer |
+| 6 Que lo medido no es lo de todos | Cuenta bien y arma un titular que dice lo que la lista sostiene | Número que no sale de la hoja, o titular de 480 con 60 de un curso |
+| 7 Que el gráfico puede mentir | Escribe la diferencia que dice la hoja, no la que se ve | El lector (él mismo) decide otra cosa con el mismo dato |
+| 8 Que decide con datos bien leídos | Abre los dos papeles clave y elige financiar, no, o esperar según lo que hay | Dos años en paralelo: el suyo y el del colega «a ojo» |
+
+**Regla de este tema (propuesta, la fija el bucle):** el Tema 1 **no bloquea**. Como no mide nota y su fin es el asombro, el alumno no repite un caso hasta acertar: ve la consecuencia y sigue. El «dominio antes de avanzar» vive en la **práctica abierta** (otra versión) y en los temas que miden. Todos llegan a la revelación; qué ficha dio vuelta y con qué historia se registra.
+
+### T1.2 · Escalera de ayuda del Tema 1 (dentro del juego, nunca la respuesta, nunca el dossier)
+
+Sigue el orden de las reglas comunes, con el tercer escalón **ya adaptado** a la decisión de Ronald del 08-10 (ayuda dentro del juego, no «lee la sección»). No toca `escalera.ts`; el cambio de código sigue pendiente de su OK.
+
+| Escalón | Qué pasa en el mundo | Cuándo aparece |
+|---|---|---|
+| 1 · Consecuencia | Mueve los medidores y reacciona alguien (madre, editora, lector, el colega) | Siempre, al decidir |
+| 2 · Pista según tu error | La editora o el colega dice una frase **sobre lo que falta preguntar**, no sobre el concepto (ver tablas T1.3) | Tras una decisión mala, antes del siguiente caso |
+| 3 · Un caso parecido ya resuelto | Del archivo de La Pizarra sale una edición vieja con otro colegio y otras cifras, el mismo tipo de papel abierto y lo que pasó. Sin explicar | Solo en la práctica abierta, si vuelve a fallar el mismo tipo |
+| 4 · Otros números | Otra versión: otro tipo de caso, otro papel clave, otras cifras. Evita avanzar por prueba y error | Práctica abierta, siempre |
+
+**Cómo cambian los números al reintentar:** otra semilla cambia el tipo del caso (con problema, bien, aún no se sabe), cuál de los 3 papeles es el clave, cuáles 6 de 9 salen y todas las cifras. Lo aprendido de memoria («el correo destapa») falla.
+**Dónde se ve el escalón en el registro:** en qué escalón acertó cada idea (1 = sin ayuda, 2 = con pista, 3 = con caso parecido, 4 = en otra versión). Va junto al registro de T1.5.
+
+### T1.3 · Para cada una de las 8 ideas: caso, decisión que la revela, errores típicos y su pista
+
+Las pistas son frases de personajes de la ficha: la editora (única con cara), el colega «a ojo», la madre que llama (un teléfono), Dani (silueta). **Ninguna nombra el concepto.**
+
+**Idea 1 · Los datos están en todas partes · Paso 1 «El primer encargo»**
+- *Decisión que revela:* qué papeles abre. Entendió si abre alguno de los **dos** que ya traen horas de sueño.
+- *Error típico:* creer que para tener la cifra hay que recoger datos nuevos. *Lo delata:* gasta las 3 acciones en papeles sin horas de sueño (tardanzas, talleres, acta de padres).
+- *Consecuencia:* sin medidores. La editora: «¿seguro que ahí no había nada?». Una sola vez, y un papel gratis más.
+- *Pista (escalón 2):* «Esto lo sabe alguien del colegio desde hace tiempo. ¿Quién anota el sueño sin que nadie se lo pida?».
+- *Lo que muestra que lo vivió:* la fila de ejemplo con sus mismas tres preguntas y una fecha de hace un año.
+
+**Idea 2 · Alguien decidió qué contar · Caso 2 «El colegio sin denuncias» (siempre con problema)**
+- *Decisión que revela:* abre el papel que muestra el cambio de registro (uno de 3 posibles) antes de decidir, y arma la frase con «registradas».
+- *Errores típicos:* (a) **cosificar**: publicar «colegio seguro» tal cual. Lo delata: publica sin abrir ningún papel clave. (b) retener sin mirar. (c) frase genérica («según fuentes del colegio»), que suena prudente y no toca el hueco.
+- *Consecuencia:* (a) llama una madre: a su hijo lo empujaron y «no se podía denunciar»; C −20. (b) la competencia publica «seguro» y rectifica; se nota que esperaste. (c) C −8.
+- *Pista (escalón 2) según error:* (a) la madre: «Y antes de marzo, ¿cuántas denuncias hubo?». (b) la editora: «Retener también es una decisión. ¿Qué te falta saber para publicar?». (c) la editora: «Esa frase vale para cualquier colegio. ¿Qué hay en esta carpeta que sea solo de este?».
+- *Acierto sin evidencia:* publicar con frase de piezas correctas sin haber abierto el clave no es posible (las piezas solo existen si abriste), así que aquí el acierto siempre lleva evidencia.
+
+**Idea 3 · Con pocos se habla de muchos · Caso 3 «La cifra de los de 4.º»**
+- *Decisión que revela:* gasta acciones en **más de una tanda** y escribe un rango «entre __ y __».
+- *Errores típicos y lo que los delata:*
+  - Cree que una tanda es «la cifra»: publica un solo número («5,9»). Se acepta solo publicado «tal cual» (no es rango).
+  - Rango que **no cubre** la media real: confió en una sola tanda o en dos.
+  - Rango **demasiado ancho** (más de 2,0 horas, «entre 3 y 9»): sobrecorrección, nadie lo lee (C 0, L −2).
+  - Todas las acciones en papeles y ninguna en tandas.
+- *Consecuencia:* rango que cubre y mide 1,2 o menos: C +8, L +4. No cubre: la réplica llega con otra tanda (C −10). Ancho: nadie lo lee.
+- *Pista (escalón 2):* la editora: «Sacaste una tanda. Si pides otra, ¿te dará lo mismo?». Al que escribe un rango enorme: «Con eso nadie se equivoca. Tampoco nadie decide nada».
+- *Aviso de aprendizaje (hallazgo H3, abajo):* un rango bien razonado puede no cubrir por azar.
+
+**Idea 4 · Importa quién responde, más que cuántos · Caso 4 «Dos encuestas, un titular»**
+- *Decisión que revela:* abre la lista de quienes respondieron (A o B) antes de elegir.
+- *Errores típicos:* (a) elegir por tamaño sin abrir ninguna lista (publica A porque son miles). (b) sobrecorregir: «la chica siempre es la buena». El juego los separa porque A es la buena en la mitad de las versiones. (c) no publicar nada.
+- *Consecuencia:* la mala de A: C −20, L +10 (réplica de quien notó que solo respondió el club de apoyo). La buena de A: C +10, L +10. Ninguna: C 0, L −10.
+- *Pista (escalón 2):* (a) la editora: «Cuántos respondieron te lo dice el titular. ¿Quiénes? Eso solo lo dice la lista». (b) el colega: «Siempre me quedo con la que tiene menos. Hasta que un día no».
+- *Lo que delata sobrecorregir:* publicar B y que A fuera la plataforma obligatoria de todo el colegio.
+
+**Idea 5 · Lo que mejora solo · Caso 5 «El taller de pausas» (dos turnos; la vergüenza)**
+- *Decisión que revela:* en el turno 1 elige quién va al taller; en el turno 2 abre **con qué comparar** (el colegio vecino o el grupo del sorteo) y escribe cuánto subió **por el taller**.
+- *Errores típicos y lo que los delata:*
+  - Aconsejar (a) «los 13 peores» y atribuir al taller la subida de los llamados: escribe la subida bruta.
+  - Restar lo que subieron «los demás» (que bajaron): el número queda **inflado** y el vecino lo desmiente igual.
+  - Elegir (c) pero no abrir el papel del grupo de comparación: publica un número sin comparar.
+  - Sobrecorregir: escribir 0 cuando la versión tiene un efecto real pequeño.
+- *Consecuencia:* el vecino sin taller subió casi lo mismo: la réplica cae sobre su número. En (c) y con el papel abierto, su número cuenta.
+- *Pista (escalón 2):* la editora, al ver la subida: «Qué bien. ¿Y los que no fueron al taller, y los del colegio de al lado?». Al elegir (a) por segunda vez: el colega «a ojo»: «Son los que más lo necesitaban. Se nota que mejoraron». (No corrige: es el eco del error, para que la réplica duela más.)
+- *Por qué es el caso donde más se aprende:* la vergüenza es del propio consejo del alumno.
+
+**Idea 6 · Lo que ves no es lo que concluyes · Caso 6 «El titular de los 480»**
+- *Decisión que revela:* cuenta bien y arma un titular que dice lo que la lista sostiene (lo medido, o la apuesta si el papel del sorteo lo permite).
+- *Errores típicos y lo que los delata:*
+  - El **número escrito** no coincide con la lista de 60 (error de conteo): réplica «ese número no sale de tu hoja», C −10.
+  - Titular de «los 480» cuando los 60 son de un solo curso (el papel de cómo se eligieron lo muestra).
+  - Retener un titular que estaba bien (la lista salió de sorteo).
+  - Elegir la pieza «podrían ser…» sin motivo: prudencia que no toca el hueco.
+- *Consecuencia:* con problema: la réplica del otro curso («en mi curso nadie duerme tan poco»). Con sorteo: «aproximadamente uno de cada cuatro» se sostiene.
+- *Pista (escalón 2):* al conteo erróneo: la editora le devuelve la hoja con una marca: «Cuéntalos de nuevo, de a diez». Al titular de más: «Dice 480. ¿A cuántos viste?».
+
+**Idea 7 · Un gráfico miente con datos verdaderos · Caso 7 «El gráfico de la agencia»**
+- *Decisión que revela:* escribe la **diferencia en puntos** que dice la hoja, no la que se ve. Primero, como lector (antes de la mesa), decidió qué taller recortar; esa decisión **no se juzga**.
+- *Errores típicos y lo que los delata:*
+  - Escribir la diferencia visual (A parece casi el doble) en vez de la de la hoja.
+  - Publicar el gráfico tal cual en la versión con problema.
+  - Rediseñar o retener cuando el gráfico estaba bien (sobrecorrección).
+- *Consecuencia:* un lector escribe: «el mismo gráfico me hizo decidir otra cosa». En la versión *bien*, publicar es lo mejor.
+- *Pista (escalón 2):* la editora: «Mira la hoja y mira el dibujo. ¿Cuántos puntos hay de verdad entre A y B? Y, en el dibujo, ¿dónde empieza la barra más baja?».
+- *Lo que muestra que lo vivió:* el registro compara su decisión de lector con la que tomaría ahora.
+
+**Idea 8 · Una decisión con datos le gana a la de «a ojo» · Caso 8 «La dirección decide»**
+- *Decisión que revela:* abre **los dos** papeles clave (con grupo sin taller; tamaño de los grupos y tiempo medido) y elige financiar, no financiar o esperar según lo que hay.
+- *Errores típicos y lo que los delata:*
+  - Decide con un solo papel clave abierto, sin saber que falta el otro (acierta o falla por suerte: 0,20 de dar con ambos al azar).
+  - **Siempre contradecir al colega** o siempre seguirlo (el colega acierta 1 de cada 3 versiones).
+  - Financiar cuando la diferencia con comparación es casi cero.
+  - Elegir siempre «esperar»: pierde cuando ya se podía decidir (C 0, L −4).
+- *Consecuencia:* dos años lado a lado: el suyo y el del colega.
+- *Pista (escalón 2):* el director: «¿Con qué lo comparaste?» y «¿Cuántos eran?». Al que siempre espera: «Esperar un trimestre cuesta un trimestre. ¿Había motivos para esperar?».
+- *Acierto sin evidencia:* elegir la opción correcta con 0 o 1 clave abierto se marca; no suma al «descubrió por sí mismo».
+
+### T1.4 · Qué cambia de un alumno a otro, idea por idea (incluye la respuesta correcta)
+
+| Idea | Cambia (más allá de los números) |
+|---|---|
+| 1 | Cuáles 2 de 6 papeles traen horas de sueño; nombres del colegio y de Dani |
+| 2 | Cuál de 3 posibles claves destapa (correo, libro u orientador). La respuesta correcta (la frase con «registradas» y el cambio de registro) es la misma en tipo y distinta en pieza |
+| 3 | El tipo (con problema, bien, aún no se sabe) cambia **qué decisión es correcta**: rango, publicar tal cual o rango con «aún no» |
+| 4 | Quién es el estudio bueno (A en la mitad, B en la otra): la respuesta correcta cambia de lado |
+| 5 | Con o sin efecto real; el número correcto (cercano a 0 o pequeño pero no 0); cuál es el papel de comparación según la opción elegida |
+| 6 | El conteo, y si el titular correcto es el de lo medido o el de apuesta (bien / problema / aún no) |
+| 7 | La diferencia real; si el gráfico engaña o está bien (en *bien*, publicar es lo correcto) |
+| 8 | Financiar, no financiar o esperar: la respuesta correcta cambia en 1 de 3 |
+
+Orden de los casos 3 a 7 barajado; el 1, el 2 y el 8 fijos. Copiar al compañero (0,5 % en la ficha) no sirve.
+
+### T1.5 · Qué queda registrado (solo registro, sin puntaje)
+
+Por **idea** (8 filas por alumno), con el motor de registro existente:
+1. **Qué abrió** (identificador, y si era clave, refuerzo o señuelo) y qué dejó.
+2. **Qué decidió** y el número que escribió, con si era correcto.
+3. **Escalón en que acertó** (T1.2) o «no acertó».
+4. **Clasificación de la idea para Ronald** (la saca el motor de lo anterior, no la pone el alumno):
+   - *Descubrió solo:* abrió el clave, decidió bien, escalón 1.
+   - *Descubrió con pista:* acertó en escalón 2 o 3.
+   - *Se dejó engañar:* decidió mal sin el clave (cosificó, atribuyó al taller, creyó el gráfico, publicó de más).
+   - *Acierto sin evidencia:* acertó sin abrir el clave (suerte o instinto; no suma como descubierta).
+   - *Sobrecorrigió:* desconfió sin motivo (retuvo lo que estaba bien, rediseñó un gráfico bueno, escribió rango ancho, esperó siempre).
+5. **Cambio de opinión observable:** si en el caso siguiente abrió el tipo de papel que antes saltó.
+6. **Lector del caso 7** antes y después de ver el dato.
+7. **Medidores** al cierre de cada caso y si se activó el presupuesto de 2.
+8. **Fichas dadas vuelta** (cuáles y en qué orden) y si completó el camino.
+9. **Datos propios o de reserva** en el paso 1 (solo eso).
+10. **Práctica abierta:** cuántas veces, y por idea qué cambió.
+
+Para la página del docente, una línea por alumno: 8 casillas de las clasificaciones de arriba. Sirve a Ronald para ver qué idea descubrió cada uno por sí mismo y cuál solo vio al revelarse.
+
+### T1.6 · Integridad (el Tema 1 no mide nota, pero el registro se lee)
+
+- **Qué impide copiar:** tipo de cada caso, cuál papel es el clave, los 6 papeles de 9, las cifras y el orden de los casos 3 a 7 salen de la semilla del alumno. La respuesta correcta cambia, no solo el número.
+- **Qué todavía se puede hacer:** abrir todos los papeles en una práctica abierta con otra semilla y contárselo a un compañero. No sirve: la versión oficial es otra. Y como el tema no pesa en la nota, no hay incentivo.
+- **Alumno perezoso:** las estrategias de la ficha (publicar siempre, retener siempre, no abrir nada) pasan la meta 0 %; azar de 3 papeles, 22 %. El registro lo separa: «acierto sin evidencia» no cuenta como descubrimiento.
+- **Defensa oral:** este tema no la lleva.
+
+### T1.7 · Las ocho fichas de la revelación (texto que lee el alumno)
+
+Formato de cada ficha: **tres líneas cortas** (≤ 25 palabras cada una, para leerse en 375 px sin achicar la letra) y un nombre en negrita. La línea «Hiciste» **depende de lo que hizo el alumno**: aquí van las tres ramas. El nombre técnico **solo se dice para lo que hizo o dejó de hacer**. En una versión donde no había problema, la ficha lo dice y reconoce el acierto de no alarmarse.
+
+**Ficha 1 · Lo cotidiano ya era dato**
+- Abrió el papel con sueño: «Abriste el cuaderno de la enfermería y ahí estaba. Alguien lo anotó mucho antes de que lo pidieras».
+- No lo abrió: «Pasaste de largo los papeles con las horas de sueño. Estaban ahí, escritos hacía un año».
+- Cierre: «Lo que viste todos los días ya dejaba un rastro. Convertirlo en algo que se puede leer es el trabajo de la estadística».
+
+**Ficha 2 · Alguien decidió qué contar** (**operacionalizar**; confundir lo contado con lo que pasa: **cosificar**)
+- Abrió el clave: «Viste que desde marzo solo se anotan denuncias con firma. Lo que cambió fue la forma de contar».
+- No lo abrió y publicó: «Publicaste "cero denuncias". El número era cierto, pero contaba otra cosa».
+- Cierre: «Volver contable algo que no se ve se llama operacionalizar. Creer que lo contado es lo que pasa se llama cosificar».
+
+**Ficha 3 · Con pocos se habla de muchos** (**población, muestra, parámetro, estadístico**)
+- Sacó varias tandas: «Sacaste varias tandas y cada una dio algo distinto. Ninguna mentía, ninguna era "la cifra"».
+- Una sola: «Publicaste la cifra de una tanda como si fuera la de los 480».
+- Cierre: «Lo que quieres saber de todos es el parámetro. Lo que calculas con los que miraste es el estadístico».
+
+**Ficha 4 · Importa quién responde, más que cuántos** (**error no muestral**, **sesgo**)
+- Abrió la lista: «Miraste quiénes respondieron antes de elegir. Eso pesó más que cuántos eran».
+- No la abrió: «Elegiste la encuesta de miles. Había respondido solo quien ya estaba en el club de apoyo».
+- Cierre: «El error del azar se achica con más gente. El de dejar fuera a quienes importaban no se achica, se llama error no muestral».
+
+**Ficha 5 · Lo que mejora solo** (**regresión a la media**; **grupo de control**)
+- Comparó: «Pediste ver a quienes no fueron al taller y tu número cambió».
+- No comparó: «Llamaste a los 13 peores, subieron, y lo atribuiste al taller. El colegio vecino subió casi igual sin taller».
+- Cierre: «Quienes están peor suelen verse mejor la vez siguiente aunque no hagas nada. Se llama regresión a la media. Para no engañarte, usa un grupo de control».
+
+**Ficha 6 · Lo que ves no es lo que concluyes** (**estadística descriptiva** e **inferencial**)
+- Titular acotado o bien armado: «Dijiste lo que la lista sostenía, y solo hasta donde la lista llegaba».
+- Titular de más: «Hablaste de los 480 con los datos de 60 de un solo curso».
+- Cierre: «Lo que hay en tus datos es descriptiva. Apostar sobre los que no viste es inferencial. Esta materia empieza por la primera».
+
+**Ficha 7 · Un gráfico miente con datos verdaderos** (**eje truncado**)
+- Escribió la diferencia de la hoja: «Escribiste la diferencia que decía la hoja, no la que mostraba el dibujo».
+- Escribió la que se veía: «Escribiste la diferencia del dibujo. La barra empezaba arriba de cero».
+- Cierre: «Se llama eje truncado. Antes de creerle a un gráfico, mira dónde empieza». Si el gráfico estaba bien, lo dice: «Este no engañaba. Reconocerlo también cuenta».
+
+**Ficha 8 · Decidir con datos** 
+- Abrió los dos y decidió según lo que había: «Preguntaste con qué comparar y cuántos eran. Tu año salió mejor que el del colega».
+- Decidió con uno o a ojo: «Decidiste sin saber con qué comparar. Tu año y el del colega se parecen más de lo que quisieras».
+- Cierre: «Los datos bien recogidos y bien leídos le ganan al ojo. A veces la mejor respuesta es "todavía no se puede saber". Y esto apenas es el primer vistazo».
+
+**Cierre general (el camino), cuando se dieron vuelta las ocho:** «Cada cosa que reconociste tiene un nombre, una forma de comprobarla con números y una técnica para hacerlo bien. Eso se aprende en los temas que vienen. Los gráficos, ya en el Tema 2». Solo el Tema 2 se nombra: es lo único asignado; los demás quedan por la maqueta.
+
+### T1.8 · Hallazgos de aprendizaje (importante; ninguno bloquea)
+
+- **H1 · Importante.** La tabla de medidores de la ficha (secc. 2) no define qué pasa con **«rediseñar con la base en cero»** (caso 7) ni con las **piezas del titular** del caso 6 (solo «publicar tal cual», «frase armada», «retener»). Sin eso, «siempre rediseñar» puede ser dominante o inútil y no se sabe. *Cierre:* que el bucle fije efecto de rediseñar (como la frase armada: C +8, L +4 con el clave; C −8 sin él) y prohíba que gane en los tipos *bien* (ahí lo mejor es publicar).
+- **H2 · Importante.** El rango del caso 3 «cubre la media real» con 3 tandas falla el 25 % de las veces aunque el razonamiento sea bueno (75,3 % según la ficha). Castigar eso enseña que pensar bien no sirve. *Cierre:* que el criterio de cubrir use la holgura de 0,25 h que la ficha ya calculó (97,5 % con 3 tandas), y el registro etiquete «razonó bien, no cubrió por azar» cuando abrió ≥ 3 tandas, para no contarlo como engaño.
+- **H3 · Importante.** Idea 8: el que abre un solo clave y acierta por suerte parece haber entendido. *Cierre:* ya incluido en T1.5 (acierto sin evidencia); el motor debe saber qué 2 papeles son los claves de cada versión.
+- **H4 · Menor.** Del dossier se dice en la idea 7 que un resumen (la media) describe al grupo y no a una persona (1.2). Ningún caso lo vive y la ficha 7 no lo nombra. No se fuerza: queda para el dossier y los temas de medidas centrales.
+- **H5 · Menor.** La escalera usa el escalón 3 («caso parecido ya resuelto») solo en práctica abierta; en la partida oficial el alumno no lo ve. Es coherente con «sin nota»; se revisa si Ronald quiere que el oficial también ayude.
+- **H6 · Menor (supuesto).** El 80 % de acierto del papel clave de quien entiende es una estimación. Con alumnos reales se mide con las clasificaciones de T1.5 (proporción de «descubrió solo» sobre quienes abrieron el clave).
+- **Sin hallazgos de bloqueo.** Cada mecánica del tema exige abrir, armar o escribir; ninguna se supera sin entender, salvo las dos marcadas H1 y H2 que se cierran como arriba.
+
+### T1.9 · Avisos para otras partes
+
+- **Bucle:** cerrar H1 y H2; definir cómo se presenta la escalera sin bloquear (T1.2).
+- **Narrativa:** escribir las pistas de T1.3 con voz propia de cada personaje (la editora, el colega, la madre, el director); no nombrar conceptos.
+- **Construcción:** `medir_legibilidad.py` sobre las fichas de T1.7 antes de mostrarlas (largo máximo 25 palabras por línea, letra de al menos 12 px a 375 px, contraste 4.5 a 1). No lo medí aquí porque es texto sin pantalla.
+- **Código:** el escalón 3 de `src/lib/juego/escalera.ts` y el guion de AIEF siguen con «lee el dossier»; cambiarlos necesita el OK de Ronald, y este tema no lo toca.
+
+### Lista de salida · Tema 1 · aprendizaje v1
+
+Conteos **a mano** (sin terminal en esta tarea); cada ✔ lleva su prueba contada.
+- ✔ Las 8 ideas con caso, decisión, errores y consecuencia/pista: T1.3 tiene 8 bloques (ideas 1 a 8, casos Paso 1 y casos 2 a 8: 8 de 8).
+- ✔ Ideas contra casos: 1 Paso 1 · 2 Caso 2 · 3 Caso 3 · 4 Caso 4 · 5 Caso 5 · 6 Caso 6 · 7 Caso 7 · 8 Caso 8: coincide con la secc. 10 de la ficha, 8 de 8.
+- ✔ Errores típicos con lo que los delata: 2 o más por idea (conteo: idea 1: 1; idea 2: 3; idea 3: 4; idea 4: 3; idea 5: 4; idea 6: 4; idea 7: 3; idea 8: 4). **La idea 1 tiene 1**; es la única, aceptable por ser el paso sin medidores.
+- ✔ Escalera sin respuesta y sin dossier: 4 escalones (T1.2); ninguno manda a leer.
+- ✔ Sin nota: T1.5 solo registro; no se preguntó nada.
+- ✔ Versiones por alumno con la respuesta correcta que cambia: T1.4, 8 filas.
+- ✔ Fichas de revelación: 8 de 8 (T1.7), cada una con 2 ramas más cierre, y el cierre general. Largo tope declarado.
+- ✔ Integridad y alumno perezoso: T1.6, con cifras de la ficha (0 %, 22 %, 0,5 %).
+- ✔ Sin software, sin «según el dossier»: no aparece ninguna de las dos en el texto del alumno de T1.3 y T1.7 (revisado leyendo; la frase «el dossier» aparece en estas notas del equipo y en los avisos).
+- ✔ Tuteo, sin voseo y sin guiones largos: revisado leyendo; sin `buscar_voseo.py` por falta de terminal. **Pendiente de correr por la sesión** antes de mostrar.
+- ✔ Regla de legibilidad: no aplica en esta etapa (texto sin pantalla); se pasa a construcción en T1.9 con el criterio.
+- ✔ Reglas de profundidad («no aplica en esta etapa»): la revisión de profundidad no es de este encargo.
+- ✔ Lo aprobado no se reabrió: ideas y forma intactas; los hallazgos H1 a H6 proponen, no cambian.
+- ✔ Archivos tocados: solo `docs/juego/gdd/04-aprendizaje.md`, sección nueva al principio.
+
+---
+
 ## Psicoestadística Descriptiva (Psicología) · revisión de la maqueta v3.3 · versión 2 · 07-10-2026
 
 **Estado: ENTREGADA (07-10).** Revisa sólo lo que la v3.3 cambió en

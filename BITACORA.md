@@ -45,7 +45,7 @@
 > **DECIDIDO por Ronald (08-10):** cada materia es un juego global repartido en minijuegos, las **islas metafóricas**, cada una con su puntaje sobre 100 y uno
 > global al final (él pondera); **el Tema 1 de Psicoestadística Descriptiva probablemente no mide nota** (otros temas o materias pueden sí); **cierra con revelación**;
 > la frase de la idea del Tema 1 queda asentada. Regla «la calificación ya está decidida: no se pregunta» escrita en los 7 agentes y en `REGLAS-COMUNES-AGENTES.md`.
-> En curso: paso 2 del plan, «qué debe quedarse» (5 a 7 ideas) → `docs/juego/gdd/00-tema1-que-debe-quedarse.md`; después, formas de juego de descubrimiento.
+> En curso: paso 2 del plan, «qué debe quedarse» (5 a 7 ideas) → `docs/juego/gdd/ideas-psicoestadistica-descriptiva-tema1.md`; después, formas de juego de descubrimiento.
 > **DECIDIDO (08-10, Ronald):** el juego **nunca** manda a leer el dossier ni dice «según el dossier»; enseña mientras se juega. Cambia el tercer escalón de la
 > escalera de ayuda (hoy «lee la sección del dossier», en `src/lib/juego/escalera.ts` y en el guion de AIEF): pasa a ayuda dentro del juego. **El código existente no se
 > toca sin su OK** (afecta `escalera.ts`, `guion-tema1.ts` de AIEF y sus pruebas). Regla en los 7 agentes y `REGLAS-COMUNES-AGENTES.md`.

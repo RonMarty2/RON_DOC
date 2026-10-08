@@ -1,6 +1,6 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 10 · 08-10-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 12 · 08-10-2026** (la entrada más nueva, sobre las formas de juego del Tema 1, está justo antes de la v11) · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
 
@@ -89,6 +89,195 @@ Se suman a las cinco que esa parte ya lista.
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 08-10-2026 · Psicoestadística Descriptiva (Psicología), Tema 1: las tres formas de juego de descubrimiento (papel, v12)
+
+**Qué se revisó.** `00-tema1-formas-de-juego.md` («La mesa de verificación», «Tu número», «Un año en el colegio»)
+contra las 8 ideas APROBADAS (no reabiertas) y contra lo decidido por Ronald: introducción de descubrimiento, revelación
+al final que dice «apenas empieza», probablemente sin nota, sin software, sin «según el dossier», sin referencias ni arte.
+Jugadas con los tres alumnos (el que sabe, el que no sabe, el apurado). Conteos con
+`scratchpad/critico_tema1.py` (corrido con `python -I`; se cita su salida abajo).
+
+**Salida del script:**
+```
+Forma 1: pasos 8, ideas [1..8], pasos con verbo de ver/mirar 3 -> [3, 7, 8]
+Forma 2: pasos 8, ideas [1..8], pasos con verbo de ver/mirar 7 -> [1, 2, 3, 4, 5, 7, 8]
+Forma 3: pasos 8, ideas [1..8], pasos con verbo de ver/mirar 2 -> [3, 7]
+Forma 1: menu de 5 preguntas; 6 casos con fallo (ideas 2 a 7)
+  presupuesto 1: politica fija atrapa 2 de 6 | quien lee la afirmacion y pide 1 atrapa 6
+  presupuesto 2: 3 de 6 | presupuesto 3: 4 de 6 | presupuesto 4: 5 de 6 | presupuesto 5: 6 de 6
+Forma 2: tu bienestar 0 -> media del curso 61,46 (-1,02) | 50 -> 62,28 (-0,20) | 100 -> 63,10 (+0,62)
+Referencia: la regresion a la media del dossier mueve 4,47 y -2,02
+```
+Cobertura: las tres cubren las 8 ideas en su tabla (8 de 8 cada una). Que una idea tenga fila no prueba que se **viva**;
+eso se juzga abajo.
+
+### Veredicto corto
+
+| Forma | ¿Juego o cuestionario bonito? | Bloqueos | Ideas que se viven de verdad |
+|---|---|---|---|
+| 1 Mesa de verificación | Juego de investigación, con riesgo de cuestionario | 0 (3 importantes) | 2, 3, 4, 6, 7 bien; 5 a medias; 1 y 8 dependen de escribir bien |
+| 2 Tu número | Mitad demostración: 7 de 8 pasos son «ver» | **1** | 1 y 2 bien; 3 bien; 4, 5, 7 se miran, no se viven |
+| 3 Un año en el colegio | El más juego, con la trampa «al que gana lo aplauden» | 0 (costo y sub-simulación) | 2, 4, 5 muy bien si la simulación es real; 6 a 8 se vuelven escena |
+
+### Hallazgos de la Forma 1 · La mesa de verificación
+
+**1.1 IMPORTANTE. El menú de preguntas ES la lección.** Las 5 preguntas fijas («¿cómo se contó?», «¿a quién se preguntó?»,
+«¿contra quién se comparó?», «¿cuántos eran?», «¿dónde empieza el eje?») son casi las cuatro ideas 2, 4, 5, 7 en forma de
+lista. El alumno que no sabe no descubre qué preguntar: le dan el temario y elige. Y el que sabe, sin presupuesto estrecho,
+las pide todas. *Prueba (script):* con una política fija aprendida en la primera partida (pedir siempre las mismas
+preguntas), el presupuesto 1 atrapa 2 de 6 casos, el 2 atrapa 3, el 4 atrapa 5 y el 5 atrapa 6 de 6; quien lee la
+afirmación y pide una sola atrapa los 6. La estrategia no es «pedirlo todo» (el presupuesto la frena), es **memorizar la
+correspondencia afirmación→pregunta**, y las afirmaciones la delatan solas («bajaron las denuncias a cero», «una encuesta
+de miles»). **Propuesta:** que lo que se pide no sea una pregunta de menú sino **un documento de la carpeta para abrir**
+(el formulario, la lista de quienes respondieron, la hoja del grupo sin taller, los números de cada mes). El alumno ve
+rótulos de cosas del mundo, no conceptos; el hallazgo está dentro del documento y hay señuelos que no destapan nada. El
+presupuesto debe fijarse por debajo del número de documentos útiles, y el doc de diseño **no dice cuál es hoy** (falta).
+
+**1.2 IMPORTANTE. Sin apuesta acumulada, el apurado hace clic y ya.** «Publicar o retener» tiene consecuencias por caso
+(llamada de una madre, competencia) pero no hay un marcador que se arrastre (credibilidad de la redacción frente a lectores
+frente a la competencia). Alumno apurado: publica siempre, lee ocho consecuencias suaves, llega a la revelación. Es
+justamente el «sin pensar» que ya vimos en AIEF. **Propuesta:** dos medidores visibles que se empujan en sentidos
+contrarios (credibilidad y lectores), de modo que retener siempre y publicar siempre pierdan, y que en el caso «bien» y en
+el de «aún no se sabe» la mejor jugada sea publicar con un matiz.
+
+**1.3 IMPORTANTE. Ritmo repetido.** Siete veces: lees afirmación, pides evidencia, publicas. Las piezas distintas (paso 1
+buscar cifra, paso 3 repetir tandas, paso 6 armar titular, paso 7 ser primero el lector, paso 8 decisión de dirección) lo
+rescatan, pero los pasos 2, 4 y 5 son el mismo molde. Hay que forzar variedad en lo que se hace (en el 4 pedir la lista de
+respondientes y poder elegir entre dos encuestas ya hechas; en el 5, ver la tabla antes y después), no sólo en el contenido.
+
+**1.4 menor. Las ideas 1 y 8 viven según cómo se escriban.** El paso 1 es bueno (hallar la cifra ya escrita). El paso 8
+depende de que «aún no se sabe» sea una salida real y no la respuesta del último caso de siempre; si el último caso de
+cada versión es el de «no alcanza», se aprende como patrón. Alternar por versión.
+
+**1.5 menor. Copiable.** Sin nota no importa (decidido). Aun así, la pregunta clave por caso debe cambiar **entre versiones
+para el mismo paso**, no sólo entre casos de una versión: el texto lo deja ambiguo.
+
+**Estrategia dominante F1:** no hay una «simple» si se hacen 1.1 y 1.2; hoy existe la de memorizar afirmación→pregunta.
+**¿Puede creer que ya sabe?** Sí, el que acierta siempre queda halagado; lo frena que ve los nombres en la revelación y
+el caso «bien», pero conviene que el primer caso lo pille desprevenido (ver abajo).
+**Metáfora para psicología:** la redacción es ajena a la carrera. Se sostiene porque los casos son de colegio y bienestar;
+conviene que la afirmación venga del mundo de psicólogos (un taller de bienestar del colegio, una encuesta de estrés) y
+la redacción sea sólo el lugar donde llega.
+**Costo declarado:** medio-bajo es realista para la estructura; el trabajo real son 8 casos con una carpeta de documentos
+cada uno, cada documento con su cifra y cada rama de decisión con su consecuencia. Dígase eso.
+
+### Hallazgos de la Forma 2 · Tu número
+
+**2.1 BLOQUEO. El número del alumno no cambia nada de lo importante, y la propuesta dice que sí.** «Escribir cualquier
+número hace que el curso salga sin gracia» y «la respuesta correcta es distinta para cada uno» son falsos tal como están.
+*Prueba (script):* un bienestar de 0 mueve la media del curso de 60 de 62,48 a 61,46 (−1,02 de 100), uno de 100 a 63,10
+(+0,62) y uno de 50 a 62,28; la regresión a la media del dossier mueve 4,47 y −2,02. Los fenómenos (regresión, sesgo,
+indicador movido) los fija el generador, no el 61.º dato. Un alumno que escribe «50» (o broma, o 0) vive exactamente lo
+mismo. Resultado: el mérito de la forma («esto me pasó a mí») sólo existe en la apertura y la revelación; los pasos 3 a 8
+son un curso de 60 ajeno en el que mirar. **Propuesta:** o su número decide algo real (¿está entre los 13 peores?, ¿se
+queda o se va a casa antes de la encuesta? Eso exige que el generador lo incluya por regla, no por suerte), o la forma se
+reduce a lo que sí hace: una apertura de dos o tres preguntas (que es la pieza que la mezcla ya toma).
+
+**2.2 IMPORTANTE. Siete de ocho pasos son «ver».** El script cuenta 7 pasos con «ve que / ve cómo / los mira /
+reaccionan». Eso es una demostración animada, un libro hecho juego: el alumno no decide casi nada que cambie algo. Sólo el
+paso 3 (mirar diez al azar una y otra vez) es un juguete real. **Propuesta:** si se conserva algo de la 2, que sea ese
+juguete y la apertura.
+
+**2.3 IMPORTANTE. Supuestos sobre la conducta del jugador.** «Él es de los que se van» (paso 4) y «los 13 peores» (paso 5)
+presuponen su número y su decisión; si escribió 90, no está entre los 13; si decide quedarse en el pasillo, no se va. Se
+resuelve fijando el rol (eres un 61.º entre dos) sin hacer depender el fenómeno de él.
+
+**2.4 IMPORTANTE. Privacidad y tono.** Datos propios de sueño, celular y ánimo en un curso de psicología son delicados
+(y pueden ser bromas o verdad incómoda) y la revelación dice «tu número estaba en el registro y en el titular»: en una app
+conectada a la nube el alumno puede leerlo como que sí viajó. Con personaje de reserva por defecto se salva, pero entonces
+se pierde la ventaja que justificaba la forma.
+
+**2.5 menor. Costo.** «Medio» está subdeclarado: un generador cuyos fenómenos siempre aparezcan para cualquier entrada
+es, de hecho, la simulación de la Forma 3 más una pantalla de captura.
+
+**Metáfora para psicología:** la más cercana a la carrera (autoinforme, escalas de bienestar). Lo mejor de la forma.
+**Estrategia dominante F2:** «50 siempre» no se castiga (ver 2.1). **¿Cree que ya sabe?** Sí: «ya soy un dato».
+**Dónde se pierde:** del paso 4 al 7, sin nada que hacer.
+
+### Hallazgos de la Forma 3 · Un año en el colegio
+
+**3.1 IMPORTANTE. La trampa premia al engañado.** «Dar a los peores, celebrar, el director aplaude»: si el marcador del
+año sube con la mejora aparente, el apurado gana el año **haciendo el error exacto que se quiere mostrar**, y la
+enseñanza queda toda en la revelación (un libro). Está bien que el engaño sea natural; no está bien que el mundo lo
+premie sin que algo ya empiece a oler mal antes del último turno (la enfermería, el colegio vecino, un mes después). Con
+cuatro turnos el rastro llega tarde. **Propuesta:** que el regreso al valor previo aparezca en el turno siguiente, antes
+de que el director repita la frase en la asamblea.
+
+**3.2 IMPORTANTE. «Sorteo» domina.** En el paso 4 (elegir formulario/enlace/sorteo), si el sorteo no cuesta de verdad o
+nunca falla, «siempre sorteo» gana sin vivir el sesgo; y quien sabe nunca lo experimenta. Lo mismo con «dejar un grupo
+sin taller» en el paso 5. Es el patrón «el que sabe se salta la lección»: aceptable si hay costo (tiempo, dinero, el
+director que protesta) y se declara.
+
+**3.3 IMPORTANTE. Costo subdeclarado y versión mínima débil.** Se dice «alto» (cierto), pero la versión mínima (4 turnos, 3
+ideas simuladas, el resto «escenas») deja cinco de las ocho ideas contadas, y entonces la forma pierde lo que la
+justificaba. Además el contrafactual (el colegio vecino) es un segundo colegio simulado. Para una persona, esta forma es la
+más peligrosa de terminar, y la que más se parece a un juego de gestión que hay que equilibrar.
+
+**3.4 menor. Variar de colegio entre alumnos** es lo mejor de la forma para el copiado; pero sin nota no se necesita.
+**3.5 menor. El turno se puede hacer largo** y el apurado se aburre en pasos con muchos archivos. Las tres piezas (ideas 1,
+5, 6) con bastante lectura.
+
+**Metáfora para psicología:** muy buena: es el trabajo del psicólogo escolar. Más cercana a la carrera que la redacción.
+**Estrategia dominante F3:** ninguna simple, salvo 3.1 y 3.2. **¿Cree que ya sabe?** El que «gana el año» sí.
+
+### ¿Se sostiene la mezcla propuesta (la 1 con piezas de la 3 y de la 2)?
+
+**Sí, con dos recortes; si no, es demasiado.**
+- **Pieza de la 3 (aplicar uno mismo el taller):** es lo que más vale, y se hace barato: dos turnos y un solo caso. Pero
+  rompe el marco: un verificador de datos no aplica talleres. **Propuesta:** hacerlo desde la redacción, en la propia
+  estructura del caso: el alumno aconseja a quién llamar al taller (las y los del peor puntaje, que él elige) y luego
+  verifica el resultado que él mismo propuso. Mantiene la vergüenza y no abre otro juego.
+- **Pieza de la 2 (apertura con tu número):** es solo apertura y revelación, sin consecuencias en el medio (2.1). Está
+  bien si se la trata como un gesto, no como mecánica. No hay que dejar que su número altere nada de los casos. Con
+  personaje de reserva por defecto y opción de poner el suyo.
+- **Demasiado** sería: apertura personal + casos de redacción + simulación de dos turnos + repaso con nombres. Cuatro
+  texturas en un tema sin nota. La mezcla se sostiene si **todo ocurre dentro de la carpeta y la redacción**: la apertura
+  se cuenta como la primera pregunta del primer encargo («¿cuántas horas duermes?»), el taller es uno de los casos y la
+  revelación es el repaso.
+
+### La revelación (las tres)
+
+**R1 IMPORTANTE (común).** Pasar «rápido» el día con ocho nombres técnicos nuevos de golpe es el momento en que se vuelve
+libro. **Propuesta:** que sea tocar el hilo: cada caso es una ficha que el alumno puede dar vuelta, y el nombre aparece al
+dársela; el cierre («apenas empieza») muestra el camino de temas. No debe mencionar nada que el alumno no haya visto en
+su partida: si publicó mal se lo dice, si pidió bien se lo dice, no se regala antes de jugar.
+**R2 menor (por forma).** F1 y F3 tienen revelación creíble porque se apoya en lo que el alumno hizo. F2 dice «tu número
+viajó», que el alumno sabe ficción.
+
+### Recomendación a Ronald (en términos de la experiencia del jugador)
+
+**La 1, «La mesa de verificación», como columna, con tres arreglos.** Es la que da más probabilidad de que el alumno diga
+«esto se estudia» sin sentir clase: investigar, equivocarse un par de veces, ver la consecuencia, descubrir qué habría
+destapado el problema. Con los arreglos de abajo es la más barata de construir bien.
+1. Cambiar el menú de preguntas por **documentos para abrir** (1.1) y dos medidores que se empujan (1.2).
+2. El caso del taller con el alumno **aconsejando** y luego verificando lo suyo (la vergüenza de la 3, dentro del marco).
+3. Apertura de dos o tres preguntas propias (de la 2) como primer encargo, sin que su número cambie nada, con personaje de
+   reserva por defecto.
+La 3 completa sería la experiencia más rica pero es la que no terminará una sola persona; la 2 completa deja al alumno
+mirando. **La mezcla sin esos recortes es demasiado.**
+
+### Lo que está bien y conviene no tocar
+
+- Que cada forma pida algo distinto al jugador (investigar, ser el dato, administrar). La 1 y la 3 son juegos genuinamente
+  distintos, no el mismo con otra piel.
+- El caso «la afirmación está bien y publicar es correcto» y la salida «aún no se sabe»: dan la honestidad de la idea 8 y
+  evitan «desconfía de todo».
+- Que ningún caso diga «esto es un sesgo» hasta la revelación.
+- El paso 3 de la forma 2 (diez al azar, otra vez) como juguete, y el paso 2 de la 3 (el indicador que se mueve por otra
+  razón).
+- Las dos preguntas de gusto de Ronald son de gusto de verdad; la segunda (a veces «aún no se sabe») conviene responderla
+  que sí.
+
+### Lista de salida del crítico
+
+- ✔ Tres alumnos jugados en cada forma; cobertura de las 8 ideas contada por script (8 de 8 por forma).
+- ✔ Estrategia dominante buscada con prueba: 1.1 (script, política fija), 2.1 (script, media), 3.1 y 3.2 por análisis.
+- ✔ Hallazgos ordenados por gravedad; copiabilidad vista (sin nota: menor).
+- ✔ Sin reabrir ideas ni decisiones de Ronald; sin referencias de juegos, arte ni sonido.
+- ✔ Tuteo, sin guiones largos. Ningún otro archivo editado.
 
 ---
 

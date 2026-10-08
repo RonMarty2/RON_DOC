@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opción 2 · PixiJS</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;background:#0b0a17;color:#cfd2ff;font-family:system-ui,sans-serif;height:100%}
+  body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+  header{text-align:center;font-size:14px;padding:0 12px}header b{color:#ffd27a}
+  #marco{box-shadow:0 0 0 3px #2a2650;touch-action:none;line-height:0}
+  canvas{image-rendering:pixelated}
+  #pie{font-size:12px;opacity:.8;text-align:center;padding:0 12px}
+</style></head><body>
+<header><b>Opción 2 · PixiJS</b> (motor 2D con la tarjeta gráfica). La niebla se borra suave, con luz, partículas y animación fluida.</header>
+<div id="marco"></div>
+<div id="pie">Mueve el puntero (o arrastra el dedo) sobre el mapa para destapar la niebla. Compara el borde de la niebla con la opción 1.</div>
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@7.4.2/dist/pixi.min.js"></script>
+<script src="arte.js"></script>
+<script>
+(async () => {
+  if (document.fonts) { try { await document.fonts.load('6px "Press Start 2P"'); } catch (e) {} }
+  PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
+  const k = Math.max(1, Math.floor(Math.min(innerWidth / 320, (innerHeight - 110) / 180)));
+  const app = new PIXI.Application({ width: 320, height: 180, backgroundColor: 0x000000, antialias: false, resolution: 1 });
+  app.view.style.width = 320 * k + "px"; app.view.style.height = 180 * k + "px";
+  document.getElementById("marco").appendChild(app.view);
+  const T = (c) => PIXI.Texture.from(c), S = (c, x, y) => { const s = new PIXI.Sprite(T(c)); s.position.set(x, y); app.stage.addChild(s); return s; };
+  S(ARTE.cielo(), 0, 0);
+  const par = [[S(ARTE.horizonte(3, "#3a2f63", 22, 48, 0.12), -20, 28), 0.2], [S(ARTE.horizonte(5, "#2a2350", 30, 64, 0.22), -20, 30), 0.5], [S(ARTE.horizonte(9, "#1b1738", 24, 56, 0.3), -20, 32), 0.9]];
+  S(ARTE.suelo(), 0, 116); S(ARTE.cupula(), 14, 56);
+  ARTE.COLEGIOS.forEach(([x, y, t]) => S(ARTE.colegio(t), x, y));
+  const per = S(ARTE.persona("#d0475b", "#2a1c18"), 92, 104);
+  // brillo cálido de las ventanas y del sol (mezcla aditiva = luz de verdad)
+  const blobT = T(ARTE.blob(64));
+  const luz = (x, y, esc, tinte, alfa) => { const s = new PIXI.Sprite(blobT); s.anchor.set(0.5); s.position.set(x, y); s.scale.set(esc); s.tint = tinte; s.alpha = alfa; s.blendMode = PIXI.BLEND_MODES.ADD; app.stage.addChild(s); return s; };
+  const sol = luz(236, 104, 1.6, 0xffb070, 0.55);
+  [[30, 100], [70, 100], [48, 108]].forEach(([x, y]) => luz(x, y, 0.5, 0xffc060, 0.35));
+  // niebla: una textura donde se borra con un pincel suave (persistente y sin cuadros)
+  const rt = PIXI.RenderTexture.create({ width: 320, height: 80 });
+  const base = new PIXI.Graphics(); base.beginFill(0xbec8e1, 0.94).drawRect(0, 0, 320, 80).endFill();
+  app.renderer.render(base, { renderTexture: rt, clear: true });
+  const niebla = new PIXI.Sprite(rt); niebla.y = 100; app.stage.addChild(niebla);
+  const pincel = new PIXI.Sprite(blobT); pincel.anchor.set(0.5); pincel.scale.set(1.3); pincel.blendMode = PIXI.BLEND_MODES.ERASE;
+  const borra = (x, y) => { pincel.position.set(x, y - 100); app.renderer.render(pincel, { renderTexture: rt, clear: false }); };
+  const nubes = new PIXI.TilingSprite(T(ARTE.nubes()), 320, 80); nubes.y = 94; nubes.alpha = 0.55; app.stage.addChild(nubes);
+  // partículas: motas de luz con movimiento propio
+  const motas = []; for (let i = 0; i < 18; i++) { const m = new PIXI.Sprite(T(ARTE.mota())); m.blendMode = PIXI.BLEND_MODES.ADD; m.x = Math.random() * 320; m.y = 60 + Math.random() * 110; m.f = Math.random() * 6; m.v = 0.1 + Math.random() * 0.25; app.stage.addChild(m); motas.push(m); }
+  // globo de texto
+  const gl = new PIXI.Graphics(); gl.beginFill(0x201a33).drawRect(106, 72, 150, 30).endFill().beginFill(0xf6f1df).drawRect(104, 70, 150, 30).endFill(); app.stage.addChild(gl);
+  const tx = new PIXI.Text(ARTE.FRASE, { fontFamily: '"Press Start 2P", monospace', fontSize: 6, fill: 0x201a33, wordWrap: true, wordWrapWidth: 138, lineHeight: 9 });
+  tx.resolution = k; tx.position.set(110, 75); app.stage.addChild(tx);
+  let t = 0;
+  app.ticker.add((d) => {
+    t += d / 60; nubes.tilePosition.x -= 0.12 * d;
+    per.y = 104 + (Math.sin(t * 4.4) > 0 ? -1 : 0);
+    sol.alpha = 0.5 + Math.sin(t * 1.2) * 0.08;
+    motas.forEach((m) => { m.f += 0.02 * d; m.x += Math.sin(m.f) * 0.15; m.y -= m.v * 0.25 * d; m.alpha = 0.4 + Math.sin(m.f * 2) * 0.35; if (m.y < 40) m.y = 175; });
+  });
+  const mueve = (e) => { const r = app.view.getBoundingClientRect(), x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k; borra(x, y); par.forEach(([s, f]) => (s.x = -20 + (0.5 - x / 320) * 10 * f)); };
+  app.view.addEventListener("pointermove", mueve); app.view.addEventListener("pointerdown", mueve);
+})();
+</script></body></html>

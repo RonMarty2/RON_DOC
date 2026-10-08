@@ -47,6 +47,7 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 | 2. Qué aprende y cómo se evalúa | `disenador-de-aprendizaje` | objetivos, errores típicos, **qué varía por alumno**, registro |
 | 3. Cómo se juega | `disenador-de-bucle` | modalidad y mecánica del tema |
 | 4. Personajes y diálogos | `disenador-narrativo` | quién aparece y qué dice (en tuteo) |
+| 4-bis. Sonido | `disenador-de-sonido` | hoja de sonido por escena (música, capas por momento, efectos y el prompt para Flow Music), **justo después de diseñar cada nivel, isla o materia** y antes del crítico (Ronald, 08-10) |
 | 5. Revisión del papel | `critico-de-jugabilidad` | hallazgos; **recién ahí se le muestra a Ronald** y él aprueba |
 | 6. Construcción | Claude (motor con pruebas + pantalla) | el tema jugable en borrador, **sobre el motor de `docs/juego/PIEZAS-COMUNES.md`** (se importa, no se copia); lo nuevo que sirva a otros juegos se hace como motor y se anota ahí en el mismo commit; personajes, textos y dibujos son del juego (Ronald, 28-09, «como Doom») |
 | 7. Revisión de lo jugable | `critico-de-jugabilidad` | hallazgos sobre el juego real, antes de mostrárselo a Ronald |
@@ -98,4 +99,5 @@ lleva la carpeta). Axiom lo resolvió con una copia visible en `agentes/` y un s
 | `disenador-de-aprendizaje` | Alineación objetivo-mecánica, errores típicos, rúbrica (`04`) | Nube | 2026-09-26 | 28-09 (PC): entra también en la etapa de materia, después de la maqueta y antes del crítico, como **revisor experto de la materia** (cada concepto practicado, hermanos juntos, serie de casos, práctica abierta). Nació de la maqueta liviana de Psicoestadística que sólo Ronald, experto en ella, detectó |
 | `disenador-narrativo` | Mundo, personajes, contexto de cada escena, diálogos (`05`) | Nube | 2026-09-26 | |
 | `critico-de-jugabilidad` | Revisa propuestas como alumno y como Ronald (`06-revisiones`) | Nube | 2026-09-26 | |
+| `disenador-de-sonido` | Sonido por escena: música, capas, efectos y prompt para Flow Music (`07-sonido.md`) | PC | 2026-10-08 | Pedido de Ronald tras probar Flow Music (le gustó la primera pista). Se mejora con cada prueba (apartado «Lo aprendido»). Lo legal de Flow Music sigue pendiente: ninguna pista se integra todavía |
 | `revisar-publicacion` | Antes y después de publicar: pruebas, compilación, variables y Supabase despierto, corridas de GitHub, juego conectado, borradores ocultos (`scripts/revisar-publicacion.mjs`). Sólo lee | PC | 2026-09-25 | Nació del Supabase pausado y del deploy sin variables del 25-09. Creado como *skill* en la copia sincronizada; pasado acá el 26-09 sin cambios de lógica, sólo sin rutas personales |

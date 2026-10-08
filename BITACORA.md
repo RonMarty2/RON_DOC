@@ -10,6 +10,20 @@
 
 ## 0. En curso ahora (leer antes que nada)
 
+> **08-10 (Claude, PC RONMARTY): giro de Ronald, sin ejecutar todavía.** (1) **Sonido:** probó Flow Music (Google Labs,
+> `flowmusic.app`, sí disponible desde Bolivia, con su sesión) con una pista 8 bits para la escena «La encuesta de sueño»
+> y **le gustó mucho**. Agente nuevo `disenador-de-sonido` (`.claude/agents/`, registrado en `LEEME.md`; sale `07-sonido.md`),
+> etapa **4-bis: justo después de diseñar cada nivel, isla o materia**, antes del crítico; se mejora con cada prueba
+> (apartado «Lo aprendido»). **Lo legal (licencia de Flow Music) queda pendiente de Ronald: ninguna pista se integra ni
+> se publica.** Playground (Google Labs) descartado: no disponible en su región. (2) **Motores/aspecto:** el boceto A le
+> pareció «un dibujo y ya»; el juego actual se dibuja con rectángulos de código. Demos de la misma escena en tres técnicas
+> en `docs/juego/bocetos/motores/` (`index.html`): HTML/CSS, PixiJS, Phaser. Entre PixiJS y Phaser Ronald no ve diferencia
+> (cierto: la diferencia visible es de 1 a 2/3; lo que sube la calidad es el arte real, no el motor). Sin decidir. (3) **Ronald
+> pidió cambiar de materia a una que domine, empezar de cero rescatando lo reutilizable, y extrapolar su VISIÓN a las demás
+> materias sin copiar el estilo** (finanzas, estadística y bolsa se enseñan distinto). **Antes de hacer nada: acordar el plan
+> con él.** Pendiente: confirmar qué materia, qué entra en «de cero» y un inventario simple de lo que se puede reutilizar.
+> La maqueta 3.6 de Psicoestadística Descriptiva (Psicología) sigue sin aprobar.
+
 > **EN CURSO desde 28-09 11:45 (Claude, PC RonMarty): mejorar los agentes antes de probarlos en
 > Psicoestadística Descriptiva.** Ronald pausa AIEF (*«al jugar el Tema 1 de AIEF no domino el tema»*) y
 > prueba el equipo en una materia que domina. Decisiones suyas del 28-09, que pasan a regla:

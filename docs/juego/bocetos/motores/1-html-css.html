@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opción 1 · HTML y CSS (lo que usamos hoy)</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;background:#0b0a17;color:#cfd2ff;font-family:system-ui,sans-serif;height:100%}
+  body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+  header{text-align:center;font-size:14px;padding:0 12px}header b{color:#ffd27a}
+  #marco{overflow:hidden;background:#000;box-shadow:0 0 0 3px #2a2650}
+  #escena{position:relative;width:320px;height:180px;transform-origin:0 0;overflow:hidden;touch-action:none}
+  #escena canvas,#escena .capa{position:absolute;image-rendering:pixelated}
+  .nube{animation:deriva 60s linear infinite}
+  @keyframes deriva{from{transform:translateX(0)}to{transform:translateX(-320px)}}
+  .est{animation:titila 3s ease-in-out infinite alternate}@keyframes titila{from{opacity:.55}to{opacity:1}}
+  .cel{position:absolute;width:16px;height:16px;background:rgba(190,200,225,.94);transition:opacity 1.2s;}
+  .cel.fuera{opacity:0}
+  .mota{position:absolute;width:5px;height:5px;animation:flota 7s ease-in-out infinite alternate}
+  @keyframes flota{from{transform:translate(0,0)}to{transform:translate(14px,-18px)}}
+  #persona{animation:resp 1.4s steps(2) infinite}@keyframes resp{50%{transform:translateY(-1px)}}
+  #globo{position:absolute;left:104px;top:70px;width:150px;padding:5px 6px;background:#f6f1df;color:#201a33;font:6px/1.5 "Press Start 2P",monospace;border:1px solid #201a33;box-shadow:2px 2px 0 #201a33}
+  #globo i{position:absolute;left:-1px;bottom:-5px;width:4px;height:4px;background:#f6f1df;border:1px solid #201a33;border-top:0;border-right:0}
+  #pie{font-size:12px;opacity:.8;text-align:center;padding:0 12px}
+</style></head><body>
+<header><b>Opción 1 · HTML y CSS</b> (la técnica de hoy: capas de imágenes + animaciones CSS). La niebla son cuadros que se desvanecen.</header>
+<div id="marco"><div id="escena"></div></div>
+<div id="pie">Mueve el puntero (o arrastra el dedo) sobre el mapa para destapar la niebla. Nota cómo se ve el borde de la niebla.</div>
+<script src="arte.js"></script>
+<script>
+const esc = document.getElementById("escena"), px = (el, x, y) => { el.style.left = x + "px"; el.style.top = y + "px"; return el; };
+const capa = (cv, x, y, cls) => { cv.style.imageRendering = "pixelated"; if (cls) cv.className = cls; px(cv, x, y); esc.appendChild(cv); return cv; };
+const par = [];
+capa(ARTE.cielo(), 0, 0);
+const estrellas = capa(ARTE.cielo(), 0, 0, "est"); estrellas.style.mixBlendMode = "screen"; estrellas.style.opacity = ".0"; estrellas.remove();
+par.push([capa(ARTE.horizonte(3, "#3a2f63", 22, 48, 0.12), -20, 28), 0.2]);
+par.push([capa(ARTE.horizonte(5, "#2a2350", 30, 64, 0.22), -20, 30), 0.5]);
+par.push([capa(ARTE.horizonte(9, "#1b1738", 24, 56, 0.3), -20, 32), 0.9]);
+capa(ARTE.suelo(), 0, 116);
+capa(ARTE.cupula(), 14, 56);
+ARTE.COLEGIOS.forEach(([x, y, t]) => capa(ARTE.colegio(t), x, y));
+const per = capa(ARTE.persona("#d0475b", "#2a1c18"), 92, 104); per.id = "persona";
+// niebla en cuadros de 16 px
+const celdas = [];
+for (let f = 0; f < 5; f++) for (let c = 0; c < 20; c++) { const d = document.createElement("div"); d.className = "cel"; px(d, c * 16, 100 + f * 16); esc.appendChild(d); celdas.push([d, c * 16 + 8, 100 + f * 16 + 8]); }
+const nb = capa(ARTE.nubes(), 0, 94, "nube"); nb.style.opacity = ".55";
+for (let i = 0; i < 12; i++) { const m = capa(ARTE.mota(), 20 + Math.random() * 280, 70 + Math.random() * 90, "mota"); m.style.animationDelay = (-Math.random() * 7) + "s"; }
+const g = document.createElement("div"); g.id = "globo"; g.innerHTML = ARTE.FRASE + "<i></i>"; esc.appendChild(g);
+function ajusta() { const k = Math.max(1, Math.floor(Math.min(innerWidth / 320, (innerHeight - 110) / 180))); esc.style.transform = `scale(${k})`; const m = document.getElementById("marco"); m.style.width = 320 * k + "px"; m.style.height = 180 * k + "px"; return k; }
+let k = ajusta(); addEventListener("resize", () => (k = ajusta()));
+function mueve(e) {
+  const r = esc.getBoundingClientRect(), x = (e.clientX - r.left) / k, y = (e.clientY - r.top) / k;
+  celdas.forEach(([d, cx, cy]) => { if ((cx - x) ** 2 + (cy - y) ** 2 < 28 * 28) d.classList.add("fuera"); });
+  par.forEach(([el, f]) => (el.style.transform = `translateX(${(0.5 - x / 320) * 10 * f}px)`));
+}
+esc.addEventListener("pointermove", mueve); esc.addEventListener("pointerdown", mueve);
+</script></body></html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opción 3 · Phaser</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;background:#0b0a17;color:#cfd2ff;font-family:system-ui,sans-serif;height:100%}
+  body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+  header{text-align:center;font-size:14px;padding:0 12px}header b{color:#ffd27a}
+  #marco{box-shadow:0 0 0 3px #2a2650;touch-action:none;line-height:0}
+  canvas{image-rendering:pixelated}
+  #pie{font-size:12px;opacity:.8;text-align:center;padding:0 12px}
+</style></head><body>
+<header><b>Opción 3 · Phaser</b> (motor de juegos 2D completo: escenas, partículas, animaciones, física, sonido).</header>
+<div id="marco"></div>
+<div id="pie">Mueve el puntero (o arrastra el dedo) sobre el mapa para destapar la niebla.</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.80.1/phaser.min.js"></script>
+<script src="arte.js"></script>
+<script>
+(async () => {
+  if (document.fonts) { try { await document.fonts.load('6px "Press Start 2P"'); } catch (e) {} }
+  const k = Math.max(1, Math.floor(Math.min(innerWidth / 320, (innerHeight - 110) / 180)));
+  class Escena extends Phaser.Scene {
+    create() {
+      const add = (clave, cv) => this.textures.addCanvas(clave, cv);
+      add("cielo", ARTE.cielo()); add("h1", ARTE.horizonte(3, "#3a2f63", 22, 48, 0.12)); add("h2", ARTE.horizonte(5, "#2a2350", 30, 64, 0.22)); add("h3", ARTE.horizonte(9, "#1b1738", 24, 56, 0.3));
+      add("suelo", ARTE.suelo()); add("cupula", ARTE.cupula()); add("per", ARTE.persona("#d0475b", "#2a1c18")); add("mota", ARTE.mota()); add("blob", ARTE.blob(64)); add("nubes", ARTE.nubes());
+      ["#b5483b", "#3f6fb0", "#7a4fb0"].forEach((c) => add("col" + c, ARTE.colegio(c)));
+      const I = (x, y, c) => this.add.image(x, y, c).setOrigin(0, 0);
+      I(0, 0, "cielo");
+      this.par = [[I(-20, 28, "h1"), 0.2], [I(-20, 30, "h2"), 0.5], [I(-20, 32, "h3"), 0.9]];
+      I(0, 116, "suelo"); I(14, 56, "cupula");
+      ARTE.COLEGIOS.forEach(([x, y, t]) => I(x, y, "col" + t));
+      this.per = I(92, 104, "per");
+      this.tweens.add({ targets: this.per, y: 103, duration: 700, yoyo: true, repeat: -1, ease: "Stepped" });
+      const luz = (x, y, esc, tinte, a) => this.add.image(x, y, "blob").setScale(esc).setTint(tinte).setAlpha(a).setBlendMode(Phaser.BlendModes.ADD);
+      const sol = luz(236, 104, 1.6, 0xffb070, 0.55); this.tweens.add({ targets: sol, alpha: 0.42, duration: 2600, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+      [[30, 100], [70, 100], [48, 108]].forEach(([x, y]) => luz(x, y, 0.5, 0xffc060, 0.35));
+      // niebla: RenderTexture que se borra con un pincel
+      this.niebla = this.add.renderTexture(0, 100, 320, 80).setOrigin(0, 0);
+      this.niebla.fill(0xbec8e1, 0.94);
+      this.pincel = this.make.image({ key: "blob", add: false }).setScale(1.3);
+      this.nubes = this.add.tileSprite(0, 94, 320, 80, "nubes").setOrigin(0, 0).setAlpha(0.55);
+      this.add.particles(0, 0, "mota", { x: { min: 0, max: 320 }, y: { min: 60, max: 175 }, lifespan: 6000, speedY: { min: -14, max: -6 }, speedX: { min: -5, max: 5 }, alpha: { start: 0, end: 0, ease: (v) => Math.sin(v * Math.PI) * 0.75 }, frequency: 330, blendMode: "ADD" });
+      this.add.rectangle(105, 71, 150, 30, 0x201a33).setOrigin(0, 0);
+      this.add.rectangle(104, 70, 150, 30, 0xf6f1df).setOrigin(0, 0);
+      this.add.text(110, 75, ARTE.FRASE, { fontFamily: '"Press Start 2P", monospace', fontSize: "6px", color: "#201a33", wordWrap: { width: 138 }, lineSpacing: 3, resolution: k });
+      const mueve = (p) => { this.niebla.erase(this.pincel, p.x, p.y - 100); this.par.forEach(([s, f]) => (s.x = -20 + (0.5 - p.x / 320) * 10 * f)); };
+      this.input.on("pointermove", mueve); this.input.on("pointerdown", mueve);
+    }
+    update(t, d) { this.nubes.tilePositionX += 0.007 * d; }
+  }
+  const juego = new Phaser.Game({ type: Phaser.AUTO, width: 320, height: 180, parent: "marco", pixelArt: true, backgroundColor: "#000000", scene: Escena, input: { touch: true } });
+  juego.events.once("ready", () => { const c = juego.canvas; c.style.width = 320 * k + "px"; c.style.height = 180 * k + "px"; });
+})();
+</script></body></html>

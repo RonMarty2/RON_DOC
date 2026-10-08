@@ -12,6 +12,7 @@ recomendación.
 | Progresión (beat chart) | `03-progresion-<materia>.md` | `disenador-de-progresion` | El recorrido de la materia nivel por nivel, en orden |
 | Aprendizaje y evaluación | `04-aprendizaje.md` | `disenador-de-aprendizaje` | Qué mecánica enseña cada objetivo y cómo cuenta para la nota |
 | Mundo y narrativa | `05-mundo-y-narrativa.md` | `disenador-narrativo` | Dónde estamos, quiénes son los personajes, qué contexto trae cada escena |
+| Sonido | `07-sonido.md` | `disenador-de-sonido` | Qué suena en cada escena y por qué: música, capas por momento, efectos y el prompt para Flow Music |
 | Revisiones | `06-revisiones.md` | `critico-de-jugabilidad` | Qué falla en lo propuesto, visto como jugador y como alumno |
 
 **Orden de trabajo (26-09):** 1) el **adaptador** pasa el dossier a 2 o 3 propuestas de juego;

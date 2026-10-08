@@ -1,0 +1,53 @@
+Recuento del bucle v2 del Tema 1. Seccion v2 de 02: 648 lineas, 83627 caracteres
+
+OK    Reglas G1 a G12 :: 12: G1,G2,G3,G4,G5,G6,G7,G8,G9,G10,G11,G12
+OK    Mecanicas M1 a M14 :: 14
+OK    Reglas del paso 1, P1.1 a P1.6 :: 6
+OK    Reglas de la revelacion V1 a V6 :: 6
+OK    Filas de efecto R2 a R8 en el documento = datos (sin repetidas) :: doc 46, datos 46
+OK    Filas por caso (R2 5, R3 5, R4 7, R5 9, R6 7, R7 5, R8 8 = 46) :: {2: 5, 3: 5, 4: 7, 5: 9, 6: 7, 7: 5, 8: 8} total 46
+OK    Cada efecto de los datos aparece en la linea de su fila :: 83 efectos
+OK    G5: las 7 filas nombradas existen en el documento y en los datos :: R2.1.sin, R3.B.sin, R4.1.sin, R4.2.sin, R6.1.sin, R5.8, R8.3
+OK    G5: cinco filas valen exactamente la mitad (redondeo hacia cero) de su fila con evidencia :: R2.1.sin ok, R3.B.sin ok, R4.1.sin ok, R4.2.sin ok, R6.1.sin ok
+OK    Cada regla general aparece aplicada en las tablas de efectos que le corresponden (23 comprobaciones) :: G2, G3, G4, G5, G7, G10, G12 revisadas caso por caso
+OK    G5 en los casos 2, 3, 4, 5, 6 y 8 (cada uno nombra su fila de acierto sin evidencia) :: {2: True, 3: True, 4: True, 5: True, 6: True, 8: True}
+OK    Meta 65 y marcas 25 y 65 en G6, G11, P1.6 y 1.3; no queda '60/60' como meta
+OK    Codigos E: 29 en los datos :: 29
+OK    Codigos E del documento = datos :: doc 29
+OK    Codigos por caso (E2 4, E3 6, E4 3, E5 5, E6 4, E7 3, E8 4) :: {2: 4, 3: 6, 4: 3, 5: 5, 6: 4, 7: 3, 8: 4}
+OK    Tabla unica de codigos y habitos (8.1): 29 filas, sin repetidas :: 29 filas
+OK    Habitos de cada codigo en el documento = datos
+OK    Ningun codigo sin habito (29 de 29 con al menos uno)
+OK    Codigos por habito (H1 7, H2 5, H3 12, H4 9; E8d en dos) :: {'H1': 7, 'H2': 5, 'H3': 12, 'H4': 9}
+     codigos en dos habitos: E2a, E3a, E4a, E8d
+OK    Los tres codigos que faltaban en 04 (hallazgo I1: E2d, E3f, E5e) estan en la tabla
+OK    Sobres: S-P1 + 29 codigos = 30, dos sin sobre propio (E5e, E8d)
+OK    Cambios de la secc. 0: 17 :: 17
+OK    Ajustes a la ficha de la secc. 14: 15 :: 15
+OK    G7: las 10 tiradas son exactamente las que cumplen las restricciones :: 10 posibles, 10 en la lista
+     caso 3: P 4, B 4, A 2 de 10
+     caso 6: P 4, B 4, A 2 de 10
+     caso 7: P 5, B 5, A 0 de 10
+OK    G7: caso 3 y caso 6 P4 B4 A2; caso 7 P5 B5
+OK    E-S1: suma de C de los casos 3, 6 y 7 en las 10 tiradas, maximo 0 :: [0, -25, -25, -25, -25, -30, -5, -5, -30, -30]
+OK    E-S1: cota 50 + 0 + 5 + 5 + 4 + 0 = 64 < 65
+OK    E-S1: aumentos posibles = 29 :: 5 (c2) + 5 (c4) + 4 (c5) + 15 (par B de c3/c6/c7)
+OK    E-S1: lo mejor posible de los casos 3, 6 y 7 juntos = +15
+OK    Quien entiende en una version tipica: C suma 64 y Voz suma 31 :: C 64 Voz 31 (Voz final 81)
+OK    E-S2: los 13 efectos de frenar sobre Voz son negativos (Voz < 50 < 65) :: 13 efectos, el menos negativo es -6
+     fichas: un clave, 3 fichas 0.500; un clave, 2 fichas 0.333; dos claves basta uno, 3 0.800; dos claves basta uno, 2 0.600; dos claves necesarias, 3 0.200; dos claves necesarias, 2 0.067; tres papeles necesarios, 3 (caso 5 b) 0.050
+OK    Fichas: 0,50 / 0,33 / 0,80 / 0,60 / 0,20 / 0,067 / 0,05
+OK    Escribir 0 vale con |rho| <= 1 en 22,3 % (delta 0) y 16,1 % (delta 3) con el recorte I5 :: 22.3 % y 16.1 %
+OK    Refuerzo del caso 2 entra en 3/6 = 50 % de las versiones :: 3 lugares libres entre 6 papeles (incluye el refuerzo)
+OK    Confiabilidad del caso 5: 100/164 = 0,61
+OK    Contraste de los textos del boceto: >= 4,5 a 1 :: #b8d4ff 13.4 a 1; #ffdc94 15.3 a 1 (sobre #07060d)
+OK    Efectos de las reacciones de 05 (NT1.6) contra los datos :: 51 pares leidos; diferencias: 0
+OK    Sin guiones largos (U+2014) en la seccion v2 :: 0
+OK    Sin formas de voseo comunes :: []
+     menciones de programas o 'dossier' (deben estar solo en notas del equipo): 5 -> ['eviews', 'excel', 'jamovi', 'según el dossier', 'spss']
+     marcadores [RECONSTRUIR]: 19
+     vocabulario viejo en la seccion: 5 -> ['Lectores', 'editora', 'mesa fija', 'portada']
+OK    Vocabulario viejo (Lectores, editora, portada, mesa fija) solo en la nota de equivalencias
+OK    Secc. 16 lista 7 puntos que no se pudieron reconstruir :: 7 puntos; 19 marcadores en el texto
+
+Resultado: 0 comprobaciones fallaron.

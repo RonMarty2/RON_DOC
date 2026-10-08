@@ -1,0 +1,47 @@
+Simulacion bucle v2 Tema 1 (reconstruida). 20000 versiones, semilla 20261008, meta C y Voz >= 65
+
+== Comprobaciones exactas ==
+E-S1, suma de C de los casos 3, 6 y 7 en las 10 tiradas: [0, -25, -25, -25, -25, -30, -5, -5, -30, -30] (maximo 0)
+E-S1, cota: 50 + 0 + 5 (c2 B sin evidencia) + 5 (c4) + 4 (c5, R5.8) + 0 (c8, R8.3) = 64  < 65: True
+E-S1, aumentos posibles: 5 (c2) + 5 (c4) + 4 (c5) + 15 (el mejor par B de c3, c6, c7) = 29
+Quien entiende, todo bien en una version tipica: C suma 64 (queda en 100 por el tope), Voz suma 31 (queda en 81)
+
+== Estrategias con nombre (20 000 versiones) ==
+E-S1 firmar siempre (c5: (a) y 0)                          pasa   0.0 %   (C media 6.2 | Voz media 95.5)
+E-S2 frenar siempre                                         pasa   0.0 %   (C media 61.8 | Voz media 0.0)
+E-S3 intermedia sin papeles (c5 frenar, c7 tal cual)        pasa   0.0 %
+E-S3b igual, c5 escribe 0                                   pasa   0.0 %
+E-S3c igual y c7 mira el dibujo contra la hoja              pasa   0.0 %
+E-S4 abre 3 al azar; si no halla, firma             pasa  34.9 %   (C < meta en  65.1 % | Voz < meta en   0.0 %)
+E-S5 abre 3 al azar; si no halla, frena             pasa  15.7 %   (C < meta en   7.1 % | Voz < meta en  84.3 %)
+E-S9 copia las decisiones de otra version                  pasa   0.5 %
+
+E-S10 quien entiende, segun su respaldo y p (acierto del clave: ESTIMACION, no dato):
+   si falla, prudente    0.25: 2.6 % | 0.50: 23.9 % | 0.65: 49.0 % | 0.80: 77.3 % | 0.95: 97.7 % | 1.00: 100.0 %
+   si falla, firmar      0.25: 16.4 % | 0.50: 48.7 % | 0.65: 71.4 % | 0.80: 89.9 % | 0.95: 99.3 % | 1.00: 100.0 %
+   si falla, intermedio  0.25: 23.5 % | 0.50: 64.1 % | 0.65: 83.5 % | 0.80: 95.4 % | 0.95: 99.8 % | 1.00: 100.0 %
+
+Sobrecorregir un caso y, en lo demas, entender (respaldo prudente):
+   E-S6 redisena siempre el 7         p=0.65: 35.1 % | p=0.80: 64.0 % | p=1.00: 100.0 %
+   E-S7 escribe 0 siempre en el 5     p=0.65: 47.7 % | p=0.80: 74.6 % | p=1.00: 100.0 %
+   E-S8 espera siempre en el 8        p=0.65: 32.8 % | p=0.80: 58.6 % | p=1.00: 100.0 %
+
+== Busqueda de la mejor politica que NUNCA abre un papel ==
+Espacio: 3x5x3x6x4x4x5 = 21600 politicas (c2 3, c3 5, c4 3, c5 6, c6 4, c7 4, c8 5). Se evalua en 3000 versiones y se re-mide la ganadora en 20000 nuevas.
+Mejores 5 en la muestra de busqueda:
+     5.3 %  ['tal', 'adapta', 'A', ('a', 'frenar'), 'podrian', 'adapta', 'esperar']
+     5.3 %  ['tal', 'adapta', 'A', ('b', 'frenar'), 'podrian', 'adapta', 'esperar']
+     4.7 %  ['tal', 'adapta', 'A', ('a', 'cero'), 'tal', 'adapta', 'esperar']
+     4.7 %  ['tal', 'adapta', 'A', ('b', 'cero'), 'tal', 'adapta', 'esperar']
+     4.6 %  ['tal', 'adapta', 'A', ('a', 'frenar'), 'podrian', 'adapta', 'beto']
+Re-medida de las 5 mejores en 20000 versiones nuevas:
+     5.0 %  ['tal', 'adapta', 'A', ('a', 'frenar'), 'podrian', 'adapta', 'esperar']
+     5.0 %  ['tal', 'adapta', 'A', ('b', 'frenar'), 'podrian', 'adapta', 'esperar']
+     3.8 %  ['tal', 'adapta', 'A', ('a', 'cero'), 'tal', 'adapta', 'esperar']
+     3.8 %  ['tal', 'adapta', 'A', ('b', 'cero'), 'tal', 'adapta', 'esperar']
+     4.3 %  ['tal', 'adapta', 'A', ('a', 'frenar'), 'podrian', 'adapta', 'beto']
+MEJOR POLITICA SIN PAPELES (re-medida): 5.0 %   (v14 del critico: 4,8 %; umbral declarado: menos de 15 %)
+Politicas que pasan >= 10 % en la muestra de busqueda: 0 de 21600 ; >= 5 %: 2
+Sin mirar el dibujo del caso 7 (la mejor de las restantes), re-medida: 3.4 %
+Sensibilidad: con meta 60/60, la mejor de las 50 primeras pasa 12.5 %
+Sensibilidad: con meta 70/70, la mejor de las 50 primeras pasa 0.9 %

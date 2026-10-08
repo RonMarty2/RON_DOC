@@ -1,8 +1,13 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 9 · 29-09-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 10 · 08-10-2026** · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
+
+### De la revisión de la maqueta de Psicoestadística Descriptiva · Psicología, versión 3.4 (papel, 08-10)
+
+Ninguna pregunta nueva. Un bloqueo y cinco importantes de diseño: los corrige el adaptador antes de que veas la
+maqueta, sin reabrir nada de lo que decidiste.
 
 ### De la revisión de la maqueta de Psicoestadística Descriptiva · Psicología, ronda 3.1 (papel, 29-09)
 
@@ -84,6 +89,427 @@ Se suman a las cinco que esa parte ya lista.
 3. **Cuántos casos tiene la isla**: uno por semana o uno por unidad (hallazgo 5). Recomendado: uno por unidad.
 4. **Si la nota sale "del caso más la defensa" (lo que dice IDEA-JUEGO §3 y la escena 1) o "sólo de la
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
+
+---
+
+## 08-10-2026 · Psicoestadística Descriptiva (Psicología), maqueta v3.5: lo corregido, jugado otra vez (papel, v11)
+
+**Qué se revisó.** La versión 3.5 de `00-adaptacion-psicoestadistica-descriptiva-psicologia.md`: §R3.0-sexies y todo lo
+marcado «3.5» (Tema 6 casos 2, 3 y 4, 4A caso 3, Tema 5 caso 3, filas 20, 56 a 58, 68, 76, 78, §R3.6 con sus dos tablas, §R3.8 y la «Lista de salida · versión 3.5»), contra mi v10. No reabro nada de Ronald. Nada está construido
+(motor nuevo = trabajo). No usé la copia en conflicto de Synology. **Sin terminal en esta sesión**: recontado a mano,
+fila por fila, no con script.
+
+**Veredicto.** **Sin bloqueos.** La 3.5 resuelve de verdad el bloqueo de la v10 y los demás hallazgos: lo comprobé en el
+cuerpo, no en la tabla (abajo). «A baja B» ya no se sostiene en ninguna versión y la consecuencia ya no dice «lo movía X».
+Lo que queda son **cinco importantes**, todos de especificación (porcentajes, márgenes, qué se turna), nada de diseño
+nuevo; salen con una pasada corta del adaptador. **Puede ir a Ronald después de esa pasada, sin otra ronda de crítico**
+(los ajustes los revisa el propio adaptador contra esta lista). Los conteos son verdad (recuento abajo), con una
+excepción: las «9 respuestas fijas» no son las que hay (importante 3).
+
+### Verificación de la v10, hallazgo por hallazgo, en el cuerpo
+
+| v10 | ¿Resuelto en el cuerpo? | Dónde y cómo |
+|---|---|---|
+| 1 (bloqueo) | **Sí** | Tema 6 caso 3: «A baja B nunca se sostiene», y las 6 consecuencias dependen de lo firmado y de la evidencia; «se mantiene» ya no premia la causa. Quedan afinar los márgenes (importante 4) |
+| 2 | **Sí, con un margen sin número** | La frase «la mitad central… [RIC] puntos» existe y usa el número; «el promedio representa al grupo» se juzga con «buena parte de la escala», sin porcentaje (importante 4) |
+| 3 | **Sí** | Hueco obligatorio con tres opciones siempre en pantalla; el balance de las tres formas queda sin fijar (importante 1) |
+| 4 | **Sí, con un caso roto** | Predicción por N horas en redes, b y a de la herramienta; falla en las versiones de nube curva (importante 2) |
+| 5 | **Sí en el caso 2, trasladado** | Una sola frase fija en la mesa del caso 2; las otras pasaron al caso 4 sin turno (importante 3) |
+| 6 | **Sí** | Grep propio: «I14» sólo en notas SUPERADO o en el relato de lo corregido; las páginas viejas sólo en notas que dicen que ya no existen. Resta una línea viva (menor 8) |
+| 7 | **Sí** | Aplicada; ver menor 6 |
+| 8 | **Sí** | Fila 58 en 1 (línea 982 de la tabla) |
+| 9 | **Sí** | Rótulo del Tema 5 con la fila 73 (línea 747); forma (c) definida (línea 1118) |
+| 10 | **Sí** | 4A caso 3 con «hasta 3» y «al menos 12» (línea 669) |
+| 11 | **En parte** | El tope conjunto está (§R3.8), pero la lista de fijas está mal contada (importante 3) |
+| 12 | **Sí** | «La ficha del archivo dice el tipo» |
+
+### Hallazgos, de más grave a menos grave
+
+**Importantes:**
+
+1. **La forma (c) vuelve a la hora de «no se puede decir con una recta» la respuesta que más gana.** **Qué pasa:**
+   (c) dice que si 4B caso 4 trae r alto, el Tema 6 caso 3 es curva con r bajo. Entonces todo alumno con r alto en 4B
+   recibe la curva en el Tema 6 (con el 50 % de la clase en r alto, ya es la mitad), y a eso se suman las versiones de
+   r bajo que también sorteen curva. «Siempre no se puede decir con una recta» gana al menos la mitad de las veces: es
+   una estrategia dominante barata, y es un dato que se corre de boca en boca («si tu 4B fue r alto, en el 6 es
+   curva»). **Por qué importa:** la regla 6 de mi encargo; la 3.5 dice que cada opción fija gana una de tres formas,
+   y eso sólo es verdad si las tres son tercios. **Propuesta (decisión (b): la confirmo con esta condición):**
+   `versionValida` fija que la curva sea un tercio de las versiones del Tema 6 caso 3, no más. Para eso, 4B caso 4
+   trae r alto en un tercio de las versiones y r bajo en dos tercios; el tercio de r alto es el que fuerza la curva
+   en el 6, y en las de r bajo el Tema 6 reparte a mitades «se debilita» y «se mantiene», sin curva. Así cada forma
+   cae en un tercio y la garantía de r bajo con curva sigue. Si se prefiere, se vuelve a (a) dentro de 4B caso 4 y se
+   quita (c), a costa de duplicar la loma.
+
+2. **Tema 6 caso 4: la repregunta de predicción se contradice con la nube curva.** **Qué pasa:** los casos 3 y 4 usan
+   el mismo archivo (A redes, B bienestar). En las versiones de nube curva (r global como 0,09), la herramienta da b y
+   a de una recta que no describe esa nube, y la respuesta correcta a «¿qué bienestar prevé para N horas?» es
+   ambigua: «no se predice» porque N está fuera del rango, o porque no hay recta. Un alumno que contestó «no se puede
+   decir con una recta» en el caso 3 y calcula un ŷ en el 4 se contradice, y el juego tendría que castigar una
+   respuesta o la otra. **Por qué importa:** la pregunta tiene dos respuestas correctas posibles, que es lo que
+   la v10 buscaba quitar. **Propuesta:** en las versiones de nube curva la familia de predicción es la que se omite
+   (cuatro de cinco: la quinta, justamente esa), y `versionValida` exige en las demás que N quede a un margen claro
+   dentro o fuera del rango (por ejemplo, al menos 15 % del largo del rango más allá de cada extremo, o claramente
+   interior), para que nadie discuta un N en el borde. Con eso la repregunta es jugable en todas sus versiones:
+   dentro, escribes el ŷ; fuera, «no se predice»; y «siempre predigo» o «nunca predigo» pierden la mitad.
+
+3. **La decisión (a) cumple la regla 5 en el caso 2 pero no en el 4, y las «9 respuestas fijas» están mal contadas.**
+   **Qué pasa:** «la distribución es normal» y los cuatro decimales se mudaron al caso 4. Allí ya había la pieza
+   «lo sacamos y no lo dijimos» (por turno), «¿entonces el grupo tiene burnout?» (repregunta, nunca se sostiene) y la
+   frase de causa. Sumadas, el caso 4 tiene hasta cuatro cosas que nunca se sostienen y sólo una declara turno. La
+   lista de salida dice «ninguna mesa tiene más de una» y cuenta 9 fijas, pero esas dos mudadas, y el burnout si sale
+   en toda versión, no están en la cuenta de 9: la cuenta bajó porque las piezas cambiaron de lugar, no porque
+   desaparecieran. El tope conjunto de la menor 11 de la v10 depende de que la lista sea la verdadera.
+   **Por qué importa:** es el mismo defecto que la v10 encontró, trasladado, y el tope se aplicaría a una lista
+   incompleta. **Propuesta, y respuesta a la decisión (a): la confirmo, con condiciones.** Mi alternativa (un toque
+   único «cifras que no van al informe» en el caso 2) la retiro: junta las dos pero deja la mesa del caso 2 con dos
+   cosas que nunca se sostienen (ese toque y «varía más que»), así que el adaptador resuelve mejor. Condiciones:
+   (i) «es normal» queda como repregunta de la familia «medida» y esa familia nunca se omite de las cuatro (así su
+   trampa llega a toda versión; la que se omite rota entre datos, causa y alcance); (ii) los cuatro decimales y
+   «lo sacamos y no lo dijimos» se turnan, uno por versión como mucho en el informe; (iii) el burnout y la causa
+   cuentan como repregunta, no como pieza del informe, y se dice cuántas de las cuatro familias llevan una que nunca
+   se sostiene por versión (a lo más dos). Con eso la lista cuenta honestamente **9 fijas más los decimales si son
+   fijos, o 9 si se turnan**; que diga cuál es.
+
+4. **Márgenes de `versionValida` sin número, justo donde la v10 pidió números.** **Qué pasa:** tres lugares quedan en
+   lenguaje corriente:
+   - **Caso 2:** «el promedio representa al grupo» se juzga con «si el tramo cubre buena parte de la escala». «Buena
+     parte» es lo que la v10 tuvo que cerrar en 4A y en el CV, y vuelve a abrir la discusión de un 8.
+   - **Caso 3:** «se debilita» (los dos R² de grupo bajo la mitad del global) y «se mantiene» (al menos el 80 %) dejan
+     una **zona intermedia** (entre 50 y 80 %) y la curva (r bajo) puede cumplir «bajo la mitad» por azar. No dice qué
+     gana si una versión cae en la zona o en dos casos a la vez.
+   - **Caso 3, los R² de grupo:** se dice «con tus R²» y a la vez que cada R² es un cuadrado de su r. Si el hueco se
+     juzga con tus R² sin validarlos aparte, escribir un R² inventado y coherente con el hueco elegido sería una
+     salida (o, si el hueco se juzga con los datos verdaderos, esos dos campos serían peaje).
+   **Por qué importa:** son las reglas que impiden la discusión y los peajes; sin número, se arreglan "a ojo" al
+   construir. **Propuesta:** (i) «el promedio representa al grupo» no se sostiene si el RIC es de al menos la mitad del
+   largo de la escala y sí si es de menos de un quinto; `versionValida` descarta lo que cae entre medio. (ii) Zona
+   intermedia: `versionValida` la excluye (ninguna versión cae entre 50 y 80 %), y la curva se define por la nube y
+   gana siempre (r global menor que 0,2 con forma curva), con las versiones de «se debilita» o «se mantiene»
+   exigiendo r global moderado (por ejemplo, al menos 0,25). (iii) Los R² de grupo se validan contra los datos
+   (cada campo tiene su respuesta única), y el hueco se juzga contra los datos, no contra lo escrito; cada R²
+   decide además qué consecuencia aparece (por ejemplo, un R² mal escrito que cruza el margen avisa en la audiencia
+   «sus dos grupos mostraban otra cosa»). Así los dos campos pesan sin ser peaje ni prestarse a ajustar.
+
+5. **El Tema 6 casos 2 y 4 comparten tres piezas por turno sin que el turno esté definido.** **Qué pasa:** la 3.5
+   pone por turno «lo sacamos…» y la familia que se omite, pero no dice a qué tabla se atan: si dos alumnos de
+   versión parecida pueden tener la misma combinación, el reparto no cambia con el alumno. **Por qué importa:**
+   regla 11 (que dos compañeros no puedan dictarse). **Propuesta:** la combinación de familias omitidas, de
+   decimales o «lo sacamos», y de N dentro o fuera, es un dato más de la versión y se barre con el resto en la
+   prueba de que dos versiones no comparten respuesta correcta (que ya existe en la 3.4 para otros casos).
+
+**Menores:**
+
+6. **La pantalla partida del caso 3: sí funciona, con tres cuidados.** *Primero se ve, después se calcula* se cumple
+   mejor que en cualquier otro punto del Tema 6, y se dibuja con la nube y las rectas que 4B ya va a tener. Cuidados:
+   (i) «tocar la línea de X» en un celular es un blanco finísimo: que sea un botón o un asa grande («Partir por horas
+   de sueño»); (ii) dos colores no bastan para un daltónico: que además cambien la forma del punto (círculo y
+   cuadrado); (iii) el corte es automático (la mediana de X), así que el toque no es una decisión sino una revelación:
+   está bien, pero no cuenta como número ni como decisión en ninguna tabla. Una variante opcional, con costo: dejar
+   elegir entre dos variables para partir (una que debilita y otra que no) vuelve el toque una decisión, pero agrega
+   una segunda tercera variable al dossier; yo no la haría.
+
+7. **La fila 76 cuenta 2 usos por elevar dos r al cuadrado.** Lo que se practica es una situación (la tercera
+   variable) con un hueco y tres productos; los dos «usos» son el mismo cálculo dos veces. La convención de §R3.5
+   lo permite y el adaptador la anotó, pero entonces las filas de una sola vez serían 12 y las de dos o más 56. No
+   cambia nada del juego; decirlo en el conteo.
+
+8. **Una línea viva con el criterio viejo.** En §R3.8, «Reglas del juego, marcadas así en el manual», la última
+   frase dice que «muy heterogéneo» se juzga comparando dos CV; en la 3.5 esa frase ya no existe (es «las horas
+   varían más…»). Cambiarla por la comparativa o marcarla SUPERADO.
+
+9. **Los dos R² de grupo de la tabla «Cada número decide» (fila 57)** dicen «3 campos» pero cuentan los 3 como uno
+   solo; al corregir el importante 4 (iii), separar en dos filas los R² de grupo para que la cuenta de "números que
+   deciden" cuadre con lo que de verdad decide cada uno.
+
+### Las jugadas, caso por caso
+
+- **Caso 2 (el centro vacío).** *El que sabe:* elige RIC para la escala, CV para las horas, escribe el tramo, y ve
+  que «el promedio representa al grupo» depende de su número; frena «la cohesión varía más que las horas»; juzga
+  «las horas varían más que los kilómetros» con su CV contra el dado. *El que no sabe:* la escalera lo lleva al RIC
+  por el tipo de la ficha, y el tramo escrito con la desviación o el rango lo castiga en la frase del tramo. *El
+  perezoso:* «siempre CV» o «siempre RIC» pierde en una variable; «frena lo que suene grande» ya no rinde, porque
+  hay una sola frase fija y las demás se deciden con números. Queda bien. Sólo falta el número de «buena parte».
+- **Caso 3 (la tercera variable).** *El que sabe:* parte la nube, lee, escribe tres R², elige el hueco que sus
+  datos dicen y no firma «A baja B». *El que no sabe:* ve la nube en dos colores y puede acertar el hueco a ojo; está
+  bien (primero se ve), pero por eso los dos R² de grupo tienen que decidir algo propio (importante 4). *El perezoso:*
+  «siempre se debilita» o «siempre se mantiene» gana un tercio; «siempre curva» ganaría la mitad o más con (c) tal
+  como está (importante 1); dejar el hueco vacío no se puede; «A baja B» pierde en las tres formas, siempre.
+  **«A baja B» nunca se sostiene: confirmado.** Se enseña una vez y se aprende («no la firmes»), pero pesa poco y está
+  dicho como fija. **El hueco de tres opciones, ganado sin pensar:** no, salvo por (c).
+- **Caso 4 (la audiencia).** *El que sabe:* dentro del rango calcula el ŷ; fuera, «no se predice»; frena «es normal»
+  con la forma y los decimales con la falsa precisión. *El que no sabe:* la escalera lo lleva a D4 4.6. *El perezoso:*
+  «siempre predigo» y «nunca predigo» pierden la mitad; en las versiones curva la pregunta no se puede responder
+  limpia (importante 2). Con N dentro o fuera **la repregunta es jugable**, con los dos arreglos de arriba.
+
+### Las tres decisiones del adaptador
+
+- **(a) «es normal» y los cuatro decimales al caso 4:** **confirmada con condiciones** (importante 3). Retiro mi
+  alternativa del toque único: deja dos cosas fijas en la mesa del caso 2.
+- **(b) la forma (c) «garantizado entre dos temas»:** **confirmada con la condición del importante 1** (tercios). Sin
+  ella, la curva favorece a una estrategia fija.
+- **(c) tope conjunto de peso para 9 respuestas fijas:** **confirmado como idea**, **rechazada la cuenta de 9** hasta
+  que se resuelva el importante 3. El tope es una regla de progresión, no un reparto, y no reabre lo de Ronald.
+
+### Recuento a mano (sin terminal: no pude correr `contar.py`)
+
+| Conteo de la lista de salida 3.5 | Mi recuento | ¿Coincide? |
+|---|---|---|
+| §R3.5: 78 filas, del 1 al 78 | 78, sin huecos ni repetidas | ✔ |
+| Por lugar: T1 6 · 2A 9 · 2B 7 · 3A 8 · 3B 7 · 4A 3 · 4B 7 · T5 10 · T6 11 · ya jugada 1 · dossier 8 · ninguno 1 | Idéntico (suma 78) | ✔ |
+| 68 con juego | 78 menos 8 dossier, 1 ninguno y 1 ya jugada = 68 | ✔ |
+| 57 en dos o más y 11 en una | Las de una: 3, 24, 39, 50, 58, 59, 66, 70, 71, 77, 78 = 11; 68 menos 11 = 57 | ✔ |
+| Trampas 44 | 44 filas (de la 1122 a la 1165) | ✔ |
+| 23 «siempre», 12 (a), 13 (b), 1 (c) | 23, 12, 13 y 1; sólo siempre 18, sólo (a) 11, sólo (b) 9 | ✔ |
+| Alumno perezoso 57 | 57 filas (1055 a 1111) | ✔ |
+| Peajes 0 en 58 números | 58 filas; por juego 3 · 7 · 7 · 6 · 8 · 5 · 9 · 8 · 5; sin peaje declarado | ✔ en el conteo, con reserva en las filas 56 y 57 (importante 4) |
+| 9 respuestas fijas | La lista de 9 es la escrita, pero no incluye los decimales ni el burnout del caso 4 | ✘ (importante 3) |
+
+### Lista de salida del crítico (v11)
+
+| Regla | ✔/✘ | Dónde se ve |
+|---|---|---|
+| 1. Tres alumnos | ✔ | «Las jugadas, caso por caso» |
+| 2. ¿Divertido? ¿monótono? | ✔ | Menor 6: la pantalla partida da forma propia al caso 3; los casos 2 y 4 siguen siendo números y frases |
+| 3. Contra la visión y los pedidos de Ronald | ✔ | La partición es primero se ve; nada reabierto |
+| 4. Contra el aprendizaje | ✔ | Importantes 1, 2 y 4 |
+| 5. Contra la realidad (celular, conexión, una persona) | ✔ | Menor 6 (blanco táctil, daltonismo); el caso 3 queda en 3 campos y 1 botón |
+| 6. Estrategia dominante, patrón, peaje, frase obvia | ✔ | Importantes 1, 3 y 4; los arreglos propuestos no llevan una mecánica de otro tema |
+| 7. Orden real de dictado | ✔ | Predicción con b y a de D4, tramo del RIC de D3, antes del 6 |
+| 8. Coherencia con el dossier | ✔ | Páginas ya vigentes; menor 8 |
+| 9. Tanteo | ✔ | Importante 2: «no se predice» es un botón al lado de un número; con N lejos del borde no se puede tantear |
+| 10. Lo prometido contra lo que existe | ✔ | Motor, nubes partidas y `versionValida` nuevos son trabajo, no hecho |
+| 11. ¿Se puede copiar? | ✔ | Importante 5; lo demás varía |
+| 12. Revisar lo jugable | No aplica | Nada construido |
+| 13. ¿Otro juego? ¿Reutilizado bien? | ✔ | Nada de otro juego en lo marcado 3.5 |
+| Ronald decide; lo aprobado no se reabre | ✔ | Ninguna decisión nueva |
+| Lee antes de proponer | ✔ | «Qué se revisó» |
+| El juego no es una lección | ✔ | Las consecuencias son audiencias y programas, no textos |
+| Individual, sobre 100, sin reparto | ✔ | El tope conjunto no es un reparto |
+| Por temas, sin tiempo; estructura escalable | ✔ | Sin plazos; 0 casos nuevos |
+| Lista de salida con prueba contada | ✔ | Recuento propio a mano, línea por línea; coincide salvo las fijas |
+| Tuteo, sin guiones largos | ✔ | Esta entrada no usa el guion largo |
+
+**No tocar:** la forma «A baja B nunca se sostiene» y las 6 consecuencias del caso 3; el hueco de tres opciones siempre
+en pantalla; la frase del tramo del RIC; la comparativa de CV con «hasta 3» y «al menos 12»; la predicción por N horas
+en redes con b y a de la herramienta; el tope conjunto como idea; los conteos de §R3.5 y §R3.6.
+
+---
+
+## 08-10-2026 · Psicoestadística Descriptiva (Psicología), maqueta v3.4: lo nuevo, jugado (papel, v10)
+
+**Qué se revisó.** La versión 3.4 de `00-adaptacion-psicoestadistica-descriptiva-psicologia.md`: §R3.0-quinquies
+y todo lo marcado «3.4» en §R3.3 (3B casos 2 a 4, 4A caso 3, 4B caso 4, Tema 5 casos 1 a 3, Tema 6 casos 2 a 4),
+§R3.5, §R3.6 (las dos tablas) y la «Lista de salida · versión 3.4», contra `04-aprendizaje.md` (V3.1 a V3.5 y M1 a
+M10) y mi v9. No reabro lo que decidió Ronald. Nada de esta isla está construido, así que no hay código que
+comprobar; el motor nuevo sigue siendo trabajo (§R3.7). No usé la copia en conflicto de Synology.
+
+**Veredicto.** Los conteos de la lista de salida son verdad. Recontados a mano, tabla por tabla, porque en esta
+sesión no tenía terminal para correr un script: §R3.5 son 78 filas, de la 1 a la 78, sin huecos ni repetidas; por
+lugar, Tema 1: 6 · 2A: 9 · 2B: 7 · 3A: 8 · 3B: 7 · 4A: 3 · 4B: 7 · Tema 5: 10 · Tema 6: 11 · ya jugada: 1 · dossier:
+8 · ninguno: 1 (suma 78), 68 con juego, 58 en dos o más y 10 en una (3, 24, 39, 50, 59, 66, 70, 71, 77, 78).
+«Cada número decide»: 58 filas, por juego 3 · 7 · 7 · 6 · 8 · 5 · 9 · 8 · 5. Trampas «En toda versión»: 44, y por
+forma 23 «siempre», 13 (a) y 13 (b), con 18, 12 y 9 de «sólo». Alumno perezoso: 55 filas (46 + 9). Los lugares de
+«SUPERADO por la 3.4» son 8, como dice. Lo que **no** es verdad son tres líneas de esa lista (hallazgos 2, 5 y 6).
+
+La 3.4 mejora de verdad el juego: la loma con r bajo (el uso «cerrar el programa» vale en un barrio y no en otro),
+el control chico de 3B, las unidades de 3B caso 2 y el n = 14 contra n = 17 de 3B caso 3 están bien pensados (los
+lugares 4,25 y 10,75, y 5 y 13, salen de L = 1 + (n − 1)·k/100; los 4 por curso sobre el D9 de 41 y los 8, 3 y 5 del
+sorteo también cuadran). **Sigue siendo juego** en el Tema 1, 2A, 3A, 4B caso 4, el Tema 5 y 3B caso 4. **Pierde
+forma de juego el Tema 6**: sus casos 2, 3 y 4 son tres veces la misma pantalla (escribe números, aprueba o
+frena frases del informe), sin nada que se vea ni se toque distinto (hallazgo 9). **Un bloqueo:** el caso 3 del
+Tema 6, el que la 3.4 acaba de arreglar, le enseña al revés qué prueba una tercera variable.
+
+### Hallazgos, de más grave a menos grave
+
+**Bloqueo (no se le muestra a Ronald así):**
+
+1. **La consecuencia del Tema 6 caso 3 enseña causa desde una correlación parcial.** **Qué pasa:** el caso dice
+   que la relación entre redes y bienestar se «debilita» o se «mantiene» dentro de los grupos de la tercera
+   variable, y la consecuencia en el mundo se escribe como verdad causal oculta:
+   - si firmaste «A baja B» donde se debilitaba, «recortó las redes y el bienestar casi no se movió **(lo movía
+     X)**»;
+   - si firmaste «parte pasa por X» donde se mantenía, «dejó las redes como estaban aunque la relación seguía en
+     pie […] y el bienestar de esos chicos no mejoró».
+
+   La segunda línea dice que, si la relación sobrevive a mirar personas con X parecido, las redes sí afectaban el
+   bienestar. Es exactamente «asociación sobre una variable controlada = causa», lo contrario de lo que el mismo
+   caso pide firmar («asociadas, no causa»), y el propio «Cuidado de redacción» del caso (que se debilite es una
+   pista, no una prueba; partir en dos recorta el rango de X). Además, en la versión «se mantiene» el texto no
+   dice qué pasa con «A baja B»: leído con la consecuencia, esa frase pasaría a valer. **Por qué importa:** los
+   conceptos no se negocian, y esto lo premia en un tercio de las versiones; Ronald no puede verlo en la maqueta
+   si no domina el tema. **Propuesta:** (i) «A baja B» **nunca se sostiene, en ninguna versión** (es la frase de
+   causa de la regla 5), y la regla 7 sigue cumpliéndose por el R² de cada grupo que escribes. (ii) La
+   consecuencia depende de **lo que firmaste y de qué podía sostener tu evidencia**, no de una causa que sólo sabe
+   el generador: «A baja B» → la escuela prohíbe las redes en el patio y en la audiencia le preguntan «¿cómo
+   sabe que fue por las redes?», sin respuesta (esa repregunta de causa ya existe en el caso 4); «parte pasa por X»
+   donde los R² de grupo no bajaron → el programa de sueño que se financió no toca lo que los datos seguían
+   mostrando, y la concejala lo dice. (iii) Si se quiere conservar un efecto medible al trimestre, que sea sobre lo
+   que se hizo (cuánto dinero, qué programa), nunca sobre «lo movía X».
+
+**Importantes:**
+
+2. **Tema 6 caso 2: el RIC de la escala es un número de peaje, y la lista de salida da ✔ a «0 peajes».** **Qué
+   pasa:** los dos campos son la dispersión de la cohesión (escala) y la de las horas (razón). Las frases que
+   hay en la mesa: «hay dos grupos» (lo decide el histograma), «la cohesión es baja» (el baremo), «el estudiante
+   típico tiene X» (el centro vacío), «muy heterogéneo» (tu CV de las horas contra el CV dado), «varía más que
+   las horas» (nunca se sostiene, con cualquier número), «es normal» y los cuatro decimales (toques). Ninguna
+   usa el valor del RIC. Lo que importa es el toque «elijo RIC para la escala», no el número; y la fila 56 dice
+   que decide «si “varía más que” compara bien», pero esa frase no se sostiene nunca, así que el número tampoco
+   puede decidirla. **Por qué importa:** es el defecto que en la v8 fue bloqueo (5 peajes) y la lista lo declara
+   inexistente con ✔; un alumno que sabe elige RIC y escribe cualquier cosa parecida. **Propuesta:** darle una
+   frase que dependa de él: «la mitad central de las familias puntúa en un tramo de [RIC] puntos», con la lectura
+   equivocada típica (la s, o el rango máximo menos mínimo), y que «el promedio representa al grupo» se juzgue con
+   ese tramo contra la escala. Alternativa: quitar el campo y dejar sólo el toque de la elección (con el costo de
+   que baja un número y el caso queda en 1 campo más 2 toques). Recomendada la primera: no pierde el elegir.
+
+3. **Tema 6 caso 3: quien nunca usa la pieza «parte pasa por X» gana sin mirar los R².** **Qué pasa:** la
+   frase se arma con piezas (comparten, asociadas, no causa, y la opcional de la tercera variable). Si «parte
+   pasa por X» es una pieza que se puede dejar fuera, el alumno que arma siempre «comparten el X %, asociadas, no
+   causa» y nunca la tercera variable acierta en las versiones «se mantiene» y «curva» y sólo falla en
+   «se debilita», donde nada dice que omitirla se castigue. Los tres R² que escribió quedarían sin efecto para
+   él. **Por qué importa:** la 3.4 cerró la regla 7 por (b) («el R² de cada grupo decide la pieza»), pero la
+   decisión sólo existe si la pieza es obligatoria de decidir. **Propuesta:** la frase tiene un hueco que **no se
+   puede dejar vacío**: «Al comparar personas con X parecido, la relación [se debilita / se mantiene / no se
+   puede decir con una recta]». Las tres opciones están siempre en pantalla; con tus R² una es la correcta y la
+   otra no, y omitir deja de ser una estrategia. Hace falta además una consecuencia en la versión «curva» (hoy
+   sólo se escriben las de «debilita» y «mantiene»): la escuela ve una nube con forma y descarta la relación, o el
+   programa se cierra, según la frase.
+
+4. **Tema 6 caso 4: la repregunta de predicción no se puede jugar tal como está escrita.** **Qué pasa:** el
+   ejemplo es «¿qué bienestar prevé para quien duerme tres horas?» y el campo es «el ŷ que ya sabes escribir desde
+   4B caso 2». Pero la relación del Tema 6 es redes (A) con bienestar (B); las horas de sueño son la tercera
+   variable X. Una recta de B sobre A no predice nada desde el sueño, y la de B sobre X nunca se armó. Tampoco dice
+   de dónde salen b y a del archivo (en 4B caso 2 se escriben, 4 campos; aquí el caso 4 queda en 2 o 3).
+   **Por qué importa:** es la quinta familia que la 3.3 y la 3.4 prometieron; si se construye así, un alumno recibe
+   una pregunta sin recta. **Propuesta:** la repregunta pide «¿qué bienestar prevé para quien pasa N horas en
+   redes?», con N dentro del rango del archivo en unas versiones y fuera en otras (cuál, cambia); la herramienta
+   da b y a (ya se escribieron en 4B caso 2, regla de la propia maqueta de pasar a herramienta lo ya
+   practicado) y el alumno escribe el ŷ o «no se predice». La fila 78 y §R3.9 lo dicen.
+
+5. **Tema 6 caso 2: la mesa rompe la regla 5 y «muy heterogéneo» no tiene un criterio.** **Qué pasa:**
+   - La regla 5 dice «como mucho una [que nunca se sostiene] por mesa». Este caso ya tiene tres en toda versión:
+     «la cohesión varía más que las horas» (la 3.4 la deja fija), «la distribución es normal» (D3 3.4.1) y la media
+     con cuatro decimales (D6 6.4). Con tres de seis o siete frases, «frena lo que suene a conclusión grande»
+     rinde mucho, y las tres se aprenden en la práctica abierta y se dictan.
+   - «El grupo es muy heterogéneo» es una frase absoluta que se juzga contra un solo CV dado. Con un 38 % y un 50
+     % dados, ¿es «muy»? El dossier ejemplifica con 10 % contra 50 %, pero ya no trae un umbral (el juego lo
+     quitó en la 3.3). Un alumno puede defender las dos respuestas.
+
+   **Por qué importa:** una respuesta discutible baja la confianza del curso en el juego, y el peso de tres fijas
+   no está dicho. **Propuesta:** (i) de las tres, «varía más que» queda fija (es el único lugar de su trampa) y las
+   otras dos se turnan o se juntan en un solo toque («cifras que no van al informe»); (ii) la frase pasa a
+   comparativa, que sí se juzga con lo que hay en pantalla: «las horas varían más entre las familias que los
+   kilómetros» (tu CV contra el CV dado). Cada versión pone una diferencia grande y otra casi igual (el patrón
+   «una muerde y otra no»).
+
+6. **La lista de salida da ✔ a lo viejo marcado, y quedan reglas y páginas viejas en el cuerpo.** **Qué pasa:**
+   la 3.3 declaró SUPERADO el filtro de Sturges «impar» (I14) y las páginas que ya no existen (D6 pág. 7 y 8, D3
+   pág. 5 y 17, D2 págs. 18 y 19, D4 pág. 20, D5 pág. 15), pero siguen escritas, sin marca, en las partes que
+   mandan:
+   - I14 como regla viva: §R3.3 2A caso 2 (el «ya es impar» y su `versionValida`), 2A caso 3 («el mismo
+     `versionValida` de Sturges (I14)»), la fila 20 de §R3.5 («n con el entero más cercano ya impar») y §R3.7
+     («el n de Sturges […] ya impar (I14)»).
+   - Páginas: «D2 pág. 19» (2B caso 3), «D2 pág. 18» (3A caso 2 y §R3.1), «D6 pág. 8» (3A caso 2 y la tabla de
+     §R3.1, en dos filas), «D4 pág. 20» y «D5 pág. 15» (la tabla de §R3.1).
+
+   **Por qué importa:** quien construya 2A lee que debe filtrar los n, contra el D2 vigente; y la escalera «a leer»
+   manda a páginas que ya no tienen esa frase. Es lo mismo que el ✔ «Lo viejo marcado SUPERADO» decía haber
+   cerrado. **Propuesta:** el adaptador borra o marca esas diez líneas y la lista de salida cuenta los lugares con
+   el grep de las dos cosas (I14 y las siete páginas viejas) en lugar de «8 lugares con 3.4».
+
+**Menores:**
+
+7. **El Tema 6 se siente como la misma pantalla tres veces (casos 2, 3 y 4).** Escribir números y aprobar o frenar
+   frases con consecuencia es la mecánica de toda la serie, pero en el Tema 6 no hay nada que se vea o se toque
+   distinto. Una idea mía, barata y opcional, para el caso 3: la nube de redes y bienestar está a la vista y el
+   alumno **toca la línea de la tercera variable para partirla**: la nube se pinta en dos colores y cada color
+   muestra su propia recta. Es el «primero se ve, después se calcula» de Ronald aplicado al hallazgo 1 y 3, y se
+   dibuja con lo que `src/lib/estadistica/` ya va a tener (nubes con forma pedida).
+8. **Fila 58, la unión, no sube a 2.** El M10 agrega «reservar sólo los que dieron positivo en las dos» como
+   instancia del «y» contra el «o», pero lo que el alumno produce sigue siendo un solo número (los que llegan a la
+   agenda); ese error es una variante de ese campo, no un segundo uso. Si no se agrega una decisión o un segundo
+   campo (por ejemplo, el proveedor trae «cuántos en las dos» **y** «cuántos en alguna» y el alumno elige cuál
+   corresponde a reservar), la fila queda en 1 y las filas de una sola vez son 11, no 10. Hay que decirlo en la
+   lista, que hoy cuenta 58 en dos o más.
+9. **Rótulos de la 3.4 sin actualizar.** El encabezado del Tema 5 en §R3.3 lista «57 a 59, 61 a 65 y 72» y no
+   incluye la 73, que la 3.4 mudó a ese tema. Y en la tabla «En toda versión», el r bajo con curva se marca (a) y la
+   regla 7 define (a) como «dos instancias en el mismo caso», pero aquí las dos instancias están en dos temas
+   (4B caso 4 y Tema 6 caso 3) y `versionValida` debe atar las versiones de ambos temas: decirlo como forma propia
+   «(c) garantizado entre dos temas». Cuando 4B caso 4 trae r bajo sí cumple por (a) dentro del mismo caso (la
+   loma muerde y el barrio recto y difuso no); cuando trae r alto, sólo lo cubre el Tema 6 si su nube es curva, y
+   eso depende de que `versionValida` ate las versiones de los dos temas.
+10. **4A caso 3, «casi iguales» necesita un umbral.** 31 % contra 29 % es «sin relación» y «una diferencia
+    grande» es «depende del turno»: `versionValida` debe fijar los dos márgenes (por ejemplo, una diferencia de
+    hasta 3 puntos contra una de al menos 12) para que el alumno no discuta un 8. Sin la regla, el M8 abre
+    el caso que el D5 5.4 quiere cerrar.
+11. **Las respuestas fijas acumuladas.** Con la 3.4, son fijas (siempre las mismas, de poco peso): «el doble» de
+    un puntaje de escala, «los de la joroba son…», «es válido porque correlaciona», «varía más que», «el 50 %» de
+    la escuela rural y «A baja B». Cada una está permitida por la regla 5, pero juntas se enseñan en la práctica
+    abierta y se dictan. Que la progresión ponga un **tope conjunto** a lo que pesan (no un reparto: la
+    ponderación sigue siendo de Ronald) y que la lista de salida diga cuántas son.
+12. **El tipo de variable llega escrito en la ficha (Tema 6 caso 2).** Está bien para el CV y el RIC y no cambia mi
+    juicio; sólo hay que cuidar que sea la **ficha del archivo** la que lo diga, como en un informe real, y no una
+    etiqueta que acompañe el campo, o el alumno vuelve a rellenar lo que el rótulo ya dijo.
+
+### La lista de salida del adaptador (versión 3.4), comprobada
+
+| Línea de su lista | ¿Es cierto? | Por qué |
+|---|---|---|
+| Revisión del de aprendizaje, corregida (1 + 4 + 10) | ✔ en lo escrito, ✘ en parte en el fondo | V3.1 está tomada con una consecuencia que enseña mal (hallazgo 1) y V3.3 con una repregunta sin recta (hallazgo 4); los demás están |
+| Cobertura: 78 filas, 0 sin lugar | ✔ | Recontada, igual |
+| Profundidad: 68 con juego, 58 en dos o más, 10 en una | ✔ en el conteo, ✘ en parte | La fila 58 no tiene segundo uso (hallazgo 8) |
+| La tercera variable en toda versión, con campo y consecuencia | ✘ en parte | La consecuencia es causal (hallazgo 1), la pieza se puede omitir (hallazgo 3) y «curva» no tiene consecuencia |
+| Ninguna estrategia gana sin entender (55 filas) | ✔ en el conteo, ✘ en parte | Omitir la tercera variable gana (hallazgo 3); «frena lo grande» rinde en T6 caso 2 (hallazgo 5) |
+| El patrón que se aprende una vez | ✔ | La consecuencia del r bajo y la loma apunta a lados distintos; sólo preocupan las fijas acumuladas (menor 11) |
+| Cada número decide: 58 con consecuencia, 0 peajes | ✘ | El RIC de la escala (fila 56) no decide nada (hallazgo 2); el conteo 58 y los 9 juegos cuadran |
+| Cada trampa en toda versión: 44 de 44 | ✔ en el conteo, ✘ en parte | El conteo cuadra; el r bajo con curva se marca (a) y es otra forma (menor 9) |
+| Lo viejo marcado SUPERADO | ✘ | Diez líneas vivas con I14 y páginas que ya no existen (hallazgo 6) |
+| Orden real de dictado | ✔ | Nada usa algo que se dicta después; la predicción usa la recta de D4, antes del 6 |
+| Individual, sobre 100, no copiar | ✔ | Cada cambio de la 3.4 varía por versión; las fijas pesan poco (menor 11) |
+| No se reabre lo decidido; sin commit | ✔ | Nada reabierto |
+| Tuteo y sin guiones largos | ✔ | Búsqueda del guion largo en el archivo: 0 coincidencias |
+
+### Los tres alumnos con lo nuevo, en corto
+
+- **El que sabe:** disfruta la loma con r bajo, el sorteo de 3B y las dos unidades. En el Tema 6 pasa del caso 2 al
+  3 y al 4 haciendo lo mismo y, en el caso 3, ve que le premian «dejar las redes» como si se hubiera probado
+  la causa (hallazgo 1).
+- **El que no sabe:** la escalera lo lleva a los números; el R² de cada grupo lo obliga a comparar, si la pieza es
+  obligatoria (hallazgo 3). Con la consecuencia actual aprende que lo que sobrevive al control es causa.
+- **El que quiere terminar rápido:** en el Tema 6 arma «comparten el X %, asociadas, no causa» sin tocar la tercera
+  variable, frena las tres frases que suenan grandes y escribe cualquier número de dispersión para la escala
+  (hallazgos 2, 3 y 5). «Siempre CV» o «siempre RIC» pierden bien; «r bajo, rechaza» y «r bajo, aprueba» también.
+
+**No tocar:** la loma con r bajo y el barrio difuso (el patrón «una muerde y otra no» con una nube que se ve);
+el n = 14 contra n = 17 con interpolación; el grupo de control sorteado (3 contra 5, con diferencia grande o
+claramente chica); las unidades que cambian por un factor; el CV dado de una segunda variable de razón; que la
+quinta familia entre por turno (cuatro de cinco) y la defensa oral cubra las cinco; el conteo rehecho de las 44
+trampas, que cuadra.
+
+### Lista de salida del crítico (v10)
+
+| Regla | ✔/✘ | Dónde se ve |
+|---|---|---|
+| 1. Tres alumnos | ✔ | «Los tres alumnos con lo nuevo» |
+| 2. ¿Divertido? ¿monótono? | ✔ | Veredicto; menor 7 (Tema 6) |
+| 3. Contra la visión y los pedidos de Ronald | ✔ | Menor 7 (primero se ve); no es cuestionario salvo T6 |
+| 4. Contra el aprendizaje | ✔ | Hallazgos 1, 3 y 5 |
+| 5. Contra la realidad (celular, conexión, una persona) | ✔ | Campos máximos 10 (3A caso 2), sin cambio; T6 caso 3 queda en 3 y caso 2 en 2 más 2 toques |
+| 6. Estrategia dominante, patrón, peaje, frase obvia; cuidado con el propio arreglo | ✔ | Hallazgos 2, 3 y 5; el arreglo propuesto para T6 no lleva una mecánica de otro tema (el corte de la nube es de este caso) |
+| 7. Orden real de dictado | ✔ | Comprobado T1 a T6 con el 4 antes del 5; hallazgo 4 usa la recta de D4 |
+| 8. Coherencia con el dossier que se manda a leer | ✔ | Hallazgo 6 (páginas viejas) |
+| 9. Tanteo | ✔ | Sin tanteo nuevo: los números de 3B caso 3 y 4A caso 3 se escriben de datos, no de la consecuencia |
+| 10. Lo prometido contra lo que existe | ✔ | «Qué se revisó»: motor nuevo es trabajo, no hecho |
+| 11. ¿Se puede copiar? | ✔ | Menor 11 (fijas); lo demás varía |
+| 12. Revisar lo jugable | No aplica | Nada construido |
+| 13. ¿Otro juego? ¿se reutilizó bien? | ✔ | Sin nombres ni escenas nuevas de otros juegos en lo marcado 3.4 |
+| Ronald decide; lo aprobado no se reabre | ✔ | Ninguna decisión nueva; nada APROBADO tocado |
+| Lee antes de proponer | ✔ | «Qué se revisó» |
+| El juego no es una lección | ✔ | Las propuestas son consecuencias y decisiones, no escenas |
+| Individual, sobre 100, sin reparto | ✔ | El menor 11 pide un tope, no un reparto |
+| Por temas, sin tiempo; estructura escalable | ✔ | «Al trimestre» es tiempo del mundo; 0 casos nuevos |
+| Lista de salida con prueba contada | ✔ | Recuento propio hecho a mano, línea por línea (sin terminal en esta sesión); coincide con el del adaptador salvo lo dicho |
+| Tuteo, sin guiones largos | ✔ | Esta entrada no usa guion largo |
 
 ---
 

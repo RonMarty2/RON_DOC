@@ -78,7 +78,20 @@
 >   cortes por límite de uso y dos agentes trabados; se retomó verificando el disco cada vez. Una copia en
 >   conflicto de Synology (`…_DownloadConflict.md`, 28-09 17:29) sigue en `docs/juego/gdd/`: es una foto
 >   vieja sin nada propio; la borra Ronald si quiere.
-> - [ ] m. **Esperando a Ronald:** que apruebe la maqueta 3.2. Después: director (visión y aspecto) →
+> - [x] l-bis. **07 y 08-10 (Claude, PC RONMARTY): de la 3.2 a la 3.6, sin ronda nueva.** 3.3: puesta al día con los
+>   seis dossiers pulidos del 02 y 03-10. 3.4: corrige la revisión de aprendizaje (`04` «revisión de la maqueta v3.3»: 1
+>   bloqueo, 4 importantes, 10 menores). Crítico v10 (`06`): 1 bloqueo (Tema 6 caso 3, la consecuencia enseñaba
+>   «asociación que sobrevive al control es causa»), 5 importantes, 6 menores → 3.5. Crítico v11: sin bloqueos, 5
+>   importantes (forma «garantizado entre dos temas» hacía dominante «no se puede decir con una recta»; predicción
+>   contra nube curva; regla 5 movida al caso 4 y «9 respuestas fijas» mal contadas; márgenes de `versionValida`
+>   sin número; turnos sin atar a la versión) → **3.6** (tercios 1000/1000/1000 simulados, 10 respuestas fijas
+>   contadas con script, 59 números que decide el alumno). Controles: sin voseo, 0 guiones largos, sin caracteres
+>   de control. **Ya pasó por aprendizaje y por el crítico dos veces; sólo falta que Ronald la apruebe.**
+>   **Agentes mejorados con lo visto (08-10):** el crítico tiene Bash y recuenta con `.py` (reglas 14 y 15); el
+>   adaptador repite la prueba del perezoso tras cada corrección y cita el script de cada conteo; el de bucle,
+>   regla 10. Viajan por git, no por `conectar_agentes.py`. **Playground (Google Labs, 07-10):** probado, «no
+>   disponible en tu región»; se retoma si abren Bolivia. Nada que construir.
+> - [ ] m. **Esperando a Ronald:** que apruebe la maqueta 3.6 (antes decía 3.2). Después: director (visión y aspecto) →
 >   crítico → Ronald → progresión → crítico → Ronald. Pendiente de respuesta: sacar el repositorio de Synology.
 >   Con su elección, ronda 2 del adaptador (maqueta con las reglas nuevas) y después el director. Queda para
 >   cuando se construya: en qué página del sitio va el juego (Descriptiva o EAD-111, el curso que este

@@ -96,7 +96,12 @@ sale del mapa de ruta y del índice, y esos temas se marcan como supuesto.
      perezoso: siempre sí, siempre no, al azar, lo más barato, copiar al compañero (que tiene otra
      versión). Si alguna de esas gana o empata con entender, la propuesta todavía no sirve: agrega
      lo que la vuelve costosa (una meta, una consecuencia, un número que el alumno tiene que escribir)
-     y anota en la propuesta cómo lo resolviste. Prueba además dos trampas que se le escaparon a la
+     y anota en la propuesta cómo lo resolviste. **Esta prueba se repite después de cada corrección**
+     (08-10: al arreglar un hallazgo del crítico la forma (c) y el traslado de la regla 5 crearon
+     estrategias dominantes nuevas): lo que acabas de tocar se vuelve a jugar como perezoso antes de
+     marcar el hallazgo como resuelto. **Y todo conteo de la lista de salida sale de un `.py` guardado
+     en un archivo** (nunca heredoc ni `python -c`), que citas por nombre; un ✔ sin su salida no vale.
+     Prueba además dos trampas que se le escaparon a la
      ronda 1 de Psicoestadística (las encontró el crítico, 28-09):
      - **El patrón que se aprende una vez:** si la consecuencia siempre apunta al mismo lado («lo que no
        viste siempre está peor»), el alumno lo aprende y gana sin pensar. En parte de las versiones tiene

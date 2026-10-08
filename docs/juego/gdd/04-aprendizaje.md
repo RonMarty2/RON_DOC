@@ -15,7 +15,191 @@ observación, `02` B1.6). Se saca de esta lista.
 Si no dices otra cosa, lo demás de la sección v2 queda como propuesta por defecto.
 
 **Psicoestadística Descriptiva (Psicología):** la revisión de profundidad del 28-09 no te pregunta nada; trae
-notas del dossier para cuando vuelvas a él (PD.5 y P15).
+notas del dossier para cuando vuelvas a él (PD.5 y P15). La revisión de la v3.3 (07-10, abajo) tampoco te
+pregunta nada: tiene **1 bloqueo y 4 importantes** que corrige el adaptador.
+
+---
+
+## Psicoestadística Descriptiva (Psicología) · revisión de la maqueta v3.3 · versión 2 · 07-10-2026
+
+**Estado: ENTREGADA (07-10).** Revisa sólo lo que la v3.3 cambió en
+`00-adaptacion-psicoestadistica-descriptiva-psicologia.md` (§R3.0-quater) contra los seis dossiers actuales.
+**Tiene 1 bloqueo (V3.1)**: vuelve al adaptador y después pasa al crítico. No edité la maqueta 00.
+
+**Decisiones pendientes de Ronald:** ninguna. Lo que el dossier podría mejorar va como nota (V3.8).
+
+**Qué verifiqué, en el `.tex` y en el PDF del 03-10 (no de memoria):**
+D3 3.3 (`03_3_3.tex`: L = 1 + (n − 1)·k/100, interpolación, «algunos libros usan (n + 1)», percentil de un valor
+= % de menores) y su PDF pág. 14; D3 3.2 (CV «sólo en razón»); D4 4.4 y 4.5 (`04_4_4.tex`, `05_4_5.tex`:
+covarianza con n − 1, r = S_xy/(S_x·S_y), R² «compartida», r = 0,090 con curva, Anscombe) y PDF pág. 23; D5
+(los cinco subtemas, `01` a `06`; cuenta del PDF: 23 de 42 positivos, 7 falsos negativos de 158, VPP 0,548) y
+PDF págs. 23 y 24; D6 (`02_6_2` a `05_6_5`: N válido, CV sólo en razón, tercera variable, molde de cinco
+partes, regla cifra-razón-límite, cinco familias) y PDF págs. 12 y 16. Las seis páginas de la escalera que
+miré **coinciden** con lo que cita la v3.3. Las cuentas que rehice a mano: Q1/Q3 de 13 (lugares 4 y 10) y de 41
+(11 y 31), D9 de 41 (lugar 37), r y R² de D6 (0,643 y 0,414). **Todas dan.**
+
+### V3.0 · Concepto · dónde se practica · cuántas veces · con qué variación (sólo lo que cambió)
+
+«Veces» = casos oficiales donde el alumno **produce** algo con el concepto (número o decisión que depende de él).
+
+| # | Concepto (dossier) | Dónde se practica | Veces | Variación | Veredicto |
+|---|---|---|---|---|---|
+| 1 | Cuartiles y percentil con L = 1 + (n − 1)k/100 (D3 3.3) | 3B c3 (n = 13: lugares 4 y 10), 3B c4 (n = 41: 11 y 31) | 2 | grupo chico con llegadas; dos cursos | Alcanza (M1: tras las llegadas hay que interpolar) |
+| 2 | Decil 9 como corte (D3 3.3) | 3B c4, uno por curso | 1 (2 campos) | lugar 37 entero; a veces Tomás pasa | Alcanza: es el mismo cálculo de posición que el 1 |
+| 3 | Percentil de un valor = % de menores (D3 3.3) | 3B c4 (Tomás) | 1 | pasa o no pasa de 90 | Alcanza (M3: son dos definiciones, y en n = 41 cuadran) |
+| 4 | CV sólo en razón (D3 3.2; D6 6.2) | 3B c2 (6 campos), T6 c2 | 2 | otra unidad; razón contra escala | El cálculo alcanza; **la prohibición en escalas no tiene lugar seguro** (V3.2) |
+| 5 | RIC como dispersión de la escala (D6 6.2) | T6 c2; 3B c3 y c4 | 3 | escala; llegadas; cursos | Alcanza |
+| 6 | N válido y datos faltantes (D6 6.2) | T6 c1 y c4 | 2 | cuántos faltan cambia | Alcanza |
+| 7 | El atípico con y sin él; no quitarlo en silencio (D6 6.2, Error 3) | 3B c3 (el RIC con los que llegan); 3A c4 (la persona real) | 2 | uno o varios; cuál extremo es el error | Alcanza (M5: T6 c2 **no** lo usa) |
+| 8 | **Tercera variable** (D6 6.3, límite 4 y Qué NO) | T6 c3, **sólo en parte de las versiones, sin campo** | 0 a 1 | aparece o no | **Falta** (V3.1) |
+| 9 | r = S_xy/(S_x·S_y), todo con n − 1 (D4 4.5) | 4B c1 (r), c3 (r de dos estudios), c4 (r sin el punto) | 4 campos | 6 puntos; datos resumidos; atípico | Alcanza |
+| 10 | R² como variabilidad compartida (D4 4.5; D6 6.3) | 4B c3 (dos), T6 c3 | 3 | nunca «explica» | Alcanza |
+| 11 | Molde de cinco partes (D6 6.4) | T6 c4 | 1 | | **Única, decidida abajo (V3.6)**: alcanza como convención |
+| 12 | Regla cifra, razón, límite y las cinco familias del tribunal (D6 6.5) | T6 c4 y la defensa oral | 1 en el juego | 4 de 5 familias | **Única, decidida abajo (V3.6)**; falta la quinta (V3.3) |
+| 13 | Probabilidad simple desde una tabla (D5 5.2) | T5 c1 y c2 | 2 | una escuela; tres | Alcanza |
+| 14 | Complemento (D5 5.3) | T5 c1 (no-trastorno = 1.000 − prevalencia) y c3 (falsos negativos = prevalencia × (1 − sensibilidad)) | 2, por cálculo | | Alcanza; la fila 73 dice «dossier» y es **más** (M6) |
+| 15 | Unión, intersección, excluyentes (D5 5.3) | T5 c3 | 1 | cuántos coinciden | Alcanza con una (M10) |
+| 16 | Producto e independencia (D5 5.4) | T5 c1 a c4; 4A c3 | 3 y 2 | | Alcanza (M8: falta «no exactamente igual») |
+| 17 | VPP, sensibilidad, especificidad, tasa base (D5 5.5) | T5 c1 a c4 | 4 | tres prevalencias; la carta | Alcanza |
+| 18 | VPN (D5 5.5) | T5 c3, sólo como cuenta de falsos negativos | 1 sin el cociente | | Menor (M6) |
+| 19 | Jamovi (D3 3.5, D4 4.7, D5 5.6, D6 6.6) | ninguno | 0 | | Fuera, con razón: el juego no enseña menús |
+
+### V3.1 a V3.5 · Hallazgos (V3.1 bloquea; V3.2 a V3.5 son importantes; los menores M1 a M10 van al final)
+
+**🔴 V3.1 · La tercera variable queda «en parte de las versiones», sin campo y sin consecuencia (bloquea).**
+La fila 5 de §R3.0-quater lo dice así, y es justo lo que la regla 7 de la propia maqueta prohíbe: una trampa del
+dossier (D6 6.3, límite 4 y el Qué NO «que las redes bajen el bienestar») sin un caso donde **todo** alumno la
+enfrente. Además no está en la tabla «En toda versión» de §R3.6, y no hay ningún otro caso donde se juegue.
+Un alumno de una versión sin tercera variable termina la materia sin haberla visto. Dos formas de cerrarlo:
+- **A (recomendada).** En **toda** versión T6 c3 trae la relación en el archivo y la **r dentro de cada uno de dos
+  grupos de la tercera variable** (como D6 6.3, Paso 7: global −0,329; dentro −0,132 y −0,215). **Escribes el
+  R² de cada grupo** (2 campos, cada uno un cuadrado, y decide): con él ves si la relación se mantiene o se
+  desploma. La variación está en **qué pasa**: en unas versiones se debilita mucho (R² global 10,8 % contra
+  1,7 % y 4,6 %) y la frase «A baja B» no va; en otras se mantiene (R² dentro cercano al global) y la pieza
+  «parte de la relación pasa por X» **es falsa**. La nube curva sigue como tercera forma. Costo: dos campos
+  más. **Consecuencia en el mundo** (hoy no tiene): la escuela recorta las redes esperando más bienestar y al
+  trimestre cambia o no cambia según qué frase firmaste.
+- **B.** La pieza sin campo, pero en toda versión, con la misma variación de arriba. Cuesta menos y es más
+  débil: sin un número tuyo se vuelve «elige la frase prudente».
+Cuidado de fondo (experto): que la relación baje dentro de los grupos es una **pista descriptiva**, no prueba
+de confusión (D6 lo llama así); y partir en dos por un corte de la tercera variable también recorta el rango.
+La pieza correcta dice «se debilita al comparar personas con X parecido», nunca «X lo explica».
+
+**🟠 V3.2 · Tema 6 caso 2: «muy heterogéneo» no se puede juzgar, y el CV en escalas no tiene lugar seguro.**
+Con **una** variable de razón y una escala, la frase «el grupo es muy heterogéneo» «se sostiene comparando dos
+variables de razón por su CV», pero el caso sólo da un CV. Sin una segunda cifra, esa frase no se juzga con
+nada que el alumno tenga en pantalla. Y «la cohesión varía más que las horas» (la trampa del CV en escala,
+D6 6.2.1, pág. 12) es una de las frases que «nunca se sostienen» y por eso **se turna**: el alumno de una
+versión puede no verla, y es el **único** lugar donde se juega. Arreglo: (a) el archivo trae el CV de **una
+segunda variable de razón** ya calculado (como los 10 % y 50 % de D6 6.2), así «muy heterogéneo» se juzga
+contra algo; (b) «la cohesión varía más que las horas» sale en **toda** versión y se anota en la tabla de
+trampas como «siempre»; (c) los campos no llevan rótulo del estadístico: son «dispersión de la variable A» y
+«de la B», y **el alumno elige** CV o RIC según el tipo que dice la ficha del archivo. Si no, escribir
+«CV de las horas» y «RIC de la cohesión» es llenar lo que el rótulo ya dijo. Se apoya en la fila 2B c3
+(«el doble» sin cero absoluto), que es la misma idea: cero verdadero.
+
+**🟠 V3.3 · La fila 78 promete las cinco familias del tribunal y el caso 4 sólo trae cuatro.**
+D6 6.5 las lista: medida, datos, causa, alcance y **predicción** (¿hasta dónde sirve la recta?). T6 c4 tiene
+medida (estadístico mal elegido), datos (n, atípico), causa (la frase) y alcance (¿de quiénes habla?), pero
+ninguna repregunta de predicción. Arreglo barato: una repregunta («¿qué bienestar prevé para quien duerme tres
+horas?») cuyo campo ya lo sabe hacer el alumno desde 4B c2 (fuera del rango: «no se predice»). Entra por turno
+con las otras, pero cada versión lleva cuatro de las cinco y la defensa oral las cubre.
+
+**🟠 V3.4 · D4 4.5: «r cercano a 0 no es sin relación» no tiene caso donde caer.**
+D4 lo dice dos veces (Qué NO y Error 2, con la nube curva de r = 0,090, pág. 23). En la v3.3 la loma de 4B c4
+es del tipo Anscombe: «tres barrios con un r parecido», es decir **alto**; el uso «cerrar el programa porque
+r casi cero» no aparece en ningún barrio con r bajo. Y en T6 c3 la nube curva «no es lineal» pero no se dice
+qué r trae. Arreglo: en la versión con nube curva (T6 c3, y la loma de 4B c4 en parte de las versiones) el r
+que llega es **bajo** (como 0,09), y la frase «no hay relación» **nunca se sostiene** porque la nube se ve.
+Es la misma regla de «primero se mira» con otro número. Costo: cero campos nuevos.
+
+**🟠 V3.5 · La tabla de trampas de §R3.6 no recibió las trampas nuevas de la 3.3.**
+Los «39 de 39» contados con script (3.2) no incluyen: la tercera variable (V3.1), el CV sólo en razón en
+escalas (V3.2), la repregunta de predicción (V3.3) y el r bajo con curva (V3.4). Al arreglarlas, el adaptador
+las suma a «En toda versión» con su forma de cumplir (siempre, (a) o (b)) y **rehace el conteo con el script**
+(no a mano): hoy el 39 es una cifra vieja.
+
+**Menores 🟡** (los arregla el adaptador, sin pasar por Ronald):
+- **M1 · 3B c3, las llegadas.** Con n = 13 los lugares 4 y 10 son enteros, pero tras las llegadas L deja de
+  serlo: con 1 llegado (n = 14) son 4,25 y 10,75; con 4 (n = 17) son 5 y 13. D3 3.3 enseña a interpolar, así
+  que es correcto, pero falta un error típico («el lugar 4,25 no existe: tomó el 4») con su pista a D3 pág.
+  14. Recomendado: «uno solo» deja n = 14 y «varios» deja n = 17 (sólo una versión interpola).
+- **M2 · 3B c2, las unidades.** `versionValida` debe usar sólo unidades que cambian **por un factor** (minutos
+  y horas, segundos y milisegundos). Nunca grados Celsius y Fahrenheit: tienen cero convencional, no son de
+  razón, y el CV cambiaría con la unidad (justo lo que el caso enseña a no hacer).
+- **M3 · 3B c4, Tomás.** El «percentil de un valor» (D3: % de menores) y el decil 9 (lugar L) son dos
+  definiciones. En n = 41 coinciden en la frontera que importa (lugar 38: 37/41 = 90,2 %; lugar 37, el D9
+  mismo: 36/41 = 87,8 %, no entra: «por encima del D9»), pero un alumno que ponga a Tomás justo en el lugar 37
+  puede escribir 90. `versionValida` debe evitar **empates** en los lugares 36 a 38 y la pista debe nombrar
+  la definición.
+- **M4 · 3B c4, los cupos.** La frase «sobre el D9 de un curso de 41 quedan 4 y los cupos son 3» se lee como
+  si fuera por curso. Son **tres cupos en total para dos cursos**: 8 elegibles, 3 sorteados, 5 en lista de
+  espera. Decirlo así en la maqueta; y que `versionValida` pida diferencias entre grupos grandes frente a su
+  dispersión (3 contra 5 personas es un control chico).
+- **M5 · Fila 75.** Dice que «T6 caso 2 lo usa de herramienta»; el texto de T6 c2 no trae ningún atípico con y
+  sin él. Quitar esa mitad de la frase. Alcanza con 3B c3 y 3A c4. Opcional (idea): una pieza en T6 c4,
+  «lo sacamos y no lo dijimos», que nunca se sostiene.
+- **M6 · Filas 65 y 73.** La 73 (complemento) dice «dossier; no se escribe» y se **calcula** en T5 c1 y c3
+  (dos usos); decir eso. La 65 nombra el VPN pero sólo se practica como cuenta de falsos negativos; decirlo.
+  La pieza «un negativo puede tener otra dificultad» de la carta **no** es el VPN: es que la prueba busca un
+  solo trastorno.
+- **M7 · D5 5.1, Error 1.** «Aplicar la forma clásica sin igualmente posibles» («o apruebo o repruebo, 50 %») no
+  tiene caso. Y T5 c1 llama «regla de Laplace» a la prevalencia desde un conteo: sólo vale si el niño se
+  elige **al azar** de la lista (D5 5.1 lo dice así). Escribir «un niño elegido al azar» y, en la mesa de T5 c2,
+  una pieza «o lo tiene o no: 50 %» que nunca se sostiene.
+- **M8 · D5 5.4, Error 3.** «Exigir una igualdad exacta» no tiene caso: en 4A c3 y en T5 c4 la independencia
+  es exacta. Mejor que en parte de las versiones el mercado «sin relación» traiga, por ejemplo, 31 % y 29 %, y
+  la decisión sea si cambia o no la brigada.
+- **M9 · Molde de cinco partes.** Se marca como **convención del dossier**, no como regla de la estadística, en
+  el manual del jugador.
+- **M10 · Unión (D5 5.3).** Se practica una vez (T5 c3). Con una instancia en que «y» y «o» se confundan
+  (los que dieron positivo en las dos son los de la intersección) alcanza; no hace falta otro caso.
+
+### V3.6 · Decisión sobre las cuatro filas únicas (75 a 78)
+
+| Fila | Decisión | Por qué |
+|---|---|---|
+| 75 · El atípico con y sin él | **Alcanza.** Se cuenta con 3B c3 y 3A c4 (dos usos); corregir la frase de T6 c2 (M5) | Hay decisión con consecuencia en los dos |
+| 76 · La tercera variable | **No puede quedar única ni en parte de las versiones.** Pasa a toda versión (V3.1, opción A) | Es una trampa del dossier; regla 7 |
+| 77 · Molde de cinco partes | **Se queda única, sin campo y de poco peso**, marcada como convención (M9). Cada pieza del informe que aceptas o rechazas ya es una de las cinco partes; la repregunta apunta a la que falta | Es una norma de redacción, no un concepto de estadística: practicarla varias veces sería una lección. La defensa oral la evalúa |
+| 78 · Cifra, razón, límite | **Se queda única en el juego, más la defensa oral** (que es donde se practica de verdad), con las cinco familias (V3.3) | Es oral por naturaleza; en el juego se mide si la repregunta se contesta con la cifra y su límite |
+
+### V3.7 · Qué cambia de un alumno a otro, en lo que cambió
+
+| Parte | Cambia el número | Cambia qué respuesta es la correcta |
+|---|---|---|
+| 3B c3 | Los datos, cuántos llegan | Si el grupo empeoró o sigue igual (uno o varios) |
+| 3B c4 | Los dos cursos de 41 | Si Tomás entra; quién tiene cola; si el taller funcionó |
+| 3B c2 | Las medias y las unidades | Qué grupo es el heterogéneo (decide el CV, no s) |
+| T6 c1 | Cuántos faltan | El n válido |
+| T6 c2 | Qué variable es de razón y cuál bimodal | Qué frases van al informe; **con V3.2, también cuál estadístico va a cuál variable** |
+| T6 c3 | r y los R² de grupo (con V3.1) | Si la relación se desploma o se mantiene; si la frase «parte pasa por X» es cierta |
+
+### V3.8 · Notas para Ronald, si vuelve a los dossiers (no son preguntas)
+
+- **D6 6.3, Paso 7:** dice «en los dos grupos la relación es más débil que el −0,329 global». Es cierto en el
+  archivo, pero dos grupos cortados en 7 horas también recortan el rango de las horas de sueño; «parte pasa por
+  el sueño» es lectura razonable, no demostración. Para el juego basta que el dossier la llame pista.
+- **D3:** sigue sin la puntuación z (abierto desde la 3.1).
+
+### Lista de salida · revisión v3.3
+
+| Regla | | Prueba contada |
+|---|---|---|
+| Revisar sólo lo que cambió | ✔ | Los 10 cambios de §R3.0-quater, punto 2, uno por uno: percentil y cuartiles (V3.0 1 a 3), CV (4), CV 30 % (V3.2), T6 c1 (6), T6 c3 (8), T6 c4 (11 y 12), r con n − 1 (9), Sturges (leído en `02_2_2.tex`: «entero más cercano», sin hallazgo), citas de página (6 páginas medidas), «Excel» a «jamovi» (19) |
+| Cada concepto se practica, no sólo se toca | ✔ | 19 conceptos en V3.0: 12 alcanzan, 1 alcanza en el cálculo y falla en la prohibición (4), 2 menores (15 y 18), 2 únicos decididos (11 y 12; la fila 75 de la maqueta es el concepto 7 y alcanza), 1 falta (8, V3.1), 1 fuera con razón (19) = 19 |
+| Lo que se enseña junto se juega junto | ✔ | D5: simple, complemento, unión y condicionada viven en un solo juego (Tema 5) y en 4A; r, R² y la recta en 4B. Ningún hermano separado |
+| Cada tema es una serie que sube | ✔ | 3B: ayuda, otra unidad, llegadas, Tomás con sorteo; T6: n, forma, dos variables, audiencia. Sin cambios al orden |
+| Cada error típico y «Qué NO» tiene un caso | ✘ hasta que el adaptador corrija V3.1 a V3.4, M7 y M8 | Recorrí el «Qué NO» y los «Error 1 a 3» de D3 3.3, D4 4.5, D5 5.1 a 5.5 y D6 6.2 a 6.5 contra los casos de la 3.3. Sin caso donde caer, seis: tercera variable (V3.1), CV en escala en toda versión (V3.2), predicción del tribunal (V3.3), r bajo con curva (V3.4), forma clásica sin igualmente posibles (M7) e igualdad exacta (M8). Los seis traen arreglo |
+| Práctica abierta | ✔ | No cambió con la 3.3; cada arreglo de arriba también vale en práctica (los números cambian, no el tipo de caso) |
+| Qué cambia de uno a otro | ✔ | V3.7, 6 filas; V3.2 y V3.1 piden que cambie también la respuesta correcta, no sólo el número |
+| Matriz de alineación, escalera, evaluación, integridad, reglas de Ronald (etapa de tema) | ➖ | No aplica en esta etapa (aclarado el 28-09); las páginas de la escalera sí se midieron |
+| Correcto como experto | ✔ | Rehice a mano: Q1/Q3 de 13 y de 41, D9 = lugar 37, r = 7,103/(0,834 × 13,244) = 0,643, R² = 0,414, VPP 23/42 = 0,548, sensibilidad 23/30. Todas coinciden con el dossier. Los errores de fondo son de uso, no de cálculo (M2, M3) |
+| El alumno decide y ve la consecuencia | ✔ con una excepción | Los casos nuevos tienen consecuencia en la ciudad, salvo T6 c3 con la tercera variable: sin campo ni efecto propio (V3.1 lo arregla). No hay escena explicativa |
+| Dossier dice lo mismo que el juego | ✔ | Todos los números y frases citados salieron del `.tex` o del PDF actual. Sin contradicción nueva |
+| Regla inventada, marcada | ✔ | Las únicas son las ya marcadas (taller, cupos, agenda); el molde se marca como convención (M9) |
+| Ronald decide; no se reabre lo aprobado | ✔ | Sin pregunta nueva; no toqué la maqueta |
+| Tuteo, sin guiones largos, sin cargar jerga | ✔ | `grep` de «—» y de voseo sobre mi sección: ninguno |
 
 ---
 

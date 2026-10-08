@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>La redacción de noche · boceto vivo (Dirección A)</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;height:100%;background:#07060d;color:#cfc8e8;font-family:system-ui,sans-serif;overflow:hidden}
+  body{display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+  #cab{width:100%;box-sizing:border-box;padding:4px 8px;font-size:11px;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;line-height:1.3;text-align:center}
+  #cab b{color:#ffd27a}
+  .prov{background:#7a2230;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;letter-spacing:.04em}
+  #cab button{font:inherit;background:#26223a;color:#ffd27a;border:1px solid #4a4470;border-radius:4px;padding:2px 8px}
+  #cab label{display:flex;gap:3px;align-items:center}
+  #marco{line-height:0;touch-action:none;user-select:none;-webkit-user-select:none}
+  canvas{image-rendering:pixelated;display:block}
+  #aviso{position:fixed;left:8px;right:8px;bottom:8px;color:#ff9c9c;font-size:13px;text-align:center}
+</style></head><body>
+<div id="cab">
+  <span><b>La redacción de noche</b> · boceto vivo del Caso 2</span>
+  <span class="prov">ARTE PROVISIONAL</span>
+  <button id="otra" type="button">Reiniciar (otra versión)</button>
+  <label><input id="proy" type="checkbox"> Proyector</label>
+</div>
+<div id="marco"></div>
+<div id="aviso"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@7.4.2/dist/pixi.min.js"
+  onerror="var s=document.createElement('script');s.src='assets/vendor/pixi-7.4.2.min.js';document.head.appendChild(s)"></script>
+<script src="arte-provisional.js"></script>
+<script src="kenney.js" onerror="void 0"></script>
+<script>
+(async () => {
+  const W = 188, H = 406;               // tamaño lógico (píxeles del dibujo); se escala a la pantalla
+  const aviso = (m) => { document.getElementById("aviso").textContent = m; };
+  const esperar = (f, ms) => new Promise((res) => { const t0 = Date.now(); (function c() { const v = f(); if (v || Date.now() - t0 > ms) res(v); else setTimeout(c, 50); })(); });
+  if (!(await esperar(() => window.PIXI, 12000))) { aviso("No se pudo cargar PixiJS (ni del CDN ni de assets/vendor/). Ejecuta descargar_assets.py o conéctate a internet."); return; }
+  if (!window.ARTE) { aviso("Falta arte-provisional.js. Ejecuta generar_arte_provisional.py una vez."); return; }
+  try { if (document.fonts) await Promise.race([document.fonts.load('8px "Press Start 2P"'), new Promise((r) => setTimeout(r, 2500))]); } catch (e) {}
+
+  PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
+  const cargaImg = (src) => new Promise((r) => { const i = new Image(); i.onload = () => r(i); i.onerror = () => r(null); i.src = src; });
+  const T = {};
+  const fuentes = Object.assign({}, window.ARTE, window.KENNEY || {});
+  for (const [n, src] of Object.entries(fuentes)) { const im = await cargaImg(src); if (im) T[n] = PIXI.Texture.from(im); }
+  ["prov_cono", "prov_luz"].forEach((n) => { if (T[n]) T[n].baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR; });
+
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const calc = () => { const cab = document.getElementById("cab"); const alto = innerHeight - (cab ? cab.offsetHeight : 0) - 2; return Math.max(0.8, Math.min(innerWidth / W, alto / H)); };
+  let k = calc();
+  const app = new PIXI.Application({ width: W, height: H, backgroundColor: 0x07060d, antialias: false, resolution: k * dpr, autoDensity: false });
+  const fit = () => { k = calc(); app.renderer.resolution = k * dpr; app.renderer.resize(W, H); app.view.style.width = Math.round(W * k) + "px"; app.view.style.height = Math.round(H * k) + "px"; };
+  fit(); window.addEventListener("resize", fit);
+  document.getElementById("marco").appendChild(app.view);
+  if (window.KENNEY && window.KENNEY.cursor) app.view.style.cursor = "url(" + window.KENNEY.cursor + ") 0 0, pointer";
+
+  const stage = app.stage;
+  stage.eventMode = "static"; stage.hitArea = new PIXI.Rectangle(0, 0, W, H);
+  const cont = (par) => { const c = new PIXI.Container(); (par || stage).addChild(c); return c; };
+  const S = (n, x, y, par) => { const s = new PIXI.Sprite(T[n] || PIXI.Texture.WHITE); s.position.set(x, y); (par || stage).addChild(s); return s; };
+  const TX = (txt, o, x, y, par) => {
+    const t = new PIXI.Text(txt, Object.assign({ fontFamily: '"Press Start 2P", monospace', fontSize: 6, fill: 0xf2e6c8, lineHeight: 9 }, o || {}));
+    t.resolution = k * dpr; t.position.set(x, y); (par || stage).addChild(t); return t;
+  };
+  const rnd = Math.random;
+  const mezcla = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+  // ---------- capas, de atrás hacia adelante ----------
+  const capaEscena = cont(), capaOscura = cont(), capaLuz = cont(), capaUI = cont(), capaLector = cont();
+
+  // sala al fondo
+  S("prov_sala", 0, 90, capaEscena);
+  const brilloVentana = S("prov_luz", 40, 115, capaEscena); brilloVentana.anchor.set(0.5); brilloVentana.scale.set(0.7); brilloVentana.tint = 0x6a86ff; brilloVentana.alpha = 0.22; brilloVentana.blendMode = PIXI.BLEND_MODES.ADD;
+  S("prov_dani", 86, 158, capaEscena);                       // silueta: nunca recibe luz
+  const editora = S("prov_editora_0", 130, 104, capaEscena);
+  S("prov_cubiculo", 124, 96, capaEscena);
+  // mesa y objetos
+  S("prov_mesa", 0, 190, capaEscena);
+  S("prov_taza", 46, 194, capaEscena);
+  S("prov_telefono", 154, 186, capaEscena);
+  S("prov_carpeta", 12, 206, capaEscena);
+  S("prov_lampara", 4, 142, capaEscena);
+
+  // ---------- el caso (Caso 2: el colegio sin denuncias, boceto) ----------
+  const PAPELES = [
+    { id: "correo", tex: "prov_papel_correo", titulo: "CORREO", banal: "De: Dirección\nPara: Tutores\n\nRecuerden entregar las planillas de asistencia antes del viernes.", clave: "De: Dirección\nPara: Tutores\n\nDesde marzo solo se registran denuncias firmadas por un adulto." },
+    { id: "buzon", tex: "prov_papel_buzon", titulo: "BUZÓN DEL PATIO", refuerzo: true, banal: "14 mensajes anónimos este trimestre.\nEl trimestre anterior hubo 5." },
+    { id: "calendario", tex: "prov_papel_calendario", titulo: "CALENDARIO", banal: "Marzo: reunión de padres.\nAbril: feria del libro.\nMayo: exámenes." },
+    { id: "tutores", tex: "prov_papel_tutores", titulo: "TUTORES DE 4.º", banal: "A: Mendoza\nB: Rojas\nC: Vargas\nD: Quispe" },
+    { id: "acta", tex: "prov_papel_acta", titulo: "ACTA DE PADRES", banal: "Se habló del kiosco y de las rutas del bus escolar.", clave: "La casilla «denuncia formal» ahora exige la firma de un adulto. Las anotaciones libres ya no se copian al libro." },
+    { id: "cuaderno", tex: "prov_papel_cuaderno", titulo: "ENFERMERÍA", banal: "Abril: 3 vendajes y 2 dolores de cabeza.", clave: "Derivaciones por conflicto entre alumnos: 9 este trimestre, 3 el anterior." },
+  ];
+  const COLS = [24, 74, 124], FILAS = [214, 270];
+  let est;      // estado de la partida
+
+  const papelesCont = cont(capaEscena);
+  papelesCont.sortableChildren = true;
+  const objs = PAPELES.map((p) => {
+    const c = new PIXI.Container();
+    const sh = new PIXI.Sprite(T.prov_sombra_papel); sh.position.set(-2, -1);
+    const sp = new PIXI.Sprite(T[p.tex]);
+    c.addChild(sh, sp); c.pivot.set(20, 25);
+    c.eventMode = "static"; c.cursor = "pointer"; c.hitArea = new PIXI.Rectangle(0, 0, 40, 50);
+    papelesCont.addChild(c);
+    c.on("pointertap", () => tocarPapel(p));
+    return { p, c, sp };
+  });
+
+  // ---------- la penumbra: una textura que se redibuja cada cuadro ----------
+  const oscuro = new PIXI.Container();
+  const velo = new PIXI.Sprite(PIXI.Texture.WHITE); velo.width = W; velo.height = H; velo.tint = 0x05040c; oscuro.addChild(velo);
+  const luzLampara = new PIXI.Sprite(T.prov_luz); luzLampara.anchor.set(0.5); luzLampara.blendMode = PIXI.BLEND_MODES.ERASE; oscuro.addChild(luzLampara);
+  const luzEditora = new PIXI.Sprite(T.prov_luz); luzEditora.anchor.set(0.5); luzEditora.blendMode = PIXI.BLEND_MODES.ERASE; luzEditora.position.set(154, 134); luzEditora.scale.set(0.62); luzEditora.alpha = 0.85; oscuro.addChild(luzEditora);
+  const luzReloj = new PIXI.Sprite(T.prov_luz); luzReloj.anchor.set(0.5); luzReloj.blendMode = PIXI.BLEND_MODES.ERASE; luzReloj.position.set(100, 110); luzReloj.scale.set(0.3); luzReloj.alpha = 0.35; oscuro.addChild(luzReloj);
+  const luzTop = new PIXI.Sprite(T.prov_luz); luzTop.anchor.set(0.5); luzTop.blendMode = PIXI.BLEND_MODES.ERASE; luzTop.position.set(94, 190); luzTop.scale.set(1.2, 0.35); luzTop.alpha = 0.2; oscuro.addChild(luzTop);
+  const rt = PIXI.RenderTexture.create({ width: W, height: H, resolution: 2 });
+  capaOscura.addChild(new PIXI.Sprite(rt));
+
+  // cono de la lámpara, brillo y polvo (suman luz)
+  const ORIGEN = { x: 26, y: 166 };
+  const cono = new PIXI.Sprite(T.prov_cono); cono.anchor.set(14 / 170, 2 / 190); cono.position.set(ORIGEN.x, ORIGEN.y); cono.blendMode = PIXI.BLEND_MODES.ADD; capaLuz.addChild(cono);
+  const brillo = new PIXI.Sprite(T.prov_luz); brillo.anchor.set(0.5); brillo.position.set(ORIGEN.x, ORIGEN.y - 2); brillo.scale.set(0.5); brillo.tint = 0xffc070; brillo.blendMode = PIXI.BLEND_MODES.ADD; capaLuz.addChild(brillo);
+  const motas = [];
+  for (let i = 0; i < 30; i++) { const m = new PIXI.Sprite(T.prov_mota); m.blendMode = PIXI.BLEND_MODES.ADD; m.f = rnd() * 6; m.v = 0.04 + rnd() * 0.1; m.x = 60 + rnd() * 100; m.y = 200 + rnd() * 120; capaLuz.addChild(m); motas.push(m); }
+
+  // ---------- interfaz ----------
+  S("prov_titular", 0, 0, capaUI);
+  // LEGIBILIDAD: ningun texto del alumno baja de 6 px logicos (unos 12 px en celular) y ninguno se pisa con otro.
+  const titularTxt = TX("CERO DENUNCIAS:\nEL COLEGIO ES SEGURO", { fontSize: 7, lineHeight: 10, fill: 0x1a1620 }, 6, 8, capaUI);
+  TX("AGENCIA NORTE · CASO 2", { fontSize: 6, fill: 0x2a251c }, 6, 32, capaUI);
+  const SELLO = { x: 52, y: 226 };   // el sello va sobre la carpeta, nunca sobre el titular
+  const sello = S("prov_sello_rojo", SELLO.x, SELLO.y, capaUI); sello.rotation = -0.12; sello.visible = false;
+  const selloTxt = TX("", { fontSize: 7, fill: 0xc83c34 }, SELLO.x + 8, SELLO.y + 9, capaUI); selloTxt.rotation = -0.12; selloTxt.visible = false;
+
+  const rotCred = TX("CREDIBILIDAD", { fontSize: 6, fill: 0xb8d4ff }, 4, 44, capaUI);
+  const rotLect = TX("LECTORES", { fontSize: 6, fill: 0xffdc94 }, 96, 44, capaUI);
+  const numCred = TX("50", { fontSize: 6, fill: 0xb8d4ff }, 94, 44, capaUI); numCred.anchor.set(1, 0);
+  const numLect = TX("50", { fontSize: 6, fill: 0xffdc94 }, 186, 44, capaUI); numLect.anchor.set(1, 0);
+  const TUBOS = [{ x: 6, relleno: "prov_relleno_azul" }, { x: 98, relleno: "prov_relleno_ambar" }].map((o) => {
+    S("prov_tubo_fondo", o.x, 52, capaUI);
+    const r = S(o.relleno, o.x + 4, 55, capaUI); r.height = 8; r.width = 40;
+    S("prov_tubo_vidrio", o.x, 52, capaUI);
+    return r;
+  });
+  [[10 + 20, 0xc4c0e0], [10 + 48, 0xffffff], [102 + 20, 0xc4c0e0], [102 + 48, 0xffffff]].forEach(([x, col], i) => {
+    const m = TX(i % 2 ? "60" : "25", { fontSize: 6, fill: col }, x + (i > 1 ? 0 : 0), 66, capaUI); m.anchor.set(0.5, 0);
+  });
+
+  TX("TIEMPO", { fontSize: 6, fill: 0xf0d8a0 }, 6, 80, capaUI);
+  const fichas = [0, 1, 2].map((i) => S("prov_ficha_on", 40 + i * 17, 72, capaUI));
+  fichas.forEach((f) => f.anchor.set(0.5)); fichas.forEach((f, i) => f.position.set(58 + i * 17, 84));
+  TX("CIERRE", { fontSize: 6, fill: 0xc4c0e0 }, 184, 80, capaUI).anchor.set(1, 0);
+
+  const etiqueta = S("prov_etiqueta", 6, 330, capaUI);
+  const toastTxt = TX("", { fontSize: 6, lineHeight: 8, wordWrap: true, wordWrapWidth: 166, fill: 0xf8eed4 }, 12, 335, capaUI);
+
+  const emote = new PIXI.Sprite(PIXI.Texture.EMPTY); emote.anchor.set(0.5); emote.position.set(172, 90); emote.visible = false; capaUI.addChild(emote);
+
+  const BOTONES = [
+    { id: "publicar", spr: "prov_boton_rojo", txt: "PUBLICAR", x: 4 },
+    { id: "frase", spr: "prov_boton_azul", txt: "ARMAR LA\nFRASE", x: 65 },
+    { id: "retener", spr: "prov_boton_ambar", txt: "RETENER", x: 126 },
+  ].map((b) => {
+    const c = cont(capaUI); c.position.set(b.x, 366);
+    const s = new PIXI.Sprite(T[b.spr]); c.addChild(s);
+    const t = TX(b.txt, { fontSize: 6, lineHeight: 8, align: "center", fill: 0xffffff, dropShadow: true, dropShadowColor: 0x000000, dropShadowDistance: 1, dropShadowAlpha: 0.6 }, 29, 14 - (b.txt.includes("\n") ? 4 : 3), c);
+    t.anchor.set(0.5, 0); t.x = 29;
+    c.eventMode = "static"; c.cursor = "pointer"; c.hitArea = new PIXI.Rectangle(0, 0, 58, 30);
+    c.on("pointertap", () => decidir(b.id));
+    return { b, c };
+  });
+  const otra = cont(capaUI); otra.position.set(4, 366); otra.visible = false;
+  { const s = new PIXI.Sprite(T.prov_boton_ambar); s.scale.set(3.14, 1); otra.addChild(s); const t = TX("OTRA VERSIÓN DEL CASO", { fontSize: 6, fill: 0xffffff }, 92, 11, otra); t.anchor.set(0.5, 0); otra.eventMode = "static"; otra.cursor = "pointer"; otra.hitArea = new PIXI.Rectangle(0, 0, 182, 30); otra.on("pointertap", () => reiniciar()); }
+
+  // lector (papel abierto)
+  capaLector.visible = false;
+  const fondoL = S("prov_pixel", 0, 0, capaLector); fondoL.width = W; fondoL.height = H; fondoL.tint = 0x000000; fondoL.alpha = 0.7;
+  const hojaL = S("prov_hoja", 18, 100, capaLector);
+  const tituloL = TX("", { fontSize: 6, fill: 0x4a3a2a }, 36, 108, capaLector);
+  const cuerpoL = TX("", { fontSize: 6, lineHeight: 11, wordWrap: true, wordWrapWidth: 112, fill: 0x2a2118 }, 36, 128, capaLector);
+  const cerrarL = TX("TOCA PARA CERRAR", { fontSize: 6, fill: 0xffffff }, 94, 322, capaLector); cerrarL.anchor.set(0.5, 0); cerrarL.alpha = 0.9;
+  capaLector.eventMode = "static"; capaLector.hitArea = new PIXI.Rectangle(0, 0, W, H);
+  capaLector.on("pointertap", () => cerrarLector());
+
+  // ---------- estado ----------
+  const objetivo = { x: 86, y: 262 };
+  const luzPos = { x: 86, y: 262 };
+  let proyector = /proyector=1/.test(location.search);
+  const cbProy = document.getElementById("proy"); cbProy.checked = proyector; cbProy.onchange = () => { proyector = cbProy.checked; };
+  const tweens = [];
+  const tween = (ms, fn, fin) => tweens.push({ t: 0, ms, fn, fin });
+  let t = 0, lectorAbierto = null, puntero = null;
+
+  const toast = (m) => { toastTxt.text = m; };
+  const ponerPose = (n) => { editora.texture = T["prov_editora_" + n]; };
+  const mostrarEmote = (nombre) => {
+    if (!T[nombre]) return;
+    emote.texture = T[nombre]; const lado = 20; emote.scale.set(lado / Math.max(emote.texture.width, 1));
+    emote.visible = true; emote.alpha = 1;
+    tween(1800, (p) => { emote.y = 90 - Math.sin(Math.min(p * 4, 1) * Math.PI) * 5; emote.alpha = p > 0.75 ? 1 - (p - 0.75) * 4 : 1; }, () => { emote.visible = false; });
+  };
+
+  function nuevaPartida() {
+    const clave = mezcla(PAPELES.filter((p) => p.clave))[0];
+    est = { fichas: 3, c: 50, l: 50, cd: 50, ld: 50, final: false, clave, abiertos: {}, claveAbierta: false };
+    const lugares = []; FILAS.forEach((y) => COLS.forEach((x) => lugares.push([x, y])));
+    mezcla(lugares);
+    objs.forEach((o, i) => {
+      o.c.position.set(lugares[i][0] + 20, lugares[i][1] + 25);
+      o.c.rotation = (rnd() - 0.5) * 0.07; o.c.scale.set(1); o.sp.tint = 0xffffff; o.c.zIndex = i;
+      o.base = { x: o.c.x, y: o.c.y, r: o.c.rotation };
+    });
+    fichas.forEach((f) => { f.texture = T.prov_ficha_on; f.scale.set(1); });
+    sello.visible = false; selloTxt.visible = false;
+    BOTONES.forEach(({ c }) => { c.visible = true; c.alpha = 1; });
+    otra.visible = false;
+    ponerPose(0); emote.visible = false;
+    toast("Toca un papel para abrirlo. Cada uno gasta una ficha de tiempo.");
+    objetivo.x = 86; objetivo.y = 262;
+  }
+  function reiniciar() { cerrarLector(true); nuevaPartida(); }
+  document.getElementById("otra").onclick = reiniciar;
+
+  function tocarPapel(p) {
+    if (est.final || lectorAbierto) return;
+    const o = objs.find((q) => q.p === p);
+    if (!est.abiertos[p.id]) {
+      if (est.fichas <= 0) {
+        toast("Se acabaron las fichas de tiempo. Decide con lo que viste.");
+        const b = o.base; tween(260, (q) => { o.c.x = b.x + Math.sin(q * 30) * 2 * (1 - q); });
+        return;
+      }
+      est.abiertos[p.id] = true;
+      if (p === est.clave) est.claveAbierta = true;
+      est.fichas--;
+      const f = fichas[est.fichas]; f.texture = T.prov_ficha_off;
+      tween(240, (q) => { f.scale.set(1 + Math.sin(q * Math.PI) * 0.5); });
+      o.sp.tint = 0xb4b0c0;
+    }
+    abrirLector(o);
+  }
+  function abrirLector(o) {
+    lectorAbierto = o;
+    const p = o.p;
+    const texto = (p === est.clave) ? p.clave : p.banal;
+    tituloL.text = p.titulo; cuerpoL.text = texto;
+    capaLector.visible = true; capaLector.alpha = 0;
+    objetivo.x = o.base.x; objetivo.y = o.base.y;
+    o.c.zIndex = 99;
+    tween(180, (q) => { capaLector.alpha = q; o.c.scale.set(1 + 0.15 * q); o.c.y = o.base.y - 5 * q; });
+  }
+  function cerrarLector(rapido) {
+    if (!lectorAbierto) return;
+    const o = lectorAbierto; lectorAbierto = null;
+    capaLector.visible = false; o.c.scale.set(1); o.c.y = o.base.y; o.c.zIndex = 0;
+    objetivo.x = 86; objetivo.y = 262;
+  }
+
+  function decidir(que) {
+    if (est.final || lectorAbierto) return;
+    const k2 = est.claveAbierta;
+    let dc, dl, msg, pose, sel, emo;
+    if (que === "publicar") { dc = -20; dl = 10; msg = "Llama una madre: a su hijo lo empujaron y «no se podía denunciar»."; pose = 1; sel = ["rojo", "RÉPLICA"]; emo = "emote_alerta"; }
+    else if (que === "retener") { dc = 6; dl = -8; msg = "La competencia publicó y tuvo que rectificar. Esperaste y se nota."; pose = 0; sel = ["azul", "RETENIDO"]; emo = "emote_duda"; }
+    else if (k2) { dc = 8; dl = 4; msg = "La editora pone tu frase en portada."; pose = 2; sel = ["azul", "PORTADA"]; emo = "emote_feliz"; }
+    else { dc = -8; dl = 4; msg = "Tu frase es prudente pero no toca el hueco. La réplica llega igual."; pose = 1; sel = ["rojo", "RÉPLICA"]; emo = "emote_triste"; }
+    est.final = true;
+    est.c = Math.max(0, Math.min(100, est.c + dc)); est.l = Math.max(0, Math.min(100, est.l + dl));
+    BOTONES.forEach(({ c }) => { c.visible = false; });
+    otra.visible = true;
+    toast(msg); ponerPose(pose); mostrarEmote(emo);
+    sello.texture = T[sel[0] === "rojo" ? "prov_sello_rojo" : "prov_sello_azul"];
+    selloTxt.style.fill = sel[0] === "rojo" ? 0xc83c34 : 0x3c6cd8; selloTxt.text = sel[1];
+    selloTxt.x = SELLO.x + 42 - selloTxt.width / 2 + 4; selloTxt.y = SELLO.y + 9;
+    sello.visible = true; selloTxt.visible = true; sello.alpha = 0; selloTxt.alpha = 0;
+    tween(220, (q) => { sello.alpha = q; selloTxt.alpha = q; sello.scale.set(1.6 - 0.6 * q); selloTxt.scale.set(1.6 - 0.6 * q); });
+  }
+
+  stage.on("pointermove", (e) => { puntero = { x: e.global.x, y: e.global.y }; });
+
+  nuevaPartida();
+
+  // ---------- el reloj del juego ----------
+  app.ticker.add((d) => {
+    const dt = d / 60; t += dt;
+    for (let i = tweens.length - 1; i >= 0; i--) { const w = tweens[i]; w.t += dt * 1000; const p = Math.min(1, w.t / w.ms); w.fn(p); if (p >= 1) { tweens.splice(i, 1); if (w.fin) w.fin(); } }
+
+    // medidores: el valor mostrado persigue al real
+    est.cd += (est.c - est.cd) * 0.12; est.ld += (est.l - est.ld) * 0.12;
+    TUBOS[0].width = Math.max(0.5, 80 * est.cd / 100); TUBOS[1].width = Math.max(0.5, 80 * est.ld / 100);
+    numCred.text = String(Math.round(est.cd)); numLect.text = String(Math.round(est.ld));
+    const bajo = est.c <= 25 || est.l <= 25;
+    TUBOS[0].alpha = est.c <= 25 ? 0.55 + 0.45 * Math.abs(Math.sin(t * 6)) : 1;
+    TUBOS[1].alpha = est.l <= 25 ? 0.55 + 0.45 * Math.abs(Math.sin(t * 6)) : 1;
+
+    // la lámpara: parpadea un poco y baja de intensidad si algo cae a 25
+    let inten = 1 + 0.03 * Math.sin(t * 7.3) + 0.02 * Math.sin(t * 2.1);
+    if (bajo) inten *= 0.8;
+    velo.alpha = proyector ? 0.45 : 0.84;
+    let tx = objetivo.x, ty = objetivo.y;
+    if (puntero && !lectorAbierto) { tx += (puntero.x - 94) * 0.12; ty += (puntero.y - 262) * 0.1; }
+    luzPos.x += (tx - luzPos.x) * 0.1; luzPos.y += (ty - luzPos.y) * 0.1;
+    luzLampara.position.set(luzPos.x * 0.55 + ORIGEN.x * 0.45, luzPos.y * 0.7 + ORIGEN.y * 0.3);
+    luzLampara.scale.set(1.5 * inten); luzLampara.alpha = 0.95;
+    const ang = Math.atan2(luzPos.y - ORIGEN.y, luzPos.x - ORIGEN.x);
+    cono.rotation = ang - Math.atan2(0.78, 0.62);
+    const dist = Math.hypot(luzPos.x - ORIGEN.x, luzPos.y - ORIGEN.y);
+    cono.scale.set(Math.max(0.8, Math.min(1.5, dist / 130)));
+    cono.alpha = 0.85 * inten; brillo.alpha = 0.3 * inten;
+    app.renderer.render(oscuro, { renderTexture: rt, clear: true });
+
+    // polvo en el cono
+    motas.forEach((m) => {
+      m.f += 0.02 * d; m.x += Math.sin(m.f) * 0.12; m.y -= m.v * d;
+      const dx = m.x - luzPos.x, dy = m.y - luzPos.y, r = Math.hypot(dx, dy);
+      m.alpha = r > 85 ? 0 : (0.2 + 0.5 * (0.5 + 0.5 * Math.sin(m.f * 2))) * (1 - r / 85);
+      if (r > 95 || m.y < 150) { m.x = luzPos.x + (rnd() - 0.5) * 120; m.y = luzPos.y + (rnd() - 0.2) * 70; }
+    });
+    editora.y = 104 + (Math.sin(t * 2) > 0.7 ? 1 : 0);
+  });
+  // para pruebas desde la consola o desde un script
+  window.__boceto = { app, estado: () => est, decidir, tocarPapel, reiniciar, PAPELES, objs };
+
+  // ---------- control de legibilidad (?medir=1): tamano minimo y textos que se pisan ----------
+  // Recorre los estados del caso y, en cada uno, mide todo texto visible. Escribe el resultado en #medicion.
+  if (/medir=1/.test(location.search)) {
+    const MIN_LOGICO = 6;                       // 6 px logicos = unos 12 px en un celular de 375 px
+    const textos = () => { const out = []; (function rec(n) { if (!n.visible || n.worldAlpha === 0) return; if (n instanceof PIXI.Text && n.text.trim()) out.push(n); (n.children || []).forEach(rec); })(stage); return out; };
+    const caja = (t) => { const b = t.getBounds(); return { x: b.x, y: b.y, w: b.width, h: b.height }; };
+    const choca = (a, b) => { const w = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x), h = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y); return w > 1 && h > 1 ? w * h : 0; };
+    const res = { minimo_logico: MIN_LOGICO, estados: [] };
+    const medir = (nombre) => {
+      const ts = textos(); const e = { estado: nombre, textos: ts.length, chicos: [], pisados: [], fuera: [] };
+      ts.forEach((t) => { const fs = t.style.fontSize; if (fs < MIN_LOGICO) e.chicos.push(t.text.replace(/\n/g, " ") + " (" + fs + ")"); const c = caja(t); if (c.x < -1 || c.y < -1 || c.x + c.w > W + 1 || c.y + c.h > H + 1) e.fuera.push(t.text.replace(/\n/g, " ")); });
+      for (let i = 0; i < ts.length; i++) for (let j = i + 1; j < ts.length; j++) { if (choca(caja(ts[i]), caja(ts[j])) > 0) e.pisados.push(ts[i].text.replace(/\n/g, " ") + " <> " + ts[j].text.replace(/\n/g, " ")); }
+      res.estados.push(e);
+    };
+    const paso = (ms) => new Promise((r) => setTimeout(r, ms));
+    (async () => {
+      await paso(600); medir("inicio");
+      window.__boceto.tocarPapel(PAPELES[0]); await paso(500); medir("papel abierto"); cerrarLector(true);
+      for (const q of ["publicar", "retener", "frase"]) { reiniciar(); await paso(200); decidir(q); await paso(600); medir("decision " + q); }
+      res.ok = res.estados.every((e) => !e.chicos.length && !e.pisados.length && !e.fuera.length);
+      const pre = document.createElement("pre"); pre.id = "medicion"; pre.textContent = "MEDICION" + JSON.stringify(res); document.body.appendChild(pre);
+    })();
+  }
+})();
+</script></body></html>

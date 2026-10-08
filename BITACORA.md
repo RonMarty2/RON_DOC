@@ -36,6 +36,16 @@
 > jugando, después él dice qué le gusta, al final referencias, aspecto, arte y sonido.** Regla escrita en los 7 agentes y en
 > `REGLAS-COMUNES-AGENTES.md`. El paso 2 del plan (arte) queda **en pausa**; en curso: análisis de cero del Tema 1 por el
 > adaptador → `docs/juego/gdd/00-tema1-de-cero-psicoestadistica.md` (fase A sin leer la maqueta; fase B la compara).
+> **IDEA DE RONALD PARA EL TEMA 1 (08-10, textual; sin asentar todavía):** el Tema 1 es «Introducción a la estadística en
+> ciencias del comportamiento». Quiere «un juego del tipo ir descubriendo… introducirles sin explicar la utilidad… entro y
+> cuando termino el juego me doy cuenta de que estadística había sido muy útil, está en todo, no sabía ni para qué servía, todo
+> se me quedó jugando, no entiendo a fondo pero sí sé que existe ahora». Pidió **planificar y asentar la idea antes de hacer
+> nada.** Pendiente: confirmar la frase de la idea, definir «qué debe quedarse» (5 a 7 ideas), si el tema cuenta para la nota y
+> cómo se ve qué aprendió. Después: 2 o 3 formas de juego de descubrimiento (adaptador), y recién ahí referencias y aspecto.
+> **DECIDIDO por Ronald (08-10):** cada materia es un juego global repartido en minijuegos, las **islas metafóricas**, cada una con su puntaje sobre 100 y uno
+> global al final (él pondera); **el Tema 1 de Psicoestadística Descriptiva probablemente no mide nota** (otros temas o materias pueden sí); **cierra con revelación**;
+> la frase de la idea del Tema 1 queda asentada. Regla «la calificación ya está decidida: no se pregunta» escrita en los 7 agentes y en `REGLAS-COMUNES-AGENTES.md`.
+> En curso: paso 2 del plan, «qué debe quedarse» (5 a 7 ideas) → `docs/juego/gdd/00-tema1-que-debe-quedarse.md`; después, formas de juego de descubrimiento.
 > **Dos mejoras a los agentes por casos de hoy (08-10):** (a) en los 7 y en `REGLAS-COMUNES-AGENTES.md`: lo ya decidido no se
 > vuelve a preguntar y no se entrega con un ✘ (el director repitió preguntas contestadas y recomendó lo contrario de un plan
 > aprobado); (b) en `director-de-juego`: los bocetos de aspecto se hacen con arte real y en el motor propuesto, no con

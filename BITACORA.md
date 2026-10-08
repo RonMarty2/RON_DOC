@@ -31,6 +31,10 @@
 > líneas por etapa. **Regla corregida por Ronald (08-10):** las referencias a juegos famosos que lo hicieron bien **sí**
 > (se proponen 1 a 3 por materia y se dice qué se toma y qué se cambia); no se copia arte, personajes, nombres ni música de
 > un juego comercial, ni el contenido de otro juego de RON_DOC. Pasada a los 7 agentes y a `REGLAS-COMUNES-AGENTES.md`.
+> **Dos mejoras a los agentes por casos de hoy (08-10):** (a) en los 7 y en `REGLAS-COMUNES-AGENTES.md`: lo ya decidido no se
+> vuelve a preguntar y no se entrega con un ✘ (el director repitió preguntas contestadas y recomendó lo contrario de un plan
+> aprobado); (b) en `director-de-juego`: los bocetos de aspecto se hacen con arte real y en el motor propuesto, no con
+> rectángulos de código (el boceto A le pareció «un dibujo y ya»).
 
 > **EN CURSO desde 28-09 11:45 (Claude, PC RonMarty): mejorar los agentes antes de probarlos en
 > Psicoestadística Descriptiva.** Ronald pausa AIEF (*«al jugar el Tema 1 de AIEF no domino el tema»*) y

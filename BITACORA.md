@@ -46,6 +46,9 @@
 > global al final (él pondera); **el Tema 1 de Psicoestadística Descriptiva probablemente no mide nota** (otros temas o materias pueden sí); **cierra con revelación**;
 > la frase de la idea del Tema 1 queda asentada. Regla «la calificación ya está decidida: no se pregunta» escrita en los 7 agentes y en `REGLAS-COMUNES-AGENTES.md`.
 > En curso: paso 2 del plan, «qué debe quedarse» (5 a 7 ideas) → `docs/juego/gdd/00-tema1-que-debe-quedarse.md`; después, formas de juego de descubrimiento.
+> **DECIDIDO (08-10, Ronald):** el juego **nunca** manda a leer el dossier ni dice «según el dossier»; enseña mientras se juega. Cambia el tercer escalón de la
+> escalera de ayuda (hoy «lee la sección del dossier», en `src/lib/juego/escalera.ts` y en el guion de AIEF): pasa a ayuda dentro del juego. **El código existente no se
+> toca sin su OK** (afecta `escalera.ts`, `guion-tema1.ts` de AIEF y sus pruebas). Regla en los 7 agentes y `REGLAS-COMUNES-AGENTES.md`.
 > **Dos mejoras a los agentes por casos de hoy (08-10):** (a) en los 7 y en `REGLAS-COMUNES-AGENTES.md`: lo ya decidido no se
 > vuelve a preguntar y no se entrega con un ✘ (el director repitió preguntas contestadas y recomendó lo contrario de un plan
 > aprobado); (b) en `director-de-juego`: los bocetos de aspecto se hacen con arte real y en el motor propuesto, no con

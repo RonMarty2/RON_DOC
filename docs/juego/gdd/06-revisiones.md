@@ -1,8 +1,21 @@
 # 06 · Revisiones: lo que falla en lo propuesto
 
-**Versión 12 · 08-10-2026** (la entrada más nueva, sobre las formas de juego del Tema 1, está justo antes de la v11) · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
+**Versión 15 · 08-10-2026** (la entrada más nueva, narrativa v3 y sonido v1 del Tema 1 de Psicoestadística, está justo debajo de las decisiones; la v14, simulación del bucle v2, va después; la v14 está antes de la v13; la v13, antes de la v12) · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
 ## Decisiones pendientes de Ronald
+
+### De la revisión de la narrativa v3 y el sonido v1 del Tema 1 de Psicoestadística (papel + scripts, 08-10, v15)
+
+Ninguna pregunta de gusto nueva. Dos cosas que conviene que veas en simple, ambas con valor recomendado que no bloquea nada:
+1. **La jefa del Departamento se parece a la de AIEF** (hallazgo I2): también habla desde un vidrio, con frases cortas, y también sella. Recomendado: sacarle el vidrio y el sello y darle otra manera de hablar. Alternativa: dejarla igual (los alumnos de Psicología no juegan AIEF).
+2. **Caso 5, turno 1** (hallazgo I7): la jefa aprueba con el pulgar arriba una elección que después sale mal. Recomendado: mantener la trampa, pero que la aprobación venga de Beto o del director y no de la jefa.
+Hay **2 bloqueos** (dos textos de la revelación que dirían algo falso) y 7 importantes; los corrigen aprendizaje, narrativa, bucle y sonido antes de construir (tabla «Quién lo arregla» al final de la entrada).
+
+### De la revisión del aprendizaje y el bucle del Tema 1 de Psicoestadística (papel, 08-10, v13)
+
+Ninguna pregunta nueva. Hay **1 bloqueo** (la meta se pasa sin abrir un solo papel) y varios importantes; todos se
+corrigen en números y reglas del bucle, que ya están pensadas como datos ajustables (`reglas-t1.ts`), sin reabrir
+nada de lo que elegiste. No se programa hasta corregirlos.
 
 ### De la revisión de la maqueta de Psicoestadística Descriptiva · Psicología, versión 3.4 (papel, 08-10)
 
@@ -91,6 +104,606 @@ Se suman a las cinco que esa parte ya lista.
    defensa"** (lo que dice el pilar 5). Hoy los dos textos se contradicen (hallazgo 4).
 
 ---
+
+## 08-10-2026 · Psicoestadística Descriptiva (Psicología), Tema 1 «La mesa de verificación» en el oficio de psicólogo de colegio: narrativa v3 y sonido v1 contra bucle v2 y aprendizaje v2.1 (papel + scripts, v15)
+
+**Qué se revisó.** `05-mundo-y-narrativa.md` (sección «narrativa v3», líneas 20 a 786), `07-sonido.md` (v1, completo), contra `02-bucle-y-mecanicas.md` (v2, líneas 23 a 615), `04-aprendizaje.md` (v2.1, líneas 23 a 605) y `06` v14 (la simulación del bucle **no se repitió**). Revisión única, antes de mostrarle el plan a Ronald. **Con terminal:** todo conteo salió de un `.py` guardado en `scratch/` (`python -I`, salida en UTF-8): `v15_conteos.py`, `v15_ids.py`, `v15_vocab.py`, `v15_ramas_cmp.py`, `v15_ramas_falsas.py`, `v15_palabras.py`, `v15_efectos_uso.py`, `v15_origen.py`, `v15_contraste.py`, `v15_citas.py`, `v15_efectos.py`, `v15_extraer.py`. No se corrigió ningún documento de otro agente; cada hallazgo dice quién lo arregla.
+
+**Las tres líneas del oficio (regla «El juego se hace para el oficio de la carrera»).** (1) Carrera: Psicología (Psicoestadística Descriptiva, Psicología). (2) Un psicólogo de colegio recibe informes, oficios, actas y frases de reunión («cero denuncias», «el taller funciona») y dice qué se puede afirmar con los datos del colegio. (3) Papel del jugador: psicólogo o psicóloga del Departamento de Orientación. **Pregunta del crítico: ¿este papel lo haría un profesional de la carrera del alumno? Sí.** Papeles del archivo (cuaderno de enfermería, libro de registro, buzón anónimo, informe del orientador), voces (madre que llama, docente, director, tallerista, practicante) y casos (denuncias registradas, taller de pausas, dos estudios de estrés, plan de bienestar) son del oficio. Un retoque de oficio, menor: el caso 7 le da al jugador la autoridad de «recortar» un presupuesto («¿A cuál recortas?») y el caso 8 dice que decide el director; debería ser «¿A cuál le recomendarías recortar?».
+
+### Veredicto corto
+
+| Pregunta | Respuesta |
+|---|---|
+| ¿Se puede mostrar el plan a Ronald tal cual? | **No todavía.** 2 bloqueos baratos (dos textos de la revelación falsos en la mayoría de sus apariciones) y 7 importantes. Nada obliga a rehacer una mecánica ni a tocar un número del bucle. |
+| ¿Cuadran ids, números, botones y vocabulario entre las cuatro partes? | **Casi.** Cuadran 72 papeles, 30 sobres, 8 expedientes, 71 ramas, 20 ajustes, 11 hojas, 13 efectos, 11 prompts, metas 65/65 y marcas 25/65, botones y 53 efectos de reacción. **No cuadran:** los códigos de error y los hábitos entre `02` y `04` (I1) y «titular» en dos títulos de caso (C1). |
+| ¿Algún texto o sonido da la respuesta o juzga antes que el mundo? | **Sí, poco y arreglable:** timbres de `E04` con carga de «bueno» y «malo», el ronquido de Dani parecido al aviso de error, el turno 2 del caso 5 que arranca en menor, el ánimo «hueco e incómodo» del caso 2 (I4), y dos líneas (una de la jefa y una de Ugarte) que dicen la lección o una pista (C6). |
+| ¿Alguna rama de la revelación dice algo falso? | **Sí, dos** (B1 y B2). En las otras 69 no encontré falsedad contra las reglas del bucle v2 (68 hechos comprobados por el script de aprendizaje y mi recorrido a mano de las 71 contra las tablas de `02`); quedan dos detalles menores en C10 y C11. |
+| ¿Se parece a AIEF? | **Sí en la figura de la jefa y el sello** (I2). Nombres, lugar y casos son distintos. |
+
+### Hallazgos, de más grave a menos grave
+
+**BLOQUEA**
+
+**B1. La rama F3a dice «se pudo presentar» cuando el juego acaba de mostrar que el rango quedó en un anexo (`04` T1.7a/T1.7b, `05` NT1.9).**
+*Qué pasa.* El bucle v2 hizo que el rango `ok` del caso 3 **solo pague entero con la pieza del papel clave**; sin pieza rinde como `flojo` y la narrativa lo muestra con «Queda en un anexo del informe. Cubre. Pero ¿de dónde salió la cifra de la fuente?» y el sobre `S-E3f`. Pero la tabla de ramas de `04` (F3a: «P · rango `ok` que cubre») **no tiene la dimensión «con pieza o sin pieza»** para los tipos P y B (solo la usa en A). Resultado: quien sacó 2 tandas, escribió un rango `ok` sin la pieza, vio «queda en un anexo» y después da vuelta la ficha 3, lee: *«Tu rango dijo cuánto se mueve la cifra, y por eso se pudo presentar.»* Falso. Con una simulación (`v15_ramas_falsas.py`, supuesto: 2 tandas y 1 papel abierto al azar de 6, tipo P): **sin pieza en 75,7 %** de los casos; con 0 papeles, 100 %. Quien abre el clave por el nombre («Ficha de cómo se obtuvo…») sí tiene pieza; el que no, ve una ficha que contradice su pantalla.
+*Por qué importa.* Es justo el caso que el bucle cerró (hallazgo 2 de v13) y la revelación lo desmiente; además el script de aprendizaje (`ramas_t1.py`) dio «0 caen en 0 o 2 ramas» porque su modelo no tiene esa variable.
+*Propuesta.* Aprendizaje: F3a solo con «`ok` **con** pieza»; «`ok` sin pieza» pasa a F3b (que ya dice «quedó en un anexo… nadie lo comentó»), con el cuándo «`flojo` o `ok` sin pieza»; agregar «pieza» como variable de P y B en `ramas_t1.py`. Narrativa vuelve a copiar con `armar_nt19.py`. Lo hace: `disenador-de-aprendizaje`, luego `disenador-narrativo`.
+
+**B2. La rama F5h dice «esta vez el taller sí cambió un poco» y es falsa en 57 % de sus apariciones (`04` F5h, `05` NT1.9, bucle E5d).**
+*Qué pasa.* El bucle define `E5d` como «escribió 0 con la comparación abierta y `|0 − ρ| > 1`». `ρ` es **la cuenta buena de esa versión** (con ruido de 13 contra 13), no el efecto del taller `δ`; y `δ` vale 0 en la mitad de las versiones. Aprendizaje escribió F5h como «escribió 0 con **efecto real**» y la narrativa copió «Esta vez sí cambió un poco… quedaba un efecto pequeño». `v15_ramas_falsas.py` (ρ ~ N(δ, 4,4) recortado a [−4, 10], como el simulador v14): `E5d` ocurre en 80,9 % de las versiones; **en 48,2 % de esas `δ = 0` (el taller no hizo nada) y en 8,8 % `δ = 3` pero `ρ < 0`**: la ficha dice algo falso o engañoso en **57,0 %** de las veces que aparece. Y el sobre `S-E5d` («¿de verdad no quedó nada?») empuja en el mismo sentido.
+*Por qué importa.* Es el caso donde Ronald (que enseña esto) más va a mirar: afirmar un efecto que no existe, en la ficha que cierra la regresión a la media.
+*Propuesta.* Bucle: `E5d` = «escribió 0, comparación abierta y `ρ > 1`» (así el sobre `S-E5d` «¿de verdad no quedó nada?» no sale cuando la cuenta buena es negativa; ese caso cae en R5.9 genérico → F5i, que es verdadera). Aprendizaje: F5h dice «Abriste con qué comparar y escribiste 0. La cuenta bien hecha daba {rho}.» (hueco `{rho}` del generador, 3 palabras) y su «Habría pasado» deja de afirmar causa. Lo hacen: `disenador-de-bucle` (definición), `disenador-de-aprendizaje` (texto), `disenador-narrativo` (copia y sobre `S-E5d`).
+
+**INJUSTO / IMPORTANTE**
+
+**I1. Hay dos tablas distintas de hábitos y de códigos de error, y el registro no se puede construir con las dos (`02` §8.2 contra `04` T1.5a/T1.5b).**
+*Qué pasa* (`v15_ids.py`). `02` define **29** códigos `E…`; `04` define **26**: faltan `E2d` (frenó en B), `E3f` (rango bueno sin pieza) y `E5e` (aconsejó a o b), que ya tienen sobre en `05`. Peor, las clases de hábito **no coinciden en 11 casos**: `04` mete `E2c, E3c, E6c, E8d` en H3 y `E3b, E3e, E8c, E8d` en H4 (para no dejar códigos sin hábito) y avisa que «el bucle la adopta en su 8.2»; el bucle **no la adoptó**: deja `E2c, E3b, E3c, E3e, E6c, E8c, E8d` en «ninguna» (22 de 29 con hábito, 7 sin) y pide a aprendizaje que decida. Además `04` T1.5a fila del caso 2 dice **«acierto sin evidencia: no existe en este caso»**, y el propio `04` F2g y el bucle `R2.1.sin` (tipo B, firmar tal cual sin abrir el clave) **sí lo definen**. `04` T1.3 (ideas 2 y 6), T1.4 y T1.6 siguen diciendo «siempre con problema» y «48 filas vacías de 60», ya falsos (la nota de la línea 25 los salva solo si el lector la recuerda).
+*Por qué importa.* `registro-t1.ts` y `ayuda.ts` (qué expediente sale) leen esas tablas; con dos versiones, el hábito H4 se dispara distinto según qué documento se programe, y el docente vería clases distintas a las diseñadas.
+*Propuesta.* Una sola tabla: la de `04` T1.5b **más las tres filas faltantes** (`E2d` → sobrecorrigió, H3; `E3f` → acierto sin evidencia o sobrecorrigió, H1 solo si el clave estaba cerrado; `E5e` → registro, H4 dentro del caso 5), y el bucle §8.2 la copia con script. Corregir la fila del caso 2 de T1.5a (en B sí existe) y limpiar T1.3, T1.4 y T1.6. Lo hacen: `disenador-de-aprendizaje` y, después, `disenador-de-bucle`.
+
+**I2. Parecido con AIEF: la jefa tras el vidrio, el sello y la presión por medidores (regla 13).**
+*Qué pasa.* AIEF (`05` N2.2): «Doña Teresa, jefa de agencia, unos cuarenta años detrás del mismo vidrio… una línea por vez, dice la regla o hace una pregunta, nunca dice por qué», aparece en la llegada, al cierre de cada práctica y al final, y presiona con la pared roja. Aquí (`05` NT1.1, NT1.3, NT1.5): «un cubículo de vidrio donde trabaja la jefa», «Jefa (pose brazos cruzados, desde el vidrio)», frases de 4 a 10 palabras, «pregunta de vuelta en vez de corregir», «no explica», aparece en la entrada y el cierre de cada caso, y su sobre con una pregunta ocupa el lugar de la «línea después de cada práctica» de Doña Teresa. A eso se suman el sello (`07` E04 «golpe sordo de sello»; `02` «SELLA») y dos medidores como presión; el mismo oficio de escritorio con papeles. NT1.1 declara «la jefa no se asoma a sugerir», que es la frase de `PIEZAS-COMUNES` §4 contra la que hay que cuidarse: se evitó el verbo y no la figura.
+*Por qué importa.* Un alumno que jugó los dos sentiría «la misma jefa con otro nombre». **Atenuante real:** AIEF es de Administración y este es de Psicología; son cursos distintos y casi nadie jugará ambos. Por eso es importante y no bloqueo; sí lo verá Ronald, que ve las dos.
+*Propuestas.* **A (recomendada, solo textos y un dibujo):** la jefa está **en la sala**, sin vidrio (junto a la puerta, con un termo, de pie o sentada en el borde de otra mesa); habla en frases **más largas y de oficio** («mira, con los chicos de 4.º pasó esto el año pasado…») y **no** en reglas de una línea; el cierre del informe es una **firma a lapicera con el timbre del colegio**, no un sello; el sonido E04 cambia a pluma y timbre. **B:** cambiar quién da el sobre (que lo deje el propio colegio: un oficio, una nota de la secretaria) y la jefa solo aparece al arranque y al cierre. **C:** dejarlo y avisar a Ronald. Cuesta menos A. Lo hacen: `director-de-juego` (arte) con `disenador-narrativo` (voz) y `disenador-de-sonido` (E04).
+
+**I3. Caso 6: un papel clave no trae el hecho que la pieza afirma, y la pieza del tipo A regala un papel (`05` NT1.6; `02` 5.5).**
+*Qué pasa.* En el tipo P la pieza `grupo` dice «y todos son de {curso}». Los claves de P son **C6-1** («Los 60 son todos los estudiantes de {curso}») y **C6-2** («El colegio tiene ocho cursos. {curso} es uno de ellos»); el bucle dice que sirven los dos. Pero **C6-2 no dice que los 60 de la hoja sean de {curso}** (la hoja no trae curso): quien solo abrió C6-2 recibe una pieza que afirma algo que no vio. En el tipo A la pieza lleva dos hechos («12 respuestas **en semana de exámenes**») pero sus claves son dos papeles distintos (C6-1 «solo 12 devolvieron» y C6-3 «semana de exámenes»): quien abrió solo uno recibe gratis el dato del otro. El caso 3 sí lo hizo bien (pieza según cuál clave se abrió).
+*Por qué importa.* Rompe «la pieza específica existe solo si abriste el papel que la trae» (M3) y regala una de las dos fichas del caso.
+*Propuesta.* Narrativa: C6-2 en P pasa a «Composición por curso. Las respuestas de esta lista son de {curso}, uno de los ocho cursos del colegio.»; la pieza de A se parte en dos (una por papel, como el caso 3). Bucle: confirmar. Lo hace: `disenador-narrativo`.
+
+**I4. Cinco sonidos que juzgan, o contradicen la regla de oro de la propia hoja (`07`).**
+1. **E04: los tres botones suenan distinto con carga distinta** (L79): «Firmar tal cual = golpe sordo de sello; Redactar = campanita de máquina de escribir; Frenar = clic de freno». Una campanita contra un golpe sordo enseña «redactar es lo bueno, firmar es lo malo» en cada caso, aunque en el tipo B firmar tal cual sea lo mejor (+10/+10). S.0 promete «suena igual en toda versión»; entre botones no. *Propuesta:* los tres con el mismo timbre y distinto tono neutro, o uno solo.
+2. **El ronquido de Dani es casi el aviso de error** (L84 y L105): E09 «dos notas triangulares descendentes, bajas» frente a «Dani cabecea: tres notas triangulares descendentes muy bajo». Suena cuando el alumno tarda (`05` NT1.7, ambiente), es decir, **antes de decidir**, y se oye como «te equivocaste». *Propuesta:* ruido de aire o un pulso agudo, sin notas descendentes.
+3. **S5: el turno 2 arranca en menor y sin bajo** (L165) para todos, antes de que nadie diga nada. Anuncia «algo salió mal» antes de que llame el director vecino; el alumno que eligió (c) también lo oye. *Propuesta:* el turno 2 empieza en A y cambia a B recién cuando llega la llamada o la nota (el mundo habla primero). Además S5 usa «B» a la vez para «turno 2» y para «Duda más lenta»: hay que separarlas.
+4. **S2: «frío, hueco, incómodo»** (L127): desconfía por adelantado del cero en todas las versiones; es lo mismo que la jefa cuando dice «Es un número lindo para un consejo» (`05` L206). En B (1 de 3) el cero es cierto. No delata el tipo, pero enseña «el caso 2 se desconfía». *Propuesta:* ánimo curioso y neutro («rebuscar, comparar»); y la jefa dice «Es un número redondo».
+5. **S3: «escribir el rango» suena dos notas que se acercan o se alejan según el ancho** (L142), contra `E03` («siempre el mismo tono, que no suene a más ni a menos», L78). Es un sonido que reacciona al valor escrito: quien lo oiga acercarse aprende «ancho = malo» sin leer la hoja (el ancho ya es error en el nivel `ancho`) y puede tantear con el oído. *Propuesta:* quitar el efecto propio y usar E03.
+Lo hace: `disenador-de-sonido`.
+
+**I5. El mundo tiene cinco huecos que Ronald notaría («ninguna escena aparece de la nada»).**
+a) **480 es dos poblaciones.** Caso 3: «los estudiantes de **4.º** duermen {cifra}», «registro de los **480**», «150 elegidos al azar entre los 480» (`05` L243 a L264). Caso 6: «uno de cada cuatro estudiantes **del colegio**», «60 salieron por sorteo entre los **480 inscritos**», «el colegio tiene ocho cursos», y la profesora de «4.º A» (L361 a L376). Si 480 es todo el colegio, el caso 3 habla de 4.º con un registro de todo el colegio; si 480 es 4.º, el caso 6 habla de «el colegio» con 4.º. *Propuesta:* el caso 3 pasa a «los estudiantes del colegio» (título, oficio, fichas F3c, F3f, F3h, F3j); 4.º queda solo en el caso 4 y en el paso 1, que no cuentan. Lo hace: `disenador-narrativo` y `disenador-de-aprendizaje` (copia).
+b) **El paso 1 deja colgado su encargo.** La jefa pide «¿Cuántas horas duermen los de 4.º del colegio? Lo necesito para el consejo de mañana» y el paso termina con un asombro y «A partir de hoy firma el departamento». Nadie la contesta y el papel trae solo una «fila de ejemplo». *Propuesta:* el encargo pasa a una pregunta que el hallazgo sí contesta: «¿El colegio tiene algún dato sobre cuánto duermen los de 4.º?». Además la hoja «Para empezar» (3 preguntas personales) llega sin motivo en el mundo: una línea («es la ficha que llenan al ingresar; hoy la llenas tú») basta. Y la «fila de hace un año» repite los **mismos valores** que `{horas}`, `{minutos}`, `{animo}` de hoy (NT1.4 y C1-1 a C1-3): parece armado, justo lo que v13 hallazgo 9 quiso evitar con las columnas; usar valores distintos (`{horasAnt}`).
+c) **Horizonte y Beto no se presentan.** Los casos 3 a 7 salen barajados y el primero que toque a Horizonte («Horizonte cita en su informe…», caso 4; «Mismo dato, otro dibujo», caso 7) lo hace sin que nadie haya dicho que es la consultora que el colegio llama si el departamento tarda; Beto aparece como eco en el caso 4 o 5 sin presentación (`05` NT1.3 dice de Horizonte que «solo aparece en una línea»). *Propuesta:* en el arranque, una frase de la jefa («si no contestamos a tiempo, el colegio llama a Horizonte») y Beto de paso con su taza («A ojo se ve», que hoy es solo «ambiente opcional» en NT1.7).
+d) **El caso 5 salta un mes dentro de «una noche»** (`05` L325: «Pasó un mes. Hoja nueva.») y el marco son «la víspera del consejo», «se acabó la noche», «hoy tienes menos noche»; como los casos 3 a 7 se barajan, después del turno 2 el alumno vuelve a «esta noche». *Propuesta:* el turno 1 lleva una tarjeta «Hace un mes, otra noche como esta» y el turno 2 vuelve a «hoy»; así el mes pasó antes, no durante.
+e) **El caso 8 empieza en otro lugar sin transición** («Sala de dirección… reunión de presupuesto») y con la jefa ausente. *Propuesta:* una línea de la jefa («Ugarte te espera en dirección») al cerrar el caso 7 o 3 a 7.
+
+**I6. Las fichas F5a, F5b y F5c afirman causa donde el bucle solo garantiza una comparación (`04`/`05` NT1.9).**
+«Comparaste… y tu número **separó lo que hizo el taller** de lo que subió solo.» Con 13 contra 13 la cuenta buena `ρ` incluye ruido (el propio bucle lo dice: desvío de la diferencia ≈ 4,4 puntos) y `δ` puede ser 0: en una versión con `δ = 0` y `ρ = +6`, el taller no hizo nada y la ficha dice que el número lo separó. Es una afirmación causal falsa para un docente de estadística. *Propuesta:* «Comparaste con el grupo del sorteo y descontaste lo que subió solo.» (F5a), igual con `{vecino}` y con «los demás y el informe». Y en el cierre, la misma idea sin causa. Lo hace: `disenador-de-aprendizaje`, luego narrativa.
+
+**I7. Caso 5, turno 1: la decisión de diseño de que la jefa apruebe la trampa (pedido (4)).**
+*Qué hace.* Si el alumno aconseja (a) o (b), la jefa levanta el pulgar y dice «Los que más lo necesitan. Bien.»; si aconseja (c), Ugarte protesta («¿Por qué dejas a 13 sin ayuda?», −3 Voz). En el turno 2 la aprobación se cae.
+*Veredicto: la trampa es buena y enseña lo que Ronald pidió (la vergüenza), pero la forma actual cuesta tres cosas.* (1) **Rompe la única señal confiable del juego:** en los otros siete casos el pulgar arriba significa «va al informe» y suena E08; aquí significa lo contrario, y después se vuelve a usar sin aviso. (2) **Rompe a la jefa:** su ficha dice «No elogia: dice "Va al informe."», «quiere gente que pregunte, no que sepa», y aquí aprueba un diseño sin preguntar nada. (3) **Castiga la opción metodológicamente correcta con una queja realista pero sin salida:** en la práctica abierta se repite y el alumno aprende «(c) molesta». No es una mentira (ayudar a los que más lo necesitan es cierto), por eso no es bloqueo.
+*Propuesta (recomendada).* Mantener la trampa, **pasar la aprobación a Beto o a Ugarte** («Son los que más lo necesitaban. A ojo se ve.» ya existe para Beto) y que la jefa conteste neutra con una pregunta de las suyas («¿Con quién los vas a comparar?»: pregunta, no pista, pues los tres botones ya están a la vista); sin E08 en ese momento. Y en el turno 2, cuando llegue la llamada del vecino, que la jefa diga **«Yo también dije que sí»** si el alumno eligió (a) o (b): la vergüenza queda compartida y el mundo es honesto. *Alternativa:* dejar el pulgar y agregar solo esa frase del turno 2 (menos trabajo, mantiene el problema 1). Lo hace: `disenador-narrativo`; `disenador-de-sonido` quita el E08 de S5 turno 1.
+
+**COSMÉTICO**
+
+**C1. «titular» sigue en los títulos de dos casos y el aviso final de la narrativa es falso.** «Dos encuestas, un titular» y «El titular de los 480» están en 10 líneas de `02`, `04`, `05` y `07` (`v15_vocab.py`). La narrativa conserva los títulos a propósito, pero «titular» es de prensa y la instrucción de la revisión es que no quede fuera de las notas de renombre. *Propuesta:* «Dos estudios, una sola cita» y «Los 480 de la frase». Además `05` L741 dice que `02` y `04` «aún dicen publicar, Lectores, portada y editora»: ya no es cierto (solo quedan en las tablas de equivalencia). Lo hace: `disenador-narrativo`, y los otros tres copian.
+**C2. Dos frases pasan de 25 palabras en el peor caso** (`v15_palabras.py`: 637 frases, 2 de 26): L244 («Llegó un oficio de {fuente}. Tienes el registro de los 480 y la máquina de tandas: diez al azar. Cada tanda cuesta una ficha.») y L234 (la madre). La lista dice «0 de más de 25». Recortar.
+**C3. `hechoClave` no es una frase en los tres claves** (`05` NT1.4; F2a «Viste que {hechoClave}»): C2-3 es «Derivaciones por conflicto entre estudiantes: de {d0} a {d1}…» (22 palabras, no cumple K1 de 16 y no se lee detrás de «Viste que»). Definir tres frases cortas, una por clave («las derivaciones por conflicto pasaron de {d0} a {d1}»).
+**C4. Sobre `S-E6b`: «Dice 480. ¿A cuántos viste?»** La frase de la docente no dice 480 y la jefa no lo dijo; el 480 solo está en papeles. Usar «Dice "del colegio". ¿A cuántos viste?».
+**C5. Reacción R8.4 a R8.7:** «Puse el dinero donde me dijiste» también sale cuando recomendó **no financiar**. Separar: «No gasté en el taller, como dijiste».
+**C6. Dos líneas de la jefa y de Ugarte dicen la lección o una pista.** «Con una tanda no sabes cuánto se mueve» (puerta del rango; es la idea 3 dicha antes de verla) → «Para redactar un rango necesitas 2 tandas». Ugarte con 2 fichas: «con dos papeles todavía se puede» (revela que hacen falta dos) → «Hoy hay menos tiempo en la reunión».
+**C7. Fichas, cartas y papeles se llaman igual.** El bucle (V1) las llama «cartas» para no confundirlas con las fichas de tiempo; `04`, `05` y `07` dicen «las ocho fichas», «gastar una ficha» y «dar vuelta una ficha» (E02, E12, S9), y el papel C3-1 se llama «Ficha de cómo se obtuvo…». Unificar en «cartas» en `04`, `05` y `07`.
+**C8. Sonido: huecos y descuidos.** (a) La Decisión 2 dice «los 8 efectos más simples por código y 4 por Flow»: son **9 y 4** (`v15_origen.py`; E11 olvidado). (b) El peso: los 11 prompts suman 528 s, **6,2 MB a 96 kbps**, no «4 a 6». (c) `E06` (cae el sobre) no está en ninguna hoja; `E07` falta en S3 (llama una docente) y S4 (llama la coordinadora) y sobra en S8 («teléfono de Ugarte», que está en la sala); `E03` sobra en S2 (no se escribe número); `E04` y `E05` sobran en S1 (el paso 1 no tiene botón de firmar ni «¿Firmar?»: P1.6, sin sellar). (d) S2: «si redactó con las dos piezas pedidas»: el bucle paga con **una** pieza del clave (R2.3). (e) S2 y S1 deciden por la acción («si firmó tal cual», «error») y no por la reacción: en el tipo B firmar tal cual es el pulgar arriba; la regla debe ser «por la reacción que se ve». (f) S7: la nota dice «ningún motivo que sugiera escalón» y el prompt pide «a gentle stair-step pattern» y «arpegio en escalera lenta»: el caso 7 es el del eje truncado; cambiar a un patrón plano. (g) S4: en la sección C «una voz calla, queda la otra»: falta decir que alterna por versión y no depende de cuál estudio es el bueno. (h) S10: «plaza fija» y «otro trimestre» usan «E13», que es el clic de silenciar, y la jefa levanta el pulgar (E08) en la plaza fija. (i) Las cabeceras de `07` citan «narrativa v2», «bucle v1», «aprendizaje v1»: son v3, v2 y v2.1.
+**C9. `{fuente}` fijo o por caso.** Si es una por versión, «Dirección Distrital Meridiano» aparece en los casos 3, 6 y 7 y el alumno aprende «Meridiano miente» (su caso 3 fue P y el 6 fue B). Sortear una por caso.
+**C10. «Archivo del colegio… sin que nadie lo pidiera»** (F1a y `S-P1`): C1-2 es la «encuesta anual de la secretaría», que alguien sí pidió. Cambiar por «sin que nadie lo usara».
+**C11. F4d dice que un papel «mostraba quién respondió en cada estudio»**, pero los claves C4-3 y C4-4 muestran **un** estudio. Cambiar por «en uno de los estudios».
+**C12. Dos corchos en la misma sala.** NT1.11 #10 conserva el corcho con hilos del caso 2 (M4) y agrega el «panel de acuerdos» con tarjetas: aclarar si son el mismo muro. Y la pantalla de título no tiene el «Toca para empezar» que el sonido necesita (el navegador no suena sin un toque).
+**C13. Lo que quedó de v1 en otros archivos.** `PIEZAS-COMUNES.md` §4 dice «narrativa v1» y su lista de expedientes no incluye Santa Rosa ni Los Naranjos; el caso 7 pide «¿A cuál recortas?» (ver oficio).
+
+### Cuántos y cómo se contó (lo que pide la regla 14)
+
+| Conteo | Dice la lista | Resultado del script | Script |
+|---|---|---|---|
+| Papeles C1-1 a C8-9 | 72 | **72** (9 por caso) | `v15_conteos.py` |
+| Sobres `S-…` | 30 (`S-P1` + 29 códigos) | **30**; 29 `E…` cuadran con los 29 del bucle | `v15_conteos.py`, `v15_ids.py` |
+| Expedientes `R-H…` | 8 | **8** (2 por hábito) | `v15_conteos.py` |
+| Ramas de la revelación | 71 (66 + 5 del tipo B) | **71**; `04` y `05` idénticos en texto; máximo 22 palabras en las 66 filas de tres columnas (las 5 del tipo B las midió aprendizaje: máximo 25) | `v15_conteos.py`, `v15_ramas_cmp.py` |
+| Ajustes de NT1.11 | 20 | **20** | `v15_conteos.py` |
+| Hojas, efectos, prompts, filas de S.1 | 11, 13, 11, 11 | **11, 13, 11, 11** (+1 prompt de efecto) | `v15_conteos.py` |
+| Origen de los efectos | 8 por código + 4 por Flow | **9 + 4** | `v15_origen.py` |
+| Tiempos de los prompts (240 ÷ BPM × compases) | cuadran | **0 de 31 tramos fuera** de 1,6 s | `v15_conteos.py` |
+| Meta 65/65 y marcas 25/65 | 65 y 25 | `05` y `02` coinciden; los «60» que quedan son columnas «antes»; `07` no cita 65 | `v15_ids.py` |
+| Códigos `E…` | 29 en `02` y `05` | `04` tiene **26** (faltan E2d, E3f, E5e); hábitos **difieren en 11** | `v15_ids.py` |
+| Reacciones `R…` | 41 en `02` | 37 en `05`; las 4 que faltan (`R5.1`, `R5.2`, `R8.5`, `R8.6`) están cubiertas en tablas agrupadas; `05` no define ninguna que `02` no tenga | `v15_ids.py` |
+| Efectos (±) escritos en `05` frente a las tablas de `02` | cuadran | 53 líneas listadas, **0 diferencias** (comparación a mano sobre la lista del script) | `v15_efectos.py` + a mano |
+| Contraste de los colores de texto | 13,3 y 15,3 | **13,4 y 15,3 a 1** | `v15_contraste.py` |
+| Frases de más de 25 palabras (peor caso con huecos) | 0 | **2** (de 637) | `v15_palabras.py` |
+| Citas al dossier o software en lo que lee el alumno | 0 | **0** (solo en notas y listas) | `v15_citas.py` |
+| Vocabulario viejo fuera de notas de renombre | 0 | **«titular»** en 10 líneas (C1) y un aviso falso en `05` L741 | `v15_vocab.py` |
+| Voseo (`buscar_voseo.py`) | sin voseo | `05` y `07`: **sin voseo**; `02`: 1 aviso («cambié») y `04`: 2 («medí», «releí»), los tres de notas del equipo en primera persona (falsa alarma) | `buscar_voseo.py` sobre `v15_sec_*.md` |
+| Guiones largos | 0 | **0** en lo que lee el alumno (2 en líneas de listas que citan el signo) | `v15_extraer.py` |
+
+### Jugar mentalmente el arranque y los 8 casos
+
+Tres alumnos: **el que sabe** (abre por el nombre del papel y redacta), **el que no sabe** (abre al azar) y **el apurado** (el primer botón). Y Ronald (qué diría).
+
+| Escena | El que sabe | El que no sabe | El apurado | Ronald |
+|---|---|---|---|---|
+| **Arranque + paso 1** | Toca las tres tarjetas, deja que Dani responda, abre «Cuaderno de enfermería»: asombro | Con 3 fichas halla uno de los dos papeles con sueño en 80 % (ya contado en el bucle); si no, ficha regalada y Dani | Cualquier papel, ve el asombro igual | «¿Y por qué me preguntan cuánto dormí?» y «¿y la cifra que pidió la jefa?» (I5b). Le va a gustar Dani |
+| **Caso 2** | Abre correo/libro/informe del orientador (los tres claves tienen siempre el mismo nombre), redacta con las 2 piezas | 50 % de dar con el clave; si no, frase genérica: «Nuestras cifras son correctas» | Firma tal cual: llama la señora Quiroga (2 de 3). En B cobra +5 y «¿En qué papel te apoyabas?» | La llamada de la madre es lo más fuerte del tema. Le preocupará que el sonido ya anuncie «hueco» (I4.4) |
+| **Caso 3** | 2 tandas + «Ficha de cómo se obtuvo»: pieza y rango `ok` | 2 o 3 tandas sin el clave: `ok` sin pieza, «queda en un anexo»; luego F3a le dice «se pudo presentar» (B1) | Firma la cifra del oficio | Notará 4.º contra 480 (I5a) |
+| **Caso 4** | Abre «Lista de quienes respondieron» y cita el bueno | Elige el de «miles» | Elige el de «miles» | Le gusta que sea del distrito |
+| **Caso 5** | Turno 1: (c), Ugarte protesta; turno 2: resta y escribe `ρ` | (a): la jefa lo felicita; turno 2: resta con papeles que no están | (a) y escribe la subida de los llamados: llama el vecino | Aquí discutirá F5a a F5c (I6) y la ficha F5h (B2); le gustará la trampa si la aprueba otro (I7) |
+| **Caso 6** | Cuenta 60 filas (con toques), abre el clave, `grupo` | Base + «podrían» | Firma tal cual: llama Camacho | Contar 60 filas en un celular es lo más pesado del tema; que marcar sea opcional ayuda |
+| **Caso 7** | Antes, de lector elige; después resta 64,8 − 63,0 y rediseña en P | Resta bien, firma tal cual en P: −10/+10, casi gratis | Igual | Lo que enseña es el «lector antes y después»; la resta es trivial (ya aceptado en D-T1-2) |
+| **Caso 8** | Pone «Seguimiento» y «Listas y fechas» sobre la mesa, decide | Pone cualquier papel; R8.3 0/0 | Sigue a Beto | La pregunta de Ugarte «¿Cuántos eran?» sirve |
+| **Cierre y revelación** | Da vuelta las 8 cartas; Beto cierra con su pregunta | Igual | Cierra rápido | Las dos fichas falsas (B1, B2) son lo primero que verá |
+
+**Patrón que se aprende una vez** (no es un bloqueo, ya medido en v14: 4,8 % la mejor política sin papeles): los claves tienen siempre el mismo nombre en cada caso («Ficha de cómo se obtuvo…», «Lista de quienes respondieron…», «Cómo se eligieron los 60», «Seguimiento del semestre»). Un alumno que lo sepa abre el clave casi siempre (p cerca de 1); entonces lo que cuenta es leer bien, que es lo que se quiere.
+
+### La lista de decisiones de diseño que se revisaron (pedido (4))
+
+| Pieza | Resultado |
+|---|---|
+| Los 20 ajustes de NT1.11 | 20 presentes (`v15_conteos.py`). Contrastados a mano contra `02` y `04`: sin diferencias, salvo el 19 (las ramas F2f a F2j), que **ya está resuelto en `04` v2.1** con textos idénticos y la narrativa sigue llamando pendiente (su lista de salida lleva un ✘ viejo), y el 11, que introduce a Horizonte sin presentarlo (I5c) |
+| Caso 5, turno 1 | Ver I7 |
+| Decisiones de `07` (licencia, efectos por código, orden de pedidos) | La licencia es de Ronald y queda bien dicha; «por código» está bien recomendado pero con la cuenta equivocada (C8a); el orden de 3 pedidos (S0, S2, S9) es sensato |
+| Ajustes del sonido a otras partes (`07` S.5) | Gestos de NT1.11 (teléfono, sello, taza) → E07, E04, S10: presentes; el sello sigue siendo el parecido de I2 |
+
+### Lo que está bien y conviene no tocar
+
+- El tipo B del caso 2 y sus cinco ramas (F2f a F2j) están en `04` y en `05` con el mismo texto; la narrativa lo documentó honestamente como propuesta.
+- Los 72 papeles conservan el mismo nombre en todas las versiones y cambian el texto (clave o banal): no se puede deducir el tipo por el título.
+- Meta 65/65 y marcas 25/65 están igual en las tres partes; 53 efectos de reacción coinciden con las tablas del bucle.
+- La regla de oro del sonido (S.0) es buena; las excepciones de I4 son de cinco filas.
+- La jefa que nunca nombra el concepto, los sobres con una pregunta y el cierre de Beto («la próxima te pregunto de dónde sale») cumplen «no es una lección» salvo C6.
+- Los tiempos de los 11 prompts salen exactos (240 ÷ BPM × compases).
+
+### Quién lo arregla (sin tocar nada aquí)
+
+| Hallazgo | Quién | Qué |
+|---|---|---|
+| B1, B2, I6, C11 | `disenador-de-aprendizaje`, luego `disenador-narrativo` | T1.7a/T1.7b (F3a/F3b, F5a a F5c, F5h, F4d); `ramas_t1.py` con «pieza» en P y B y con `ρ`; copiar a NT1.9 |
+| B2 (definición) | `disenador-de-bucle` | `E5d` con `ρ > 1` |
+| I1 | `disenador-de-aprendizaje` y `disenador-de-bucle` | Una tabla de hábitos y 29 códigos; limpiar T1.3, T1.4, T1.6 |
+| I2 | `director-de-juego`, `disenador-narrativo`, `disenador-de-sonido` | Jefa sin vidrio ni sello, otra voz; decide Ronald si prefiere C |
+| I3, I5, I7, C1 a C6, C9, C10, C12 | `disenador-narrativo` | Textos y huecos |
+| I4, C7, C8 | `disenador-de-sonido` (C7 también 04 y 05) | Kit y hojas |
+| C13 | quien construye / `director-de-juego` | `PIEZAS-COMUNES` §4 |
+
+### Qué falló o faltó en los agentes (para mejorarlos, uno por vez)
+
+1. **Las cuatro entregas llegaron con ✘ o con ✔ sin prueba**, contra la regla «no se entrega con ✘»: narrativa con 3 ✘ (ramas del tipo B, que `04` v2.1 ya resolvió, K1 a K11 y legibilidad), aprendizaje con 1 ✘ (motor de registro), bucle con 2 ✘ (simulación, voseo) y sonido con ✔ en «tuteo» aunque `buscar_voseo.py` figura «sin correr». Aprendizaje v2, bucle v2 y sonido dijeron «sin terminal» y entregaron igual, en vez de avisar antes de entregar; la narrativa sí tuvo terminal y aun así dejó sus ✘ sin cerrar.
+2. **Los scripts de verificación modelan la tabla, no las reglas.** `ramas_t1.py` dio «0 errores» con un modelo que no tiene la pieza del caso 3 en P y B ni la relación entre `ρ` y `δ`; las reglas v2 del bucle no llegaron al modelo (B1, B2). Mejora propuesta para el agente de aprendizaje: que su script de ramas importe los estados del bucle (o los pida) en vez de rehacerlos.
+3. **Nadie reconcilió las dos tablas de hábitos** aunque cada una dice que la otra la adopta (I1). Mejora: una sola fuente (la de aprendizaje) y el bucle la copia con script.
+4. **El sonido se escribió sin leer los textos del alumno una por una:** reglas de oro contradichas por el propio kit (E04, E03 contra S3, stair-step) y efectos inventados sin mecánica (la regla de S7, E04/E05 en el paso 1).
+5. **La narrativa no se probó recorriendo el orden barajado del alumno:** Horizonte, Beto, el mes del caso 5 y el 480 funcionan en el orden del papel y no en el que verá cada alumno.
+6. **Mejora propuesta al crítico (regla de las mejoras, punto 5; sin aplicar):** incluir en la revisión de narrativa un script que, para cada rama de la revelación, enumere los estados que el bucle puede producir (no los de la tabla) y marque los que no tienen rama o cuya rama afirma un hecho distinto del estado. Hoy lo hice con dos simulaciones a mano; B1 y B2 se habrían visto antes.
+
+### Lista de salida de esta revisión
+
+| Regla | ✔/✘ | Cómo | Prueba contada |
+|---|---|---|---|
+| Oficio de la carrera (3 líneas y la pregunta) | ✔ | a mano | Arriba: Psicología · psicólogo de colegio · psicólogo del Departamento de Orientación; respuesta «sí»; dos retoques menores (caso 7). El juicio no se puede contar |
+| Conteos de narrativa (72, 30, 8, 71, 20) | ✔ | script | `v15_conteos.py`: 5 de 5 coinciden |
+| Conteos de sonido (11 hojas, 13 efectos, 11 prompts, 11 filas) | ✔ | script | `v15_conteos.py`: 4 de 4; tiempos 0 de 31 fuera; origen 9 + 4 (la Decisión 2 dice 8, C8a) |
+| Ids, metas y botones entre las cuatro partes | ✘ | script | `v15_ids.py`: 29/29/29 y R cuadran; **no cuadran** E del aprendizaje (26) ni 11 clases de hábito (I1) |
+| Vocabulario viejo (redacción, editora, titular, agencia, Lectores) | ✘ | script | `v15_vocab.py`: «titular» en 10 líneas (C1); lo demás solo en notas de renombre |
+| Ninguna rama de la revelación dice algo falso | ✘ | script | `v15_ramas_falsas.py`: F3a falsa en 75,7 % (con 1 papel abierto) y F5h en 57,0 % (B1, B2); las otras 69: resisten (68 hechos del script de aprendizaje) |
+| Ningún texto o sonido da la respuesta ni juzga antes que el mundo | ✘ | a mano | I4 (cinco sonidos) y C6 (dos líneas). Releí las 11 hojas y los 637 textos entre comillas; no se puede contar |
+| Revelación de `05` = `04` | ✔ | script | `v15_ramas_cmp.py`: 71 ramas, 0 textos distintos (66 + 5 en tabla de cuatro columnas) |
+| Los 20 ajustes de NT1.11 | ✔ | script + a mano | 20 presentes; contenido contrastado a mano contra `02` y `04` |
+| Efectos (±) de `05` contra las tablas de `02` | ✔ | script + a mano | 53 líneas listadas por script; comparación a mano, 0 diferencias |
+| Estrategia dominante nueva | ✔ | a mano | No se repitió la simulación (v14: 4,8 %). Se jugó el texto: patrón de nombres de papeles fijos (p cerca de 1, no hace ganar sin leer); pistas de la jefa solo después de sellar. Ningún texto nuevo mueve un número |
+| Lo que cuenta para la nota no se puede copiar | ✔ | a mano | Sin nota en este tema. El tipo, el clave y las cifras salen de la semilla (v14); la ficha varía por rama. No se vuelve a contar |
+| Parecido con otro juego (regla 13) | ✘ | a mano | I2: la figura de la jefa y el sello; nombres, lugar y casos distintos |
+| Pasó por el motor sin copiar (regla 13, lado código) | ✔ | a mano | `02` §3 reutiliza `partida.ts`, `version-alumno.ts`, `azarConSemilla`, `nube.ts`, `problemasDeTexto`; «No se usa `escalera.ts`». No hay código del tema todavía |
+| Texto que se lee: 12 px, 4,5 a 1, nada tapado | pendiente | contraste por script; el resto pendiente | `v15_contraste.py`: 13,4 y 15,3 a 1. Sin pantalla no hay medición de tamaño ni de tapado: se hace con `medir_legibilidad.py` al construir (cuenta como ✘ para la construcción) |
+| Citas al dossier / software | ✔ | script | `v15_citas.py`: 0 en lo que lee el alumno |
+| Tuteo, castellano neutro, sin guiones largos | ✔ | script | `buscar_voseo.py`: `05` y `07` sin voseo; 3 avisos en `02` y `04` son primera persona en notas del equipo; guiones largos: 0 |
+| Web y app por igual | ✔ | a mano | `07` S.0 (primer toque, silenciar, pista por escena); falta el «Toca para empezar» en la narrativa (C12) |
+| Individual, sin careo | ✔ | a mano | Beto, Ugarte y Horizonte son personajes; ningún texto pide un compañero |
+| No es una lección | ✔ | a mano | Dos líneas dicen la lección (C6); las fichas de la revelación nombran conceptos por diseño aprobado |
+| Reportó todo lo que no hizo | ✔ | — | No se corrigieron documentos de otros; no se probó el audio ni se midió pantalla |
+| Entregas sin ✘ | ✘ | script | Las cuatro llegaron con ✘ o con ✔ sin prueba (ver «Qué falló o faltó») |
+
+**Resultado de la lista: 5 ✘ (ids, vocabulario, ramas falsas, sonido/texto que juzga, parecido) y 1 pendiente (legibilidad).** Es una lista de hallazgos, no una entrega: se vuelve a jugar lo corregido (punto 15) cuando los agentes los arreglen.
+
+---
+
+## 08-10-2026 · Psicoestadística Descriptiva (Psicología), Tema 1: simulación definitiva del bucle v2 (script, v14)
+
+**Qué se hizo.** Se rehicieron los scripts con las tablas v2 de `02-bucle-y-mecanicas.md` (secc. 0, 2, 5 y los seis cambios de 11.5) y se
+corrió todo: E-S1 a E-S10, las estrategias de sobrecorregir (E-S6, E-S7, E-S8), la búsqueda de la mejor política sin abrir un solo papel y el
+recuento de los conteos del bucle. **20 000 versiones por estrategia, semilla 20261008, meta 65/65, `python -I`.** No se editó 02, 04, 05 ni 07.
+Los scripts v1 (`simular_t1.py`, `buscar_perezoso_t1.py`, `variantes_t1.py`, `extra_t1.py`, `contar_t1.py`) quedan intactos como historia de la v13.
+
+**Archivos guardados (todos en `scratch/`):** `simular_t1_v2.py` → `salida_v2_simular.txt` · `buscar_perezoso_t1_v2.py` → `salida_v2_buscar_perezoso.txt` ·
+`variantes_t1_v2.py` → `salida_v2_variantes.txt` · `extra_t1_v2.py` → `salida_v2_extra.txt` · `contar_t1_v2.py` → `salida_v2_contar.txt`.
+
+### Veredicto corto
+
+| Pregunta | Respuesta |
+|---|---|
+| ¿Se cumple el umbral (la mejor política sin papeles, por debajo de 15 %)? | **Sí, con mucho margen: 4,8 %** (re-medida en otras 20 000 versiones; 21 600 políticas). Sin mirar el dibujo del 7: 3,2 %. Ninguna política pasa 10 %. No hace falta una variante. |
+| ¿Algo bloquea? | **Nada bloquea.** |
+| ¿Algo falla en el recuento? | **0 de 58 comprobaciones fallan.** Solo un número del texto no coincide con el cálculo (cosmético, abajo). |
+| ¿Qué queda abierto? | Un hueco que el bucle y el crítico no probaron: quien **abre 3 papeles al azar y se cubre con lo intermedio** pasa **61,7 %** (injusto, abajo; decide Ronald). |
+
+### La tabla: % que pasa la meta (C ≥ 65 y Voz ≥ 65), tablas v2, 20 000 versiones
+
+| Estrategia | v2 (esta corrida) | Referencia v13 (tablas viejas, ya no valen) |
+|---|---|---|
+| E-S1 firmar siempre (c5: (a) y 0) | **0,0 %** | 0,0 % |
+| E-S2 frenar siempre | **0,0 %** | 0,0 % |
+| E-S3 intermedia sin papeles (c5 frenar, c7 tal cual) / E-S3b (c5 escribe 0) / E-S3c (y c7 mira el dibujo) | **0,0 / 0,0 / 0,0 %** | 0,0 / 10,3 / 10,3 % |
+| **Mejor política fija sin abrir papeles** (21 600; re-medida) | **4,8 %** | 59,5 % (variante G: 12,1 %) |
+| …la mejor sin mirar el dibujo del 7 / sin dibujo y sin comparar la cifra del oficio con las tandas | 3,2 % / 2,9 % | 43,6 % |
+| E-S4 abre 3 al azar; si no halla, firma | **22,0 %** (falla por C en el 78 %) | 29,7 % (variante G: 23,7 %) |
+| E-S5 abre 3 al azar; si no halla, frena | **8,8 %** (falla por Voz en el 81 %) | 13,0 % |
+| E-S6 rediseña siempre el 7, lo demás p = 0,65 / 0,80 / 1,00 | 53,0 / **77,4** / 100 % | 80,9 % con p = 0,8 |
+| E-S7 escribe 0 siempre en el 5, lo demás p = 0,65 / 0,80 / 1,00 | 61,4 / **83,9** / 100 % | 93,5 % con p = 0,8 |
+| E-S8 espera siempre en el 8, lo demás p = 0,65 / 0,80 / 1,00 | 42,6 / **67,6** / 100 % | 79,0 % con p = 0,8 |
+| E-S9 copia las decisiones de otra versión | **0,3 %** | 7,9 % (la ficha daba 0,5 %) |
+| **E-S10 entiende**, si falla cubre con lo prudente, p = 0,50 / 0,65 / **0,80** / 0,95 | 37,6 / 64,6 / **87,5** / 99,3 % | variante G: 32,8 / 59,5 / 83,7 / 98,8 % |
+| E-S10, si falla **firma** (como la ficha), p = 0,50 / 0,65 / 0,80 / 0,95 | 43,5 / 68,4 / 89,0 / 99,4 % | |
+| E-S10, si falla va a lo **intermedio** (ver abajo), p = 0,25 / 0,50 / 0,65 / **0,80** / 0,95 | 26,6 / 67,4 / 85,6 / **96,1** / 99,8 % | |
+| p = 0 (nunca da con el clave, siempre prudente) | 0,0 % | 0,0 % |
+
+**El 80 % es una estimación, no un dato:** solo se mide con alumnos reales. Lo que sí está medido es la **forma**: las tres sobrecorrecciones
+(E-S6, E-S7, E-S8) quedan **por debajo** de quien entiende con el mismo p (77,4 / 83,9 / 67,6 contra 87,5), que era lo que había que probar.
+
+**Otras corridas (10 000 versiones, una cosa movida por vez; `salida_v2_variantes.txt`):**
+
+| Variante | Mejor sin papeles | Entiende p = 0,50 / 0,65 / 0,80 / 0,95 |
+|---|---|---|
+| Control (tablas v2, meta 65/65) | 4,7 % | 38,2 / 65,5 / 87,6 / 99,3 |
+| **Meta 60/60** | **14,6 %** (a 0,4 puntos del límite) | 49,2 / 75,2 / 93,0 / 99,7 |
+| Meta 70/70 | 1,0 % | 27,0 / 52,8 / 79,8 / 98,0 |
+| Caso 2 siempre con problema (D-T1-1 apagado) | 3,4 % | 37,7 / 65,3 / 87,6 / 99,4 |
+| Frenar en el caso 2 vuelve a +6/−8 | 4,7 % (igual) | igual |
+| Esperar de más en el 8 vuelve a 0/−4 | 6,2 % | 38,9 / 66,1 / 87,9 / 99,3 |
+
+**Qué enseña.** (1) El umbral lo sostiene la **meta 65/65**: con 60 la mejor política sin papeles queda en 14,6 %, justo debajo del límite y sin margen;
+con 65 queda en 4,8 %. (2) **D-T1-1 casi no mueve nada** en esta medida (4,8 % con B en 1 de 3; 3,4 % sin B): sirve contra el dictado entre compañeros,
+no contra el perezoso; se puede dejar como está. (3) El cambio «frenar en el caso 2: +6 → +3» **no cambia ningún número** (la mejor política ya no
+frena en el 2); no está de más, pero hoy no sostiene nada. (4) «Esperar de más 0/−8» sí pesa un poco (4,7 → 6,2 % al quitarlo).
+
+### Hallazgos, de más grave a menos grave
+
+**BLOQUEA. Ninguno.**
+
+**INJUSTO / IMPORTANTE. 1. Quien abre 3 papeles al azar y se cubre con lo intermedio pasa 61,7 % (decide Ronald; valor recomendado: dejar la meta en 65 y medir con alumnos).**
+*Qué pasa.* E-S4 y E-S5 (las de la ficha) se cubren solo con «firmar» o «frenar». Un alumno que abre 3 papeles sin criterio, lee lo que sale y, cuando no
+halla el clave, usa lo intermedio (frase sin pieza, rango de 2 tandas, «ninguno» en el 4, frenar en el 5, base sin extensión en el 6, mirar el dibujo en el 7,
+esperar en el 8) pasa **61,7 %** (C medio 78,7; Voz medio 69,6), igual que quien entiende con p ≈ 0,45 cubriéndose igual (p = 0,50: 67,4 %). No es un
+error de las tablas: abrir 3 de 6 da con el clave en la mitad de los casos por construcción (3/6). Pero **la tabla E-S10 de la ficha es pesimista** porque
+supone que quien no da con el clave «cubre con lo prudente» (que cuesta Voz), y eso subestima a todos los que pasan. Comparación justa, la misma que debe leerse:
+
+| Meta | Azar + intermedio | Entiende (+ intermedio) p = 0,50 | 0,65 | 0,80 | 0,95 |
+|---|---|---|---|---|---|
+| 60/60 | 75,6 % | 81,7 | 94,0 | 99,0 | 100 |
+| **65/65** | **61,7 %** | 67,4 | 85,6 | 96,1 | 99,8 |
+| 70/70 | 46,9 % | 53,9 | 75,6 | 92,2 | 99,6 |
+| 75/75 | 28,9 % | 38,7 | 60,8 | 82,3 | 97,2 |
+
+*Por qué importa.* El tema no tiene nota: lo que cambia es el diálogo de la plaza fija y el registro. Pero con 65 más de la mitad de quienes **no deciden con
+criterio, solo abren y leen** verán «plaza fija». El registro (acierto sin evidencia, hábitos) sí los distingue; la meta no.
+*Propuesta (no se aplicó nada).* Opción A, **recomendada**: dejar 65/65 y no tocar tablas; la separación entre azar y p = 0,80 es de 34 puntos y el 80 %
+es una estimación; se mide con alumnos reales y se decide con datos. Opción B: meta 70/70 (azar + intermedio 46,9 %; mejor sin papeles 1,0 %), a costa de que
+quien entiende con p = 0,65 pase 75,6 % en vez de 85,6 %. **Decide Ronald; valor recomendado: A.** El cambio es un número en `reglas-t1.ts`.
+
+**INJUSTO / IMPORTANTE. 2. Los números de E-S10 del bucle (11.5) y de la ficha deben decir con qué respaldo se calcularon.** Con «lo prudente» sale 37,6 / 64,6 / 87,5 / 99,3 %;
+con «firmar» 43,5 / 68,4 / 89,0 / 99,4; con «lo intermedio» 67,4 / 85,6 / 96,1 / 99,8 (p = 0,50 / 0,65 / 0,80 / 0,95). La diferencia entre los dos extremos en p = 0,50 es de
+30 puntos. Si el bucle declara una sola cifra, el lector cree que es «el» pase de quien entiende. *Propuesta:* declarar el rango (por ejemplo, «87 a 96 % con p = 0,80»).
+
+**INJUSTO / IMPORTANTE. 3. E-S4 (abre 3 al azar y firma si no halla) pasa 22,0 %**, por encima del umbral de 15 %, que el bucle propone solo para «sin papeles». No contradice nada
+(abre papeles, y pasa menos que quien entiende con p = 0,50: 37,6 %), pero hay que decirlo para que nadie lea «15 %» como techo de todas las perezosas. Falla por Credibilidad en el 78 % de
+los casos (firma lo equivocado), que es justo lo que enseña el tema.
+
+**COSMÉTICO. 4. «Escribir 0» en el caso 5.** El bucle (5.4) dice que vale en ≈ 18 % (δ = 0) y ≈ 14 % (δ = 3), «alrededor de 1 de cada 6». Con el filtro I5 (ρ entre −4 y +10)
+sale **22,2 % y 15,9 %** (≈ 1 de cada 5). Las cifras del texto son las de la normal sin recortar. No mueve ninguna tabla.
+
+**COSMÉTICO. 5. El refuerzo del caso 2 entra a la carpeta solo la mitad de las veces** (G10: el clave y los 2 señuelos de la ventana entran siempre; los otros 3 se sortean entre 6, y el
+refuerzo es uno de esos 6). El texto de R2.3 («+10/+4 si lleva también la del refuerzo») no lo dice; el simulador lo supone (3/6). Si Ronald quiere que el refuerzo entre siempre, se agrega a G10.
+
+**COSMÉTICO. 6. Dos pruebas de sensibilidad que no cambian nada, para dejar constancia:** (a) si el **largo de la hoja del caso 6** (12 contra 60 filas) delatara el tipo A, la mejor política
+sin papeles sigue en 4,8 % (con la política «adapta» del 6: 4,5 %); (b) si el perezoso escribe el número constante óptimo en el 5 (1,5 en vez de 0 o 3), tampoco sube (4,4 %).
+
+### Recuento con script (`contar_t1_v2.py`): 58 comprobaciones, 0 fallan
+
+Coinciden: G1 a G12 (12), M1 a M14 (14), P1.1 a P1.6, V1 a V6, **46 filas R2 a R8** (R2 5, R3 5, R4 7, R5 9, R6 7, R7 5, R8 8), 17 cambios de la secc. 0, 15 ajustes de la secc. 14,
+**G5: 7 filas nombradas y las 7 existen** (cinco valen exactamente la mitad con redondeo hacia cero; R5.8 = +4/+2 y R8.3 = 0/0 son valores explícitos, como G5 permite), las 10 tiradas de G7
+(son exactamente las 10 que cumplen las restricciones y coinciden con las del simulador; caso 3 y 6: P 4 B 4 A 2; caso 7: P 5 B 5), **29 códigos de error** (E2 4, E3 6, E4 3, E5 5, E6 4, E7 3, E8 4),
+**4 clases de hábito; 22 códigos en alguna clase y 7 en «ninguna»** (por clase: H1 7, H2 5, H3 8, H4 5; ningún código sin clasificar ni definido dos veces ni citado sin definición), las diez sumas de E-S1 (máximo 0; cota 50 + 0 + 5 + 5 + 4 + 0 = 64 < 65;
+aumentos posibles 29), las cotas aritméticas de quien entiende (64 y 31), el neto del 5 ((c) +12/+3; (a) +6/+3), las combinatorias de fichas (0,50 / 0,33 / 0,80 / 0,60 / 0,20 / 0,067 / 0,05),
+la confiabilidad 100/164 = 0,61, el desvío 4,4, los 13 peores que suben ≈ 6,8 (el texto dice «alrededor de 7») y los 47 que bajan ≈ 1,9 («alrededor de 2»), los 5 grupos de la tabla 11.3,
+0 guiones largos, 0 voseo (regex propia, **no** `buscar_voseo.py`: ese control sigue pendiente) y los 9 papeles del fondo del turno 2 del caso 5. Quien lo hace todo bien (p = 1) termina con C ≥ 98 y Voz ≥ 87 en las 20 000 versiones.
+**No coincide:** solo el hallazgo 4 de arriba (la probabilidad de que «escribir 0» valga). El vocabulario viejo (Lectores, mesa fija, etc.) aparece en 14 palabras y todas las líneas son las permitidas por la lista de salida
+(tabla de nombres que cambian, nota de renombre, secc. 13, etc.; las coincidencias de «edición» eran «medición»).
+
+### Supuestos del simulador (ninguno sale de alumnos reales)
+
+`p` es una estimación de quien entiende (con dos papeles necesarios cada uno sale con √p); el simulador **no** modela fichas de la práctica ni del Paso 1; ρ se sortea N(δ, 4,4) recortado a [−4, 10] (I5) sin imponer I1 a I4
+(solo importan las bandas para quien escribe la subida bruta o la inflada, que el perezoso sin papeles no hace); el refuerzo del caso 2 entra el 50 %; la media de 2 tandas tiene desvío 0,246 h y cubre el 99,9 %; todos cuentan bien el
+`N` del caso 6 y escriben el `x` correcto del 7 (lo da la hoja); «mirar la hoja contra el dibujo» en el 7 se cuenta como política gratuita aunque ya es entender la idea 7 (D-T1-2); la política «adapta» del caso 3 (comparar la cifra
+del oficio con la media de 2 tandas) se conserva porque es información gratuita legítima del caso 3. La búsqueda elige la política con 20 000 versiones y la **vuelve a medir con otras 20 000** (evita el sesgo del ganador).
+
+### Lo que el bucle y el crítico no detectaron
+
+1. **El respaldo cuenta tanto como p** (hallazgos 1 y 2): la v13 y la lista de salida probaron fallbacks de «firmar» o «frenar»; nadie probó «abro al azar y me cubro con lo intermedio».
+2. **`python -I` ignora `PYTHONIOENCODING`** y escribe bytes cp1252 sueltos en las salidas guardadas (las «ñ» y tildes salían como `�`); se resolvió con `sys.stdout.reconfigure(encoding="utf-8")` en `simular_t1_v2.py`
+   (los demás scripts lo importan). Las salidas v13 (`salida_*.txt`) pudieron quedar con ese defecto.
+3. **Una política de 21 600 (no 27 000)**: sin la política «adapta» del caso 6 (la hoja ya no tiene filas en blanco) son 3·5·3·6·4·4·5 = 21 600; con la sensibilidad (adapta del 6 y el número 1,5 en el 5) son 36 000.
+4. Mejora propuesta a la regla del crítico (REGLA DE LAS MEJORAS, punto 5; sin aplicar): que la simulación estándar de un bucle incluya una estrategia «azar + respaldo intermedio» (E-S4b), porque es la que mide si la meta separa a quien decide de quien solo abre.
+
+**Qué sigue.** Decidir la meta (recomendado: 65/65 sin tocar) con los números del hallazgo 1; declarar el respaldo de E-S10 en la ficha y en 11.5 (hallazgo 2); correr `buscar_voseo.py` (pendiente en la lista de salida);
+y pasar al crítico de jugabilidad con estas cifras en lugar de las de la v13.
+
+---
+
+## 08-10-2026 · Psicoestadística Descriptiva (Psicología), Tema 1: aprendizaje v1 y bucle v1 (papel, v13)
+
+**Qué se revisó.** `04-aprendizaje.md` (sección «Tema 1 · aprendizaje v1») y `02-bucle-y-mecanicas.md` (sección «Tema 1 ·
+bucle y mecánicas v1»), contra la ficha elegida `00-tema1-forma1-ficha.md`, las 8 ideas APROBADAS y lo que Ronald decidió
+(sin nota, sin software, sin «según el dossier», individual, versión por alumno). Con terminal: **todos los conteos se
+recontaron con script** y **las estrategias perezosas se simularon con las tablas NUEVAS del bucle**. Se jugaron los 8
+casos como el que sabe, el que no sabe, el apurado y Ronald. No se corrigió ningún documento ajeno ni se tocó
+`05-mundo-y-narrativa.md` (lo escribe otro agente ahora).
+
+**Scripts** (todos en `scratch/`, corridos con `python -I`, salidas guardadas en `scratch/salida_*.txt`):
+`contar_t1.py` (conteos), `simular_t1.py` (E-S1 a E-S10, 20 000 versiones cada una, semilla 20261008),
+`buscar_perezoso_t1.py` (las 27 000 políticas posibles sin abrir ningún papel), `variantes_t1.py` (arreglos probados),
+`extra_t1.py` (fichas, tipos, caso 5).
+
+**Salida de `contar_t1.py` (resumen):** 50 comprobaciones, **0 fallan**. Coinciden: G1 a G12 (12), M1 a M14 (14), P1.1 a P1.6,
+V1 a V6, filas R2 4, R3 4, R4 5, R5 9, R6 6, R7 5, R8 8, las 10 tiradas de G7 (y son **exactamente** las 10 que cumplen
+sus restricciones; caso 3 y 6: P4 B4 A2; caso 7: P5 B5), los 26 códigos de error (E2 3, E3 5, E4 3, E5 4, E6 4, E7 3, E8 4),
+la suma de las 10 tiradas de E-S1 (10, −20, −20, −20, −20, −30, 0, 0, −30, −30), la cota 56 < 60 de E-S1, las cotas 64 y 28
+de quien entiende, las probabilidades 0,50 / 0,80 / 0,60 / 0,20 / 0,067 / 0,05, los 9 ajustes de la secc. 14, 8 ideas, 8
+bloques de T1.3, errores típicos por idea [1,3,4,3,4,4,3,4], 10 ítems de registro, 4 escalones, 8 fichas, 6 hallazgos H.
+Lo que **no** coincide con lo declarado (aunque ninguna cifra declarada es falsa):
+- Fondos de papeles: G10 pide 9 por caso. Tras sacar la hoja adjunta, el **caso 6 queda con 8** y el **caso 8 con 6** (la
+  ficha lista 6; el bucle dice «los 4 restantes se sortean» sin decir de dónde). Casos 2, 3, 4, 5 y 7 tienen 9.
+- 3 líneas de la revelación pasan el tope de 25 palabras que declara T1.7: cierre de la ficha 5 (27), cierre de la ficha 8
+  (29), cierre general (34).
+- 12 de los 26 códigos de error **no caen en ningún hábito** (H1, H2, H3): E2c, E3b, E3c, E3e, **E5a, E5b**, E5d, **E6a**,
+  E6c, **E7a**, E8c, E8d.
+- G7: dados dos de los tres tipos, el tercero queda fijado en 6 de 10 tiradas para el caso 7 y en 4 de 10 para el 3 y el 6.
+
+**Salida de `simular_t1.py` (tablas del bucle, meta C y L ≥ 60 tras el caso 8):**
+```
+E-S1 publicar siempre                                  pasa   0.0 %  (C 8,3  | L 100)
+E-S2 retener siempre                                   pasa   0.0 %  (C 66,5 | L 0)
+E-S3 intermedia sin papeles (c5 retener)               pasa   0.0 %
+E-S3b igual, c5 escribe 0                              pasa  10.3 %
+E-S3c igual y c7 mira la hoja contra el dibujo         pasa  10.3 %
+E-S4 abre 3 al azar; si no halla, publica              pasa  29.7 %   (ficha: 22,0)
+E-S5 abre 3 al azar; si no halla, retiene              pasa  13.0 %   (ficha: 22,4)
+E-S6 rediseña siempre c7, lo demás p=0,8               pasa  80.9 %
+E-S7 escribe 0 siempre c5, lo demás p=0,8              pasa  93.5 %
+E-S8 espera siempre c8, lo demás p=0,8                 pasa  79.0 %
+E-S9 copia las decisiones de otra versión              pasa   7.9 %   (ficha: 0,5)
+E-S10 entiende p=0,50 / 0,65 / 0,80 / 0,95             pasa  47.9 / 71.9 / 90.7 / 99.4 %   (ficha: 12,5 / 32,9 / 64,6 / 94,8)
+   misma p pero, si falla el papel, PUBLICA (como la ficha)  55.5 / 79.0 / 94.7 / 99.9 %
+```
+**Salida de `buscar_perezoso_t1.py`:** de 27 000 políticas fijas sin abrir papeles, **la mejor pasa 59,5 %**
+(C medio 57,7, L medio 67,9): caso 2 retener, caso 3 «2 tandas; si su media queda a menos de 0,7 h de la cifra de la agencia,
+publicar; si no, rango de 1,2», caso 4 la grande, caso 5 aconsejar (a) y retener, caso 6 publicar tal cual, caso 7 comparar
+la hoja con el dibujo, caso 8 esperar. 10 políticas pasan ≥ 50 %, 1 274 pasan ≥ 20 %, 4 354 pasan ≥ 10 %. Sin mirar el dibujo
+del caso 7: 43,6 %.
+
+**Supuestos del simulador (todos marcados; ninguno sale de alumnos reales):** `p` es el acierto de quien entiende y es una
+**estimación**; con dos papeles necesarios cada uno sale con √p; si quien entiende no da con el clave «cubre» con la acción
+prudente (variante «publica» más abajo); todos cuentan bien el `N` del caso 6; la media de 2 tandas tiene desvío 0,246 h
+(bucle 5.2); quien sabe el caso 8 con un solo papel acierta 2/3 (cuenta a mano). La simulación sigue las tablas R2 a R8 tal
+cual están escritas, incluidos los vacíos.
+
+### Veredicto corto
+
+| Parte | ¿Se puede construir? | Bloqueos | Importantes |
+|---|---|---|---|
+| Aprendizaje v1 | Sí, tras corregir textos de fichas y cifras viejas | 0 | 2 (hallazgos 5 y 6) |
+| Bucle v1 | **No todavía**: la lista de salida da ✔ a «sin estrategia dominante» y no es cierto | **1** | 5 (hallazgos 2, 3, 4, 7 y 8) |
+
+### Hallazgos, de más grave a menos grave
+
+**1. BLOQUEA. Se pasa la meta sin abrir un solo papel (59,5 %), y la lista de salida dice lo contrario.**
+*Qué pasa.* El bucle cerró E-S1 y E-S2 a mano y dejó E-S3 a E-S10 «sin correr». Corridas, **E-S3 deja de ser lo que
+promete**: una política fija que nunca abre un papel pasa el 59,5 %, contra el 0 % que prometía la ficha (secc. 8) para «no
+abrir nada». La receta usa solo lo gratis: el caso 2 siempre es problema, así que «retener» (+6/−8); el caso 3 compara la
+media de 2 tandas con la cifra de la agencia (separa «con problema» de los otros dos en el 98 % de las versiones); el caso 4
+elige la grande (+10 L aunque se equivoque); el caso 6 publica tal cual o deja la base sin extensión (nunca baja de 0); el
+caso 7 compara la hoja con el dibujo; el caso 8 espera (0/−4). Tres causas, las tres de diseño: (a) **prudencias que no
+cuestan** (R6.3 base sin extensión, retener del caso 2, esperar del 8, rango de 2 tandas); (b) **información gratis** (la
+hoja adjunta, las tandas, el tipo A visible en la lista de 60); (c) **G5 declarada y no aplicada**: G5 dice que un acierto
+sin evidencia cobra «mitad o menos», pero R3-B (publicar tal cual sin la ficha), R4 (elegir el bueno sin abrir) y R6-B
+(publicar tal cual sin el clave) pagan lo mismo que con evidencia; solo R5.8 y R8.3 lo aplican. Además, **el caso 2 y el 5 son
+siempre problema** y el 8 se resuelve «esperando»: un compañero puede dictar «en el 2 retén, en el 8 espera, en el 4 la
+grande» y vale para todas las versiones (punto 11 del crítico: respuestas que no cambian de un alumno a otro).
+*Por qué importa.* El tema no mide nota y la meta solo cambia el último diálogo («mesa fija»), así que el daño no es una
+nota injusta: es que el cierre del juego premia no mirar nada y que el registro («acierto sin evidencia») queda lleno de
+alumnos que «ganaron». También se pierde el valor del Tema 1 como diagnóstico: la mitad del curso podría ver «mesa fija» sin
+haber visto un papel. La vara de Ronald es clara: una forma simple de ganar sin entender es un bloqueo.
+*Propuesta (probada con `variantes_t1.py`, 3 000 versiones por política, 8 000 por estrategia):*
+| Arreglo | Mejor sin abrir papeles | Azar y publica | Entiende p=0,50 / 0,65 / 0,80 |
+|---|---|---|---|
+| Tablas del bucle tal cual, meta 60 | 58,9 % | 29,9 % | 48,2 / 72,3 / 90,5 % |
+| Meta 70/70 | 35,2 % | 20,9 % | 25,0 / 51,1 / 78,7 % |
+| Aplicar G5 (mitad) en R3-B, R4 y R6-B | 38,7 % | 29,9 % | 48,2 / 72,3 / 90,5 % |
+| Prudencias más baratas: retener c2 +3/−8, R6.3 en P +2/+1 (B 0/+2, A 0/+1), esperar 0/−8 y sin evidencia 0/0 | 51,8 % | 29,8 % | 45,3 / 70,8 / 90,0 % |
+| **Las dos anteriores juntas + meta 65/65 (recomendado)** | **12,1 %** | 23,7 % | 32,8 / 59,5 / 83,7 % |
+| Las dos anteriores juntas, meta 60 | 25,4 % | 29,8 % | 45,3 / 70,8 / 90,0 % |
+Recomendado: aplicar G5 de verdad (filas «sin evidencia» en R3-B, R4, R6-B), abaratar las prudencias y subir la meta a 65/65;
+los números van en `reglas-t1.ts` y el bucle ya dijo que se ajustan tras probar. Esto **no es una receta cerrada**: G5 solo
+se simuló en las políticas de «no abrir»; hay que volver a correr `simular_t1.py` con las tablas definitivas antes de
+construir (regla 15 del crítico: un arreglo es código nuevo). Y las cifras de p son estimaciones: se afinan con alumnos.
+Para los constantes (caso 2 y caso 5 siempre problema): que **al menos una** de las dos sea «bien» en alguna versión sería
+lo ideal, pero Ronald eligió esas dos como constantes (el primer golpe y la vergüenza); si se mantienen, que su respuesta
+correcta cambie de **pieza** (cuál papel destapa, ya cambia) y que la prudencia no sea la ganadora (arreglo de arriba).
+
+**2. IMPORTANTE. El cierre del problema del rango (H2) no cerró: «rango de 1,2 con 2 tandas» sigue pagando.**
+*Qué pasa.* El bucle (11.6) dice haber cerrado la estrategia «siempre ancho 1,2 con 2 tandas» con la puerta de 2 tandas, el
+nivel `flojo` (1,2 a 2,0) y la cifra de la agencia a más de 1,0 h. Pero `ok` es `b − a ≤ 1,2` (5.2): un rango de **exactamente
+1,2 centrado en la media de 2 tandas** es `ok`, cubre 99,9 % (cuenta del propio bucle) y paga +8/+4 en el tipo P **sin abrir
+ningún papel**. Los papeles del caso 3 solo separan «bien» de «aún no» (el acta), y eso, que sería lo que la idea 3 quiere,
+queda en el 20 % de las versiones.
+*Por qué importa.* El caso 3 se vuelve «saca 2 tandas y escribe 1,2». La idea 3 (una tanda no es la cifra) sí se vive; el
+papel clave deja de hacer falta en 8 de cada 10 versiones.
+*Propuesta.* Que `ok` pague +8/+4 solo si la frase lleva la pieza del papel clave (como R2.3 y R3.A.con); sin pieza, rango
+bueno = `flojo` (+3/0). O bajar el tope de `ok` a 0,9 h y exigir 3 tandas para ese ancho. La primera mantiene las 3 fichas
+(2 tandas + 1 papel) y es coherente con el resto de las frases con piezas.
+
+**3. IMPORTANTE. Caso 5: la opción que Ronald quiere enseñar (el sorteo) es la peor pagada, y «escribir 0 siempre» le gana a
+quien entiende.**
+*Qué pasa.* Con las tablas R5, quien entiende (p=0,8) pasa 90,7 % eligiendo el sorteo (c) y **95,5 % eligiendo (a) con el vecino**
+(`extra_t1.py`), porque (c) cuesta −6 Lectores en el turno 1 y Lectores es la medida que manda en la meta (de los que
+fallan con p=0,8, el 9,3 % de las versiones falla «solo L» y 0,0 % «solo C»). Además E-S7 («siempre escribir 0», con los papeles de (c)
+abiertos con probabilidad p) pasa **93,5 %, más que quien entiende**: escribir un número siempre da L +4 (R5.9: −10/+4),
+mientras que el «retener» prudente de R5.3 da L −6. Y la ficha decía «solo con el grupo del sorteo (c) el número cuenta» (§4);
+el bucle lo cambió a que (a) con el vecino también cuente (ajuste 3, declarado).
+*Por qué importa.* No rompe la forma elegida, pero la ficha 5 de la revelación nombra el «grupo de control»: la mayoría de
+los que juegan bien habrán usado el vecino. Y que lo correcto pague menos que lo ciego es un error de economía, no de gusto.
+*Propuesta.* Que la meta cuente por Lectores y Credibilidad de forma simétrica (ver hallazgo 1) y que (c) cuente 0/0 en el
+turno 1, con el costo de la protesta (−6) pasado a «solo si no abres el papel del grupo». O que R5.9 cobre L −4 en lugar de
++4 («publicar un número que no sale de tus papeles»). Y decir en el informe del tallerista (opción b) el **2,5 como número**,
+no como «ya venían subiendo»: sin él, el número de (b) es una adivinanza.
+
+**4. IMPORTANTE. Caso 6 y 7: la hoja adjunta (ajuste 1) deja los papeles claves como decorado y rompe el registro.**
+*Qué pasa.* En el caso 7 el tipo se ve comparando la hoja (A 64,8, B 63,0) con el dibujo; las tres «claves» (correo, captura,
+ficha técnica) solo confirman. R7 no usa los papeles y el bucle no define «acierto sin evidencia» para el 7. En el caso 6, el
+tipo A se ve a simple vista (48 filas vacías de 60). Pero T1.5 clasifica por «abrió el clave, decidió bien»: para el 7 la
+clasificación `descubrió solo` y `acierto sin evidencia` no se puede calcular, y el 7 siempre sale `descubrió con pista` o
+`se dejó engañar` por el número.
+*Por qué importa.* Para Ronald, el registro por idea es lo que sirve. En la idea 7 deja de significar lo que dice.
+*Propuesta.* Que el caso 7 mida la decisión de verdad (el lector antes/después y `x` correcto) y que el registro de la idea 7
+se base en eso, no en abrir; o que la hoja del 7 no traiga la escala (que la dé el papel clave): vuelve a «ver antes de
+calcular» y la carpeta vuelve a servir. Elegir una y dejarlo escrito.
+
+**5. IMPORTANTE. Los textos de las fichas de la revelación se eligen por «abrió / no abrió» y dicen cosas que dependen del
+tipo y de la opción.**
+*Qué pasa.* T1.7 da dos ramas por ficha («abrió» / «no abrió») y el bucle (V3) elige la rama por la clasificación. Pero:
+ficha 4, rama «no la abrió»: «Había respondido solo quien ya estaba en el club de apoyo», **falso en el 50 % de las versiones**
+(A era la buena); ficha 5, rama «no comparó»: nombra al «colegio vecino», que no existe si eligió (c); ficha 3, rama «una
+sola»: «publicaste la cifra de una tanda» no vale en tipo B donde publicó la de la agencia; ficha 6, rama «titular de más»:
+«60 de un solo curso» solo vale en tipo P; ficha 8, rama «decidió con uno»: no dice si acertó. El bucle ya avisó de 3 huecos
+por carta (24 textos); falta decir que **dos de las ramas existentes también están mal asignadas**.
+*Propuesta.* Que cada ficha tenga la rama por **tipo/opción**, no solo por «abrió»: lista de combinaciones por ficha (ficha 4:
+{abrió, no abrió} × {A buena, B buena}; ficha 5: {a, b, c} × {con, sin comparar}; ficha 3, 6: {P, B, A}). Es trabajo de
+narrativa con una tabla que ya sale del bucle; se le pasa antes de que escriba las fichas.
+
+**6. IMPORTANTE. Las cifras de las estrategias perezosas que cita el aprendizaje (T1.6) son las de la ficha y ya no valen.**
+T1.6 cita «0 %, 22 %, 0,5 %». Con las tablas del bucle son 10 % (sin papeles, c5 escribiendo 0), 29,7 % (azar y publica) y
+7,9 % (copiar). Y `04` dice «las estrategias de la ficha pasan la meta 0 %»; la mejor pasa 59,5 %. Se corrigen al arreglar
+el hallazgo 1 y volver a simular; mientras tanto no se citan.
+
+**7. IMPORTANTE. Los hábitos casi no se disparan en los casos donde el escalón 3 más haría falta.**
+*Qué pasa.* El archivo (escalón 3) en la partida oficial sale solo con un **hábito** (misma clase de error en dos casos). 12 de
+los 26 códigos no pertenecen a ninguno: entre ellos E5a y E5b (la subida bruta y el número inflado, la vergüenza del caso 5),
+E6a (conteo mal) y E7a (escribió lo que se ve).
+*Por qué importa.* Quien más necesita el recorte de otra edición es quien cae en el caso 5, y es justo el que nunca lo recibe.
+*Propuesta.* Una cuarta clase H4 «creyó lo que mostraba el resultado propio o el dibujo» con E5a, E5b, E6a, E7a, que se
+cumple con dos casos distintos o con un solo caso (el 5 tiene dos turnos). Coste: una fila en la tabla 8.2.
+
+**8. IMPORTANTE. Caso 5: la hoja fuerza una precisión que 13 contra 13 no tiene, y choca con el caso 8.**
+*Qué pasa.* Las invariantes I1 a I4 vuelven a sortear hasta que el efecto medido quede a 0,8 de δ. Con el propio modelo del
+bucle (desvío de la diferencia entre dos grupos de 13 ≈ 4,4 puntos, cuenta a mano), solo el 14 % de los sorteos cumpliría I1,
+así que el generador descarta ~6 de cada 7. Resultado: el alumno ve que «13 contra 13 mide el efecto con ±0,8», mientras que en el
+caso 8 «9 contra 9» es «aún no se sabe». Enseña una precisión falsa en el caso donde se enseña la regresión.
+*Propuesta.* Dejar que ρ varíe como varía (hasta ±4) y que la banda buena siga siendo `|x − ρ| ≤ 1` (el alumno calcula ρ, no
+adivina δ); o cuadrar la lección diciendo, en el informe del tallerista, que son pocos. Barato; hay que decidirlo antes de
+escribir `bienestar.ts`.
+
+**9. COSMÉTICO / A VIGILAR.**
+- **Dos fichas en el último caso.** El castigo de 2 fichas cae sobre quien ya anda mal, y en el caso 8 hacen falta dos claves
+  (azar 1/15). En lo simulado ocurre en 39,8 % de las versiones de «azar y publica», 41,5 % de «azar y retiene», 5,3 % de quien
+  entiende con p=0,5 y 0,2 % con p=0,8. Es lo que Ronald eligió y se queda; solo avisar al narrador de que el caso 8 con 2 fichas
+  tiene que seguir siendo «jugable» (la editora lo dice).
+- **Contar 60 filas en el celular** (caso 6) es el momento más tedioso del tema. Que cada fila se pueda tocar para marcarla
+  (el contador sube solo, el número sigue siendo el que escribe el alumno) ahorra errores de dedo, no la cuenta.
+- **El asombro del Paso 1** depende de que el archivo traiga filas con las mismas tres columnas que contestó el alumno
+  (horas de sueño, minutos de celular, estado de ánimo 0 a 100): suena armado. Mejor que coincida una sola o dos columnas.
+- **G9 usa `semilla + k`.** Las versiones v y v+1 comparten flujos de azar (el `orden` de v es el `tipos` de v+1). No daña
+  nada; `semilla * 100 + k` lo evita.
+- **«Al elegir (a) por segunda vez»** (T1.3, idea 5): en la partida oficial el caso 5 se juega una vez; solo vale en práctica.
+- **G10** no fuerza que los 2 señuelos con fecha en la ventana del caso 2 (calendario, lista de tutores) entren entre los 6
+  papeles de la versión.
+- **«Probar este caso con otras cifras»** (8.4) es ilimitado y sin registro de valores: sin nota no daña; si el tema llegara a
+  pesar, es tanteo.
+- **Líneas de revelación largas:** 3 pasan 25 palabras (ver arriba).
+
+### Los 9 ajustes que el bucle hace a la ficha (secc. 14 del bucle)
+
+| # | Ajuste | ¿Rompe algo que Ronald eligió? | Nota |
+|---|---|---|---|
+| 1 | Hoja adjunta en 6 y 7 | No rompe la forma; **debilita la carpeta con señuelos** en esos dos casos | Hallazgo 4 |
+| 2 | Caso 3: puerta de 2 tandas, nivel `flojo`, tabla por tipo | No | La puerta de 2 tandas es buena (enseña por consecuencia); el nivel `ok` queda abierto (hallazgo 2) |
+| 3 | Caso 5: tres caminos, sesgo +2,5, bandas ±1,0 | No rompe la vergüenza; **cambia la ficha**: (a) con vecino también cuenta | Hallazgos 3 y 8 |
+| 4 | Caso 6: base con `N` siempre; cuatro extensiones | No | `podrían` ≡ sin clave es correcto |
+| 5 | Caso 7: rótulo con `x` en toda publicación; tal cual en P baja a −10/+10 | No | El número ahora decide en cada rama |
+| 6 | Caso 8: papeles sobre la mesa; «financiar cuando aún no» −15/+6 | No | Bien resuelto (H3) |
+| 7 | Escalón 3 en la oficial al cumplirse un hábito (DEFECTO) | No | Hallazgo 7 |
+| 8 | «Probar este caso con otras cifras» (DEFECTO) | No | Es el escalón 4, ahora sí claro |
+| 9 | Hay que volver a simular | Hecho aquí | Resultado en el hallazgo 1 |
+**Ninguno rompe lo que Ronald eligió.** Dos (el 1 y el 3) debilitan la intención de la ficha y están en los hallazgos.
+
+### Los 8 casos, jugados
+
+*El que sabe, el que no sabe, el apurado; y Ronald.* Lo que cada uno hace donde se pierde, se aburre o hace trampa:
+- **Paso 1.** El que no sabe pulsa Dani y sigue; igual ve el asombro (la editora regala una ficha y, si hace falta, Dani abre el
+  papel). Bien pensado, sin trampa posible. Ronald: es la pieza que más se parece a «los datos están en todas partes»; solo la
+  coincidencia exacta de las tres columnas suena armada (hallazgo 9).
+- **Caso 2** (siempre problema). El que no sabe publica y llama una madre: golpe bueno. El apurado aprende en la práctica que
+  «retener» o la frase genérica no cuestan casi nada: el caso es siempre el mismo problema (hallazgo 1). Ronald lo va a
+  sentir como el mejor momento si la narrativa le da cara a la madre.
+- **Caso 3.** El que sabe saca 2 tandas y compara con la cifra; el apurado las saca y escribe 1,2 (hallazgo 2). Se aburre el que
+  no sabe qué hacer con la máquina: la puerta de 2 tandas lo salva (bien).
+- **Caso 4.** El apurado elige la grande: 50 % de aciertos y +10 Lectores aunque se equivoque (R4.3: −20/+10). Eso no es un
+  patrón dictable, pero sí un sesgo de la tabla hacia «la grande». Ronald: se entiende en un segundo.
+- **Caso 5.** El que no sabe aconseja (a), ve subir a los 13 y escribe la subida: llega la vergüenza. Bien. El que sabe elige
+  (a) con el vecino y no (c), porque (c) le cuesta (hallazgo 3).
+- **Caso 6.** Contar 60 filas en el celular cansa (hallazgo 9); el apurado publica tal cual o la base sin extensión.
+- **Caso 7.** El mejor «juego» del tema: lector primero, después los números. El apurado no necesita abrir nada: compara la
+  hoja con el dibujo (hallazgo 4). Ronald: esto es «primero se ve, después se calcula».
+- **Caso 8.** El que no sabe financia lo que parece funcionar; el apurado espera siempre y casi no paga (0/−4). El colega «a
+  ojo» y los dos años lado a lado son lo más fuerte del tema.
+- **Revelación.** Dar vuelta 8 fichas es bueno; los textos por rama están mal asignados (hallazgo 5).
+
+### Qué está bien y conviene no tocar
+
+- Las 10 tiradas de G7 son exactamente las que cumplen sus restricciones; los conteos P/B/A son los declarados.
+- E-S1 y E-S2 «exactas a mano» se confirman con 0,0 % en 20 000 versiones.
+- La puerta de 2 tandas, el rótulo con `x` en toda publicación, el lector del caso 7 antes y después sin juzgar, el colega «a ojo»
+  que acierta 1 de cada 3, la prohibición de que el escalón bloquee «Siguiente caso» (8.5), la partida reconstruida desde
+  eventos y las piezas de motor (`partida.ts`, `version-alumno.ts`, `azarConSemilla`, `problemasDeTexto`) **existen en el
+  código** con esos nombres (comprobado en `src/`).
+- La combinatoria de fichas (0,50 / 0,80 / 0,20) es correcta (script).
+
+### Para mejorar los agentes (qué falló o faltó)
+
+- **`disenador-de-bucle`.** (1) Entregó con un ✔ de «sin estrategia dominante» apoyado en dos pruebas exactas y ocho «sin
+  correr»; correrlas cambió el veredicto. Debe **buscar la mejor política sin papeles** (todas las combinaciones de acciones por
+  caso) además de las estrategias con nombre: una búsqueda así encontró 59,5 % que ninguna estrategia nombrada mostraba. (2) Una
+  regla general (G5) no está en las tablas que dice gobernar: falta una **prueba cruzada** «cada regla general aparece en
+  todas las tablas». (3) Cerró un hallazgo (H2) con una frase («queda cerrado») que su propia regla de `ok` contradice: falta
+  releer el arreglo como el alumno perezoso. (4) G10 declara 9 papeles por caso y deja 6 y 8 sin decirlo. (5) Sin terminal no
+  debió dar ✔ a cifras: la lista de salida debió marcarlas «pendiente».
+- **`disenador-de-aprendizaje`.** (1) Los textos de revelación se escriben por «hizo/no hizo» sin cruzar con tipo y opción:
+  hace falta una **tabla de ramas** (ficha × tipo × opción) antes de escribirlas. (2) Citó cifras de otra tabla (T1.6). (3)
+  Marcó un tope de 25 palabras y no lo contó. (4) Definió clasificaciones (`descubrió solo`, `acierto sin evidencia`) que no
+  existen para un caso sin papel clave (el 7).
+- **Los dos.** Entregaron sin terminal y con ✔; un ✔ sin la prueba al lado es lo que la regla ya prohíbe. Recomendado: que la
+  lista de salida tenga una columna «contado con script / a mano / pendiente» y que lo «pendiente» cuente como ✘.
+
+### Lista de salida del crítico
+
+- ✔ Conteos recontados con script (`scratch/contar_t1.py`, 50 comprobaciones, 0 fallan, 4 hallazgos extra); mencionados arriba.
+- ✔ Estrategias E-S1 a E-S10 corridas con las tablas nuevas (`scratch/simular_t1.py`, salida en `scratch/salida_simular.txt`),
+  más la búsqueda de la mejor política sin papeles (27 000) y 8 variantes probadas.
+- ✔ Los 9 ajustes de la secc. 14 revisados uno por uno (tabla): ninguno rompe lo elegido por Ronald; dos lo debilitan.
+- ✔ Los 8 casos jugados como el que sabe, el que no sabe, el apurado y Ronald.
+- ✔ Punto 11 (¿se puede copiar?): revisado; las respuestas del caso 2, 5 y del 8 «esperar» no cambian de alumno a alumno
+  (hallazgo 1); el resto cambia de tipo, papel clave y cifras (confirmado con G7 y el generador).
+- ✔ Punto 10 (lo prometido contra lo que existe): las piezas de motor citadas existen en `src/` con esos nombres; lo que falta
+  se nombra como trabajo en el bucle (secc. 13).
+- ✔ Estimaciones marcadas: el acierto de quien entiende (p) es una estimación y no un dato; los supuestos del simulador están
+  listados arriba.
+- ✔ No se corrigió ningún documento de otro agente ni `05-mundo-y-narrativa.md`; solo se editó `06-revisiones.md` y se
+  agregó código de prueba en `scratch/`.
+- ✔ Sin preguntas nuevas a Ronald; nada se presentó como decidido sin estar en sus decisiones.
+- ✔ Tuteo y sin guiones largos en lo que lee el alumno: no aplica (esta entrega es solo para el equipo).
+- ✔ Legibilidad: no aplica (papel). Se avisó que `medir_legibilidad.py` debe recorrer las 8 fichas y la hoja de 60 filas.
 
 ## 08-10-2026 · Psicoestadística Descriptiva (Psicología), Tema 1: las tres formas de juego de descubrimiento (papel, v12)
 

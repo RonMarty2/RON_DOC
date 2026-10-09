@@ -154,4 +154,20 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
     pulsa(/^Seguir/);
     hay("El archivo del colegio");
   });
+  it("«De cero» pide confirmación, borra el avance y vuelve al título; «No» no toca nada", async () => {
+    await hastaElCaso2();
+    expect(window.localStorage.getItem(CLAVE_PARTIDA)).toBeTruthy();
+    pulsa(/Empezar de cero/);
+    hay("¿Empezar de cero? Se pierde tu avance.");
+    pulsa(/^No$/);
+    expect(screen.queryByText("¿Empezar de cero? Se pierde tu avance.")).toBeNull();
+    hay(`«${G.ARCHIVO2.consigna}»`); // sigue donde estaba
+    pulsa(/Empezar de cero/);
+    pulsa(/Sí, de cero/);
+    await screen.findByRole("heading", { name: /Mesa de verificación/ });
+    expect(screen.getByRole("button", { name: /Empezar/ })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /Empezar de cero/ })).toBeNull(); // en el título no hace falta
+    const guardada = window.localStorage.getItem(CLAVE_PARTIDA);
+    expect(guardada === null || !guardada.includes("p1.")).toBe(true); // ya no queda avance guardado
+  });
 });

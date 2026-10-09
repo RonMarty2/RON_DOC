@@ -245,6 +245,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   const anota = useCallback((ev: EventoT1) => setPartida((x) => anotarEn(x, ev)), []);
 
   const [fase, setFase] = useState<Fase>("titulo");
+  const [pideReinicio, setPideReinicio] = useState(false);
   const [pose, setPose] = useState<G.PoseJefa>("brazos");
   const [suena, setSuena] = useState(false);
   const [tubos, setTubos] = useState(false);
@@ -293,7 +294,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   const avance = useMemo(() => avanceDeEventos(p, partida.eventos), [p, partida.eventos]);
   const hayAvance = avance.fase !== "inicio";
 
-  const empezarDeNuevo = () => {
+  const empezarDeNuevo = (destino: Fase = "bienvenida") => {
     const limpia = nuevaPartida(semilla);
     guardarPartidaDe(limpia);
     setPartida(limpia);
@@ -309,7 +310,8 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
     setResultado(null);
     setReaccion(null);
     setReaccionFin(false);
-    ir("bienvenida");
+    setPideReinicio(false);
+    ir(destino);
   };
 
   const retomar = () => {
@@ -465,6 +467,25 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   return (
     <div className="mesa" onClickCapture={sonido.alApretar}>
       <BotonSonido activo={sonido.activo} disponible={sonido.disponible} alternar={sonido.alternar} />
+      {fase !== "titulo" && (
+        <div className="mesa-reinicio">
+          {!pideReinicio ? (
+            <button type="button" className="mesa-reiniciar" onClick={() => setPideReinicio(true)} aria-label="Empezar de cero: borra tu avance y vuelve al título">
+              <span aria-hidden="true">&#8634;</span> De cero
+            </button>
+          ) : (
+            <div className="mesa-reinicio-conf" role="alertdialog" aria-label="Empezar de cero">
+              <span>¿Empezar de cero? Se pierde tu avance.</span>
+              <button type="button" className="mesa-reiniciar" onClick={() => empezarDeNuevo("titulo")} autoFocus>
+                Sí, de cero
+              </button>
+              <button type="button" className="mesa-reiniciar" onClick={() => setPideReinicio(false)}>
+                No
+              </button>
+            </div>
+          )}
+        </div>
+      )}
       <EscenaPixi pose={pose} suena={suena} daniCabecea={daniCabecea} />
       {tubos && <Tubos m={med} />}
 
@@ -478,7 +499,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                 Continuar donde quedé &gt;
               </button>
             )}
-            <button type="button" className={hayAvance ? "mesa-boton sec" : "mesa-boton"} onClick={empezarDeNuevo}>
+            <button type="button" className={hayAvance ? "mesa-boton sec" : "mesa-boton"} onClick={() => empezarDeNuevo()}>
               {hayAvance ? "Empezar de nuevo" : "Empezar >"}
             </button>
             <p className="mesa-prueba">{G.TITULO.prueba} Luz y polvo provisionales.</p>
@@ -816,7 +837,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                   Jugar otra versión (prueba)
                 </button>
               )}
-              <button type="button" className="mesa-boton sec" onClick={empezarDeNuevo}>
+              <button type="button" className="mesa-boton sec" onClick={() => empezarDeNuevo()}>
                 Repetir esta versión
               </button>
               <Link className="mesa-boton sec" href="/materias/psicoestadistica">

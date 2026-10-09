@@ -9,11 +9,11 @@
 5. Código: `manifiesto.json` pasa a una pista por escena con `bucle: true` y `fundido`; `motor.ts` sin capas por fase (o capas apagadas); `sonido-t1.ts` `musicaDeFase` devuelve solo la escena; actualizar `sonido-t1.test.ts`, `07-sonido.md` S.6 y `disenador-de-sonido.md` (regla: «el sonido acompaña, no guía; pista entera por escena; cortes de capas por fase prohibidos»).
 6. Prueba: Ronald escucha una partida completa y dice si hay cortes. Verificar con `window.__sonido()` que `sonando` no cambia dentro de una escena.
 
-**B. Botón «Empezar de cero»**
+**B. Botón «Empezar de cero» — HECHO 09-10** (botón «De cero» arriba a la izquierda en `Mesa.tsx`, confirmación en pantalla, vuelve al título; prueba en `Mesa.test.tsx`; comprobado en Chrome). Falta solo, para el producto final, moverlo a un menú junto a «Repetir esta versión / Jugar otra versión».
 - Recomendado: SÍ, en dos formas. (1) Para ti como probador: botón pequeño siempre visible junto a «Sonido» que borra la partida guardada y vuelve al título, con confirmación («¿Empezar de cero? Se pierde tu avance»). (2) Producto final: queda en un menú, con la misma confirmación, y con dos opciones claras: «Repetir esta versión» y «Jugar otra versión» (ya existen al final de la prueba). Cuidar que no borre el progreso de la nube sin avisar.
 - Código: en `Mesa.tsx` limpiar la clave de partida y la semilla (`CLAVE_SEMILLA` si es versión nueva) y volver a fase «titulo»; prueba nueva en `Mesa.test.tsx`.
 
-**Orden sugerido:** B (rápido, 1 pieza) → A5 código con las pistas actuales como pruebas → A4 pistas completas → que Ronald escuche.
+**Orden sugerido (B ya está): ahora A.** A5 código con las pistas actuales como pruebas → A4 pistas completas → que Ronald escuche.
 
 ## ⏸ ÚLTIMO CORTE 09-10 11:25 (cuota por acabarse) — LEER ESTE BLOQUE PRIMERO
 **Estado:** todo subido a GitHub, `git status` limpio, 3955 pruebas verdes, `tsc` limpio, sin agentes corriendo. Arte propio conectado a la escena (paso 1), caras y palabras del jugador (paso 2), crítico v20 pasado (se puede mostrar) y sus 🟠 corregidos.

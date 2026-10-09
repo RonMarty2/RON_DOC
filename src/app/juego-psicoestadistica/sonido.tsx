@@ -19,7 +19,14 @@ import type { Receta } from "@/lib/juego/sonido/receta";
 
 let unico: Motor | null = null;
 /** Un solo motor por pestaña, aunque la pantalla se vuelva a montar (por ejemplo al cambiar de versión). */
-const motor = (): Motor => (unico ??= new Motor(ESCENA_AUDIO_T1));
+const motor = (): Motor => {
+  if (!unico) {
+    unico = new Motor(ESCENA_AUDIO_T1);
+    // Diagnóstico: `window.__sonido()` en la consola dice si el audio está despierto, qué pista suena y a qué volumen.
+    if (typeof window !== "undefined") (window as unknown as { __sonido?: () => unknown }).__sonido = () => unico?.estado();
+  }
+  return unico;
+};
 
 /** Qué efecto suena al apretar un botón, según su texto (los textos son los mismos del guion, no se repiten a mano). */
 export function efectoDeBoton(texto: string, esPieza: boolean): Receta | "firma" | null {
@@ -29,7 +36,7 @@ export function efectoDeBoton(texto: string, esPieza: boolean): Receta | "firma"
   if (t.startsWith(BOTONES_SELLO.frenar)) return E04_CLIC("frenar");
   if (t.startsWith(BOTONES_SELLO.frase) || t.startsWith(FRASE.boton.replace(/ ▸$/, ""))) return E04_CLIC("frase");
   if (t.startsWith(BOTONES_SELLO.si)) return "firma";
-  if (/^(Atrás|Volver|Todavía no|Continuar ▸|Jugar otra versión|Repetir|Poner las mías)/.test(t)) return E14;
+  if (/^(Atrás|Volver|Todavía no|Continuar|Jugar otra versión|Repetir|Poner las mías)/.test(t)) return E14;
   return null;
 }
 

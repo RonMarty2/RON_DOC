@@ -90,7 +90,7 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
     const delClave = piezas.find((x) => x.papel === clave)!;
     fireEvent.click(screen.getByRole("button", { name: delClave.texto }));
     fireEvent.click(screen.getByRole("button", { name: piezas[0].texto }));
-    pulsa(G.FRASE.boton);
+    pulsa(G.FRASE.boton.replace("▸", ">"));
     hay("¿Firmar? Después no hay vuelta.");
     expect(screen.queryByText(G.SIN_PAPELES_AL_FIRMAR)).toBeNull(); // abrió un papel: no hay aviso
     pulsa("Sí, al consejo");

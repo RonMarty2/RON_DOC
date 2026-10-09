@@ -77,7 +77,7 @@ function nombreDe(q: Quien, p: PaqueteT1): string {
 
 // ── Piezas chicas ────────────────────────────────────────────────────────────
 
-function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir ▸" }: { lineas: Linea[]; p: PaqueteT1; onFin: () => void; onLinea?: (l: Linea) => void; fin?: string }) {
+function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir >" }: { lineas: Linea[]; p: PaqueteT1; onFin: () => void; onLinea?: (l: Linea) => void; fin?: string }) {
   const [i, setI] = useState(0);
   const aviso = useRef(onLinea);
   aviso.current = onLinea;
@@ -93,7 +93,7 @@ function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir ▸" }: { lineas: Li
         {l.texto}
       </p>
       <button type="button" className="mesa-boton" onClick={() => (hayMas ? setI(i + 1) : onFin())}>
-        {hayMas ? "Siguiente ▸" : fin}
+        {hayMas ? "Siguiente >" : fin}
       </button>
     </div>
   );
@@ -177,7 +177,7 @@ function Lector({ nombre, texto, onCerrar }: { nombre: string; texto: string; on
         <h3>{nombre}</h3>
         <p>{texto}</p>
         <button type="button" className="mesa-boton" onClick={onCerrar} autoFocus>
-          Cerrar ▸
+          Cerrar &gt;
         </button>
       </div>
     </div>
@@ -447,11 +447,11 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
             <p className="mesa-pequeno">{G.TITULO.pequeno}</p>
             {hayAvance && (
               <button type="button" className="mesa-boton" onClick={retomar}>
-                Continuar donde quedé ▸
+                Continuar donde quedé &gt;
               </button>
             )}
             <button type="button" className={hayAvance ? "mesa-boton sec" : "mesa-boton"} onClick={empezarDeNuevo}>
-              {hayAvance ? "Empezar de nuevo" : "Empezar ▸"}
+              {hayAvance ? "Empezar de nuevo" : "Empezar >"}
             </button>
             <p className="mesa-prueba">{G.TITULO.prueba} Arte provisional.</p>
           </section>
@@ -519,7 +519,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                 ))}
                 <div className="mesa-acciones">
                   <button type="submit" className="mesa-boton">
-                    Seguir ▸
+                    Seguir &gt;
                   </button>
                   <button type="button" className="mesa-boton sec" onClick={() => setModoHoja("elige")}>
                     Atrás
@@ -539,7 +539,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
             <Abanico ids={ids1} nombres={nombres} abiertos={papelesVistosPaso1(paso1)} sinFichas={fichas1 <= 0} onAbrir={abrirP1} />
             {asombroVisto && (
               <button type="button" className="mesa-boton" onClick={() => ir("asombro")}>
-                Ver lo que encontraste ▸
+                Ver lo que encontraste &gt;
               </button>
             )}
           </section>
@@ -579,7 +579,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               <Dialogo key="a" p={p} lineas={G.ASOMBRO.jefa.map((texto) => ({ quien: "jefa" as const, texto, pose: "pulgar" as const }))} onFin={() => setAsombroListo(true)} onLinea={alLinea} />
             ) : (
               <button type="button" className="mesa-boton" onClick={() => ir("cierre1")}>
-                Seguir ▸
+                Seguir &gt;
               </button>
             )}
           </section>
@@ -606,7 +606,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               <small>{G.CASO2.firmaInforme}</small>
               <Grafica p={p} />
             </article>
-            <Dialogo key="e2" p={p} lineas={G.CASO2.jefa.map((texto) => ({ quien: "jefa" as const, texto }))} onFin={() => ir("archivo2")} onLinea={alLinea} fin="A la carpeta ▸" />
+            <Dialogo key="e2" p={p} lineas={G.CASO2.jefa.map((texto) => ({ quien: "jefa" as const, texto }))} onFin={() => ir("archivo2")} onLinea={alLinea} fin="A la carpeta >" />
           </section>
         )}
 
@@ -705,7 +705,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                       setFase("confirma");
                     }}
                   >
-                    {G.FRASE.boton}
+                    {G.FRASE.boton.replace("▸", ">")}
                   </button>
                   <button type="button" className="mesa-boton sec" onClick={() => setFase("archivo2")}>
                     Volver a los papeles
@@ -754,7 +754,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                   </article>
                 )}
                 <button type="button" className="mesa-boton" onClick={() => ir("fin")}>
-                  Continuar ▸
+                  Continuar &gt;
                 </button>
               </>
             )}

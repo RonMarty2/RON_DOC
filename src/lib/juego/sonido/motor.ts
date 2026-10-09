@@ -81,6 +81,20 @@ export class Motor {
     }
   }
 
+  /** Lo que está pasando con el audio, para diagnosticar sin oír (se puede leer desde la consola: `window.__sonido()`). */
+  estado() {
+    return {
+      contexto: this.ctx ? this.ctx.state : "sin crear",
+      encendido: this.activoPref,
+      manifiestoPistas: Object.keys(this.manifiesto.pistas).length,
+      pedida: this.pedida,
+      sonando: this.sonando ? this.sonando.id : null,
+      gananciaDeLaPista: this.sonando ? Number(this.sonando.ganancia.gain.value.toFixed(3)) : null,
+      volumenDeMusica: this.busMusica ? Number(this.busMusica.gain.value.toFixed(3)) : null,
+      maestro: this.maestro ? Number(this.maestro.gain.value.toFixed(3)) : null,
+    };
+  }
+
   /** ¿Este navegador sabe reproducir audio con Web Audio? Si no, el botón de silencio no se muestra. */
   get disponible(): boolean {
     if (typeof window === "undefined") return false;
@@ -146,13 +160,21 @@ export class Motor {
     if (!b) {
       b = (async () => {
         try {
-          const r = await fetch(conBase(`${this.carpeta}/${archivo}`));
-          if (!r.ok || !this.ctx) return null;
-          return await this.ctx.decodeAudioData(await r.arrayBuffer());
+          // Se pide con `Range`: sin él, el servidor de prueba de Next entrega «204 vacío» a un fetch de audio (se vio el 09-10:
+          // el manifiesto cargaba y ninguna pista sonaba). Con Range, GitHub Pages y el servidor de prueba entregan el archivo.
+          const r = await fetch(conBase(`${this.carpeta}/${archivo}`), { headers: { Range: "bytes=0-" } });
+          if (!(r.status === 200 || r.status === 206) || !this.ctx) return null;
+          const datos = await r.arrayBuffer();
+          if (datos.byteLength === 0) return null;
+          return await this.ctx.decodeAudioData(datos);
         } catch {
           return null;
         }
-      })();
+      })().then((buf) => {
+        // Un fallo no se recuerda: se vuelve a intentar la próxima vez que se pida esa pista.
+        if (!buf) this.buffers.delete(id);
+        return buf;
+      });
       this.buffers.set(id, b);
     }
     return b;

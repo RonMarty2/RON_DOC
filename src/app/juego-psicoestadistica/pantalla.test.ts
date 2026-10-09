@@ -37,7 +37,7 @@ describe("Qué efecto suena al apretar cada botón", () => {
   it("«Sí, al consejo» firma; las piezas y los botones de volver hacen un clic de elección; el resto de botones, ninguno", () => {
     expect(efectoDeBoton(BOTONES_SELLO.si, false)).toBe("firma");
     expect(efectoDeBoton("cualquier pieza de la frase", true)).toBe(E14);
-    for (const t of ["Atrás", "Volver a los papeles", BOTONES_SELLO.no, "Continuar ▸"]) expect(efectoDeBoton(t, false), t).toBe(E14);
-    for (const t of ["Siguiente ▸", "Seguir ▸", "Cerrar ▸", "Empezar ▸"]) expect(efectoDeBoton(t, false), t).toBeNull();
+    for (const t of ["Atrás", "Volver a los papeles", BOTONES_SELLO.no, "Continuar >"]) expect(efectoDeBoton(t, false), t).toBe(E14);
+    for (const t of ["Siguiente >", "Seguir >", "Cerrar >", "Empezar >"]) expect(efectoDeBoton(t, false), t).toBeNull();
   });
 });

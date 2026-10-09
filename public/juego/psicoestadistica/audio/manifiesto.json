@@ -1,96 +1,48 @@
 {
-  "version": 1,
+  "version": 2,
   "volumen": {
     "musica": 0.5,
     "efectos": 0.55,
     "avisos": 0.65
   },
   "pistas": {
-    "s0-a": {
-      "archivo": "s0-a.mp3",
+    "pista-s0": {
+      "archivo": "pista-s0.mp3",
       "bucle": true,
       "volumen": 1.0,
-      "duracion": 29.4
+      "duracion": 176.3
     },
-    "s0-b": {
-      "archivo": "s0-b.mp3",
+    "pista-s1": {
+      "archivo": "pista-s1.mp3",
       "bucle": true,
       "volumen": 1.0,
-      "duracion": 14.7
+      "duracion": 161.2
     },
-    "s1-a": {
-      "archivo": "s1-a.mp3",
+    "pista-s2": {
+      "archivo": "pista-s2.mp3",
       "bucle": true,
       "volumen": 1.0,
-      "duracion": 22.5
+      "duracion": 167.4
     },
-    "s1-b": {
-      "archivo": "s1-b.mp3",
+    "pista-s10": {
+      "archivo": "pista-s10.mp3",
       "bucle": true,
       "volumen": 1.0,
-      "duracion": 11.3
-    },
-    "s1-c": {
-      "archivo": "s1-c.mp3",
-      "bucle": true,
-      "volumen": 1.0,
-      "duracion": 11.3
-    },
-    "s1-d": {
-      "archivo": "s1-d.mp3",
-      "bucle": false,
-      "volumen": 1.0,
-      "duracion": 5.6
-    },
-    "s2-a": {
-      "archivo": "s2-a.mp3",
-      "bucle": true,
-      "volumen": 1.0,
-      "duracion": 14.3
-    },
-    "s2-b": {
-      "archivo": "s2-b.mp3",
-      "bucle": true,
-      "volumen": 1.0,
-      "duracion": 12.0
-    },
-    "s2-c": {
-      "archivo": "s2-c.mp3",
-      "bucle": true,
-      "volumen": 1.0,
-      "duracion": 9.6
-    },
-    "s10-a": {
-      "archivo": "s10-a.mp3",
-      "bucle": true,
-      "volumen": 1.0,
-      "duracion": 32.0
-    },
-    "s10-cola": {
-      "archivo": "s10-cola.mp3",
-      "bucle": false,
-      "volumen": 1.0,
-      "duracion": 8.0
+      "duracion": 179.7
     }
   },
   "escenas": {
     "s0": {
-      "calma": "s0-a",
-      "duda": "s0-b"
+      "calma": "pista-s0"
     },
     "s1": {
-      "calma": "s1-a",
-      "duda": "s1-b",
-      "tension": "s1-c",
-      "remate": "s1-d"
+      "calma": "pista-s1"
     },
     "s2": {
-      "calma": "s2-a",
-      "duda": "s2-b",
-      "tension": "s2-c"
+      "calma": "pista-s2"
     },
     "s10": {
-      "calma": "s10-a"
+      "calma": "pista-s10"
     }
   }
 }

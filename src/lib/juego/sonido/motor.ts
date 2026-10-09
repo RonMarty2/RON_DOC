@@ -193,7 +193,8 @@ export class Motor {
     if (!ctx || !bus) return;
     const p = this.pedida;
     const elegida = p && p.escena ? pistaDe(this.manifiesto, p.escena, p.capa) : null;
-    const fundido = this.reducirMovimiento ? 0.3 : 1;
+    // Fundido cruzado largo entre pistas de escenas distintas (Ronald 09-10: nada de cortes). Con «reducir movimiento», corto.
+    const fundido = this.reducirMovimiento ? 0.3 : 2.5;
     const relativo = p?.relativo ?? 1;
 
     if (!elegida) {

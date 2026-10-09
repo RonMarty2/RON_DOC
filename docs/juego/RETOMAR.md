@@ -1,7 +1,9 @@
 ## 🎯 PLAN NUEVO (decidido con Ronald 09-10, tras probar el juego): música completa y botón de empezar de cero
 **Ronald dijo (casi literal):** la música tiene cortes horribles; que corra la pista completa, que empiece como queramos aunque dure 2 a 3 minutos; si cambia de escena y la música debe seguir, que siga; si debe cambiar, que cambie. «El sonido no guía, guiamos nosotros al dar Siguiente.»
 
-**A. Música por escena, pista entera (reemplaza los tramos recortados en capas)**
+**A. Música por escena, pista entera — HECHO 09-10 (falta que Ronald la escuche):** `pista-s0/s1/s2/s10.mp3` en `public/juego/psicoestadistica/audio/`, manifiesto v2 (misma pista para todas las capas de una escena), fundido cruzado 2,5 s en `motor.ts`, pruebas actualizadas (3955 verdes), MP3 ahora sí en git. Ids de Flow en `disenador-de-sonido.md`. Si Ronald oye mal el empalme del bucle (final→inicio), ajustar los fundidos con ffmpeg a partir del crudo de Flow. Lo que sigue abajo es el plan original.
+
+**(plan original) A. Música por escena, pista entera**
 1. Una pista completa por escena (no por fase): S0 arranque, S1 caso 1/archivo, S2 caso 2, S10 cierre. Suena desde su segundo 0 y sigue hasta el final; al terminar vuelve a empezar con un fundido largo (no corte) o queda en silencio breve y repite.
 2. Cambia de pista SOLO cuando cambia la escena (ya definido en `sonido-t1.ts`: s0 → s1 → s2 → s10). Entre fases de una misma escena NO cambia nada (se elimina el salto calma/duda/tensión/remate por fase: era lo que producía los cortes). Cambio de pista = fundido cruzado de 2 a 3 s.
 3. Si dos escenas seguidas deben compartir música, el manifiesto lo dice (misma pista) y simplemente continúa.

@@ -101,13 +101,15 @@ describe("El manifiesto de música", () => {
 describe("Los archivos de música que de verdad están en public/", () => {
   const carpeta = resolve(dirname(fileURLToPath(import.meta.url)), "../../../../public/juego/psicoestadistica/audio");
   const man = leerManifiesto(JSON.parse(readFileSync(resolve(carpeta, "manifiesto.json"), "utf-8")));
-  it("cada pista del manifiesto existe y pesa menos de 400 KB", () => {
+  it("cada pista del manifiesto existe (una pista entera por escena, de 2 a 3 minutos y menos de 3 MB)", () => {
     const ids = Object.keys(man.pistas);
-    expect(ids.length).toBe(11);
+    expect(ids.length).toBe(4);
     for (const id of ids) {
       const f = resolve(carpeta, man.pistas[id].archivo);
       expect(existsSync(f), id).toBe(true);
-      expect(readFileSync(f).length / 1024, id).toBeLessThan(400);
+      expect(readFileSync(f).length / 1024 / 1024, id).toBeLessThan(3);
+      expect(man.pistas[id].bucle, id).toBe(true);
+      expect(man.pistas[id].duracion ?? 0, id).toBeGreaterThan(120);
     }
   });
   it("toda escena que usa la pantalla existe en el manifiesto y tiene al menos su capa de calma", () => {
@@ -115,21 +117,10 @@ describe("Los archivos de música que de verdad están en public/", () => {
     expect([...usadas].sort()).toEqual(["s0", "s1", "s10", "s2"]);
     for (const e of usadas) expect(pistaDe(man, e, "calma"), e).not.toBeNull();
   });
-  it("cada capa que pide la pantalla tiene su propia pista (no cae en la calma por falta de archivo)", () => {
-    const pedidas = new Set<string>();
-    for (const fase of FASES_T1) for (const fichas of [0, 1, 3]) for (const hallado of [false, true]) for (const medidorBajo of [false, true]) for (const linea of [0, 1]) {
-      const m = musicaDeFase({ fase, fichas, hallado, medidorBajo, lineaDeLaJefa: linea });
-      if (m.escena) pedidas.add(`${m.escena}/${m.capa}`);
+  it("dentro de una escena la música NO cambia entre fases ni capas: todas las capas dan la misma pista (sin cortes)", () => {
+    for (const e of ["s0", "s1", "s2", "s10"] as const) {
+      const ids = new Set((["calma", "duda", "tension", "remate"] as const).map((c) => pistaDe(man, e, c)?.id));
+      expect(ids.size, e).toBe(1);
     }
-    const sinPropia = [...pedidas].filter((k) => {
-      const [e, c] = k.split("/");
-      const fila = man.escenas[e];
-      return !fila || !fila[c as "calma"];
-    });
-    expect(sinPropia).toEqual([]);
-  });
-  it("las dos pistas que no son de bucle (el remate y la cola) están marcadas así", () => {
-    expect(man.pistas["s1-d"].bucle).toBe(false);
-    expect(man.pistas["s10-cola"].bucle).toBe(false);
   });
 });

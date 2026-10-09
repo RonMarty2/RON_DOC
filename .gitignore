@@ -45,3 +45,6 @@ Thumbs.db
 .env.local
 .env*.local
 tsconfig.tsbuildinfo
+
+# Las pistas de música de los juegos sí se suben (sin ellas el sitio publicado no tiene música); los crudos de Flow no.
+!public/juego/**/audio/*.mp3

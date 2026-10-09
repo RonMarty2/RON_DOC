@@ -1,5 +1,7 @@
 # 07 · Sonido
 
+> **ACTUALIZADO 09-10 (Ronald): la música ya no va en tramos ni capas por fase.** Una pista entera por escena (`pista-s0/s1/s2/s10.mp3`, ~2:40 cada una), en bucle, con fundido cruzado de ~2,5 s solo cuando cambia la escena. Todo lo de abajo sobre tramos A/B/C/D y capas por fase queda como historia.
+
 ## Psicoestadística Descriptiva (Psicología) · Tema 1 «La mesa de verificación» · sonido · versión 2 (ajustes del crítico v15: I4 y C8) · 08-10-2026 · se agrega S.6 «Integración en la pantalla» (09-10-2026)
 
 > **Estado:** entrega de la etapa 4-bis (sonido), para el crítico. Autor: diseñador de sonido. **Sin nota** en este tema.

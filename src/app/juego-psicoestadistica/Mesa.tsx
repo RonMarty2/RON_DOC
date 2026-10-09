@@ -85,6 +85,8 @@ export const CARA: Record<Exclude<Quien, "narracion" | "tu">, string> = {
   director: "icono_nota",
 };
 
+const CARA_JEFA: Record<G.PoseJefa, string> = { brazos: "jefa_retrato", cabeza: "jefa_preocupada", pulgar: "jefa_contenta" };
+
 // ── Piezas chicas ────────────────────────────────────────────────────────────
 
 function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir >" }: { lineas: Linea[]; p: PaqueteT1; onFin: () => void; onLinea?: (l: Linea) => void; fin?: string }) {
@@ -99,7 +101,7 @@ function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir >" }: { lineas: Line
   return (
     <div className={l.quien === "tu" ? "mesa-dialogo tuyo" : "mesa-dialogo"} role="group" aria-label="Diálogo">
       <div className={l.quien === "narracion" || l.quien === "tu" ? "mesa-dlg" : "mesa-dlg con-cara"}>
-        {l.quien !== "narracion" && l.quien !== "tu" && <img className="mesa-cara" src={conBase(`/juego/psicoestadistica/arte/${CARA[l.quien]}.png`)} alt="" width={64} height={64} />}
+        {l.quien !== "narracion" && l.quien !== "tu" && <img className="mesa-cara" src={conBase(`/juego/psicoestadistica/arte/${(l.quien === "jefa" && l.pose ? CARA_JEFA[l.pose] : CARA[l.quien])}.png`)} alt="" width={64} height={64} />}
         <div className="mesa-dlg-texto">
           {l.quien !== "narracion" && <div className="mesa-quien">{nombreDe(l.quien, p)}</div>}
           <p className={l.quien === "narracion" ? "mesa-narra" : undefined} aria-live="polite">

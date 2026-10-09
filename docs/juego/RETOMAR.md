@@ -3,7 +3,7 @@
 **Pasos que quedan, en orden (no rehacer lo hecho: verificar con `git log` y `grep`):**
 1. Recorrer el juego de punta a punta en Chrome (dev: `rm -rf .next; env -u npm_config_allow_scripts npx next dev -p 3123`, abrir `/juego-psicoestadistica` con la extensión) y leer `window.__sonido()` para comprobar la música. Solo entonces mostrar a Ronald.
 2. Decisión de Ronald pendiente: enmendar la regla 4b de `docs/juego/ARTE-LINEA-GRAFICA.md` a «valor o tono» y subir un borde de luz al pelo de la jefa y a Dani (`artista-pixel`).
-3. Menores del crítico v20 (🟡): cara de la jefa según gesto; jefa y Dani con cara en la hoja; recortar la pared lisa de arriba para celular; J3 también en la rama «propias».
+3. Menores del crítico v20 (🟡): (cara de la jefa según gesto: HECHO 09-10); jefa y Dani con cara en la hoja; recortar la pared lisa de arriba para celular; J3 también en la rama «propias».
 4. Mapa de ambientes con las correcciones v19 (agente `director-de-juego`; lista en el bloque «CIERRE LIMPIO 09-10») y la hora por cambio de paleta (`ambiente-*.json`).
 5. Después: casos 3 a 8, música de sus escenas, revelación, guardado en la nube. Ronald debe volver a jugar.
 **Arranque en sesión nueva:** `git pull --ff-only`, leer este bloque y «CIERRE LIMPIO 09-10».

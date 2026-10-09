@@ -3,6 +3,60 @@
 > Para quien llegue sin el contexto de la conversación (otra sesión, otra PC, o después de un corte). Léela entera antes de tocar nada.
 > Ronald es el docente y dueño del proyecto. Habla directo, se frustra si le repiten preguntas o le explican con jerga. Explícale todo **en simple**.
 
+## ⭐ EMPIEZA AQUÍ · Estado al 08-10-2026, 23:04 (PC RonMarty) · Ronald pidió dejar todo anotado para retomar en otra sesión
+
+> Este bloque manda sobre todo lo que está más abajo (lo de abajo es historia y detalle). Si algo de abajo lo contradice, vale este bloque.
+
+### En una frase
+El Tema 1 de Psicoestadística Descriptiva («La mesa de verificación») tiene **todo lo de adentro hecho y subido a GitHub**, pero **todavía no se puede jugar**: falta la pantalla.
+
+### Cómo explicárselo a Ronald (él se enredó con los nombres técnicos; usar siempre esta comparación)
+Es como un juego de mesa. Ya están **el reglamento y las cartas escritas** (el diseño que él aprobó) y **el árbitro** (el programa que aplica las reglas solo). Falta **el tablero**: lo que se ve y se toca. No decirle «motor», «bloque», «ramas», «paridad» ni «fixtures». Una sola pregunta a la vez.
+
+### Lo que YA está hecho (no rehacer; todo en GitHub, `git status` limpio al cerrar)
+| Qué | Dónde | Estado |
+|---|---|---|
+| Diseño del Tema 1: 8 casos, reglas, textos, sonido | `docs/juego/gdd/02`, `04`, `05`, `07` | Aprobado por Ronald (plan y aspecto, candado en `content/islas.ts`) |
+| Medidores, meta 65/65, versión distinta por alumno | `src/lib/juego/psicoestadistica/` (`reglas-t1`, `efectos-t1`, `medidores`, `version`, `simulador-t1`) | Hecho y probado |
+| Carpetas de papeles, cifras de cada caso, qué pasa con cada decisión | `carpeta`, `cifras`, `tandas`, `bienestar`, `respuestas` | Hecho y probado (era lo que quedó a medias cuando se cortó la cuota; no se perdió nada) |
+| Qué carta del final le toca a cada alumno (72 posibles) | `ramas-t1.ts` | Hecho y probado contra el modelo en Python |
+| Registro para el docente: 8 casillas por alumno, hábitos, plaza fija | `registro-t1.ts` | Hecho y probado |
+| Las 8 cartas del final con sus textos y cifras | `revelacion-t1.ts` + `guion-t1.json` | Hecho y probado |
+| Ayuda que nunca traba: sobre de la jefa y expediente de otro año | `ayuda.ts` | Hecho y probado |
+| El texto de los 72 papeles, con las cifras de cada alumno | `papeles-t1.ts` + `papeles-t1.json` | Hecho y probado |
+
+Pruebas al cerrar: `npm test` 3.847 en verde (49 archivos), `npx tsc --noEmit` limpio. Último commit: `a68e79e` (más el de esta nota).
+
+**Los textos no se escriben a mano en el código.** Salen de `05-mundo-y-narrativa.md` con tres scripts de `docs/juego/gdd/scripts-t1/` (correr con `python`, no `python -I`): `exportar_guion_t1.py` (cartas, sobres, expedientes), `exportar_papeles_t1.py` (papeles) y `exportar_ramas_t1.py` (datos de prueba). Si cambia la narrativa, se vuelven a correr.
+
+### Lo que FALTA para que Ronald lo juegue en el celular, en orden
+1. **La pantalla** (lo más grande): la oficina de noche, la carpeta, los papeles, los tubos, la jefa, los botones, las cartas. PixiJS dentro de la web, aspecto A «La redacción de noche». Lo único que existe es el boceto del Caso 2: `docs/juego/bocetos/motores/aspecto-A/index.html` (arte PROVISIONAL, paquetes Kenney de uso libre). **No existe todavía ninguna página del juego en `src/app/` para Psicoestadística.**
+2. **Textos que faltan pasar al código** (ya están escritos en `05` NT1.5 a NT1.7; se copian con un script, igual que los papeles): lo que llega en cada caso y lo que dice la jefa al entrar, las reacciones de los personajes según el resultado, las piezas de frase de los casos 3 y 6, los avisos («¿Firmar? Después no hay vuelta», etc.) y el cierre del informe.
+3. **La música dentro del juego**: hay 3 pruebas generadas (S0, S2, S9) en la cuenta de Flow Music de Ronald; **ningún MP3 está en el disco**; faltan las demás escenas. Método en `.claude/agents/disenador-de-sonido.md`. Ronald ya dijo «integra, y no vuelvas a preguntar» por la licencia.
+4. **Tres datos del registro que dependen de la pantalla**: en qué intento acertó en la práctica libre, si cambió de costumbre de un caso al siguiente, y qué eligió en el gráfico del caso 7 antes y después.
+5. **Revisión antes de publicar** (agente `revisar-publicacion`) y **una sola pasada del crítico** sobre el juego ya armado (regla del 08-10: una por tema).
+6. **Ronald lo juega en el celular** y dice qué cambiar. Con lo aprendido se mejoran los agentes antes del Tema 2.
+
+### Lo que tiene que hacer RONALD (solo él)
+1. **Contestar una pregunta** (quedó hecha y sin respuesta el 08-10 a las 23:0x): **¿se arma primero un solo caso completo y jugable en el celular (el Caso 2, el del boceto), o los ocho de corrido?** Recomendado: **un solo caso primero**, para que vea algo pronto y se corrija el rumbo antes de armar los otros siete. No empezar la pantalla sin su sí.
+2. **Si trabajó en la otra PC:** él recordaba que «se estaban haciendo los artes». En esta PC (RonMarty) no hay arte nuevo después del boceto de las 18:46, ni en GitHub, ni en los respaldos de git. Si quedó algo en la otra PC, hay que abrir Claude allá y pedirle **«sube lo que quedó sin subir»** (Synology no pasa la carpeta de git).
+3. **Descargar los MP3** de las 3 pruebas de música desde su cuenta de Flow Music (o decir en qué PC quedaron).
+4. Borrar, cuando quiera, la copia en conflicto `…_DownloadConflict.md` de `docs/juego/gdd/` (es una foto vieja; Claude no borra).
+5. Al final: jugarlo en el celular.
+
+### Qué hace la próxima sesión al llegar (en este orden, sin rehacer nada)
+1. `git pull --ff-only` y `git status`. Debe estar limpio y al día. Si hay archivos sin subir, decir cuáles y de cuándo antes de tocar nada.
+2. `npx tsc --noEmit` y `npm test`: deben dar 3.847 pruebas en verde.
+3. Decirle a Ronald en 5 líneas, con la comparación del juego de mesa: qué hay, qué falta, y hacerle **solo** la pregunta del punto 1 de arriba (si no la contestó ya).
+4. Con su sí: copiar con script los textos del punto 2 de «Lo que falta» **solo del caso que se va a armar**, y construir la pantalla como borrador («Jugar (en prueba)»).
+
+### Cuidados (errores de hoy, para no repetir)
+- **Subir solo si las pruebas pasan, mirando el código de salida.** El 08-10 a las 22:49 se subió un commit con una prueba que fallaba por tiempo, porque `npm test | tail` tapó el fallo; se corrigió a los dos minutos. Guardar la salida en un archivo y revisar `$?` antes de `git push`.
+- **La hora se lee del reloj** (`date`), nunca se estima.
+- Subir cada pieza apenas pase sus pruebas: si se corta la cuota, no queda nada suelto.
+
+---
+
 ## 0. Qué hacer al llegar (en este orden)
 
 1. `git pull --ff-only` y `git status`. Si hay archivos sin subir, di cuáles y de cuándo antes de tocar nada.

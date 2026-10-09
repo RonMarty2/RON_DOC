@@ -12,6 +12,8 @@
 
 > **LEER PRIMERO: `docs/juego/RETOMAR.md`** (nota de relevo del 08-10: qué decidió Ronald, el método, dónde está cada archivo, qué sigue y qué no repetir). Lo que está debajo es el detalle histórico.
 >
+> **CIERRE 08-10, 23:04 (PC RonMarty).** El Tema 1 de Psicoestadística tiene todo lo de adentro hecho y subido (reglas, cifras por alumno, cartas del final, registro del docente, ayuda y los 72 papeles; 3.847 pruebas), pero **todavía no se puede jugar: falta la pantalla**. Qué falta, qué tiene que hacer Ronald y qué hace la próxima sesión: bloque **«⭐ EMPIEZA AQUÍ»** al principio de `docs/juego/RETOMAR.md`. Pregunta pendiente para Ronald: ¿un solo caso jugable primero (recomendado) o los ocho de corrido?
+>
 > **08-10, 22:45 · Motor del Tema 1 de Psicoestadística, bloque 2 subido** (`src/lib/juego/psicoestadistica/`: `carpeta.ts`, `cifras.ts`, `respuestas.ts`, `bienestar.ts`, `tandas.ts`, `aleatorio-t1.ts`, con sus pruebas y la paridad contra Python). 3.816 pruebas, tsc limpio. Sigue el bloque 3 (revelación, 72 ramas, registro, escalera) y después la pantalla con el arte. No hay arte nuevo más allá del boceto vivo de la Dirección A. **22:57 · bloque 3 subido:** qué carta del final le toca a cada alumno (72 ramas), el registro para el docente, las 8 cartas con sus textos y la ayuda que nunca bloquea (`ramas-t1.ts`, `registro-t1.ts`, `revelacion-t1.ts`, `ayuda.ts`, `guion-t1.json`). El motor invisible del Tema 1 queda completo salvo lo que depende de la pantalla; sigue la pantalla.
 
 > **08-10 (Claude, PC RONMARTY): giro de Ronald, sin ejecutar todavía.** (1) **Sonido:** probó Flow Music (Google Labs,

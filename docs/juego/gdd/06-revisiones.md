@@ -2,6 +2,60 @@
 
 **Versión 15 · 08-10-2026** (la entrada más nueva, narrativa v3 y sonido v1 del Tema 1 de Psicoestadística, está justo debajo de las decisiones; la v14, simulación del bucle v2, va después; la v14 está antes de la v13; la v13, antes de la v12) · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
+## v23 · plan y boceto de la pantalla inmersiva (09-10-2026) · Tema 1 de Psicoestadística (Psicología)
+
+**Qué se revisó:** `plan-psicoestadistica-tema1-pantalla-inmersiva.md` y `bocetos/inmersiva/index.html`, abierto con Playwright + Chromium; capturas de las 10 vistas (5 pantallas × 412×860 y 1100×700) en el scratchpad (no en el repo). Script guardado: `scripts-t1/medir_inmersiva_v23.mjs` (mide área libre, figuras tapadas, fuentes <12 px, botones <44 px, cortes). Oficio: las tres líneas están (psicólogo de colegio): ✔. Es un boceto estático de bloques: no prueba PixiJS, teclado ni botón atrás (eso queda por riesgo, no por medición).
+
+**Veredicto:** se puede mostrar a Ronald **como dirección** (la idea funciona: se ve la oficina, los medidores arriba, la hoja que se cierra), **pero no con la cifra «42% libre»**: el plan la da por medida y el boceto no la cumple en 2 de las 3 pantallas con hoja. Hay que corregir 2 cosas del plan antes de construir (hallazgos 1 y 2).
+
+### Medición (412×860, pixeles de la captura que no cubre cabecera, hoja ni caja)
+| Pantalla | Oficina libre (área) | Franja contigua | Plan prometía | Figuras tapadas |
+|---|---|---|---|---|
+| 1 Diálogo | 67 % | 64 % | ≥ 42 | ninguna (la caja no tapa) |
+| 2 Archivo con papel | **36 %** | 35 % | 42 | jefa y ventana libres |
+| 3 Decidir | 46 % | 45 % | 42 | libres |
+| 4 Qué pasó | **26 %** | **25 %** | 42 | jefa 24 %, Dani 27 % |
+| 5 Fin | 38 % | 20 % | 42 | ventana 76 %, jefa y Dani 100 % |
+En 1100×700 la hoja es panel de 440 px y **tapa a Dani al 100 %** y a la jefa 34 % en las pantallas 2 a 4; «oficina entera a la izquierda» no es cierto (se recorta, no se encoge). Fuentes: 0 textos menores de 12 px; botones: 0 por debajo de 44 px (todos ≥ 48). Cortes: solo «Qué pasó» (cuerpo 428 px dentro de 373 px: el renglón «Con otra decisión» queda cortado a la mitad y **sin señal de que se desplaza**).
+
+### Las tres preguntas (como alumno que no sabe nada)
+| Pantalla | (a) ¿Qué hago? | (b) ¿Qué cambió y por qué? | (c) ¿Qué me llevo? |
+|---|---|---|---|
+| 1 | Se entiende: averiguar cómo se contó el cero | — | — |
+| 2 | Se entiende: «Tu objetivo» está arriba y el botón «Decidir» abajo | — | — |
+| 3 | «Decidir»: sí, pero «Tu objetivo» sigue diciendo «Toca un papel para abrirlo» (ya no aplica) | — | — |
+| 4 | Leo | Sí: cada renglón dice qué lo causó y los tubos de arriba bajan a la vista | «Con otra decisión» queda cortado: me pierdo lo que más enseña |
+| 5 | «Volver al título» | — | Sí, la frase | 
+«Pulsa cualquier cosa»: no cambia respecto a v22 (el cuadro explica cada fila); no se reevaluó.
+
+### Hallazgos (de más a menos grave)
+| # | Gravedad | Qué pasa | Por qué importa | Propuesta | Agente que debió evitarlo |
+|---|---|---|---|---|---|
+| 1 | 🔴 | **La regla del 42 % es falsa.** El plan resta solo la hoja (58 %) y olvida la cabecera (66 px sin objetivo, **144 px con él = 17 %**). Libre real: 36 % (papel), 25 % (Qué pasó). El «✔ a mano» de la lista de salida es lo que ya falló 3 veces en v10, v11 y v22 | Es justo lo que Ronald pidió («mientras más texto, dejo de ver la escena»); en «Qué pasó» el alumno vuelve a leer sobre una franja de 215 px donde jefa y Dani están cortados | Presupuesto que suma: cabecera + hoja + caja ≤ 58 %. Opción recomendada: «Tu objetivo» **una línea** (≈ 36 px, 14 px de letra) y se oculta cuando no hay papeles que abrir; hoja máxima **45 %** (≈ 390 px) con indicio visible de que se desplaza (sombra o «▾ más»). Con eso: 66 px + 390 px = 53 % tapado, 47 % libre. Alternativa: cabecera como pastilla de dos números sin rótulos (se pierde «25 peligro / 65 meta»: no recomendada). Y la prueba nueva mide el área libre con una captura (este script), no restando | director-de-juego (2.ª vez: ✔ a mano de algo contable) |
+| 2 | 🟠 | **Computador:** el panel de 440 px (40 % del ancho) tapa a Dani 100 % y la jefa 34 % en cuatro de cinco pantallas. «Se ve entera a la izquierda» solo vale si el lienzo se encoge al 60 %, lo que el plan no dice (en el boceto se recorta) | El que juega en computador pierde a Dani y la jefa justo cuando le hablan | Decisión 4: **no hacer panel**; usar la misma hoja de abajo, centrada con ancho máximo de 480 px, y en pantalla ancha el lienzo se encuadra a esa proporción de celular (más barato: un solo diseño, una sola prueba). Si Ronald quiere el panel, el plan debe decir que el lienzo se escala a 660 px de ancho | director-de-juego |
+| 3 | 🟠 | «Tu objetivo» **no cambia con la fase**: en «Decidir» y en «Qué pasó» sigue diciendo «Toca un papel para abrirlo; cada uno gasta una ficha» (captura 3 y 4). El plan lo llama «franja fija» y la deja igual | Un objetivo desactualizado es peor que ninguno: contradice lo que se hace en esa pantalla (v20 y v22 ya eran sobre esto) | Tres textos: papeles («Averigua cómo se contó el cero. Abre papeles: cada uno gasta una ficha»), decidir («Decide qué sale con ese cero»), y se **retira** en «Qué pasó»/fin (ahí ya no hay objetivo; ganas 100 px de oficina) | disenador-de-bucle / director-de-juego |
+| 4 | 🟠 | «Qué pasó» llega tras las cajas de la reacción (3 o 4 toques) pero **el plan sí mueve los tubos al abrirlo** (paso 5): eso arregla v22 #6 **si** la reacción no los movió antes. Hoy `Mesa.tsx` los mueve al empezar la reacción. Los renglones del boceto siguen con dos oraciones («Quedó sin abrir: … Decía: …») y 5 renglones no caben en el 45 % sin desplazar | La causa y el efecto deben coincidir en tiempo: es la queja central de Ronald | En el paso 5, mover los tubos **recién al abrir la hoja** y probarlo; partir «Quedó sin abrir» y «Decía» en dos renglones como pidió v22 #2 (si no, la hoja crece); mostrar primero 3 renglones (qué hiciste, cómo se contó, lo que bajó o subió) y «Con otra decisión» como segundo toque dentro de la misma hoja | disenador-narrativo / construcción (2.ª vez v22 #2) |
+| 5 | 🟡 | Boceto y plan se contradicen con v22: la ficha dice «te quedan 2» de 4 fichas y «papel 2 de 6» (v22 trae 3 fichas y 6 papeles); pantalla 5 tapa ventana, jefa y Dani al 100 % con la tarjeta de cierre | El alumno cuenta fichas | Corregir el boceto a 3 fichas; en el cierre, la tarjeta baja al tercio inferior y deja la ventana visible | disenador-de-bucle |
+| 6 | 🟡 | Dos mecanismos para el botón atrás: `popstate` con una entrada de historial por hoja, y `App.addListener("backButton")` de Capacitor. Si los dos están, un atrás cierra la hoja y además sale de la pantalla (doble manejo); y la ✕ debe hacer `history.back()` para no dejar entradas sobrantes | Salir del juego por error con la hoja de números a medio escribir | Un solo mecanismo: en la web y en la app (Capacitor carga el sitio en un WebView) usar `popstate`/historial; el plugin solo si `canGoBack` es falso. La ✕ y el toque fuera llaman a `history.back()` | construcción |
+| 7 | 🟡 | Teclado: con teclado de ~40 % de 860 px quedan 516 px; cabecera 144 + hoja del número ≈ 300 deja 70 px de oficina y el lienzo PixiJS **se redimensiona** (parpadeo, contexto WebGL) cuando el visor cambia | Hoja del encargo es lo primero que se juega | Fijar el alto del lienzo al primer valor (no seguir `visualViewport`), ocultar «Tu objetivo» mientras haya teclado y pausar el ticker de Pixi con una hoja de más de 40 % abierta (ahorra batería) | construcción |
+| 8 | 🟡 | El orden de 7 pasos casi es seguro: cada paso se puede subir y probar. Falla en dos puntos: (a) el paso 1 deja la oficina a pantalla completa **antes** de reubicar las figuras (paso 3), así que durante dos pasos jefa y Dani quedan tapadas por las hojas; (b) el paso 5 mezcla `Hoja`, textos nuevos del plan v22 y pantalla final: es 3 pasos | Un paso grande no se prueba solo | Pasar la reubicación de figuras (hoy paso 3) **al paso 1**; partir el 5 en «5a Qué pasó con los textos de v22», «5b pantalla final». Mantener «Android» y «pulido» al final | director-de-juego |
+
+### Proporción costo/efecto: qué recortaría
+- **Panel lateral de computador** (decisión 4): recortar (hallazgo 2). Un diseño en lugar de dos.
+- **Hoja chica «confirma»** (30 %): convertirla en dos botones en la barra de «Decidir» («Sí, firmar» / «Volver»), sin hoja extra: menos capas y menos historial que manejar.
+- **Capas oscuras (`sombra`)**: solo bajo la hoja, no sobre toda la oficina (el plan ya pone 35 %).
+- Lo que vale la inversión: oficina a pantalla completa + `Hoja` única + «Tu objetivo» de una línea + «Qué pasó» (es lo que Ronald pidió). Lo demás del plan (música baja, reducir movimiento) es barato.
+
+### Lo que está bien y conviene no tocar
+Letra ≥ 12 px y botones ≥ 48 px en las 10 vistas (script); rótulos «25 peligro / 65 meta» no se pisan a 412 px; caja de diálogo abajo no tapa la oficina (pantalla 1 deja 64 % libre); una sola hoja a la vez; la hoja no se guarda al reanudar.
+
+### Mejoras a agentes que propongo
+- **director-de-juego:** «Una cifra de espacio (oficina visible, % libre) se calcula **sumando todo lo que tapa** y se mide en captura con script; un ✔ a mano ahí es ✘». Apoyo: hallazgo 1.
+- **disenador-de-bucle:** «La línea de objetivo fija tiene un texto por fase (papeles, decidir, ninguno)». Apoyo: hallazgo 3.
+- **construcción:** «Un solo mecanismo de botón atrás; el lienzo no sigue al teclado». Apoyo: 6 y 7.
+
+---
+
 ## v22 · plan «objetivo y causa» del Caso 2 (09-10-2026) · Tema 1 de Psicoestadística (Psicología)
 
 **Qué se revisó (papel, sin navegador, por pedido):** `plan-psicoestadistica-tema1-objetivo-y-causa.md` contra `Mesa.tsx` (fases `entrada2`, `archivo2`, `frase`, `confirma`, `reaccion`, `fin`), `guion-pantalla-t1.ts` (`reaccionCaso2`, `porQueSeMovieron`), `efectos-t1.ts` (filas R2.x), `respuestas.ts` (`resolverCaso2`), `cifras.ts` (`caso2`, `HECHO_CLAVE_2`), `papeles-t1.json` (C2-1 a C2-9), `orientacion-t1.json` (A11, A12, B-arch2-x, B-cierre1-2). Script guardado: `scripts-t1/contar_plan_objetivo_v22.py` (salida: 15 filas, 75 celdas, **12 celdas con más de una oración**, 0 celdas con más de 25 palabras antes de llenar los huecos, 0 guiones largos, sin voseo). Oficio: las tres líneas están y «psicólogo de colegio que decide si un informe sale» es del oficio: ✔. Cifras del cuadro contra la tabla: las 15 filas coinciden con R2.1 a R2.4 (a mano, cotejadas una a una).

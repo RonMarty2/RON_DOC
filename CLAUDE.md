@@ -40,6 +40,8 @@ Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (
 
 **Cuando Ronald diga que se va** («debo irme», «sigo mañana», «cambio de PC», «ya me voy» o similar), **antes de responder** se escribe en `docs/juego/RETOMAR.md` (bloque «ESTADO REAL») y en `BITACORA.md` §0: (1) **qué hicimos**, resumido; (2) **qué queda por hacer**, en orden; (3) **el plan que se está siguiendo** (en qué paso va y qué decisiones de Ronald faltan); y se hace commit y push. Redactado para que lo entienda una sesión sin contexto. Pedido por Ronald el 09-10-2026: «siempre pero siempre».
 
+**Hábito automático (Ronald, 09-10: «es cansador que deba decirte a cada rato»)**: todo lo anterior se hace **sin que Ronald lo pida**. Cada vez que se corrige algo que él notó o se descubre un error: en el mismo turno se anota en el agente que debió evitarlo (`.claude/agents/`), se suma una línea fechada en «Aprendido construyendo» de `.claude/agents/LEEME.md`, se actualiza `docs/juego/RETOMAR.md` y la bitácora, se hace commit y push, y el mensaje cierra con **una línea** que dice qué se anotó y dónde. Una decisión suya nueva va además a `docs/juego/REGLAS-COMUNES-AGENTES.md`. No esperar a que lo repita.
+
 ## Estructura: escalable, modificable, ampliable sin romper (Ronald, 2026-09-26)
 
 Todo lo que se construye (código, contenido, juego, agentes, documentos) se arma para crecer **sumando piezas**, no reescribiendo:

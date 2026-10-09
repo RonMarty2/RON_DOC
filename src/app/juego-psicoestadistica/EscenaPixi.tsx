@@ -42,7 +42,7 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
       const app = new PIXI.Application({ width: ESCENA_ANCHO, height: ESCENA_ALTO, backgroundColor: 0x07060d, antialias: false, resolution: 1 });
       const vista = app.view as HTMLCanvasElement;
       vista.setAttribute("role", "img");
-      vista.setAttribute("aria-label", "Oficina del Departamento de Orientación, de noche, con la jefa tras el escritorio, Dani en sombra al fondo y la lámpara sobre el escritorio.");
+      vista.setAttribute("aria-label", "Oficina del Departamento de Orientación, de noche, con la jefa tras el escritorio, la ventana con la luna y la lámpara sobre el escritorio.");
       caja.current.appendChild(vista);
 
       const tex = (n: string) => PIXI.Texture.from(IMG(n));
@@ -65,8 +65,6 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
       sprite("arte/ventana_noche", 4, 6);
       sprite("arte/reloj_estante", 84, 8);
       sprite("arte/pizarron", 130, 10);
-      const dani = sprite("arte/dani_silueta_fondo", 72, 60);
-      dani.scale.set(2);
       const jefa = sprite(POSE[ultimo.current.pose], 118, 60);
       jefa.scale.set(2);
       mosaico("arte/escritorio_madera", 120, ESCENA_ALTO - 120);
@@ -115,7 +113,6 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
           if (o.m.y < 60) o.m.y = 122;
         }
         const u = ultimo.current;
-        dani.y = u.daniCabecea ? 60 + Math.abs(Math.sin(t0 * 1.2)) * 2.5 : 60;
         telefono.x = u.suena ? 40 + (Math.sin(t0 * 40) > 0 ? 1 : -1) : 40;
         telefono.y = u.suena ? 92 + (Math.sin(t0 * 33) > 0 ? -1 : 0) : 92;
       });
@@ -124,7 +121,6 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
         poner: (o) => {
           jefa.texture = tex(POSE[o.pose]);
           jefa.visible = o.verJefa;
-          dani.visible = o.verDani;
         },
         destruir: () => {
           app.destroy(true, { children: true });

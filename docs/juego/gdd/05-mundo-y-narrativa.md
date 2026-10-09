@@ -82,7 +82,7 @@ Tabla corta; cada personaje tiene su ficha debajo. «Cara» es la propuesta al d
 | **Profe Beto Salvatierra**, colega «a ojo» | Docente veterano de educación física y tutor de 4.º | **Con cara**, taza en mano | Arranque (de paso), caso 4 (eco), caso 5 (eco), caso 8 (propone), revelación |
 | **Director Ugarte** | Director del colegio, quien decide el taller | **Con cara**, en el caso 8 (y su voz en el turno 1 del caso 5) | Casos 5 y 8 |
 | **Señora Quiroga**, la madre | Madre de un estudiante del colegio | **Teléfono que suena** con globo, sin rostro | Caso 2 |
-| **Dani** (nombre de reserva; cambia por versión) | Practicante de psicología del departamento, personaje de reserva del arranque | **Silueta** en la silla del fondo | Arranque; ambiente |
+| **Dani** (nombre de reserva; cambia por versión) | Practicante de psicología del departamento, personaje de reserva del arranque | **Solo voz en el diálogo** (09-10, Ronald: fuera de la escena) | Arranque; ambiente |
 | Voces sin cara | La profesora de 4.º A, el director del colegio vecino, una docente, la tallerista, la consultora externa *Horizonte* | Globos de teléfono, notas, oficios | Casos 3 a 8 |
 
 #### Lic. Ximena Rocabado, la jefa del departamento
@@ -247,7 +247,7 @@ Cada caso trae: **entrada** (la afirmación, de dónde llega y la jefa), **el te
 | **Tipo P** · R2.3 Frase con el clave (+8/+4, o +10/+4 con el refuerzo) | Jefa, pulgar arriba: **«Va al informe.»** Aparece la tarjeta con tu frase en el panel de acuerdos. |
 | **Tipo P** · R2.4 Frase sin pieza del clave (−8/+4) | Llega una nota corta del director: «Nuestras cifras son correctas.» Jefa: «Sonaba prudente. No tocaba nada.» |
 
-**Ambiente:** si el alumno tarda, **Dani cabecea** en la silla del fondo. No habla.
+**Ambiente:** si el alumno tarda, Dani cabecea (09-10: ya no se dibuja en la escena; solo existe como voz en el diálogo). No habla.
 
 #### Caso 3 · «La cifra del colegio» (idea 3)
 
@@ -816,7 +816,7 @@ Cierre C8 (F8a, F8b, F8c, F8d, F8e, F8f, F8g): «Los datos bien recogidos y bien
 |---|---|---|---|---|
 | B-titulo-1 | titulo | narración | «Prueba: 2 casos de los 8 del juego.» | Debajo de «Víspera del consejo» (H14) |
 | B-bienv-1 | bienvenida | narración | «Tu trabajo: mirar los papeles y decir si una afirmación se sostiene, antes de que llegue al consejo.» | Tercera línea, tras A2 (H1) |
-| B-hoja-1 | hoja | jefa | «En la silla del fondo está {dani}, practicante del departamento. Si prefieres no poner tus datos, {dani} responde por ti.» | Bajo la frase A4, antes de los botones (H3) |
+| B-hoja-1 | hoja | jefa | «{dani}, practicante del departamento, está de guardia esta noche. Si prefieres no poner tus datos, {dani} responde por ti.» | Bajo la frase A4, antes de los botones (H3) |
 | B-arch1-1 | archivo1 | jefa | «Toca un papel para abrirlo. Cada papel abierto gasta una ficha: es el tiempo que tienes esta noche.» | Bajo la frase A6, siempre visible (H4: aquí se explica la ficha, una sola vez) |
 | B-asom-1 | asombro | jefa | «Eso era lo que te pedí: el colegio ya hizo esta pregunta, y nadie usó la respuesta.» | Tras «Esa pregunta ya se hizo. Hace un año. Nadie la leyó.» (H5) |
 | B-asom-2 | asombro | jefa | «Tu trabajo es eso: mirar los papeles antes de creer una afirmación.» | Tras B-asom-1 (H5) |

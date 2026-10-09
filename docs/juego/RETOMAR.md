@@ -1,4 +1,37 @@
-# RETOMAR el juego de RON_DOC (nota de relevo, 08-10-2026)
+# RETOMAR el juego de RON_DOC (nota de relevo, 08-10-2026; actualizada 09-10)
+
+## ⭐⭐ ESTADO REAL 09-10, 09:20 (PC RonMarty): LEER ESTO ANTES QUE TODO LO DE ABAJO
+
+> Este bloque manda sobre el «EMPIEZA AQUÍ» del 08-10, que quedó atrasado (decía que no había pantalla). Si algo de abajo lo contradice, vale este bloque.
+
+### Qué hay y funciona (todo en GitHub, `git pull --ff-only` primero)
+- **Pantalla jugable del Tema 1 de Psicoestadística (Paso 1 + Caso 2)**: `/juego-psicoestadistica` (`src/app/juego-psicoestadistica/`), borrador «Jugar (en prueba)». Textos de orientación (NT1.12 de `05-mundo-y-narrativa.md`, generados a `orientacion-t1.json`), guardado en el navegador y retomar.
+- **Sonido**: motor común `src/lib/juego/sonido/`, recetas y tabla de fases `sonido-t1.ts`, enganche `sonido.tsx`. **Música real aprobada por Ronald (11 tramos S0, S1, S2, S10)** en `public/juego/psicoestadistica/audio/` + `manifiesto.json`. Diagnóstico en el navegador: `window.__sonido()`. Efectos por código (14).
+- **Crítico de lo jugable corrido** (v16, v17, v18 en `06-revisiones.md`).
+- **Pruebas**: ~3.950 en verde, `npx tsc --noEmit` limpio. Servidor de prueba: `env -u npm_config_allow_scripts npx next dev -p 3123` (si da error 500 tras un `next build`, borrar `.next`).
+
+### Decisiones de Ronald del 09-10 (no se vuelven a preguntar; ya están en las reglas de los agentes)
+1. **Primera persona: no hay personaje del jugador visible** («yo soy quien vive todo»). Lo que dicen los demás sale en una **caja arriba de la escena con cara o ícono y nombre** (estilo «A3» de `docs/juego/bocetos/caras/index.html`); lo que dice o decide el jugador sale en **otra caja de otro color sin cara**. El mundo caminable estilo RPG (como el paquete LimeZu) queda **para después**, como mapa entre lugares.
+2. **Una sola línea gráfica para todos los juegos** (`docs/juego/ARTE-LINEA-GRAFICA.md`: paleta EDG32, tamaños, contorno, sombreado). **El ambiente cambia por escena** según la historia (idea: que pase la noche, de lámpara a amanecer); lo propone el director con el narrativo y Ronald lo aprueba.
+3. **El arte actual (generado por script) «se ve horrible» y es lo más urgente**: `python scripts/verificar_arte.py public/juego/psicoestadistica` da 0 de 10 sprites que cumplan la línea. Se redibuja siguiendo la guía.
+4. La etapa del crítico sobre lo jugable es obligatoria antes de mostrarle algo a Ronald (se saltó 3 veces; está escrita en `.claude/agents/LEEME.md`).
+
+### Plan de arte en curso (en este orden; cada paso con visto bueno de Ronald)
+1. ✅ Guía gráfica común (`ARTE-LINEA-GRAFICA.md`) y control `scripts/verificar_arte.py`.
+2. ⏳ **Mapa de ambientes del Tema 1** (agente `director-de-juego`, lanzado el 09-10) → `docs/juego/gdd/aspecto-psicoestadistica-tema1-ambientes.md` y `docs/juego/bocetos/ambientes/index.html`. **Pasa por el crítico antes de mostrárselo a Ronald.** Si los archivos no existen, el agente se cortó: relanzarlo con el encargo de este bloque.
+3. ⏳ **Catálogo de assets gratuitos con licencia verificada** (agente general, lanzado el 09-10) → `docs/juego/arte/CATALOGO-ASSETS-GRATIS.md`. Candidatos ya vistos por Ronald: retratos CC0 de loregret, Pixel Office de Masalimov, Modern Interiors de LimeZu (**exige crédito y prohíbe redistribuir los originales; el repositorio es público: confirmar antes**). Descargar o comprar lo decide Ronald.
+4. **Pendiente: prueba pequeña de arte** (la jefa y un documento en dos ambientes, junto a lo actual) con el método de la guía: sprites como texto + paleta, `scripts/generar_arte.py` (por hacer), mirar la hoja ampliada, `verificar_arte.py`, crítico. Ronald aprueba la línea antes de dibujar todo.
+5. **Pendiente: todo el arte del Tema 1** (jefa con 3 poses y 3 gestos, 6 retratos, escritorio y objetos, ~9 tipos de documentos, botones, tubos, fichas) y **agente nuevo `artista-pixel`** registrado en `.claude/agents/LEEME.md` con este método.
+6. **Pendiente: construir las cajas de diálogo con cara** en `Mesa.tsx` (`Dialogo` hoy no sabe de retratos; ~6 líneas nuevas del jugador; cambio en la escena).
+7. Después: casos 3 a 8, música de sus escenas, revelación, nube. **Ronald tiene que volver a jugar y decir qué cambiar.**
+
+### Cuidados nuevos
+- **Nada de «suena» ni «se ve bien» sin comprobarlo**: abrir la página con la extensión de Chrome y leer el estado real. Si `tabs_context_mcp` dice «not connected», avisar a Ronald al inicio; Chrome se abre con `"/c/Program Files/Google/Chrome/Application/chrome.exe" <url>`.
+- **Chrome de Flow Music**: sesión de Ronald abierta (RonMarty, PLUS). El audio se baja del almacenamiento público (`.../clips/<id>.m4a`), no del menú Download. Detalle en `.claude/agents/disenador-de-sonido.md`.
+- La hora se lee del reloj (`date`). Las ediciones con `\` o `<<EOF` largos van a un `.py`.
+
+---
+
 
 > Para quien llegue sin el contexto de la conversación (otra sesión, otra PC, o después de un corte). Léela entera antes de tocar nada.
 > Ronald es el docente y dueño del proyecto. Habla directo, se frustra si le repiten preguntas o le explican con jerga. Explícale todo **en simple**.

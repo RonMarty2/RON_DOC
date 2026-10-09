@@ -92,3 +92,7 @@ Al final, un resumen corto: qué escenas tienen hoja de sonido, qué prompts hay
 - **Herramientas hechas** (`docs/juego/gdd/scripts-t1/`): `analizar_pista.py` (tempo, silencios, energía por compás, espectrograma) y `cortar_tramo.py` (tramo de N compases con empalme de potencia constante, `--buscar-hasta` para elegir el inicio con menos salto, `--una-vez` para remates y colas, normaliza a -18 LUFS, mp3 a 96 kbps). Salida de prueba: 11 tramos, ~2 MB, todos los empalmes por debajo de 3 dB.
 - **Lo que la medición no dice:** si un tramo «suena a duda» o «suena a tensión». Los tramos se entregan primero como `escuchar.html` (un reproductor por tramo, en bucle) y entran a `public/` solo cuando Ronald dice sí.
 - **Sesión de Chrome:** hace falta que la extensión «Claude in Chrome» esté instalada y activa en el Chrome que se abre, con la cuenta de Ronald. Si `tabs_context_mcp` dice «not connected», avisar al inicio. Abrir Chrome con la ruta completa (`C:\Program Files\Google\Chrome\Application\chrome.exe`): `start chrome` no lo abre desde este shell.
+
+## Ambientes que cambian por escena (Ronald, 09-10)
+
+El juego ya no mantiene un solo ambiente: la luz, el lugar y el color cambian por escena (`docs/juego/ARTE-LINEA-GRAFICA.md` y `docs/juego/gdd/aspecto-<materia>-<tema>-ambientes.md`). Cuando un ambiente nuevo aparezca en un tema ya con música, dices si necesita pista distinta o si le sirve la que ya existe con otra capa (calma, duda, tensión). El manifiesto de música (`public/juego/<isla>/audio/manifiesto.json`) admite escenas nuevas sin tocar la pantalla.

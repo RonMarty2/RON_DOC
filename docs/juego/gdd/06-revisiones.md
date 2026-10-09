@@ -2,6 +2,36 @@
 
 **Versión 15 · 08-10-2026** (la entrada más nueva, narrativa v3 y sonido v1 del Tema 1 de Psicoestadística, está justo debajo de las decisiones; la v14, simulación del bucle v2, va después; la v14 está antes de la v13; la v13, antes de la v12) · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
+## v18 · bocetos de caras (09-10-2026) · aspecto del Tema 1 de Psicoestadística, opciones A, B, C
+
+**Qué se revisó:** `docs/juego/bocetos/caras/index.html` (9 pantallas) y `docs/juego/gdd/aspecto-psicoestadistica-tema1-caras.md`. Con navegador real (Playwright, 376 px) y scripts guardados: `docs/juego/gdd/scripts-t1/medir_bocetos_caras.py` (pantallas, letras, botones, posiciones, contrastes, capturas) y `docs/juego/gdd/scripts-t1/largo_lineas_dialogo.py` (largo de las 241 líneas del guion). Salida: 9 pantallas (3 por opción); ningún texto menor de 12 px; botones de 48 a 58 px de alto; contrastes 13,98 / 12,45 / 11,66 / 8,38 / 12,56 (coinciden con la ficha). Líneas del guion de más de 110 caracteres: 19; de más de 150: 0 (la más larga, 138; la ficha dice «25 palabras, 150 caracteres»: es más de lo que existe).
+
+**Veredicto:** se puede mostrar a Ronald con 3 correcciones chicas de texto y 1 de dibujo (abajo). B sigue siendo la recomendada.
+
+| # | Gravedad | Qué pasa | Por qué importa | Arreglo mínimo | Agente que debió evitarlo |
+|---|---|---|---|---|---|
+| 1 | 🟠 | **Tu personaje casi no se ve.** Mide 60x72 px contra 96x128 de la jefa, está bajo el velo oscuro, de espalda, con chaqueta verde azulada apagada, y a su derecha está Dani en silueta casi igual de oscuro. En la captura de B1 y A1 lo que identifica a «TÚ» es el rótulo, que desaparece después. El mismo error que Ronald cometió (confundir figuras) puede repetirse con Dani. | Ronald pidió «mi imagen de persona». Si solo se lee por el rótulo, tras desaparecer vuelve la duda. | Dibujarlo del mismo alto que la jefa (o 90 %), sin velo (un borde de luz de la lámpara) y con un tono claro; el rótulo «TÚ» se queda hasta la primera nube, y la nube siempre dice «TÚ». Separarlo de Dani. | `director-de-juego` (no midió contraste entre figuras) |
+| 2 | 🟠 | **La opción A no resuelve a Beto, al director, a la madre ni a la nota**: no están en la escena, no hay «sobre quién flotar». La ficha lo admite solo para madre y nota; Beto y Ugarte también quedan sin cara y sin dueño. Además la ficha dice que en A «la cara es el dibujo de la escena» (chica). | Ronald pidió una cara para los mensajes; A incumple eso en 4 de los 6 que hablan. | Decirlo en la ficha: A solo sirve si se agregan sprites de Beto y Ugarte a la escena. No es opción real; no hace falta tocarla, solo corregir el texto. | `director-de-juego` |
+| 3 | 🟠 | **El costo de B está subdicho.** «Medio» omite: (a) en `Mesa.tsx` el tipo `Quien` no tiene «tú»: no existe ninguna línea del alumno en el guion; hay que crearlas (la frase armada y la respuesta de la hoja salen hoy en botones y piezas, no en diálogo) y ponerlas en la nube; (b) `EscenaPixi.tsx` hoy no tiene ni al jugador ni la atenuación por quién habla (es un `useEffect` que recibe pose, suena y daniCabecea): hay que añadir `habla` y recargar texturas; (c) `Dialogo` no sabe hoy de retratos. | Si B se aprueba como «medio» y es «medio-alto», se rompe el plan. | Costo dicho como «medio-alto»: 1 tipo nuevo, ~6 líneas nuevas del alumno en el guion, 6 retratos, 1 prop nueva en la escena. No cambia la recomendación. | `director-de-juego` |
+| 4 | 🟡 | **La nube «Tú» en el boceto sale pegada con el panel «¿Firmar?»** (A2, B2, C2): se ve la frase terminada y los botones a la vez. En el juego real la frase se arma con piezas (`fase "frase"`) antes; el momento de la nube es tras la confirmación. | Ronald podría creer que la nube sale mientras armas. | Rotular en la captura: «tras armar y confirmar». | `director-de-juego` |
+| 5 | 🟡 | **La nube de 244 px tapa la lámpara y parte de Dani** (A2/B2: bottom 194, left 8 a 252, Dani empieza en 168). Es solo estética. | Menor. | Subir 30 px o bajar a 3 líneas. | `director-de-juego` |
+| 6 | 🟡 | **Ícono de la madre: ondas sobre una caja** se lee como radio, no como teléfono. | Poco importa si el nombre dice «(teléfono)». | Darle un auricular. | `director-de-juego` |
+| 7 | 🟡 | **Letra del boceto distinta de la del juego** (21 px en el boceto, 23 px en `mesa.css`), y los retratos añaden 62 px a la izquierda. A 23 px, B1 pierde una línea más; la jefa de 138 caracteres ocuparía 5 líneas. | El panel crece y empuja los botones; en 812 px de alto cabe, pero se debe medir. | Medir con 23 px en la construcción. | `director-de-juego` |
+
+**Respuestas a las seis preguntas**
+1. Lo pedido por Ronald (cara por mensaje, su personaje, su nube): **B y C lo cumplen; A no** (ver 2). La nube del jugador está en las tres.
+2. Lo decidido no se reabre: respetado (Dirección A; cara solo jefa, Beto, Ugarte; Dani silueta; sin dossier ni software; ≥ 12 px; botones ≥ 44 px; 376 px). Sin hallazgo.
+3. Orientación: «Tú» solo queda claro con rótulo y nube (hallazgo 1). Se sabe quién habla en cada línea en B (nombre + retrato; la nota y la madre tienen ícono con nombre). Ningún globo tapa a la jefa en A1; los globos de A tapan reloj y ventana, no la jefa. La narración no tiene retrato (bien).
+4. Costos: A «bajo» es verdad pero no cubre el reparto; B «medio» es medio-alto (hallazgo 3); C «alto» es correcto. B es la correcta.
+5. **Assets:** la ficha dice «no propongo ningún paquete» y deja todo para un artista. Es floja: Ronald preguntó eso. Falta decir que (a) retratos de personajes en pixel art con licencia clara existen (itch.io: paquetes CC0 o con crédito; hay que mirar la licencia de cada uno al descargar, no confío en memoria), (b) el estilo del paquete tiene que calzar con la oficina que ya existe, si no se ve un collage, (c) lo más barato y seguro es encargar o generar los 6 retratos y 2 poses del jugador con el mismo estilo en una sola tanda. Recomendado: mantener el arte propio para la mesa y pedir a Ronald una decisión con una muestra de 3 paquetes ya probados (el director no la hizo).
+6. Límites del director: la captura **sí** salió y la letra cargó (necesitó internet); sin conexión cambia el ancho. Las referencias (*Monkey Island*, *Phoenix Wright*, *Undertale*) no se verificaron, pero no condicionan la elección. La ficha decía «sin captura, medición pendiente»: ahora está medida y lo pendiente se cierra con los números de arriba.
+
+**Bien, no tocar:** reparto con cara decidido (jefa, Beto, Ugarte), silueta de Dani, nube clara contra panel oscuro, recorte de la jefa 2x, botones de 48 px, contrastes.
+
+**Mejoras a agentes que propongo**
+- `director-de-juego`: un boceto de aspecto con personajes en escena se mide con captura antes de entregar (tamaño relativo y contraste entre figuras), y todo costo «medio» incluye las líneas nuevas de guion y los cambios en la escena. Apoyado en 1 y 3.
+- Resto: ninguna.
+
 ## Decisiones pendientes de Ronald
 
 ### De la revisión de la narrativa v3 y el sonido v1 del Tema 1 de Psicoestadística (papel + scripts, 08-10, v15)

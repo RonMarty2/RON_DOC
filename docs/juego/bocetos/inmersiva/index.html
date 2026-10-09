@@ -44,7 +44,7 @@ p.nota{max-width:900px;margin:4px 0 10px;color:var(--tenue)}
 .med .n b{font-weight:400;color:var(--ambar)}
 .vid{position:relative;height:12px;border:2px solid var(--borde);background:#120f26}
 .vid u{position:absolute;left:0;top:0;bottom:0;background:#6f8cff;text-decoration:none}
-.vid i{position:absolute;top:-3px;bottom:-3px;width:3px;margin-left:-1px;background:var(--rojo)}
+.vid i{position:absolute;top:-3px;bottom:auto;height:18px;width:3px;margin-left:-1px;background:var(--rojo)}
 .vid i.m{background:var(--verde)}
 .mar{position:relative;height:16px;font-size:12px;line-height:16px}
 .mar span{position:absolute;transform:translateX(-50%);white-space:nowrap}
@@ -132,7 +132,7 @@ const S = {
    `<div class="dec">
      <button class="bt">Firmar tal cual<small>El cero va al consejo como está y con tu firma.</small></button>
      <button class="bt">Redactar la frase<small>Escribes solo lo que sabes de cómo se contó.</small></button>
-     <button class="bt sec">Frenar<small style="color:var(--tenue)">El informe no sale esta noche. Úsalo si no puedes saber cómo se contó.</small></button></div>`),
+     <button class="bt">Frenar<small>El informe no sale esta noche y el consejo se queda sin respuesta.</small></button></div>`),
  "4 · Qué pasó (los medidores se mueven arriba mientras lees)": ()=> ofi(true)+cab(40,70)+hoja("Qué pasó",
    `<div class="qp">
     <div><b>Qué hiciste</b><span>Firmaste el cero tal cual sin saber cómo se contó.</span></div>

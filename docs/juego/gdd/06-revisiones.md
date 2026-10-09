@@ -107,6 +107,58 @@ Se suman a las cinco que esa parte ya lista.
 
 ---
 
+## 09-10-2026 · Psicoestadística Descriptiva (Psicología), Tema 1: segunda vuelta de la pantalla (Paso 1 + Caso 2) tras los textos de orientación NT1.12 (v17)
+
+**Qué se revisó.** `Mesa.tsx`, `mesa.css`, `guion-pantalla-t1.ts` y `orientacion-t1.json` actuales (commit 52403ad). Script guardado: `docs/juego/gdd/scripts-t1/revisar_pantalla_v17.py` (salida en `salida_revisar_pantalla_v17.txt`). Pruebas de la carpeta del tema y de la pantalla: 21 archivos, 314 pruebas, código de salida 0. **No se midió con captura a 375 px** (no hay navegador en esta sesión): el tamaño de letra y la ventana al frente se comprobaron leyendo el CSS; los contrastes, calculados con script.
+
+**Estado de los 15 hallazgos de la v16:** 13 CORREGIDOS, 1 PARCIAL (H9), 1 sin cambio por decisión (H15). Ninguno SIGUE.
+
+| H | Estado | Prueba |
+|---|---|---|
+| H1 quién eres | CORREGIDO | `A2` «Eres el psicólogo o la psicóloga del colegio.», `B-bienv-1` «Tu trabajo: mirar los papeles y decir si una afirmación se sostiene…», `A3` «Soy Ximena Rocabado, jefa del departamento.» |
+| H2 encargo y hoja | CORREGIDO | `A4` «Primero llena tú la hoja… Tu fila servirá para comparar con lo que haya en el archivo.» (`HOJA.jefa`) |
+| H3 Dani | CORREGIDO | `B-hoja-1` «En la silla del fondo está {dani}, practicante del departamento…» y botón `A5` «Que responda {dani}» |
+| H4 qué buscar/qué cuesta | CORREGIDO | `A6` «Busca si ya preguntó cuánto duermen los de 4.º.», `B-arch1-1` «Cada papel abierto gasta una ficha…», rótulo `A7` «Fichas: papeles que puedes abrir» (`Fichas` en `Mesa.tsx` l.123-132) |
+| H5 asombro | CORREGIDO | título `A8` «Lo que encontraste: el colegio ya lo preguntó»; `B-asom-1/2` |
+| H6 medidores | CORREGIDO | `B-cierre1-1…5` (Credibilidad/Voz definidos, qué baja cada uno, raya 25 y 65), rótulos `ROTULOS_TUBOS` («Que te crean», «Que te consulten») bajo cada tubo (l.112), `A10` define Horizonte. Los tubos aparecen en la misma línea que dice «Ahora aparecen dos medidores» (`tubos: i === 1`, l.568): no se anuncian antes de verse |
+| H7 informe | CORREGIDO | `A11` + `B-entr2-1` «Mira qué papeles lo respaldan o no, y después decides.» |
+| H8 botones de decidir | CORREGIDO | l.629, 635, 648 (una línea bajo cada botón), l.614 «Primero abre algún papel.» sin bloquear, l.698 aviso en la confirmación si 0 papeles |
+| H9 corcho/gráfica | PARCIAL | Se añadieron `B-arch2-2/3`; la gráfica sigue repetida (l.582 y l.610) y no marca el mes de la caída |
+| H10 frase | CORREGIDO | `A12`, botón `A13` «Firmar la frase ▸»; «Sellar» ya no se ve (solo el nombre interno `sellar`) |
+| H11 confirmación | CORREGIDO | `Mesa.tsx` l.695-710: `role="alertdialog"` dentro de `.mesa-lector`; `mesa.css` l.87 `position: fixed; inset: 0; z-index: 50; align-items: flex-end` y l.151 `.mesa-lector .mesa-confirma`. Está al frente, abajo, con el fondo oscurecido: no queda fuera de vista |
+| H12 qué lo causó | CORREGIDO | `B-reac-1…5` (por qué subió/bajó) y `B-reac-6` (cuánto), `B-fin-1…3` (valores y papel clave). Comprobado contra `efectos-t1.ts`: «frenar baja Voz» (R2.2: Voz −8/−15), «firmar mal baja Credibilidad y da Voz» (R2.1 P: −20/+10), «una frase sostenida sube los dos» (R2.3: +8/+4 y +10/+10) |
+| H13 Beto | CORREGIDO | `B-cierre1-6` «Ahí pasa Beto, profe de educación física y tutor de 4.º.» |
+| H14 «2 de 8» | CORREGIDO | `B-titulo-1` «Prueba: 2 casos de los 8 del juego.» |
+| H15 Dani cabecea | Sin cambio (se mantiene, como decía la v16) | — |
+
+**Recorrido mental con las cinco preguntas.** (1) *Quién soy*: se dice en la 2.ª y 3.ª línea. (2) *Objetivo de esta pantalla*: ahora lo dicen hoja, archivo, caso 2 (`B-entr2-1`, `B-arch2-1`) y frase (`A12`). (3) *Qué toco y qué cuesta*: ficha explicada antes del primer papel; los tres botones del informe dicen lo que hacen. (4) *Términos*: el script da la primera aparición de cada uno; ninguno se usa antes de definirse (ficha: `B-arch1-1`, en la pantalla donde aparece; Credibilidad, Voz, raya, meta, medidor: `B-cierre1-1…4`; Horizonte: `A10`; corcho: se explica en su propio pie al abrirse el caso; pieza: `A12`/`B-frase-1`). (5) *Qué pasó/qué sigue*: reacción + «Credibilidad sube N · Voz baja N» + cierre con valores. La regla «la jefa no corrige mientras decides» se cumple en el Caso 2: entre `A11` y «Sí, al consejo» no hay diálogo nuevo de la jefa, solo la consigna fija y «Primero abre algún papel.» (instrucción, no corrección). El sabe, el que no sabe y el perezoso: la frase solo paga (R2.3) si lleva la pieza del papel clave (`respuestas.ts` l.160), así que anunciar «una frase bien sostenida sube los dos» no regala una receta; firmar sin abrir y frenar siguen sin ser dominantes.
+
+**Conteos (script).** Antes del primer papel que se puede abrir: 7 toques de «Siguiente» (3 bienvenida + 4 jefa) + 4 párrafos fijos (hoja 2, archivo 2) = 11 unidades de texto, 185 palabras; 13 si elige a Dani. Diálogo en asombro: 3 líneas; cierre del Paso 1: 8; entrada del Caso 2: 2. Voseo: 0; guiones largos: 0; bytes de control: 0; los 6 huecos de `orientacion-t1.json` (`dani`, `dC`, `dV`, `c`, `voz`, `papelClave`) se llenan en el guion; los huecos de los papeles los llena `papelDe`. Contrastes: el peor par vale 6,12 (todos pasan 4,5).
+
+### 🟠 Nuevos
+
+**N1. Sigue habiendo demasiado texto antes del primer papel (11 unidades, 185 palabras).** La v16 pedía bajar de 7 a 5 líneas (H1) y quedaron 7: se cambió el contenido, no el largo. Texto de relleno: «Primer encargo de la noche. Un dato corto, sin apuro.» y el encargo se dice dos veces (`ENCARGO` 2.ª línea y luego `A6` «Busca si ya preguntó cuánto duermen los de 4.º»). Arreglo mínimo (`guion-pantalla-t1.ts`): quitar «Primer encargo de la noche…» y unir las dos líneas de `ENCARGO` en una; quedan 6 toques; si además se unen `A1` y `A2`, 5.
+
+**N2. Letra de menos de 12 px en lo que se toca y en los títulos (regla de legibilidad).** `mesa.css`: `.mesa-boton` 11 px (todos los botones, incluido «Siguiente ▸»), `.mesa-quien` 10 px (quién habla), `.mesa h3` 10 px («Corcho», «Tu frase para el informe», «Acuerdo del consejo», título del papel) y `.mesa-informe h3` 11 px (el titular del informe que hay que comprobar). Es letra de píxel y ancha, pero la regla pide 12 px. Arreglo: subir las cuatro a 12 px y comprobar a 375 px que «Continuar donde quedé ▸» y «Que responda {dani}» no se cortan.
+
+### 🟡 Nuevos
+
+- **N3. Asombro repite.** «Esa pregunta ya se hizo. Hace un año. Nadie la leyó.» y `B-asom-1` «el colegio ya hizo esta pregunta, y nadie usó la respuesta» dicen lo mismo, y `B-asom-2` repite `B-bienv-1` («Tu trabajo es eso…»). Dejar dos líneas: la original y «Eso era lo que te pedí».
+- **N4. Retomar.** «Continuar donde quedé» en el Caso 2 entra a la carpeta sin el titular del informe, y la consigna habla de «ese cero» (`Mesa.tsx` l.296-299). Y los números propios de la hoja no se guardan (solo `propias: true`), así que tras recargar la tabla muestra la fila de Dani. Arreglo: mostrar el titular en la pantalla de la carpeta; guardar los tres números en el evento.
+- **N5. Tubos y Horizonte.** Las dos rayas no llevan número en el dibujo (solo en el diálogo y en el `aria-label`); `A10` «si no contestamos a tiempo, el colegio la llama» no dice qué se pierde. Poner «25» y «65» bajo cada raya y una frase de consecuencia («y entonces mi puesto no depende de ti»).
+- **N6. La ficha regalada pasa sin avisar.** Al acabarse las fichas, la jefa dice solo «¿Seguro que ahí no había nada?» y aparece un círculo más; Dani abre con «Mira este...» sin decir que esa no gasta. Y tras pulsar «Que responda Dani» el primer texto es «Yo respondo, si quieres.», que ya no corresponde. Cambiar a «Te regalo una ficha más. ¿Seguro que ahí no había nada?» y «Yo respondo».
+- **N7. «Ficha» tiene dos sentidos.** Los papeles C1-1 («Ficha de ingreso») y C1-3 («ficha de dos líneas») usan la palabra en el sentido escolar, y la interfaz la usa como moneda. Cambiar en esos dos papeles a «registro de ingreso» / «nota de dos líneas».
+- **N8. `B-reac-5` suaviza.** «no suma Credibilidad» aparece justo antes de «Credibilidad baja 8» (R2.4, tipo P). Cambiar a «agrada, pero no se sostiene con papeles».
+- **N9. H9 queda a medias.** La gráfica repetida (l.582 y l.610) no marca el mes de la caída: dejar solo la del corcho y resaltar esa barra.
+
+### Lo que está bien y conviene no tocar
+La confirmación al frente (H11), los textos «qué hace cada botón», el orden quién-eres → qué-buscar → qué-significa → qué-pasó, y que los tubos aparezcan en la misma línea que los presenta.
+
+### En lenguaje simple
+Ya se puede mostrar a Ronald, con una advertencia: la historia ahora se entiende (quién eres, qué buscas, qué cuesta cada papel, qué significan los dos medidores, por qué subieron o bajaron). Dos cosas conviene arreglar antes o decirle que están pendientes: (1) todavía se lee mucho antes de tocar el primer papel (11 bloques de texto), y (2) varios botones y títulos tienen la letra más chica de lo permitido. Lo demás son detalles de redacción. Falta una captura en un celular real o en pantalla de 375 px para dar el visto bueno final a la ventana de confirmación.
+
+---
+
 ## 09-10-2026 · Psicoestadística Descriptiva (Psicología), Tema 1: la primera pantalla jugable (Paso 1 + Caso 2), jugada mentalmente (v16)
 
 **Qué se revisó.** `src/app/juego-psicoestadistica/Mesa.tsx`, `guion-pantalla-t1.ts` y `papeles-t1.json` (C1-1 a C1-9, C2-1 a C2-9), contra `02` §4 y §5.1 y `05` NT1.5 y NT1.6. Recuento con `docs/juego/gdd/scripts-t1/contar_pantalla_t1.py`: 13 fases, todas con pantalla en `Mesa.tsx`; 7 líneas de diálogo antes del primer toque (bienvenida 3, jefa 2, encargo 2; el script cuenta 1 en JEFA_LLEGADA porque las dos van en la misma línea del archivo, contadas a ojo en el archivo son 2); 4 líneas de cierre del Paso 1; 9 papeles por carpeta. La palabra «Fichas» sale 10 veces en `Mesa.tsx` y 0 veces en el guion: ningún personaje la explica. «Credibilidad» y «Voz» salen una vez, solo como rótulo del medidor, y la jefa nunca dice sus nombres. Esta pantalla se le mostró a Ronald sin crítico; su queja («no entiendo el flujo, ni qué estoy haciendo ni qué quiere que haga») es correcta.

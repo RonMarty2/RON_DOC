@@ -38,6 +38,7 @@ import { anotarEn, guardarPartidaDe, leerPartidaDe, partidaNuevaDe, type Partida
 import { VERSION_MAXIMA } from "@/lib/juego/planta";
 import { useCuenta } from "../juego-proyectos/CuentaJuego";
 import { EscenaPixi } from "./EscenaPixi";
+import { BotonSonido, useSonidoT1 } from "./sonido";
 
 type Partida = PartidaDe<EventoT1, "psicoestadistica", "tema1">;
 type Fase = "titulo" | "bienvenida" | "jefa" | "hoja" | "archivo1" | "asombro" | "cierre1" | "entrada2" | "archivo2" | "frase" | "confirma" | "reaccion" | "fin";
@@ -238,6 +239,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   const [reaccion, setReaccion] = useState<G.ReaccionCaso2 | null>(null);
   const [reaccionFin, setReaccionFin] = useState(false);
   const [dormido, setDormido] = useState(false);
+  const [lineaJefa, setLineaJefa] = useState(0);
 
   const ir = (f: Fase) => {
     setFase(f);
@@ -245,6 +247,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
     setSuena(false);
   };
   const alLinea = (l: Linea) => {
+    if (l.quien === "jefa") setLineaJefa(l.texto === G.JEFA_LLEGADA[0] ? 0 : 1);
     if (l.pose) setPose(l.pose);
     setSuena(Boolean(l.suena));
     if (l.tubos) setTubos(true);
@@ -413,8 +416,27 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   const lector = leyendo ? papelDe(p, leyendo.caso, leyendo.id, { hoy }) : null;
   const sueno1 = papelesVistosPaso1(paso1).find((id) => p.carpetas.porCaso[1].claves.includes(id));
 
+  const sonido = useSonidoT1({
+    fase,
+    fichas: fase === "archivo1" ? fichas1 : fichasRestantes(carpeta2),
+    hallado: abrioSuenoPaso1(p, paso1),
+    medidorBajo: med.c <= MARCA_BAJA || med.voz <= MARCA_BAJA,
+    lineaDeLaJefa: lineaJefa,
+    pose,
+    suena,
+    daniCabecea,
+    tubosVisibles: tubos,
+    papelesAbiertos: paso1.carpeta.abiertos.length + carpeta2.abiertos.length,
+    leyendo: leyendo?.id ?? null,
+    hayAvisoDeAyuda: extra !== null,
+    efecto: fase === "reaccion" && resultado ? resultado.efecto : null,
+    medidores: med,
+    hayTarjetaDeSobre: fase === "reaccion" && reaccionFin && Boolean(resultado?.sobre),
+  });
+
   return (
-    <div className="mesa">
+    <div className="mesa" onClickCapture={sonido.alApretar}>
+      <BotonSonido activo={sonido.activo} disponible={sonido.disponible} alternar={sonido.alternar} />
       <EscenaPixi pose={pose} suena={suena} daniCabecea={daniCabecea} />
       {tubos && <Tubos m={med} />}
 
@@ -488,7 +510,10 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                 ).map(([k, rotulo, modo]) => (
                   <label key={k}>
                     <span>{rotulo}</span>
-                    <input value={campos[k]} inputMode={modo} onChange={(e) => setCampos({ ...campos, [k]: e.target.value })} aria-invalid={revisar && !hojaValida[k]} />
+                    <input value={campos[k]} inputMode={modo} onChange={(e) => {
+                      sonido.sonarTecla();
+                      setCampos({ ...campos, [k]: e.target.value });
+                    }} aria-invalid={revisar && !hojaValida[k]} />
                     {revisar && !hojaValida[k] && <small role="alert">Revisa esta casilla.</small>}
                   </label>
                 ))}

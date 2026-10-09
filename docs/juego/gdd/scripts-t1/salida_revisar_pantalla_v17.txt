@@ -1,0 +1,75 @@
+== 1. Texto antes del primer papel que se puede abrir ==
+  titulo     taps(Siguiente)=0  parrafos fijos=0  rotulos=2
+  bienvenida taps(Siguiente)=3  parrafos fijos=0  rotulos=0
+  jefa       taps(Siguiente)=4  parrafos fijos=0  rotulos=0
+  hoja       taps(Siguiente)=0  parrafos fijos=2  rotulos=2
+  archivo1   taps(Siguiente)=0  parrafos fijos=2  rotulos=2
+  TOTAL antes del 1.er papel: 7 toques de dialogo + 4 parrafos fijos = 11 unidades de texto (+2 si elige a Dani)
+  Dialogo hasta el primer boton que NO es 'Siguiente' (la hoja): 7 lineas
+  Palabras de dialogo antes de la hoja: 107
+  Palabras totales antes del 1.er papel: 185
+  Lineas de dialogo en asombro: 3
+  Lineas de dialogo en cierre1: 8
+  Lineas de dialogo en entrada2: 2
+
+== 2. Terminos: primera aparicion vs. donde se define ==
+  ficha         1.a vez en [archivo1/leer] #15: Toca un papel para abrirlo. Cada papel abierto gasta una ficha: es el 
+  Credibilidad  1.a vez en [cierre1/tap] #22: Ahora aparecen dos medidores. Credibilidad: cuánto te creen cuando fir
+  Voz           1.a vez en [cierre1/tap] #22: Ahora aparecen dos medidores. Credibilidad: cuánto te creen cuando fir
+  raya          1.a vez en [cierre1/tap] #24: La raya de 25 es el peligro: con un medidor ahí, tendrás menos tiempo 
+  meta          1.a vez en [cierre1/tap] #25: La raya de 65 es la meta: al cerrar el último informe quiero los dos m
+  Horizonte     1.a vez en [cierre1/tap] #26: Horizonte es una consultora externa: si no contestamos a tiempo, el co
+  corcho        1.a vez en [archivo2/ui] #33: Corcho
+  pieza         1.a vez en [frase/leer] #40: Esta frase va en el informe en lugar del cero. Elige 2 o 3 piezas que 
+  medidor       1.a vez en [cierre1/tap] #22: Ahora aparecen dos medidores. Credibilidad: cuánto te creen cuando fir
+  consejo       1.a vez en [titulo/ui] #1: Víspera del consejo
+  informe       1.a vez en [bienvenida/tap] #2: Departamento de Orientación, de noche. La semana pasada el colegio ret
+  Dani          1.a vez en [hoja/leer] #11: En la silla del fondo está Dani, practicante del departamento. Si pref
+  Beto          1.a vez en [cierre1/tap] #27: Ahí pasa Beto, profe de educación física y tutor de 4.º. Siempre tiene
+  archivo       1.a vez en [hoja/leer] #10: Primero llena tú la hoja que llena cada estudiante al ingresar. Tu fil
+
+== 3. Lineas parecidas entre si (ratio > 0.55) ==
+  0.61  [bienvenida] Tu trabajo: mirar los papeles y decir si una afirmación se sostiene, antes de que llegue al consejo.
+        [asombro] Tu trabajo es eso: mirar los papeles antes de creer una afirmación.
+  0.65  [archivo1] Toca un papel para abrirlo. Cada papel abierto gasta una ficha: es el tiempo que tienes esta noche.
+        [archivo2] Toca un papel para abrirlo; cada uno gasta una ficha. Busca qué respalda ese cero y qué no.
+  0.56  [archivo2] Los papeles que abras se clavan aquí, por fecha.
+        [frase] Cada papel que abres agrega una pieza.
+  0.58  [archivo2] Firmar tal cual: el informe va al consejo como está.
+        [archivo2] Frenar: el informe no sale esta noche.
+
+== 4. Voseo, guiones largos, huecos, bytes de control ==
+  cadenas revisadas: 672
+  posibles voseos (revisar a ojo): 0
+  guiones largos/medios: 0 []
+  huecos {..} en cadenas fuera del json de orientacion (excluye plantillas de codigo ${}): [('guion', '{...}'), ('Mesa str', '}`} disabled={bloqueado} onClick={() => onAbrir(id)} aria-la'), ('Mesa str', ' p={p} lineas={G.BIENVENIDA.map((texto) => ({ quien: '), ('Mesa str', ' p={p} lineas={[...G.JEFA_LLEGADA, ...G.ENCARGO].map((texto)'), ('Mesa str', ' p={p} lineas={G.daniResponde(p).map((texto) => ({ quien: '), ('Mesa str', ' p={p} lineas={G.ASOMBRO.jefa.map((texto) => ({ quien: '), ('Mesa str', ' p={p} lineas={G.CASO2.jefa.map((texto) => ({ quien: '), ('Mesa str', ')} onLinea={alLinea} fin='), ('papeles:/papeles/C1-1/textos/*', 'Cuaderno de enfermería, {colegio}. Ficha de ingreso, fila de'), ('papeles:/papeles/C1-2/textos/*', 'Secretaría de {colegio}. Encuesta de inicio de año, por curs')]
+   hueco A5 ['dani'] -> llenado
+   hueco B-hoja-1 ['dani'] -> llenado
+   hueco B-reac-6 ['dC', 'dV'] -> llenado
+   hueco B-fin-1 ['c', 'voz'] -> llenado
+   hueco B-fin-2 ['papelClave'] -> llenado
+   hueco B-fin-3 ['papelClave'] -> llenado
+  todos los huecos del json se llenan: True
+  bytes de control: ninguno
+
+== 5. CSS: tamano minimo y contraste ==
+  font-size 10px en .mesa h3
+  font-size 11px en /* Botones */ .mesa-boton
+  font-size 10px en .mesa-quien
+  font-size 11px en .mesa-informe h3
+  tenue sobre noche (.mesa-pequeno, rotulo tubo)   9.04 
+  tenue sobre panel                                7.83 
+  texto sobre panel (dialogo)                      13.98 
+  ambar quien sobre panel                          11.66 
+  boton oscuro sobre ambar                         12.56 
+  papel jefa-dice sobre noche                      16.00 
+  tinta sobre papel                                12.45 
+  informe small                                    7.77 
+  corcho small                                     6.97 
+  corcho texto                                     8.57 
+  rojo aviso sobre noche                           8.89 
+  h3 papel sobre papel                             8.38 
+  informe h3                                       8.41 
+  sec boton                                        13.98 
+  pieza on                                         6.43 
+  tinta azul tubo vs borde                         6.12 

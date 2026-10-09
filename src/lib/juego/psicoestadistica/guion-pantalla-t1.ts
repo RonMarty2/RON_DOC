@@ -32,7 +32,7 @@ export const TITULO = { principal: "ORIENTACIÓN · Mesa de verificación", pequ
 
 export const BIENVENIDA = [T("A1"), T("A2"), T("B-bienv-1")] as const;
 
-export const JEFA_LLEGADA = [T("A3"), "Primer encargo de la noche. Un dato corto, sin apuro."] as const;
+export const JEFA_LLEGADA = [T("A3")] as const;
 
 export const ENCARGO = [
   'El director dijo en el pasillo: "los estudiantes duermen poco".',

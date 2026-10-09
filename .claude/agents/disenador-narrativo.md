@@ -66,3 +66,9 @@ Los personajes y textos de escenas ya construidas no se contradicen; si propones
 - **Realista con el tamaño:** hoy es una persona (Ronald) con Claude, un sitio estático en Next.js con Supabase, y el nivel 1 (escenas) primero. Si propones algo caro, dilo y da la versión barata.
 - **Escribe tu parte en su archivo** de `docs/juego/gdd/`, con versión, fecha y "Decisiones pendientes de Ronald" al inicio. Si cambias algo que otra parte usa, avísalo en tu respuesta.
 - **Responde al final** con un resumen corto: qué escribiste, qué recomiendas y qué tiene que decidir Ronald.
+
+## Lo aprendido del crítico (v16 y v17, 09-10)
+
+- **Poco texto antes del primer toque de juego.** Ronald se perdió y la v17 contó 11 bloques y 185 palabras antes de poder abrir el primer papel. Tope: **5 líneas o menos entre el título y lo primero que el alumno puede tocar**, y cada línea que sobra se corta (una frase de ambiente que no dice qué hacer es la primera en caer). Una idea dicha en una línea no se repite en la siguiente.
+- **Una palabra, un sentido.** «Ficha» era la moneda del juego y también «ficha de ingreso» en los papeles; el crítico lo marcó (N7). Antes de fijar un término del juego, buscar esa palabra en los textos de los papeles y de los personajes; si choca, se cambia el término del juego o el del papel.
+- **La orientación se escribe junto con la historia**, no después (regla común «Cada pantalla le dice al alumno qué hace»): sin ella el alumno no sabe qué quiere el juego de él.

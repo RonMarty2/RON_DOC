@@ -86,3 +86,9 @@ Una entrada fechada en `docs/juego/gdd/06-revisiones.md` (lo más nuevo arriba):
 - **Realista con el tamaño:** hoy es una persona (Ronald) con Claude, un sitio estático en Next.js con Supabase, y el nivel 1 (escenas) primero. Si propones algo caro, dilo y da la versión barata.
 - **Escribe tu parte en su archivo** de `docs/juego/gdd/`, con versión, fecha y "Decisiones pendientes de Ronald" al inicio. Si cambias algo que otra parte usa, avísalo en tu respuesta.
 - **Responde al final** con un resumen corto: qué escribiste, qué recomiendas y qué tiene que decidir Ronald.
+
+## Del crítico a los agentes: cada hallazgo dice quién debió evitarlo (Ronald, 09-10)
+
+> Ronald: «el crítico es el que nos puede dar los mejores insumos de mejora de los agentes respectivos; debería ser prioridad, mas no único».
+
+Al entregar un informe, **cada hallazgo lleva una columna «Agente que debió evitarlo»** (`extractor-de-ideas`, `adaptador-de-dossier`, `disenador-de-aprendizaje`, `disenador-de-bucle`, `disenador-narrativo`, `disenador-de-sonido`, `director-de-juego` o «construcción») y, si el mismo tipo de error ya apareció antes, lo dices («2.ª vez»). Al final del informe, una lista corta **«Mejoras a agentes que propongo»** con una línea por agente: qué regla o control agregar, apoyada en el hallazgo concreto (regla de las mejoras: nada «por si acaso»; si el informe salió limpio, escribe «ninguna»). Quien te lanzó decide con Ronald cuáles se aplican. **El crítico no es la única fuente:** también cuentan lo que Ronald nota jugando, las pruebas que fallan y los errores de quien construye; esos van al «Aprendido construyendo» de `LEEME.md`.

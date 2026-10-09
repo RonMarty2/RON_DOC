@@ -417,7 +417,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   };
 
   const lineasReaccion: Linea[] = reaccion
-    ? reaccion.lineas.map((l) => ({ quien: l.quien, texto: l.texto, pose: l.quien === "jefa" ? reaccion.pose : undefined, suena: l.quien === "madre" }))
+    ? [{ quien: "tu" as const, texto: G.jugadorReaccion(p.version.textos.dani) }, ...reaccion.lineas].map((l) => ({ quien: l.quien, texto: l.texto, pose: l.quien === "jefa" ? reaccion.pose : undefined, suena: l.quien === "madre" }))
     : [];
 
   // El papel que decidía el informe: el clave que abrió, o si no abrió ninguno, el primero de su versión (B-fin-2 y B-fin-3).
@@ -472,9 +472,9 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           </section>
         )}
 
-        {fase === "bienvenida" && <Dialogo key="b" p={p} lineas={G.BIENVENIDA.map((texto) => ({ quien: "narracion" as const, texto }))} onFin={() => ir("jefa")} onLinea={alLinea} />}
+        {fase === "bienvenida" && <Dialogo key="b" p={p} lineas={[...G.BIENVENIDA.map((texto) => ({ quien: "narracion" as const, texto })), { quien: "tu" as const, texto: G.JUGADOR.bienvenida }]} onFin={() => ir("jefa")} onLinea={alLinea} />}
 
-        {fase === "jefa" && <Dialogo key="j" p={p} lineas={[...G.JEFA_LLEGADA, ...G.ENCARGO].map((texto) => ({ quien: "jefa" as const, texto }))} onFin={() => ir("hoja")} onLinea={alLinea} />}
+        {fase === "jefa" && <Dialogo key="j" p={p} lineas={[...[...G.JEFA_LLEGADA, ...G.ENCARGO].map((texto) => ({ quien: "jefa" as const, texto })), { quien: "tu" as const, texto: G.JUGADOR.hoja }]} onFin={() => ir("hoja")} onLinea={alLinea} />}
 
         {fase === "hoja" && (
           <section className="mesa-bloque">
@@ -503,7 +503,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                 </button>
               </div>
             )}
-            {modoHoja === "dani" && <Dialogo key="d" p={p} lineas={G.daniResponde(p).map((texto) => ({ quien: "dani" as const, texto }))} onFin={() => ir("archivo1")} onLinea={alLinea} />}
+            {modoHoja === "dani" && <Dialogo key="d" p={p} lineas={[...G.daniResponde(p).map((texto) => ({ quien: "dani" as const, texto })), { quien: "tu" as const, texto: G.JUGADOR.archivo1 }]} onFin={() => ir("archivo1")} onLinea={alLinea} />}
             {modoHoja === "propias" && (
               <form
                 className="mesa-form"
@@ -621,7 +621,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               <small>{G.CASO2.firmaInforme}</small>
               <Grafica p={p} />
             </article>
-            <Dialogo key="e2" p={p} lineas={G.CASO2.jefa.map((texto) => ({ quien: "jefa" as const, texto }))} onFin={() => ir("archivo2")} onLinea={alLinea} fin="A la carpeta >" />
+            <Dialogo key="e2" p={p} lineas={[...G.CASO2.jefa.map((texto) => ({ quien: "jefa" as const, texto })), { quien: "tu" as const, texto: G.JUGADOR.entrada2 }]} onFin={() => ir("archivo2")} onLinea={alLinea} fin="A la carpeta >" />
           </section>
         )}
 
@@ -736,6 +736,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           <div className="mesa-lector" role="alertdialog" aria-modal="true" aria-label={G.BOTONES_SELLO.confirmaTitulo}>
             <div className="mesa-confirma">
               {carpeta2.abiertos.length === 0 && <p className="mesa-aviso">{G.SIN_PAPELES_AL_FIRMAR}</p>}
+              <p className="mesa-tuyo">{G.JUGADOR.confirma}</p>
               <p>{G.BOTONES_SELLO.confirmaTitulo}</p>
               <div className="mesa-acciones">
                 <button type="button" className="mesa-boton" onClick={sellar} autoFocus>

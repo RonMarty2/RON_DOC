@@ -32,6 +32,10 @@ export const TITULO = { principal: "ORIENTACIÓN · Mesa de verificación", pequ
 
 export const BIENVENIDA = [T("A1"), T("A2"), T("B-bienv-1")] as const;
 
+/** Lo que dice el jugador (NT1.12, J1 a J6): caja de otro color, sin cara. J6 lleva el nombre de la versión. */
+export const JUGADOR = { bienvenida: T("J1"), hoja: T("J2"), archivo1: T("J3"), entrada2: T("J4"), confirma: T("J5") } as const;
+export const jugadorReaccion = (dani: string): string => T("J6", { dani });
+
 export const JEFA_LLEGADA = [T("A3")] as const;
 
 export const ENCARGO = [

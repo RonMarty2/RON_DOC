@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boceto · pantalla inmersiva · Psicoestadística Tema 1 (estático, sin dependencias)</title>
+<style>
+/* Colores de mesa.css (tokens de la mesa). Es un DIBUJO de disposición: la oficina real será pixel art de la escena. */
+:root{--noche:#0c0a1a;--panel:#1d1838;--borde:#3d3470;--ambar:#ffcf7a;--papel:#f1e8cf;--tinta:#2a2236;--texto:#ece7f7;--tenue:#b4abd3;--rojo:#ff8f8a;--verde:#93dc99}
+*{box-sizing:border-box}
+body{margin:0;padding:16px;background:#15122a;color:var(--texto);font:16px/1.4 ui-monospace,Menlo,Consolas,monospace}
+h1{font-size:20px;color:var(--ambar);margin:0 0 6px}
+h2{font-size:17px;color:var(--ambar);margin:28px 0 4px}
+p.nota{max-width:900px;margin:4px 0 10px;color:var(--tenue)}
+.fila{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-bottom:10px}
+.cap{font-size:14px;color:var(--tenue);margin-bottom:4px}
+.frame{position:relative;overflow:hidden;border:3px solid var(--borde);background:var(--noche);flex:none}
+.m{width:412px;height:860px}
+.w{width:1100px;height:700px}
+
+/* Oficina (dibujo simple; lo importante cae en la franja de arriba, la que queda libre bajo una hoja) */
+.of{position:absolute;inset:0;background:linear-gradient(#1a1536 0%,#241c46 55%,#2b2146 100%)}
+.of .vent{position:absolute;left:8%;top:17%;width:38%;height:22%;background:linear-gradient(#0f1b3d,#1f2f63);border:6px solid #4a3d7a}
+.w .of .vent{left:6%;top:16%;width:30%;height:34%}
+.of .luna{position:absolute;left:20%;top:3%;width:14%;aspect-ratio:1;border-radius:50%;background:#f4efd8}
+.of .jefa{position:absolute;left:58%;top:22%;width:20%;height:26%;background:#5d3b6e;border:4px solid #8d6aa1}
+.w .of .jefa{left:52%;top:20%;width:12%;height:36%}
+.of .dani{position:absolute;left:79%;top:26%;width:14%;height:22%;background:#33405e;border:4px solid #5b6c97}
+.w .of .dani{left:68%;top:26%;width:9%;height:30%}
+.of .lampara{position:absolute;left:44%;top:40%;width:12%;height:5%;background:rgba(255,207,122,.45);border-radius:50%}
+.of .mesa{position:absolute;left:0;right:0;bottom:0;height:36%;background:#3b2a46;border-top:6px solid #5a4263}
+.w .of .mesa{height:30%}
+.of .rot{position:absolute;font-size:14px;color:#cfc6ee}
+.of .carpeta{position:absolute;left:12%;bottom:12%;width:30%;height:14%;background:#c9a96a;border:3px solid #8b6a3e}
+.w .of .carpeta{left:10%;bottom:10%;width:14%;height:12%}
+.of .tel{position:absolute;right:8%;bottom:14%;width:11%;height:8%;background:#2a2236;border:3px solid #6a5fa0}
+.sombra{position:absolute;inset:0;background:rgba(5,4,12,.38)}
+
+/* Medidores compactos + objetivo: siempre arriba */
+.cabeza{position:absolute;left:0;right:0;top:0;padding:8px 10px;background:linear-gradient(rgba(12,10,26,.92),rgba(12,10,26,.78));display:grid;gap:6px}
+.w .cabeza{right:440px}
+.med2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.med .n{display:flex;justify-content:space-between;font-size:16px}
+.med .n b{font-weight:400;color:var(--ambar)}
+.vid{position:relative;height:12px;border:2px solid var(--borde);background:#120f26}
+.vid u{position:absolute;left:0;top:0;bottom:0;background:#6f8cff;text-decoration:none}
+.vid i{position:absolute;top:-3px;bottom:-3px;width:3px;margin-left:-1px;background:var(--rojo)}
+.vid i.m{background:var(--verde)}
+.mar{position:relative;height:16px;font-size:12px;line-height:16px}
+.mar span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.mar .p{color:var(--rojo)}.mar .g{color:var(--verde)}
+.obj{border:2px solid var(--ambar);background:rgba(29,24,56,.95);padding:4px 10px;font-size:16px;line-height:1.25;color:var(--texto)}
+.obj b{color:var(--ambar);font-weight:400}
+
+/* Hoja: sube desde abajo en celular (máx. 58%), panel lateral en computador */
+.hoja{position:absolute;left:0;right:0;bottom:0;max-height:58%;background:var(--papel);color:var(--tinta);border-top:3px solid #c9bd98;display:flex;flex-direction:column}
+.w .hoja{left:auto;top:0;width:440px;max-height:none;border-top:0;border-left:3px solid #c9bd98}
+.hoja .tope{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 6px 14px;border-bottom:2px solid #c9bd98;min-height:48px}
+.hoja .tope h3{margin:0;font-size:16px;color:#5a3a14;font-weight:400}
+.cerrar{min-width:48px;min-height:44px;font:inherit;font-size:16px;background:var(--panel);color:var(--texto);border:2px solid var(--borde);cursor:pointer}
+.cuerpo{padding:10px 14px;overflow:auto;display:grid;gap:10px;font-size:18px;line-height:1.35}
+.cuerpo p{margin:0}
+.fichas{display:flex;gap:8px;align-items:center;font-size:16px}
+.fichas i{width:16px;height:16px;border:2px solid #8b6a3e;border-radius:50%}.fichas i.on{background:#8b6a3e}
+.abanico{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pap{min-height:48px;background:#e9dfc0;border:2px solid #c9bd98;padding:4px 8px;font-size:16px;display:flex;align-items:center}
+.pap.ab{border-style:dashed;background:#cfc6a8}
+.barra{padding:8px 10px;background:var(--panel);border-top:3px solid var(--borde);display:grid;gap:8px}
+.bt{min-height:48px;font:inherit;font-size:16px;padding:6px 12px;color:#1a1410;background:var(--ambar);border:2px solid #fff3d1;border-bottom-width:4px;cursor:pointer;text-align:center}
+.bt.sec{background:var(--panel);color:var(--texto);border-color:var(--borde)}
+.op{display:grid;gap:2px}
+.op small{font-size:14px;color:var(--tenue);line-height:1.25}
+.hoja .op small{color:#4a4258}
+.dec{display:grid;gap:8px}
+.dec .bt{display:grid;gap:2px;text-align:left}
+.dec .bt small{font-size:14px;color:#3a2e1c;line-height:1.2}
+
+/* Diálogo: caja con cara en la franja de abajo; la oficina queda arriba */
+.dlg{position:absolute;left:10px;right:10px;bottom:10px;background:var(--panel);border:2px solid var(--borde);border-left:6px solid #ffb86b;padding:10px;display:grid;gap:8px}
+.w .dlg{right:auto;left:30px;width:600px;bottom:20px}
+.dlg .fila2{display:grid;grid-template-columns:64px 1fr;gap:10px}
+.cara{width:64px;height:64px;background:#120f26;border:2px solid var(--borde);display:grid;place-items:center;font-size:12px;color:var(--tenue)}
+.dlg .q{font-size:14px;color:#ffb86b}
+.dlg p{margin:0;font-size:19px;line-height:1.35;color:var(--papel)}
+.tuyo{border-left-color:#9fe8d2;background:#1c3a34}
+.tuyo .q{color:#9fe8d2}
+
+/* Qué pasó */
+.qp{display:grid;gap:8px}
+.qp div{display:grid;grid-template-columns:118px 1fr;gap:8px;font-size:17px;line-height:1.3}
+.w .qp div{grid-template-columns:130px 1fr}
+.qp b{font-weight:400;color:#5a3a14}
+.qp em{font-style:normal;color:#7a1f1f}
+.fin{position:absolute;left:12px;right:12px;top:22%;background:var(--papel);color:var(--tinta);border:3px solid #c9bd98;padding:16px;display:grid;gap:12px;font-size:19px;line-height:1.35}
+.w .fin{left:auto;right:30px;top:60px;width:460px}
+.fin p{margin:0}.fin .frase{font-size:22px;color:#5a3a14;border-left:4px solid var(--ambar);padding-left:10px}
+.fin .aviso{font-size:15px;color:#4a4258}
+.pie{font-size:14px;color:var(--tenue);max-width:900px}
+</style>
+</head>
+<body>
+<h1>Boceto estático: pantalla inmersiva (Caso 2)</h1>
+<p class="nota">Esto es un dibujo de disposición, no el juego: la oficina real será el pixel art de siempre (aquí son bloques). Lo que se ve: la oficina siempre al fondo; arriba, los dos medidores y «Tu objetivo» fijos; encima aparece una hoja que se cierra con la ✕ (o con el botón atrás del celular). Cada pantalla se muestra en celular (412×860) y en computador (1100×700). Los textos son los del plan del Caso 2.</p>
+
+<div id="salida"></div>
+
+<script>
+const cab = (c,v,obj=true)=>`
+<div class="cabeza">
+  <div class="med2">
+    ${[["Credibilidad",c],["Voz",v]].map(([n,x])=>`<div class="med"><div class="n"><span>${n}</span><b>${x}</b></div>
+      <div class="vid"><u style="width:${x}%"></u><i style="left:25%"></i><i class="m" style="left:65%"></i></div>
+      <div class="mar"><span class="p" style="left:25%">25 peligro</span><span class="g" style="left:65%">65 meta</span></div></div>`).join("")}
+  </div>
+  ${obj?`<div class="obj"><b>Tu objetivo:</b> saber cómo se contó el cero. Toca un papel para abrirlo; cada uno gasta una ficha.</div>`:""}
+</div>`;
+const ofi = (sombra)=>`<div class="of"><div class="vent"><div class="luna"></div></div><div class="jefa"></div><div class="dani"></div><div class="lampara"></div>
+ <span class="rot" style="left:9%;top:42%">ventana</span><span class="rot" style="left:60%;top:50%">jefa</span>
+ <div class="mesa"></div><div class="carpeta"></div><div class="tel"></div></div>${sombra?'<div class="sombra"></div>':''}`;
+const hoja=(titulo,cuerpo,barra)=>`<div class="hoja"><div class="tope"><h3>${titulo}</h3><button class="cerrar" aria-label="Cerrar">✕</button></div><div class="cuerpo">${cuerpo}</div>${barra||""}</div>`;
+const S = {
+ "1 · Diálogo (la jefa abre el Caso 2)": ()=> ofi(false)+cab(60,60,false)+`
+  <div class="dlg"><div class="fila2"><div class="cara">cara</div><div><div class="q">LA JEFA</div><p>El director quiere este informe mañana: "cero denuncias". Antes de firmarlo, averigua cómo se contó ese cero.</p></div></div>
+  <button class="bt">Siguiente ▸</button></div>`,
+ "2 · Archivo con un papel abierto": ()=> ofi(true)+cab(60,60)+hoja("Correo de la secretaria · papel 2 de 6",
+   `<div class="fichas">Fichas: <i class="on"></i><i class="on"></i><i></i><i></i> (te quedan 2)</div>
+    <p>"Desde marzo, solo anotamos las denuncias firmadas por un adulto."</p>
+    <p>"Las que llegan sin firma, las devolvemos."</p>
+    <div class="abanico"><div class="pap ab">Libro de registro</div><div class="pap">Informe del orientador</div></div>`,
+   `<div class="barra"><button class="bt sec">◂ Volver a la carpeta</button><button class="bt">Decidir ▸</button></div>`),
+ "3 · Decidir (tres botones, cada uno con su línea)": ()=> ofi(true)+cab(60,60)+hoja("Decidir el informe",
+   `<div class="dec">
+     <button class="bt">Firmar tal cual<small>El cero va al consejo como está y con tu firma.</small></button>
+     <button class="bt">Redactar la frase<small>Escribes solo lo que sabes de cómo se contó.</small></button>
+     <button class="bt sec">Frenar<small style="color:var(--tenue)">El informe no sale esta noche. Úsalo si no puedes saber cómo se contó.</small></button></div>`),
+ "4 · Qué pasó (los medidores se mueven arriba mientras lees)": ()=> ofi(true)+cab(40,70)+hoja("Qué pasó",
+   `<div class="qp">
+    <div><b>Qué hiciste</b><span>Firmaste el cero tal cual sin saber cómo se contó.</span></div>
+    <div><b>Cómo se contó</b><span>Quedó sin abrir: el correo de la secretaria. Decía: desde marzo solo se anotan las denuncias firmadas por un adulto.</span></div>
+    <div><b>Credibilidad</b><span><em>Baja 20:</em> dijiste "seguro" con un cero que ya no contaba lo mismo.</span></div>
+    <div><b>Voz</b><span>Sube 10: respondiste a tiempo y el consejo te consulta.</span></div>
+    <div><b>Con otra decisión</b><span>Con el correo abierto, tu frase habría subido Credibilidad 8.</span></div></div>`,
+   `<div class="barra"><button class="bt">Continuar ▸</button></div>`),
+ "5 · Fin de la prueba": ()=> ofi(true)+cab(40,70,false)+`
+  <div class="fin"><h3 style="margin:0;font-size:17px;color:#5a3a14;font-weight:400">Aquí termina esta prueba</h3>
+   <p>Credibilidad 40 · Voz 70.</p>
+   <p class="frase">Un número solo vale si sé cómo se contó.</p>
+   <p>Quedó sin abrir: el correo de la secretaria. Ahí estaba cómo se contó el cero.</p>
+   <p>El cero del director no era mentira. Era el resultado de una forma de contar.</p>
+   <p class="aviso">Jugaste el primer encargo y el primer caso. Los otros seis casos y las cartas del final todavía no están en esta versión.</p>
+   <button class="bt">Volver al título</button></div>`
+};
+const out=document.getElementById("salida");
+for(const [t,f] of Object.entries(S)){
+  out.insertAdjacentHTML("beforeend",`<h2>${t}</h2><div class="fila">
+   <div><div class="cap">Celular vertical 412×860</div><div class="frame m">${f()}</div></div>
+   <div><div class="cap">Computador 1100×700</div><div class="frame w">${f()}</div></div></div>`);
+}
+out.insertAdjacentHTML("beforeend",`<p class="pie">Reglas de la disposición: la hoja nunca pasa del 58% de la altura en celular (la oficina siempre se ve en más de un tercio); en computador la hoja es un panel a la derecha de 440 px y la oficina se ve entera a la izquierda. Letra de 12 px o más en todo (los rótulos de las marcas son de 12 px); en el juego real el texto va en la letra de la mesa a 17 px o más.</p>`);
+</script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+{
+ "_aviso": "Generado por docs/juego/gdd/scripts-t1/exportar_guion_t1.py desde 05-mundo-y-narrativa.md. No editar a mano.",
+ "ramas": {
+  "F1a": {
+   "hiciste": "Abriste {papelSueno} y ahí estaba el sueño de 4.º. Alguien lo anotó hace un año, sin que nadie lo usara.",
+   "habria": "Con esa fila a mano, la cifra de 4.º ya no dependía de preguntar otra vez."
+  },
+  "F1b": {
+   "hiciste": "Con tus fichas no abriste ningún papel con horas de sueño; necesitaste ayuda. Estaban ahí, escritas hacía un año.",
+   "habria": "Abriendo uno de esos papeles a la primera, tu cifra habría salido esa noche."
+  },
+  "F2a": {
+   "hiciste": "Viste que {hechoClave}. El cero no decía lo que parecía.",
+   "habria": "Tu frase decía lo que el papel sostenía, y la jefa la puso en el informe."
+  },
+  "F2b": {
+   "hiciste": "Firmaste \"cero denuncias\". El número era cierto, pero no contaba todo lo que pasaba en el colegio.",
+   "habria": "Una madre llamó esa misma noche: a su hijo lo habían empujado y no se podía denunciar."
+  },
+  "F2c": {
+   "hiciste": "Frenaste sin abrir el papel que mostraba el hueco. Dudar sin mirar bien es otra manera de no saber.",
+   "habria": "Con ese papel abierto, tu frase habría ido al informe."
+  },
+  "F2d": {
+   "hiciste": "Abriste el papel que mostraba el hueco y aun así frenaste.",
+   "habria": "Con la pieza de ese papel, tu frase podía ir al informe."
+  },
+  "F2e": {
+   "hiciste": "Redactaste una frase sin lo que mostraba el papel clave. Sonaba prudente y no tocaba el hueco.",
+   "habria": "Con la pieza del papel clave, tu frase habría ido al informe."
+  },
+  "F2f": {
+   "hiciste": "Viste que el cero se sostenía y lo firmaste. Esta vez no había hueco, y verlo también es leer.",
+   "habria": "Firmar tal cual era lo mejor, y eso hiciste."
+  },
+  "F2g": {
+   "hiciste": "Firmaste el cero y salió bien. No abriste el papel que mostraba por qué se sostenía.",
+   "habria": "Con ese papel abierto, sabrías por qué el cero se sostenía."
+  },
+  "F2h": {
+   "hiciste": "Frenaste un cero que se sostenía: el registro seguía igual que antes.",
+   "habria": "El director presentó el cero sin tu firma, y era cierto."
+  },
+  "F2i": {
+   "hiciste": "Redactaste con lo que mostraba el papel clave: las denuncias registradas bajaron y el cero se sostenía.",
+   "habria": "La jefa lo puso en el informe."
+  },
+  "F2j": {
+   "hiciste": "Redactaste una frase sin lo que mostraba el papel clave. Sonaba prudente, y el cero se sostenía.",
+   "habria": "Con la pieza, tu frase habría ido al informe completa."
+  },
+  "F3a": {
+   "hiciste": "Sacaste varias tandas y cada una dio algo distinto. Ninguna mentía, ninguna era \"la cifra\".",
+   "habria": "Tu rango dijo cuánto se mueve la cifra y de dónde salió, y por eso se pudo presentar."
+  },
+  "F3b": {
+   "hiciste": "Sacaste varias tandas y cada una dio algo distinto. Ninguna mentía, ninguna era \"la cifra\".",
+   "habria": "Tu rango cubría y quedó en un anexo del informe. Útil, pero no se presentó."
+  },
+  "F3c": {
+   "hiciste": "Firmaste la cifra de {fuente}, que salía de una tanda de 10, como si fuera la de los 480.",
+   "habria": "Horizonte presentó otra cifra, de otra tanda, y el consejo vio dos."
+  },
+  "F3d": {
+   "hiciste": "Escribiste un rango tan ancho que nadie se equivoca. Y tampoco nadie decide nada.",
+   "habria": {
+    "P": "Un rango más angosto, diciendo de dónde salió la cifra, se podía presentar.",
+    "A": "Un rango más angosto, diciendo de qué semana era, se podía presentar.",
+    "B": "Esta vez bastaba firmar tal cual: la cifra se sostenía."
+   }
+  },
+  "F3e": {
+   "hiciste": "Tu rango estaba bien pensado y no cubrió. Con pocas tandas, a veces pasa.",
+   "habria": "Con una tanda más, tu rango tenía más posibilidades de cubrir."
+  },
+  "F3f": {
+   "hiciste": "Tu rango dejó afuera la media real de los 480.",
+   "habria": "Una docente midió otra tanda y su cifra cayó fuera de tu rango."
+  },
+  "F3g": {
+   "hiciste": "Frenaste una cifra que venía de una sola tanda. Dudar era razonable, pero no dijiste cuánto se mueve.",
+   "habria": "Con dos tandas y un papel que dijera de dónde salió la cifra, tu rango habría podido ir al informe."
+  },
+  "F3h": {
+   "hiciste": "Esta vez la cifra venía de 150 elegidos al azar entre los 480. No había problema, y verlo también es leer.",
+   "habria": "Firmar tal cual era lo mejor, y eso hiciste."
+  },
+  "F3i": {
+   "hiciste": "Firmaste y salió bien. No abriste el papel de cómo se obtuvo la cifra, así que no sabes por qué.",
+   "habria": "Con ese papel abierto, sabrías que eran 150 elegidos al azar."
+  },
+  "F3j": {
+   "hiciste": "Frenaste una cifra que venía de 150 elegidos al azar entre los 480. Esta vez no había problema.",
+   "habria": "Horizonte entregó primero con esa cifra. La jefa dijo: \"La teníamos nosotros.\""
+  },
+  "F3k": {
+   "hiciste": "Esta vez la cifra venía de 150 elegidos al azar. Tu rango la cubría, pero no hacía falta un rango.",
+   "habria": "Firmar tal cual sumaba más que tu rango."
+  },
+  "F3l": {
+   "hiciste": "Esta vez la cifra venía de 150 elegidos al azar, y tu rango dejó afuera la media real.",
+   "habria": "Firmar tal cual era lo mejor."
+  },
+  "F3m": {
+   "hiciste": "Firmaste una cifra recogida en la semana de exámenes como si fuera la de cualquier semana.",
+   "habria": "Una cifra de la semana de exámenes no habla de todas las semanas."
+  },
+  "F3n": {
+   "hiciste": "Dijiste lo que se sabe y de qué semana era.",
+   "habria": "Tu rango describía esa semana, y el consejo supo hasta dónde llegaba."
+  },
+  "F3o": {
+   "hiciste": "Tu rango describía el registro, pero no decía que era de la semana de exámenes.",
+   "habria": "Con la pieza del papel de la semana de exámenes, habrías podido decir de qué semana hablabas."
+  },
+  "F3p": {
+   "hiciste": "Frenaste una cifra de la semana de exámenes. Dudar era razonable, pero no dijiste qué se sabía.",
+   "habria": "Un rango que dijera de qué semana era se podía presentar."
+  },
+  "F4a": {
+   "hiciste": "Miraste quiénes respondieron antes de elegir. Eso pesó más que cuántos eran.",
+   "habria": "Tu estudio sí representaba a los de 4.º del distrito."
+  },
+  "F4b": {
+   "hiciste": "Elegiste bien sin abrir quiénes respondieron. No sabes si fue ojo o suerte.",
+   "habria": "Con ese papel abierto, sabrías por qué ese estudio era el bueno."
+  },
+  "F4c": {
+   "hiciste": "Citaste el estudio de miles sin abrir quiénes respondieron. Habían respondido solo estudiantes de clubes de apoyo.",
+   "habria": "Con la lista abierta, lo habrías visto antes de citarlo."
+  },
+  "F4d": {
+   "hiciste": "Citaste el estudio de miles. Habían respondido solo estudiantes de clubes de apoyo.",
+   "habria": "Uno de los papeles que abriste mostraba de dónde venían las respuestas de uno de los estudios."
+  },
+  "F4e": {
+   "hiciste": "Citaste el estudio chico. Esta vez el grande era el que representaba a todo 4.º.",
+   "habria": "Uno de los papeles que abriste mostraba de dónde venían las respuestas de uno de los estudios."
+  },
+  "F4f": {
+   "hiciste": "Citaste el estudio chico sin abrir quiénes respondieron. Solo habían respondido estudiantes del club de apoyo de un colegio.",
+   "habria": "Con la lista abierta, lo habrías visto antes de citarlo."
+  },
+  "F4g": {
+   "hiciste": "No citaste ningún estudio. Uno de los dos sí representaba a los de 4.º.",
+   "habria": "Quiénes respondieron en cada uno decía cuál se podía citar."
+  },
+  "F5a": {
+   "hiciste": "Comparaste con el grupo del sorteo y descontaste lo que subió solo.",
+   "habria": "Un sorteo en el mismo colegio es la comparación más limpia, y la tuya lo era."
+  },
+  "F5b": {
+   "hiciste": "Comparaste con {vecino}, sin taller, y descontaste lo que subió solo.",
+   "habria": "Un grupo sorteado en tu propio colegio habría sido una comparación más cercana."
+  },
+  "F5c": {
+   "hiciste": "Descontaste lo que cambiaron los demás y lo que los primeros ya venían subiendo.",
+   "habria": "Un grupo sorteado en tu propio colegio habría sido una comparación más cercana."
+  },
+  "F5d": {
+   "hiciste": "Llamaste a {llamaste}, subieron, y escribiste esa subida como si fuera del taller.",
+   "habria": {
+    "a": "El colegio {vecino}, sin taller, también subió.",
+    "b": "Los primeros en anotarse ya venían subiendo antes del taller.",
+    "c": "Los 13 del sorteo que no fueron al taller también subieron."
+   }
+  },
+  "F5e": {
+   "hiciste": "Restaste lo que cambiaron los demás, y tu número quedó inflado.",
+   "habria": "Los demás no eran comparables con {llamaste}. Con una comparación justa, tu número habría sido menor."
+  },
+  "F5f": {
+   "hiciste": "Tu número coincidió con la cuenta bien hecha, pero no tenías abierto todo lo necesario para comparar.",
+   "habria": "Con todos los papeles de la comparación abiertos, sabrías de dónde sale tu número."
+  },
+  "F5g": {
+   "hiciste": "Escribiste un número sin tener abierto todo lo necesario para compararlo.",
+   "habria": "Con todos los papeles de la comparación abiertos, tu número habría tenido de dónde salir."
+  },
+  "F5h": {
+   "hiciste": "Abriste con qué comparar y escribiste 0. La cuenta bien hecha daba {rho}.",
+   "habria": "Escribir 0 era decir que la resta no dejaba nada, y la resta dejaba {rho}."
+  },
+  "F5i": {
+   "hiciste": "Abriste con qué comparar, pero tu número no coincidió con la cuenta bien hecha.",
+   "habria": "Con la cuenta bien hecha, tu número habría sido otro."
+  },
+  "F5j": {
+   "hiciste": "Frenaste y no firmaste ningún número. Sin número no hay réplica, pero tampoco informe.",
+   "habria": "En tu carpeta había con qué comparar, y con eso había un número que firmar."
+  },
+  "F6a": {
+   "hiciste": {
+    "P": "Dijiste lo que la lista sostenía: que los 60 eran de {curso}, y nada más allá.",
+    "A": "Dijiste lo que la lista sostenía: {hechosA}."
+   },
+   "habria": "La jefa la puso en el acta: dice lo que la lista sostiene, y hasta donde llega."
+  },
+  "F6b": {
+   "hiciste": "Esta vez los 60 salieron de un sorteo entre los 480. Apostar sobre los que no viste tenía respaldo.",
+   "habria": "\"Aproximadamente uno de cada cuatro\" se sostenía, y lo dijiste con el papel a la vista."
+  },
+  "F6c": {
+   "hiciste": "Firmaste tal cual y salió bien. No abriste cómo se eligieron los 60.",
+   "habria": "Con el papel abierto, sabrías que salieron de un sorteo entre los 480."
+  },
+  "F6d": {
+   "hiciste": "Frenaste una conclusión que se sostenía: los 60 salieron de un sorteo entre los 480.",
+   "habria": "\"Aproximadamente uno de cada cuatro\" era una buena apuesta."
+  },
+  "F6e": {
+   "hiciste": "Dijiste menos de lo que la lista sostenía: los 60 salieron de un sorteo entre los 480.",
+   "habria": "Con el papel de cómo se eligieron, podías decir \"aproximadamente uno de cada cuatro\"."
+  },
+  "F6f": {
+   "hiciste": {
+    "P": "Firmaste la frase sobre todo el colegio con 60 estudiantes de un solo curso, {curso}.",
+    "A": "Firmaste la frase sobre todo el colegio con solo 12 respuestas, de la semana de exámenes."
+   },
+   "habria": "La profesora de 4.º A llamó: en su curso nadie duerme tan poco."
+  },
+  "F6g": {
+   "hiciste": "Escribiste que podrían ser uno de cada cuatro en el colegio. Eso se diría de cualquier lista.",
+   "habria": {
+    "P": "La lista era de un solo curso: no alcanzaba para hablar del colegio.",
+    "A": "Solo 12 de 60 respondieron, en semana de exámenes: no alcanzaba para hablar del colegio."
+   }
+  },
+  "F6h": {
+   "hiciste": "Dijiste solo lo que mediste: {N} de {den}. Era cierto, pero faltaba decir hasta dónde llega.",
+   "habria": {
+    "P": "Con \"todos son de {curso}\", la conclusión decía su límite.",
+    "A": "Con \"12 respuestas en semana de exámenes\", la conclusión decía su límite."
+   }
+  },
+  "F6i": {
+   "hiciste": {
+    "P": "Frenaste una frase sobre todo el colegio que se apoyaba en 60 estudiantes de {curso}.",
+    "A": "Frenaste una frase sobre todo el colegio que se apoyaba en solo 12 respuestas."
+   },
+   "habria": "Frenar era razonable, pero se podía decir lo medido y hasta dónde llega."
+  },
+  "F6j": {
+   "hiciste": "Tu número no salía de la hoja. Contar bien es el primer paso.",
+   "habria": {
+    "grupo": "Con el conteo bien, la conclusión se sostenía."
+   }
+  },
+  "F6k": {
+   "hiciste": "Esta vez los 60 salieron de un sorteo entre los 480, y tú lo viste. Firmaste tal cual.",
+   "habria": "Firmar tal cual, con el sorteo a la vista, sumaba lo mismo que redactarlo."
+  },
+  "F7a": {
+   "hiciste": "Escribiste la diferencia que decía la hoja y dibujaste las barras desde cero.",
+   "habria": "Con tu rótulo, quien miró el informe leyó lo que era."
+  },
+  "F7b": {
+   "hiciste": "Dibujaste las barras desde cero, pero tu número no coincidía con la hoja.",
+   "habria": "Mejoraste el dibujo y rotulaste otra cosa."
+  },
+  "F7c": {
+   "hiciste": "Firmaste el gráfico con el número correcto debajo, pero las barras seguían empezando arriba de cero.",
+   "habria": "El número estaba. El dibujo no lo ayudaba."
+  },
+  "F7d": {
+   "hiciste": "Tu número no coincidía con la hoja y firmaste un gráfico con las barras arriba de cero.",
+   "habria": "Una docente escribió: el mismo gráfico la hizo decidir otra cosa."
+  },
+  "F7e": {
+   "hiciste": "Frenaste un gráfico que sí engañaba. Era razonable, pero se podía corregir.",
+   "habria": "Con las barras desde cero y el número de la hoja, se podía firmar."
+  },
+  "F7f": {
+   "hiciste": "Este gráfico no engañaba, y firmaste con el número correcto. Reconocerlo también cuenta.",
+   "habria": "Firmar con el rótulo correcto era lo mejor."
+  },
+  "F7g": {
+   "hiciste": "Este gráfico no engañaba, pero tu número no coincidía con la hoja.",
+   "habria": "Salió bien por suerte: tu rótulo no coincidía con la hoja."
+  },
+  "F7h": {
+   "hiciste": "Este gráfico no engañaba y lo rehiciste. Cuesta una noche desconfiar de lo que está bien.",
+   "habria": "Con la hoja a la vista, bastaba firmarlo tal cual."
+  },
+  "F7i": {
+   "hiciste": "Frenaste un gráfico que estaba bien.",
+   "habria": "Era un gráfico bueno, y se perdió."
+  },
+  "F8a": {
+   "hiciste": "Pusiste sobre la mesa con qué comparar y cuántos eran.",
+   "habria": "Tu año salió mejor que el de Beto."
+  },
+  "F8b": {
+   "hiciste": "Pusiste sobre la mesa con qué comparar y cuántos eran. Beto y tú llegaron a lo mismo.",
+   "habria": "Tú llegaste con papeles; él, a ojo. Si Beto hubiera dicho otra cosa, tú tenías con qué responder."
+  },
+  "F8c": {
+   "hiciste": "Acertaste con un solo papel clave sobre la mesa. Te faltó el otro.",
+   "habria": "Ugarte lo dijo: tiene sentido, pero le faltó ver el otro papel."
+  },
+  "F8d": {
+   "hiciste": "Acertaste sin poner ningún papel clave sobre la mesa.",
+   "habria": "Ugarte no supo en qué te apoyabas."
+  },
+  "F8e": {
+   "hiciste": "Pusiste los dos papeles clave sobre la mesa, pero tu decisión iba contra lo que decían.",
+   "habria": null
+  },
+  "F8f": {
+   "hiciste": "Decidiste sin poner los dos papeles clave sobre la mesa.",
+   "habria": null
+  },
+  "F8g": {
+   "hiciste": "Esperaste un trimestre cuando ya se podía decidir.",
+   "habria": "Esperar costó un trimestre. Con los dos papeles sobre la mesa ya se podía decidir."
+  }
+ },
+ "cierres": {
+  "C1": "Lo que viste todos los días ya dejaba un rastro. Convertirlo en algo que se puede leer es el trabajo de la estadística.",
+  "C2": "Volver contable algo que no se ve se llama operacionalizar. Creer que lo contado es lo que pasa se llama cosificar.",
+  "C2b": "Esta vez el cero se sostenía. Cuando se cuenta igual que antes, la cifra puede creerse. Mirar cómo se contó te lo dice.",
+  "C3": "Lo que quieres saber de todos es el parámetro. Lo que calculas con los que miraste es el estadístico.",
+  "C3b": "No hacía falta desconfiar. Distinguir cuándo no hace falta también es saber leer.",
+  "C4": "El error del azar se achica con más gente. El de dejar fuera a quienes importaban no se achica, se llama error no muestral.",
+  "C5": "Quienes están peor suelen mejorar solos: se llama regresión a la media. Para no engañarte, usa un grupo de control.",
+  "C6": "Lo que hay en tus datos es estadística descriptiva. Apostar sobre los que no viste es inferencial. Esta materia empieza por la primera.",
+  "C7p": "Se llama eje truncado. Antes de creerle a un gráfico, mira dónde empieza.",
+  "C7b": "Esta vez el eje no estaba truncado. Se llama así cuando la barra empieza arriba de cero. Mirar dónde empieza te lo dice.",
+  "C8": "Los datos bien recogidos y bien leídos le ganan al ojo. A veces la mejor respuesta es \"todavía no se puede saber\"."
+ },
+ "pies": {
+  "0": [
+   "El taller siguió. Los estudiantes que lo hicieron mejoraron más que quienes no.",
+   "Se gastó el año en un taller que no cambió nada.",
+   "Se financió con pocos datos. A mitad de año ya había dudas."
+  ],
+  "1": [
+   "Se cerró un taller que servía. Los chicos que lo necesitaban se quedaron sin él.",
+   "Se usó el dinero en otra cosa. El taller no se extrañó.",
+   "Se cerró antes de saber si servía."
+  ],
+  "2": [
+   "Se esperó un trimestre. El taller siguió, con tres meses menos.",
+   "Se esperó un trimestre. El resultado fue el mismo que antes.",
+   "Se esperó, se midió mejor y se pudo decidir con datos."
+  ]
+ },
+ "camino": [
+  "Cada cosa que reconociste tiene un nombre, una forma de comprobarla con números y una técnica para hacerlo bien.",
+  "Eso se aprende en los temas que vienen.",
+  "Los gráficos, ya en el Tema 2. Y esto apenas es el primer vistazo."
+ ],
+ "beto": "Yo igual lo veo a ojo. Pero la próxima te pregunto de dónde sale.",
+ "sobres": {
+  "S-P1": "Alguien en el colegio anotaba el sueño sin que nadie lo usara. ¿Quién?",
+  "S-E2a": "Cero es un número redondo. ¿Cuántas denuncias había el mes antes de que cayera?",
+  "S-E2b": "Frenar también es una decisión. ¿Qué te falta saber para firmar?",
+  "S-E2c": "Esa frase vale para cualquier colegio. ¿Qué hay en esta carpeta que sea solo de este?",
+  "S-E2d": "Dudaste de un cero. ¿Qué mostraba el libro de este trimestre frente al anterior?",
+  "S-E3a": "Sacaste una tanda. Si pides otra, ¿te dará lo mismo?",
+  "S-E3b": "Otra tanda dio otra cifra. ¿Cuánto se mueve de una a otra?",
+  "S-E3c": "Con ese rango nadie se equivoca. Tampoco nadie decide nada.",
+  "S-E3d": "Dudaste de una cifra que venía de muchos. ¿Qué dice el papel de cómo se obtuvo?",
+  "S-E3e": "Tu rango describe el registro. ¿De qué semana es ese registro?",
+  "S-E3f": "Tu rango cubre. ¿Qué papel dice de dónde salió la cifra de la fuente?",
+  "S-E4a": "Cuántos respondieron te lo dice el estudio. ¿Quiénes? Eso lo dice otra hoja.",
+  "S-E4b": "Siempre la más chica, ¿no? Mira de nuevo quiénes respondieron en cada una.",
+  "S-E4c": "No citar ninguno es una decisión. ¿Había uno de los dos que sí se sostenía?",
+  "S-E5a": "Qué bien suben. ¿Y los que no fueron al taller? ¿Y los del colegio de al lado?",
+  "S-E5b": "Restaste a otros que bajaron. ¿Eran comparables con los 13 que llamaste?",
+  "S-E5c": "Tu número no tiene con qué compararse. ¿Qué papel te daba una vara?",
+  "S-E5d": "Abriste con qué comparar y escribiste cero. Vuelve a restar: ¿de verdad no quedó nada?",
+  "S-E6a": "Cuéntalos de nuevo, de diez en diez.",
+  "S-E6b": "Dice \"del colegio\". ¿A cuántos viste?",
+  "S-E6c": "\"Podrían ser\". Eso se lo pondrías a cualquier conclusión. ¿Qué dice la carpeta sobre estos 60?",
+  "S-E6d": "Frenaste algo que se sostenía. ¿Qué dice el papel sobre cómo se eligieron?",
+  "S-E7a": "Mira la hoja y mira el dibujo. ¿Cuántos puntos hay de verdad entre A y B?",
+  "S-E7b": "¿Dónde empieza la barra más baja?",
+  "S-E7c": "Este gráfico no hacía falta rehacerlo. ¿Qué papel te lo decía?",
+  "S-E8a": "Hay dos papeles que cambian la reunión. ¿Cuáles pusiste sobre la mesa?",
+  "S-E8b": "Esperar costó un trimestre. ¿Qué papel justificaba esperar?",
+  "S-E8c": "Tu recomendación no coincide con tu propia mesa. Mira de nuevo los dos papeles."
+ },
+ "expedientes": {
+  "R-H1a": {
+   "habito": "H1",
+   "titulo": "Expediente de otro año. Colegio San Ignacio: \"Cero conflictos en la gestión\".",
+   "texto": "Se abrieron los horarios y la lista de tutores. Se firmó. Una semana después, la dirección admitió que el libro había cambiado de formato."
+  },
+  "R-H1b": {
+   "habito": "H1",
+   "titulo": "Expediente de otro año. Colegio Alborada: \"El taller de teatro cambió a los chicos\".",
+   "texto": "Se abrió la lista de asistentes. Se firmó. Al mes, la tallerista dijo que los chicos ya venían mejor antes de empezar."
+  },
+  "R-H2a": {
+   "habito": "H2",
+   "titulo": "Expediente de otro año. Colegio Santa Clara: \"Un estudio con miles dice que...\".",
+   "texto": "Se citó el más grande. Al otro día, un club de apoyo avisó que solo respondieron sus socios."
+  },
+  "R-H2b": {
+   "habito": "H2",
+   "titulo": "Expediente de otro año. Colegio Las Palmas: \"El nuevo reglamento redujo la violencia\".",
+   "texto": "Se firmó el gráfico del informe. Una docente escribió que la barra más baja ni empezaba en cero."
+  },
+  "R-H3a": {
+   "habito": "H3",
+   "titulo": "Expediente de otro año. Colegio Los Álamos: \"El taller de lectura sube las notas\".",
+   "texto": "Se abrió todo y estaba bien medido. Se frenó por prudencia. Una consultora externa lo presentó primero y el colegio la siguió una semana."
+  },
+  "R-H3b": {
+   "habito": "H3",
+   "titulo": "Expediente de otro año. Colegio Alto Verde: \"Hay que esperar más datos\".",
+   "texto": "Se pidió esperar un trimestre cuando ya había con qué decidir. El colegio decidió sin el informe y se equivocó."
+  },
+  "R-H4a": {
+   "habito": "H4",
+   "titulo": "Expediente de otro año. Colegio Santa Rosa: \"El taller de pausas hizo subir a los más bajos\".",
+   "texto": "Se aconsejó llamar a los de menor puntaje y se firmó la subida. Al mes, el colegio de al lado, sin taller, había subido casi igual."
+  },
+  "R-H4b": {
+   "habito": "H4",
+   "titulo": "Expediente de otro año. Colegio Los Naranjos: \"Las notas de matemática cayeron en picada\".",
+   "texto": "Se firmó el gráfico tal como venía de la fuente. La barra más baja empezaba arriba de cero y la caída real era chica."
+  }
+ }
+}

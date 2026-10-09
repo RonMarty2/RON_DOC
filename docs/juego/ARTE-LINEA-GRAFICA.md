@@ -52,6 +52,13 @@ Los dibujos se guardan al tamaño lógico, **sin suavizado** (el navegador los a
 - **Sin degradados ni transparencias a medias:** cada píxel es opaco o transparente. Se permite una trama de 2×2 solo en zonas grandes de transición.
 - Siluetas que se lean a tamaño 1×: si no se entiende en miniatura, se simplifica.
 
+## 4b. Separación entre la figura y el fondo (Ronald, 09-10: «cuidado con la combinación de colores y la pérdida de detalle»)
+
+- **Una figura nunca tiene el mismo valor (claridad) que el fondo que tiene detrás.** Pelo oscuro sobre pared oscura se funde y se pierde la silueta; pasó al convertir automáticamente la escena a la paleta: el pelo `#3e2731` y la pared `#262b44` cayeron los dos en `#181425`. Regla: entre la figura y su fondo hay **al menos dos escalones de valor** de la rampa de grises y noche, o un contorno claro de 1 px (una «luz de borde» del color de la lámpara).
+- **El fondo usa rampas frías (azul, gris-azulado) y las figuras rampas cálidas (piel, madera, vino)**: así se separan por tono además de por valor.
+- **Las superficies con textura (pared de ladrillo, escritorio de madera) no se convierten automáticamente a la paleta**: el cambio automático las llena de ruido o las aplana. Se **redibujan con una pieza repetida** (un ladrillo, un trozo de tabla) o se dejan como están, marcadas como provisionales.
+- **Todo cambio automático de color se mira antes de usarlo**, con la pantalla ampliada, comparando contra el original (`docs/juego/arte/<juego>/escena-antes-convertida.png` es el ejemplo de lo que sale mal).
+
 ## 5. Personajes y caras
 
 - Proporción ligeramente caricaturesca: cabeza de un tercio del alto en los personajes principales.

@@ -6,21 +6,16 @@
  * `azarConSemilla(semilla * 100 + k)`; así cambiar un rubro no cambia los otros.
  *   k=1 tipos · k=2 orden · k=3 papeles de cada carpeta (carpeta.ts, todavía no) · k=10+caso cifras y textos.
  *
- * ── TODO por ambigüedad (NO inventado; decide quien escriba la pieza que falte) ────────────────────────────
- *  1. Papeles de la carpeta (G10): cuáles 6 de los 9 entran, cuál clave toca (C2-1/2/3, C4-1..4, C6-1..3, C7-1..3,
- *     C8-1/2), el refuerzo del caso 2 (3 de 6) y el orden de los papeles. Es el rubro k=3 de `carpeta.ts`.
- *  2. Cifras de cada caso: μ, tandas y cifra del oficio (caso 3, `tandas.ts`); ρ y la hoja de 60 (caso 5,
- *     `bienestar.ts`); la hoja y N (caso 6), x y la base del eje (caso 7, `grafico.ts`); medias del caso 8;
- *     las 3 respuestas de Dani (k=10) y la fecha del archivo. Hoy solo se sortean los TIPOS.
- *  3. `{mes}`, `{mesAnt}`, `{d0}`, `{d1}`, `{b0}`, `{b1}`, `{hechoClave}`, `{curso}` (generador del caso 2 y de la hoja).
- *  4. `{colegio}`: 05 NT1.4 dice «nombre del colegio del caso» pero el pool tiene 4 y los casos son 7. Aquí se
- *     sortea UNO para todo el tema (k=12). Si cada caso debe tener el suyo, hay que decidirlo y ampliar.
- *  5. Qué k exacto usa cada pool (02 solo fija k=1, 2, 3 y «10+caso»): aquí colegio k=12, fuentes k=13, vecino
- *     k=15, talleres k=17, propuesta de Beto k=18, Dani k=10. Elección de esta pieza, no del documento.
- *  6. `{fuente}` solo está especificada para los casos 3, 6 y 7 (una distinta por caso); el caso 4 también cita
- *     «estudios del distrito» pero 05 no le asigna fuente.
- *  7. La semilla de la práctica abierta («semilla nueva derivada de la semilla del alumno y del intento», 04):
- *     la fórmula no está escrita. `versionT1` acepta cualquier entero para que esa pieza la defina.
+ * ── Los TODO de este archivo, RESUELTOS en el bloque 2 del motor (cada decisión está escrita al inicio del archivo que la toma) ──
+ *  1. Papeles de la carpeta (G10): `carpeta.ts` (rubro k=3): cuáles 6 de los 9, la clave de cada caso, el refuerzo del caso 2 y el orden.
+ *  2. Cifras de cada caso: `cifras.ts` (rubros k=21..28, 29), con `tandas.ts` (caso 3) y `bienestar.ts` (caso 5).
+ *  3. `{mes}`, `{mesAnt}`, `{d0}`, `{d1}`, `{b0}`, `{b1}`, `{hechoClave}`, `{curso}`: `cifras.ts` (`caso2`, `caso6.curso`).
+ *  4. `{colegio}`: aquí sigue UN colegio del tema (k=12, `textos.colegio`, sin tocar); el reparto de uno distinto por caso está en
+ *     `cifras.colegios` (el caso n usa el lugar (n−1) mod 4 de un barajado del pool).
+ *  5. Los k de cada pool siguen siendo los de este archivo (colegio 12, fuentes 13, vecino 15, talleres 17, Beto 18, Dani 10); las
+ *     cifras usan k = 20 + caso para no chocar con ellos.
+ *  6. Fuente del caso 4: la cuarta del barajado de fuentes (k=13), la que sobra tras los casos 3, 6 y 7: `cifras.fuenteCaso4`.
+ *  7. Semilla de la práctica abierta: `semillaDePractica(semilla, caso, intento)` en `cifras.ts` (cambia el tipo de ese caso).
  */
 
 import { azarConSemilla, type Azar } from "../../finanzas/ejercicios";

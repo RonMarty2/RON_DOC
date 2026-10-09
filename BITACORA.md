@@ -11,6 +11,8 @@
 ## 0. En curso ahora (leer antes que nada)
 
 > **LEER PRIMERO: `docs/juego/RETOMAR.md`** (nota de relevo del 08-10: qué decidió Ronald, el método, dónde está cada archivo, qué sigue y qué no repetir). Lo que está debajo es el detalle histórico.
+>
+> **08-10, 22:45 · Motor del Tema 1 de Psicoestadística, bloque 2 subido** (`src/lib/juego/psicoestadistica/`: `carpeta.ts`, `cifras.ts`, `respuestas.ts`, `bienestar.ts`, `tandas.ts`, `aleatorio-t1.ts`, con sus pruebas y la paridad contra Python). 3.816 pruebas, tsc limpio. Sigue el bloque 3 (revelación, 72 ramas, registro, escalera) y después la pantalla con el arte. No hay arte nuevo más allá del boceto vivo de la Dirección A.
 
 > **08-10 (Claude, PC RONMARTY): giro de Ronald, sin ejecutar todavía.** (1) **Sonido:** probó Flow Music (Google Labs,
 > `flowmusic.app`, sí disponible desde Bolivia, con su sesión) con una pista 8 bits para la escena «La encuesta de sueño»

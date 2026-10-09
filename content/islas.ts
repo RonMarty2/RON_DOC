@@ -39,4 +39,16 @@ export const ISLAS: Isla[] = [
       { numero: 7, titulo: "Diagnóstico avanzado" },
     ],
   },
+  {
+    slug: "psicoestadistica",
+    nombre: "La mesa de verificación",
+    descripcion: "Eres psicólogo o psicóloga de un colegio: de noche, con una carpeta de papeles por caso, verificas si un dato que todos dan por cierto lo es antes de firmarlo.",
+    materia: "psicoestadistica",
+    // Ronald eligió la Dirección A «La redacción de noche» (pixel art con luz de lámpara) el 08-10.
+    aspecto: "aprobado 2026-10-08",
+    temas: [
+      // Plan aprobado por Ronald el 08-10 (8 casos, meta 65/65, jefa sin vidrio ni sello, caso 5 con Beto) después de pasar por todos los agentes.
+      { numero: 1, titulo: "La mesa de verificación", plan: "aprobado 2026-10-08" },
+    ],
+  },
 ];

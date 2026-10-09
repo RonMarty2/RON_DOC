@@ -32,6 +32,8 @@ Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (
 
 **Ronald no elige agentes** (28-09: «¿qué agente debemos usar? ¿cómo sabré cuál usar?»). Cuando pide algo del juego, la sesión mira la tabla de etapas de `.claude/agents/LEEME.md`, le dice en una línea en qué etapa está y qué agente sigue, lo corre, y al terminar le dice cuál viene. Él sólo interviene donde la tabla pide su aprobación. **Nunca se le muestra la entrega de un agente sin que haya pasado su lista de salida y el crítico** (28-09: la ronda 1 de Psicoestadística se le mostró sin crítico y hubo que rehacerla). La `description` de todo agente va **entre comillas**: sin ellas, un «: » a mitad de frase hace que el agente no cargue, sin aviso (le pasó al adaptador hasta el 28-09).
 
+**Cada entrega de un agente se comprueba en el disco y se sube antes de seguir** (Ronald, 08-10). Vale para **todos** los agentes, también `disenador-de-sonido` y `extractor-de-ideas`: cuando uno termina, la sesión abre el archivo, comprueba que trae el contenido nuevo (no basta que el agente diga «hecho») y hace commit y push **antes** de lanzar otro agente, de seguir con otro paso o de mostrárselo a Ronald. El 08-10 el bucle v2 y el aprendizaje v2.1 del Tema 1 se dieron por hechos sin estar guardados en ningún lado y hubo que rehacerlos. Lo mismo con el código: cada pieza se sube apenas pasan `npm test` y `npx tsc --noEmit`, **mirando el código de salida** (un `npm test | tail` tapa el fallo).
+
 ## Estructura: escalable, modificable, ampliable sin romper (Ronald, 2026-09-26)
 
 Todo lo que se construye (código, contenido, juego, agentes, documentos) se arma para crecer **sumando piezas**, no reescribiendo:

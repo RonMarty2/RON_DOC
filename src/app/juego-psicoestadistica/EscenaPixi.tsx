@@ -61,6 +61,10 @@ export function EscenaPixi({ pose, suena, daniCabecea, nombreDani = "Dani" }: { 
         return m;
       };
       mosaico("arte/pared_ladrillo", 0, 120);
+      // La oficina de noche: ventana con la luna y las luces de la ciudad, reloj con estante de libros, pizarrón.
+      sprite("arte/ventana_noche", 4, 6);
+      sprite("arte/reloj_estante", 84, 8);
+      sprite("arte/pizarron", 130, 10);
       const dani = sprite("arte/dani_silueta_fondo", 72, 60);
       dani.scale.set(2);
       const jefa = sprite(POSE[ultimo.current.pose], 118, 60);
@@ -144,7 +148,7 @@ export function EscenaPixi({ pose, suena, daniCabecea, nombreDani = "Dani" }: { 
       <div ref={caja} />
       {/* Quién es quién: etiquetas con nombre y color sobre cada personaje. Tú no sales: miras la escena desde el escritorio. */}
       <span className="mesa-etiqueta q-jefa" style={{ left: "80%", top: "36%" }}>Jefa · Ximena</span>
-      <span className="mesa-etiqueta q-dani" style={{ left: "55%", top: "47%" }}>{nombreDani}</span>
+      <span className="mesa-etiqueta q-dani" style={{ left: "45%", top: "60%" }}>{nombreDani} · practicante</span>
     </div>
   );
 }

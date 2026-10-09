@@ -38,6 +38,8 @@ Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (
 
 **Siempre dejar todo para retomar y subido a GitHub**: «siempre debes guardar todo para retomar sencillo en otra sesión sin contexto, también sube todo a GitHub». Al terminar cada pieza y antes de despedirse: (1) commit y `git push origin HEAD:main` con `npm test` y `npx tsc --noEmit` en verde, mirando el código de salida; (2) actualizar el bloque «ESTADO REAL» de `docs/juego/RETOMAR.md` y `BITACORA.md` §0 con qué hay, qué falta y qué decidió Ronald; (3) lo aprendido va al agente que corresponde (`.claude/agents/`) y las decisiones de Ronald a `docs/juego/REGLAS-COMUNES-AGENTES.md`; (4) lo que un agente en segundo plano deje sin subir se sube apenas termine, y la nota de relevo dice qué archivos esperar y qué hacer si faltan. **Nada de lo jugable o visible se le muestra a Ronald sin que lo haya revisado `critico-de-jugabilidad`, y sin abrirlo antes en el navegador con la extensión de Chrome** (la etapa se saltó 3 veces).
 
+**Cuando Ronald diga que se va** («debo irme», «sigo mañana», «cambio de PC», «ya me voy» o similar), **antes de responder** se escribe en `docs/juego/RETOMAR.md` (bloque «ESTADO REAL») y en `BITACORA.md` §0: (1) **qué hicimos**, resumido; (2) **qué queda por hacer**, en orden; (3) **el plan que se está siguiendo** (en qué paso va y qué decisiones de Ronald faltan); y se hace commit y push. Redactado para que lo entienda una sesión sin contexto. Pedido por Ronald el 09-10-2026: «siempre pero siempre».
+
 ## Estructura: escalable, modificable, ampliable sin romper (Ronald, 2026-09-26)
 
 Todo lo que se construye (código, contenido, juego, agentes, documentos) se arma para crecer **sumando piezas**, no reescribiendo:

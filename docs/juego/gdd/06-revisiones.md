@@ -6,6 +6,8 @@
 
 ### De la revisión de la narrativa v3 y el sonido v1 del Tema 1 de Psicoestadística (papel + scripts, 08-10, v15)
 
+**DECIDIDAS 08-10 (Ronald):** (1) la jefa, opción A (sin vidrio ni sello). (2) caso 5, turno 1: aprueba Beto, la jefa solo pregunta, y en el turno 2 dice «Yo también dije que sí.». Aplicadas en `05` y `07`. Sin pendientes de gusto.
+
 Ninguna pregunta de gusto nueva. Dos cosas que conviene que veas en simple, ambas con valor recomendado que no bloquea nada:
 1. **La jefa del Departamento se parece a la de AIEF** (hallazgo I2): también habla desde un vidrio, con frases cortas, y también sella. Recomendado: sacarle el vidrio y el sello y darle otra manera de hablar. Alternativa: dejarla igual (los alumnos de Psicología no juegan AIEF).
 2. **Caso 5, turno 1** (hallazgo I7): la jefa aprueba con el pulgar arriba una elección que después sale mal. Recomendado: mantener la trampa, pero que la aprobación venga de Beto o del director y no de la jefa.

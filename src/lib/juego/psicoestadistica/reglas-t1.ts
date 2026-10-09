@@ -113,7 +113,10 @@ export type EventoT1 =
   | { tipo: "expediente"; id: string }
   | { tipo: "carta"; idea: number; orden: number }
   | { tipo: "cierre"; plazaFija: boolean; c: number; voz: number }
-  | { tipo: "practica"; caso: NumeroDeCaso; intento: number };
+  | { tipo: "practica"; caso: NumeroDeCaso; intento: number }
+  // Lo que hizo el alumno en un caso, tal como lo reciben las funciones de `respuestas.ts` (tipado en registro-t1.ts:
+  // `EventoEntrada`). Con esto el docente recalcula rama, clase, códigos y tubos sin confiar en lo guardado.
+  | { tipo: "entrada"; caso: NumeroDeCaso; entrada: unknown };
 
 /** La escena del tema para `partida.ts`. Versiones de 1 a VERSION_MAXIMA (nunca 0). */
 export const ESCENA_T1: Escena<typeof ISLA_T1, "tema1"> = {

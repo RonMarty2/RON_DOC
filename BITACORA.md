@@ -20,6 +20,8 @@
 >
 > **09-10 (tarde) · Lectura más cómoda (Ronald 09-10: «textos apretados, cansador»; «no sé a qué se refiere con raya de 25 o de 65»): las citas de la jefa y los papeles salen una frase por renglón, con raya a la izquierda y más aire (`Cita` y `enFrases` en `Mesa.tsx`, `.mesa-cita` en `mesa.css`); los medidores llevan rótulo bajo cada marca («25 peligro» en rojo, «65 meta» en verde) y la jefa dice «la marca roja del 25» / «la marca verde del 65» (narrativa B-cierre1-3 y 4 y `orientacion-t1.json`). Música de fondo al leer: 0.5 en el archivo y 0.3 con un papel abierto.
 >
+> **09-10 (tarde) · PENDIENTE (Ronald 09-10): **la escena se pierde al avanzar.** Cuanto más crece lo de abajo (diálogos, medidores, papeles, botones), más hay que bajar la pantalla y la oficina de arriba (la ambientación: ventana, noche, personajes) deja de verse. Para resolver, ver las opciones en la conversación; hasta que Ronald elija, no se toca. Ya registrado como regla del crítico: «la escena debe seguir a la vista mientras se lee y se decide».
+>
 > **09-10 (tarde) · REVISIÓN DEL CÓDIGO DEL JUEGO:** Partida en la nube: ya no pisa lo jugado sin conexión. Al abrir con cuenta, `elegirPartida` (`src/lib/juego/partida.ts`) se queda con la que tiene más eventos y la sube; la entregada manda. Aplicado en `EscenaVentanilla` y `EscenaPlanta`, con pruebas. Además la Mesa de Psicoestadística ya recuerda los números propios de la hoja al retomar (evento `p1.respuestas` con `datos`, opcional: las partidas viejas siguen leyéndose y usan los de Dani).
 >
 > **09-10, 09:52 · CIERRE LIMPIO:** sesión cerrada por Ronald. Resumen y pasos en `docs/juego/RETOMAR.md`, bloque «CIERRE LIMPIO 09-10». Nada a medias; todo en GitHub.

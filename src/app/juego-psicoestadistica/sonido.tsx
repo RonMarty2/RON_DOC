@@ -82,7 +82,7 @@ export function useSonidoT1(e: EstadoDeSonido) {
   const sonar = useCallback((r: Receta, grupo: GrupoDeEfecto = "efectos") => motor().efecto(r, grupo), []);
 
   // Música: sigue la fase que se ve.
-  const m: EstadoParaMusica = { fase: e.fase, fichas: e.fichas, hallado: e.hallado, medidorBajo: e.medidorBajo, lineaDeLaJefa: e.lineaDeLaJefa };
+  const m: EstadoParaMusica = { fase: e.fase, fichas: e.fichas, hallado: e.hallado, medidorBajo: e.medidorBajo, lineaDeLaJefa: e.lineaDeLaJefa, leyendo: e.leyendo !== null };
   const pedida = musicaDeFase(m);
   useEffect(() => {
     motor().musica({ escena: pedida.escena, capa: pedida.capa, relativo: pedida.relativo });

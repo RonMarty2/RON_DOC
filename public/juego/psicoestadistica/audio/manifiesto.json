@@ -15,7 +15,7 @@
     "pista-s1": {
       "archivo": "pista-s1.mp3",
       "bucle": true,
-      "volumen": 1.0,
+      "volumen": 0.8,
       "duracion": 161.2
     },
     "pista-s2": {

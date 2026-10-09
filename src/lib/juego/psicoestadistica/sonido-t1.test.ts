@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { MANIFIESTO_VACIO, leerManifiesto, pistaDe } from "../sonido/manifiesto";
 import { duracionDe, problemasDeReceta } from "../sonido/receta";
-import { FASES_T1, musicaDeFase, todasLasRecetas, type EstadoParaMusica, type FaseT1 } from "./sonido-t1";
+import { FASES_T1, musicaDeFase, RELATIVO_LEYENDO, RELATIVO_PAPEL_ABIERTO, todasLasRecetas, type EstadoParaMusica, type FaseT1 } from "./sonido-t1";
 
 const estado = (fase: FaseT1, o: Partial<EstadoParaMusica> = {}): EstadoParaMusica => ({ fase, fichas: 3, hallado: false, medidorBajo: false, lineaDeLaJefa: 0, ...o });
 
@@ -53,6 +53,14 @@ describe("Qué música suena en cada fase", () => {
     expect(musicaDeFase(estado("archivo1", { fichas: 1 })).capa).toBe("duda");
     expect(musicaDeFase(estado("archivo1", { fichas: 0 })).capa).toBe("tension");
     expect(musicaDeFase(estado("archivo1", { fichas: 0, hallado: true })).capa).toBe("calma");
+  });
+  it("mientras se leen papeles la música queda de fondo, y más baja con un papel abierto (Ronald 09-10)", () => {
+    for (const f of ["archivo1", "archivo2", "frase"] as const) {
+      expect(musicaDeFase(estado(f)).relativo, f).toBe(RELATIVO_LEYENDO);
+      expect(musicaDeFase(estado(f, { leyendo: true })).relativo, f).toBe(RELATIVO_PAPEL_ABIERTO);
+    }
+    expect(RELATIVO_PAPEL_ABIERTO).toBeLessThan(RELATIVO_LEYENDO);
+    expect(musicaDeFase(estado("asombro")).relativo).toBe(1); // el remate sigue siendo el premio
   });
   it("«¿Firmar?» pone tensión, y la reacción vuelve a la calma más baja salvo medidor en 25 o menos", () => {
     expect(musicaDeFase(estado("confirma")).capa).toBe("tension");

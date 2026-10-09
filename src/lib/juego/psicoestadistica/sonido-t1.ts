@@ -105,7 +105,14 @@ export interface EstadoParaMusica {
   medidorBajo: boolean;
   /** En la fase «jefa»: qué línea se está leyendo (0 es la primera). La capa de duda entra con la segunda. */
   lineaDeLaJefa: number;
+  /** Hay un papel abierto para leer (opcional): la música baja para dejar leer. */
+  leyendo?: boolean;
 }
+
+/** Volumen de la música mientras el alumno lee papeles (Ronald 09-10: «me saca de concentración»): de fondo, y más bajo con un papel abierto. */
+export const RELATIVO_LEYENDO = 0.5;
+export const RELATIVO_PAPEL_ABIERTO = 0.3;
+const alLeer = (e: EstadoParaMusica) => (e.leyendo ? RELATIVO_PAPEL_ABIERTO : RELATIVO_LEYENDO);
 
 export interface MusicaPedida {
   escena: "s0" | "s1" | "s2" | "s10" | null;
@@ -126,7 +133,7 @@ export function musicaDeFase(e: EstadoParaMusica): MusicaPedida {
     case "hoja":
       return { escena: "s0", capa: "duda", relativo: 1 };
     case "archivo1":
-      return { escena: "s1", capa: e.fichas <= 0 && !e.hallado ? "tension" : duda ? "duda" : "calma", relativo: 1 };
+      return { escena: "s1", capa: e.fichas <= 0 && !e.hallado ? "tension" : duda ? "duda" : "calma", relativo: alLeer(e) };
     case "asombro":
       return { escena: "s1", capa: "remate", relativo: 1 };
     case "cierre1":
@@ -135,7 +142,7 @@ export function musicaDeFase(e: EstadoParaMusica): MusicaPedida {
       return { escena: "s2", capa: "calma", relativo: 1 };
     case "archivo2":
     case "frase":
-      return { escena: "s2", capa: duda ? "duda" : "calma", relativo: 1 };
+      return { escena: "s2", capa: duda ? "duda" : "calma", relativo: alLeer(e) };
     case "confirma":
       return { escena: "s2", capa: "tension", relativo: 1 };
     case "reaccion":

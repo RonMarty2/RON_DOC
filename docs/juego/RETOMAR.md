@@ -1,5 +1,27 @@
 # RETOMAR el juego de RON_DOC (nota de relevo, 08-10-2026; actualizada 09-10)
 
+### ⛔ ÚLTIMO CORTE 09-10, 09:42 (PC RonMarty): Ronald avisó que se acaban los tokens. LEE ESTO PRIMERO
+
+**Por qué existe este bloque:** a Ronald ya le pasó perder trabajo a medias al cortarse la sesión. Aquí está exactamente dónde se quedó todo.
+
+**Qué hay subido a GitHub (verificar con `git pull --ff-only` y `git log -3`):** todo lo anterior de este documento, más los 9 documentos dibujados (`docs/juego/arte/psicoestadistica/doc_*.px` + PNG en `public/juego/psicoestadistica/arte/`), el agente `artista-pixel`, `scripts/generar_arte.py`, `scripts/verificar_arte.py`, `scripts/dibujar_documentos.py`, `scripts/convertir_a_paleta.py`.
+
+**Trabajo EN SEGUNDO PLANO al cortar (puede no haber terminado):** el agente `artista-pixel` dibujando retratos (Beto, director Ugarte, Dani silueta, jefa con 3 gestos), íconos (teléfono, nota), pared y escritorio como piezas repetidas, ficha encendida/apagada. **Qué hacer al retomar:** mira `docs/juego/arte/psicoestadistica/`. Si hay `*_retrato.px`, `pared.px`/`escritorio.px` y `ficha_*.px`, ejecuta `python scripts/generar_arte.py docs/juego/arte/psicoestadistica public/juego/psicoestadistica/arte --hoja docs/juego/arte/psicoestadistica/hoja-de-estilo.png --ambiente amanecer` y `python scripts/verificar_arte.py public/juego/psicoestadistica/arte`, **mira la hoja de estilo con Read**, y sigue. Si faltan, **relanza el agente con `docs/juego/arte/ENCARGO-ARTISTA-PIXEL-retratos.md`** (no rehagas lo que ya exista).
+
+**Plan, en orden (sin preguntarle a Ronald lo que ya decidió):**
+1. Terminar y verificar el arte nuevo (arriba). Commit y push.
+2. **Conectar el arte nuevo al juego:** `src/app/juego-psicoestadistica/EscenaPixi.tsx` (hoy usa los `prov_*` viejos: reemplazar por los PNG de `public/juego/psicoestadistica/arte/` y pared/escritorio con piezas repetidas, `TilingSprite` de PixiJS) y `Mesa.tsx`. Ojo con el contraste figura/fondo (guía 4b).
+3. **Cajas de diálogo con cara** (estilo «A3» de `docs/juego/bocetos/caras/index.html`): `Dialogo` en `Mesa.tsx` gana un retrato (jefa con su gesto, Beto, Ugarte, Dani silueta, teléfono, nota) y lo del jugador va en otra caja de otro color sin cara; sin personaje del jugador. ~6 líneas nuevas del jugador (texto desde `05-mundo-y-narrativa.md`, por script). Pruebas en `Mesa.test.tsx`.
+4. **Corregir el mapa de ambientes** (`director-de-juego` con la v19 de `06-revisiones.md`; ver el punto 2 más arriba) y construir la **hora** (cielo, reloj, luz) con `ambiente-<nombre>.json` por cambio de paleta.
+5. **Abrir el juego con la extensión de Chrome, mirarlo y leer `window.__sonido()`**; **crítico** (`critico-de-jugabilidad`) sobre lo construido; recién entonces mostrárselo a Ronald (`http://localhost:3123/juego-psicoestadistica/`, servidor: `env -u npm_config_allow_scripts npx next dev -p 3123`).
+6. Después: casos 3 a 8, música de sus escenas, revelación, nube.
+
+**Decisiones de Ronald aún abiertas (recomendación entre paréntesis):** el «archivo» del colegio (mismo escritorio con el archivador abierto detrás) y el amanecer (05:30, «primera luz»).
+
+**Si ves que los tokens se acaban:** deja de empezar cosas, haz commit y push, actualiza este bloque con la hora y lo que quedó a medias, y di a Ronald «guardado: retoma desde RETOMAR.md».
+
+---
+
 ## ⭐⭐ ESTADO REAL 09-10, 09:20 (PC RonMarty): LEER ESTO ANTES QUE TODO LO DE ABAJO
 
 > Este bloque manda sobre el «EMPIEZA AQUÍ» del 08-10, que quedó atrasado (decía que no había pantalla). Si algo de abajo lo contradice, vale este bloque.

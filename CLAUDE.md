@@ -42,6 +42,8 @@ Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (
 
 **Hábito automático (Ronald, 09-10: «es cansador que deba decirte a cada rato»)**: todo lo anterior se hace **sin que Ronald lo pida**. Cada vez que se corrige algo que él notó o se descubre un error: en el mismo turno se anota en el agente que debió evitarlo (`.claude/agents/`), se suma una línea fechada en «Aprendido construyendo» de `.claude/agents/LEEME.md`, se actualiza `docs/juego/RETOMAR.md` y la bitácora, se hace commit y push, y el mensaje cierra con **una línea** que dice qué se anotó y dónde. Una decisión suya nueva va además a `docs/juego/REGLAS-COMUNES-AGENTES.md`. No esperar a que lo repita.
 
+**Alerta de tokens o de cuota** (Ronald, 09-10: «cuando salten las alertas ajusta lo que debes hacer y guarda todo listo para retomar en otra sesión sin contexto»): si Ronald avisa que se acaban los tokens, o aparece una alerta de cuota o de contexto, **se deja de empezar cosas nuevas** y, en este orden: (1) verificar en disco lo que los agentes en segundo plano ya dejaron; (2) guardar en un archivo del proyecto el encargo exacto de cada agente que sigue corriendo, para poder relanzarlo; (3) commit y push de todo, aunque sea trabajo en progreso (marcado «en progreso»); (4) bloque «ÚLTIMO CORTE» arriba de `docs/juego/RETOMAR.md` con la hora, lo que quedó a medias y los pasos en orden; (5) decirle a Ronald en una línea que quedó guardado. Una sesión sin contexto tiene que poder seguir leyendo solo ese bloque.
+
 ## Estructura: escalable, modificable, ampliable sin romper (Ronald, 2026-09-26)
 
 Todo lo que se construye (código, contenido, juego, agentes, documentos) se arma para crecer **sumando piezas**, no reescribiendo:

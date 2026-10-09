@@ -3,7 +3,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { paqueteT1 } from "./cifras";
-import { ARCHIVO, ASOMBRO, BIENVENIDA, BOTONES_SELLO, CASO2, CIERRE_PASO1, ENCARGO, HOJA, JEFA_LLEGADA, TITULO, daniResponde, reaccionCaso2 } from "./guion-pantalla-t1";
+import { ARCHIVO, ARCHIVO2, ASOMBRO, BIENVENIDA, BOTONES_SELLO, CASO2, CIERRE_PASO1, ENCARGO, FRASE, HOJA, JEFA_LLEGADA, ROTULOS_TUBOS, SIN_PAPELES_AL_FIRMAR, T, TITULO, cambioDeMedidores, cierreDeLaPrueba, daniResponde, reaccionCaso2 } from "./guion-pantalla-t1";
 import { resolverDecision2, piezasDisponibles2 } from "./flujo-t1";
 import { VERSION_MAXIMA } from "../planta";
 
@@ -12,7 +12,7 @@ const narrativa = readFileSync(resolve(aqui, "../../../../docs/juego/gdd/05-mund
 
 // El texto de la narrativa tal como se lee: sin negritas/cursivas; los huecos {x} pasan a § para compararlos con lo ya llenado.
 const limpio = narrativa.replace(/\*\*/g, "").replace(/\*/g, "").replace(/\{[^}]+\}/g, "§").replace(/[ \t]+/g, " ");
-const trozos = limpio.split(/[«»|\n]/).map((t) => t.trim()).filter((t) => t.includes("§") && t.length >= 15);
+const trozos = limpio.split(/[«»|\n]/).map((t) => t.trim()).filter((t) => t.includes("§") && t.length >= 12);
 const regex = (t: string) => new RegExp(`^${t.split("§").map((x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join(".{1,60}?")}$`, "i");
 const regexTrozos = trozos.map(regex);
 
@@ -25,22 +25,39 @@ describe("Textos de la pantalla = textos de la narrativa", () => {
   const fijos: string[] = [
     TITULO.principal,
     TITULO.pequeno,
+    TITULO.prueba,
     ...BIENVENIDA,
     ...JEFA_LLEGADA,
     ...ENCARGO,
     HOJA.titulo,
     HOJA.jefa,
     ...HOJA.preguntas,
-    HOJA.botonDani,
     HOJA.botonPropias,
     ARCHIVO.jefa,
+    ARCHIVO.consigna,
+    ARCHIVO.rotuloFichas,
     ARCHIVO.jefaSeguro,
     ARCHIVO.daniAbre,
     ASOMBRO.filaHoy,
-    ASOMBRO.jefa,
+    ASOMBRO.titulo,
+    ...ASOMBRO.jefa,
     ...CIERRE_PASO1.jefa,
     CIERRE_PASO1.beto,
-    CASO2.jefa,
+    ...CASO2.jefa,
+    ARCHIVO2.consigna,
+    ARCHIVO2.corchoVacio,
+    ARCHIVO2.corchoMirar,
+    ARCHIVO2.graficaMirar,
+    ARCHIVO2.explicaTal,
+    ARCHIVO2.explicaFrase,
+    ARCHIVO2.explicaFrenar,
+    ARCHIVO2.sinPapeles,
+    FRASE.instruccion,
+    FRASE.cadaPapel,
+    FRASE.boton,
+    SIN_PAPELES_AL_FIRMAR,
+    ROTULOS_TUBOS.c,
+    ROTULOS_TUBOS.voz,
     BOTONES_SELLO.tal,
     BOTONES_SELLO.frase,
     BOTONES_SELLO.frenar,
@@ -62,6 +79,9 @@ describe("Textos de la pantalla = textos de la narrativa", () => {
     for (const s of SEMILLAS) {
       const p = paqueteT1(s);
       for (const t of daniResponde(p)) expect(estaEnLaNarrativa(t), t).toBe(true);
+      for (const t of [HOJA.botonDani(p), HOJA.presentaDani(p)]) expect(estaEnLaNarrativa(t), t).toBe(true);
+      for (const t of cierreDeLaPrueba(55, 40, "Informe del orientador", true)) expect(estaEnLaNarrativa(t), t).toBe(true);
+      for (const t of cierreDeLaPrueba(55, 40, "Informe del orientador", false)) expect(estaEnLaNarrativa(t), t).toBe(true);
       expect(estaEnLaNarrativa(CASO2.informe(p)), CASO2.informe(p)).toBe(true);
       expect(ASOMBRO.filaArchivo("octubre de 2025")).toBe("Archivo, octubre de 2025");
     }
@@ -88,12 +108,19 @@ describe("Textos de la pantalla = textos de la narrativa", () => {
           expect(l.texto, l.texto).not.toMatch(/[{}§]/);
           expect(l.texto).not.toMatch(/\b(tenés|podés|sos|vos|fijate|mirá|calculá|querés)\b/i);
           expect(estaEnLaNarrativa(l.texto), l.texto).toBe(true);
+          expect(estaEnLaNarrativa(cambioDeMedidores(r)), cambioDeMedidores(r)).toBe(true);
           vistas.add(`${p.version.tipos[2]}:${r.filas[0]}`);
         }
       }
     }
     // Las 4 filas de P y las 5 de B (R2.1.sin) que se pueden alcanzar aquí.
     expect([...vistas].sort()).toEqual(["B:R2.1", "B:R2.1.sin", "B:R2.2", "B:R2.3", "B:R2.4", "P:R2.1", "P:R2.2", "P:R2.3", "P:R2.4"]);
+  });
+
+  it("un texto de orientación inexistente o con un hueco sin llenar no se muestra: lanza", () => {
+    expect(() => T("B-no-existe")).toThrow();
+    expect(() => T("B-fin-1")).toThrow(/falta el hueco/);
+    expect(T("B-fin-1", { c: 61, voz: 70 })).toBe("Credibilidad 61 · Voz 70.");
   });
 
   it("los números de Dani salen con coma decimal y sin huecos", () => {

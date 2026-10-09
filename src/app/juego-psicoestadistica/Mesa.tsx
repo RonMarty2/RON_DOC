@@ -99,7 +99,7 @@ function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir ▸" }: { lineas: Li
 }
 
 function Tubos({ m }: { m: Medidores }) {
-  const tubo = (nombre: string, v: number) => (
+  const tubo = (nombre: string, v: number, rotulo: string) => (
     <div className="mesa-tubo">
       <div className="mesa-tubo-nombre">
         {nombre} <b>{v}</b>
@@ -109,20 +109,21 @@ function Tubos({ m }: { m: Medidores }) {
         <i style={{ left: `${MARCA_BAJA}%` }} />
         <i style={{ left: `${META_CIERRE}%` }} />
       </div>
+      <div className="mesa-tubo-rotulo">{rotulo}</div>
     </div>
   );
   return (
     <div className="mesa-tubos">
-      {tubo("Credibilidad", m.c)}
-      {tubo("Voz", m.voz)}
+      {tubo("Credibilidad", m.c, G.ROTULOS_TUBOS.c)}
+      {tubo("Voz", m.voz, G.ROTULOS_TUBOS.voz)}
     </div>
   );
 }
 
 function Fichas({ n, total }: { n: number; total: number }) {
   return (
-    <div className="mesa-fichas" role="img" aria-label={`Fichas: te quedan ${n}`}>
-      <span>Fichas</span>
+    <div className="mesa-fichas" role="img" aria-label={`${G.ARCHIVO.rotuloFichas}. Te quedan ${n}`}>
+      <span>{G.ARCHIVO.rotuloFichas}</span>
       {Array.from({ length: total }, (_, i) => (
         <i key={i} className={i < n ? "on" : "off"} />
       ))}
@@ -401,6 +402,12 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
     ? reaccion.lineas.map((l) => ({ quien: l.quien, texto: l.texto, pose: l.quien === "jefa" ? reaccion.pose : undefined, suena: l.quien === "madre" }))
     : [];
 
+  // El papel que decidía el informe: el clave que abrió, o si no abrió ninguno, el primero de su versión (B-fin-2 y B-fin-3).
+  const clavesCaso2 = p.carpetas.porCaso[2].claves;
+  const claveAbierta = clavesCaso2.find((id) => carpeta2.abiertos.includes(id));
+  const abrioClaveFinal = claveAbierta !== undefined;
+  const papelFinal = claveAbierta ?? clavesCaso2[0];
+
   const fichas1 = fichasPaso1(paso1);
   const total1 = paso1.carpeta.fichas;
   const lector = leyendo ? papelDe(p, leyendo.caso, leyendo.id, { hoy }) : null;
@@ -424,7 +431,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
             <button type="button" className={hayAvance ? "mesa-boton sec" : "mesa-boton"} onClick={empezarDeNuevo}>
               {hayAvance ? "Empezar de nuevo" : "Empezar ▸"}
             </button>
-            <p className="mesa-prueba">Versión en prueba · arte provisional</p>
+            <p className="mesa-prueba">{G.TITULO.prueba} Arte provisional.</p>
           </section>
         )}
 
@@ -436,6 +443,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           <section className="mesa-bloque">
             <h2>{G.HOJA.titulo}</h2>
             <p className="mesa-jefa-dice">«{G.HOJA.jefa}»</p>
+            <p className="mesa-jefa-dice">«{G.HOJA.presentaDani(p)}»</p>
             <ol className="mesa-preguntas">
               {G.HOJA.preguntas.map((q) => (
                 <li key={q}>{q}</li>
@@ -451,7 +459,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                     setModoHoja("dani");
                   }}
                 >
-                  {G.HOJA.botonDani}
+                  {G.HOJA.botonDani(p)}
                 </button>
                 <button type="button" className="mesa-boton sec" onClick={() => setModoHoja("propias")}>
                   {G.HOJA.botonPropias}
@@ -501,6 +509,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           <section className="mesa-bloque">
             <h2>El archivo del colegio</h2>
             <p className="mesa-jefa-dice">«{G.ARCHIVO.jefa}»</p>
+            <p className="mesa-jefa-dice">«{G.ARCHIVO.consigna}»</p>
             <Fichas n={fichas1} total={total1} />
             <Abanico ids={ids1} nombres={nombres} abiertos={papelesVistosPaso1(paso1)} sinFichas={fichas1 <= 0} onAbrir={abrirP1} />
             {asombroVisto && (
@@ -513,7 +522,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
 
         {fase === "asombro" && sueno1 && (
           <section className="mesa-bloque">
-            <h2>Lo que encontraste</h2>
+            <h2>{G.ASOMBRO.titulo}</h2>
             {(() => {
               const d = p.cifras.paso1.papeles[sueno1];
               const hoyCol2 = d.col2 === "minutos" ? datosHoy.minutos : datosHoy.animo;
@@ -542,7 +551,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               );
             })()}
             {!asombroListo ? (
-              <Dialogo key="a" p={p} lineas={[{ quien: "jefa", texto: G.ASOMBRO.jefa, pose: "pulgar" }]} onFin={() => setAsombroListo(true)} onLinea={alLinea} />
+              <Dialogo key="a" p={p} lineas={G.ASOMBRO.jefa.map((texto) => ({ quien: "jefa" as const, texto, pose: "pulgar" as const }))} onFin={() => setAsombroListo(true)} onLinea={alLinea} />
             ) : (
               <button type="button" className="mesa-boton" onClick={() => ir("cierre1")}>
                 Seguir ▸
@@ -556,10 +565,8 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
             key="c1"
             p={p}
             lineas={[
-              { quien: "jefa", texto: G.CIERRE_PASO1.jefa[0], tubos: true },
-              { quien: "jefa", texto: G.CIERRE_PASO1.jefa[1] },
-              { quien: "jefa", texto: G.CIERRE_PASO1.jefa[2] },
-              { quien: "beto", texto: G.CIERRE_PASO1.beto },
+              ...G.CIERRE_PASO1.jefa.map((texto, i) => ({ quien: "jefa" as const, texto, tubos: i === 1 })),
+              { quien: "beto" as const, texto: G.CIERRE_PASO1.beto },
             ]}
             onFin={entrarAlCaso2}
             onLinea={alLinea}
@@ -574,19 +581,20 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               <small>{G.CASO2.firmaInforme}</small>
               <Grafica p={p} />
             </article>
-            <Dialogo key="e2" p={p} lineas={[{ quien: "jefa", texto: G.CASO2.jefa }]} onFin={() => ir("archivo2")} onLinea={alLinea} fin="A la carpeta ▸" />
+            <Dialogo key="e2" p={p} lineas={G.CASO2.jefa.map((texto) => ({ quien: "jefa" as const, texto }))} onFin={() => ir("archivo2")} onLinea={alLinea} fin="A la carpeta ▸" />
           </section>
         )}
 
         {(fase === "archivo2" || fase === "frase" || fase === "confirma") && (
           <section className="mesa-bloque">
             <h2>Caso 2 · {G.CASO2.titulo}</h2>
+            <p className="mesa-jefa-dice">«{G.ARCHIVO2.consigna}»</p>
             <Fichas n={fichasRestantes(carpeta2)} total={carpeta2.fichas} />
             <Abanico ids={ids2} nombres={nombres} abiertos={carpeta2.abiertos} sinFichas={fichasRestantes(carpeta2) <= 0} onAbrir={abrirP2} />
             <div className="mesa-corcho">
               <h3>Corcho</h3>
               {carpeta2.abiertos.length === 0 ? (
-                <p className="mesa-pequeno">Los papeles que abras se clavan aquí, por fecha.</p>
+                <p className="mesa-pequeno">{G.ARCHIVO2.corchoVacio}</p>
               ) : (
                 <ul>
                   {[...carpeta2.abiertos]
@@ -598,41 +606,55 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                     ))}
                 </ul>
               )}
+              <p className="mesa-pequeno">{G.ARCHIVO2.corchoMirar}</p>
               <Grafica p={p} />
+              <p className="mesa-pequeno">{G.ARCHIVO2.graficaMirar}</p>
             </div>
+
+            {fase === "archivo2" && carpeta2.abiertos.length === 0 && <p className="mesa-jefa-dice">«{G.ARCHIVO2.sinPapeles}»</p>}
 
             {fase === "archivo2" && (
               <div className="mesa-acciones" role="group" aria-label="Qué haces con el informe">
-                <button
-                  type="button"
-                  className="mesa-boton"
-                  onClick={() => {
-                    setDecision("tal");
-                    setFase("confirma");
-                  }}
-                >
-                  {G.BOTONES_SELLO.tal}
-                </button>
-                <button type="button" className="mesa-boton" onClick={() => setFase("frase")}>
-                  {G.BOTONES_SELLO.frase}
-                </button>
-                <button
-                  type="button"
-                  className="mesa-boton"
-                  onClick={() => {
-                    setDecision("frenar");
-                    setFase("confirma");
-                  }}
-                >
-                  {G.BOTONES_SELLO.frenar}
-                </button>
+                <div className="mesa-opcion">
+                  <button
+                    type="button"
+                    className="mesa-boton"
+                    onClick={() => {
+                      setDecision("tal");
+                      setFase("confirma");
+                    }}
+                  >
+                    {G.BOTONES_SELLO.tal}
+                  </button>
+                  <p className="mesa-pequeno">{G.ARCHIVO2.explicaTal}</p>
+                </div>
+                <div className="mesa-opcion">
+                  <button type="button" className="mesa-boton" onClick={() => setFase("frase")}>
+                    {G.BOTONES_SELLO.frase}
+                  </button>
+                  <p className="mesa-pequeno">{G.ARCHIVO2.explicaFrase}</p>
+                </div>
+                <div className="mesa-opcion">
+                  <button
+                    type="button"
+                    className="mesa-boton"
+                    onClick={() => {
+                      setDecision("frenar");
+                      setFase("confirma");
+                    }}
+                  >
+                    {G.BOTONES_SELLO.frenar}
+                  </button>
+                  <p className="mesa-pequeno">{G.ARCHIVO2.explicaFrenar}</p>
+                </div>
               </div>
             )}
 
             {fase === "frase" && (
               <div className="mesa-frase">
                 <h3>Tu frase para el informe</h3>
-                <p className="mesa-pequeno">Elige 2 o 3 piezas. Cada papel que abres agrega una.</p>
+                <p className="mesa-pequeno">{G.FRASE.instruccion}</p>
+                <p className="mesa-pequeno">{G.FRASE.cadaPapel}</p>
                 <ul>
                   {piezas2.map((x) => {
                     const on = elegidas.some((e) => e.texto === x.texto);
@@ -658,7 +680,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                       setFase("confirma");
                     }}
                   >
-                    Sellar la frase ▸
+                    {G.FRASE.boton}
                   </button>
                   <button type="button" className="mesa-boton sec" onClick={() => setFase("archivo2")}>
                     Volver a los papeles
@@ -667,20 +689,24 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               </div>
             )}
 
-            {fase === "confirma" && (
-              <div className="mesa-confirma" role="alertdialog" aria-label={G.BOTONES_SELLO.confirmaTitulo}>
-                <p>{G.BOTONES_SELLO.confirmaTitulo}</p>
-                <div className="mesa-acciones">
-                  <button type="button" className="mesa-boton" onClick={sellar}>
-                    {G.BOTONES_SELLO.si}
-                  </button>
-                  <button type="button" className="mesa-boton sec" onClick={() => setFase(decision === "frase" ? "frase" : "archivo2")}>
-                    {G.BOTONES_SELLO.no}
-                  </button>
-                </div>
-              </div>
-            )}
           </section>
+        )}
+
+        {fase === "confirma" && (
+          <div className="mesa-lector" role="alertdialog" aria-modal="true" aria-label={G.BOTONES_SELLO.confirmaTitulo}>
+            <div className="mesa-confirma">
+              {carpeta2.abiertos.length === 0 && <p className="mesa-aviso">{G.SIN_PAPELES_AL_FIRMAR}</p>}
+              <p>{G.BOTONES_SELLO.confirmaTitulo}</p>
+              <div className="mesa-acciones">
+                <button type="button" className="mesa-boton" onClick={sellar} autoFocus>
+                  {G.BOTONES_SELLO.si}
+                </button>
+                <button type="button" className="mesa-boton sec" onClick={() => setFase(decision === "frase" ? "frase" : "archivo2")}>
+                  {G.BOTONES_SELLO.no}
+                </button>
+              </div>
+            </div>
+          </div>
         )}
 
         {fase === "reaccion" && reaccion && (
@@ -689,6 +715,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               <Dialogo key="r" p={p} lineas={lineasReaccion} onFin={() => setReaccionFin(true)} onLinea={alLinea} />
             ) : (
               <>
+                {resultado && <p className="mesa-cambio">{G.cambioDeMedidores(resultado)}</p>}
                 {reaccion.tarjetaDeAcuerdo && elegidas.length > 0 && (
                   <article className="mesa-tarjeta">
                     <h3>Acuerdo del consejo</h3>
@@ -712,6 +739,11 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
         {fase === "fin" && (
           <section className="mesa-centro">
             <h2>{G.FIN_DE_LA_PRUEBA.titulo}</h2>
+            {G.cierreDeLaPrueba(med.c, med.voz, nombres[papelFinal], abrioClaveFinal).map((t) => (
+              <p key={t} className="mesa-cambio">
+                {t}
+              </p>
+            ))}
             <p>{G.FIN_DE_LA_PRUEBA.texto}</p>
             <div className="mesa-acciones">
               {esPrueba && (

@@ -1,19 +1,19 @@
 # 07 · Sonido
 
-## Psicoestadística Descriptiva (Psicología) · Tema 1 «La mesa de verificación» · sonido · versión 2 (ajustes del crítico v15: I4 y C8) · 08-10-2026
+## Psicoestadística Descriptiva (Psicología) · Tema 1 «La mesa de verificación» · sonido · versión 2 (ajustes del crítico v15: I4 y C8) · 08-10-2026 · se agrega S.6 «Integración en la pantalla» (09-10-2026)
 
 > **Estado:** entrega de la etapa 4-bis (sonido), para el crítico. Autor: diseñador de sonido. **Sin nota** en este tema.
 > **Parte de:** la narrativa v3.1 (`05`, «Tema 1 · narrativa»: NT1.1 a NT1.11), el bucle (`02`, «Tema 1 · bucle y mecánicas v2»), el aprendizaje (`04`, «Tema 1 · aprendizaje v2.1») y el aspecto A (pixel art a color con luz de lámpara). Los nombres de la sección narrativa son los vigentes (Departamento de Orientación, Voz, Credibilidad, Firmar tal cual / Redactar / Frenar, Horizonte). Lo que digan otros documentos del Tema 1 sobre «redacción» o «editora» es vocabulario viejo y aquí no se usa.
-> **Decisiones de Ronald que se respetan:** música 8 bits por escena (la probó en Flow Music y le gustó mucho); un juego distinto por materia; nada de lo generado se publica sin su revisión de la licencia.
+> **Decisiones de Ronald que se respetan:** música 8 bits por escena (la probó en Flow Music y le gustó mucho); un juego distinto por materia; la licencia de Flow Music la resolvió él el 08-10 («integra, y no vuelvas a preguntar»; ver arriba).
 
-### ⚠ Licencia: NADA de esto se integra ni se publica todavía
+### Licencia de Flow Music: Ronald la autorizó (08-10, vigente)
 
-**Hasta que Ronald revise y confirme los términos de uso de Flow Music** (si permiten una pista generada dentro de un juego universitario publicado en la web), **ninguna pista ni efecto generado se agrega al sitio, a la app ni a ningún repositorio que se publique.** Lo que se genera ahora son **pruebas para escuchar**, guardadas fuera del proyecto. Este documento solo deja escrito qué debe sonar y el pedido para generarlo. Los efectos chicos que se pueden **sintetizar por código** (ver Decisión 2) no dependen de esa licencia.
+**Ronald autorizó integrar la música de Flow Music al juego** (08-10 noche, ante la pregunta «integrar ya o esperar a revisar la licencia» contestó «integra, y no vuelvas a preguntar»; constancia en `docs/juego/RETOMAR.md`, líneas 38, 161 y 166). Por eso **ya no se pregunta por la licencia**: las pistas descargadas pasan a `public/juego/psicoestadistica/audio/` y se publican con el sitio. *Esto reemplaza al aviso anterior («nada se integra»), que quedó viejo desde el 08-10.* Lo que aún no está hecho es lo práctico: descargar los archivos, recortarlos y cargarlos (ver S.6). Los efectos chicos se sintetizan por código (Decisión 2) y nunca dependieron de esa licencia.
 
 ### Decisiones pendientes de Ronald
 
-1. **Licencia de Flow Music** (ver arriba). Es suya; bloquea toda integración.
-2. **Efectos chicos: ¿por código o por Flow?** Recomendado: **sintetizarlos por código** los 9 efectos más simples (E01 a E05 y E10 a E13: clics, teclas, ticks, campanilla de ayuda, notas de las fichas), porque no gastan créditos, pesan casi nada y no dependen de la licencia; y pedir a Flow solo los 4 con carácter (teléfono, pulgar arriba, cabeza entre las manos, sobre). Alternativa: todo en Flow (más créditos, más peso, más dependencia de la licencia).
+1. **Licencia de Flow Music: resuelta por Ronald el 08-10** (ver arriba). Ya no es una decisión pendiente.
+2. **Efectos chicos: ¿por código o por Flow? Decidida el 09-10 (Ronald delegó): TODOS por código.** Antes se recomendaba dejar a Flow los 4 con carácter (sobre, teléfono, pulgar, cabeza). Se cambia: en 8 bits un teléfono, dos notas que suben o dos que bajan y un roce de papel son ondas cuadradas y ruido, que el navegador fabrica sin descargar nada, sin gastar créditos y sin esperar la prueba de «Crear FX». Quedan 14 efectos por código (E01 a E14); Flow se usa solo para música. Si Ronald oye el teléfono y no le gusta, se pide a Flow solo ese, más adelante.
 3. **Orden de generación para cuidar créditos.** Cada pedido devuelve 2 versiones y gasta 2 generaciones del plan gratuito. Recomendado: primero **3 pedidos** (Arranque, Caso 2 y Revelación = 6 generaciones), Ronald los escucha, y recién después se piden los demás. Si no le gusta el rumbo, no se gastó el resto.
 4. **Decidida A, 08-10: la jefa del Tema 1 (`06` I2).** Ronald eligió la opción A (la jefa en la sala, sin vidrio ni sello; el cierre es una firma a lapicera con el timbre del colegio), así que **E04 pasa a pluma y timbre**: el rasgueo de la pluma y el golpe de un timbre, con el mismo timbre para los tres botones y un tono neutro distinto cada uno (como ya decía E04 desde la v2). Ya no hay golpe de sello de la jefa en ninguna hoja ni en el kit.
 5. **Decidida, 08-10, aplicada: el caso 5 (`06` I7).** Ronald eligió lo recomendado: en el turno 1 la aprobación de las opciones la da Beto o Ugarte, no la jefa con el pulgar; la jefa solo hace una pregunta neutra. Por eso **se quitó E08 del turno 1 de S5** y la excepción de S.0 sobre el pulgar del caso 5 desapareció. El turno 2 sigue igual. Cuando Beto o Ugarte aprueban, el sonido **no suena a acierto**: su reacción es visible y no es una nota (no se inventó ningún efecto).
@@ -81,14 +81,15 @@ Un efecto igual para toda situación equivalente. Marca de origen: **[C]** = sin
 | E03 | Escribir un número | Un blip de onda cuadrada por dígito, **siempre el mismo tono** (que no suene a más ni a menos). | [C] |
 | E04 | Sellar | Los tres botones con **el mismo timbre** (un clic corto de onda de pulso) y un **tono neutro distinto** cada uno (Firmar tal cual = grave, Redactar = medio, Frenar = agudo); **iguales en toda versión**, sin carga de «bueno» ni de «malo» (`06` I4.1). *Decisión 4 (decidida A, 08-10): suena a pluma y timbre; el rasgueo de la pluma y luego el golpe de un timbre, sin sello.* | [C] |
 | E05 | «¿Firmar? Después no hay vuelta» | Una nota baja sostenida de ~1 s que se corta cuando respondes. | [C] |
-| E06 | Cae el sobre de la jefa | Deslizar de papel y golpe suave sobre la mesa; **idéntico para todo sobre**, diga lo que diga, y solo cuando el sobre se ve caer. | [F] |
-| E07 | Teléfono que suena | Doble tono clásico de teléfono en 8 bits, un timbre por quien llama; solo suena **junto a la llamada visible**. | [F] |
-| E08 | Pulgar arriba | Dos notas cuadradas ascendentes, suaves; solo con la pose visible. | [F] |
-| E09 | Cabeza entre las manos | Dos notas triangulares descendentes, bajas; solo con la pose visible. | [F] |
+| E06 | Cae el sobre de la jefa | Deslizar de papel y golpe suave sobre la mesa; **idéntico para todo sobre**, diga lo que diga, y solo cuando el sobre se ve caer. | [C] (antes [F]; S.6) |
+| E07 | Teléfono que suena | Doble tono clásico de teléfono en 8 bits, un timbre por quien llama; solo suena **junto a la llamada visible**. | [C] (antes [F]; S.6) |
+| E08 | Pulgar arriba | Dos notas cuadradas ascendentes, suaves; solo con la pose visible. | [C] (antes [F]; S.6) |
+| E09 | Cabeza entre las manos | Dos notas triangulares descendentes, bajas; solo con la pose visible. | [C] (antes [F]; S.6) |
 | E10 | Medidor sube o baja | Blip corto hacia arriba o abajo mientras el tubo se mueve; a 25 o menos, tres pitidos graves de aviso. | [C] |
 | E11 | Ayuda que baja (escalera) | Campanilla descendente de cuatro notas, neutra; no dice si ayudó. | [C] |
 | E12 | Dar vuelta una ficha | Nota de una escala ascendente de 8 sonidos: **la ficha número n suena siempre igual**, tenga la rama que tenga (ver S9). | [C] |
 | E13 | Sonido de interfaz | Clic mínimo al silenciar o activar el sonido. | [C] |
+| E14 | Clic de elección (nuevo, 09-10) | Tick corto de onda de pulso, siempre el mismo, para elegir o quitar una pieza de la frase, volver atrás o tocar un botón de menú; no dice si la elección es buena. | [C] |
 
 **Prompt de prueba para Flow («Crear FX»), una sola vez, para ver cómo responde** (pide el teléfono, que es el efecto que más carácter necesita; con ese resultado se decide cómo pedir E06, E08 y E09):
 
@@ -238,7 +239,7 @@ Un efecto igual para toda situación equivalente. Marca de origen: **[C]** = sin
 1. **Las 3 primeras pruebas** (S0, S2, S9): ¿se sienten como una oficina de psicólogo de noche? ¿la tensión y la calma se distinguen? ¿se pueden recortar en los compases pedidos?
 2. **Si el bucle empalma** (el final con el inicio de A) y si Flow respeta las secciones en la línea de tiempo.
 3. **La Decisión 2** (efectos por código o por Flow).
-4. **La licencia de Flow Music** (suya). Hasta entonces: solo pruebas, nada se integra.
+4. **La licencia de Flow Music: resuelta** (Ronald, 08-10: «integra»). Lo que Ronald hace ahora está en S.6, punto 6.
 5. **Dos decisiones** (Decisiones 4 y 5): la jefa de `06` I2, **decidida A el 08-10 y aplicada** (E04 pasa a pluma y timbre), y el caso 5 de `06` I7, **decidida lo recomendado el 08-10 y aplicada** (se quitó E08 del turno 1 de S5).
 
 ## S.5 Avisos a otras partes
@@ -246,6 +247,164 @@ Un efecto igual para toda situación equivalente. Marca de origen: **[C]** = sin
 - *Narrativa:* los gestos de sonido de NT1.11 (teléfono, pluma y timbre, taza) están en el kit (E04, E07, S10). No se tocó ningún texto del alumno. *Narrativa (v15 I4.4):* el ánimo del caso 2 pasó a curioso y neutro; encaja con la jefa que dice «número redondo» (ajuste 28 de NT1.11).
 - *Construcción:* un módulo de audio propio (`src/lib/juego/` según la regla de motor común), que (a) no suene hasta el primer toque, (b) tenga botón de silenciar visible con estado guardado en una clave nueva, (c) cargue solo la pista de la escena y la corte con fundido, (d) tenga los efectos [C] como funciones de Web Audio con pruebas. Un cambio nativo en la app no hace falta (el sitio carga igual). **No se escribió código.**
 - *Crítico:* revisar la regla de oro (S.0) contra las 11 hojas y que ningún efecto marque correcto o incorrecto antes del mundo.
+
+---
+
+## S.6 Integración en la pantalla (09-10)
+
+> **Para qué sirve:** dice qué suena en cada parte de la pantalla jugable que ya existe (`src/app/juego-psicoestadistica/Mesa.tsx`), con qué archivos y con qué reglas, para que la construcción lo programe sin inventar nada. **No se tocó código.** Hoy el proyecto **no tiene ningún sonido** (búsqueda en `src/`: solo aparecen palabras ajenas, «Editor de audio» en una plantilla financiera). La pantalla cubre el Paso 1 (hoja S1), el Caso 2 (hoja S2), el título (S0) y el fin; los casos 3 a 8 y la revelación (S9, S10) se suman después **sin tocar lo que ya funciona**.
+> **Decisiones tomadas por mí** (Ronald delegó: «tú eres el experto»). Una opción por tema, sin menús.
+
+### S.6.1 Qué música suena en cada parte de la pantalla
+
+La pantalla tiene 13 partes («fases»). La regla de siempre: **la música sigue el momento que ya se ve** (fichas que quedan, botón «¿Firmar?»), nunca lo adelanta. Capas: **A** calma, **B** duda, **C** tensión, **D** remate de una sola vez. El pase de una capa a otra es un **fundido cruzado de 1 segundo** (0,3 s si el sistema pide «reducir movimiento»), que empieza en el momento del cambio, sin esperar al compás; el fundido tapa el empalme. La capa nueva arranca desde su inicio.
+
+| Fase de pantalla | Música | Cuándo entra | Cuándo cambia o se corta | Bucle |
+|---|---|---|---|---|
+| **titulo** | Ninguna | La pantalla de título está en silencio: el navegador no deja sonar hasta el primer toque | Al tocar «Empezar», «Continuar donde quedé» o «Empezar de nuevo» (el primer toque) entra la música de la fase que sigue, con **entrada gradual de 1,5 s**. Si se retoma, entra la pista de la fase donde se retoma | no aplica |
+| **bienvenida** | S0 capa A | Con el primer toque | Sigue mientras se leen las tarjetas | Sí (S0-A, ~29 s) |
+| **jefa** | S0 capa A, luego S0 capa B | A durante «Llegaste al escritorio…»; **B entra con la segunda línea de la jefa** («Primer encargo de la noche…», la hoja S0 lo pide así) | B sigue durante el encargo | Sí (S0-B, ~14,5 s) |
+| **hoja** | S0 capa B | Sigue de la fase anterior | Se corta con fundido de 2 s al pasar a archivo1 | Sí |
+| **archivo1** | S1 capa A; B con 1 ficha; C con 0 fichas | Fundido de 2 s desde S0. **B** entra cuando queda **1 ficha** (el contador se ve). **C** entra cuando quedan **0 fichas y aún no apareció el papel con el sueño** (el contador en 0 se ve) | Si el alumno abre el papel con el sueño, pasa a asombro. Lo que regala la jefa o abre Dani **no cambia la capa** | Sí (S1-A ~23 s; S1-B y S1-C ~11,5 s) |
+| **asombro** | S1 capa D, **una sola vez** | **Cuando la tabla de las dos filas ya está en pantalla** (nunca al abrir el papel, para no delatar cuál era) | Termina sola (~6 s) y vuelve S1-A, más baja (60 %) | No (una vez) y luego A en bucle |
+| **cierre1** | S1 capa A | Sigue | Fundido de 2 s a S2 al pasar a entrada2 | Sí |
+| **entrada2** | S2 capa A | Fundido de 2 s desde S1 | Sigue en la fase archivo2 | Sí (S2-A ~25 s) |
+| **archivo2** | S2 capa A; B con 1 ficha | **B** cuando queda **1 ficha** | Pasa a C si aparece «¿Firmar?» (fase confirma) | Sí (S2-B y S2-C ~12,5 s) |
+| **frase** | La que estaba (A o B) | Sigue sin cambiar | Pasa a C si aparece «¿Firmar?» | Sí |
+| **confirma** | S2 capa C | **Cuando aparece «¿Firmar? Después no hay vuelta.»** (se ve en pantalla), junto con E05 | Si el alumno vuelve atrás («No»), regresa a la capa que tenía (A o B). Si confirma, pasa a reaccion | Sí |
+| **reaccion** | S2 capa A, más baja (60 %) | Al sellar, la música vuelve a la calma. **Un medidor en 25 o menos** la pasa a C (se ve en el tubo) | Cuando suena el teléfono de la madre la música baja a 20 % durante 1,5 s y vuelve | Sí |
+| **fin** | S10 capa A (**cuando exista**) | Fundido de 2 s desde S2 | Hasta salir de la pantalla. **Mientras S10 no esté generada, el fin queda en silencio** (la música de S2 se apaga con fundido de 3 s); no se usa ninguna otra pista como relleno | Sí (S10-A, 32 s) |
+
+**Cuántas pistas ya tienen sus tramos:** S0 (A, B), S1 (A, B, C, D), S2 (A, B, C) y S10 (A y cola de 2 compases, ver abajo). **Si un tramo no existe todavía (B o C), la pantalla se queda en la capa A:** el juego no se rompe y el aviso de «¿Firmar?» (E05) y los tubos siguen dando la tensión.
+
+**Primera versión (lo mínimo que se oye bien):** A en S0, S1 y S2 más lo demás cuando Ronald apruebe los recortes. Ver S.6.5.
+
+### S.6.2 Qué efecto suena en cada cosa que pasa
+
+Todos los efectos se **sintetizan por código** (ondas cuadradas, triángulo y ruido). **Decisión 2 final:** los 14 por código; ninguno por Flow. Cada efecto tiene su equivalente visible, así que sin sonido el juego se entiende igual.
+
+| Qué pasa en la pantalla | Efecto | Origen | Equivalente visible (sin sonido) |
+|---|---|---|---|
+| Tocar «Empezar», «Continuar» o «Empezar de nuevo» (primer toque) | Ninguno; solo arranca la música | [C] | El cambio de pantalla |
+| Pasar una línea de diálogo (botón ▸) | Ninguno (se oiría cientos de veces) | no aplica | El texto nuevo |
+| Silenciar o activar el sonido | **E13** | [C] | El icono cambia |
+| Tocar «Mis propias respuestas», «Atrás», «Volver a los papeles», «Jugar otra versión», «Repetir», «Volver a la materia» | **E14** | [C] | Cambia la pantalla |
+| Escribir en las casillas de la hoja (cada dígito) | **E03**, siempre el mismo tono | [C] | El número escrito |
+| Contestar la hoja (botón de Dani o «Seguir ▸» con las casillas bien) | **E02** | [C] | Se pasa al archivo |
+| Dani cabecea (tarda 25 s) | **Soplo de Dani** (propio de S0; aire suave, sin notas que bajen) | [C] | La silueta se mueve |
+| Abrir un papel nuevo (caso 1 o 2) | **E01** y luego **E02** (se gasta la ficha); idénticos para todo papel | [C] | El papel se abre y baja el contador |
+| Volver a leer un papel ya abierto | **E01** solamente (no gasta ficha) | [C] | El papel se abre |
+| Cerrar el lector de un papel | Ninguno | no aplica | Se cierra |
+| Aviso de la jefa que regala una ficha | **E11** (campanilla descendente, neutra, no dice si ayudó) | [C] | La línea de la jefa y el contador que sube |
+| Dani abre el papel por ti | **E11**; luego **E01** cuando se abre el lector | [C] | Línea de Dani y el papel abierto |
+| Aparece la tabla del asombro (dos filas) | **Solo la capa D de la música** (S.6.1). La nota larga ascendente de la hoja S1 **no se usa en esta primera versión**, para que no choque con D | [C] | Las dos filas de la tabla |
+| La jefa levanta el pulgar en el asombro | **Ninguno** (la hoja S1 dice que no suena acierto en el Paso 1) | no aplica | La pose |
+| Aparecen los tubos (primera línea del cierre del Paso 1) | **E10** | [C] | Se ven los tubos |
+| Colgar un papel en el corcho (Caso 2, al cerrar el lector de un papel nuevo) | **Pluck de corcho** (propio de S2), igual para todo papel | [C] | El papel aparece en la lista del corcho |
+| Tocar «Firmar tal cual», «Redactar» o «Frenar» | **E04 primera parte** (clic con tono neutro: grave, medio o agudo), igual en toda versión | [C] | El botón se aprieta y aparece «¿Firmar?» |
+| Elegir o quitar una pieza de la frase | **E14** | [C] | La pieza queda marcada |
+| «Sellar la frase ▸» | **E04 primera parte**, tono medio (Redactar) | [C] | Aparece «¿Firmar?» |
+| Aparece «¿Firmar? Después no hay vuelta.» | **E05** (nota baja de ~1 s que se corta al responder) | [C] | El mensaje en pantalla |
+| Responder «No» (volver) | **E14**; se corta E05 | [C] | Se vuelve a los papeles o a la frase |
+| Responder «Sí» (sellar) | **E04 segunda parte**: pluma y timbre, igual para los tres botones (Decisión 4); se corta E05 | [C] | Empieza la reacción |
+| Los tubos se mueven | **E10** (blip arriba o abajo según el tubo); un medidor en **25 o menos** suma tres pitidos graves | [C] | El tubo sube o baja y se ve el número |
+| La jefa levanta el pulgar (solo en la fase de reacción) | **E08** | [C] | La pose |
+| La jefa esconde la cabeza (solo en la reacción) | **E09** (en esta primera versión no se calla el bajo un compás, como pedía S2: la música es un tramo ya grabado y no se puede quitar un canal; suena solo E09) | [C] | La pose |
+| Suena el teléfono de la madre (línea de la madre) | **E07**; la música baja a 20 % mientras suena | [C] | El teléfono vibra en la escena y sale el globo |
+| Aparece la tarjeta «Acuerdo del consejo» | Ninguno (el sonido no premia ni castiga) | no aplica | La tarjeta |
+| Cae el sobre de la jefa (aparece la tarjeta «Sobre de la jefa») | **E06**, igual para todo sobre | [C] | La tarjeta |
+| Botón «Continuar ▸» tras la reacción | **E14** | [C] | Cambia la pantalla |
+| Llegar al fin | Se apaga la música con fundido (o entra S10-A si existe) | [C] | El texto de fin |
+
+Efectos que **todavía no se usan** porque su escena no está: E12 (fichas de la revelación), la taza de Beto (S10), pasar el calendario (S8), las máquinas de los casos 3 a 8. El kit S.2 los conserva.
+
+### S.6.3 Reglas de uso
+
+1. **Volumen relativo** (cifras de partida para probar, escala 0 a 1): música **0,30**; efectos **0,55**; los avisos que acompañan a una pose o llamada (E07, E08, E09, E06) **0,65**. Cuando suena el teléfono de la madre, la música baja a **0,20** de su volumen normal durante 1,5 s. Nunca dos efectos de aviso al mismo tiempo: si se encima uno nuevo, el anterior se corta. Ronald ajusta estos números al escucharlo.
+2. **La música no tapa ni sustituye nada.** Todo lo importante sigue escrito en la pantalla (frases, contador, tubos, «¿Firmar?»). Quitar el sonido no cambia nada de lo que el alumno puede entender o decidir.
+3. **Botón de silencio**, siempre visible en todas las fases (arriba a la derecha, con un área táctil de unos 44 px y el texto «Sonido: sí / no» para el lector de pantalla). **Se recuerda** en el navegador del alumno, en una clave nueva y común a todos los juegos: `ron-doc-juego:sonido` (valor `si` o `no`). Silenciar corta música y efectos; el estado se aplica al volver a jugar.
+4. **«Sin sonido» del sistema:** el navegador no deja leer si el teléfono tiene el sonido apagado, pero un teléfono en silencio ya no emite nada, así que no hace falta nada más. Sí se lee **reducir movimiento** (`prefers-reduced-motion`): no silencia, pero los cruces de música pasan de 1 s a 0,3 s y la música no baja y sube al sonar el teléfono (queda fija). Honestidad: esta preferencia es sobre movimiento; el sonido lo controla el botón de silencio.
+5. **El audio solo arranca tras el primer toque** (regla de autoplay de los navegadores). El primer toque es el de «Empezar», «Continuar» o «Empezar de nuevo» de la pantalla de título; en ese mismo toque se «despierta» el sonido del navegador. En la app de Android (que carga el mismo sitio) vale lo mismo; no se depende de ninguna configuración especial del teléfono. Si el alumno entra por un enlace que lo lleva a otra fase, suena tras su primer toque en cualquier botón.
+6. **Se pausa en segundo plano:** si la pestaña se oculta (otra pestaña, pantalla apagada) o la app pasa a segundo plano, la música y los efectos se pausan; al volver siguen donde iban, sin salto. Si el teléfono recibe una llamada, el sistema ya corta el audio.
+7. **Si un archivo no existe o no carga:** silencio en esa capa y el juego sigue como si nada, sin mensaje de error. Si falta B o C, se sigue en A (S.6.1). Si el navegador no tiene sonido (sin Web Audio), el botón de silencio se esconde y el juego funciona igual.
+8. **Carga:** al entrar a una escena se carga **solo su pista** (más la de la escena que sigue, en segundo plano, para que el cambio no se corte); nunca todas juntas. Los archivos de audio **no** se precargan en el almacenamiento sin red del sitio (los efectos no pesan, la música se pide cuando hace falta).
+9. **Ni música ni efectos se parecen a los de otro juego:** esta paleta es del Tema 1 (noche, lámpara, oficina). Otras materias harán la suya desde cero.
+
+### S.6.4 Archivos
+
+- **Formato:** **MP3, 96 kbps, estéreo** para todas las pistas. Se elige MP3 y no OGG porque es el que suenan sin excepciones los navegadores de celular y la app. El defecto del MP3 es un pequeño hueco al repetir un bucle; se resuelve al recortar (cada tramo ya lleva un fundido cruzado de 100 a 200 ms entre su final y su principio, S.6.5) y por el fundido de 1 s al cambiar de capa.
+- **Peso:** tope **400 KB por archivo** (un tramo de 8 compases dura de 22 a 32 s y pesa de 270 a 390 KB). Estimado para lo jugable ahora: **11 tramos, unos 2,2 MB en total** (cuenta con un script: 12 KB por segundo, sin medir todavía; se mide con los archivos reales). Una escena carga unos 0,3 a 0,8 MB.
+- **Carpeta:** `public/juego/psicoestadistica/audio/`. Los archivos **crudos** de Flow (de unos 3 minutos y 3 MB cada uno) **no se suben al repositorio**: quedan fuera del proyecto y de ahí se recortan.
+- **Nombres estables** (en minúscula, sin espacios, `escena-capa.mp3`; no se renombran después): `s0-a.mp3`, `s0-b.mp3`, `s1-a.mp3`, `s1-b.mp3`, `s1-c.mp3`, `s1-d.mp3`, `s2-a.mp3`, `s2-b.mp3`, `s2-c.mp3`, `s10-a.mp3`, `s10-cola.mp3`. Más adelante: `s3-a.mp3` y siguientes, y `s9-a.mp3`, `s9-b.mp3`.
+- **Manifiesto** (un solo archivo que el código lee, `public/juego/psicoestadistica/audio/manifiesto.json`): para **sumar una pista basta con agregarla ahí**, sin tocar la pantalla. Forma:
+
+```json
+{
+  "version": 1,
+  "volumen": { "musica": 0.30, "efectos": 0.55, "avisos": 0.65 },
+  "pistas": {
+    "s0-a": { "archivo": "s0-a.mp3", "bucle": true,  "volumen": 1.0, "duracion": 29.1 },
+    "s0-b": { "archivo": "s0-b.mp3", "bucle": true,  "volumen": 1.0, "duracion": 14.5 },
+    "s1-d": { "archivo": "s1-d.mp3", "bucle": false, "volumen": 1.0, "duracion": 5.7 }
+  },
+  "escenas": {
+    "s0": { "calma": "s0-a", "duda": "s0-b" },
+    "s1": { "calma": "s1-a", "duda": "s1-b", "tension": "s1-c", "remate": "s1-d" },
+    "s2": { "calma": "s2-a", "duda": "s2-b", "tension": "s2-c" }
+  }
+}
+```
+
+  Reglas del manifiesto: la capa que falte se reemplaza por `calma`; `bucle: false` suena una vez y vuelve a `calma`; `volumen` de cada pista es un ajuste fino (1,0 por defecto) que se multiplica por el volumen de música. La relación entre fase de pantalla y escena (S.6.1) queda en una función corta del código con sus pruebas, no en el manifiesto.
+
+### S.6.5 Cómo se recorta la pista de Flow (lo hace la sesión, no Ronald)
+
+Flow entrega pistas de unos 3 minutos (no respeta la duración pedida). Por cada pista cruda, la sesión **mide el pulso** con las herramientas ya instaladas (`ffmpeg`, `librosa`), elige cortes en el primer tiempo de un compás y en un valle de energía, une el final con el principio con un fundido cruzado de 100 a 200 ms y exporta a MP3 96 kbps. **Lo que suene mal lo decide el oído de Ronald**: cada recorte se entrega primero para escuchar, y recién cuando él dice «ok» entra a `public/`. Si en la pista cruda no hay secciones distintas (como en la «Pixel Pulse» de S2, que se pidió con una sola atmósfera), se recorta solo la capa A y B y C quedan para una segunda generación (S.6.6).
+
+### S.6.6 Lista exacta de lo que Ronald debe bajar de Flow Music
+
+Estado según este archivo y las notas del agente (`.claude/agents/disenador-de-sonido.md`). Los archivos se bajan **de a uno, con el permiso de Ronald en el chat** (nombre, origen y tamaño), a una carpeta **fuera del proyecto** (por ejemplo `Descargas\musica-t1\`); la sesión recorta y sube los tramos finales.
+
+| # | Escena | Estado | Qué bajar (nombre en Flow) | Archivo crudo | Tramos finales |
+|---|---|---|---|---|---|
+| 1 | S0 Arranque | **Ya generada** (2 pistas; Ronald: «suena a una escena de noche medio tensa, está bien») | «**Restructured 8-Bit Chiptune**» (2:56; trae dos secciones separadas que Ronald sí sintió distintas) | `crudo-s0.mp3` | `s0-a.mp3`, `s0-b.mp3` |
+| 2 | S2 Caso 2 | **Ya generada** («Pixel Pulse», 2:47, una sola atmósfera; sin reestructurar) | «**Pixel Pulse**» | `crudo-s2.mp3` | `s2-a.mp3` ahora; `s2-b.mp3` y `s2-c.mp3` después (ver abajo) |
+| 3 | S1 Caso 1 | **Falta generarla** (la hoja S1 existe, no hay pista) | Pedirla con el prompt de abajo, bajar la mejor | `crudo-s1.mp3` | `s1-a.mp3`, `s1-b.mp3`, `s1-c.mp3`, `s1-d.mp3` |
+| 4 | S10 Cierre (suena en la fase «fin») | **Falta generarla** | Pedirla con el prompt de abajo | `crudo-s10.mp3` | `s10-a.mp3`, `s10-cola.mp3` |
+| 5 | S9 Revelación | **Ya generada** («Reflective Cards Loop» 2:08 y «Take 2» 2:58) | **No hace falta ahora**: la revelación no está en la pantalla. Se baja cuando se construya | `crudo-s9.mp3` | `s9-a.mp3`, `s9-b.mp3` |
+
+Total ahora: **4 descargas** (S0, S2 y las dos nuevas) y **2 pedidos nuevos a Flow** (S1 y S10; un pedido devuelve una canción en el modo Producer). Costo en créditos: **no se ve en pantalla** (el contador de la esquina son puntos de progreso); el plan de Ronald es PLUS.
+
+**Para S2, B y C:** la pista bajada es de una sola atmósfera. Recomendación: **primero jugar con solo la capa A** y escuchar; si Ronald quiere sentir los cambios, se pide **una** reestructura al Producer (una generación): «Restructure this track in two clearly separate sections, with one second of near silence between them: first section 8 bars calm and steady, second section 8 bars tense, lower, with the arpeggio doubled in speed. Keep the same instruments and tempo.» Eso da B y C de S2.
+
+**Prompt para S1** (versión con «Structure:» en lugar de tiempos en segundos, porque el Producer los ignora; después de generar, pedir la reestructura de abajo):
+
+> Instrumental 8-bit chiptune loop for a pixel art game scene: rummaging through old school archives in a night office, opening drawers and folders, curious and playful. 84 BPM, G major. Bouncy pulse-wave melody, light square-wave arpeggio, walking triangle-wave bass, soft noise like a drawer sliding. Structure: section A is 8 bars, curious loop; section B is 4 bars, the bass pauses every second bar, hesitant; section C is 4 bars, lower register with dry noise on every beat, tense; section D is 2 bars, a small bright rising flourish that resolves warmly, like discovering something. No vocals, no lyrics. Seamless loop, clean mix, NES era sound.
+
+Reestructura para S1 (segundo paso): «Restructure this track in four clearly separate sections with one second of near silence between them: A 8 bars curious and playful, B 4 bars hesitant with the bass pausing, C 4 bars lower and tense with dry noise on every beat, D 2 bars a short bright rising flourish. Keep the same instruments and tempo.»
+
+**Prompt para S10** (misma regla, sin tiempos):
+
+> Instrumental 8-bit chiptune loop for a pixel art game scene: the closing of a night in a school psychologist's office, thoughtful and open-ended, the feeling that this is only the beginning. 60 BPM, G major, ending on an unresolved suspended chord. Soft triangle-wave pad, slow square-wave arpeggio, a gentle pulse-wave melody that asks a question. Structure: section A is 8 bars, a thoughtful loop; then a 2-bar tail with a held suspended chord that fades out without resolving. No vocals, no lyrics. Seamless loop, clean mix, NES era sound.
+
+### S.6.7 Cómo probarlo y qué aprender
+
+1. **La sesión de construcción** programa el módulo de audio según S.6.1 a S.6.4 y lo prueba con pruebas automáticas (que ninguna fase falte, que sin archivos no falle, que silenciar corte todo). **Eso no sustituye el oído de Ronald.**
+2. **Ronald juega una vez completa** (título a fin) en el celular, con audífonos y sin ellos, y me dice (en palabras simples, sin números):
+   - ¿La música de cada parte se parece a lo que pasa (curiosa en el archivo, neutra en el corcho, tensa en «¿Firmar?»)?
+   - ¿Los cambios (la duda, la tensión, el remate al aparecer las dos filas) se sienten naturales o se notan como un corte?
+   - ¿El bucle se repite sin que se note el salto?
+   - ¿Algún sonido te hizo pensar «lo hice bien» o «lo hice mal» antes de que lo dijera la jefa? **Si pasó, es un error grave**: se corrige primero.
+   - ¿La música cansa, tapa algo o está muy fuerte? ¿Los efectos suenan bien o molestan (en especial el teléfono, que es el más fuerte)?
+   - ¿Se entiende todo con el sonido apagado?
+3. **Se mide aparte** (la sesión): el peso real de cada archivo, el salto de volumen en cada empalme y que nada suene antes del primer toque.
+4. **Qué se anota en «Lo aprendido»** del agente (`.claude/agents/disenador-de-sonido.md`) después de la prueba: qué dijo Ronald de cada punto de arriba, el peso real, si el bucle empalma, si el Producer respetó la reestructura de S1, y si los efectos por código bastan o hay que pedir alguno a Flow.
+
+### S.6.8 Qué falta
+
+- **Ronald:** bajar las dos pistas ya generadas (S0 y S2), decidir si se piden S1 y S10 a Flow (dos pedidos) y escuchar la prueba.
+- **Construcción:** el módulo de audio, el botón de silencio y las pruebas (todavía no escrito).
+- **Sonido (yo):** al llegar los casos 3 a 8 y la revelación, sumar su fila de eventos a la tabla S.6.2 y sus pistas al manifiesto.
 
 ---
 
@@ -268,7 +427,8 @@ Los conteos salen de búsquedas sobre este archivo con la herramienta Grep (sin 
 | Ajustes del crítico v15: I4 (cinco sonidos que juzgan) y C8 (huecos y descuidos) | I4.1 en E04; I4.2 en S0; I4.3 en S5; I4.4 en S1 y S2; I4.5 en S3; C8a en Decisión 2; C8b en «Peso»; C8c en S1 a S8 y E06/E07; C8d y C8e en S2 y S.0; C8f en S7; C8g en S4; C8h en S10; C8i en cabeceras. Búsqueda con Grep de cada cambio | ✔ (a mano; el crítico recuenta con script) |
 | C6 (dos líneas de la jefa y de Ugarte) | **No toca al sonido:** `07` no cita ninguna de las dos frases (Grep de las dos frases fuera de esta fila: 0); las corrige `disenador-narrativo` | ✔ (no aplica) |
 | Decisiones de Ronald (jefa `06` I2: decidida A, 08-10, aplicada; caso 5 `06` I7: decidida, 08-10, aplicada) | Decisión 4 aplicada; Decisión 5 «decidida, 08-10, aplicada» (E08 fuera del turno 1 de S5; S.0 y S.4 al día) | ✔ |
-| Licencia pendiente de Ronald, dicha en el documento | sección «⚠ Licencia» al principio | ✔ |
+| Licencia de Flow Music | sección «Licencia de Flow Music: Ronald la autorizó (08-10, vigente)» al principio, con cita de `RETOMAR.md`; ya no se pregunta | ✔ |
+| S.6 Integración (09-10): tabla fase a pista (13 fases), tabla evento a efecto, reglas, archivos y manifiesto, lista de descargas, prueba | Script de recuento (13 fases, ids de efecto E01 a E14 todos definidos en S.2, eventos de `Mesa.tsx` cubiertos); ver resumen de la entrega | ✔ |
 | Cada escena, su propia música; ninguna copiada de otra materia | tabla S.1: 11 filas; 9 BPM distintos (66, 84, 76, 108, 92, 72, 96, 88, 80) más 60 repetido en S9 y S10, y tonalidades distintas salvo Sol mayor en S1, S9 y S10; la paleta general se declara propia del Tema 1 | ✔ (S9 y S10 comparten tempo y tonalidad a propósito, son dos momentos del mismo cierre) |
 | Oficio de la carrera (3 líneas) | Carrera: Psicología. Oficio: psicólogo o psicóloga de colegio que verifica afirmaciones con datos. Papel del jugador: psicólogo del Departamento de Orientación (vigente en `05` NT1.1 a NT1.3). Las 11 hojas usan oficina, papeles, teléfono, sala de dirección | ✔ |
 | Tuteo y sin guiones largos | Grep de «—» y de 9 formas de voseo: 0 coincidencias salvo esta misma línea de la tabla. `buscar_voseo.py` sin correr (ver pendientes) | ✔ (Grep) |

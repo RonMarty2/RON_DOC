@@ -141,3 +141,11 @@
   .mesa-acciones { grid-auto-flow: column; }
 }
 @media (prefers-reduced-motion: reduce) { .mesa-tubo-tinta { transition: none; } }
+
+/* Orientación v16 */
+.mesa-opcion { display: grid; gap: 4px; align-content: start; }
+.mesa-opcion .mesa-pequeno { font-size: 18px; }
+.mesa-tubo-rotulo { color: var(--m-tenue); font-size: 18px; }
+.mesa-aviso { color: var(--m-ambar); font-size: 23px; }
+.mesa-cambio { color: var(--m-ambar); font-size: 22px; }
+.mesa-lector .mesa-confirma { width: 100%; max-width: 460px; }

@@ -1,0 +1,527 @@
+{
+ "_aviso": "Generado por docs/juego/gdd/scripts-t1/exportar_papeles_t1.py desde 05-mundo-y-narrativa.md. No editar a mano.",
+ "papeles": {
+  "C1-1": {
+   "nombre": "Cuaderno de la enfermería",
+   "textos": {
+    "*": "Cuaderno de enfermería, {colegio}. Ficha de ingreso, fila de ejemplo: horas dormidas {horasAnt} · {col2Ant}. Fecha: {fechaAnio}. Anotado por la enfermera Elvira."
+   }
+  },
+  "C1-2": {
+   "nombre": "Encuesta anual de la secretaría",
+   "textos": {
+    "*": "Secretaría de {colegio}. Encuesta de inicio de año, por curso. Columnas: horas dormidas · {col2}. Fila de ejemplo: {horasAnt} · {col2Ant}. Fecha: {fechaAnio}."
+   }
+  },
+  "C1-3": {
+   "nombre": "Informe del orientador",
+   "textos": {
+    "*": "Informe del orientador, {colegio}. Antes de cada entrevista, una ficha de dos líneas: horas dormidas · {col2}. Ejemplo: {horasAnt} · {col2Ant}. Fecha: {fechaAnio}."
+   }
+  },
+  "C1-4": {
+   "nombre": "Registro de tardanzas",
+   "textos": {
+    "*": "Registro de tardanzas del trimestre. Columnas: fecha · curso · hora de llegada · motivo anotado («lluvia», «bloqueo», «se perdió el micro»)."
+   }
+  },
+  "C1-5": {
+   "nombre": "Planilla de notas",
+   "textos": {
+    "*": "Notas del trimestre por materia y curso. Promedios sin nombres, para el consejo de profesores."
+   }
+  },
+  "C1-6": {
+   "nombre": "Lista de talleres",
+   "textos": {
+    "*": "Talleres del colegio: teatro, ajedrez, huerto, radio escolar. Inscripción abierta en secretaría."
+   }
+  },
+  "C1-7": {
+   "nombre": "Acta de la reunión de padres",
+   "textos": {
+    "*": "Acta de la reunión. Se habló del kiosco, del baño del patio y de la rifa de fin de año. Firmaron los asistentes."
+   }
+  },
+  "C1-8": {
+   "nombre": "Calendario de actividades",
+   "textos": {
+    "*": "Calendario del trimestre: acto cívico, feria de ciencias, semana de exámenes, feriados."
+   }
+  },
+  "C1-9": {
+   "nombre": "Lista de tutores",
+   "textos": {
+    "*": "Tutores por curso. Cada aula tiene un tutor y un suplente. Horario de atención a padres."
+   }
+  },
+  "C2-1": {
+   "nombre": "Correo de la dirección a los tutores",
+   "textos": {
+    "P": "Asunto: registro de denuncias. Desde {mes}, solo se anotan en el libro las denuncias firmadas por un adulto. Gracias, Dirección.",
+    "B": "Asunto: registro de denuncias. El libro sigue igual que antes: se anotan todas las denuncias, con o sin firma de un adulto. Gracias, Dirección.",
+    "banal": "Asunto: reunión de tutores. Recuerden traer las planillas del trimestre."
+   },
+   "piezas": {
+    "P": [
+     "las denuncias *registradas* bajaron a cero: desde {mes} solo se anotan las firmadas por un adulto",
+     "no sabemos cuántos hechos hubo"
+    ],
+    "B": [
+     "las denuncias registradas bajaron a cero y el registro sigue igual que antes"
+    ]
+   }
+  },
+  "C2-2": {
+   "nombre": "Libro de registro de la secretaría",
+   "textos": {
+    "P": "Libro de registro. Desde {mes} la casilla \"denuncia formal\" exige firma de un adulto. Las anotaciones libres ya no se copian al libro.",
+    "B": "Libro de registro. La casilla \"denuncia formal\" y las anotaciones libres se copian igual que el trimestre anterior. Sin cambios de formato.",
+    "banal": "Libro de registro de la secretaría. Filas con fecha, curso y motivo, escritas a mano."
+   },
+   "piezas": {
+    "P": [
+     "las denuncias *registradas* bajaron a cero: desde {mes} la casilla de denuncia formal exige firma",
+     "no sabemos cuántos hechos hubo"
+    ],
+    "B": [
+     "las denuncias registradas bajaron a cero y el libro se llena igual que antes"
+    ]
+   }
+  },
+  "C2-3": {
+   "nombre": "Informe del orientador",
+   "textos": {
+    "P": "Informe del orientador. Derivaciones por conflicto entre estudiantes: de {d0} a {d1} este trimestre, en el mismo período en que las denuncias llegaron a cero.",
+    "B": "Informe del orientador. Derivaciones por conflicto entre estudiantes: de {d0} a {d1} este trimestre, en el mismo período en que las denuncias bajaron.",
+    "banal": "Informe del orientador. Orientación vocacional del trimestre: charlas con los cursos mayores."
+   },
+   "piezas": {
+    "P": [
+     "las denuncias *registradas* bajaron a cero, pero las derivaciones por conflicto pasaron de {d0} a {d1}",
+     "no sabemos cuántos hechos hubo"
+    ],
+    "B": [
+     "las denuncias registradas bajaron a cero y las derivaciones por conflicto también, de {d0} a {d1}"
+    ]
+   }
+  },
+  "C2-4": {
+   "nombre": "Buzón anónimo del patio",
+   "textos": {
+    "P": "Buzón anónimo. Este trimestre llegaron {b1} mensajes; el trimestre anterior, {b0}. Varios hablan de empujones y burlas.",
+    "B": "Buzón anónimo. Este trimestre llegaron {b1} mensajes; el trimestre anterior, {b0}."
+   },
+   "piezas": {
+    "P": [
+     "el buzón anónimo recibió más mensajes que el trimestre anterior"
+    ],
+    "B": [
+     "el buzón anónimo recibió menos mensajes que el trimestre anterior"
+    ]
+   }
+  },
+  "C2-5": {
+   "nombre": "Reglamento de convivencia",
+   "textos": {
+    "*": "Reglamento de convivencia. Capítulo de sanciones: advertencia, citación a padres, suspensión."
+   },
+   "piezas": {
+    "*": [
+     "el reglamento de convivencia está vigente"
+    ]
+   }
+  },
+  "C2-6": {
+   "nombre": "Acta de la reunión de padres",
+   "textos": {
+    "*": "Acta de la reunión. Se habló del kiosco, del baño del patio y de la rifa de fin de año."
+   },
+   "piezas": {
+    "*": [
+     "los padres hablaron del kiosco y de la rifa"
+    ]
+   }
+  },
+  "C2-7": {
+   "nombre": "Cuaderno de la enfermería",
+   "textos": {
+    "*": "Cuaderno de enfermería. Golpes, dolores de cabeza, un desmayo en el acto cívico."
+   },
+   "piezas": {
+    "*": [
+     "la enfermería atendió golpes y dolores de cabeza"
+    ]
+   }
+  },
+  "C2-8": {
+   "nombre": "Lista de tutores",
+   "textos": {
+    "*": "Lista de tutores por curso, actualizada en {mesAnt}."
+   },
+   "piezas": {
+    "*": [
+     "cada curso tiene un tutor"
+    ]
+   }
+  },
+  "C2-9": {
+   "nombre": "Calendario del trimestre",
+   "textos": {
+    "*": "Calendario: feriados, semana de exámenes, acto cívico. En {mesAnt}, una nota al margen: \"reunión\"."
+   },
+   "piezas": {
+    "*": [
+     "el trimestre tuvo feriados y exámenes"
+    ]
+   }
+  },
+  "C3-1": {
+   "nombre": "Papel de cómo se obtuvo la afirmación",
+   "textos": {
+    "P": "Cómo se obtuvo la cifra: una tanda de 10 estudiantes del turno tarde.",
+    "B": "Cómo se obtuvo la cifra: 150 estudiantes elegidos al azar entre los 480.",
+    "A": "Cómo se obtuvo la cifra: 9 respuestas recogidas en la semana de exámenes.",
+    "banal": "Hoja del oficio: lo envió {fuente} por correo; lo firma el funcionario de turno."
+   }
+  },
+  "C3-2": {
+   "nombre": "Hoja del turno tarde",
+   "textos": {
+    "P": "Hoja del turno tarde. De aquí salieron las 10 respuestas de la cifra. No hay respuestas del turno mañana.",
+    "banal": "Hoja del turno tarde: lista de estudiantes con nombre y curso, sin respuestas."
+   }
+  },
+  "C3-3": {
+   "nombre": "Acta de la semana de exámenes",
+   "textos": {
+    "A": "Acta. El registro de los 480 se llenó durante la semana de exámenes.",
+    "banal": "Acta de la semana de exámenes: horarios de las pruebas y aula asignada."
+   }
+  },
+  "C3-4": {
+   "nombre": "Registro de asistencia",
+   "textos": {
+    "banal": "Asistencia por curso y por día, sin otros datos."
+   }
+  },
+  "C3-5": {
+   "nombre": "Lista de talleres",
+   "textos": {
+    "banal": "Talleres: teatro, ajedrez, huerto, radio escolar. Cupos y horarios."
+   }
+  },
+  "C3-6": {
+   "nombre": "Encuesta de la app del colegio",
+   "textos": {
+    "banal": "La app del colegio pregunta cada día el ánimo, de 0 a 100. No pregunta por sueño."
+   }
+  },
+  "C3-7": {
+   "nombre": "Cuaderno de la enfermería",
+   "textos": {
+    "banal": "Cuaderno de enfermería: golpes, dolores de cabeza, un desmayo."
+   }
+  },
+  "C3-8": {
+   "nombre": "Informe del orientador",
+   "textos": {
+    "banal": "Informe del orientador: entrevistas del mes y derivaciones."
+   }
+  },
+  "C3-9": {
+   "nombre": "Calendario",
+   "textos": {
+    "banal": "Calendario: feriados, acto cívico, semana de exámenes, feria de ciencias."
+   }
+  },
+  "C4-1": {
+   "nombre": "Lista de quienes respondieron A",
+   "textos": {
+    "A": "Respondieron: la lista completa de 4.º del distrito; el formulario era obligatorio al entrar a la plataforma de notas.",
+    "B": "Respondieron: estudiantes de clubes de apoyo emocional de varios colegios, que se inscribieron por voluntad propia."
+   }
+  },
+  "C4-2": {
+   "nombre": "Lista de quienes respondieron B",
+   "textos": {
+    "A": "Respondieron: estudiantes del club de apoyo de un solo colegio.",
+    "B": "Respondieron: estudiantes de 4.º de todo el distrito, elegidos por sorteo de la matrícula."
+   }
+  },
+  "C4-3": {
+   "nombre": "Cómo se invitó a A",
+   "textos": {
+    "A": "Invitación: la plataforma del distrito lo pidió a todo 4.º antes de ver las notas.",
+    "B": "Invitación: mensaje en los grupos de apoyo, \"si te interesa responder\"."
+   }
+  },
+  "C4-4": {
+   "nombre": "Cómo se invitó a B",
+   "textos": {
+    "A": "Invitación: se llamó a cada estudiante del club de apoyo.",
+    "B": "Invitación: carta del distrito a cada estudiante sorteado; se insistió hasta tener respuesta."
+   }
+  },
+  "C4-5": {
+   "nombre": "Ficha técnica común",
+   "textos": {
+    "*": "Ambos usaron la misma escala de 10 preguntas y fechas parecidas."
+   }
+  },
+  "C4-6": {
+   "nombre": "Tabla de resultados",
+   "textos": {
+    "*": "Resultado A: {rA}. Resultado B: {rB}."
+   }
+  },
+  "C4-7": {
+   "nombre": "Matrícula del distrito",
+   "textos": {
+    "*": "Matrícula de 4.º por colegio, sin otros datos."
+   }
+  },
+  "C4-8": {
+   "nombre": "Mensajes de padres",
+   "textos": {
+    "*": "Cartas de padres sobre el uniforme y el transporte."
+   }
+  },
+  "C4-9": {
+   "nombre": "Acta del consejo",
+   "textos": {
+    "*": "Acta del consejo del distrito: presupuesto de mantenimiento."
+   }
+  },
+  "C5-1": {
+   "nombre": "Segunda medición de los llamados",
+   "textos": {
+    "*": "Los 13 llamados al taller: antes {llamados} puntos de media; un mes después, {llamados2}."
+   }
+  },
+  "C5-2": {
+   "nombre": "Segunda medición de los demás",
+   "textos": {
+    "*": "Los 47 que no fueron llamados: antes {demas} de media; un mes después, {demas2}."
+   }
+  },
+  "C5-3": {
+   "nombre": "Grupo de comparación",
+   "textos": {
+    "*": "Los 13 del sorteo que no fueron al taller: antes {grupo} de media; un mes después, {grupo2}."
+   }
+  },
+  "C5-4": {
+   "nombre": "Colegio vecino, sin taller",
+   "textos": {
+    "*": "{vecino}: sus 13 estudiantes de menor puntaje, sin taller. Antes {v1} de media; un mes después, {v2}."
+   }
+  },
+  "C5-5": {
+   "nombre": "Lista de asistencia al taller",
+   "textos": {
+    "*": "Asistencia al taller de pausas, por día. Faltaron pocos."
+   }
+  },
+  "C5-6": {
+   "nombre": "Calendario de exámenes",
+   "textos": {
+    "*": "Calendario de exámenes del mes. Sin cambios."
+   }
+  },
+  "C5-7": {
+   "nombre": "Informe de la tallerista Paola",
+   "textos": {
+    "*": "Informe de la tallerista. Se hicieron ejercicios de respiración y pausas.",
+    "extra_b": "Los primeros en anotarse ya venían subiendo unos 2,5 puntos por su cuenta antes del taller."
+   }
+  },
+  "C5-8": {
+   "nombre": "Quejas de padres",
+   "textos": {
+    "*": "Padres piden que el taller no coincida con la hora de refuerzo."
+   }
+  },
+  "C5-9": {
+   "nombre": "Acta de la dirección",
+   "textos": {
+    "*": "Acta de la dirección: presupuesto del año siguiente, pendiente."
+   }
+  },
+  "C6-1": {
+   "nombre": "Cómo se eligieron los 60",
+   "textos": {
+    "P": "Los 60 son todos los estudiantes de {curso}, medidos en una mañana.",
+    "B": "Los 60 salieron por sorteo entre los 480 inscritos.",
+    "A": "De los 60 invitados, solo 12 devolvieron la hoja.",
+    "banal": "Cómo se armó la lista: la preparó una practicante de {fuente} en una tarde."
+   }
+  },
+  "C6-2": {
+   "nombre": "Composición del colegio por curso",
+   "textos": {
+    "P": "Composición por curso. Las respuestas de esta lista son de {curso}, uno de los ocho cursos del colegio.",
+    "banal": "Composición por curso: nombre del tutor y aula de cada uno."
+   }
+  },
+  "C6-3": {
+   "nombre": "Acta de la semana de exámenes",
+   "textos": {
+    "A": "La hoja se pasó durante la semana de exámenes.",
+    "banal": "Acta de la semana de exámenes: horarios y aulas."
+   }
+  },
+  "C6-4": {
+   "nombre": "Lista de inscritos",
+   "textos": {
+    "banal": "Lista de inscritos del año, por curso, con fecha de ingreso."
+   }
+  },
+  "C6-5": {
+   "nombre": "Informe del orientador",
+   "textos": {
+    "banal": "Informe del orientador: entrevistas del mes y derivaciones."
+   }
+  },
+  "C6-6": {
+   "nombre": "Encuesta de la app",
+   "textos": {
+    "banal": "La app del colegio pregunta el ánimo cada día. No pregunta por sueño."
+   }
+  },
+  "C6-7": {
+   "nombre": "Calendario",
+   "textos": {
+    "banal": "Calendario: feriados, acto cívico, feria de ciencias."
+   }
+  },
+  "C6-8": {
+   "nombre": "Lista de talleres",
+   "textos": {
+    "banal": "Talleres: teatro, ajedrez, huerto, radio escolar."
+   }
+  },
+  "C6-9": {
+   "nombre": "Registro de asistencia",
+   "textos": {
+    "banal": "Asistencia por curso y por día, sin otros datos."
+   }
+  },
+  "C7-1": {
+   "nombre": "Correo de {fuente}",
+   "textos": {
+    "P": "Dibujamos las barras desde {base} para que se note el contraste.",
+    "B": "Las barras parten de cero; adjuntamos la hoja.",
+    "banal": "Correo de {fuente}: adjuntamos el gráfico y la hoja. Saludos."
+   }
+  },
+  "C7-2": {
+   "nombre": "Captura del gráfico original",
+   "textos": {
+    "P": "Captura del original. Eje vertical con primera marca en {base}.",
+    "B": "Captura del original. Eje vertical desde cero.",
+    "banal": "Captura del original: títulos, colores y sello de {fuente}."
+   }
+  },
+  "C7-3": {
+   "nombre": "Ficha técnica de la hoja",
+   "textos": {
+    "P": "Escala de 0 a 100. El gráfico muestra solo de {base} a 100.",
+    "B": "Escala de 0 a 100. El gráfico muestra la escala completa.",
+    "banal": "Ficha técnica: cómo se midió, fecha y quién respondió."
+   }
+  },
+  "C7-4": {
+   "nombre": "Lista de talleres",
+   "textos": {
+    "banal": "Talleres: {tallerA}, {tallerB}, y otros dos. Cupos y horarios."
+   }
+  },
+  "C7-5": {
+   "nombre": "Encuesta de la app",
+   "textos": {
+    "banal": "La app del colegio pregunta el ánimo cada día, de 0 a 100."
+   }
+  },
+  "C7-6": {
+   "nombre": "Acta de la reunión de padres",
+   "textos": {
+    "banal": "Acta de padres: kiosco, baño del patio, rifa."
+   }
+  },
+  "C7-7": {
+   "nombre": "Informe del orientador",
+   "textos": {
+    "banal": "Informe del orientador: entrevistas del mes."
+   }
+  },
+  "C7-8": {
+   "nombre": "Calendario",
+   "textos": {
+    "banal": "Calendario: feriados, acto cívico, feria de ciencias."
+   }
+  },
+  "C7-9": {
+   "nombre": "Lista de tutores",
+   "textos": {
+    "banal": "Tutores por curso y horario de atención."
+   }
+  },
+  "C8-1": {
+   "nombre": "Seguimiento del semestre",
+   "textos": {
+    "*": "Seguimiento. Taller: de {m1} a {m2}. Grupo sin taller: de {g1} a {g2}."
+   }
+  },
+  "C8-2": {
+   "nombre": "Listas y fechas de medición",
+   "textos": {
+    "0": "Taller: 40 estudiantes. Sin taller: 40. Medidos durante un semestre.",
+    "1": "Taller: 40 estudiantes. Sin taller: 40. Medidos durante un semestre.",
+    "2": "Taller: 9 estudiantes. Sin taller: 9. Medidos durante tres semanas."
+   }
+  },
+  "C8-3": {
+   "nombre": "Informe de la tallerista Paola",
+   "textos": {
+    "*": "Informe de la tallerista: ejercicios de respiración y pausas activas. Asistencia buena."
+   }
+  },
+  "C8-4": {
+   "nombre": "Costos del taller",
+   "textos": {
+    "*": "Costo anual del taller: tallerista, material, sala. Sin cambios respecto al año pasado."
+   }
+  },
+  "C8-5": {
+   "nombre": "Quejas de padres",
+   "textos": {
+    "*": "Padres piden que el taller no coincida con la hora de refuerzo."
+   }
+  },
+  "C8-6": {
+   "nombre": "Acta de la dirección",
+   "textos": {
+    "*": "Acta: presupuesto del año siguiente, rubros pendientes."
+   }
+  },
+  "C8-7": {
+   "nombre": "Calendario escolar del año siguiente",
+   "textos": {
+    "*": "Calendario: feriados, semana de exámenes, feria de ciencias."
+   }
+  },
+  "C8-8": {
+   "nombre": "Presupuesto general",
+   "textos": {
+    "*": "Presupuesto general: sueldos, mantenimiento, material."
+   }
+  },
+  "C8-9": {
+   "nombre": "Lista de asistencia al taller",
+   "textos": {
+    "*": "Asistencia al taller por día. Faltaron pocos."
+   }
+  }
+ }
+}

@@ -39,3 +39,4 @@ Eres el artista de pixel art de los juegos de RON_DOC. Dibujas lo que el alumno 
 
 ## Qué entregas
 Los `.px`, los PNG, la hoja de estilo, la salida de `verificar_arte.py`, y un resumen corto en lenguaje simple (sin «motor», «bloque», «ramas», «paridad»): qué dibujaste, qué quedó pendiente y qué costó. Si usaste algo automático, la comparación contra el original.
+- **09-10, quién es quién:** una cara grande al inicio se leyó como «el jugador». Todo personaje visible lleva etiqueta con nombre y color propio sobre la cabeza y su color en el diálogo; el jugador no se dibuja y su caja siempre es verde. Se comprueba en el navegador que las etiquetas no se pisen.

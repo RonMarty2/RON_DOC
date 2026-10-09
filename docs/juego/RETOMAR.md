@@ -1,3 +1,6 @@
+## ✅ QUIÉN ES QUIÉN 09-10: etiquetas de nombre y color
+Ronald se confundía creyendo que la jefa (la cara que se ve al inicio) era el jugador. Ahora hay etiquetas con nombre y color sobre cada personaje de la escena (`EscenaPixi.tsx`, `.mesa-etiqueta`) y cada cuadro de diálogo tiene el color de quien habla (`q-jefa/q-dani/q-beto/q-madre/q-director/q-tu` en `mesa.css`; «Tú» siempre verde). Pendiente: Beto, la madre y Dirección aparecen solo en el diálogo (con su cara y color), sin etiqueta en la escena porque no están dibujados en ella; comprobar con Ronald si basta.
+
 ## 🎯 PLAN NUEVO (decidido con Ronald 09-10, tras probar el juego): música completa y botón de empezar de cero
 **Ronald dijo (casi literal):** la música tiene cortes horribles; que corra la pista completa, que empiece como queramos aunque dure 2 a 3 minutos; si cambia de escena y la música debe seguir, que siga; si debe cambiar, que cambie. «El sonido no guía, guiamos nosotros al dar Siguiente.»
 

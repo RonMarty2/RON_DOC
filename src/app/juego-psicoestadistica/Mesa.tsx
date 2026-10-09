@@ -106,7 +106,7 @@ function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir >" }: { lineas: Line
   const l = lineas[i];
   const hayMas = i + 1 < lineas.length;
   return (
-    <div className={l.quien === "tu" ? "mesa-dialogo tuyo" : "mesa-dialogo"} role="group" aria-label="Diálogo">
+    <div className={`${l.quien === "tu" ? "mesa-dialogo tuyo" : "mesa-dialogo"} q-${l.quien}`} role="group" aria-label="Diálogo">
       <div className={l.quien === "narracion" || l.quien === "tu" ? "mesa-dlg" : "mesa-dlg con-cara"}>
         {l.quien !== "narracion" && l.quien !== "tu" && <img className="mesa-cara" src={conBase(`/juego/psicoestadistica/arte/${(l.quien === "jefa" && l.pose ? CARA_JEFA[l.pose] : CARA[l.quien])}.png`)} alt="" width={64} height={64} />}
         <div className="mesa-dlg-texto">
@@ -486,7 +486,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           )}
         </div>
       )}
-      <EscenaPixi pose={pose} suena={suena} daniCabecea={daniCabecea} />
+      <EscenaPixi pose={pose} suena={suena} daniCabecea={daniCabecea} nombreDani={p.version.textos.dani} />
       {tubos && <Tubos m={med} />}
 
       <div className="mesa-panel">

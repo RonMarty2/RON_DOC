@@ -27,7 +27,7 @@ interface Api {
   destruir: () => void;
 }
 
-export function EscenaPixi({ pose, suena, daniCabecea }: { pose: PoseJefa; suena: boolean; daniCabecea: boolean }) {
+export function EscenaPixi({ pose, suena, daniCabecea, nombreDani = "Dani" }: { pose: PoseJefa; suena: boolean; daniCabecea: boolean; nombreDani?: string }) {
   const caja = useRef<HTMLDivElement>(null);
   const api = useRef<Api | null>(null);
   const ultimo = useRef({ pose, suena, daniCabecea });
@@ -139,5 +139,12 @@ export function EscenaPixi({ pose, suena, daniCabecea }: { pose: PoseJefa; suena
     api.current?.poner({ pose, suena, daniCabecea });
   }, [pose, suena, daniCabecea]);
 
-  return <div ref={caja} className="mesa-escena" />;
+  return (
+    <div className="mesa-escena">
+      <div ref={caja} />
+      {/* Quién es quién: etiquetas con nombre y color sobre cada personaje. Tú no sales: miras la escena desde el escritorio. */}
+      <span className="mesa-etiqueta q-jefa" style={{ left: "80%", top: "36%" }}>Jefa · Ximena</span>
+      <span className="mesa-etiqueta q-dani" style={{ left: "55%", top: "47%" }}>{nombreDani}</span>
+    </div>
+  );
 }

@@ -175,3 +175,15 @@
 }
 .mesa-reiniciar:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 .mesa-reinicio-conf { display: grid; gap: 6px; padding: 8px; background: rgba(12, 10, 26, .95); border: 2px solid var(--m-ambar); font-family: var(--mesa-pixel), monospace; font-size: 12px; color: var(--m-texto); max-width: 190px; }
+
+/* Quién habla: un color por personaje, en la etiqueta de la escena, en el nombre y en el borde del cuadro */
+.q-jefa { --q: #ffb86b; } .q-dani { --q: #7fb2ff; } .q-beto { --q: #ff8f8f; } .q-madre { --q: #d4a8ff; } .q-director { --q: #ffd86b; } .q-tu { --q: #9fe8d2; }
+.mesa-escena { position: relative; }
+.mesa-etiqueta {
+  position: absolute; transform: translateX(-50%); z-index: 2; white-space: nowrap; line-height: 1.2;
+  font-family: var(--mesa-pixel), monospace; font-size: 12px; padding: 2px 6px; color: #120f26; background: var(--q); border: 2px solid #120f26;
+}
+.mesa-dialogo[class*="q-"]:not(.tuyo) { border-left: 6px solid var(--q); }
+.mesa-dialogo[class*="q-"] .mesa-quien { color: var(--q); }
+.mesa-dialogo.tuyo { border-left: 6px solid var(--q); }
+.mesa-hoja .mesa-dialogo[class*="q-"] .mesa-quien { color: #5a3a14; }

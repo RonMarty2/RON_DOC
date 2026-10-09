@@ -9,6 +9,9 @@
 const VERSION = "dev";
 const CACHE_PAGINAS = `ron-doc-paginas-${VERSION}`;
 const CACHE_ESTATICOS = `ron-doc-estaticos-${VERSION}`;
+// La música de los juegos pesa unos 8 MB y no cambia con cada publicación: su caché no lleva VERSION, así no se vuelve a bajar
+// en cada deploy. Si una pista se reemplaza, se le cambia el nombre del archivo (manifiesto.json la apunta).
+const CACHE_AUDIO = "ron-doc-audio-v1";
 
 // Calcula el scope del SW (incluye el basePath en GitHub Pages).
 const SCOPE = new URL(self.registration?.scope ?? "./", self.location.origin)
@@ -50,7 +53,7 @@ self.addEventListener("activate", (event) => {
       .then((claves) =>
         Promise.all(
           claves
-            .filter((k) => ![CACHE_PAGINAS, CACHE_ESTATICOS].includes(k))
+            .filter((k) => ![CACHE_PAGINAS, CACHE_ESTATICOS, CACHE_AUDIO].includes(k))
             .map((k) => caches.delete(k))
         )
       )
@@ -91,6 +94,24 @@ self.addEventListener("fetch", (event) => {
           return res;
         })
         .catch(() => caches.match(req).then((r) => r ?? caches.match(`${SCOPE}/`)))
+    );
+    return;
+  }
+
+  // Música (mp3): cache-first, en su caché aparte. El juego la pide con `Range`; se baja entera, sin `Range`, para poder guardarla
+  // (la caché no guarda respuestas parciales).
+  if (/\.mp3$/i.test(url.pathname)) {
+    event.respondWith(
+      caches.open(CACHE_AUDIO).then((cache) =>
+        cache.match(url.href).then(
+          (guardado) =>
+            guardado ??
+            fetch(url.href).then((res) => {
+              if (res.status === 200) cache.put(url.href, res.clone());
+              return res;
+            })
+        )
+      )
     );
     return;
   }

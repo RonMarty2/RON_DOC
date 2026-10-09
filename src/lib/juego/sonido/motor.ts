@@ -145,6 +145,26 @@ export class Motor {
     }
   }
 
+  /**
+   * Baja las pistas en segundo plano apenas se abre el juego (antes de que el alumno toque nada), una por una y en orden. El service
+   * worker las guarda: la primera vez cuesta datos (unos 8 MB), las siguientes salen del teléfono y no hay espera ni silencio al
+   * cambiar de escena. Con «ahorro de datos» no se baja nada por adelantado.
+   */
+  async precargar(): Promise<void> {
+    if (typeof fetch === "undefined" || (typeof navigator !== "undefined" && (navigator as unknown as { connection?: { saveData?: boolean } }).connection?.saveData)) return;
+    this.manifiestoListo ??= this.bajarManifiesto();
+    await this.manifiestoListo;
+    for (const pista of Object.values(this.manifiesto.pistas)) {
+      try {
+        const r = await fetch(conBase(`${this.carpeta}/${pista.archivo}`));
+        if (!r.ok) return;
+        await r.arrayBuffer();
+      } catch {
+        return; // sin conexión: se intenta de nuevo la próxima vez que se abra
+      }
+    }
+  }
+
   /** Silenciar o activar: corta o devuelve todo el sonido y lo recuerda. */
   establecer(activo: boolean): void {
     this.activoPref = activo;

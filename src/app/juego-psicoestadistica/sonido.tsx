@@ -67,6 +67,8 @@ export function useSonidoT1(e: EstadoDeSonido) {
   useEffect(() => {
     setActivo(motor().encendido);
     setDisponible(motor().disponible);
+    // Las pistas se bajan desde que se abre la pantalla, sin esperar el primer toque: así la música no tarda.
+    void motor().precargar().catch(() => undefined);
     // El primer toque despierta el audio del navegador (política de autoplay); también en la app de Android.
     const despertar = () => motor().desbloquear();
     window.addEventListener("pointerdown", despertar, { once: true });

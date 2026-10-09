@@ -1,3 +1,6 @@
+## ✅ CARGA RÁPIDA DE LA MÚSICA 09-10
+Carga rápida del juego: las 4 pistas (8 MB) se bajan en segundo plano apenas se abre la pantalla (`Motor.precargar()`, desde `sonido.tsx`) y el service worker las guarda en una caché de audio aparte (`ron-doc-audio-v1` en `public/sw.js`, no se borra en cada deploy). Antes no se guardaban nunca (el sw solo cacheaba imágenes, js, css) y se bajaban de nuevo en cada visita, recién después del primer toque. Comprobado en navegador: 4 pistas en caché y, sin red, la pista sale en 18 ms. Si se reemplaza una pista, hay que cambiarle el nombre del archivo (la caché no se invalida sola). Con «ahorro de datos» no se baja por adelantado.
+
 ## ✅ OFICINA VIVA ANIMADA 09-10
 Oficina viva ANIMADA (hecha, comprobada en navegador con captura): la ventana tiene cielo, estrellas, luna que baja, nube, ciudad con ventanitas que se apagan, y el reloj marca la hora exacta (23:00 al empezar, 23:50 en el Caso 2, 05:30 con primera luz al final). `EscenaPixi.tsx` recibe `hora` desde `Mesa.tsx` (`minutosDeFase`). Cuentas comunes en `src/lib/juego/ambiente-vivo.ts`, perfil del tema en `psicoestadistica/hora-historia.ts`. Falta: retoques de arte del crítico v21 (luna, nube, reloj, contraste de la ciudad) y que Ronald lo vea y lo juegue.
 

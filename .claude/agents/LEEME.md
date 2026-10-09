@@ -75,6 +75,8 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 
 - **09-10 · La noche pasa se vuelve regla común.** Ronald pidió que la ventana, la luna, la ciudad y el reloj se animen con la historia, y que la idea valga para todos los juegos. Cuentas comunes en `src/lib/juego/ambiente-vivo.ts` con perfil por tema; primer perfil `PERFIL_T1`. Pendiente conocido: el crítico v21 pidió retocar luna (píxeles sueltos), nube (se pierde en el cielo), reloj (píxeles fuera del círculo) y el contraste de la ciudad lejana.
 
+- **09-10 · La música tardaba en cargar en el celular.** Ronald lo sintió como pérdida de inmersión. Causa: las pistas (8 MB) se bajaban recién tras el primer toque y el service worker no guardaba mp3, así que se repetía en cada visita; además el despliegue llevaba horas fallando por Node 20 y no se veía lo nuevo. **Aprendizaje (`disenador-de-sonido` y quien arme audio):** todo audio nuevo se precarga al abrir la pantalla y se guarda en la caché de audio; si se cambia una pista, se cambia el nombre del archivo; y tras cada subida se mira que el deploy de GitHub haya salido en verde, no solo las pruebas locales.
+
 Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó con las fichas sin pasar
 por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
 Ronald y se anota en la bitácora.

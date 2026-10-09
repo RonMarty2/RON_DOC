@@ -1,3 +1,6 @@
+## ✅ DECISIONES APROBADAS 09-10 (Ronald dijo «sí»): oficina viva
+Hora de la historia **23:00 → 05:30**; el amanecer llega **solo al final de la prueba**; el reloj marca la **hora exacta**; **Dani fuera de la escena**. Siguiente: `director-de-juego` cierra el mapa de ambientes v19 con esas horas (lanzado 09-10; si no hay commit suyo en `docs/juego/gdd/aspecto-psicoestadistica-tema1-ambientes.md` con «v20 horas», relanzarlo), luego `artista-pixel` (capas) y la animación en `EscenaPixi.tsx`.
+
 ## ⏸ RELEVO CORTO 09-10 (el plan de la oficina viva; Ronald teme quedarse sin tokens)
 Todo está subido; `git status` limpio; 3955 pruebas verdes. **Para retomar solo esto:** (1) pedir a Ronald el sí a las 3 decisiones del bloque «PLAN 09-10 oficina viva» (hora 23:00→05:30, amanecer solo al final, reloj con hora exacta); lo de Dani ya está resuelto (fuera de la escena); (2) correr `director-de-juego` para cerrar el mapa de ambientes v19 con esas horas; (3) `artista-pixel` dibuja capas separadas (ventana sin luces ni luna, reloj sin manecillas); (4) animar en `EscenaPixi.tsx`; (5) crítico y Chrome antes de mostrar. Antes, que Ronald pruebe la música entera y diga si hay cortes.
 

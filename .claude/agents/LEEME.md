@@ -49,7 +49,7 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 | 3. Cómo se juega | `disenador-de-bucle` | modalidad y mecánica del tema |
 | 4. Personajes y diálogos | `disenador-narrativo` | quién aparece y qué dice (en tuteo) |
 | 4-bis. Sonido | `disenador-de-sonido` | hoja de sonido por escena (música, capas por momento, efectos y el prompt para Flow Music), **justo después de diseñar cada nivel, isla o materia** y antes del crítico (Ronald, 08-10) |
-| 5. Revisión del papel | `critico-de-jugabilidad` | hallazgos; **recién ahí se le muestra a Ronald** y él aprueba |
+| 5. Revisión del papel | `critico-de-jugabilidad` | **una sola revisión completa**, con aprendizaje, bucle, narrativa y sonido ya hechos (Ronald, 08-10: el Tema 1 tuvo cuatro y tardó demasiado). Lo corregido después se **recheca con scripts**, no con otra revisión completa. Hallazgos; **recién ahí se le muestra a Ronald** y él aprueba |
 | 6. Construcción | Claude (motor con pruebas + pantalla) | el tema jugable en borrador, **sobre el motor de `docs/juego/PIEZAS-COMUNES.md`** (se importa, no se copia); lo nuevo que sirva a otros juegos se hace como motor y se anota ahí en el mismo commit; personajes, textos y dibujos son del juego (Ronald, 28-09, «como Doom») |
 | 7. Revisión de lo jugable | `critico-de-jugabilidad` | hallazgos sobre el juego real, antes de mostrárselo a Ronald |
 | 8. Antes de subir o publicar | `revisar-publicacion` | pruebas, compilación, borradores ocultos, Supabase |

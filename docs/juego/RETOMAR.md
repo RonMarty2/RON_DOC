@@ -96,3 +96,5 @@ HECHO el 08-10: bucle v2, narrativa v3 (`05`, líneas 20 a 786), sonido v1 (`07-
 6. **Copiar la mecánica de un tema a otro** donde no encaja (cada materia, su forma).
 7. **Dibujar bocetos con rectángulos de código** y llamarlos aspecto.
 8. **Dar por hecho que algo está bien sin comprobarlo:** comprobar los archivos, los conteos (con script) y las frases citadas contra el disco.
+
+> **DECISION 08-10 NOCHE (Ronald):** narrativa v3.1 y sonido v2 ya hechos y subidos; **no se lanza otro critico completo del papel** (el Tema 1 ya tuvo cuatro, la regla pasa a UNA por tema; lo corregido se rechequeo con scripts: 72 ramas, 30 sobres, 29 codigos, 0 fallos). Sonido: pruebas S0, S2 y S9 generadas en Flow Music (Browser 2, sesion de Ronald), le gustaron; la licencia sigue pendiente. **Sigue:** plan del Tema 1 en simple para Ronald con las dos preguntas de gusto (jefa sin vidrio y sello; caso 5 turno 1 con aprobacion de Beto o del director) y la meta 65/65; el critico completo vuelve en la etapa 7, sobre el juego construido.

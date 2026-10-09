@@ -66,6 +66,19 @@ Investigado en la ayuda oficial (`support.google.com/flow`) el 08-10; **lo que n
 6. Los **segmentos** se recortan a compás a partir de la pista larga. Qué herramienta recorta (por ejemplo ffmpeg) y si el final empalma con el inicio se decide en la construcción: **pendiente**, no se promete.
 7. Los efectos cortos: probar una sola vez el modo «Crear FX e instrumentos» con el prompt de prueba de 07, y decidir por ese resultado si se piden a Flow o se sintetizan por código.
 
+## Cómo se corta un segmento limpio (Ronald, 08-10: «que el corte no quede a la mitad ni entre ya con ritmo»)
+
+**Herramientas ya instaladas en la PC de Ronald (comprobado el 08-10):** `ffmpeg` y `ffprobe` (`C:\ffmpeg\bin`), y en Python `librosa`, `numpy`, `scipy`, `pydub`, `soundfile`, `matplotlib`. **Ojo:** esas librerías están en el espacio del usuario, así que el script que las usa se corre con `python` a secas; con `python -I` no las ve. Los scripts siguen yendo a un archivo `.py`, nunca por heredoc.
+
+**Claude no «oye» la pista, pero sí la mide**, y con eso decide el corte:
+1. **Pulso y compás:** con el BPM de la hoja (66, 76, 60…) el compás dura `4 × 60 / BPM` segundos (a 66 BPM, 3,64 s). `librosa.beat.beat_track` confirma dónde caen de verdad los pulsos (Flow no siempre clava el BPM pedido) y el primer pulso fuerte.
+2. **Energía:** curva de volumen (RMS) y brillo (centroide) por compás. Sirve para **ver dónde cambia la pista** (entra la melodía, sube la tensión) y poner ahí los límites de cada capa (calma, duda, tensión, revelación). Se puede además dibujar un espectrograma y mirarlo como imagen.
+3. **Punto de corte:** siempre **en el primer tiempo de un compás**, en un valle de energía, y nunca en medio de una nota larga.
+4. **Bucle sin saltos:** se buscan dos puntos (inicio y fin) cuyo audio sea casi igual (correlación de la forma de onda y del espectro) y se unen con un **fundido cruzado corto** (50 a 200 ms) con `ffmpeg`. Se mide el salto de volumen en la unión: si pasa de un umbral, se prueba otro par.
+5. **Entrada sin arrastrar el ritmo anterior:** el segmento arranca en un primer tiempo, y las transiciones entre capas se hacen en la frontera de compás con fundido cruzado, así la siguiente capa entra «a tiempo» aunque venga de otra.
+6. **Qué NO garantiza:** la medición dice dónde es matemáticamente limpio; que **suene bien** lo juzga el oído de Ronald. Cada segmento se entrega primero como prueba para escuchar, fuera del repositorio.
+7. **Descargas:** bajar un archivo de Flow necesita el **OK de Ronald en el chat** (nombre, origen y tamaño), una pista por vez.
+
 ## Qué entregas
 
 Al final, un resumen corto: qué escenas tienen hoja de sonido, qué prompts hay que generar, qué es lo que Ronald tiene que escuchar y decidir, y qué queda pendiente (la licencia).

@@ -1,3 +1,13 @@
+## 🎯 PLAN 09-10 (Ronald): oficina viva — ventana y reloj animados, y que la noche pase
+**Hoy:** la ventana, el reloj y el estante son imágenes fijas (recortadas de `prov_sala.png`); solo se mueven la luz de la lámpara y el polvo. **Se une con el paso 3** (ambientes v19: «que pase la noche»: hora = casos hechos, lugar = qué caso).
+**Piezas (de barata a cara), todo en `EscenaPixi.tsx`, con la paleta EDG32 y respetando «reducir movimiento» (sin animar):**
+1. **Reloj vivo (barato):** sacar las manecillas del dibujo y pintarlas con código (`PIXI.Graphics`): el minutero avanza despacio y la hora marca la hora de la historia (p. ej. 23:00 al empezar, avanza con cada caso hecho hasta ~05:30 «primera luz» en el cierre). Dibujar `reloj_estante` sin manecillas.
+2. **Ventana viva (media):** separar `ventana_noche` en capas: cielo (color por hora), luna/sol (sube/baja), ventanas de la ciudad (un par se enciende/apaga al azar cada pocos segundos) y, hacia el amanecer, franja de luz y luces que se apagan. El cielo cambia con el ambiente (`ambiente-primera-luz.json`, cambio de paleta) sin dibujar dos veces.
+3. **Detalles baratos:** parpadeo suave de la lámpara (ya hay), una nube lenta, el teléfono que suena (ya hay).
+4. **Dani vivo y legible:** redibujarlo dormido sobre el escritorio (respira, la «z» sube) en vez de silueta lisa.
+**Orden:** (a) agente `director-de-juego` cierra el mapa de ambientes con las correcciones v19 (hora por caso, qué cambia en ventana/reloj/luz); (b) `artista-pixel` dibuja capas separadas (ventana sin luces ni luna, reloj sin manecillas, Dani dormido); (c) yo las animo en `EscenaPixi.tsx` con la hora de la partida (`Mesa.tsx` pasa `hora`); (d) prueba (la hora sube con los casos y no se anima con reducir movimiento), Chrome, crítico, y recién entonces a Ronald.
+**Lo que decide Ronald (recomendado entre paréntesis):** hora de inicio y fin (23:00 → 05:30), si el amanecer llega solo al final de la prueba (sí) y si el reloj muestra la hora exacta o solo «va pasando» (exacta, es lo que más se nota).
+
 ## ✅ DECISIÓN DE RONALD 09-10: sin etiquetas sobre los personajes; entran cuando hablan
 Las etiquetas de nombre sobre la escena rompían la inmersión: **se quitaron**. El nombre y el color de quien habla salen SOLO en la ventana de diálogo. Los personajes aparecen en la escena según entran en la historia: portada y bienvenida = oficina vacía (ventana con luna, reloj, libros); la jefa aparece en la fase «jefa»; Dani desde «hoja» (`verJefa`/`verDani` en `EscenaPixi.tsx`, calculados en `Mesa.tsx`). Dani aún se ve como mancha (silueta lisa): redibujarlo (ver bloque anterior).
 

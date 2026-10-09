@@ -98,7 +98,7 @@ export interface VersionT1 {
 // ── Eventos de la partida (secc. 12 del bucle; sin puntaje) ──────────────────
 
 export type EventoT1 =
-  | { tipo: "p1.respuestas"; propias: boolean }
+  | { tipo: "p1.respuestas"; propias: boolean; datos?: { horas: number; minutos: number; animo: number } }
   | { tipo: "p1.abrio"; papel: string; ficha: number }
   | { tipo: "p1.ayudado"; papel: string }
   | { tipo: "caso.entra"; caso: CasoConMedidores; casoTipo: TipoDeCaso | null; fichas: number; c: number; voz: number }

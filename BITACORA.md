@@ -14,7 +14,7 @@
 
 > **LEER PRIMERO: `docs/juego/RETOMAR.md`** (nota de relevo del 08-10: qué decidió Ronald, el método, dónde está cada archivo, qué sigue y qué no repetir). Lo que está debajo es el detalle histórico.
 >
-> **09-10 (tarde) · REVISIÓN DEL CÓDIGO DEL JUEGO:** Partida en la nube: ya no pisa lo jugado sin conexión. Al abrir con cuenta, `elegirPartida` (`src/lib/juego/partida.ts`) se queda con la que tiene más eventos y la sube; la entregada manda. Aplicado en `EscenaVentanilla` y `EscenaPlanta`, con pruebas. Pendiente menor: la Mesa de Psicoestadística no recuerda los datos propios de la hoja al retomar (solo que los usó).
+> **09-10 (tarde) · REVISIÓN DEL CÓDIGO DEL JUEGO:** Partida en la nube: ya no pisa lo jugado sin conexión. Al abrir con cuenta, `elegirPartida` (`src/lib/juego/partida.ts`) se queda con la que tiene más eventos y la sube; la entregada manda. Aplicado en `EscenaVentanilla` y `EscenaPlanta`, con pruebas. Además la Mesa de Psicoestadística ya recuerda los números propios de la hoja al retomar (evento `p1.respuestas` con `datos`, opcional: las partidas viejas siguen leyéndose y usan los de Dani).
 >
 > **09-10, 09:52 · CIERRE LIMPIO:** sesión cerrada por Ronald. Resumen y pasos en `docs/juego/RETOMAR.md`, bloque «CIERRE LIMPIO 09-10». Nada a medias; todo en GitHub.
 >

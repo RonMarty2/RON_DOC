@@ -316,6 +316,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
 
   const retomar = () => {
     setPaso1(avance.paso1);
+    setMisDatos(avance.datos);
     setAsombroVisto(abrioSuenoPaso1(p, avance.paso1));
     setAsombroListo(abrioSuenoPaso1(p, avance.paso1));
     if (avance.fase === "archivo1") return ir("archivo1");
@@ -552,7 +553,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                   setRevisar(true);
                   if (!hojaValida.horas || !hojaValida.minutos || !hojaValida.animo) return;
                   setMisDatos(hojaValida.valores);
-                  anota({ tipo: "p1.respuestas", propias: true });
+                  anota({ tipo: "p1.respuestas", propias: true, datos: hojaValida.valores });
                   ir("archivo1");
                 }}
               >

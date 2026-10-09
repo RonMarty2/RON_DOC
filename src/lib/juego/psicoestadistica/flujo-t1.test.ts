@@ -170,6 +170,13 @@ describe("Retomar una partida guardada", () => {
     expect(fichasPaso1(a.paso1)).toBe(1);
   });
 
+  it("al retomar vuelven los números propios de la hoja; una partida vieja sin ellos usa los de Dani", () => {
+    const datos = { horas: 7.5, minutos: 40, animo: 80 };
+    expect(avanceDeEventos(p, [{ tipo: "p1.respuestas", propias: true, datos }]).datos).toEqual(datos);
+    expect(avanceDeEventos(p, [{ tipo: "p1.respuestas", propias: true }]).datos).toBeNull();
+    expect(avanceDeEventos(p, [{ tipo: "p1.respuestas", propias: false }]).datos).toBeNull();
+  });
+
   it("si Dani tuvo que abrir el papel, al retomar también se ve (no se pierde la ayuda)", () => {
     const sin = c1.papeles.filter((q) => !c1.claves.includes(q.id)).map((q) => q.id);
     const a = avanceDeEventos(p, sin.map((papel, i) => ({ tipo: "p1.abrio" as const, papel, ficha: i + 1 })));

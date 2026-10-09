@@ -1,0 +1,38 @@
+# nombre: doc_acta
+# nota: acta de la reunión de padres. 40x50. Hoja con franja roja de membrete, título, líneas de texto y sello. Contorno del color más oscuro de la rampa del papel.
+~ .2 g36 .2
+~ .1 g1 i36 g1 .1
+~ .1 g1 i36 g1 .1
+*3 ~ .1 g1 i3 m30 i3 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i3 a20 i13 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i3 h30 i3 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i3 h30 i3 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i3 h30 i3 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i3 h24 i9 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i3 h30 i3 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i3 h30 i3 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i3 h16 i17 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i23 n3 i10 g1 .1
+~ .1 g1 i21 n7 i8 g1 .1
+~ .1 g1 i20 n9 i7 g1 .1
+~ .1 g1 i20 n1 i7 n1 i7 g1 .1
+~ .1 g1 i20 n1 i2 m3 i2 n1 i7 g1 .1
+~ .1 g1 i20 n1 i7 n1 i7 g1 .1
+~ .1 g1 i20 n9 i7 g1 .1
+~ .1 g1 i21 n7 i8 g1 .1
+~ .1 g1 i23 n3 i10 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i3 a14 i19 g1 .1
+~ .1 g1 i36 g1 .1
+~ .1 g1 i36 g1 .1
+~ .2 g36 .2

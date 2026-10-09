@@ -298,7 +298,7 @@ Tres alumnos: **el que sabe** (abre por el nombre del papel y redacta), **el que
 | Reportó todo lo que no hizo | ✔ | — | No se corrigieron documentos de otros; no se probó el audio ni se midió pantalla |
 | Entregas sin ✘ | ✘ | script | Las cuatro llegaron con ✘ o con ✔ sin prueba (ver «Qué falló o faltó») |
 
-**NOTA 08-10 (noche):** `04-aprendizaje.md` v2.1, `02-bucle` v2 y los scripts del crítico no se habían guardado nunca. El bucle v2 se reconstruyó (`02`, sección v2; scripts en `scripts-t1/`); aprendizaje v2.1 sigue por reconstruir. B1, B2 e I1 se corrigen en 04 al reconstruirlo.
+**NOTA 08-10 (noche):** `04-aprendizaje.md` v2.1, `02-bucle` v2 y los scripts del crítico no se habían guardado nunca. El bucle v2 se reconstruyó (`02`, sección v2; scripts en `scripts-t1/`); aprendizaje v2.1 TAMBIEN se reconstruyo (09-10): `04` secciones T1.x hasta T1.10 y `scripts-t1/ramas_t1.py` (0 fallos). B1, B2 e I1 quedaron corregidos en 04; lo que no se pudo reconstruir esta listado en 04 T1.10. Falta que el critico lo vuelva a revisar.
 
 **Resultado de la lista: 5 ✘ (ids, vocabulario, ramas falsas, sonido/texto que juzga, parecido) y 1 pendiente (legibilidad).** Es una lista de hallazgos, no una entrega: se vuelve a jugar lo corregido (punto 15) cuando los agentes los arreglen.
 

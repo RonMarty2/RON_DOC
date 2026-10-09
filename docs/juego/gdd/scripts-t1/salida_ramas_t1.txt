@@ -1,0 +1,156 @@
+ramas_t1.py · modelo de ramas de la revelación del Tema 1 (reconstruido 08-10-2026)
+
+A. Cada estado cae en EXACTAMENTE una rama
+   estados recorridos por ficha: F1 2, F2 15, F3 135, F4 12, F5 651, F6 42, F7 10, F8 81 · total 948
+OK    A1 ningún estado cae en 0 ni en 2 o más ramas :: 0 estados mal asignados
+OK    A2 toda rama se alcanza al menos con un estado :: sin estados: []
+   ramas del modelo: 72 (71 de NT1.9 + las nuevas: ['F6k'])
+OK    A3 las ramas del modelo = las 71 de NT1.9 + las nuevas declaradas :: NT1.9 sin modelo: []
+
+B. Cada rama afirma solo hechos verdaderos para todos sus estados
+OK    B1 hechos de estado verdaderos :: 116 hechos comprobados en 1841 evaluaciones; fallan 0
+   supuestos del generador (no se pueden comprobar con el estado; se miden en la sección G): 12
+
+C. Filas de pago del bucle, códigos y hábitos
+OK    C1 todas las filas y variantes de tablas_t1_v2.FILAS se alcanzan desde algún estado :: 46 filas, 83 variantes; faltan []
+OK    C2 los 29 códigos del bucle se alcanzan y no hay ninguno de más :: alcanzados 29 de 29; faltan []; sobran []
+OK    C3 los 29 códigos tienen al menos un hábito (H1 a H4) :: 29 de 29
+OK    C4 hábitos H1..H4 = 7, 5, 12, 9 (E8d en dos) :: {'H1': 7, 'H2': 5, 'H3': 12, 'H4': 9}
+   Decisiones equivocadas (clase 'se dejó engañar' o 'sobrecorrigió') SIN código E.. (huecos del registro): 15 ramas
+     F2d  filas de pago: R2.2
+     F3b  filas de pago: R3.P
+     F3c  filas de pago: R3.P
+     F3g  filas de pago: R3.P
+     F3k  filas de pago: R3.B
+     F3m  filas de pago: R3.A.sin
+     F3n  filas de pago: R3.A.con
+     F3p  filas de pago: R3.A.sin
+     F4d  filas de pago: R4.3
+     F5i  filas de pago: R5.9
+     F5j  filas de pago: R5.3
+     F6e  filas de pago: R6.3, R6.4
+     F6h  filas de pago: R6.3
+     F6i  filas de pago: R6.2
+     F7e  filas de pago: R7.5
+   De ellos, ya listados por el bucle (02, secc. 5.7 'Huecos sin código'): ['F3c', 'F3g', 'F3m', 'F3p']
+   NUEVOS (el bucle no los lista): ['F2d', 'F3b', 'F3k', 'F3n', 'F4d', 'F5i', 'F5j', 'F6e', 'F6h', 'F6i', 'F7e']
+   Filas de pago y sus códigos (una fila 'sin código' es un hueco del registro):
+     R2.1      mixta                          E2a
+     R2.1.sin  correcta                       no aplica
+     R2.2      equivocada                     E2b, E2d  (algunos estados sin código)
+     R2.3      correcta                       no aplica
+     R2.4      equivocada                     E2c
+     R3.A.con  mixta                          E3b, E3c  (algunos estados sin código)
+     R3.A.sin  equivocada                     E3a, E3b, E3c, E3e  (algunos estados sin código)
+     R3.B      mixta                          E3b, E3c, E3d, E3f  (algunos estados sin código)
+     R3.B.sin  correcta                       no aplica
+     R3.P      mixta                          E3a, E3b, E3c, E3f  (algunos estados sin código)
+     R4.1      correcta                       no aplica
+     R4.1.sin  correcta                       no aplica
+     R4.2      correcta                       no aplica
+     R4.2.sin  correcta                       no aplica
+     R4.3      equivocada                     E4a  (algunos estados sin código)
+     R4.4      equivocada                     E4a, E4b
+     R4.5      equivocada                     E4c
+     R5.1      (turno 1)                      E5e (solo registro, H4)
+     R5.2      (turno 1)                      opción correcta: sin código
+     R5.3      equivocada                     E5e  (algunos estados sin código)
+     R5.4      equivocada                     E5a, E5d, E5e
+     R5.5      equivocada                     E5b, E5d, E5e
+     R5.6      correcta                       no aplica
+     R5.7      correcta                       no aplica
+     R5.8      correcta                       no aplica
+     R5.9      equivocada                     E5c, E5d, E5e  (algunos estados sin código)
+     R6.1      mixta                          E6b
+     R6.1.sin  correcta                       no aplica
+     R6.2      equivocada                     E6d  (algunos estados sin código)
+     R6.3      equivocada                     E6a  (algunos estados sin código)
+     R6.4      equivocada                     E6a, E6c  (algunos estados sin código)
+     R6.5      mixta                          E6a
+     R6.6      N mal contado                  E6a (H4)
+     R7.1      mixta                          E7b
+     R7.2      equivocada                     E7a, E7b
+     R7.3      mixta                          E7c
+     R7.4      equivocada                     E7a, E7c
+     R7.5      equivocada                     E7c  (algunos estados sin código)
+     R8.1      correcta                       no aplica
+     R8.2      correcta                       no aplica
+     R8.3      correcta                       no aplica
+     R8.4      equivocada                     E8a, E8c, E8d
+     R8.5      equivocada                     E8a, E8c, E8d
+     R8.6      equivocada                     E8a, E8c, E8d
+     R8.7      equivocada                     E8a, E8c, E8d
+     R8.8      equivocada                     E8a, E8b, E8d
+   Filas de pago equivocadas SIN NINGÚN código: ninguna
+
+D. Los dos bloqueos del crítico v15
+OK    D1 (B1) F3a solo recibe rango `ok` CON pieza; `ok` sin pieza y `flojo` en P van a F3b
+OK    D2 (B1) en B el rango que cubre (con o sin pieza) va a F3k, nunca a F3a ni a F3b :: ['F3k']
+OK    D3 (B1) con 2 fichas el rango nunca lleva pieza (2 tandas + 1 papel = 3)
+OK    D4 (B2) F5h no afirma efecto ni causa del taller :: Abriste con qué comparar y escribiste 0. La cuenta bien hecha daba {rho}. Escribir 0 era decir que la resta no dejaba nada, y la resta dejaba {rho}.
+OK    D5 (B2) F5h verdadera en todas las combinaciones de δ ∈ {0, 3} y ρ ∈ (1; 10] :: 180 combinaciones; dice solo 'escribiste 0' y '{rho}' (la cuenta del caso), nada de δ. El texto viejo era falso en 90 de esas 180 (los de δ = 0)
+   (referencia) con la definición vieja de E5d y el texto viejo, simulación propia (rho ~ N(δ; 4,4) en [-4, 10], 200 000): E5d ocurre en 80.9 % de las versiones y el texto viejo era falso en 56.9 % de sus apariciones (v15 midió 80,9 y 57,0).
+OK    D6 con ρ < −1 el 0 no dispara E5d (cae en F5i, que es verdadera)
+
+E. Textos de la revelación
+OK    E1 ningún texto de alumno pasa de 25 palabras (los {huecos} cuentan 1) :: 230 textos medidos (226 ramas y cierres + 3 globos del camino + Beto); largos: []
+OK    E1b los 3 globos del camino y la frase de Beto están tal cual en 05 :: []
+OK    E2 los 9 pies de «tu año» (NT1.6) tienen menos de 20 palabras :: 9 pies, largos []
+OK    E3 sin guiones largos
+OK    E4 sin voseo (lista corta propia; `buscar_voseo.py` se corre aparte sobre la sección) :: []
+OK    E5 sin 'según el dossier', software ni citas al material :: []
+OK    E6 los 11 cierres están tal cual en NT1.9 de 05 :: []
+OK    E7 las fichas del caso 3 no dicen «4.º» (el caso 3 es del colegio, v15 I5a)
+   ramas cuyo texto dice «ficha(s)» (de tiempo, legítimo en F1b; el resto debe ser 0): ['F1b']
+OK    E8 «ficha» solo aparece en F1b, donde son las fichas de tiempo
+   {huecos} que usan las ramas: ['N', 'curso', 'den', 'fuente', 'hechoClave', 'hechosA', 'llamaste', 'papelSueno', 'rho', 'vecino']
+
+   Diferencias con NT1.9 de 05 (lo que narrativa debe copiar):
+   iguales: 49 · cambian: 22 · nuevas: 1
+     F1a  CAMBIA  C10 de v15: C1-2 (encuesta anual) sí la pidió alguien
+     F2f  CAMBIA  V: el clave c (informe del orientador) no dice 'el registro no cambió', dice que las derivaciones también bajaron
+     F2g  CAMBIA  V: idem F2f
+     F2i  CAMBIA  V: idem F2f; la pieza del clave c dice 'las derivaciones también bajaron', no 'el registro no cambió'
+     F3a  CAMBIA  B1: la pieza dice de dónde salió la cifra, y por eso se presentó
+     F3b  CAMBIA  B1: ahora recibe `ok` sin pieza y `flojo`; en `ok` sin pieza la jefa sí lo comenta, así que 'nadie lo comentó' sería falso
+     F3d  CAMBIA  B1/V: el rango angosto se presentaba solo con su pieza; faltaba la versión del tipo B
+     F3g  CAMBIA  B1: con dos tandas solas el rango no se presentaba; hacía falta la pieza
+     F3i  CAMBIA  C7 de v15: 'ficha' es también el nombre del papel C3-1
+     F3o  CAMBIA  V: 'con el papel abierto' era falso para quien lo abrió y no puso la pieza (`E3e`)
+     F4d  CAMBIA  C11 de v15: cada clave muestra un solo estudio
+     F4e  CAMBIA  C11 de v15 (y 'los papeles' en plural no está garantizado)
+     F5a  CAMBIA  I6 de v15: sin afirmar causa
+     F5b  CAMBIA  I6 de v15: sin afirmar causa
+     F5c  CAMBIA  I6 de v15: sin afirmar causa
+     F5e  CAMBIA  V: 'que bajaron' no está garantizado en (b), donde los demás no regresan
+     F5f  CAMBIA  V/I6: 'efecto real' afirmaba causa; 'sin abrir con qué comparar' era falso con papeles a medias
+     F5g  CAMBIA  V: 'sin abrir con qué compararlo' era falso con papeles a medias
+     F5h  CAMBIA  B2 de v15: sin afirmar el efecto del taller ni su causa; {rho} es la cuenta bien hecha
+     F5i  CAMBIA  V/I6: 'no salió de esa comparación' y 'lo que subió el grupo' afirmaban de más
+     F6a  CAMBIA  I3 de v15: en A la pieza se parte en dos; {hechosA} nombra solo lo que dicen los papeles abiertos
+     F6j  CAMBIA  la referencia a 'F6e, F6g o F6h' ahora dice en qué tipo cae cada una
+     F6k  NUEVA   NUEVA: B, firmar tal cual con el clave abierto no tenía rama (hueco hallado por el recorrido)
+
+F. Sobres (05 NT1.7) y tabla única de 29 códigos (02 secc. 8.1)
+OK    F1 30 sobres en 05 NT1.7 = S-P1 + 29 códigos :: 30; faltan []; sobran []
+OK    F2 la tabla 8.1 de 02 = tablas_t1_v2.CODIGOS (29 códigos, mismos hábitos) :: 29 filas en 02
+OK    F3 los códigos por caso: E2 4, E3 6, E4 3, E5 5, E6 4, E7 3, E8 4
+
+G. Supuestos del generador de los que dependen los textos (se piden al bucle; cifras de ESTE script, no del crítico)
+   Modelo de 02 secc. 5.4: nivel real T ~ N(60,10), medición = T + N(0,8), δ ∈ {0,3}; I2 (vecino ≥ 4) e I5 (ρ en [−4,10]) aplicados; 20 000 sorteos por opción y δ, semilla 20261008.
+   Si el generador NO los exige, fracción de versiones en que el supuesto falla:
+   opción δ   Q1 'los llamados subieron (≥1)' · Q3 'el grupo del sorteo subió (≥1)' [c] · Q2 'inflado por encima de ρ+1' [a] · 'los demás bajaron' [a, b]
+     (a)  0   Q1 falla   0.1 %   Q3   n/a    Q2   0.0 %   demás-bajaron falla  13.3 %
+     (a)  3   Q1 falla   0.0 %   Q3   n/a    Q2   0.0 %   demás-bajaron falla  12.9 %
+     (b)  0   Q1 falla  22.2 %   Q3   n/a    Q2   n/a    demás-bajaron falla  45.9 %
+     (b)  3   Q1 falla   5.7 %   Q3   n/a    Q2   n/a    demás-bajaron falla  49.8 %
+     (c)  0   Q1 falla   6.0 %   Q3  14.0 %   Q2   n/a    demás-bajaron falla n/a
+     (c)  3   Q1 falla   0.7 %   Q3  10.1 %   Q2   n/a    demás-bajaron falla n/a
+   Q7 'cada una dio algo distinto' con 2 tandas de 10 respuestas a 0,5 h y la media mostrada con 1 decimal: dos medias iguales en 9.7 % de los pares.
+   Q4 (vecino ≥ 4), Q5 (informe del 2,5) y Q6/Q8/Q9: son reglas del bucle o de la narrativa (I2, I3, K11, G10, v15 I3); se prueban en construcción.
+   Cada rama que depende de un supuesto: F2b (Q6); F3a (Q7); F5a (Q3); F5b (Q4); F5c (Q5); F5d (Q1,Q3,Q4,Q5); F5e (Q2); F5j (Q8); F6a (Q9)
+   supuestos distintos: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9']
+
+RESUMEN
+  ramas del modelo: 72 · estados recorridos: 948 · hechos de estado: 116 (en 1841 evaluaciones) · supuestos del generador: 12 (9 distintos)
+  comprobaciones que fallan: 0 []

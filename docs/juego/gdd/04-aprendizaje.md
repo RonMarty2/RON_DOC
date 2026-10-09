@@ -20,7 +20,547 @@ pregunta nada: tiene **1 bloqueo y 4 importantes** que corrige el adaptador.
 
 ---
 
-## Psicoestadística Descriptiva (Psicología) · Tema 1 «La mesa de verificación» · aprendizaje · versión 1 · 08-10-2026
+<!--T1V21-INICIO-->
+## Psicoestadística Descriptiva (Psicología) · Tema 1 «La mesa de verificación» · aprendizaje · versión 2.1 (RECONSTRUIDA) · 08-10-2026
+
+> **Por qué dice «reconstruida».** La v2.1 que revisaron el crítico v13 a v15 se escribió el 08-10 en una sesión cuyos archivos nunca llegaron a este disco ni a GitHub (`RETOMAR.md`; nota final de la entrada v15 de `06`), igual que su script `ramas_t1.py`. Esta sección la **rehace** desde lo que sobrevivió: la v1 (abajo), la ficha, el bucle v2 reconstruido (`02`, con `scripts-t1/tablas_t1_v2.py`), la narrativa v3 (`05`, NT1.6 a NT1.9 y NT1.11, donde las 71 ramas de la revelación sí sobrevivieron) y las entradas v13, v14 y v15 de `06`. **No se inventó ninguna cifra ni regla:** lo que no se pudo recuperar queda marcado **[RECONSTRUIR: falta X]** y se junta en T1.10.
+> **Cómo se comprobó.** Cuatro bloques de esta sección (T1.5a, T1.5b, T1.7a y T1.7b) **los escribe el script** `scripts-t1/ramas_t1.py` entre marcas `GEN`: no se editan a mano, se vuelve a correr. El script **importa** las tablas del bucle (`tablas_t1_v2.py`), recorre **todos** los estados posibles de cada caso (tipo × opción × papeles abiertos × pieza × …) y comprueba que cada uno cae en exactamente una rama y que cada rama dice solo hechos verdaderos para todos los estados que le tocan (salida guardada: `scripts-t1/salida_ramas_t1.txt`). Cuando un texto afirma algo que el estado no puede probar (lo que garantiza el generador de cifras), se declara como **supuesto Q1 a Q9** y se mide con una simulación del modelo del bucle (T1.8, H-C2).
+> **Parte de:** las 8 ideas APROBADAS (08-10), la ficha ELEGIDA `00-tema1-forma1-ficha.md`, el aspecto A «La redacción de noche» (el lugar pasó a ser el Departamento de Orientación; el aspecto no cambió), el bucle `02` v2 y la narrativa `05` v3. Nada de eso se reabre. **Sin nota** en este Tema 1 (decidido por Ronald; no se pregunta): todo lo de abajo es **registro**. Nada que ve el alumno manda a leer el dossier ni dice «según el dossier»; no hay software.
+> **Las tres líneas del oficio** (regla «El juego se hace para el oficio de la carrera»). (1) Carrera del alumno: **Psicología** (nombre del documento de la materia y `content/materias.ts`). (2) Qué hace un profesional de esa carrera: el psicólogo o la psicóloga de un colegio recibe informes, oficios, actas y frases dichas en reuniones («los estudiantes duermen poco», «el taller funciona») y dice qué se puede afirmar con los datos del colegio y qué decisión conviene. (3) Papel del jugador: **psicólogo o psicóloga del Departamento de Orientación**, la víspera del consejo. ¿Lo haría un profesional de la carrera? Sí.
+> **Decisiones pendientes de Ronald de esta sección: ninguna.** Para el bucle y la narrativa quedan pedidos concretos en T1.8 y T1.9 (huecos de código, supuestos del generador, textos a copiar).
+> **Vocabulario** (el de la narrativa v3; los ids no cambian): la **jefa** (Lic. Rocabado), **Voz** (antes «Lectores»), **Firmar tal cual / Redactar / Frenar**, **sobre** (la pregunta de la jefa), **panel de acuerdos**, **archivador de expedientes**, y **cartas** para las ocho de la revelación (las **fichas** son solo las de tiempo; el papel C3-1 es «el papel de cómo se obtuvo la cifra»).
+> **Términos de diseño:** *escalón de ayuda* = cada nivel de pista antes de dar nada más; *semilla* = el número que decide qué versión recibe el alumno; *acierto sin evidencia* = decidir bien sin haber abierto el papel que lo justificaba (suerte o instinto); *rama* = qué texto de la carta sale según lo que hizo; *supuesto del generador* = algo que el texto afirma y que el código que arma las cifras tiene que garantizar.
+
+### T1.0 · Qué cambia respecto de la v1 (lo que esta versión hace distinto)
+
+| # | Cambio | De dónde sale |
+|---|---|---|
+| 1 | La tabla de errores tiene **29 códigos con hábito** (T1.5b), con `E2d`, `E3f` y `E5e` que a la v1 le faltaban; los hábitos son cuatro, H1 a H4, y no hay dos tablas | bucle 8.1; v15 I1 |
+| 2 | La fila del caso 2 en T1.5a ya no dice «no existe el acierto sin evidencia»: **en el tipo B sí existe** (firmar tal cual sin abrir el clave, `R2.1.sin`) | bucle cambio 1; v15 I1 |
+| 3 | Se quita «siempre con problema» (el caso 2 es con problema en 2 de 3 versiones y bien en 1 de 3), «48 filas vacías de 60» (la hoja del caso 6 trae solo las respuestas recibidas: 60, 60 o 12 filas) y las cifras viejas de estrategias (T1.6 remite a la salida guardada) | bucle cambios 13 y 15; v13 hallazgo 6 |
+| 4 | La revelación pasa de dos ramas por carta a **72 ramas por estado** (T1.7a): tipo × opción × papeles abiertos × (caso 3) si el rango llevó la pieza × (caso 5) la regla de pago que disparó | v13 hallazgo 5; bucle V3 |
+| 5 | **B1:** el caso 3 en P y B tiene la variable «con pieza / sin pieza»; un rango `ok` sin pieza ya no cae en F3a («se pudo presentar») sino en F3b («quedó en un anexo») | v15 B1 |
+| 6 | **B2:** F5h dice «Abriste con qué comparar y escribiste 0. La cuenta bien hecha daba {rho}.» y no afirma que el taller cambió algo; `E5d` exige ρ > 1 | v15 B2 |
+| 7 | **I6:** F5a a F5c («descontaste lo que subió solo») y el resto de la carta 5 no afirman causa | v15 I6 |
+| 8 | Las 5 ramas del caso 2 en tipo B (F2f a F2j) entran con id y fila en T1.7a | narrativa NT1.11 #19 |
+| 9 | Meta del cierre **65/65** y marcas **25/65** en los tubos; **8 expedientes**, 2 por hábito | bucle cambios 6 y 8 |
+| 10 | Caso 3 es del colegio: «los estudiantes del colegio» (el 4.º queda en el paso 1 y el caso 4) | v15 I5a |
+| 11 | **Cartas** y no «fichas» para la revelación | v15 C7 |
+| 12 | Los tres textos de más de 25 palabras de la v1 (el cierre de la carta 5, el de la carta 8 y el cierre general) quedan en 25 o menos | v13 hallazgo 9 |
+| 13 | «Al elegir (a) por segunda vez» solo existe en la práctica abierta: en la oficial el caso 5 se juega una vez | v13 hallazgo 9 |
+| 14 | El recorrido por script halló **una rama que faltaba (F6k)** y **15 ramas con estados sin código** (T1.8, H-C1) | `ramas_t1.py` |
+
+### T1.1 · Lo que el alumno demuestra (diseño inverso)
+
+| Sabe reconocer | Lo demuestra así (en el juego) | Si no lo reconoce pasa esto |
+|---|---|---|
+| 1 Que lo cotidiano ya deja dato | Abre uno de los dos papeles con horas de sueño | Gasta las fichas en papeles sin dato; la jefa le regala una ficha y, si hace falta, Dani lo abre |
+| 2 Que alguien decidió qué contar | Abre el papel que muestra si el registro cambió y redacta con su pieza (o firma el cero si el registro no cambió) | Firma el cero y llama la señora Quiroga; o duda de un cero que se sostenía y el director lo presenta sin él |
+| 3 Que con pocos se habla de muchos | Saca 2 o más tandas, abre el papel de cómo se obtuvo la cifra y escribe un rango que cubre, corto y con su pieza | Rango que no cubre, tan ancho que nadie lo usa, o que cubre pero queda en un anexo |
+| 4 Que importa quién responde | Abre de dónde vienen las respuestas antes de citar un estudio | Cita el grande y llama la coordinadora de un club de apoyo |
+| 5 Que quien está peor mejora solo | Compara con quienes no fueron al taller y escribe un número cercano a la cuenta bien hecha | Escribe la subida bruta y llama el director del colegio vecino |
+| 6 Que lo medido no es lo de todos | Cuenta bien y redacta con la pieza que le dice hasta dónde llega la lista | Número que no sale de su hoja, o conclusión sobre todo el colegio con los 60 de un curso |
+| 7 Que un gráfico puede mentir con datos verdaderos | Escribe la diferencia de la hoja y rediseña desde cero (o firma si el gráfico era honesto) | Una docente escribe que el mismo gráfico la hizo decidir otra cosa |
+| 8 Que decidir con datos le gana al ojo | Pone sobre la mesa los dos papeles clave y decide según lo que dicen | Dos años en paralelo: el suyo y el de Beto |
+
+**Regla de este tema (la fija el bucle, 7.2):** el Tema 1 **no bloquea**. Como no mide nota y su fin es el asombro, el alumno no repite un caso hasta acertar: ve la consecuencia y sigue. El «dominio antes de avanzar» vive en la **práctica abierta** (otras cifras, sin nota, cuantas veces quiera) y en los temas que miden.
+
+### T1.2 · Escalera de ayuda del Tema 1 (dentro del juego; nunca la respuesta, nunca el dossier)
+
+Es la de `02` secc. 8, con el tercer escalón ya adaptado a la decisión de Ronald del 08-10 (ayuda dentro del juego). No toca `escalera.ts`; el cambio de ese código sigue esperando su OK.
+
+| Escalón | Qué pasa en el mundo | Cuándo aparece |
+|---|---|---|
+| 1 · Consecuencia | Se mueven los tubos (Credibilidad y Voz) y reacciona alguien: la señora Quiroga, una docente, la tallerista, el director vecino, Ugarte o la jefa | Siempre, al cierre del caso |
+| 2 · Pista según tu error | Un **sobre de la jefa** cae sobre la mesa con una pregunta de una o dos líneas, elegida por el código `E…` (texto en T1.5b). No nombra el concepto | Tras una decisión que no fue acierto con evidencia, antes de «Siguiente caso». Se lee o se ignora con un toque |
+| 3 · Un caso parecido ya resuelto | Un **expediente cerrado de otro año** (otro colegio, sin cifras, en tres tiempos: qué papel se abrió, qué se firmó, qué pasó). Sin explicar. 8 expedientes, 2 por hábito H1 a H4 | En la partida **oficial**, solo al cumplirse un hábito y solo al cierre del caso (nunca antes de decidir). En la **práctica abierta**, después de cualquier error |
+| 4 · Otros números | Otra versión del mismo caso: otro tipo, otro clave, otras cifras, y por eso **otra respuesta correcta** | Práctica abierta, «Probar este caso con otras cifras» |
+
+**Cómo cambian los números al reintentar:** la práctica de un caso usa una semilla nueva derivada de la semilla del alumno y del intento (bucle 8.4): cambian el tipo (con problema, bien, aún no se sabe), cuál papel es el clave, cuáles 6 de los 9 salen y todas las cifras. Lo aprendido de memoria («el correo destapa», «siempre rediseñar») falla.
+**Nunca bloquea:** ningún escalón deshabilita «Siguiente caso» (se prueba en construcción, bucle 8.5).
+**Dónde queda en el registro:** el **escalón en que acertó** cada idea (T1.5c).
+
+### T1.3 · Para cada una de las 8 ideas: caso, decisión que la revela, errores típicos y su pista
+
+Cada error lleva su código `E…` (T1.5b trae el hábito y el texto del sobre de la jefa, que es la pista). Las reacciones del escalón 1 son de `05` NT1.6. **Ninguna pista nombra el concepto.** «Sin código» marca una decisión equivocada que la tabla única de 29 códigos no cubre (T1.8, H-C1).
+
+**Idea 1 · Lo cotidiano ya es dato · Paso 1 «El primer encargo» (sin tubos)**
+- *Decisión que revela:* qué papeles abre con sus 3 fichas. Entendió si abre uno de los dos (de 6) que traen horas de sueño; cada uno trae 2 de las 3 columnas.
+- *Error típico (uno solo; es el paso sin tubos y no tiene castigo):* creer que para tener la cifra hay que recoger datos nuevos. *Lo delata:* gasta las 3 fichas en papeles sin horas de sueño.
+- *Consecuencia:* la jefa, una sola vez: «¿Seguro que ahí no había nada?», y regala 1 ficha. Si aun así no abre uno, Dani lo abre por él y el registro anota `ayudado`. Sobre `S-P1`.
+- *Lo que muestra que lo vivió:* la fila «Tú, hoy» (o la de Dani) junto a la del archivo de hace un año.
+
+**Idea 2 · Alguien decidió qué contar · Caso 2 «El colegio sin denuncias» (con problema en 2 de 3 versiones, bien en 1 de 3)**
+- *Decisión que revela:* abre el clave (uno de 3: correo de la dirección, libro de registro o informe del orientador; el buzón anónimo es refuerzo) y redacta una frase con su pieza. En el tipo B la decisión correcta es la contraria al reflejo: el cero se sostenía.
+- *Errores típicos y lo que los delata:*
+  - `E2a` **Firmar tal cual con problema** (−20/+10). Mundo: llama la señora Quiroga: a su hijo lo empujaron y no se podía denunciar.
+  - `E2b` **Frenar con problema sin abrir el clave** (+3/−8). Mundo: el director presenta «Colegio seguro» sin tu informe y una semana después lo corrige.
+  - `E2c` **Frase sin la pieza del clave**, en P (−8/+4) o en B (0/+4): solo frases genéricas («según fuentes del colegio», «datos preliminares»). Mundo: nota del director «Nuestras cifras son correctas».
+  - `E2d` **Frenar en B** (0/−15). Mundo: el director presenta el cero al distrito sin tu firma, y era cierto.
+  - *Sin código:* frenar con problema **habiendo abierto el clave** (`R2.2` en P con el clave abierto; el mundo reacciona igual que en `E2b`).
+- *Acierto sin evidencia:* solo en B: firmar tal cual sin abrir el clave (`R2.1.sin`, +5/+5); la jefa pregunta «¿En qué papel te apoyabas?». En P no existe: la frase con la pieza no se puede escribir sin el papel.
+
+**Idea 3 · Con pocos se habla de muchos · Caso 3 «La cifra de los de 4.º»** *(el oficio dice «los estudiantes del colegio duermen {cifra} horas»; el título lo cambia narrativa, v15 I5a)*
+- *Decisión que revela:* saca **2 o más tandas** (la puerta del rango), abre el papel que dice de dónde salió la cifra y escribe un rango «entre a y b» que lleva esa pieza.
+- *Errores típicos y lo que los delata:*
+  - `E3a` **Firmar tal cual con 1 tanda o menos** en P o A. Mundo: Horizonte presenta otra cifra, de otra tanda (P).
+  - `E3b` **Rango que no cubre** la media del registro (−10/+4). Mundo: llama una docente con otra tanda que cae fuera. Si el rango era el mínimo-máximo de 3 tandas, el registro marca `razonoBienNoCubrio` y la carta 3 no lo trata como engaño (F3e).
+  - `E3c` **Rango demasiado ancho**, de más de 2,0 h (0/−2). Mundo: «Queda entre {a} y {b}. Nadie lo usa.»
+  - `E3d` **Frenar en B** (0/−15). Mundo: Horizonte entrega primero con esa cifra.
+  - `E3e` **Rango en A sin la pieza de la semana** (−8/+4).
+  - `E3f` **Rango bueno** (cubre y mide 1,2 h o menos) **en P o B sin la pieza**: queda en un anexo (P +3/0; B 0/+2).
+  - *Sin código:* rango `flojo` (cubre y mide entre 1,2 y 2,0 h); rango bueno **con** pieza en B (0/+4); firmar tal cual o frenar en P o A con 2 o más tandas (los dos últimos ya los listaba el bucle).
+- *Acierto sin evidencia:* firmar tal cual en B sin haber abierto el papel (`R3.B.sin`, +5/+5) y `E3f` con el papel cerrado (el rango sirve, pero no sabe por qué).
+
+**Idea 4 · Importa quién responde, más que cuántos · Caso 4 «Dos encuestas, un titular»** *(los dos estudios son del distrito)*
+- *Decisión que revela:* abre de dónde vienen las respuestas (2 de los 4 papeles que destapan) antes de citar A, B o ninguna.
+- *Errores típicos y lo que los delata:*
+  - `E4a` **Elegir sin abrir ninguno de los papeles que destapan** y equivocarse (−20/+10 si cita A, −20/+4 si cita B). Mundo: la coordinadora de un club de apoyo (si citó A) o un oficio del distrito (si citó B).
+  - `E4b` **Sobrecorregir: citar B siendo A el bueno**, habiendo abierto un papel que lo mostraba («la chica siempre»). Mundo: el oficio del distrito dice que B sale solo del club de un colegio. Eco de Beto: «Siempre me quedo con la que tiene menos. Hasta que un día no».
+  - `E4c` **No citar ninguno** (0/−10). Mundo: Horizonte cita en su informe «La mitad de 4.º, estresada».
+  - *Sin código:* citar A siendo B el bueno **habiendo abierto** un papel que lo mostraba.
+- *Acierto sin evidencia:* citar el estudio bueno sin abrir ningún clave (`R4.1.sin` +5/+5, `R4.2.sin` +4/+2).
+
+**Idea 5 · Lo que mejora solo · Caso 5 «El taller de pausas» (dos turnos; la vergüenza es del propio consejo del alumno)**
+- *Decisión que revela:* en el turno 1 elige quién va al taller ((a) los 13 de peor puntaje, (b) los 13 primeros en anotarse, (c) sorteo entre los 26 de peor puntaje); en el turno 2 abre **con qué comparar** y escribe cuántos puntos subió **por el taller**.
+- *Errores típicos y lo que los delata:*
+  - `E5e` **Aconsejar (a) o (b) en el turno 1** (solo registro, sin sobre; alimenta H4). Mundo: Beto, «Son los que más lo necesitaban. A ojo se ve». El sorteo (c) cuesta 3 de Voz (Ugarte: «¿Por qué dejas a 13 sin ayuda?») y es la opción que permite comparar.
+  - `E5a` **Subida bruta**: escribe lo que subieron los llamados (−20/+4). Mundo: llama el director del colegio vecino, o llega el informe de la tallerista, o una nota de Ugarte, según la opción.
+  - `E5b` **Inflado**: resta lo que cambiaron los demás, que no se parecen a los llamados (−20/+4).
+  - `E5c` **Sin comparar**: número sin tener abierto todo lo que la opción necesitaba (−10/0, o +4/+2 si acertó por suerte).
+  - `E5d` **Escribir 0** con la comparación abierta cuando la cuenta bien hecha daba **más de 1** (v15 B2).
+  - *Sin código:* frenar (`R5.3`); un número con la comparación abierta que no coincide con ninguna cuenta; escribir 0 cuando la cuenta daba menos de −1.
+- *La pista «Al elegir (a) por segunda vez»* de la v1 **solo existe en la práctica abierta**: en la partida oficial el caso 5 se juega una vez y el eco de Beto sale la primera vez que elige (a) o (b).
+- *Acierto sin evidencia:* un número dentro de ±1,0 de la cuenta bien hecha sin tener abiertos los papeles que la dan (`R5.8`, +4/+2).
+
+**Idea 6 · Lo que ves no es lo que concluyes · Caso 6 «El titular de los 480»** *(la hoja trae solo las respuestas recibidas: 60, 60 o 12 filas, sin curso ni total)*
+- *Decisión que revela:* **cuenta** en la hoja cuántos duermen menos de 6 horas y redacta la conclusión con la pieza que dice hasta dónde llega la lista.
+- *Errores típicos y lo que los delata:*
+  - `E6a` **`N` mal contado**: el número escrito no sale de la hoja (−10 a Credibilidad sobre cualquier otra cosa). Mundo: marca roja «Ese número no sale de tu hoja».
+  - `E6b` **Firmar tal cual** en P o A (−20/+10). Mundo: llama la profesora Camacho: «En mi curso nadie duerme tan poco».
+  - `E6c` **«Podrían ser uno de cada cuatro»** en P o A (−8/+4): prudencia que se diría de cualquier lista.
+  - `E6d` **Frenar en B** (0/−15): la lista salió de un sorteo.
+  - *Sin código:* redactar solo la base (`ninguna`) en cualquier tipo; `podrían` en B; frenar en P o A.
+- *Acierto sin evidencia:* firmar tal cual en B sin abrir el clave (`R6.1.sin`, +5/+5).
+
+**Idea 7 · Un gráfico miente con datos verdaderos · Caso 7 «El gráfico del informe»** *(la hoja de datos va adjunta y da la diferencia: la resta es fácil a propósito)*
+- *Decisión que revela:* primero, como **lector** (antes de la mesa), elige a qué taller recortaría; esa decisión **no se juzga, se guarda**, y al cierre se repite con el dato dibujado honesto. En la mesa escribe `x`, la diferencia que dice la hoja, y decide si firma, rediseña con la base en cero o frena.
+- *Errores típicos y lo que los delata:*
+  - `E7a` **`x` incorrecto** (escribió lo que se ve). Mundo: nota de una docente: «El mismo gráfico me hizo decidir otra cosa».
+  - `E7b` **Firmar tal cual en P** (−10/+10 con `x` bueno, −20/+10 con `x` malo). Mundo: Horizonte, «Mismo dato, otro dibujo».
+  - `E7c` **Rediseñar o frenar en B** (0/−4 con `x` bueno, −6/−4 con `x` malo, 0/−15 al frenar): el gráfico era honesto.
+  - *Sin código:* frenar en P (`R7.5`).
+- *Qué se registra:* la idea 7 **no se clasifica por abrir papeles** (la hoja da el dato): se registra por el lector antes y después y por `x`. No hay acierto sin evidencia (bucle, D-T1-2).
+
+**Idea 8 · Una decisión con datos le gana a la de «a ojo» · Caso 8 «La dirección decide»**
+- *Decisión que revela:* pone sobre la mesa **los dos** papeles clave (con qué comparar y cuántos eran) y decide financiar, no financiar o esperar según lo que dicen.
+- *Errores típicos y lo que los delata:*
+  - `E8a` **Decidir con menos de 2 claves sobre la mesa** (`e` = 0 o 1), acierte o no. Mundo: Ugarte, «¿Con qué lo comparaste? ¿Cuántos eran?».
+  - `E8b` **Esperar cuando ya se podía decidir** (0/−8). Mundo: «Esperar un trimestre cuesta un trimestre».
+  - `E8c` **Financiar o no financiar contra lo que decían los papeles** (−10 a −20). Mundo: los dos años lado a lado.
+  - `E8d` **Seguir a Beto cuando se equivocaba, o llevarle la contraria cuando acertaba** (solo registro; Beto acierta 1 de cada 3 veces).
+- *Acierto sin evidencia:* decisión correcta con `e` = 0 (`R8.3`, 0/0) o con `e` = 1 (`R8.2`, +6/+4, medio acierto); ninguno suma a «descubrió solo».
+
+**T1.3c · Primero se ve, después se calcula; y las preguntas que el alumno haría.** La regla de Ronald «todas las preguntas posibles» se cumple dejando que **cada pregunta se conteste en el mundo** (un papel, una voz o el sobre), nunca en un texto explicativo.
+
+| Caso | Primero se ve | Después se calcula | Pregunta que el alumno haría → dónde la contesta el mundo |
+|---|---|---|---|
+| 2 | La gráfica de denuncias por mes (varias, varias, cero) y el corcho con las fechas de los papeles | No hay cuenta; se redacta con piezas | «¿Por qué cayó justo ahí?» → el clave en el corcho. «¿Y si el cero es cierto?» → el tipo B existe: el director lo presenta sin ti |
+| 3 | Las tandas aparecen una a una en la tira y no coinciden | El rango «entre a y b» | «¿Cuántas tandas hacen falta?» → la puerta de 2; «¿de dónde salió la cifra de la fuente?» → el papel de cómo se obtuvo |
+| 4 | Las dos carpetas, una gorda y una delgada | No hay cuenta | «¿Quiénes respondieron?» → las listas; «¿cómo los invitaron?» → los papeles de invitación |
+| 5 | La hoja de 60 con puntajes; después la hoja nueva, un mes más tarde | `x` = lo que subió por el taller (resta de dos cambios medios) | «¿Y los que no fueron?» → el papel del grupo, del vecino o de los demás |
+| 6 | La hoja con las respuestas, que se pueden marcar con un toque | `N` (el conteo) | «¿A cuántos viste?» → la hoja; «¿cómo se eligieron?» → el papel del sorteo o del curso |
+| 7 | La lámina en la puerta, con dos columnas y sin números en el eje | `x` = diferencia entre A y B | «¿Dónde empieza la barra?» → la captura y la ficha técnica |
+| 8 | Dos calendarios lado a lado (tu año y el de Beto) | Ninguna: se decide con lo que se puso sobre la mesa | «¿Con qué lo comparaste?» «¿Cuántos eran?» → los dos papeles clave |
+
+### T1.4 · Qué cambia de un alumno a otro, idea por idea (incluye la respuesta correcta)
+
+| Idea | Cambia (más allá de los números) | Y por eso cambia la respuesta correcta |
+|---|---|---|
+| 1 | Cuáles 2 de los 3 candidatos traen sueño, y qué segunda columna (minutos de celular o ánimo); nombres | Qué papel se abre |
+| 2 | Con problema (2 de 3) o bien (1 de 3); cuál de 3 claves; si el refuerzo entra (la mitad de las versiones) | En P, redactar con la pieza del hecho; en B, firmar tal cual con el clave abierto o redactar con la pieza «el registro no cambió» |
+| 3 | Tipo P, B o A (salen de 10 tiradas de los casos 3, 6 y 7); cuál es el clave; cuán lejos está la cifra del oficio de la media | En P, rango con la pieza; en B, firmar tal cual; en A, rango con la pieza de la semana |
+| 4 | Quién es el bueno (A o B, mitad y mitad); cuáles 2 de los 4 papeles que destapan entran | Citar el grande o el chico |
+| 5 | Efecto real δ = 0 o 3; la opción elegida decide qué papeles necesita; `ρ` cambia en cada versión | El número correcto cambia por versión y por opción; **0 vale solo en las versiones donde la cuenta bien hecha da entre −1 y 1** |
+| 6 | Tipo P, B o A (hoja de 60, 60 o 12 filas); el conteo; cuál es el clave | Redactar con la pieza que dice el curso (P), el sorteo (B) o lo que dicen los papeles de A; en B firmar tal cual también paga |
+| 7 | Tipo P o B; los talleres; la diferencia real | Rediseñar en P; firmar tal cual en B |
+| 8 | Financiar, no financiar o esperar (un tercio cada uno); qué propone Beto (acierta 1 de 3) | Cambia la decisión correcta en 2 de 3 versiones respecto de otra |
+
+El orden de los casos 3 a 7 se baraja por alumno (120 órdenes); el paso 1, el caso 2 y el caso 8 son fijos. Cambiar solo el orden de las opciones no se cuenta: lo que cambia es la respuesta.
+
+### T1.5 · Qué queda registrado (solo registro, sin puntaje)
+
+**T1.5a · Clase de registro por idea y rama.** Las cinco clases de la v1 (*descubrió solo*, *descubrió con pista*, *se dejó engañar*, *acierto sin evidencia*, *sobrecorrigió*) se calculan desde el estado de cada caso. Regla de la reconstrucción: **firmar o creer de más** = se dejó engañar; **frenar, dudar o redactar de menos** = sobrecorrigió; **decidir bien sin el papel** = acierto sin evidencia; decidir bien con el papel = descubrió solo. Cada celda lista las ramas de T1.7a que caen en esa clase (una rama puede caer en dos: depende del estado, por ejemplo si el clave estaba abierto). [RECONSTRUIR: la tabla T1.5a original; la regla de arriba sale de T1.5 de la v1, de bucle 7.1 y 8.1 y de las clases que v15 propone para `E2d`, `E3f` y `E5e`.]
+
+<!--GEN:T15A-->
+| Idea · caso | descubrió solo | descubrió con pista | acierto sin evidencia | se dejó engañar | sobrecorrigió |
+|---|---|---|---|---|---|
+| 1 · Paso 1 | F1a | F1b | ninguna | ninguna | ninguna |
+| 2 · Caso 2 | F2a, F2f, F2i | ninguna | F2g | F2b | F2c, F2d, F2e, F2h, F2j |
+| 3 · Caso 3 | F3a, F3h, F3n | ninguna | F3b, F3i | F3c, F3e, F3f, F3l, F3m, F3o | F3b, F3d, F3g, F3j, F3k, F3n, F3p |
+| 4 · Caso 4 | F4a | ninguna | F4b | F4c, F4d, F4f | F4e, F4g |
+| 5 · Caso 5 (turno 2) | F5a, F5b, F5c | ninguna | F5f | F5d, F5e, F5g, F5i | F5h, F5i, F5j |
+| 6 · Caso 6 | F6a, F6b, F6k | ninguna | F6c | F6f, F6j | F6d, F6e, F6g, F6h, F6i |
+| 7 · Caso 7 | F7a, F7f | ninguna | ninguna | F7b, F7c, F7d, F7g | F7e, F7h, F7i |
+| 8 · Caso 8 | F8a, F8b | ninguna | F8c, F8d | F8e, F8f | F8g |
+<!--/GEN:T15A-->
+
+**T1.5b · Una sola tabla de códigos de error y hábitos (v15 I1).** 29 códigos (E2 4, E3 6, E4 3, E5 5, E6 4, E7 3, E8 4), cada uno con al menos un hábito; la copia el script desde `tablas_t1_v2.py` y la compara con la tabla 8.1 del bucle y con los sobres de `05` NT1.7. Un **hábito** es la misma clase de error en **dos casos distintos**, o dos veces dentro del caso 5 (que tiene dos turnos). **H1** decidir sin abrir lo que importa (7 códigos) · **H2** firmar de más (5) · **H3** frenar, dudar o redactar de menos (12) · **H4** creer lo que muestra el resultado propio o el dibujo (9). `E2a`, `E3a` y `E4a` están en H1 y H2; `E8d` en H3 y H4. Cuando hay varios errores en el mismo caso, el sobre es el del que más baja Credibilidad. Más el sobre del paso 1: 30 sobres, dos sin texto propio (`E5e`, `E8d`).
+
+<!--GEN:T15B-->
+| Código | Caso | Cuándo | Clase de registro | Hábito | Sobre de la jefa (pista, escalón 2; texto de 05 NT1.7) |
+|---|---|---|---|---|---|
+| E2a | 2 | Firmó tal cual con problema (R2.1 en P) | se dejó engañar | H1, H2 | «Cero es un número redondo. ¿Cuántas denuncias había el mes antes de que cayera?» |
+| E2b | 2 | Frenó con problema sin abrir el clave (R2.2 en P) | sobrecorrigió | H1 | «Frenar también es una decisión. ¿Qué te falta saber para firmar?» |
+| E2c | 2 | Frase sin ninguna pieza del clave, en P o en B (R2.4) | sobrecorrigió | H3 | «Esa frase vale para cualquier colegio. ¿Qué hay en esta carpeta que sea solo de este?» |
+| E2d | 2 | Frenó en B: el cero se sostenía (R2.2 en B) | sobrecorrigió | H3 | «Dudaste de un cero. ¿Qué mostraba el libro de este trimestre frente al anterior?» |
+| E3a | 3 | Firmó tal cual con 1 tanda o menos, en P o A | se dejó engañar | H1, H2 | «Sacaste una tanda. Si pides otra, ¿te dará lo mismo?» |
+| E3b | 3 | Rango `noCubre` | se dejó engañar | H4 | «Otra tanda dio otra cifra. ¿Cuánto se mueve de una a otra?» |
+| E3c | 3 | Rango `ancho` | sobrecorrigió | H3 | «Con ese rango nadie se equivoca. Tampoco nadie decide nada.» |
+| E3d | 3 | Frenó en B | sobrecorrigió | H3 | «Dudaste de una cifra que venía de muchos. ¿Qué dice la ficha de cómo se obtuvo?» |
+| E3e | 3 | Rango en A sin la pieza (R3.A.sin) | se dejó engañar | H4 | «Tu rango describe el registro. ¿De qué semana es ese registro?» |
+| E3f | 3 | Rango `ok` en P o B sin la pieza | acierto sin evidencia / sobrecorrigió | H1 | «Tu rango cubre. ¿Qué papel dice de dónde salió la cifra de la fuente?» |
+| E4a | 4 | Eligió sin abrir ninguno de los 4 papeles que destapan | se dejó engañar | H1, H2 | «Cuántos respondieron te lo dice el estudio. ¿Quiénes? Eso lo dice otra hoja.» |
+| E4b | 4 | Eligió B siendo A el bueno, habiendo abierto un papel que lo mostraba | sobrecorrigió | H3 | «Siempre la más chica, ¿no? Mira de nuevo quiénes respondieron en cada una.» |
+| E4c | 4 | Ninguna | sobrecorrigió | H3 | «No citar ninguno es una decisión. ¿Había uno de los dos que sí se sostenía?» |
+| E5a | 5 | Subida bruta (R5.4) | se dejó engañar | H4 | «Qué bien suben. ¿Y los que no fueron al taller? ¿Y los del colegio de al lado?» |
+| E5b | 5 | Inflado (R5.5) | se dejó engañar | H4 | «Restaste a otros que bajaron. ¿Eran comparables con los 13 que llamaste?» |
+| E5c | 5 | Sin comparar: R5.8 o R5.9 sin los papeles requeridos | acierto sin evidencia / se dejó engañar | H1 | «Tu número no tiene con qué compararse. ¿Qué papel te daba una vara?» |
+| E5d | 5 | Escribió 0 con los papeles requeridos abiertos y `ρ > 1` | sobrecorrigió | H3 | «Abriste con qué comparar y escribiste cero. Vuelve a restar: ¿de verdad no quedó nada?» |
+| E5e | 5 | Aconsejó (a) o (b) en el turno 1 | solo registro | H4 | sin sobre: solo se registra para el hábito |
+| E6a | 6 | `N` mal contado (R6.6) | se dejó engañar | H4 | «Cuéntalos de nuevo, de diez en diez.» |
+| E6b | 6 | Firmó tal cual en P o A (R6.1) | se dejó engañar | H2 | «Dice 480. ¿A cuántos viste?» |
+| E6c | 6 | `podrían` en P o A (R6.4) | sobrecorrigió | H3 | «"Podrían ser". Eso se lo pondrías a cualquier conclusión. ¿Qué dice la carpeta sobre estos 60?» |
+| E6d | 6 | Frenó en B (R6.2 en B) | sobrecorrigió | H3 | «Frenaste algo que se sostenía. ¿Qué dice el papel sobre cómo se eligieron?» |
+| E7a | 7 | `x` incorrecto: escribió lo que se ve | se dejó engañar | H4 | «Mira la hoja y mira el dibujo. ¿Cuántos puntos hay de verdad entre A y B?» |
+| E7b | 7 | Firmó tal cual en P | se dejó engañar | H2 | «¿Dónde empieza la barra más baja?» |
+| E7c | 7 | Rediseñó o frenó en B | sobrecorrigió | H3 | «Este gráfico no hacía falta rehacerlo. ¿Qué papel te lo decía?» |
+| E8a | 8 | Decidió con `e` menor que 2 | acierto sin evidencia | H1 | «Hay dos papeles que cambian la reunión. ¿Cuáles pusiste sobre la mesa?» *(más la pregunta de Ugarte en la reacción: «¿Con qué lo comparaste?» «¿Cuántos eran?»)* |
+| E8b | 8 | Esperó cuando se podía decidir (R8.8) | sobrecorrigió | H3 | «Esperar costó un trimestre. ¿Qué papel justificaba esperar?» |
+| E8c | 8 | Financió o no financió contra la evidencia (R8.4 a R8.7) | se dejó engañar | H4 | «Tu recomendación no coincide con tu propia mesa. Mira de nuevo los dos papeles.» |
+| E8d | 8 | Coincidió con el colega o lo contradijo contra lo que decía la evidencia | solo registro | H3, H4 | sin sobre: solo se registra para el hábito |
+| S-P1 | 1 | No abrió ninguno de los papeles con sueño | sin clase | sin hábito | «Alguien en el colegio anota el sueño sin que nadie se lo pida. ¿Quién?» |
+<!--/GEN:T15B-->
+
+**T1.5c · Qué guarda el registro** (por idea, 8 filas por alumno; los eventos son los de `02` secc. 12):
+1. **Qué abrió** (identificador y si era clave, refuerzo o señuelo) y qué dejó.
+2. **Qué decidió** y el número que escribió, con si era correcto; en el caso 3, el nivel del rango y **si llevó la pieza**; en el caso 5, la opción, la regla de pago que disparó (`R5.3` a `R5.9`) y `ρ` de la versión.
+3. **Clase** (T1.5a) y **rama** de la revelación (T1.7a), que salen del estado; las calcula el motor, no las pone el alumno.
+4. **Código `E…` y hábitos** (T1.5b). La página del docente muestra los hábitos cumplidos.
+5. **Escalón en que acertó** (T1.2): 1 si acertó en la partida oficial; 2, 3 o 4 si no acertó en la oficial y acertó después en la práctica abierta de ese caso habiendo visto solo el sobre (2), habiendo abierto el expediente (3) o con otras cifras tras fallar una práctica (4). [RECONSTRUIR: la definición original del escalón de acierto; esta sale de bucle 8 (la oficial no se repite).]
+6. **Cambio de opinión observable:** si en el caso siguiente abrió el tipo de papel que antes saltó.
+7. **Lector del caso 7** antes y después de ver el dato.
+8. **Tubos** al cierre de cada caso, si se activó el castigo de 2 fichas y si logró la **plaza fija** (65/65).
+9. **Cartas** dadas vuelta (cuáles y en qué orden) y si completó el camino.
+10. **Datos propios o de reserva** en el paso 1 (solo eso; los tres números no se envían a la nube).
+11. **Práctica abierta:** cuántas veces, de qué caso, y por idea qué cambió.
+
+Para la página del docente, una línea por alumno: 8 casillas (la clase de cada idea), los hábitos H1 a H4 marcados y la plaza fija. Sirve para ver qué idea descubrió cada uno por sí mismo y cuál solo vio al revelarse.
+
+**T1.5d · Evaluación.** Este tema **no mide nota** (decidido por Ronald) y **no lleva defensa oral**: no hay parte de la nota que salga del registro ni rúbrica de defensa que armar. El registro es lo único que se guarda; si Ronald decidiera medirlo, el puntaje sobre 100 saldría de estas mismas clases, y eso se abriría como un tema nuevo.
+
+### T1.6 · Integridad (el Tema 1 no mide nota, pero el registro se lee)
+
+- **Qué impide copiar:** el tipo de cada caso, cuál papel es el clave, los 6 de 9 papeles de cada carpeta, las cifras, el orden de los casos 3 a 7 y qué propone Beto salen de la semilla del alumno (bucle G7 a G10). **La respuesta correcta cambia**, no solo el número (T1.4).
+- **Qué se recalcula:** el registro y la rama de cada carta se **reconstruyen desde los eventos** de la partida (bucle secc. 12); la página del docente no confía en lo guardado.
+- **Qué todavía se puede hacer:** contarle a un compañero «en el 2 firma» o «en el 7 rediseña». No sirve: la versión del compañero es otra, y el tipo no se repite por patrón (el caso 2 es bien en 1 de 3; ni «el último es aún no» ni «el grande es el malo»). Como el tema no pesa en la nota, no hay incentivo para hacerlo.
+- **Alumno perezoso:** las estrategias de «firmar siempre», «frenar siempre», «no abrir nada» y «abrir al azar» las corrió el bucle: ver `02` secc. 11.5 y la salida guardada `scripts-t1/salida_simular_t1_v2.txt`. **Las cifras no se repiten aquí** (v13 hallazgo 6); el registro lo separa por otra vía: «acierto sin evidencia» no cuenta como descubrimiento.
+- **Defensa oral:** este tema no la lleva.
+
+### T1.7 · Las ocho cartas de la revelación (texto que lee el alumno)
+
+**Formato.** Ocho cartas boca abajo, una por idea, en el orden en que el alumno jugó. Al darla vuelta se ve el **momento** del caso (el papel que abrió, el número que escribió, lo que firmó) y debajo **tres líneas de 25 palabras o menos** para leerse en 375 px sin achicar la letra: *Hiciste*, *Habría pasado* y *Cierre*. El nombre técnico se dice **solo para lo que el alumno hizo o dejó de hacer**; en un tipo B la carta lo dice («esta vez no había problema») y no nombra nada. Los `{huecos}` los llena el generador de la versión (definidos en `05` NT1.4).
+
+**T1.7a · Tabla de ramas (el cruce).** Cada estado posible de cada caso cae en **una sola** rama. Las condiciones usan: **tipo** de la versión · **opción** elegida · **papeles abiertos** · (caso 3) si el rango **llevó la pieza** · (caso 5) la **regla de pago** que disparó. Son **72 ramas**: las 66 de la v2.1 original, las 5 del caso 2 en tipo B (F2f a F2j) y **F6k, nueva**. La columna «Clase» y la de códigos las calcula el script desde los estados de la rama.
+
+<!--GEN:T17A-->
+| Rama | Cuándo (tipo · opción · papeles abiertos · pieza) | Clase de registro | Códigos del bucle |
+|---|---|---|---|
+| F1a | abrió con sus fichas un papel con horas de sueño | descubrió solo | ninguno (acierto) |
+| F1b | no abrió ninguno con sus 3 fichas (ficha regalada o Dani lo abrió: `ayudado`) | descubrió con pista | sobre S-P1 (del paso 1) |
+| F2a | P · redactó con la pieza del clave | descubrió solo | ninguno (acierto) |
+| F2b | P · firmó tal cual (con o sin el clave abierto) | se dejó engañar | E2a |
+| F2c | P · frenó sin abrir el clave | sobrecorrigió | E2b |
+| F2d | P · frenó con el clave abierto | sobrecorrigió | HUECO H-C1: ninguno |
+| F2e | P · redactó sin la pieza del clave | sobrecorrigió | E2c |
+| F2f | B · firmó tal cual con el clave abierto | descubrió solo | ninguno (acierto) |
+| F2g | B · firmó tal cual sin abrir el clave | acierto sin evidencia | ninguno (acierto) |
+| F2h | B · frenó | sobrecorrigió | E2d |
+| F2i | B · redactó con la pieza del clave | descubrió solo | ninguno (acierto) |
+| F2j | B · redactó sin la pieza del clave | sobrecorrigió | E2c |
+| F3a | P · rango `ok` CON la pieza del clave | descubrió solo | ninguno (acierto) |
+| F3b | P · rango `ok` SIN la pieza, o `flojo` | acierto sin evidencia / sobrecorrigió | E3f · HUECO H-C1 en algunos estados |
+| F3c | P · firmó tal cual | se dejó engañar | E3a · HUECO H-C1 en algunos estados |
+| F3d | cualquier tipo · rango `ancho` (más de 2,0 h) | sobrecorrigió | E3c |
+| F3e | cualquier tipo · rango `noCubre` y era el mínimo-máximo de 3 tandas (`razonoBienNoCubrio`) | se dejó engañar | E3b |
+| F3f | P o A · rango `noCubre` (sin el aviso de las 3 tandas) | se dejó engañar | E3b |
+| F3g | P · frenó | sobrecorrigió | HUECO H-C1: ninguno |
+| F3h | B · firmó tal cual con el papel de cómo se obtuvo abierto | descubrió solo | ninguno (acierto) |
+| F3i | B · firmó tal cual sin abrir ese papel | acierto sin evidencia | ninguno (acierto) |
+| F3j | B · frenó | sobrecorrigió | E3d |
+| F3k | B · rango que cubre (`ok` o `flojo`, con o sin pieza) | sobrecorrigió | E3f · HUECO H-C1 en algunos estados |
+| F3l | B · rango `noCubre` (sin el aviso de las 3 tandas) | se dejó engañar | E3b |
+| F3m | A · firmó tal cual | se dejó engañar | E3a · HUECO H-C1 en algunos estados |
+| F3n | A · rango que cubre CON la pieza de la semana | descubrió solo / sobrecorrigió | HUECO H-C1: ninguno |
+| F3o | A · rango que cubre SIN la pieza de la semana | se dejó engañar | E3e |
+| F3p | A · frenó | sobrecorrigió | HUECO H-C1: ninguno |
+| F4a | eligió el estudio bueno CON un clave abierto | descubrió solo | ninguno (acierto) |
+| F4b | eligió el estudio bueno SIN abrir ningún clave | acierto sin evidencia | ninguno (acierto) |
+| F4c | eligió A (el de miles) siendo B el bueno, sin clave | se dejó engañar | E4a |
+| F4d | eligió A siendo B el bueno, con un clave abierto | se dejó engañar | HUECO H-C1: ninguno |
+| F4e | eligió B (el chico) siendo A el bueno, con un clave abierto | sobrecorrigió | E4b |
+| F4f | eligió B siendo A el bueno, sin clave | se dejó engañar | E4a |
+| F4g | no citó ninguno (con o sin clave) | sobrecorrigió | E4c |
+| F5a | opción (c) · R5.6: papeles requeridos abiertos y x a 1,0 o menos de ρ | descubrió solo | ninguno (acierto) |
+| F5b | opción (a) · R5.7 | descubrió solo | ninguno (acierto) |
+| F5c | opción (b) · R5.7 | descubrió solo | ninguno (acierto) |
+| F5d | cualquier opción · R5.4 subida bruta: papel de los llamados abierto, x ≈ Δ_llamados, fuera de la banda de ρ | se dejó engañar | E5a, E5d |
+| F5e | opción (a) o (b) · R5.5 inflado: papel de los demás abierto, x ≈ Δ_llamados − Δ_demás, fuera de la banda | se dejó engañar | E5b, E5d |
+| F5f | R5.8 · número dentro de la banda de ρ SIN todos los papeles requeridos (acierto sin evidencia) | acierto sin evidencia | E5c |
+| F5g | R5.9 · número fuera de las bandas SIN todos los papeles requeridos | se dejó engañar | E5c |
+| F5h | R5.9 · escribió 0 con los requeridos abiertos y ρ > 1 (`E5d`) | sobrecorrigió | E5d |
+| F5i | R5.9 · número fuera de las bandas con los requeridos abiertos, salvo `E5d` (incluye 0 con ρ < −1) | se dejó engañar / sobrecorrigió | HUECO H-C1: ninguno |
+| F5j | R5.3 · frenó (sin número) | sobrecorrigió | HUECO H-C1: ninguno |
+| F6a | P o A · `grupo` con N bien contado | descubrió solo | ninguno (acierto) |
+| F6b | B · `grupo` con N bien contado | descubrió solo | ninguno (acierto) |
+| F6c | B · firmó tal cual sin abrir el clave | acierto sin evidencia | ninguno (acierto) |
+| F6d | B · frenó | sobrecorrigió | E6d |
+| F6e | B · `ninguna` o `podrían` con N bien contado | sobrecorrigió | HUECO H-C1: ninguno |
+| F6f | P o A · firmó tal cual | se dejó engañar | E6b |
+| F6g | P o A · `podrían` con N bien contado | sobrecorrigió | E6c |
+| F6h | P o A · `ninguna` (solo lo medido) con N bien contado | sobrecorrigió | HUECO H-C1: ninguno |
+| F6i | P o A · frenó | sobrecorrigió | HUECO H-C1: ninguno |
+| F6j | cualquier tipo y extensión · N mal contado (−10 a C) | se dejó engañar | E6a, E6c |
+| F6k | B · firmó tal cual con el clave abierto (NUEVA: el recorrido halló el hueco) | descubrió solo | ninguno (acierto) |
+| F7a | P · rediseñó con x correcto | descubrió solo | ninguno (acierto) |
+| F7b | P · rediseñó con x incorrecto | se dejó engañar | E7a |
+| F7c | P · firmó tal cual con x correcto | se dejó engañar | E7b |
+| F7d | P · firmó tal cual con x incorrecto | se dejó engañar | E7a, E7b |
+| F7e | P · frenó | sobrecorrigió | HUECO H-C1: ninguno |
+| F7f | B · firmó tal cual con x correcto | descubrió solo | ninguno (acierto) |
+| F7g | B · firmó tal cual con x incorrecto | se dejó engañar | E7a |
+| F7h | B · rediseñó (x correcto o no) | sobrecorrigió | E7a, E7c |
+| F7i | B · frenó | sobrecorrigió | E7c |
+| F8a | decisión correcta, los dos claves sobre la mesa, y Beto proponía otra cosa | descubrió solo | ninguno (acierto) |
+| F8b | decisión correcta, los dos claves sobre la mesa, y Beto coincidía | descubrió solo | ninguno (acierto) |
+| F8c | decisión correcta con un solo clave sobre la mesa | acierto sin evidencia | E8a |
+| F8d | decisión correcta sin ningún clave sobre la mesa | acierto sin evidencia | E8a |
+| F8e | financió o no financió contra la realidad, con los dos claves sobre la mesa | se dejó engañar | E8c, E8d |
+| F8f | financió o no financió contra la realidad, sin los dos claves sobre la mesa | se dejó engañar | E8a, E8c, E8d |
+| F8g | esperó cuando ya se podía decidir | sobrecorrigió | E8a, E8b, E8d |
+<!--/GEN:T17A-->
+
+**T1.7b · Los textos.** Son los de `05` NT1.9 (que `05` copió de la v2.1 original) con los cambios que pide el recorrido por script; la tabla de cambios y el motivo de cada uno están en la salida de `ramas_t1.py` (sección E) y se resumen en T1.9. `05` NT1.9 se vuelve a copiar de aquí.
+
+<!--GEN:T17B-->
+**Carta 1 · Lo cotidiano ya era dato**
+
+| Rama | Hiciste | Habría pasado |
+|---|---|---|
+| F1a | «Abriste {papelSueno} y ahí estaba el sueño de 4.º. Alguien lo anotó hace un año, sin que nadie lo usara.» | «Con esa fila a mano, la cifra de 4.º ya no dependía de preguntar otra vez.» |
+| F1b | «Con tus fichas no abriste ningún papel con horas de sueño; necesitaste ayuda. Estaban ahí, escritas hacía un año.» | «Abriendo uno de esos papeles a la primera, tu cifra habría salido esa noche.» |
+
+Cierre C1 (F1a, F1b): «Lo que viste todos los días ya dejaba un rastro. Convertirlo en algo que se puede leer es el trabajo de la estadística.»
+
+**Carta 2 · Alguien decidió qué contar** (**operacionalizar**; confundir lo contado con lo que pasa: **cosificar**)
+
+| Rama | Hiciste | Habría pasado |
+|---|---|---|
+| F2a | «Viste que {hechoClave}. El cero no decía lo que parecía.» | «Tu frase decía lo que el papel sostenía, y la jefa la puso en el informe.» |
+| F2b | «Firmaste "cero denuncias". El número era cierto, pero no contaba todo lo que pasaba en el colegio.» | «Una madre llamó esa misma noche: a su hijo lo habían empujado y no se podía denunciar.» |
+| F2c | «Frenaste sin abrir el papel que mostraba el hueco. Dudar sin mirar bien es otra manera de no saber.» | «Con ese papel abierto, tu frase habría ido al informe.» |
+| F2d | «Abriste el papel que mostraba el hueco y aun así frenaste.» | «Con la pieza de ese papel, tu frase podía ir al informe.» |
+| F2e | «Redactaste una frase sin lo que mostraba el papel clave. Sonaba prudente y no tocaba el hueco.» | «Con la pieza del papel clave, tu frase habría ido al informe.» |
+| F2f | «Viste que el cero se sostenía y lo firmaste. Esta vez no había hueco, y verlo también es leer.» | «Firmar tal cual era lo mejor, y eso hiciste.» |
+| F2g | «Firmaste el cero y salió bien. No abriste el papel que mostraba por qué se sostenía.» | «Con ese papel abierto, sabrías por qué el cero se sostenía.» |
+| F2h | «Frenaste un cero que se sostenía: el registro seguía igual que antes.» | «El director presentó el cero sin tu firma, y era cierto.» |
+| F2i | «Redactaste con lo que mostraba el papel clave: las denuncias registradas bajaron y el cero se sostenía.» | «La jefa lo puso en el informe.» |
+| F2j | «Redactaste una frase sin lo que mostraba el papel clave. Sonaba prudente, y el cero se sostenía.» | «Con la pieza, tu frase habría ido al informe completa.» |
+
+Cierre C2 (F2a, F2b, F2c, F2d, F2e): «Volver contable algo que no se ve se llama operacionalizar. Creer que lo contado es lo que pasa se llama cosificar.»
+Cierre C2b (F2f, F2g, F2h, F2i, F2j): «Esta vez el cero se sostenía. Cuando se cuenta igual que antes, la cifra puede creerse. Mirar cómo se contó te lo dice.»
+
+**Carta 3 · Con pocos se habla de muchos** (**población, muestra, parámetro, estadístico**)
+
+| Rama | Hiciste | Habría pasado |
+|---|---|---|
+| F3a | «Sacaste varias tandas y cada una dio algo distinto. Ninguna mentía, ninguna era "la cifra".» | «Tu rango dijo cuánto se mueve la cifra y de dónde salió, y por eso se pudo presentar.» |
+| F3b | «Sacaste varias tandas y cada una dio algo distinto. Ninguna mentía, ninguna era "la cifra".» | «Tu rango cubría y quedó en un anexo del informe. Útil, pero no se presentó.» |
+| F3c | «Firmaste la cifra de {fuente}, que salía de una tanda de 10, como si fuera la de los 480.» | «Horizonte presentó otra cifra, de otra tanda, y el consejo vio dos.» |
+| F3d | «Escribiste un rango tan ancho que nadie se equivoca. Y tampoco nadie decide nada.» | P: «Un rango más angosto, diciendo de dónde salió la cifra, se podía presentar.» A: «Un rango más angosto, diciendo de qué semana era, se podía presentar.» B: «Esta vez bastaba firmar tal cual: la cifra se sostenía.» |
+| F3e | «Tu rango estaba bien pensado y no cubrió. Con pocas tandas, a veces pasa.» | «Con una tanda más, tu rango tenía más posibilidades de cubrir.» |
+| F3f | «Tu rango dejó afuera la media real de los 480.» | «Una docente midió otra tanda y su cifra cayó fuera de tu rango.» |
+| F3g | «Frenaste una cifra que venía de una sola tanda. Dudar era razonable, pero no dijiste cuánto se mueve.» | «Con dos tandas y un papel que dijera de dónde salió la cifra, tu rango habría podido ir al informe.» |
+| F3h | «Esta vez la cifra venía de 150 elegidos al azar entre los 480. No había problema, y verlo también es leer.» | «Firmar tal cual era lo mejor, y eso hiciste.» |
+| F3i | «Firmaste y salió bien. No abriste el papel de cómo se obtuvo la cifra, así que no sabes por qué.» | «Con ese papel abierto, sabrías que eran 150 elegidos al azar.» |
+| F3j | «Frenaste una cifra que venía de 150 elegidos al azar entre los 480. Esta vez no había problema.» | «Horizonte entregó primero con esa cifra. La jefa dijo: "La teníamos nosotros."» |
+| F3k | «Esta vez la cifra venía de 150 elegidos al azar. Tu rango la cubría, pero no hacía falta un rango.» | «Firmar tal cual sumaba más que tu rango.» |
+| F3l | «Esta vez la cifra venía de 150 elegidos al azar, y tu rango dejó afuera la media real.» | «Firmar tal cual era lo mejor.» |
+| F3m | «Firmaste una cifra recogida en la semana de exámenes como si fuera la de cualquier semana.» | «Una cifra de la semana de exámenes no habla de todas las semanas.» |
+| F3n | «Dijiste lo que se sabe y de qué semana era.» | «Tu rango describía esa semana, y el consejo supo hasta dónde llegaba.» |
+| F3o | «Tu rango describía el registro, pero no decía que era de la semana de exámenes.» | «Con la pieza del papel de la semana de exámenes, habrías podido decir de qué semana hablabas.» |
+| F3p | «Frenaste una cifra de la semana de exámenes. Dudar era razonable, pero no dijiste qué se sabía.» | «Un rango que dijera de qué semana era se podía presentar.» |
+
+Cierre C3 (F3a, F3b, F3c, F3d, F3e, F3f, F3g, F3m, F3n, F3o, F3p): «Lo que quieres saber de todos es el parámetro. Lo que calculas con los que miraste es el estadístico.»
+Cierre C3b (F3h, F3i, F3j, F3k, F3l): «No hacía falta desconfiar. Distinguir cuándo no hace falta también es saber leer.»
+
+**Carta 4 · Importa quién responde, más que cuántos** (**error no muestral**, **sesgo**)
+
+| Rama | Hiciste | Habría pasado |
+|---|---|---|
+| F4a | «Miraste quiénes respondieron antes de elegir. Eso pesó más que cuántos eran.» | «Tu estudio sí representaba a los de 4.º del distrito.» |
+| F4b | «Elegiste bien sin abrir quiénes respondieron. No sabes si fue ojo o suerte.» | «Con ese papel abierto, sabrías por qué ese estudio era el bueno.» |
+| F4c | «Citaste el estudio de miles sin abrir quiénes respondieron. Habían respondido solo estudiantes de clubes de apoyo.» | «Con la lista abierta, lo habrías visto antes de citarlo.» |
+| F4d | «Citaste el estudio de miles. Habían respondido solo estudiantes de clubes de apoyo.» | «Uno de los papeles que abriste mostraba de dónde venían las respuestas de uno de los estudios.» |
+| F4e | «Citaste el estudio chico. Esta vez el grande era el que representaba a todo 4.º.» | «Uno de los papeles que abriste mostraba de dónde venían las respuestas de uno de los estudios.» |
+| F4f | «Citaste el estudio chico sin abrir quiénes respondieron. Solo habían respondido estudiantes del club de apoyo de un colegio.» | «Con la lista abierta, lo habrías visto antes de citarlo.» |
+| F4g | «No citaste ningún estudio. Uno de los dos sí representaba a los de 4.º.» | «Quiénes respondieron en cada uno decía cuál se podía citar.» |
+
+Cierre C4 (F4a, F4b, F4c, F4d, F4e, F4f, F4g): «El error del azar se achica con más gente. El de dejar fuera a quienes importaban no se achica, se llama error no muestral.»
+
+**Carta 5 · Lo que mejora solo** (**regresión a la media**; **grupo de control**)
+
+| Rama | Hiciste | Habría pasado |
+|---|---|---|
+| F5a | «Comparaste con el grupo del sorteo y descontaste lo que subió solo.» | «Un sorteo en el mismo colegio es la comparación más limpia, y la tuya lo era.» |
+| F5b | «Comparaste con {vecino}, sin taller, y descontaste lo que subió solo.» | «Un grupo sorteado en tu propio colegio habría sido una comparación más cercana.» |
+| F5c | «Descontaste lo que cambiaron los demás y lo que los primeros ya venían subiendo.» | «Un grupo sorteado en tu propio colegio habría sido una comparación más cercana.» |
+| F5d | «Llamaste a {llamaste}, subieron, y escribiste esa subida como si fuera del taller.» | Opción a: «El colegio {vecino}, sin taller, también subió.» Opción b: «Los primeros en anotarse ya venían subiendo antes del taller.» Opción c: «Los 13 del sorteo que no fueron al taller también subieron.» |
+| F5e | «Restaste lo que cambiaron los demás, y tu número quedó inflado.» | «Los demás no eran comparables con {llamaste}. Con una comparación justa, tu número habría sido menor.» |
+| F5f | «Tu número coincidió con la cuenta bien hecha, pero no tenías abierto todo lo necesario para comparar.» | «Con todos los papeles de la comparación abiertos, sabrías de dónde sale tu número.» |
+| F5g | «Escribiste un número sin tener abierto todo lo necesario para compararlo.» | «Con todos los papeles de la comparación abiertos, tu número habría tenido de dónde salir.» |
+| F5h | «Abriste con qué comparar y escribiste 0. La cuenta bien hecha daba {rho}.» | «Escribir 0 era decir que la resta no dejaba nada, y la resta dejaba {rho}.» |
+| F5i | «Abriste con qué comparar, pero tu número no coincidió con la cuenta bien hecha.» | «Con la cuenta bien hecha, tu número habría sido otro.» |
+| F5j | «Frenaste y no firmaste ningún número. Sin número no hay réplica, pero tampoco informe.» | «En tu carpeta había con qué comparar, y con eso había un número que firmar.» |
+
+Cierre C5 (F5a, F5b, F5c, F5d, F5e, F5f, F5g, F5h, F5i, F5j): «Quienes están peor suelen mejorar solos: se llama regresión a la media. Para no engañarte, usa un grupo de control.»
+
+**Carta 6 · Lo que ves no es lo que concluyes** (**estadística descriptiva** e **inferencial**)
+
+| Rama | Hiciste | Habría pasado |
+|---|---|---|
+| F6a | P: «Dijiste lo que la lista sostenía: que los 60 eran de {curso}, y nada más allá.» A: «Dijiste lo que la lista sostenía: {hechosA}.» | «La jefa la puso en el acta: dice lo que la lista sostiene, y hasta donde llega.» |
+| F6b | «Esta vez los 60 salieron de un sorteo entre los 480. Apostar sobre los que no viste tenía respaldo.» | «"Aproximadamente uno de cada cuatro" se sostenía, y lo dijiste con el papel a la vista.» |
+| F6c | «Firmaste tal cual y salió bien. No abriste cómo se eligieron los 60.» | «Con el papel abierto, sabrías que salieron de un sorteo entre los 480.» |
+| F6d | «Frenaste una conclusión que se sostenía: los 60 salieron de un sorteo entre los 480.» | «"Aproximadamente uno de cada cuatro" era una buena apuesta.» |
+| F6e | «Dijiste menos de lo que la lista sostenía: los 60 salieron de un sorteo entre los 480.» | «Con el papel de cómo se eligieron, podías decir "aproximadamente uno de cada cuatro".» |
+| F6f | P: «Firmaste la frase sobre todo el colegio con 60 estudiantes de un solo curso, {curso}.» A: «Firmaste la frase sobre todo el colegio con solo 12 respuestas, de la semana de exámenes.» | «La profesora de 4.º A llamó: en su curso nadie duerme tan poco.» |
+| F6g | «Escribiste que podrían ser uno de cada cuatro en el colegio. Eso se diría de cualquier lista.» | P: «La lista era de un solo curso: no alcanzaba para hablar del colegio.» A: «Solo 12 de 60 respondieron, en semana de exámenes: no alcanzaba para hablar del colegio.» |
+| F6h | «Dijiste solo lo que mediste: {N} de {den}. Era cierto, pero faltaba decir hasta dónde llega.» | P: «Con "todos son de {curso}", la conclusión decía su límite.» A: «Con "12 respuestas en semana de exámenes", la conclusión decía su límite.» |
+| F6i | P: «Frenaste una frase sobre todo el colegio que se apoyaba en 60 estudiantes de {curso}.» A: «Frenaste una frase sobre todo el colegio que se apoyaba en solo 12 respuestas.» | «Frenar era razonable, pero se podía decir lo medido y hasta dónde llega.» |
+| F6j | «Tu número no salía de la hoja. Contar bien es el primer paso.» | Con `grupo`: «Con el conteo bien, la conclusión se sostenía.» Con otra extensión: la línea «Habría pasado» de F6e (tipo B), de F6g (`podrían`, P y A) o de F6h (`ninguna`, P y A) |
+| F6k | «Esta vez los 60 salieron de un sorteo entre los 480, y tú lo viste. Firmaste tal cual.» | «Firmar tal cual, con el sorteo a la vista, sumaba lo mismo que redactarlo.» |
+
+Cierre C6 (F6a, F6b, F6c, F6d, F6e, F6f, F6g, F6h, F6i, F6j, F6k): «Lo que hay en tus datos es estadística descriptiva. Apostar sobre los que no viste es inferencial. Esta materia empieza por la primera.»
+
+**Carta 7 · Un gráfico miente con datos verdaderos** (**eje truncado**)
+
+| Rama | Hiciste | Habría pasado |
+|---|---|---|
+| F7a | «Escribiste la diferencia que decía la hoja y dibujaste las barras desde cero.» | «Con tu rótulo, quien miró el informe leyó lo que era.» |
+| F7b | «Dibujaste las barras desde cero, pero tu número no coincidía con la hoja.» | «Mejoraste el dibujo y rotulaste otra cosa.» |
+| F7c | «Firmaste el gráfico con el número correcto debajo, pero las barras seguían empezando arriba de cero.» | «El número estaba. El dibujo no lo ayudaba.» |
+| F7d | «Tu número no coincidía con la hoja y firmaste un gráfico con las barras arriba de cero.» | «Una docente escribió: el mismo gráfico la hizo decidir otra cosa.» |
+| F7e | «Frenaste un gráfico que sí engañaba. Era razonable, pero se podía corregir.» | «Con las barras desde cero y el número de la hoja, se podía firmar.» |
+| F7f | «Este gráfico no engañaba, y firmaste con el número correcto. Reconocerlo también cuenta.» | «Firmar con el rótulo correcto era lo mejor.» |
+| F7g | «Este gráfico no engañaba, pero tu número no coincidía con la hoja.» | «Salió bien por suerte: tu rótulo no coincidía con la hoja.» |
+| F7h | «Este gráfico no engañaba y lo rehiciste. Cuesta una noche desconfiar de lo que está bien.» | «Con la hoja a la vista, bastaba firmarlo tal cual.» |
+| F7i | «Frenaste un gráfico que estaba bien.» | «Era un gráfico bueno, y se perdió.» |
+
+Cierre C7p (F7a, F7b, F7c, F7d, F7e): «Se llama eje truncado. Antes de creerle a un gráfico, mira dónde empieza.»
+Cierre C7b (F7f, F7g, F7h, F7i): «Esta vez el eje no estaba truncado. Se llama así cuando la barra empieza arriba de cero. Mirar dónde empieza te lo dice.»
+
+**Carta 8 · Decidir con datos**
+
+| Rama | Hiciste | Habría pasado |
+|---|---|---|
+| F8a | «Pusiste sobre la mesa con qué comparar y cuántos eran.» | «Tu año salió mejor que el de Beto.» |
+| F8b | «Pusiste sobre la mesa con qué comparar y cuántos eran. Beto y tú llegaron a lo mismo.» | «Tú llegaste con papeles; él, a ojo. Si Beto hubiera dicho otra cosa, tú tenías con qué responder.» |
+| F8c | «Acertaste con un solo papel clave sobre la mesa. Te faltó el otro.» | «Ugarte lo dijo: tiene sentido, pero le faltó ver el otro papel.» |
+| F8d | «Acertaste sin poner ningún papel clave sobre la mesa.» | «Ugarte no supo en qué te apoyabas.» |
+| F8e | «Pusiste los dos papeles clave sobre la mesa, pero tu decisión iba contra lo que decían.» | El pie de «tu año» que corresponde a tu decisión y a lo que era cierto (tabla de los dos años de `05` NT1.6; cada pie tiene menos de 20 palabras) |
+| F8f | «Decidiste sin poner los dos papeles clave sobre la mesa.» | El mismo pie de «tu año» |
+| F8g | «Esperaste un trimestre cuando ya se podía decidir.» | «Esperar costó un trimestre. Con los dos papeles sobre la mesa ya se podía decidir.» |
+
+Cierre C8 (F8a, F8b, F8c, F8d, F8e, F8f, F8g): «Los datos bien recogidos y bien leídos le ganan al ojo. A veces la mejor respuesta es "todavía no se puede saber".»
+<!--/GEN:T17B-->
+
+**T1.7c · Qué guarda el registro para elegir la rama.** Por caso: (1) abrió con sus fichas un papel con sueño, sí o no; (2) tipo, clave abierto, decisión y si la frase llevó la pieza del clave; (3) tipo, número de tandas, clave abierto, nivel del rango (`ok`, `flojo`, `noCubre`, `ancho`), **si llevó la pieza**, y `razonoBienNoCubrio`; (4) estudio bueno, estudio citado y si abrió algún clave; (5) opción, regla de pago (`R5.3` a `R5.9`), qué papeles abrió y `ρ` (para el hueco `{rho}`); (6) tipo, decisión, extensión, `N` bien o mal contado, clave abierto y los hechos que nombró la pieza (para `{hechosA}`); (7) tipo, decisión y `x` bien o mal; (8) lo que era cierto, lo que decidió, cuántos claves puso sobre la mesa y qué propuso Beto.
+
+**Cierre general (el camino), cuando se dieron vuelta las ocho cartas**, en tres globos de 25 palabras o menos (textos de `05` NT1.9, medidos por el script): «Cada cosa que reconociste tiene un nombre, una forma de comprobarla con números y una técnica para hacerlo bien.» · «Eso se aprende en los temas que vienen.» · «Los gráficos, ya en el Tema 2. Y esto apenas es el primer vistazo.» Solo el Tema 2 se nombra: es lo único asignado. Después, Beto: «Yo igual lo veo a ojo. Pero la próxima te pregunto de dónde sale.» Botones: «Probar este caso con otras cifras» (por carta) y «Salir».
+
+### T1.8 · Hallazgos de aprendizaje (ninguno bloquea; H-C1 y H-C2 son pedidos a otras partes)
+
+**H-C1 · Importante · Decisiones equivocadas sin código (huecos del registro).** Cada una de las **46 filas de pago** del bucle tiene al menos un código `E…` y todos los códigos tienen hábito (`ramas_t1.py`, sección C). Pero **15 ramas tienen estados equivocados sin ningún código**: su clase de registro (T1.5a) sale igual, pero no cuentan para ningún hábito y no disparan sobre. El bucle (`02`, 5.7) listaba tres de esas decisiones; hay once más (la 5.ª fila de la tabla es en parte la que él listaba).
+
+| Rama | Decisión equivocada sin código | Fila de pago | ¿Ya la listaba el bucle? |
+|---|---|---|---|
+| F2d | Frenar con problema **habiendo abierto** el clave | R2.2 en P (+3/−8) | no |
+| F3b | Rango `flojo` en P (cubre y mide entre 1,2 y 2,0 h) | R3.P (+3/0) | no |
+| F3c | Firmar tal cual en P con 2 o más tandas | R3.P (−20/+10) | sí |
+| F3g | Frenar en P | R3.P (+6/−8) | sí |
+| F3k | Rango `flojo`, o `ok` con pieza, en B | R3.B (0/+2 y 0/+4) | no |
+| F3m | Firmar tal cual en A con 2 o más tandas | R3.A.sin (−20/+10) | sí |
+| F3n | Rango `flojo` con pieza en A | R3.A.con (+3/0) | no |
+| F3p | Frenar en A | R3.A.sin (0/−10) | sí |
+| F4d | Citar A siendo B el bueno, **habiendo abierto** un clave | R4.3 (−20/+10) | no |
+| F5i | Número que no coincide con ninguna cuenta, con los papeles abiertos | R5.9 (−10/0) | solo el 0 con ρ < −1 |
+| F5j | Frenar en el turno 2 | R5.3 (+2/−6) | no |
+| F6e | `ninguna` o `podrían` en B | R6.3 y R6.4 (0/+2, 0/+4) | no |
+| F6h | `ninguna` (solo lo medido) en P o A | R6.3 (+2/+1, 0/+1) | no |
+| F6i | Frenar en P o A | R6.2 (+6/−8, 0/−10) | no |
+| F7e | Frenar en P | R7.5 (+6/−8) | no |
+
+*Opciones (la decisión es del bucle y del aprendizaje, no de Ronald):* **A (recomendada por ahora):** dejarlos sin código ni hábito; la carta de la revelación ya los cubre con su rama y los hábitos siguen saliendo de los 29 códigos. Costo: quien frena siempre en P deja huella de H3 solo en `E2b`, `E4c` y `E8b`. **B:** un código genérico por hueco con su hábito (frenar en P en H3, firmar de más en H2) y su sobre: unos 8 códigos más, la tabla 8.1 pasa de 29 a unos 37 y narrativa escribe 8 sobres; cada decisión equivocada deja huella. **C:** ampliar el «cuándo» de `E2b` a «frenó con problema» (el sobre `S-E2b` sirve también con el clave abierto) y dejar el resto como A; cuesta una palabra y cierra F2d. Se recomienda **A + C** y revisar con alumnos reales si H3 queda vacío para quien frena siempre. No se inventó ningún código.
+
+**H-C2 · Importante · Supuestos del generador de los que dependen los textos.** Algunos textos de la revelación afirman cosas que ningún estado de la partida garantiza; las garantiza el código que arma las cifras. Se los llama Q1 a Q9 (la numeración K1 a K11 de la v2.1 original se perdió: ver T1.10). Para los que dependen del modelo del bucle (`02` 5.4: nivel real T ~ N(60, 10), medición = T + N(0, 8), δ ∈ {0, 3}, con I2 e I5 aplicadas), `ramas_t1.py` (sección G) mide **cuánto fallarían si el generador no los exigiera**: 20 000 sorteos por opción y δ, semilla 20261008. Son cifras de este script, no del crítico.
+
+| Id | Qué afirma el texto | Quién lo garantiza | Si el generador no lo exige, falla en… |
+|---|---|---|---|
+| Q1 | Los llamados **subieron** (cambio medio ≥ 1) en las tres opciones (F5d, «subieron») | `bienestar.ts`: re-sortear si no se cumple (pedido nuevo al bucle) | (a) 0,0 a 0,1 %; (b) 22,2 % con δ = 0 y 5,7 % con δ = 3; (c) 6,0 % y 0,7 % |
+| Q2 | En (a), la resta «inflada» queda por encima de ρ + 1 (F5e, «tu número habría sido menor») | Ya lo da I2 (vecino ≥ 4); en (b) lo da el sesgo de 2,5 | 0,0 %: no hace falta pedirlo |
+| Q3 | En (c), el grupo del sorteo que no fue al taller **subió** (≥ 1) (F5a, F5d) | `bienestar.ts`: re-sortear (pedido nuevo) | 14,0 % con δ = 0 y 10,1 % con δ = 3 |
+| Q4 | En (a), el colegio vecino sin taller subió (F5b, F5d) | I2 del bucle (cambio medio ≥ 4) | ya garantizado |
+| Q5 | En (b), el informe dice «unos 2,5 puntos» como número (F5c, F5d) | I3 del bucle y `05` C5-7 | ya garantizado |
+| Q6 | El cero es **cierto** en las tres versiones del clave del caso 2 en P (F2b, «El número era cierto») | `05` K11 | de diseño |
+| Q7 | «Cada una dio algo distinto» (F3a): las medias de las tandas sacadas son distintas | `tandas.ts`: re-sortear si dos medias coinciden | 9,7 % de los pares de 2 tandas de 10 respuestas a 0,5 h mostradas con 1 decimal |
+| Q8 | La carpeta de 6 trae siempre lo que la opción elegida necesita (F5j, «en tu carpeta había con qué comparar») | G10 del bucle | de diseño |
+| Q9 | En el tipo A, `{hechosA}` nombra solo lo que dicen los papeles abiertos (F6a) | `05`: la pieza de A se parte en dos (v15 I3) | de diseño |
+
+Por esa medición se **quitó** «que bajaron» de F5e: los demás no bajan siempre (en (a) fallaría en 13 % y en (b) en 46 a 50 %).
+
+**H-C3 · Menor · Dos definiciones leídas, no recuperadas.** `E8a` se dispara con `e` < 2 **aunque la decisión sea correcta** (es el sobre «¿Cuáles pusiste sobre la mesa?» del acierto sin evidencia); `E8d` se dispara si coincidió con Beto cuando él se equivocaba o lo contradijo cuando él acertaba. [RECONSTRUIR: la redacción original de la v2.1; el bucle 8.1 dice solo «decidió con `e` menor que 2» y «coincidió con el colega o lo contradijo contra lo que decía la evidencia».]
+
+**H-C4 · Menor · F2e con la pieza del refuerzo.** F2e dice que la frase «no tocaba el hueco». Si la frase llevó la pieza del buzón anónimo (refuerzo: «recibió más mensajes») sin la del clave, algo del hueco sí tocaba. No es falso (no decía qué cambió en el registro), pero narrativa puede suavizarlo a «no decía lo que mostraba el papel clave».
+
+**H-C5 · Menor · F3d en el tipo B no estaba.** El «Habría pasado» de F3d traía solo P y A; el rango ancho también existe en B. Se agregó «Esta vez bastaba firmar tal cual: la cifra se sostenía.»
+
+**Los hallazgos H1 a H6 de la v1, y cómo quedaron.** H1 (rediseñar y las piezas del caso 6): **cerrado** por el bucle (R6.3 a R6.5, R7.3 y R7.4). H2 (el rango bueno falla por azar): **cerrado** (holgura de 0,25 h y `razonoBienNoCubrio`, que da la rama F3e). H3 (acertar por suerte en el caso 8): **cerrado** (R8.2 y R8.3, `E8a`, ramas F8c y F8d). H4 (un resumen describe al grupo y no a una persona, ningún caso lo vive): **sigue como menor**, queda para el dossier y los temas de medidas centrales. H5 (el escalón 3 solo en la práctica): **cambiado por el bucle** (también en la oficial al cumplirse un hábito; se apaga con un valor en `reglas-t1.ts`). H6 (el 80 % de acierto de quien entiende es una estimación): **sigue**; se mide con alumnos reales como la proporción de «descubrió solo» entre quienes abrieron el clave.
+
+### T1.9 · Avisos para otras partes
+
+- **Bucle (`02`):** (1) decidir H-C1 (A + C recomendada). (2) Agregar al generador del caso 5 las invariantes **Q1** (cambio medio de los llamados ≥ 1) y **Q3** (cambio medio del grupo del sorteo ≥ 1 en (c)), y al de tandas **Q7** (medias distintas), con su prueba. (3) Confirmar las lecturas de H-C3. (4) `registro-t1.ts` debe guardar lo de T1.7c (la regla de pago que disparó el caso 5 y `ρ`, el nivel del rango y si llevó la pieza, los hechos que nombró la pieza del tipo A).
+- **Narrativa (`05`):** (1) **Copiar el bloque T1.7b de aquí a NT1.9** (son 72 ramas, no 71); cambian **22 ramas** y hay **1 nueva (F6k)**. Cambian: F1a, F2f, F2g, F2i, F3a, F3b, F3d, F3g, F3i, F3o, F4d, F4e, F5a, F5b, F5c, F5e, F5f, F5g, F5h, F5i, F6a y F6j; el motivo de cada uno está en la sección E de `salida_ramas_t1.txt`. (2) Huecos nuevos para NT1.4: **`{rho}`** (la cuenta bien hecha de la versión, con un decimal y su signo) y **`{hechosA}`** (en el tipo A, lo que dijeron los papeles abiertos: «solo 12 de 60 respondieron», «la hoja se pasó en semana de exámenes», o los dos). (3) Del pendiente de v15 que esta sección necesita: C6-2 en P debe decir que las respuestas de la hoja son de `{curso}` (I3); `{hechoClave}` en tres frases cortas (C3); sin «ficha» para la carta ni para el papel C3-1 (C7); «sin que nadie lo usara» en `S-P1` (C10). (4) NT1.9 y su lista de salida dicen «66 ramas de 04» y «F2f a F2j pendientes»: ya no. (5) Los títulos «Ficha N» de NT1.9 pasan a «Carta N».
+- **Sonido (`07`):** (1) E12 («Dar vuelta una ficha») y S9 («las 8 fichas») pasan a **cartas**. (2) S9 dice «sea cual sea su rama (A a F)»: las ramas son ahora 72; la regla no cambia, **ninguna carta suena distinto por haber acertado o fallado**. (3) Ningún sonido puede reaccionar al valor que el alumno escribe (`x`, `N`, `a` y `b`) antes de sellar, ni anunciar el resultado del turno 2 del caso 5 antes de que llame el director vecino (G4 del bucle).
+- **Construcción:** la prueba de las ramas es un `.test.ts` que porte `ramas_t1.py`: mismos estados, mismas 72 ramas y los 116 hechos; los textos pasan `problemasDeTexto` y se miden con `medir_legibilidad.py` (12 px a 375 px, contraste 4,5 a 1; cada carta con su cierre cabe sin achicar). Los cuatro bloques `GEN` de esta sección se regeneran con `python -I ramas_t1.py --escribir-04`.
+- **Manual del jugador (regla 8: regla inventada, marcada):** son **reglas del juego**, no contenido de la materia, y el manual debe decirlo: las fichas de tiempo y el castigo de 2 fichas, los dos tubos y la meta 65/65, «la plaza fija», que un número se acepta si queda a **1,0 o menos** de la cuenta bien hecha, que un rango «cubre» con una holgura de 0,25 h y que un rango «ancho» pasa de 2,0 h.
+- **Dossier (regla 7):** esta sección no manda a leer el dossier, así que ninguna inconsistencia entre el dossier y el juego se activa por aquí. No se leyó el dossier de Psicoestadística en esta reconstrucción: lo que sigue valiendo de él son los conceptos de las 8 ideas ya aprobadas.
+- **Código existente:** no se tocó `escalera.ts` ni nada de AIEF; su tercer escalón («lee el dossier») sigue esperando el OK de Ronald.
+
+### T1.10 · Lo que no se pudo reconstruir (marcado [RECONSTRUIR])
+
+1. **K1 a K11 originales.** `05` NT1.4 conserva K1 (16 palabras para `{hechoClave}`), K2 (6 para `{papelSueno}`) y K3 (3 para `{curso}`, `{fuente}`); los demás se perdieron. Los supuestos de aquí se llaman Q1 a Q9 para no chocar con ellos.
+2. **Las condiciones originales de T1.7a.** Se rehicieron por estado, desde los textos de NT1.9 y desde el bucle v2. La asignación original de algunos estados puede haber sido distinta: por ejemplo, aquí el rango que cubre en el tipo B (con o sin pieza) va a F3k y no a F3b; y la rama F6k no existía. Si Ronald o el crítico tienen la tabla original, se compara con T1.7a.
+3. **T1.5a y la definición del escalón de acierto** (T1.5a y T1.5c): reglas armadas desde la v1, el bucle y v15.
+4. **Lecturas de `E8a` y `E8d`** (H-C3).
+5. **El script original `ramas_t1.py`** y sus «68 hechos comprobados»: este comprueba 116 hechos de estado (1.841 evaluaciones) y mide 9 supuestos; no son comparables.
+6. **Las tres preguntas posibles por caso (T1.3c):** no consta que la v2.1 original las tuviera; es nuevo.
+
+<!--T1V21-FIN-->
+
+---
+
+## Psicoestadística Descriptiva (Psicología) · Tema 1 «La mesa de verificación» · aprendizaje · versión 1 · 08-10-2026 (superada por la v2.1 de arriba; se conserva como historia)
 
 > **Parte de:** las 8 ideas APROBADAS (08-10), la ficha ELEGIDA `00-tema1-forma1-ficha.md` y el aspecto A («La redacción de noche»). Nada de eso se reabre. **Sin nota** en este Tema 1: lo que sigue es **registro**, no calificación. Nada que ve el alumno manda a leer el dossier ni dice «según el dossier»; no hay software. Los números de esta sección salen de la ficha (secc. 2 y 4); aquí no se inventó ninguno nuevo salvo los marcados «propuesta».
 > **Decisiones pendientes de Ronald de esta sección: ninguna.**

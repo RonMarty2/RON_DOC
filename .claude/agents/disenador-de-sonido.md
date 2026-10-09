@@ -40,6 +40,8 @@ Una entrada fechada por isla o materia, y dentro, **una hoja de sonido por escen
 - Cada pedido devuelve **dos versiones** y gasta dos generaciones del plan.
 - Flow Music tiene también «Crear FX e instrumentos»: **sin explorar todavía**; probar para los efectos.
 - Entradas de sus prompts de la comunidad: los que mejor suenan indican género, BPM, tonalidad y secciones con tiempos.
+- **08-10, primera generación hecha por la sesión (S0, «Late Night Office»).** Quién usa qué: el Chrome bueno era el **Browser 2** (con la sesión de Ronald, plan **PLUS**); el Browser 1 no tenía sesión. La página nueva se abre como **«Producer»** (un asistente de chat): **reescribe el prompt y lo resume**. Resultado: **perdió la línea de tiempo, los compases, la tonalidad (D dorian) y el «melody enters on bar 5»**; solo conservó estilo, ánimo, instrumentos y 66 bpm. Sale **una canción** por pedido en este modo (no dos). **El contador «2» de la esquina son puntos de progreso, no créditos**: los créditos no se ven en la pantalla principal.
+  - **Consecuencia:** para que las secciones salgan separadas hay que **pedir la estructura de nuevo con el Producer** («Structure: section A 8 bars calm, then section B 4 bars…») o editarla desde **Compose → Sound** (campo de texto del sonido, sin pasar por el resumen), y revisar la pista. Si la estructura no queda, se pide una pista por **capa corta** (más pedidos, menos cortes). Pendiente de comprobar al escuchar.
 - **Pendiente de aprender:** si se puede exportar en bucle sin cortes, tamaño de los archivos, términos de licencia, y cómo conviene pedir los efectos cortos.
 
 ## Cómo se genera (lo hace la sesión principal con Chrome, después de tu hoja; Ronald, 08-10)

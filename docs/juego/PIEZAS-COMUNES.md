@@ -109,3 +109,12 @@ y suma la fila.
   isla y la escena como dato, con pruebas) y lo anota en §1 en el mismo commit.
 - Quien **despega** una pieza de §3 la pasa a §1.
 - Quien **agrega un personaje, un escenario o un aspecto** lo anota en §4, en la fila de su juego.
+
+## Audio: precarga y caché (09-10)
+`Motor.precargar()` (`src/lib/juego/sonido/motor.ts`) baja las pistas al abrir la pantalla y `public/sw.js` las guarda en la caché `ron-doc-audio-v1` (solo `.mp3`; sin `Range`; no se borra al publicar). Lo usa cada juego desde su enganche de sonido. Una pista nueva o cambiada lleva otro nombre de archivo.
+
+## Ambiente vivo (09-10)
+La hora de la historia, la luna y las ventanitas de la ciudad salen de `src/lib/juego/ambiente-vivo.ts` con un perfil por tema (el del Tema 1 de Psicoestadística: `psicoestadistica/hora-historia.ts`). El dibujo en PixiJS está hoy en `EscenaPixi.tsx` y se extrae a una pieza común cuando entre el segundo juego.
+
+## Antes de dar algo por publicado
+Mirar que el deploy de GitHub (`Deploy a GitHub Pages`) haya terminado en verde: el 09-10 estuvo fallando desde las 07:11 (Node 20 en el workflow, el proyecto exige 22) sin que se notara, y la app seguía mostrando la versión vieja.

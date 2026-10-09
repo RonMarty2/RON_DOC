@@ -44,7 +44,7 @@ import { BotonSonido, useSonidoT1 } from "./sonido";
 type Partida = PartidaDe<EventoT1, "psicoestadistica", "tema1">;
 type Fase = "titulo" | "bienvenida" | "jefa" | "hoja" | "archivo1" | "asombro" | "cierre1" | "entrada2" | "archivo2" | "frase" | "confirma" | "reaccion" | "fin";
 type Decision = "tal" | "frenar" | "frase";
-type Quien = "jefa" | "dani" | "beto" | "madre" | "director" | "narracion";
+type Quien = "jefa" | "dani" | "beto" | "madre" | "director" | "tu" | "narracion";
 
 interface Linea {
   quien: Quien;
@@ -73,11 +73,11 @@ const MESES = ["febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", 
 const COL2 = { minutos: "minutos de celular", animo: "ánimo del día" } as const;
 
 function nombreDe(q: Quien, p: PaqueteT1): string {
-  return { jefa: "La jefa", dani: p.version.textos.dani, beto: "Beto", madre: "Señora Quiroga (teléfono)", director: "Dirección (nota)", narracion: "" }[q];
+  return { jefa: "La jefa", dani: p.version.textos.dani, beto: "Beto", madre: "Señora Quiroga (teléfono)", director: "Dirección (nota)", tu: "Tú", narracion: "" }[q];
 }
 
 // La cara (o el icono) de quien habla, de la línea gráfica propia. La narración no lleva cara.
-const CARA: Record<Exclude<Quien, "narracion">, string> = {
+export const CARA: Record<Exclude<Quien, "narracion" | "tu">, string> = {
   jefa: "jefa_retrato",
   dani: "dani_silueta",
   beto: "beto_retrato",
@@ -97,9 +97,9 @@ function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir >" }: { lineas: Line
   const l = lineas[i];
   const hayMas = i + 1 < lineas.length;
   return (
-    <div className="mesa-dialogo" role="group" aria-label="Diálogo">
-      <div className={l.quien === "narracion" ? "mesa-dlg" : "mesa-dlg con-cara"}>
-        {l.quien !== "narracion" && <img className="mesa-cara" src={conBase(`/juego/psicoestadistica/arte/${CARA[l.quien]}.png`)} alt="" width={64} height={64} />}
+    <div className={l.quien === "tu" ? "mesa-dialogo tuyo" : "mesa-dialogo"} role="group" aria-label="Diálogo">
+      <div className={l.quien === "narracion" || l.quien === "tu" ? "mesa-dlg" : "mesa-dlg con-cara"}>
+        {l.quien !== "narracion" && l.quien !== "tu" && <img className="mesa-cara" src={conBase(`/juego/psicoestadistica/arte/${CARA[l.quien]}.png`)} alt="" width={64} height={64} />}
         <div className="mesa-dlg-texto">
           {l.quien !== "narracion" && <div className="mesa-quien">{nombreDe(l.quien, p)}</div>}
           <p className={l.quien === "narracion" ? "mesa-narra" : undefined} aria-live="polite">

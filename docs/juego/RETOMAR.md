@@ -1,5 +1,17 @@
 # RETOMAR el juego de RON_DOC (nota de relevo, 08-10-2026; actualizada 09-10)
 
+### ✅ CIERRE LIMPIO 09-10, 09:52: Ronald cerró la sesión. Nada en segundo plano, todo subido. EMPIEZA POR AQUÍ
+
+**Lo que hicimos hoy (resumen):** pantalla jugable del Paso 1 + Caso 2 con textos de orientación; música aprobada (11 tramos) conectada y verificada en el navegador; crítico v16 a v19; línea gráfica común (EDG32) con herramientas (`scripts/generar_arte.py`, `verificar_arte.py`, `dibujar_documentos.py`, `dibujar_retratos.py`, `convertir_a_paleta.py`); 9 documentos, retratos de la jefa (3 gestos), Beto, Ugarte, Dani, teléfono, nota, pared, escritorio y fichas dibujados; catálogo de assets gratis con licencias; bocetos de caras y mapa de ambientes; agentes nuevos y reglas (`artista-pixel`, hábito automático, alerta de tokens).
+
+**Lo que queda por hacer, en orden:** los pasos 2 a 6 del bloque «ÚLTIMO CORTE» de más abajo (conectar el arte nuevo al juego; cajas de diálogo con cara; corregir el mapa de ambientes y construir la hora; abrir el juego en Chrome, mirarlo y pasar el crítico; casos 3 a 8). **No hay trabajo a medias ni agentes corriendo.**
+
+**Plan que se sigue:** primera persona sin personaje del jugador; cajas con cara (estilo «A3»); una línea gráfica común y ambientes que cambian por escena (que pase la noche); arte propio por la vía barata. **Decisiones de Ronald abiertas** (recomendación entre paréntesis): el «archivo» del colegio (mismo escritorio con el archivador abierto detrás) y el amanecer (05:30, «primera luz»).
+
+**Cómo arrancar en una sesión nueva:** `git pull --ff-only`, leer este bloque y el «ÚLTIMO CORTE», `npx tsc --noEmit` y `npm test` (≈3.950 en verde), abrir el servidor de prueba y la página con la extensión de Chrome (si no conecta, avisar a Ronald al inicio). Reglas: `CLAUDE.md` (cerrar bien cada pieza, hábito automático, alerta de tokens).
+
+---
+
 ### ⛔ ÚLTIMO CORTE 09-10, 09:42 (PC RonMarty): Ronald avisó que se acaban los tokens. LEE ESTO PRIMERO
 
 **Por qué existe este bloque:** a Ronald ya le pasó perder trabajo a medias al cortarse la sesión. Aquí está exactamente dónde se quedó todo.

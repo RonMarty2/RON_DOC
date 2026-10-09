@@ -12,6 +12,8 @@
 
 > **LEER PRIMERO: `docs/juego/RETOMAR.md`** (nota de relevo del 08-10: qué decidió Ronald, el método, dónde está cada archivo, qué sigue y qué no repetir). Lo que está debajo es el detalle histórico.
 >
+> **09-10, 09:52 · CIERRE LIMPIO:** sesión cerrada por Ronald. Resumen y pasos en `docs/juego/RETOMAR.md`, bloque «CIERRE LIMPIO 09-10». Nada a medias; todo en GitHub.
+>
 > **09-10, 09:20 · ESTADO ACTUAL: leer `docs/juego/RETOMAR.md`, bloque «ESTADO REAL 09-10» (manda sobre lo de abajo).** Resumen: pantalla del Paso 1 + Caso 2 jugable con orientación, música aprobada (11 tramos) y efectos; decisiones de Ronald: primera persona sin personaje visible, cajas de diálogo con cara (estilo A3), una línea gráfica común (`docs/juego/ARTE-LINEA-GRAFICA.md`) y ambientes que cambian por escena; el arte provisional no cumple la línea y se redibuja (plan en RETOMAR). En curso al cortar: mapa de ambientes (director) y catálogo de assets gratuitos (búsqueda con licencias).
 >
 > **CIERRE 08-10, 23:04 (PC RonMarty).** El Tema 1 de Psicoestadística tiene todo lo de adentro hecho y subido (reglas, cifras por alumno, cartas del final, registro del docente, ayuda y los 72 papeles; 3.847 pruebas), pero **todavía no se puede jugar: falta la pantalla**. Qué falta, qué tiene que hacer Ronald y qué hace la próxima sesión: bloque **«⭐ EMPIEZA AQUÍ»** al principio de `docs/juego/RETOMAR.md`. Pregunta pendiente para Ronald: ¿un solo caso jugable primero (recomendado) o los ocho de corrido?

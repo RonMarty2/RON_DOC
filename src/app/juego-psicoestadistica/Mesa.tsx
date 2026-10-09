@@ -87,6 +87,13 @@ export const CARA: Record<Exclude<Quien, "narracion" | "tu">, string> = {
 
 const CARA_JEFA: Record<G.PoseJefa, string> = { brazos: "jefa_retrato", cabeza: "jefa_preocupada", pulgar: "jefa_contenta" };
 
+/** Qué dibujo de documento lleva un papel, según su nombre (arte propio, 40x50). Sin coincidencia queda el símbolo de texto. */
+const DOC_POR_PALABRA: [RegExp, string][] = [
+  [/acta/i, "doc_acta"], [/cuaderno/i, "doc_cuaderno"], [/informe/i, "doc_informe"], [/correo|mensaje/i, "doc_correo"],
+  [/registro|tardanza/i, "doc_registro"], [/planilla|notas|encuesta/i, "doc_planilla"], [/lista|talleres/i, "doc_lista"], [/calendario/i, "doc_calendario"], [/oficio|nota de|carta/i, "doc_oficio"],
+];
+export const docDe = (nombre: string): string | null => DOC_POR_PALABRA.find(([r]) => r.test(nombre))?.[1] ?? null;
+
 // ── Piezas chicas ────────────────────────────────────────────────────────────
 
 function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir >" }: { lineas: Linea[]; p: PaqueteT1; onFin: () => void; onLinea?: (l: Linea) => void; fin?: string }) {
@@ -177,7 +184,11 @@ function Abanico({ ids, nombres, abiertos, sinFichas, onAbrir }: { ids: string[]
         return (
           <li key={id}>
             <button type="button" className={`mesa-papel${abierto ? " abierto" : ""}`} disabled={bloqueado} onClick={() => onAbrir(id)} aria-label={`${nombres[id]}${abierto ? " (ya abierto)" : bloqueado ? " (sin fichas)" : " (abrir cuesta 1 ficha)"}`}>
-              <span aria-hidden="true">{abierto ? "▤" : "▭"}</span>
+              {docDe(nombres[id]) ? (
+                <img className="mesa-doc" src={conBase(`/juego/psicoestadistica/arte/${docDe(nombres[id])}.png`)} alt="" width={32} height={40} />
+              ) : (
+                <span aria-hidden="true">{abierto ? "▤" : "▭"}</span>
+              )}
               {nombres[id]}
             </button>
           </li>

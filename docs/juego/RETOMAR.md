@@ -1,5 +1,6 @@
 ## ⏸ ÚLTIMO CORTE 09-10 11:25 (cuota por acabarse) — LEER ESTE BLOQUE PRIMERO
 **Estado:** todo subido a GitHub, `git status` limpio, 3955 pruebas verdes, `tsc` limpio, sin agentes corriendo. Arte propio conectado a la escena (paso 1), caras y palabras del jugador (paso 2), crítico v20 pasado (se puede mostrar) y sus 🟠 corregidos.
+**También hecho tras el corte:** recorrido en Chrome hasta el archivo sin trabas (música pedida y cargada; el audio real solo suena con un toque de Ronald); los papeles del archivo ya llevan su dibujo de documento (`docDe` en `Mesa.tsx`). Falta recorrer desde el archivo hasta el fin del caso 2.
 **Pasos que quedan, en orden (no rehacer lo hecho: verificar con `git log` y `grep`):**
 1. Recorrer el juego de punta a punta en Chrome (dev: `rm -rf .next; env -u npm_config_allow_scripts npx next dev -p 3123`, abrir `/juego-psicoestadistica` con la extensión) y leer `window.__sonido()` para comprobar la música. Solo entonces mostrar a Ronald.
 2. Decisión de Ronald pendiente: enmendar la regla 4b de `docs/juego/ARTE-LINEA-GRAFICA.md` a «valor o tono» y subir un borde de luz al pelo de la jefa y a Dani (`artista-pixel`).

@@ -85,6 +85,8 @@
   font: inherit; font-size: 20px; line-height: 1.15; padding: 6px 10px; color: var(--m-tinta); background: var(--m-papel); border: 2px solid #c9bd98; border-radius: 2px;
 }
 .mesa-papel span { font-size: 22px; flex: none; }
+.mesa-doc { width: 32px; height: 40px; flex: none; image-rendering: pixelated; }
+.mesa-papel.abierto .mesa-doc { opacity: .55; }
 .mesa-papel.abierto { background: #cfc6a8; border-style: dashed; }
 .mesa-papel:disabled { opacity: .4; cursor: not-allowed; }
 

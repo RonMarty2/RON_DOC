@@ -34,6 +34,10 @@ Viven en `.claude/agents/`. Antes de crear uno, leer `.claude/agents/LEEME.md` (
 
 **Cada entrega de un agente se comprueba en el disco y se sube antes de seguir** (Ronald, 08-10). Vale para **todos** los agentes, también `disenador-de-sonido` y `extractor-de-ideas`: cuando uno termina, la sesión abre el archivo, comprueba que trae el contenido nuevo (no basta que el agente diga «hecho») y hace commit y push **antes** de lanzar otro agente, de seguir con otro paso o de mostrárselo a Ronald. El 08-10 el bucle v2 y el aprendizaje v2.1 del Tema 1 se dieron por hechos sin estar guardados en ningún lado y hubo que rehacerlos. Lo mismo con el código: cada pieza se sube apenas pasan `npm test` y `npx tsc --noEmit`, **mirando el código de salida** (un `npm test | tail` tapa el fallo).
 
+## Cerrar bien cada pieza (Ronald, 09-10-2026)
+
+**Siempre dejar todo para retomar y subido a GitHub**: «siempre debes guardar todo para retomar sencillo en otra sesión sin contexto, también sube todo a GitHub». Al terminar cada pieza y antes de despedirse: (1) commit y `git push origin HEAD:main` con `npm test` y `npx tsc --noEmit` en verde, mirando el código de salida; (2) actualizar el bloque «ESTADO REAL» de `docs/juego/RETOMAR.md` y `BITACORA.md` §0 con qué hay, qué falta y qué decidió Ronald; (3) lo aprendido va al agente que corresponde (`.claude/agents/`) y las decisiones de Ronald a `docs/juego/REGLAS-COMUNES-AGENTES.md`; (4) lo que un agente en segundo plano deje sin subir se sube apenas termine, y la nota de relevo dice qué archivos esperar y qué hacer si faltan. **Nada de lo jugable o visible se le muestra a Ronald sin que lo haya revisado `critico-de-jugabilidad`, y sin abrirlo antes en el navegador con la extensión de Chrome** (la etapa se saltó 3 veces).
+
 ## Estructura: escalable, modificable, ampliable sin romper (Ronald, 2026-09-26)
 
 Todo lo que se construye (código, contenido, juego, agentes, documentos) se arma para crecer **sumando piezas**, no reescribiendo:

@@ -1,0 +1,17 @@
+{
+  "nota": "Primera luz de la sala (pared, madera y retratos): lo mismo que el amanecer, y ademas los grises-azules suben un escalon (la pared se aclara). Todo dentro de EDG32. Es un cambio de paleta, no un dibujo nuevo.",
+  "cambios": {
+    "181425": "262b44",
+    "262b44": "3a4466",
+    "3a4466": "5a6988",
+    "5a6988": "8b9bb4",
+    "3e2731": "733e39",
+    "733e39": "be4a2f",
+    "a22633": "e43b44",
+    "265c42": "3e8948",
+    "3e8948": "63c74d",
+    "fee761": "ead4aa",
+    "feae34": "e4a672",
+    "f77622": "d77643"
+  }
+}

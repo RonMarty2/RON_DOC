@@ -79,6 +79,8 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 
 - **09-10 · Texto apretado y rayas sin nombre.** Ronald: «los textos están todos apretados, es cansador»; «no sé a qué se refiere con raya de 25 o de 65». Causa: cada cita de la jefa era un bloque corrido de 3 o 4 frases, y la narrativa nombraba marcas del medidor que en pantalla no tenían rótulo. **Aprendizaje (`disenador-narrativo`, `disenador-de-aprendizaje`, quien arme pantallas):** una frase por renglón en todo texto que lee el alumno; toda marca, color o rayita que el texto nombra tiene su rótulo visible en pantalla y el texto la describe como se ve (color + número), nunca con una palabra que solo existe en la narrativa. Antes de mostrar una pantalla, leerla en celular con la pregunta «¿cada palabra del texto señala algo que se ve?».
 
+- **09-10 · El crítico no vio lo que Ronald sintió (objetivo, «da igual lo que pulse», qué provoca cada botón).** Revisaba texto, no la pantalla en celular, y el juego entero, no el tramo que el alumno tiene delante. **Aprendizaje (`critico-de-jugabilidad`):** juega como Ronald con capturas reales, responde por escrito sus tres preguntas (¿qué hago?, ¿qué cambió y por qué?, ¿qué me llevo?), revisa cada rebanada jugable por separado y prueba «pulsa cualquier cosa». Ver su sección «Jugar como Ronald».
+
 Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó con las fichas sin pasar
 por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
 Ronald y se anota en la bitácora.

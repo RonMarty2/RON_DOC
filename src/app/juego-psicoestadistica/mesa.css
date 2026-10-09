@@ -31,9 +31,9 @@
 .mesa-escena { line-height: 0; background: #07060d; }
 .mesa-escena canvas { width: 100%; height: auto; display: block; image-rendering: pixelated; }
 
-.mesa-panel { padding: 0 16px; display: grid; gap: 12px; }
+.mesa-panel { padding: 0 16px; display: grid; gap: 18px; }
 .mesa-centro { display: grid; gap: 12px; justify-items: center; text-align: center; padding-top: 6px; }
-.mesa-bloque { display: grid; gap: 12px; }
+.mesa-bloque { display: grid; gap: 18px; }
 .mesa h1, .mesa h2 { font-family: var(--mesa-pixel), monospace; color: var(--m-ambar); font-weight: 400; margin: 0; line-height: 1.6; }
 .mesa h1 { font-size: 15px; }
 .mesa h2 { font-size: 12px; }
@@ -64,6 +64,12 @@
 .mesa-quien { font-family: var(--mesa-pixel), monospace; font-size: 12px; color: var(--m-ambar); }
 .mesa-narra { font-style: italic; color: var(--m-papel); }
 .mesa-jefa-dice { color: var(--m-papel); font-style: italic; }
+/* Citas de la jefa: una frase por renglón, con raya a la izquierda y aire entre frases. */
+.mesa-cita { margin: 0; padding: 2px 0 2px 14px; border-left: 3px solid var(--m-ambar); display: grid; gap: 14px; color: var(--m-papel); font-style: italic; line-height: 1.5; }
+.mesa-cita p { margin: 0; }
+.mesa-hoja p { line-height: 1.5; }
+.mesa-bloque > h2 { margin-bottom: 2px; }
+.mesa-preguntas { display: grid; gap: 10px; line-height: 1.5; }
 
 /* Tubos */
 .mesa-tubos { display: grid; gap: 8px; padding: 0 16px; }
@@ -73,7 +79,14 @@
 .mesa-tubo-tinta { height: 100%; background: #6f8cff; transition: width .9s ease; }
 .mesa-tubo-tinta.baja { background: var(--m-rojo); }
 .mesa-tubo-tinta.meta { background: var(--m-verde); }
-.mesa-tubo-vidrio i { position: absolute; top: -3px; bottom: -3px; width: 2px; background: #fff; opacity: .7; }
+.mesa-tubo-vidrio i { position: absolute; top: -3px; bottom: -3px; width: 3px; margin-left: -1px; background: #fff; }
+.mesa-tubo-vidrio i.peligro { background: var(--m-rojo); }
+.mesa-tubo-vidrio i.meta { background: var(--m-verde); }
+/* Qué es cada marca, escrito debajo de ella (Ronald 09-10: «no sé a qué se refiere con raya de 25 o de 65»). */
+.mesa-tubo-marcas { position: relative; height: 20px; margin-top: 2px; font-size: 17px; line-height: 20px; }
+.mesa-tubo-marcas span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.mesa-tubo-marcas .peligro { color: var(--m-rojo); }
+.mesa-tubo-marcas .meta { color: var(--m-verde); }
 
 /* Fichas y papeles */
 .mesa-fichas { display: flex; align-items: center; gap: 8px; }
@@ -91,7 +104,7 @@
 .mesa-papel:disabled { opacity: .4; cursor: not-allowed; }
 
 .mesa-lector { position: fixed; inset: 0; background: rgba(5, 4, 12, .82); display: flex; align-items: flex-end; justify-content: center; padding: 16px; z-index: 50; }
-.mesa-hoja { width: 100%; max-width: 460px; background: var(--m-papel); color: var(--m-tinta); padding: 16px; display: grid; gap: 12px; border: 2px solid #c9bd98; max-height: 80dvh; overflow: auto; }
+.mesa-hoja { width: 100%; max-width: 460px; background: var(--m-papel); color: var(--m-tinta); padding: 18px; display: grid; gap: 16px; border: 2px solid #c9bd98; max-height: 80dvh; overflow: auto; }
 .mesa-hoja h3 { color: #5a3a14; }
 .mesa-hoja p { font-size: 23px; }
 .mesa-hoja .mesa-dialogo { background: transparent; border: none; padding: 0; }

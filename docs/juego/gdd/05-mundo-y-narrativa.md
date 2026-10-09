@@ -822,8 +822,8 @@ Cierre C8 (F8a, F8b, F8c, F8d, F8e, F8f, F8g): «Los datos bien recogidos y bien
 | B-asom-2 | asombro | jefa | «Tu trabajo es eso: mirar los papeles antes de creer una afirmación.» | Tras B-asom-1 (H5) |
 | B-cierre1-1 | cierre1 | jefa | «Ahora aparecen dos medidores. Credibilidad: cuánto te creen cuando firmas. Voz: cuánto te consulta el colegio.» | Tras «A partir de hoy firma el departamento, y firmas tú.» (H6) |
 | B-cierre1-2 | cierre1 | jefa | «Firmar algo que no se sostiene baja Credibilidad. Frenar todo baja Voz. Una frase bien sostenida sube los dos.» | Tras B-cierre1-1 (H6) |
-| B-cierre1-3 | cierre1 | jefa | «La raya de 25 es el peligro: con un medidor ahí, tendrás menos tiempo en el caso siguiente.» | Tras B-cierre1-2 (H6) |
-| B-cierre1-4 | cierre1 | jefa | «La raya de 65 es la meta: al cerrar el último informe quiero los dos medidores por encima.» | Tras B-cierre1-3 (H6) |
+| B-cierre1-3 | cierre1 | jefa | «La marca roja del 25 es el peligro: con un medidor ahí, tendrás menos tiempo en el caso siguiente.» | Tras B-cierre1-2 (H6) |
+| B-cierre1-4 | cierre1 | jefa | «La marca verde del 65 es la meta: al cerrar el último informe quiero los dos medidores por encima.» | Tras B-cierre1-3 (H6) |
 | B-cierre1-5 | cierre1 | rótulo bajo el tubo | «Que te crean» (bajo Credibilidad) y «Que te consulten» (bajo Voz) | Fijo, junto a los tubos (H6) |
 | B-cierre1-6 | cierre1 | jefa | «Ahí pasa Beto, profe de educación física y tutor de 4.º. Siempre tiene una opinión.» | Tras A10, antes de la línea de Beto (H13) |
 | B-entr2-1 | entrada2 | jefa | «Tienes la carpeta. Mira qué papeles lo respaldan o no, y después decides.» | Segundo globo, tras A11 (H7) |

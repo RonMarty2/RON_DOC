@@ -124,6 +124,25 @@ function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir >" }: { lineas: Line
   );
 }
 
+/** Una frase por renglón, con aire entre ellas: un bloque corrido de 3 o 4 frases cansa y no se entiende (Ronald 09-10). */
+const enFrases = (texto: string): string[] => texto.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡«])/);
+
+/** Lo que dice la jefa en pantalla, en citas cortas y separadas. */
+function Cita({ texto }: { texto: string }) {
+  const frases = enFrases(texto);
+  return (
+    <blockquote className="mesa-cita">
+      {frases.map((f, i) => (
+        <p key={i}>
+          {i === 0 ? "«" : ""}
+          {f}
+          {i === frases.length - 1 ? "»" : ""}
+        </p>
+      ))}
+    </blockquote>
+  );
+}
+
 function Tubos({ m }: { m: Medidores }) {
   const tubo = (nombre: string, v: number, rotulo: string) => (
     <div className="mesa-tubo">
@@ -132,8 +151,12 @@ function Tubos({ m }: { m: Medidores }) {
       </div>
       <div className="mesa-tubo-vidrio" role="img" aria-label={`${nombre}: ${v} de 100. Marcas en ${MARCA_BAJA} y ${META_CIERRE}.`}>
         <div className={`mesa-tubo-tinta${v <= MARCA_BAJA ? " baja" : v >= META_CIERRE ? " meta" : ""}`} style={{ width: `${v}%` }} />
-        <i style={{ left: `${MARCA_BAJA}%` }} />
-        <i style={{ left: `${META_CIERRE}%` }} />
+        <i className="peligro" style={{ left: `${MARCA_BAJA}%` }} />
+        <i className="meta" style={{ left: `${META_CIERRE}%` }} />
+      </div>
+      <div className="mesa-tubo-marcas" aria-hidden="true">
+        <span className="peligro" style={{ left: `${MARCA_BAJA}%` }}>{MARCA_BAJA} peligro</span>
+        <span className="meta" style={{ left: `${META_CIERRE}%` }}>{META_CIERRE} meta</span>
       </div>
       <div className="mesa-tubo-rotulo">{rotulo}</div>
     </div>
@@ -204,7 +227,9 @@ function Lector({ nombre, texto, onCerrar }: { nombre: string; texto: string; on
     <div className="mesa-lector" role="dialog" aria-modal="true" aria-label={nombre}>
       <div className="mesa-hoja">
         <h3>{nombre}</h3>
-        <p>{texto}</p>
+        {enFrases(texto).map((f, i) => (
+          <p key={i}>{f}</p>
+        ))}
         <button type="button" className="mesa-boton" onClick={onCerrar} autoFocus>
           Cerrar &gt;
         </button>
@@ -515,8 +540,8 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
         {fase === "hoja" && (
           <section className="mesa-bloque">
             <h2>{G.HOJA.titulo}</h2>
-            <p className="mesa-jefa-dice">«{G.HOJA.jefa}»</p>
-            <p className="mesa-jefa-dice">«{G.HOJA.presentaDani(p)}»</p>
+            <Cita texto={G.HOJA.jefa} />
+            <Cita texto={G.HOJA.presentaDani(p)} />
             <ol className="mesa-preguntas">
               {G.HOJA.preguntas.map((q) => (
                 <li key={q}>{q}</li>
@@ -590,8 +615,8 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
         {fase === "archivo1" && (
           <section className="mesa-bloque">
             <h2>El archivo del colegio</h2>
-            <p className="mesa-jefa-dice">«{G.ARCHIVO.jefa}»</p>
-            <p className="mesa-jefa-dice">«{G.ARCHIVO.consigna}»</p>
+            <Cita texto={G.ARCHIVO.jefa} />
+            <Cita texto={G.ARCHIVO.consigna} />
             <Fichas n={fichas1} total={total1} />
             <Abanico ids={ids1} nombres={nombres} abiertos={papelesVistosPaso1(paso1)} sinFichas={fichas1 <= 0} onAbrir={abrirP1} />
             {asombroVisto && (
@@ -670,7 +695,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
         {(fase === "archivo2" || fase === "frase" || fase === "confirma") && (
           <section className="mesa-bloque">
             <h2>Caso 2 · {G.CASO2.titulo}</h2>
-            <p className="mesa-jefa-dice">«{G.ARCHIVO2.consigna}»</p>
+            <Cita texto={G.ARCHIVO2.consigna} />
             <Fichas n={fichasRestantes(carpeta2)} total={carpeta2.fichas} />
             <Abanico ids={ids2} nombres={nombres} abiertos={carpeta2.abiertos} sinFichas={fichasRestantes(carpeta2) <= 0} onAbrir={abrirP2} />
             <div className="mesa-corcho">
@@ -693,7 +718,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               <p className="mesa-pequeno">{G.ARCHIVO2.graficaMirar}</p>
             </div>
 
-            {fase === "archivo2" && carpeta2.abiertos.length === 0 && <p className="mesa-jefa-dice">«{G.ARCHIVO2.sinPapeles}»</p>}
+            {fase === "archivo2" && carpeta2.abiertos.length === 0 && <Cita texto={G.ARCHIVO2.sinPapeles} />}
 
             {fase === "archivo2" && (
               <div className="mesa-acciones" role="group" aria-label="Qué haces con el informe">

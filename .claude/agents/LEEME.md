@@ -77,6 +77,8 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 
 - **09-10 · La música tardaba en cargar en el celular.** Ronald lo sintió como pérdida de inmersión. Causa: las pistas (8 MB) se bajaban recién tras el primer toque y el service worker no guardaba mp3, así que se repetía en cada visita; además el despliegue llevaba horas fallando por Node 20 y no se veía lo nuevo. **Aprendizaje (`disenador-de-sonido` y quien arme audio):** todo audio nuevo se precarga al abrir la pantalla y se guarda en la caché de audio; si se cambia una pista, se cambia el nombre del archivo; y tras cada subida se mira que el deploy de GitHub haya salido en verde, no solo las pruebas locales.
 
+- **09-10 · Texto apretado y rayas sin nombre.** Ronald: «los textos están todos apretados, es cansador»; «no sé a qué se refiere con raya de 25 o de 65». Causa: cada cita de la jefa era un bloque corrido de 3 o 4 frases, y la narrativa nombraba marcas del medidor que en pantalla no tenían rótulo. **Aprendizaje (`disenador-narrativo`, `disenador-de-aprendizaje`, quien arme pantallas):** una frase por renglón en todo texto que lee el alumno; toda marca, color o rayita que el texto nombra tiene su rótulo visible en pantalla y el texto la describe como se ve (color + número), nunca con una palabra que solo existe en la narrativa. Antes de mostrar una pantalla, leerla en celular con la pregunta «¿cada palabra del texto señala algo que se ve?».
+
 Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó con las fichas sin pasar
 por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
 Ronald y se anota en la bitácora.

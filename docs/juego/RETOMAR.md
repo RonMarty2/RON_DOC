@@ -1,3 +1,6 @@
+## ✅ LECTURA MÁS CÓMODA 09-10
+Lectura más cómoda (Ronald 09-10: «textos apretados, cansador»; «no sé a qué se refiere con raya de 25 o de 65»): las citas de la jefa y los papeles salen una frase por renglón, con raya a la izquierda y más aire (`Cita` y `enFrases` en `Mesa.tsx`, `.mesa-cita` en `mesa.css`); los medidores llevan rótulo bajo cada marca («25 peligro» en rojo, «65 meta» en verde) y la jefa dice «la marca roja del 25» / «la marca verde del 65» (narrativa B-cierre1-3 y 4 y `orientacion-t1.json`). Música de fondo al leer: 0.5 en el archivo y 0.3 con un papel abierto.
+
 ## ✅ CARGA RÁPIDA DE LA MÚSICA 09-10
 Carga rápida del juego: las 4 pistas (8 MB) se bajan en segundo plano apenas se abre la pantalla (`Motor.precargar()`, desde `sonido.tsx`) y el service worker las guarda en una caché de audio aparte (`ron-doc-audio-v1` en `public/sw.js`, no se borra en cada deploy). Antes no se guardaban nunca (el sw solo cacheaba imágenes, js, css) y se bajaban de nuevo en cada visita, recién después del primer toque. Comprobado en navegador: 4 pistas en caché y, sin red, la pista sale en 18 ms. Si se reemplaza una pista, hay que cambiarle el nombre del archivo (la caché no se invalida sola). Con «ahorro de datos» no se baja por adelantado.
 

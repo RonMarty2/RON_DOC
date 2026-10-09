@@ -26,6 +26,9 @@ function pasarDialogo(ultimo: RegExp | string = /^Seguir/) {
   for (let i = 0; i < 12 && screen.queryByRole("button", { name: /^Siguiente/ }); i++) pulsa(/^Siguiente/);
   pulsa(ultimo);
 }
+/** Las citas de la jefa salen una frase por renglón: se busca cada frase, con las comillas en la primera y la última. */
+const frasesDe = (texto: string) => texto.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡«])/).map((f, i, todas) => `${i === 0 ? "«" : ""}${f}${i === todas.length - 1 ? "»" : ""}`);
+const hayCita = (texto: string) => frasesDe(texto).forEach((f) => hay(f));
 const papel = (caso: 1 | 2, id: string) => papelDe(p, caso, id, { hoy: new Date() }).nombre;
 
 /** Del título hasta tener la carpeta del caso 2 delante (con las pantallas de orientación leídas). */
@@ -39,13 +42,13 @@ async function hastaElCaso2() {
   pasarDialogo();
   pasarDialogo(); // la jefa se presenta y hace el encargo
   hay("Para empezar");
-  hay(`«${G.HOJA.jefa}»`);
-  hay(`«${G.HOJA.presentaDani(p)}»`); // Dani se presenta antes de responder
+  hayCita(G.HOJA.jefa);
+  hayCita(G.HOJA.presentaDani(p)); // Dani se presenta antes de responder
   pulsa(G.HOJA.botonDani(p));
   pasarDialogo(); // Dani responde
 
   // Paso 1: el archivo dice qué buscar y qué cuesta abrir; al abrir el papel con sueño aparece el hallazgo.
-  hay(`«${G.ARCHIVO.consigna}»`);
+  hayCita(G.ARCHIVO.consigna);
   const sueno = p.carpetas.porCaso[1].claves[0];
   pulsa(new RegExp(`^${papel(1, sueno)}`));
   expect(screen.getByRole("dialog")).toBeTruthy();
@@ -62,7 +65,7 @@ async function hastaElCaso2() {
   // Caso 2: el informe y qué hay que comprobar.
   expect(screen.getByText(/CERO DENUNCIAS/)).toBeTruthy();
   pasarDialogo(/^A la carpeta/);
-  hay(`«${G.ARCHIVO2.consigna}»`);
+  hayCita(G.ARCHIVO2.consigna);
 }
 
 beforeEach(() => {
@@ -75,7 +78,7 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
   it("se puede jugar entera, dice qué hacer en cada paso, se guarda y se retoma", async () => {
     await hastaElCaso2();
     // Con 0 papeles abiertos la jefa avisa, y cada botón dice lo que hace.
-    hay(`«${G.ARCHIVO2.sinPapeles}»`);
+    hayCita(G.ARCHIVO2.sinPapeles);
     hay(G.ARCHIVO2.explicaTal);
     hay(G.ARCHIVO2.explicaFrase);
     hay(G.ARCHIVO2.explicaFrenar);
@@ -83,7 +86,7 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
     const clave = p.carpetas.porCaso[2].claves[0];
     pulsa(new RegExp(`^${papel(2, clave)}`));
     pulsa(/^Cerrar/);
-    expect(screen.queryByText(`«${G.ARCHIVO2.sinPapeles}»`)).toBeNull();
+    expect(screen.queryByText(frasesDe(G.ARCHIVO2.sinPapeles)[0])).toBeNull();
     pulsa("Redactar la frase");
     hay(G.FRASE.instruccion);
     const piezas = piezasDisponibles2(p, [clave]);
@@ -161,7 +164,7 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
     hay("¿Empezar de cero? Se pierde tu avance.");
     pulsa(/^No$/);
     expect(screen.queryByText("¿Empezar de cero? Se pierde tu avance.")).toBeNull();
-    hay(`«${G.ARCHIVO2.consigna}»`); // sigue donde estaba
+    hayCita(G.ARCHIVO2.consigna); // sigue donde estaba
     pulsa(/Empezar de cero/);
     pulsa(/Sí, de cero/);
     await screen.findByRole("heading", { name: /Mesa de verificación/ });

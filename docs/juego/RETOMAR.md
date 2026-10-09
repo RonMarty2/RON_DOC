@@ -1,3 +1,13 @@
+## ⏸ ÚLTIMO CORTE 09-10 11:25 (cuota por acabarse) — LEER ESTE BLOQUE PRIMERO
+**Estado:** todo subido a GitHub, `git status` limpio, 3955 pruebas verdes, `tsc` limpio, sin agentes corriendo. Arte propio conectado a la escena (paso 1), caras y palabras del jugador (paso 2), crítico v20 pasado (se puede mostrar) y sus 🟠 corregidos.
+**Pasos que quedan, en orden (no rehacer lo hecho: verificar con `git log` y `grep`):**
+1. Recorrer el juego de punta a punta en Chrome (dev: `rm -rf .next; env -u npm_config_allow_scripts npx next dev -p 3123`, abrir `/juego-psicoestadistica` con la extensión) y leer `window.__sonido()` para comprobar la música. Solo entonces mostrar a Ronald.
+2. Decisión de Ronald pendiente: enmendar la regla 4b de `docs/juego/ARTE-LINEA-GRAFICA.md` a «valor o tono» y subir un borde de luz al pelo de la jefa y a Dani (`artista-pixel`).
+3. Menores del crítico v20 (🟡): cara de la jefa según gesto; jefa y Dani con cara en la hoja; recortar la pared lisa de arriba para celular; J3 también en la rama «propias».
+4. Mapa de ambientes con las correcciones v19 (agente `director-de-juego`; lista en el bloque «CIERRE LIMPIO 09-10») y la hora por cambio de paleta (`ambiente-*.json`).
+5. Después: casos 3 a 8, música de sus escenas, revelación, guardado en la nube. Ronald debe volver a jugar.
+**Arranque en sesión nueva:** `git pull --ff-only`, leer este bloque y «CIERRE LIMPIO 09-10».
+
 ## ✅ CRÍTICO v20 PASADO 09-10 (veredicto: se puede mostrar a Ronald)
 Revisión v20 en `docs/juego/gdd/06-revisiones.md`. **Corregido ya:** J5 en su caja verde y solo si abrió algún papel; J2 solo al elegir llenar la hoja propia (antes salía antes de elegir); rótulo «Luz y polvo provisionales»; texto de la escena sin «puerta». **Abierto (🟡, no bloquea):** (3) la guía 4b mide por valor y la figura se separa por tono: enmendar a «valor o tono» y subir un borde de luz al pelo de la jefa y a Dani (lo decide Ronald/director); (4) cara de la jefa en la caja fija (`jefa_retrato`) aunque cambie el gesto; (5) en la hoja, jefa y Dani salen sin cara y no hay «silla del fondo»; (9) 60 filas de pared lisa empujan el diálogo bajo el pliegue en celular; J3 solo sale en la rama de Dani. Antes de mostrar a Ronald: abrir el juego en Chrome de punta a punta una vez más.
 

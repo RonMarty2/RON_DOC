@@ -1,3 +1,6 @@
+## ✅ MAPA DE AMBIENTES v20 horas HECHO 09-10 (tarde)
+Escrito por `director-de-juego` en `docs/juego/gdd/aspecto-psicoestadistica-tema1-ambientes.md` (hora por caso 23:00→05:30, amanecer solo en el cierre, lista de capas V1–V7, R1–R2, O1–O9). Falta: crítico sobre el mapa, y que `artista-pixel` dibuje las capas de la oficina (ventana, reloj, estante) antes de animarlas en `EscenaPixi.tsx`.
+
 ## ✅ DECISIONES APROBADAS 09-10 (Ronald dijo «sí»): oficina viva
 Hora de la historia **23:00 → 05:30**; el amanecer llega **solo al final de la prueba**; el reloj marca la **hora exacta**; **Dani fuera de la escena**. Siguiente: `director-de-juego` cierra el mapa de ambientes v19 con esas horas (lanzado 09-10; si no hay commit suyo en `docs/juego/gdd/aspecto-psicoestadistica-tema1-ambientes.md` con «v20 horas», relanzarlo), luego `artista-pixel` (capas) y la animación en `EscenaPixi.tsx`.
 

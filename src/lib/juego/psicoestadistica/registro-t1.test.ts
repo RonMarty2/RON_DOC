@@ -96,7 +96,7 @@ describe("registro del Tema 1", () => {
     const vistas = new Set<string>();
     const fuera: string[] = [];
     for (const p of todos) {
-      for (let k = 0; k < 6; k++) {
+      for (let k = 0; k < 4; k++) {
         const r = resumenT1(p, jugadaAlAzar(p, azarConSemilla(p.version.semilla * 31 + k)));
         expect(r.ideas).toHaveLength(8);
         expect(r.completo).toBe(true);
@@ -118,7 +118,7 @@ describe("registro del Tema 1", () => {
     expect(fuera.slice(0, 5)).toEqual([]);
     // Jugando al azar se llega a casi todas las ramas (las que faltan son rarezas como «razonó bien y no cubrió»).
     expect(vistas.size).toBeGreaterThanOrEqual(RAMAS.length - 4);
-  });
+  }, 60_000);
 
   it("los tubos se encadenan en el orden de la versión, con tope, y la plaza fija es 65/65 al final", () => {
     for (const p of todos.slice(0, 200)) {

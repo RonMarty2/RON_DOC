@@ -153,3 +153,17 @@ El paso 1 es el que más cambia el aspecto; si Ronald lo ve y no le gusta, se co
 | Nota por alumno y pagos | ✔ | no cambia ninguna tabla ni versión |
 | Bash / scripts | ✘ | no hubo Bash: nada contable lleva «script». Es de otra etapa (construcción), no del plan |
 | Crítico de lo jugable | pendiente | se corre sobre el plan y el boceto antes de que Ronald los vea |
+
+
+---
+
+## Cambios por la revisión v23 del crítico (09-10, ya aplicados al boceto)
+El crítico midió el boceto (412×860) y la cifra «la oficina queda visible al menos el 42 %» NO se cumplía: la cabecera con «Tu objetivo» ocupa ~17 % y el plan solo restaba la hoja. Medido antes del arreglo: diálogo 67 %, archivo con papel 36 %, decidir 46 %, «Qué pasó» 26 %. Cambios:
+1. **La hoja mide como máximo el 45 %** de la altura (antes 58 %), con aviso «Desliza: hay más abajo» en «Qué pasó».
+2. **«Tu objetivo» pasa a una línea corta que cambia con la fase** («Objetivo: saber cómo se contó el cero» / «Objetivo: decide con lo que averiguaste») y **desaparece en «Qué pasó» y en el final**.
+3. **En computador no hay panel lateral:** la hoja va centrada, de 480 px, abajo; así no tapa a la jefa ni a Dani.
+4. **Un solo mecanismo para el botón «atrás» de Android** (decidir cuál al construir; el boceto anterior tenía dos).
+5. **«Qué pasó» sin dos oraciones en un renglón** (el boceto ya las parte) y con los medidores moviéndose al abrir la hoja.
+6. Fichas: 3 (el boceto mostraba 4).
+7. Orden de construcción: mover las figuras en la escena va en el **paso 1**, y el paso 5 se parte en dos. Se anota el orden definitivo al empezar a construir.
+Las cifras definitivas se vuelven a medir en la pantalla real, con capturas, antes de dar cada paso por bueno.

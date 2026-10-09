@@ -52,9 +52,9 @@ p.nota{max-width:900px;margin:4px 0 10px;color:var(--tenue)}
 .obj{border:2px solid var(--ambar);background:rgba(29,24,56,.95);padding:4px 10px;font-size:16px;line-height:1.25;color:var(--texto)}
 .obj b{color:var(--ambar);font-weight:400}
 
-/* Hoja: sube desde abajo en celular (máx. 58%), panel lateral en computador */
-.hoja{position:absolute;left:0;right:0;bottom:0;max-height:58%;background:var(--papel);color:var(--tinta);border-top:3px solid #c9bd98;display:flex;flex-direction:column}
-.w .hoja{left:auto;top:0;width:440px;max-height:none;border-top:0;border-left:3px solid #c9bd98}
+/* Hoja: sube desde abajo, máx. 45% de la altura; en computador va centrada, 480 px (sin panel lateral) */
+.hoja{position:absolute;left:0;right:0;bottom:0;max-height:45%;background:var(--papel);color:var(--tinta);border-top:3px solid #c9bd98;display:flex;flex-direction:column}
+.w .hoja{left:50%;right:auto;transform:translateX(-50%);width:480px;max-height:45%;border-left:3px solid #c9bd98;border-right:3px solid #c9bd98}
 .hoja .tope{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 6px 14px;border-bottom:2px solid #c9bd98;min-height:48px}
 .hoja .tope h3{margin:0;font-size:16px;color:#5a3a14;font-weight:400}
 .cerrar{min-width:48px;min-height:44px;font:inherit;font-size:16px;background:var(--panel);color:var(--texto);border:2px solid var(--borde);cursor:pointer}
@@ -112,7 +112,7 @@ const cab = (c,v,obj=true)=>`
       <div class="vid"><u style="width:${x}%"></u><i style="left:25%"></i><i class="m" style="left:65%"></i></div>
       <div class="mar"><span class="p" style="left:25%">25 peligro</span><span class="g" style="left:65%">65 meta</span></div></div>`).join("")}
   </div>
-  ${obj?`<div class="obj"><b>Tu objetivo:</b> saber cómo se contó el cero. Toca un papel para abrirlo; cada uno gasta una ficha.</div>`:""}
+  ${obj?`<div class="obj">${obj===true?"<b>Objetivo:</b> saber cómo se contó el cero":obj}</div>`:""}
 </div>`;
 const ofi = (sombra)=>`<div class="of"><div class="vent"><div class="luna"></div></div><div class="jefa"></div><div class="dani"></div><div class="lampara"></div>
  <span class="rot" style="left:9%;top:42%">ventana</span><span class="rot" style="left:60%;top:50%">jefa</span>
@@ -123,20 +123,20 @@ const S = {
   <div class="dlg"><div class="fila2"><div class="cara">cara</div><div><div class="q">LA JEFA</div><p>El director quiere este informe mañana: "cero denuncias". Antes de firmarlo, averigua cómo se contó ese cero.</p></div></div>
   <button class="bt">Siguiente ▸</button></div>`,
  "2 · Archivo con un papel abierto": ()=> ofi(true)+cab(60,60)+hoja("Correo de la secretaria · papel 2 de 6",
-   `<div class="fichas">Fichas: <i class="on"></i><i class="on"></i><i></i><i></i> (te quedan 2)</div>
+   `<div class="fichas">Fichas: <i class="on"></i><i class="on"></i><i></i> (te quedan 2)</div>
     <p>"Desde marzo, solo anotamos las denuncias firmadas por un adulto."</p>
     <p>"Las que llegan sin firma, las devolvemos."</p>
     <div class="abanico"><div class="pap ab">Libro de registro</div><div class="pap">Informe del orientador</div></div>`,
    `<div class="barra"><button class="bt sec">◂ Volver a la carpeta</button><button class="bt">Decidir ▸</button></div>`),
- "3 · Decidir (tres botones, cada uno con su línea)": ()=> ofi(true)+cab(60,60)+hoja("Decidir el informe",
+ "3 · Decidir (tres botones, cada uno con su línea)": ()=> ofi(true)+cab(60,60,"<b>Objetivo:</b> decide con lo que averiguaste")+hoja("Decidir el informe",
    `<div class="dec">
      <button class="bt">Firmar tal cual<small>El cero va al consejo como está y con tu firma.</small></button>
      <button class="bt">Redactar la frase<small>Escribes solo lo que sabes de cómo se contó.</small></button>
      <button class="bt">Frenar<small>El informe no sale esta noche y el consejo se queda sin respuesta.</small></button></div>`),
- "4 · Qué pasó (los medidores se mueven arriba mientras lees)": ()=> ofi(true)+cab(40,70)+hoja("Qué pasó",
-   `<div class="qp">
+ "4 · Qué pasó (los medidores se mueven arriba mientras lees)": ()=> ofi(true)+cab(40,70,false)+hoja("Qué pasó",
+   `<div class="qp"><small style="color:#4a4258">▾ Desliza: hay más abajo</small>
     <div><b>Qué hiciste</b><span>Firmaste el cero tal cual sin saber cómo se contó.</span></div>
-    <div><b>Cómo se contó</b><span>Quedó sin abrir: el correo de la secretaria. Decía: desde marzo solo se anotan las denuncias firmadas por un adulto.</span></div>
+    <div><b>Cómo se contó</b><span>Quedó sin abrir: el correo de la secretaria.<br>Decía: desde marzo solo se anotan las denuncias firmadas por un adulto.</span></div>
     <div><b>Credibilidad</b><span><em>Baja 20:</em> dijiste "seguro" con un cero que ya no contaba lo mismo.</span></div>
     <div><b>Voz</b><span>Sube 10: respondiste a tiempo y el consejo te consulta.</span></div>
     <div><b>Con otra decisión</b><span>Con el correo abierto, tu frase habría subido Credibilidad 8.</span></div></div>`,
@@ -156,7 +156,7 @@ for(const [t,f] of Object.entries(S)){
    <div><div class="cap">Celular vertical 412×860</div><div class="frame m">${f()}</div></div>
    <div><div class="cap">Computador 1100×700</div><div class="frame w">${f()}</div></div></div>`);
 }
-out.insertAdjacentHTML("beforeend",`<p class="pie">Reglas de la disposición: la hoja nunca pasa del 58% de la altura en celular (la oficina siempre se ve en más de un tercio); en computador la hoja es un panel a la derecha de 440 px y la oficina se ve entera a la izquierda. Letra de 12 px o más en todo (los rótulos de las marcas son de 12 px); en el juego real el texto va en la letra de la mesa a 17 px o más.</p>`);
+out.insertAdjacentHTML("beforeend",`<p class="pie">Reglas de la disposición: la hoja nunca pasa del 45% de la altura (la oficina queda visible en cerca de la mitad, midiendo también la cabecera); en computador la hoja va centrada, de 480 px, y la oficina se ve entera a la izquierda. Letra de 12 px o más en todo (los rótulos de las marcas son de 12 px); en el juego real el texto va en la letra de la mesa a 17 px o más.</p>`);
 </script>
 </body>
 </html>

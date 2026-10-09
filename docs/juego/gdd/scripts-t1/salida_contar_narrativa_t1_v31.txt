@@ -1,0 +1,31 @@
+seccion 05: lineas 20 a 817
+papeles C1-1..C8-9: 72 (esperado 72)
+filas de sobres S-: 30 (esperado 30)
+sobres sin texto propio: 2 (esperado 2: E5e y E8d)
+expedientes R-H: 8 (esperado 8)
+ramas en 04 T1.7a: 72 | ramas en 05 NT1.9: 72 (esperado 72 y 72)
+mismos ids en el mismo orden: True
+sin repetidos en 05: True
+F3k y F6k en 05: True True
+bloque de textos de 05 identico al de 04 (T17B): True
+| F3a | -> | F3a | «Sacaste varias tandas y cada una dio algo distinto. Ninguna mentía, ninguna era "la cifra".» | «Tu rango dijo cuánto se mueve la cifra y de dónde salió, y por eso se pudo presentar.» |
+| F5h | -> | F5h | «Abriste con qué comparar y escribiste 0. La cuenta bien hecha daba {rho}.» | «Escribir 0 era decir que la resta no dejaba nada, y la resta dejaba {rho}.» |
+| F3k | -> | F3k | «Esta vez la cifra venía de 150 elegidos al azar. Tu rango la cubría, pero no hacía falta un rango.» | «Firmar tal cual sumaba más que tu rango.» |
+| F6k | -> | F6k | «Esta vez los 60 salieron de un sorteo entre los 480, y tú lo viste. Firmaste tal cual.» | «Firmar tal cual, con el sorteo a la vista, sumaba lo mismo que redactarlo.» |
+codigos en 02 8.1: 29 | en 05: 29 | mismos codigos: True
+habitos que difieren entre 02 y 05: []
+guiones largos en la seccion: 0
+frases entre « » con mas de 25 palabras: 0 []
+bytes de control en la seccion: 0
+restos de 'titular': 3
+restos de 'Lectores': 5
+restos de 'Ficha 1': 0
+restos de 'Ficha 2': 0
+restos de 'Ficha 8': 0
+restos de 'Con una tanda no sabes': 0
+restos de 'número lindo': 0
+restos de 'con dos papeles todavía': 1
+restos de 'las ocho fichas': 0
+restos de '66 ramas': 0
+restos de '71 ramas': 0
+restos de 'por ficha': 0

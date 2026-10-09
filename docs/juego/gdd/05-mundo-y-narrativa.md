@@ -763,6 +763,95 @@ Cierre C8 (F8a, F8b, F8c, F8d, F8e, F8f, F8g): «Los datos bien recogidos y bien
 
 ---
 
+### NT1.12 Orientación en pantalla (v16) · 09-10-2026
+
+**Para qué existe.** Ronald jugó la primera pantalla (Paso 1 y caso 2) y no entendió qué hacía ni qué se le pedía; el crítico lo anotó como v16 (`06-revisiones.md`, H1 a H14). Esta sección escribe **solo textos**: no cambia reglas, pagos, orden de las pantallas ni botones bloqueados. Ronald delegó la decisión («tú eres el experto»); lo que sigue es la propuesta del diseñador narrativo y entra al juego sin nueva consulta, salvo lo marcado en «Para construcción».
+
+**Cómo se lee.** Dos tablas. La **tabla A** cambia líneas que ya existen en NT1.5 y NT1.6 (el código las usa palabra por palabra y una prueba las compara: cuando se cambien en el código, esas dos secciones quedan como historia y manda esta). La **tabla B** son líneas nuevas, que no tocan ninguna existente. Todo lo que va entre «comillas» lo lee el alumno; los huecos `{…}` los llena el generador. La pantalla es la fase de `Mesa.tsx`. Ninguna línea pasa de 25 palabras. La jefa no corrige durante el caso (G12): en el caso 2 solo orienta antes de decidir y comenta después de la reacción.
+
+**Qué se decidió escribir (en simple).**
+- Quién eres y cuál es tu trabajo, dicho en la bienvenida y por la jefa en su primera línea (H1).
+- La hoja «Para empezar» sirve para comparar con lo que haya en el archivo; Dani se presenta antes de responder (H2, H3).
+- En cada pantalla de papeles la jefa dice qué buscar, que tocar abre y que abrir gasta una ficha; la ficha se explica una sola vez (H4).
+- El paso 1 cierra con lo que encontraste y con que eso era lo pedido, sin nombre técnico (H5).
+- Los dos medidores se presentan en cuatro frases cortas repartidas: nombre, qué baja y qué sube, raya de peligro, meta (H6). Horizonte y Beto se presentan con una frase cada uno (H6, H13).
+- El caso 2 abre diciendo qué hay que comprobar (si ese cero se sostiene), sin dar la respuesta (H7).
+- Los botones de decidir llevan una línea cada uno; si no abriste ningún papel, la confirmación te lo avisa, **sin bloquear** (fila R2.1.sin intacta) (H8).
+- El corcho y la gráfica dicen qué mirar (H9); la frase dice para qué sirve y se usa un solo verbo, «Firmar» (H10).
+- Después de la reacción, una línea dice qué movió cada medidor; el final dice los valores (H12).
+- El título avisa que es una prueba de 2 casos de 8 (H14).
+- H11 (la confirmación que queda fuera de vista en 375 px) no es de texto y lo atiende construcción.
+
+#### Huecos nuevos de esta sección (los demás están en NT1.4)
+
+| Hueco | Qué es | Origen |
+|---|---|---|
+| `{dC}`, `{dV}` | Qué hizo cada medidor con la fila que pagó: «sube N», «baja N» o «no cambia» (N = puntos de esa fila de `reglas-t1`) | Resultado del caso (`ResultadoCaso`) |
+| `{c}`, `{voz}` | Valor final de Credibilidad y de Voz al terminar la prueba | Medidores |
+| `{papelClave}` | Nombre del papel clave que el alumno abrió en el caso 2; si no abrió ninguno, el nombre del primer clave de su versión | Carpeta del caso 2 y `papeles-t1.json` |
+
+#### Tabla A · línea vieja → línea nueva
+
+| # | Pantalla | Línea vieja | Línea nueva |
+|---|---|---|---|
+| A1 | bienvenida (líneas 1 y 2) | «Este es el Departamento de Orientación del colegio. Aquí llegan, cada noche, afirmaciones dichas con tono de certeza.» y «La semana pasada el colegio retiró un informe en pleno consejo. Desde entonces nada llega al consejo sin pasar por esta mesa.» | «Departamento de Orientación, de noche. La semana pasada el colegio retiró un informe en pleno consejo. Desde entonces todo pasa por esta mesa.» |
+| A2 | bienvenida (línea 3) | «El escritorio estaba vacío. Hoy lo ocupas tú.» | «Eres el psicólogo o la psicóloga del colegio. Hoy ocupas este escritorio.» |
+| A3 | jefa (línea 1) | «Llegaste al escritorio. Sin papeles no hay informe.» | «Soy Ximena Rocabado, jefa del departamento. Aquí nada llega al consejo sin papeles que lo sostengan.» |
+| A4 | hoja (frase de la jefa) | «Es la hoja que llena cada estudiante al ingresar. Hoy la llenas tú.» | «Primero llena tú la hoja que llena cada estudiante al ingresar. Tu fila servirá para comparar con lo que haya en el archivo.» |
+| A5 | hoja (botón) | «Responde Dani» | «Que responda {dani}» |
+| A6 | archivo1 (frase de la jefa) | «El colegio archiva todo y nadie lo mira. A ver qué encuentras.» | «El colegio archiva todo y nadie lo mira. Busca si ya preguntó cuánto duermen los de 4.º.» |
+| A7 | archivo1 (rótulo de las fichas) | «Fichas» | «Fichas: papeles que puedes abrir» |
+| A8 | asombro (título) | «Lo que encontraste» | «Lo que encontraste: el colegio ya lo preguntó» |
+| A9 | cierre1 (línea 2) | «Dos medidores. Si firmas sin mirar, baja uno. Si frenas todo, baja el otro.» | Se quita; la reemplazan las líneas B-cierre1-1 a B-cierre1-4 de la tabla B |
+| A10 | cierre1 (línea 3) | «Si no contestamos a tiempo, el colegio llama a Horizonte.» | «Horizonte es una consultora externa: si no contestamos a tiempo, el colegio la llama.» |
+| A11 | entrada2 (jefa) | «El director lo quiere en el informe de mañana. Cero. Es un número redondo. Tienes la carpeta.» | «El director quiere este informe mañana: cero denuncias, un número redondo. ¿Ese cero se sostiene?» |
+| A12 | frase (párrafo) | «Elige 2 o 3 piezas. Cada papel que abres agrega una.» | «Esta frase va en el informe en lugar del cero. Elige 2 o 3 piezas que puedas sostener con lo que abriste.» |
+| A13 | frase (botón) | «Sellar la frase ▸» | «Firmar la frase ▸» |
+
+**Un solo verbo.** El alumno **firma** (firmar tal cual, firmar la frase, «¿Firmar? Después no hay vuelta.»). «Sellar» queda solo como nombre interno del código; no se ve.
+
+#### Tabla B · líneas nuevas
+
+| Id | Pantalla | Quién | Texto | Cuándo sale |
+|---|---|---|---|---|
+| B-titulo-1 | titulo | narración | «Prueba: 2 casos de los 8 del juego.» | Debajo de «Víspera del consejo» (H14) |
+| B-bienv-1 | bienvenida | narración | «Tu trabajo: mirar los papeles y decir si una afirmación se sostiene, antes de que llegue al consejo.» | Tercera línea, tras A2 (H1) |
+| B-hoja-1 | hoja | jefa | «En la silla del fondo está {dani}, practicante del departamento. Si prefieres no poner tus datos, {dani} responde por ti.» | Bajo la frase A4, antes de los botones (H3) |
+| B-arch1-1 | archivo1 | jefa | «Toca un papel para abrirlo. Cada papel abierto gasta una ficha: es el tiempo que tienes esta noche.» | Bajo la frase A6, siempre visible (H4: aquí se explica la ficha, una sola vez) |
+| B-asom-1 | asombro | jefa | «Eso era lo que te pedí: el colegio ya hizo esta pregunta, y nadie usó la respuesta.» | Tras «Esa pregunta ya se hizo. Hace un año. Nadie la leyó.» (H5) |
+| B-asom-2 | asombro | jefa | «Tu trabajo es eso: mirar los papeles antes de creer una afirmación.» | Tras B-asom-1 (H5) |
+| B-cierre1-1 | cierre1 | jefa | «Ahora aparecen dos medidores. Credibilidad: cuánto te creen cuando firmas. Voz: cuánto te consulta el colegio.» | Tras «A partir de hoy firma el departamento, y firmas tú.» (H6) |
+| B-cierre1-2 | cierre1 | jefa | «Firmar algo que no se sostiene baja Credibilidad. Frenar todo baja Voz. Una frase bien sostenida sube los dos.» | Tras B-cierre1-1 (H6) |
+| B-cierre1-3 | cierre1 | jefa | «La raya de 25 es el peligro: con un medidor ahí, tendrás menos tiempo en el caso siguiente.» | Tras B-cierre1-2 (H6) |
+| B-cierre1-4 | cierre1 | jefa | «La raya de 65 es la meta: al cerrar el último informe quiero los dos medidores por encima.» | Tras B-cierre1-3 (H6) |
+| B-cierre1-5 | cierre1 | rótulo bajo el tubo | «Que te crean» (bajo Credibilidad) y «Que te consulten» (bajo Voz) | Fijo, junto a los tubos (H6) |
+| B-cierre1-6 | cierre1 | jefa | «Ahí pasa Beto, profe de educación física y tutor de 4.º. Siempre tiene una opinión.» | Tras A10, antes de la línea de Beto (H13) |
+| B-entr2-1 | entrada2 | jefa | «Tienes la carpeta. Mira qué papeles lo respaldan o no, y después decides.» | Segundo globo, tras A11 (H7) |
+| B-arch2-1 | archivo2 | jefa | «Toca un papel para abrirlo; cada uno gasta una ficha. Busca qué respalda ese cero y qué no.» | Arriba de los papeles, siempre visible (H4) |
+| B-arch2-2 | archivo2 | corcho | «Mira qué pasó justo antes de que bajaran las denuncias.» | Dentro del corcho, bajo «Los papeles que abras se clavan aquí, por fecha.» (H9) |
+| B-arch2-3 | archivo2 | corcho | «La gráfica muestra las denuncias mes por mes; compárala con las fechas de los papeles.» | Junto a la gráfica del corcho (H9) |
+| B-arch2-4 | archivo2 | botón | «Firmar tal cual: el informe va al consejo como está.» | Bajo el primer botón (H8) |
+| B-arch2-5 | archivo2 | botón | «Redactar la frase: tú escribes qué se puede afirmar.» | Bajo el segundo botón (H8) |
+| B-arch2-6 | archivo2 | botón | «Frenar: el informe no sale esta noche.» | Bajo el tercer botón (H8) |
+| B-arch2-7 | archivo2 | jefa | «Primero abre algún papel.» | Solo con 0 papeles abiertos; no bloquea ningún botón (H8) |
+| B-frase-1 | frase | jefa | «Cada papel que abres agrega una pieza.» | Bajo A12 (H10) |
+| B-conf-1 | confirma | jefa | «No abriste ningún papel. ¿Decides sin mirar?» | Encima de «¿Firmar? Después no hay vuelta.», solo con 0 papeles abiertos y para cualquiera de las tres decisiones; los botones «Sí, al consejo» y «Todavía no» siguen activos (H8) |
+| B-reac-1 | reaccion | jefa | «Firmar te dio Voz, pero firmar algo que no se sostenía costó Credibilidad.» | Tras la reacción de R2.1 del tipo P (H12) |
+| B-reac-2 | reaccion | jefa | «Firmaste algo que se sostenía: por eso suben los medidores.» | Tras la reacción de R2.1 y R2.1.sin del tipo B (H12) |
+| B-reac-3 | reaccion | jefa | «Frenar te quita Voz: el colegio te consulta menos cuando el informe no sale.» | Tras la reacción de R2.2, en P y en B (H12) |
+| B-reac-4 | reaccion | jefa | «Tu frase se sostenía con papeles: por eso suben los medidores.» | Tras la reacción de R2.3, en P y en B (H12) |
+| B-reac-5 | reaccion | jefa | «Una frase que no se apoya en papeles agrada, pero no suma Credibilidad.» | Tras la reacción de R2.4, en P y en B (H12) |
+| B-reac-6 | reaccion | narración | «Credibilidad {dC} · Voz {dV}.» | Siempre, junto a las tarjetas, antes de «Continuar» (H12) |
+| B-fin-1 | fin | narración | «Credibilidad {c} · Voz {voz}.» | Antes del texto de cierre de la prueba (H12) |
+| B-fin-2 | fin | narración | «Abriste {papelClave}: ahí estaba lo que decidía este informe.» | Si abrió algún papel clave del caso 2 |
+| B-fin-3 | fin | narración | «Quedó sin abrir: {papelClave}. Era el papel que más decía sobre este informe.» | Si no abrió ningún clave |
+
+**Lo que se cuidó.** Ninguna línea nombra la lección (nada de muestra, sesgo ni comparación estadística); «comparar con lo que haya en el archivo» es el oficio de la noche, no el concepto. El hallazgo del paso 1 se nombra como «el colegio ya lo preguntó», no como asombro. La jefa no corrige mientras el alumno decide: sus líneas del caso 2 son de orientación antes de decidir o de comentario tras la reacción. Las cifras 25 y 65 salen de NT1.5 y de las reglas G; no hay cifras nuevas. B-fin-2 y B-fin-3 nombran un papel **después** de decidir; B-fin-3 no dice qué contenía.
+
+**Para construcción (cuánto cuesta cada cosa).** (1) Las 13 líneas de la tabla A reemplazan cadenas de `guion-pantalla-t1.ts`; el test que compara con NT1.5 y NT1.6 debe pasar a leer también esta sección, o NT1.5 y NT1.6 deben actualizarse en el mismo commit con estas líneas. (2) Las líneas de B que están ligadas a una condición (B-arch2-7, B-conf-1, B-reac-1 a B-reac-5, B-fin-2, B-fin-3) piden un `if` sobre papeles abiertos o la fila de pago; ninguna cambia un cálculo. (3) Lo único que **no** es solo texto es el rótulo bajo el tubo (B-cierre1-5), que es un cambio de etiqueta en `Tubos`.
+
+---
+
 ### Lista de salida · Tema 1 · narrativa v3.1
 
 Cada línea dice cómo se probó: **script** (`scripts-t1/contar_narrativa_t1_v31.py` y `scripts-t1/aplicar_narrativa_v31.py`, o `buscar_voseo.py`, con su salida guardada en `scripts-t1/salida_contar_narrativa_t1_v31.txt`), **a mano** (lectura y juicio del diseñador) o **pendiente** (que cuenta como ✘). **Salida del script de conteo (08-10-2026, v3.1; `python -I -X utf8 contar_narrativa_t1_v31.py`):**

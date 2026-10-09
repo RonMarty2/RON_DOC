@@ -107,6 +107,71 @@ Se suman a las cinco que esa parte ya lista.
 
 ---
 
+## 09-10-2026 · Psicoestadística Descriptiva (Psicología), Tema 1: la primera pantalla jugable (Paso 1 + Caso 2), jugada mentalmente (v16)
+
+**Qué se revisó.** `src/app/juego-psicoestadistica/Mesa.tsx`, `guion-pantalla-t1.ts` y `papeles-t1.json` (C1-1 a C1-9, C2-1 a C2-9), contra `02` §4 y §5.1 y `05` NT1.5 y NT1.6. Recuento con `docs/juego/gdd/scripts-t1/contar_pantalla_t1.py`: 13 fases, todas con pantalla en `Mesa.tsx`; 7 líneas de diálogo antes del primer toque (bienvenida 3, jefa 2, encargo 2; el script cuenta 1 en JEFA_LLEGADA porque las dos van en la misma línea del archivo, contadas a ojo en el archivo son 2); 4 líneas de cierre del Paso 1; 9 papeles por carpeta. La palabra «Fichas» sale 10 veces en `Mesa.tsx` y 0 veces en el guion: ningún personaje la explica. «Credibilidad» y «Voz» salen una vez, solo como rótulo del medidor, y la jefa nunca dice sus nombres. Esta pantalla se le mostró a Ronald sin crítico; su queja («no entiendo el flujo, ni qué estoy haciendo ni qué quiere que haga») es correcta.
+
+**Diagnóstico en una frase.** Cada pantalla es correcta por separado, pero ninguna dice **el objetivo del momento** ni **qué se toca**, y la historia se cuenta (7 líneas) antes de que el alumno sepa quién es. El diseño `02`/`05` tiene la mayor parte de la orientación **en la cabeza del diseñador** (a) y dos huecos propios (b).
+
+### 🔴 Bloquean la comprensión
+
+**H1. Nunca se dice quién eres ni cuál es tu trabajo (pantallas `bienvenida` y `jefa`). (a) el diseño lo da por sabido.**
+Texto: «Este es el Departamento de Orientación… Hoy lo ocupas tú.» y la jefa: «Llegaste al escritorio. Sin papeles no hay informe.» No aparece «psicólogo», «psicóloga» ni «tu trabajo es comprobar si lo que afirman es cierto antes de que llegue al consejo». La segunda frase de la jefa es un enigma. El alumno no sabe si es practicante, jefe o cliente.
+Arreglo mínimo (`BIENVENIDA` y `JEFA_LLEGADA`): cambiar la 3.ª línea de bienvenida por «Eres el psicólogo o la psicóloga del colegio. Tu trabajo esta noche: revisar lo que afirman antes de que llegue al consejo.» y la 1.ª de la jefa por «Soy la jefa del departamento. Esta noche me ayudas con los papeles.» (quitar «Sin papeles no hay informe»). Bajar de 7 a 5 líneas: unir las dos primeras de bienvenida.
+
+**H2. El primer encargo y la hoja parecen dos tareas sin relación (`ENCARGO` → `hoja`). (b) el diseño mismo.**
+La jefa pide «¿El colegio tiene algún dato sobre cuánto duermen los de 4.º?» y la pantalla siguiente se llama «Para empezar», con «Es la hoja que llena cada estudiante al ingresar. Hoy la llenas tú», tres preguntas personales y los botones «Responde Dani» / «Poner las mías». El alumno cree que contestar la hoja ES el encargo, o que no tiene que ver. Nunca se dice para qué sirve (que su fila servirá para comparar con el archivo).
+Arreglo: texto de `HOJA.jefa`: «Antes de buscar en el archivo, llena tú la hoja que llenan los estudiantes. Después vemos si el colegio ya preguntó esto.» (no explica estadística, solo el orden de lo que hará).
+
+**H3. Dani aparece de la nada (`hoja`, botón «Responde Dani»). (a) `05` NT1.3 lo describe, la pantalla no lo presenta.**
+Texto exacto: «Yo respondo, si quieres. Anoche fueron… Ayer me fue... {número}.» y «...perdón. ¿Dónde estaba?». El alumno no sabe quién es Dani (la silueta del fondo no se menciona antes), y el botón «Responde Dani» se lee como «responde con un dato inventado».
+Arreglo: añadir en `JEFA_LLEGADA` o `ENCARGO` una línea de la jefa: «Dani es el practicante; si no quieres poner tus datos, responde por ti.» y rotular el botón «Que responda Dani (el practicante)».
+
+**H4. `archivo1`: no se dice qué buscar, qué tocar ni qué cuesta (pantalla «El archivo del colegio»). (a) el diseño P1.3 lo tiene, la pantalla no.**
+Texto: «El colegio archiva todo y nadie lo mira. A ver qué encuentras.» Debajo, «Fichas ○○○» y 9 botones con solo el nombre (Cuaderno de la enfermería, Registro de tardanzas…). No dice «busca si el colegio ya preguntó cuánto duermen los de 4.º», ni que tocar un papel lo abre, ni que cada papel abierto gasta una ficha (esa frase solo existe en el `aria-label`, que ve el lector de pantalla pero no el alumno). «Fichas» es un nombre sin significado.
+Arreglo (`ARCHIVO.jefa`): «Busca en el archivo si el colegio ya preguntó cuánto duermen los de 4.º. Toca un papel para abrirlo: cada uno gasta una ficha y tienes {n}.» y en `Fichas` cambiar el rótulo «Fichas» por «Papeles que puedes abrir».
+
+**H5. `asombro`: aparece una tabla sola y el paso nunca cierra el encargo. (b) el diseño mismo.**
+Al cerrar el papel salta a «Lo que encontraste»: una tabla «Tú, hoy / Archivo, {fecha}» y la jefa: «Esa pregunta ya se hizo. Hace un año. Nadie la leyó.» El alumno no sabe por qué la tabla es un hallazgo, no se contesta lo que el director afirmó («los estudiantes duermen poco») ni lo que pidió la jefa, y el botón es solo «Seguir». La acción «abriste el papel correcto» no se reconoce.
+Arreglo (sin enseñar estadística): título «Lo que encontraste: el colegio ya lo preguntó» y, antes de `CIERRE_PASO1`, una línea de la jefa: «Eso era lo que buscábamos. Ya existía y nadie lo usó. Este es tu trabajo: mirar antes de creer.» (la frase de oficio, no el concepto).
+
+**H6. Los medidores aparecen y la jefa no dice cuál es cuál (`cierre1`, `CIERRE_PASO1.jefa`).**
+Texto: «Dos medidores. Si firmas sin mirar, baja uno. Si frenas todo, baja el otro.» Los tubos se llaman «Credibilidad» y «Voz» (solo en `Tubos`), con dos marcas blancas sin nombre y un color que cambia a rojo/verde sin leyenda. El alumno no sabe cuál baja con qué, qué es «firmar», qué son las marcas ni cuál es la meta (`META_CIERRE` nunca se dice). «Horizonte» (línea 3) nunca se explicó.
+Arreglo: «Credibilidad: cuánto te creen cuando firmas. Voz: cuánto te consultan cuando frenas. Firmar sin mirar baja la Credibilidad; frenarlo todo baja la Voz. La marca roja es el peligro; la verde, lo que quiero ver al final.» y cambiar «Horizonte» por «el colegio llama a una consultora externa». Rótulo bajo el tubo: «Que te crean» / «Que te consulten».
+
+### 🟠 Confunden
+
+**H7. `entrada2`: el informe se lee como del alumno y la jefa no dice qué hacer.** Texto: «El director lo quiere en el informe de mañana. Cero. Es un número redondo. Tienes la carpeta.» El alumno no sabe si debe escribir el informe, creerlo o comprobarlo. Arreglo (`CASO2.jefa`): «El director afirma esto para el consejo. Antes de que lo firmemos, mira en la carpeta si se sostiene. Después decides.»
+
+**H8. `archivo2`: los tres botones de decisión están visibles desde el primer segundo, con 0 papeles abiertos.** «Firmar tal cual / Redactar la frase / Frenar» invitan a decidir sin mirar, y no dicen qué hace cada uno ni que cada uno mueve un medidor distinto. Es la estrategia del perezoso (firmar o frenar al instante) con aspecto de juego normal. Arreglo (`Mesa.tsx`, bloque `fase === "archivo2"`): mostrar bajo los botones una línea de cada uno («Firmar tal cual: el informe va al consejo como está.» / «Redactar la frase: tú escribes qué se puede afirmar.» / «Frenar: el informe no sale esta noche.») y, con 0 papeles abiertos, anteponer «Primero abre algún papel» sin bloquear.
+
+**H9. El corcho y la gráfica no dicen qué se ve (`archivo2`).** «Los papeles que abras se clavan aquí, por fecha.» No explica que lo que importa es qué ocurrió cerca del mes en que bajaron las denuncias, y la gráfica «Denuncias por mes» aparece dos veces (en `entrada2` y dentro del corcho). Arreglo: poner en el corcho «Mira qué pasó justo antes de que bajaran las denuncias.» (orientación sin dar el papel) y quitar la gráfica repetida del corcho o marcar el mes de la caída.
+
+**H10. `frase`: las piezas iniciales son tres vaguedades y el sentido de «sellar la frase» no se entiende.** Con 0 papeles solo hay «según fuentes del colegio», «datos preliminares», «el director informa». «Elige 2 o 3 piezas. Cada papel que abres agrega una.» no dice para qué es la frase (lo que el departamento afirma en lugar del cero). Además, la pantalla usa «Sellar» en un botón y «Firmar» en la confirmación; el diseño `05` dice «la agencia informa» y el código «el director informa». Arreglo (`Mesa.tsx`, párrafo de `mesa-frase`): «Esta frase va en el informe en lugar del cero: elige 2 o 3 piezas que puedas sostener con lo que abriste.»; unificar el verbo («Firmar la frase»).
+
+**H11. `confirma` queda debajo de toda la pantalla larga.** En 375 px, abanico + corcho + gráfica + botones empujan el cuadro «¿Firmar? Después no hay vuelta.» fuera de vista; el alumno toca «Firmar tal cual» y no ve qué cambió. Arreglo: en `Mesa.tsx`, cuando `fase === "confirma"` mostrar la confirmación fija arriba o hacer scroll al cuadro.
+
+**H12. `reaccion` y `fin`: el alumno ve que algo bajó o subió, pero no qué lo causó.** La madre pregunta «¿Y antes de {mes}, cuántas denuncias había?»; la jefa dice «No firmamos. Se nota que esperaste.» Nadie dice «por eso bajó la Credibilidad». En `fin` solo hay «Jugaste el primer encargo y el primer caso…» sin los valores de los medidores ni qué papel decidía. Arreglo mínimo: en `fin`, una línea «Credibilidad {c} · Voz {voz}» y, si se firmó sin abrir el papel clave, «No abriste el papel que cambiaba la historia: era {nombre}.» (usa `resultado`); sin explicar el concepto.
+
+### 🟡 Cosméticos
+
+- **H13.** Beto: «Buenas noches, doc. A ojo se ve que hoy trabajas hasta tarde.» aparece sin presentación y no hace nada; se puede quitar o dejarlo con «Soy Beto, de la portería.».
+- **H14.** Se cuenta primero el desenlace de la prueba («los otros seis casos todavía no están») recién en `fin`; conviene decirlo en la pantalla `titulo` (`G.TITULO.pequeno` ya dice «Víspera del consejo»; añadir «Prueba: 2 de 8 casos»).
+- **H15.** `Dani cabecea` (25 s) solo es visible en la escena; con la escena chica nadie lo nota. Mantener, no sirve de orientación.
+
+### Lo que hay que arreglar primero, en lenguaje simple
+
+1. Decir en la primera pantalla **quién eres y cuál es tu trabajo** (H1).
+2. Que la jefa diga en una frase **qué buscar y qué tocar** en cada pantalla de papeles: «busca si el colegio ya preguntó esto; toca un papel; cada uno gasta una ficha» (H4, H7).
+3. Explicar **una vez** los dos tubos y qué baja cada uno, con nombres claros (H6).
+4. Unir el encargo con la hoja de Dani, y presentar a Dani (H2, H3).
+5. Cerrar cada paso con una frase que diga **qué pasó y qué sigue** (H5, H12).
+6. Que los botones de decidir digan lo que hacen, y que no se pueda firmar sin haber mirado un papel sin que lo avise la pantalla (H8, H11).
+
+Nada de esto enseña estadística ni manda a leer el dossier; todo es orientación de qué hacer. Tras corregir, se re-juega esta misma pantalla con los tres alumnos (el que sabe, el que no sabe y el perezoso que firma o frena de inmediato).
+
+---
+
 ## 08-10-2026 · Psicoestadística Descriptiva (Psicología), Tema 1 «La mesa de verificación» en el oficio de psicólogo de colegio: narrativa v3 y sonido v1 contra bucle v2 y aprendizaje v2.1 (papel + scripts, v15)
 
 **Qué se revisó.** `05-mundo-y-narrativa.md` (sección «narrativa v3», líneas 20 a 786), `07-sonido.md` (v1, completo), contra `02-bucle-y-mecanicas.md` (v2, líneas 23 a 615), `04-aprendizaje.md` (v2.1, líneas 23 a 605) y `06` v14 (la simulación del bucle **no se repitió**). Revisión única, antes de mostrarle el plan a Ronald. **Con terminal:** todo conteo salió de un `.py` guardado en `scratch/` (`python -I`, salida en UTF-8): `v15_conteos.py`, `v15_ids.py`, `v15_vocab.py`, `v15_ramas_cmp.py`, `v15_ramas_falsas.py`, `v15_palabras.py`, `v15_efectos_uso.py`, `v15_origen.py`, `v15_contraste.py`, `v15_citas.py`, `v15_efectos.py`, `v15_extraer.py`. No se corrigió ningún documento de otro agente; cada hallazgo dice quién lo arregla.

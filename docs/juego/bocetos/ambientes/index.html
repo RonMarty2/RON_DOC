@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ambientes del Tema 1 · muestras de color</title>
+<style>
+  :root { --fondo:#0e0d16; --tarjeta:#17152a; --texto:#e9e7f5; --suave:#b9b6cf; --linea:#2c2946; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fondo); color:var(--texto); font:14px/1.5 system-ui, sans-serif; }
+  main { max-width:1100px; margin:0 auto; padding:12px; }
+  h1 { font-size:20px; margin:8px 0; }
+  h2 { font-size:17px; margin:24px 0 8px; }
+  h3 { font-size:15px; margin:0 0 4px; }
+  p { margin:6px 0; }
+  .aviso { background:var(--tarjeta); border:1px solid var(--linea); border-radius:8px; padding:10px; color:var(--suave); }
+  .horas { display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; }
+  .hora { background:var(--tarjeta); border:1px solid var(--linea); border-radius:6px; padding:4px; font-size:12px; color:var(--suave); }
+  .hora .cielo { height:34px; border-radius:4px; margin-bottom:4px; }
+  .hora b { color:var(--texto); font-size:13px; }
+  .rejilla { display:grid; grid-template-columns:1fr; gap:14px; }
+  @media (min-width:700px) { .rejilla { grid-template-columns:1fr 1fr; } .horas { grid-template-columns:repeat(6, 1fr); } }
+  .caso { background:var(--tarjeta); border:1px solid var(--linea); border-radius:8px; padding:8px; }
+  .esc { position:relative; width:100%; overflow:hidden; border-radius:6px; background:#000; }
+  .mundo { position:absolute; left:0; top:0; width:188px; height:150px; transform-origin:0 0; isolation:isolate; }
+  .mundo img { position:absolute; image-rendering:pixelated; display:block; }
+  .mundo .cap { position:absolute; left:0; top:0; width:188px; height:150px; }
+  .fluor { animation:parpadeo 3.1s steps(1) infinite; }
+  @keyframes parpadeo { 0%,100% { opacity:1; } 47% { opacity:1; } 48% { opacity:.35; } 50% { opacity:1; } 83% { opacity:.5; } 85% { opacity:1; } }
+  @media (prefers-reduced-motion: reduce) { .fluor { animation:none; } }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0; }
+  .chip { display:flex; align-items:center; gap:4px; font-size:12px; color:var(--suave); }
+  .chip i { width:22px; height:16px; border-radius:3px; border:1px solid #ffffff55; display:inline-block; }
+  .meta { font-size:13px; color:var(--suave); }
+  .meta b { color:var(--texto); }
+  label { display:block; font-size:13px; color:var(--suave); margin-top:6px; }
+  input[type=range] { width:100%; }
+  .par { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .par .caso { padding:6px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Ambientes del Tema 1 · muestras de color</h1>
+  <p class="aviso">Esto <b>no es el arte final</b>. Es la oficina provisional de hoy con la luz, el color y el cielo de cada momento aplicados con CSS. Los objetos que cambian (estantes, corcho, tambor, lámina, puerta abierta) no están dibujados: se describen debajo de cada muestra. El detalle y el costo de cada fila están en <code>docs/juego/gdd/aspecto-psicoestadistica-tema1-ambientes.md</code>.</p>
+
+  <h2>1. La noche pasa (los 12 tramos de hora)</h2>
+  <p>La hora depende de cuántos casos llevas terminados, no de cuál caso juegas. Cada cuadro muestra el color del cielo en la ventana (de arriba hacia abajo).</p>
+  <div class="horas" id="horas"></div>
+
+  <h2>2. Un ambiente por momento</h2>
+  <div class="rejilla" id="rejilla"></div>
+
+  <h2>3. El mismo caso a dos horas distintas</h2>
+  <p>El caso 3 (el archivo y su tubo) es siempre el mismo lugar. Si a un alumno le toca tercero se ve así de medianoche, y si le toca sexto, así casi al amanecer.</p>
+  <div class="par" id="par"></div>
+</main>
+
+<script>
+const BASE = "../../../../public/juego/psicoestadistica/prov_";
+const POSES = ["editora_0", "editora_1", "editora_2"];
+
+// Tramos de la noche: hora, cielo (arriba, abajo), lámpara.
+const TRAMOS = [
+  { h:"21:30", t:"T0 título y bienvenida", c:["#03040c","#05060f"], l:"#ffb860" },
+  { h:"22:00", t:"T1 paso 1",              c:["#0b1030","#16205a"], l:"#ffc070" },
+  { h:"23:00", t:"T2 caso 2",              c:["#0c1234","#18226a"], l:"#ffc070" },
+  { h:"00:00", t:"T3 casos 3 a 7",         c:["#0a0f2e","#141c58"], l:"#ffc070" },
+  { h:"01:00", t:"T4 casos 3 a 7",         c:["#090d2a","#121a52"], l:"#ffc070" },
+  { h:"02:00", t:"T5 casos 3 a 7",         c:["#070b24","#101a4a"], l:"#ffc070" },
+  { h:"03:00", t:"T6 casos 3 a 7",         c:["#050820","#0e1540"], l:"#ffc070" },
+  { h:"04:30", t:"T7 casos 3 a 7",         c:["#17224d","#2b3f86"], l:"#ffc070" },
+  { h:"06:00", t:"T8 caso 8",              c:["#3a3f7a","#f2a65a"], l:"#a8e0a0" },
+  { h:"06:30", t:"T9 cierre",              c:["#8fb4e8","#f5c27a"], l:"#ffc070" },
+  { h:"07:00", t:"T10 revelación",         c:["#a9d0f5","#d6e8f8"], l:"#ffe9b0" },
+  { h:"07:30", t:"T11 final",              c:["#bfe0ff","#f0f6ff"], l:"#fff0c8" }
+];
+
+const A = [
+  { n:1, t:"Título", h:"21:30", c:["#03040c","#05060f"], velo:["#02010a",.66], lamp:["#ffb860",.5,50], ocultar:["jefa","dani"],
+    lugar:"La oficina con todo apagado menos la lámpara.", obj:"Solo cambia la luz. Costo bajo.", acento:"#ffb860" },
+  { n:2, t:"Bienvenida", h:"21:30", c:["#05060f","#0a0e2a"], velo:["#03020a",.55], lamp:["#ffc070",.55,60],
+    lugar:"La misma oficina; con cada tarjeta se enciende algo más (lámpara, ventana, jefa).", obj:"Solo cambia la luz, por pasos. Costo bajo.", acento:"#ffc070" },
+  { n:3, t:"Paso 1 · El archivo", h:"22:00", c:["#0b1030","#16205a"], velo:["#05040c",.5], filtro:"sepia(.25) saturate(1.1)", lamp:["#ffc070",.6,64],
+    extra:[{ tipo:"cono", x:150, y:24, r:38, c:"#ffe9a8", a:.35 }],
+    lugar:"EL ARCHIVO DEL COLEGIO (lugar nuevo): estantes con cajas y cajones abiertos detrás de la mesa, polvo en el cono de la lámpara y una bombilla pelada al fondo.", obj:"Fondo nuevo. Costo alto, y lo reusan los casos 3 y 6.", acento:"#d9b98a" },
+  { n:4, t:"Caso 2 · El panel de acuerdos", h:"23:00", c:["#0c1234","#18226a"], velo:["#05040c",.5], lamp:["#b6f08a",.5,64],
+    lugar:"La oficina, con el panel de acuerdos y su corcho de hilos a la vista detrás de la mesa.", obj:"Un objeto (el corcho) y la lámpara con un toque verde. Costo medio.", acento:"#8fd694" },
+  { n:5, t:"Caso 3 · La secretaría", h:"01:00 (ejemplo)", c:["#090d2a","#121a52"], velo:["#05040c",.55], filtro:"saturate(.9)", lamp:["#ffc070",.4,60],
+    extra:[{ tipo:"banda", c:"#d9ffe9", a:.24, fluor:true }],
+    lugar:"EL ARCHIVO (el mismo del paso 1), ahora la secretaría: libros de registro y el tambor de las tandas sobre la mesa.", obj:"Un objeto (tambor), el tubo que parpadea y el verde frío. Costo medio.", acento:"#bfffd6" },
+  { n:6, t:"Caso 4 · Dos estudios", h:"01:00 (ejemplo)", c:["#090d2a","#121a52"], velo:["#05040c",.55], lamp:["#ffc070",.45,56],
+    extra:[{ tipo:"cono", x:140, y:112, r:46, c:"#6a86ff", a:.42 }],
+    lugar:"La oficina de base; dos carpetas sobre la mesa y dos conos de luz, uno ámbar y otro azul.", obj:"Una segunda lámpara (la misma imagen con otro color). Qué lado es el bueno no cambia la luz. Costo bajo.", acento:"#6a86ff" },
+  { n:7, t:"Caso 5, turno 1 · Hace un mes", h:"noche tibia (recuerdo)", c:["#2a1a3a","#5a3a50"], velo:["#2a1408",.28], filtro:"sepia(.45) saturate(1.25) brightness(1.12)", lamp:["#ffb54a",.7,70],
+    lugar:"La oficina un mes atrás: la ventana con farolas tibias y el patio con luces amarillas; la jefa con su termo.", obj:"Fondo parcial (la ventana tibia) y filtro cálido. No sigue la hora de la noche. Costo medio.", acento:"#ffb54a" },
+  { n:8, t:"Caso 5, turno 2 · Hoy (entra neutro)", h:"02:00 (ejemplo)", c:["#070b24","#101a4a"], velo:["#05040c",.55], lamp:["#ffc070",.5,62],
+    lugar:"La oficina de esa noche. Entra igual para todos, sin frío.", obj:"Nada nuevo. Costo bajo.", acento:"#ffc070" },
+  { n:8, t:"Caso 5, turno 2 · con la llamada (frío)", h:"02:00 (ejemplo)", c:["#070b24","#101a4a"], velo:["#05040c",.55], filtro:"saturate(.5) hue-rotate(12deg)", lamp:["#cfe0ff",.5,62],
+    lugar:"La misma oficina cuando suena la llamada del director vecino o llega la nota de la tallerista; la luz y la música cambian juntas.", obj:"Solo luz y color, y solo cuando el mundo reacciona. Costo bajo.", acento:"#aebfdc" },
+  { n:9, t:"Caso 6 · La sala de listas", h:"02:00 (ejemplo)", c:["#070b24","#101a4a"], velo:["#05040c",.5], filtro:"saturate(.8) contrast(1.05)", lamp:["#f4f4e8",.4,60],
+    extra:[{ tipo:"banda", c:"#ffffff", a:.2, fluor:false }],
+    lugar:"EL ARCHIVO otra vez, ahora una sala de listas: pizarra con marcas de conteo y una luz blanca fija.", obj:"Un objeto (la pizarra) y luz blanca fija. Costo medio.", acento:"#f4f4e8" },
+  { n:10, t:"Caso 7 · La lámina", h:"03:00 (ejemplo)", c:["#050820","#0e1540"], velo:["#05040c",.58], lamp:["#b8a8ff",.5,60],
+    extra:[{ tipo:"cono", x:170, y:60, r:44, c:"#8a7cff", a:.34 }],
+    lugar:"La oficina de base; la lámina del informe, grande, pegada junto a la puerta.", obj:"Un objeto (la lámina) y un tinte azul-violeta. La lámina no cambia según el tipo de caso. Costo bajo.", acento:"#8a7cff" },
+  { n:11, t:"Caso 8 · La dirección", h:"06:00", c:["#3a3f7a","#f2a65a"], velo:["#1a1020",.25], filtro:"sepia(.25)", lamp:["#a8e0a0",.35,56], ocultar:["jefa","dani"],
+    extra:[{ tipo:"cono", x:50, y:35, r:64, c:"#ffb060", a:.35 }],
+    lugar:"LA SALA DE DIRECCIÓN (lugar nuevo): escritorio ancho de madera, ventana grande al patio, Ugarte enfrente y Beto con su taza.", obj:"Fondo nuevo. Costo alto.", acento:"#ffb060" },
+  { n:12, t:"Cierre del informe", h:"06:30", c:["#8fb4e8","#f5c27a"], velo:["#2a1a20",.12], lamp:["#ffc070",.15,50], pose:2, ocultar:["dani"],
+    lugar:"La oficina, con la jefa junto a la puerta, la lapicera y el timbre sobre la mesa.", obj:"Solo luz y cielo. Igual para plaza fija y para otro trimestre. Costo bajo.", acento:"#f5c27a" },
+  { n:13, t:"Revelación · las 8 cartas", h:"07:00", c:["#a9d0f5","#d6e8f8"], velo:["#10101a",.05], lamp:null, ocultar:["jefa","dani"], slider:true,
+    lugar:"La mesa vista de cerca con las ocho cartas. Mueve la barra: cada carta que se da vuelta sube la luz.", obj:"Solo luz, animada con las notas de las cartas. Costo bajo.", acento:"#d6e8f8" },
+  { n:14, t:"Final · el camino", h:"07:30", c:["#bfe0ff","#f0f6ff"], velo:["#fff0c8",.0], filtro:"brightness(1.1) saturate(1.1)", lamp:null, ocultar:["dani"],
+    extra:[{ tipo:"cono", x:150, y:70, r:80, c:"#fff0c8", a:.28 }],
+    lugar:"La oficina con la puerta abierta al patio de mañana; Beto apoya su taza. Dani ya no está en la silla.", obj:"Dos objetos (puerta abierta con patio y la taza) y el cielo. Costo medio.", acento:"#fff0c8" }
+];
+
+function sprite(mundo, nombre, x, y) {
+  const i = document.createElement("img");
+  i.src = BASE + nombre + ".png"; i.alt = ""; i.style.left = x + "px"; i.style.top = y + "px";
+  mundo.appendChild(i); return i;
+}
+function cap(mundo, css) {
+  const d = document.createElement("div"); d.className = "cap"; d.style.cssText = css; mundo.appendChild(d); return d;
+}
+function rgba(hex, a) {
+  const n = parseInt(hex.slice(1), 16);
+  return "rgba(" + (n >> 16) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")";
+}
+function escena(d) {
+  const esc = document.createElement("div"); esc.className = "esc";
+  esc.setAttribute("role", "img");
+  esc.setAttribute("aria-label", d.t + ", " + d.h);
+  const m = document.createElement("div"); m.className = "mundo";
+  if (d.filtro) m.style.filter = d.filtro;
+  esc.appendChild(m);
+  const oc = d.ocultar || [];
+  sprite(m, "sala", 0, 0);
+  if (!oc.includes("dani")) sprite(m, "dani", 84, 80);
+  if (!oc.includes("jefa")) sprite(m, POSES[d.pose || 0], 128, 56);
+  sprite(m, "mesa", 0, 118); sprite(m, "taza", 46, 113); sprite(m, "telefono", 150, 112); sprite(m, "lampara", 6, 64);
+  const velo = cap(m, "background:" + d.velo[0] + ";opacity:" + d.velo[1] + ";");
+  const cielo = cap(m, "left:10px;top:7px;width:62px;height:53px;background:linear-gradient(" + d.c[0] + "," + d.c[1] + ");mix-blend-mode:screen;opacity:.85;");
+  if (d.lamp) {
+    const r = d.lamp[2] * 1.4;
+    cap(m, "background:radial-gradient(circle " + r + "px at 24px 82px," + rgba(d.lamp[0], d.lamp[1]) + ",transparent);mix-blend-mode:screen;");
+  }
+  (d.extra || []).forEach(e => {
+    if (e.tipo === "cono") cap(m, "background:radial-gradient(circle " + e.r + "px at " + e.x + "px " + e.y + "px," + rgba(e.c, e.a) + ",transparent);mix-blend-mode:screen;");
+    if (e.tipo === "banda") { const b = cap(m, "height:46px;background:linear-gradient(" + rgba(e.c, e.a) + ",transparent);mix-blend-mode:screen;"); if (e.fluor) b.classList.add("fluor"); }
+  });
+  esc._refs = { velo, cielo };
+  return esc;
+}
+function chips(d) {
+  const lista = [["cielo", d.c[1]], ["velo", d.velo[0]], ["lámpara", d.lamp ? d.lamp[0] : "#000000"], ["acento", d.acento]];
+  const w = document.createElement("div"); w.className = "chips";
+  lista.forEach(([n, c]) => { const s = document.createElement("span"); s.className = "chip"; s.innerHTML = '<i style="background:' + c + '"></i>' + n + " " + c; w.appendChild(s); });
+  return w;
+}
+function tarjeta(d, conNumero) {
+  const t = document.createElement("div"); t.className = "caso";
+  const h = document.createElement("h3"); h.textContent = (conNumero ? "Fila " + d.n + " · " : "") + d.t; t.appendChild(h);
+  const e = escena(d); t.appendChild(e);
+  const mt = document.createElement("p"); mt.className = "meta";
+  mt.innerHTML = "<b>Hora:</b> " + d.h + "<br><b>Lugar:</b> " + d.lugar + "<br><b>Qué cambia:</b> " + d.obj;
+  t.appendChild(mt); t.appendChild(chips(d));
+  if (d.slider) {
+    const l = document.createElement("label"); l.textContent = "Cartas dadas vuelta: ";
+    const v = document.createElement("span"); v.textContent = "0";
+    l.appendChild(v);
+    const r = document.createElement("input"); r.type = "range"; r.min = 0; r.max = 8; r.value = 0;
+    r.setAttribute("aria-label", "Cartas dadas vuelta");
+    const ini = { a:.5, c0:"#4a5a8c", c1:"#7f8fb4" };
+    const aplicar = () => {
+      const k = +r.value / 8; v.textContent = r.value;
+      e._refs.velo.style.opacity = (0.5 - 0.45 * k).toFixed(3);
+      e._refs.velo.style.background = "#10101a";
+      e._refs.cielo.style.background = "linear-gradient(" + mezcla(ini.c0, d.c[0], k) + "," + mezcla(ini.c1, d.c[1], k) + ")";
+    };
+    r.addEventListener("input", aplicar); aplicar();
+    t.appendChild(l); t.appendChild(r);
+  }
+  return t;
+}
+function mezcla(a, b, k) {
+  const x = parseInt(a.slice(1), 16), y = parseInt(b.slice(1), 16);
+  const f = (s) => Math.round(((x >> s) & 255) * (1 - k) + ((y >> s) & 255) * k);
+  return "rgb(" + f(16) + "," + f(8) + "," + f(0) + ")";
+}
+function ajustar() {
+  document.querySelectorAll(".esc").forEach(e => {
+    const k = e.clientWidth / 188;
+    e.style.height = (150 * k) + "px";
+    e.firstChild.style.transform = "scale(" + k + ")";
+  });
+}
+
+const horas = document.getElementById("horas");
+TRAMOS.forEach(t => {
+  const c = document.createElement("div"); c.className = "hora";
+  c.innerHTML = '<div class="cielo" style="background:linear-gradient(' + t.c[0] + "," + t.c[1] + ')"></div><b>' + t.h + "</b><br>" + t.t + '<br><span class="chip"><i style="background:' + t.l + '"></i>lámpara ' + t.l + "</span>";
+  horas.appendChild(c);
+});
+const rej = document.getElementById("rejilla");
+A.forEach(d => rej.appendChild(tarjeta(d, true)));
+
+const par = document.getElementById("par");
+const c3 = A.find(d => d.n === 5);
+[
+  Object.assign({}, c3, { t:"Caso 3 como tercero", h:"00:00", c:["#0a0f2e","#141c58"], velo:["#05040c",.52] }),
+  Object.assign({}, c3, { t:"Caso 3 como sexto", h:"04:30", c:["#17224d","#2b3f86"], velo:["#05040c",.45] })
+].forEach(d => par.appendChild(tarjeta(d, false)));
+
+ajustar();
+window.addEventListener("resize", ajustar);
+window.addEventListener("load", ajustar);
+</script>
+</body>
+</html>

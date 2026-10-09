@@ -1,0 +1,20 @@
+texto normal (--m-texto): #ece7f7 sobre #1c3a34 = 10.17
+rotulo Tu, regla mesa-quien 2 (ambar): #ffcf7a sobre #1c3a34 = 8.48
+rotulo Tu, regla 1 (no gana): #9fe8d2 sobre #1c3a34 = 8.77
+borde #6fd0b4 vs fondo pagina: #6fd0b4 sobre #1c3a34 = 6.66
+borde caja vs fondo noche #0c0a1a: 10.58
+caja verde vs panel dialogo ajeno #1d1838: 1.37
+pared: ['#5a6988', '#262b44', '#3a4466']
+dani: {'#c0cbdc': 8, '#5a6988': 49, '#181425': 347, '#8b9bb4': 7, '#262b44': 10}
+dani #c0cbdc vs pared: [3.36, 8.48, 5.83]
+dani #5a6988 vs pared: [1.0, 2.52, 1.73]
+dani #181425 vs pared: [3.27, 1.3, 1.89]
+dani #8b9bb4 vs pared: [1.95, 4.93, 3.39]
+dani #262b44 vs pared: [2.52, 1.0, 1.45]
+jefa colores principales: ['#3e2731', '#e8b796', '#a22633', '#181425', '#68386c', '#e43b44']
+jefa #3e2731 min/max vs pared: 1.02 2.48
+jefa #e8b796 min/max vs pared: 3.06 7.7
+jefa #a22633 min/max vs pared: 1.3 1.89
+jefa #181425 min/max vs pared: 1.3 3.27
+jefa #68386c min/max vs pared: 1.08 1.61
+jefa #e43b44 min/max vs pared: 1.31 3.31

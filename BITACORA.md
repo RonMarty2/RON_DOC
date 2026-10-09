@@ -8,6 +8,8 @@
 
 ---
 
+> **09-10 (11:16):** arte propio conectado a la escena; cajas de diálogo con cara; soporte de líneas del jugador; faltan sus textos (agente narrativo en curso). Detalle y pasos en `docs/juego/RETOMAR.md`.
+
 ## 0. En curso ahora (leer antes que nada)
 
 > **LEER PRIMERO: `docs/juego/RETOMAR.md`** (nota de relevo del 08-10: qué decidió Ronald, el método, dónde está cada archivo, qué sigue y qué no repetir). Lo que está debajo es el detalle histórico.

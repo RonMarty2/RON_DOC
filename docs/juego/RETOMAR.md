@@ -1,3 +1,9 @@
+## 🔄 EN PROGRESO 09-10 (11:16): paso 2, líneas del jugador
+- Hecho y subido: `Dialogo` soporta `quien: "tu"` (caja verde `.mesa-dialogo.tuyo`, sin cara) y `caras.test.ts` (cada `CARA` tiene su PNG).
+- **Agente `disenador-narrativo` corriendo en segundo plano:** escribe en `05-mundo-y-narrativa.md` NT1.12 las líneas J1..J6 del jugador (id, fase de Mesa.tsx, texto sin delatar aciertos) y las exporta a `orientacion-t1.json` con `exportar_orientacion_t1.py`. Si al retomar no existen J1..J6 en esos dos archivos (`grep J1 docs/juego/gdd/05-mundo-y-narrativa.md src/lib/juego/psicoestadistica/orientacion-t1.json`), relanzarlo con ese mismo encargo.
+- **Siguiente (yo):** con J1..J6 en el json, agregarlas en `guion-pantalla-t1.ts` con `T("J1")…` y usarlas en `Mesa.tsx` como `{quien:"tu"}` en la fase indicada; que `guion-pantalla-t1.test.ts` las verifique; `npm test` + `tsc`; mirar en Chrome; push.
+- Después: pasos 3 a 5 de «CIERRE LIMPIO» (mapa de ambientes v19, hora por paleta, crítico sobre el juego terminado).
+
 ## ✅ PASO 2 (mitad) HECHO 09-10: cajas de diálogo con cara
 `Dialogo` en `Mesa.tsx` muestra la cara de quien habla (jefa, Dani, Beto, teléfono de la madre, nota de Dirección); la narración no lleva cara. Comprobado en Chrome. **Falta del paso 2:** las líneas del jugador en caja de otro color y sin cara (unas 6, hay que sacarlas de la narrativa por script, no inventarlas) y su prueba. Falta también un test que compruebe que cada `Quien` tiene su PNG.
 

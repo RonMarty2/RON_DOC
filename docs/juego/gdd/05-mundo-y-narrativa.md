@@ -846,6 +846,21 @@ Cierre C8 (F8a, F8b, F8c, F8d, F8e, F8f, F8g): «Los datos bien recogidos y bien
 | B-fin-2 | fin | narración | «Abriste {papelClave}: ahí estaba lo que decidía este informe.» | Si abrió algún papel clave del caso 2 |
 | B-fin-3 | fin | narración | «Quedó sin abrir: {papelClave}. Era el papel que más decía sobre este informe.» | Si no abrió ningún clave |
 
+#### Líneas del jugador (v16.1) · 09-10-2026
+
+**Decisión de Ronald (09-10):** el juego es en primera persona y el jugador no tiene personaje visible. Lo que dice o decide el jugador sale en una **caja de otro color y sin cara**, distinta de la caja con cara y nombre de la jefa, Dani o Beto. Son frases cortas, en tuteo de narración neutra (el jugador habla de sí mismo), sin jerga y sin avisar si acertó: ninguna depende del resultado, y la reacción real sigue siendo la de los demás personajes. Se exportan junto con las demás a `orientacion-t1.json`.
+
+| Id | Fase (`Mesa.tsx`) | Texto | Cuándo sale |
+|---|---|---|---|
+| J1 | bienvenida | «Entendido. Me siento y empiezo.» | Al aceptar el encargo, tras B-bienv-1 |
+| J2 | hoja | «Primero mi fila de la hoja. Después miro qué hay en el archivo.» | Al llenar o delegar la hoja, tras B-hoja-1 |
+| J3 | archivo1 | «Voy a buscar si alguien ya preguntó cuánto duermen los de 4.º.» | Al abrir el primer papel del paso 1 |
+| J4 | entrada2 | «Tengo la carpeta. Reviso lo que haya y después decido.» | Tras B-entr2-1, antes de abrir papeles del caso 2 |
+| J5 | confirma | «Lo he pensado bien. Esta es mi decisión.» | Al pulsar «Sí, al consejo», sea cual sea la decisión |
+| J6 | reaccion | «Anotado. Veamos qué dice {dani}.» | Antes de las tarjetas de reacción, sea cual sea la decisión |
+
+**Lo que se cuidó de las líneas del jugador.** Ninguna menciona un papel clave, una cifra del caso 2 ni si la decisión era buena; J3 repite lo que la jefa ya pidió en A6; J4 y J5 sirven igual para quien abrió todo, poco o nada. `{dani}` lo llena el generador con el nombre de la versión. Para construcción: caja de otro color, sin cara ni nombre de personaje.
+
 **Lo que se cuidó.** Ninguna línea nombra la lección (nada de muestra, sesgo ni comparación estadística); «comparar con lo que haya en el archivo» es el oficio de la noche, no el concepto. El hallazgo del paso 1 se nombra como «el colegio ya lo preguntó», no como asombro. La jefa no corrige mientras el alumno decide: sus líneas del caso 2 son de orientación antes de decidir o de comentario tras la reacción. Las cifras 25 y 65 salen de NT1.5 y de las reglas G; no hay cifras nuevas. B-fin-2 y B-fin-3 nombran un papel **después** de decidir; B-fin-3 no dice qué contenía.
 
 **Para construcción (cuánto cuesta cada cosa).** (1) Las 13 líneas de la tabla A reemplazan cadenas de `guion-pantalla-t1.ts`; el test que compara con NT1.5 y NT1.6 debe pasar a leer también esta sección, o NT1.5 y NT1.6 deben actualizarse en el mismo commit con estas líneas. (2) Las líneas de B que están ligadas a una condición (B-arch2-7, B-conf-1, B-reac-1 a B-reac-5, B-fin-2, B-fin-3) piden un `if` sobre papeles abiertos o la fila de pago; ninguna cambia un cálculo. (3) Lo único que **no** es solo texto es el rótulo bajo el tubo (B-cierre1-5), que es un cambio de etiqueta en `Tubos`.

@@ -31,7 +31,7 @@ def main() -> int:
     seccion = todo[ini:fin]
     salida: dict[str, str] = {}
     for linea in seccion.splitlines():
-        m = re.match(r"^\|\s*(A\d+|B-[\w-]+)\s*\|(.*)\|\s*$", linea)
+        m = re.match(r"^\|\s*(A\d+|B-[\w-]+|J\d+)\s*\|(.*)\|\s*$", linea)
         if not m:
             continue
         id_ = m.group(1)
@@ -42,14 +42,18 @@ def main() -> int:
             if nueva.startswith("Se quita"):
                 continue
             salida[id_] = sacar_comillas(nueva)
+        elif id_.startswith("J"):
+            # | Id | fase | texto | cuándo |
+            salida[id_] = sacar_comillas(celdas[1])
         else:
             # | Id | pantalla | quién | texto | cuándo |
             salida[id_] = sacar_comillas(celdas[2])
     esperados_a = {f"A{i}" for i in range(1, 14)} - {"A9"}
     faltan = sorted(esperados_a - set(salida))
     cantidad_b = sum(1 for k in salida if k.startswith("B-"))
-    if faltan or cantidad_b != 31:
-        print(f"ERROR: faltan {faltan}; filas B: {cantidad_b} (esperado 31)")
+    faltan_j = sorted({f"J{i}" for i in range(1, 7)} - set(salida))
+    if faltan or faltan_j or cantidad_b != 31:
+        print(f"ERROR: faltan {faltan} {faltan_j}; filas B: {cantidad_b} (esperado 31)")
         return 1
     destino = os.path.normpath(SALIDA)
     tmp = destino + ".tmp"

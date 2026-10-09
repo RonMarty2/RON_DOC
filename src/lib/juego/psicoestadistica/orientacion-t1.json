@@ -43,6 +43,12 @@
   "B-reac-6": "Credibilidad {dC} · Voz {dV}.",
   "B-fin-1": "Credibilidad {c} · Voz {voz}.",
   "B-fin-2": "Abriste {papelClave}: ahí estaba lo que decidía este informe.",
-  "B-fin-3": "Quedó sin abrir: {papelClave}. Era el papel que más decía sobre este informe."
+  "B-fin-3": "Quedó sin abrir: {papelClave}. Era el papel que más decía sobre este informe.",
+  "J1": "Entendido. Me siento y empiezo.",
+  "J2": "Primero mi fila de la hoja. Después miro qué hay en el archivo.",
+  "J3": "Voy a buscar si alguien ya preguntó cuánto duermen los de 4.º.",
+  "J4": "Tengo la carpeta. Reviso lo que haya y después decido.",
+  "J5": "Lo he pensado bien. Esta es mi decisión.",
+  "J6": "Anotado. Veamos qué dice {dani}."
  }
 }

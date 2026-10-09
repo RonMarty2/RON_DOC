@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { anotarEn, claveDePartida, guardarPartidaDe, leerPartidaDe, partidaNuevaDe, type Escena } from "./partida";
+import { anotarEn, claveDePartida, elegirPartida, guardarPartidaDe, leerPartidaDe, partidaNuevaDe, type Escena } from "./partida";
 import { leerPartida } from "./registro";
 
 function memoria() {
@@ -39,5 +39,29 @@ describe("partidas de cualquier isla y escena", () => {
     const vieja = { isla: "proyectos", escena: "planta", version: 12, eventos: [{ tipo: "ayuda", hora: "2026-09-25T10:00:00.000Z" }], terminada: true };
     m.set("ron-doc-juego:proyectos:planta:12", JSON.stringify(vieja));
     expect(leerPartida(12, a)).toEqual(vieja);
+  });
+});
+
+describe("elegirPartida (la local contra la de la nube)", () => {
+  const con = (n: number, terminada = false) => ({ eventos: Array.from({ length: n }, (_, i) => i), terminada });
+
+  it("lo jugado sin conexión (más eventos) no se pisa con la copia vieja de la nube", () => {
+    const local = con(8);
+    expect(elegirPartida(local, con(5))).toEqual({ partida: local, subir: true });
+  });
+  it("si la nube va igual o más adelantada, manda la nube", () => {
+    const nube = con(5);
+    expect(elegirPartida(con(5), nube)).toEqual({ partida: nube, subir: false });
+    expect(elegirPartida(con(2), nube)).toEqual({ partida: nube, subir: false });
+  });
+  it("la entregada manda aunque la local tenga más eventos", () => {
+    const nube = con(5, true);
+    expect(elegirPartida(con(9), nube)).toEqual({ partida: nube, subir: false });
+  });
+  it("sin partida en la nube sube la local solo si tiene algo jugado", () => {
+    const local = con(3);
+    expect(elegirPartida(local, null)).toEqual({ partida: local, subir: true });
+    expect(elegirPartida(con(0), null).subir).toBe(false);
+    expect(elegirPartida(null, null)).toEqual({ partida: null, subir: false });
   });
 });

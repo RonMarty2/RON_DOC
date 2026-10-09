@@ -13,6 +13,7 @@ import {
   type Opcion,
 } from "@/lib/juego/planta";
 import { guardarPartidaNube, leerPartidaNube } from "@/lib/juego/nube";
+import { elegirPartida } from "@/lib/juego/partida";
 import { anotar, describir, guardarPartida, leerPartida, partidaNueva, type Evento, type Partida } from "@/lib/juego/registro";
 import { versionDeAlumno } from "@/lib/juego/version-alumno";
 import { BarraCuenta, useCuenta, type EstadoGuardado } from "./CuentaJuego";
@@ -54,6 +55,8 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
   const [guardado, setGuardado] = useState<EstadoGuardado>("sin-cambios");
   // Sólo se sube a la cuenta lo que hizo el alumno, no lo que se acaba de leer de ella.
   const pendiente = useRef(false);
+  const ultima = useRef(partida);
+  ultima.current = partida;
   // Sube en uno para volver a intentar un guardado fallido sin esperar otra respuesta del alumno.
   const [reintento, setReintento] = useState(0);
 
@@ -90,13 +93,15 @@ export function EscenaPlanta({ fuentePixel }: { fuentePixel: string }) {
     leerPartidaNube(alumnoId, cursoId, v)
       .then((enNube) => {
         if (!vivo) return;
-        if (enNube) {
+        // Lo jugado en este navegador (sin conexión, o mientras la nube respondía) pasa a la cuenta si va más adelantado.
+        const { partida: elegida, subir } = elegirPartida(ultima.current, enNube);
+        if (subir && elegida) {
+          pendiente.current = true;
+          setPartida({ ...elegida });
+        } else if (enNube) {
           empezarCon(v, enNube);
           guardarPartida(enNube);
           setGuardado(enNube.terminada ? "entregada" : "guardado");
-        } else if (local && local.eventos.length > 0) {
-          pendiente.current = true; // lo jugado en este navegador pasa a la cuenta
-          setPartida({ ...local });
         }
       })
       .catch(() => vivo && setGuardado("error"));

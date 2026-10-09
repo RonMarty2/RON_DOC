@@ -105,6 +105,10 @@ Cara en cada diálogo (jefa, Dani, Beto, teléfono, nota); las 6 líneas del jug
 
 > Este bloque manda sobre el «EMPIEZA AQUÍ» del 08-10, que quedó atrasado (decía que no había pantalla). Si algo de abajo lo contradice, vale este bloque.
 
+### Revisión del código del juego (09-10, tarde)
+
+Partida en la nube: ya no pisa lo jugado sin conexión. Al abrir con cuenta, `elegirPartida` (`src/lib/juego/partida.ts`) se queda con la que tiene más eventos y la sube; la entregada manda. Aplicado en `EscenaVentanilla` y `EscenaPlanta`, con pruebas. Pendiente menor: la Mesa de Psicoestadística no recuerda los datos propios de la hoja al retomar (solo que los usó).
+
 ### Qué hay y funciona (todo en GitHub, `git pull --ff-only` primero)
 - **Pantalla jugable del Tema 1 de Psicoestadística (Paso 1 + Caso 2)**: `/juego-psicoestadistica` (`src/app/juego-psicoestadistica/`), borrador «Jugar (en prueba)». Textos de orientación (NT1.12 de `05-mundo-y-narrativa.md`, generados a `orientacion-t1.json`), guardado en el navegador y retomar.
 - **Sonido**: motor común `src/lib/juego/sonido/`, recetas y tabla de fases `sonido-t1.ts`, enganche `sonido.tsx`. **Música real aprobada por Ronald (11 tramos S0, S1, S2, S10)** en `public/juego/psicoestadistica/audio/` + `manifiesto.json`. Diagnóstico en el navegador: `window.__sonido()`. Efectos por código (14).

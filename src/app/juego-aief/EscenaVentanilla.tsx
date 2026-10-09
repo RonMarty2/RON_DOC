@@ -25,7 +25,7 @@ import {
 } from "@/lib/juego/aief/tema1";
 import type { Color } from "@/lib/juego/aief/ventanilla";
 import { guardarPartidaNube, leerPartidaNubeDe } from "@/lib/juego/nube";
-import { anotarEn, guardarPartidaDe, leerPartidaDe, partidaNuevaDe, type PartidaDe } from "@/lib/juego/partida";
+import { anotarEn, elegirPartida, guardarPartidaDe, leerPartidaDe, partidaNuevaDe, type PartidaDe } from "@/lib/juego/partida";
 import { versionDeAlumno } from "@/lib/juego/version-alumno";
 import { BarraCuenta, useCuenta, type EstadoGuardado } from "../juego-proyectos/CuentaJuego";
 import { Mostrador } from "./Mostrador";
@@ -48,6 +48,8 @@ export function EscenaVentanilla({ fuentePixel }: { fuentePixel: string }) {
   const cursoId = cuenta.cursoId;
   const [guardado, setGuardado] = useState<EstadoGuardado>("sin-cambios");
   const pendiente = useRef(false);
+  const ultima = useRef(partida);
+  ultima.current = partida;
   const [reintento, setReintento] = useState(0);
 
   // Lo que no es evento (qué introducción ya vio): se vuelve a mostrar al recargar, y no importa.
@@ -82,13 +84,16 @@ export function EscenaVentanilla({ fuentePixel }: { fuentePixel: string }) {
     leerPartidaNubeDe<EventoTema1, "aief", "tema1-g2">(ESCENA_TEMA1, alumnoId, cursoId, v)
       .then((enNube) => {
         if (!vivo) return;
-        if (enNube) {
+        // Lo jugado sin conexión, o mientras la nube respondía, no se pisa con la copia más vieja.
+        const { partida: elegida, subir } = elegirPartida(ultima.current, enNube);
+        if (!elegida) return;
+        if (subir) {
+          pendiente.current = true;
+          setPartida({ ...elegida });
+        } else if (enNube) {
           setPartida(enNube);
           guardarPartidaDe(enNube);
           setGuardado(enNube.terminada ? "entregada" : "guardado");
-        } else if (local && local.eventos.length > 0) {
-          pendiente.current = true;
-          setPartida({ ...local });
         }
       })
       .catch(() => vivo && setGuardado("error"));

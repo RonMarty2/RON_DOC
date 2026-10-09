@@ -14,6 +14,8 @@
 
 > **LEER PRIMERO: `docs/juego/RETOMAR.md`** (nota de relevo del 08-10: qué decidió Ronald, el método, dónde está cada archivo, qué sigue y qué no repetir). Lo que está debajo es el detalle histórico.
 >
+> **09-10 (tarde) · REVISIÓN DEL CÓDIGO DEL JUEGO:** Partida en la nube: ya no pisa lo jugado sin conexión. Al abrir con cuenta, `elegirPartida` (`src/lib/juego/partida.ts`) se queda con la que tiene más eventos y la sube; la entregada manda. Aplicado en `EscenaVentanilla` y `EscenaPlanta`, con pruebas. Pendiente menor: la Mesa de Psicoestadística no recuerda los datos propios de la hoja al retomar (solo que los usó).
+>
 > **09-10, 09:52 · CIERRE LIMPIO:** sesión cerrada por Ronald. Resumen y pasos en `docs/juego/RETOMAR.md`, bloque «CIERRE LIMPIO 09-10». Nada a medias; todo en GitHub.
 >
 > **09-10, 09:20 · ESTADO ACTUAL: leer `docs/juego/RETOMAR.md`, bloque «ESTADO REAL 09-10» (manda sobre lo de abajo).** Resumen: pantalla del Paso 1 + Caso 2 jugable con orientación, música aprobada (11 tramos) y efectos; decisiones de Ronald: primera persona sin personaje visible, cajas de diálogo con cara (estilo A3), una línea gráfica común (`docs/juego/ARTE-LINEA-GRAFICA.md`) y ambientes que cambian por escena; el arte provisional no cumple la línea y se redibuja (plan en RETOMAR). En curso al cortar: mapa de ambientes (director) y catálogo de assets gratuitos (búsqueda con licencias).

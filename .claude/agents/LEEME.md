@@ -71,6 +71,8 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 - **09-10 · Ronald se cansa de repetir lo mismo.** Tuvo que pedir «anota todo», «sube a GitHub», «registra en los agentes» varias veces. **Hábito automático, sin que lo pida:** cada vez que se corrige algo que Ronald notó o aparece un error, en el mismo turno (1) se anota en el agente que debió evitarlo, (2) se suma la línea fechada en este «Aprendido construyendo», (3) se actualiza `docs/juego/RETOMAR.md` y la bitácora, (4) commit y push, y (5) al final del mensaje se dice en una línea qué se anotó y dónde.
 - **09-10 · Los textos del juego salen de la narrativa por script** (`scripts-t1/exportar_*.py`), no se escriben a mano; una prueba (`guion-pantalla-t1.test.ts`) compara y **rechaza lo inventado** (se probó que el control rechaza un texto cambiado).
 
+- **09-10 · La nube pisaba lo jugado sin conexión.** En `EscenaVentanilla` y `EscenaPlanta`, al abrir con cuenta, la partida de la nube reemplazaba a la local aunque la local tuviera más eventos (conexión cortada, o el alumno ya jugando mientras la nube respondía). **Aprendizaje:** toda pantalla nueva que lea de la nube usa `elegirPartida` (nunca reemplaza a ciegas) y su prueba cubre el caso «local más adelantada».
+
 Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó con las fichas sin pasar
 por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
 Ronald y se anota en la bitácora.

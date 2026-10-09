@@ -45,6 +45,20 @@ export function comoPartida<E, I extends string, S extends string>(
   return { isla: e.isla, escena: e.escena, version, eventos: crudo.eventos as ConHora<E>[], terminada: Boolean(crudo.terminada) };
 }
 
+/**
+ * Qué partida queda al llegar la de la nube: la entregada manda; si no, la que tiene más eventos
+ * (lo jugado sin conexión o mientras la nube respondía no se pisa). `subir` dice que la elegida
+ * está más adelantada que la de la nube y hay que mandársela.
+ */
+export function elegirPartida<P extends { eventos: readonly unknown[]; terminada: boolean }>(
+  actual: P | null,
+  enNube: P | null,
+): { partida: P | null; subir: boolean } {
+  if (!enNube) return { partida: actual, subir: Boolean(actual && actual.eventos.length > 0) };
+  if (!enNube.terminada && actual && actual.eventos.length > enNube.eventos.length) return { partida: actual, subir: true };
+  return { partida: enNube, subir: false };
+}
+
 // ── Guardado en el navegador ─────────────────────────────────────────────────
 
 export type Almacen = Pick<Storage, "getItem" | "setItem" | "removeItem">;

@@ -127,3 +127,6 @@ Usa `WebSearch` sólo para confirmar referencias de juegos reales; no copies tex
 - **Un efecto de ambiente no puede leerse como respuesta ni como alarma:** nada que parpadee o zumbe distinto según el caso; los dos casos «de archivo» llevan la misma luz estable. No uses palabras del juego («tubo» son los medidores) para nombrar objetos de la escena.
 - **Un cambio visible que solo aparece cuando el alumno erró es un aviso de error**, aunque se diga «ambiente»: si llega con una consecuencia (la llamada, la nota), dilo así y no lo llames independiente del acierto.
 - **Cuenta los dibujos nuevos al estimar el costo:** cada objeto nuevo es un sprite; un reloj que marca la hora son varias posiciones de agujas.
+
+## Ambiente vivo en todo juego (Ronald, 09-10)
+Cada mapa de ambientes trae su **perfil de ambiente vivo** (hora de inicio, minuto del amanecer y del cierre, ventanitas encendidas, trayecto de la luna) para `src/lib/juego/ambiente-vivo.ts`, y la lista de capas para `artista-pixel`. Ver la regla en `docs/juego/REGLAS-COMUNES-AGENTES.md`.

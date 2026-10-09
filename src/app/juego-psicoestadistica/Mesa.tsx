@@ -38,6 +38,7 @@ import { anotarEn, guardarPartidaDe, leerPartidaDe, partidaNuevaDe, type Partida
 import { VERSION_MAXIMA } from "@/lib/juego/planta";
 import { useCuenta } from "../juego-proyectos/CuentaJuego";
 import { conBase } from "@/lib/rutas";
+import { minutosDeFase } from "@/lib/juego/psicoestadistica/hora-historia";
 import { EscenaPixi } from "./EscenaPixi";
 import { BotonSonido, useSonidoT1 } from "./sonido";
 
@@ -487,7 +488,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           )}
         </div>
       )}
-      <EscenaPixi pose={pose} suena={suena} daniCabecea={daniCabecea} verJefa={fase !== "titulo" && fase !== "bienvenida"} verDani={fase !== "titulo" && fase !== "bienvenida" && fase !== "jefa"} />
+      <EscenaPixi hora={minutosDeFase(fase)} pose={pose} suena={suena} daniCabecea={daniCabecea} verJefa={fase !== "titulo" && fase !== "bienvenida"} verDani={fase !== "titulo" && fase !== "bienvenida" && fase !== "jefa"} />
       {tubos && <Tubos m={med} />}
 
       <div className="mesa-panel">

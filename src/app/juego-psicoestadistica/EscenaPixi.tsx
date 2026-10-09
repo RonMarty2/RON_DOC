@@ -13,6 +13,7 @@
 import { useEffect, useRef } from "react";
 import { conBase } from "@/lib/rutas";
 import type { PoseJefa } from "@/lib/juego/psicoestadistica/guion-pantalla-t1";
+import { HUECOS_CIUDAD, ORDEN_VENTANITAS, amanecer, angulosReloj, posicionLuna, ventanitasEncendidas } from "@/lib/juego/psicoestadistica/hora-historia";
 
 export const ESCENA_ANCHO = 188;
 export const ESCENA_ALTO = 150;
@@ -23,15 +24,16 @@ const IMG = (n: string) => conBase(`/juego/psicoestadistica/${n.startsWith("arte
 const POSE: Record<PoseJefa, string> = { brazos: "arte/jefa_neutral", cabeza: "arte/jefa_preocupada", pulgar: "arte/jefa_contenta" };
 
 interface Api {
-  poner: (o: { pose: PoseJefa; suena: boolean; daniCabecea: boolean; verJefa: boolean; verDani: boolean }) => void;
+  poner: (o: { pose: PoseJefa; suena: boolean; daniCabecea: boolean; verJefa: boolean; verDani: boolean; hora: number }) => void;
   destruir: () => void;
 }
 
-export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani = true }: { pose: PoseJefa; suena: boolean; daniCabecea: boolean; verJefa?: boolean; verDani?: boolean }) {
+/** `hora`: minutos desde las 23:00 (0 a 390); ver `hora-historia.ts`. */
+export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani = true, hora = 0 }: { pose: PoseJefa; suena: boolean; daniCabecea: boolean; verJefa?: boolean; verDani?: boolean; hora?: number }) {
   const caja = useRef<HTMLDivElement>(null);
   const api = useRef<Api | null>(null);
-  const ultimo = useRef({ pose, suena, daniCabecea, verJefa, verDani });
-  ultimo.current = { pose, suena, daniCabecea, verJefa, verDani };
+  const ultimo = useRef({ pose, suena, daniCabecea, verJefa, verDani, hora });
+  ultimo.current = { pose, suena, daniCabecea, verJefa, verDani, hora };
 
   useEffect(() => {
     let vivo = true;
@@ -62,8 +64,41 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
       };
       mosaico("arte/pared_ladrillo", 0, 120);
       // La oficina de noche: ventana con la luna y las luces de la ciudad, reloj con estante de libros, pizarrón.
-      sprite("arte/ventana_noche", 4, 6);
-      sprite("arte/reloj_estante", 84, 8);
+      // Ventana viva por capas (hueco de 68×52 a 4,4 dentro del marco de 76×60): cielo, estrellas, luna, nube, ciudad con ventanitas.
+      const VX = 4;
+      const VY = 6;
+      const cielo = new PIXI.Container();
+      cielo.position.set(VX + 4, VY + 4);
+      const recorte = new PIXI.Graphics();
+      recorte.beginFill(0xffffff).drawRect(VX + 4, VY + 4, 68, 52).endFill();
+      app.stage.addChild(recorte);
+      cielo.mask = recorte;
+      app.stage.addChild(cielo);
+      const enCielo = (n: string, x: number, y: number) => {
+        const s = new PIXI.Sprite(tex(n));
+        s.position.set(x, y);
+        cielo.addChild(s);
+        return s;
+      };
+      enCielo("arte/cielo_noche", 0, 0);
+      const alba = enCielo("arte/cielo_alba", 0, 0);
+      const estrellas = enCielo("arte/estrellas", 0, 0);
+      const luna = enCielo("arte/luna", 50, 5);
+      const nube = enCielo("arte/nube", -14, 12);
+      nube.alpha = 0.6;
+      enCielo("arte/ciudad_siluetas", 0, 32);
+      const ventanitas = new PIXI.Graphics();
+      ventanitas.position.set(0, 32);
+      cielo.addChild(ventanitas);
+      sprite("arte/ventana_marco", VX, VY);
+      // Reloj con la hora exacta: la cara es un dibujo y las manecillas se pintan con código, pixel a pixel.
+      sprite("arte/estante_libros", 84, 18);
+      sprite("arte/reloj_cara", 98, 6);
+      const manecillas = new PIXI.Graphics();
+      app.stage.addChild(manecillas);
+      const RX = 98 + 8;
+      const RY = 6 + 8;
+      const reducido = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
       sprite("arte/pizarron", 130, 10);
       const jefa = sprite(POSE[ultimo.current.pose], 118, 60);
       jefa.scale.set(2);
@@ -103,9 +138,53 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
         return { m, f: i * 0.9, v: 0.03 + (i % 5) * 0.012 };
       });
 
+      // La hora que se ve avanza sola hacia la que toca (con «reducir movimiento», salta de una vez).
+      let horaVista = ultimo.current.hora;
+      let ultimaDibujada = -1;
+      let siguienteParpadeo = 3;
+      const parpadeo = new Set<number>();
+      const dibujarHora = (p: number) => {
+        const a = amanecer(p);
+        alba.alpha = a;
+        estrellas.alpha = 1 - a;
+        luna.alpha = 1 - 0.6 * a;
+        const l = posicionLuna(p);
+        luna.position.set(l.x, l.y);
+        const n = ventanitasEncendidas(p);
+        ventanitas.clear();
+        ORDEN_VENTANITAS.forEach((h, i) => {
+          if ((i < n) === parpadeo.has(h)) return;
+          const [x, y] = HUECOS_CIUDAD[h];
+          ventanitas.beginFill(a > 0.5 ? 0xfeae34 : 0xfee761).drawRect(x, y, 2, 2).endFill();
+        });
+        manecillas.clear();
+        const ang = angulosReloj(p);
+        const punta = (largo: number, rad: number, color: number) => {
+          for (let r = 0; r <= largo; r++) manecillas.beginFill(color).drawRect(Math.round(RX + Math.cos(rad) * r), Math.round(RY + Math.sin(rad) * r), 1, 1).endFill();
+        };
+        punta(4, ang.hora, 0x3e2731);
+        punta(6, ang.minuto, 0x181425);
+        ultimaDibujada = p;
+      };
+      dibujarHora(horaVista);
+
       let t0 = 0;
       app.ticker.add((delta) => {
         t0 += delta / 60;
+        const meta = ultimo.current.hora;
+        if (horaVista !== meta) horaVista = reducido ? meta : horaVista + Math.sign(meta - horaVista) * Math.min(Math.abs(meta - horaVista), 40 * (delta / 60));
+        if (!reducido) {
+          nube.x = ((t0 * 1.2) % 96) - 14;
+          if (t0 > siguienteParpadeo) {
+            siguienteParpadeo = t0 + 3 + (Math.floor(t0 * 7) % 4);
+            const n = ventanitasEncendidas(horaVista);
+            const h = ORDEN_VENTANITAS[Math.max(0, Math.min(15, n - (Math.floor(t0) % 2)))];
+            if (parpadeo.has(h)) parpadeo.delete(h);
+            else parpadeo.add(h);
+            ultimaDibujada = -1;
+          }
+        }
+        if (horaVista !== ultimaDibujada) dibujarHora(horaVista);
         brillo.alpha = 0.5 + Math.sin(t0 * 3.1) * 0.03;
         for (const o of motas) {
           o.m.y -= o.v * delta;
@@ -121,6 +200,7 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
         poner: (o) => {
           jefa.texture = tex(POSE[o.pose]);
           jefa.visible = o.verJefa;
+          if (reducido) horaVista = o.hora;
         },
         destruir: () => {
           app.destroy(true, { children: true });
@@ -138,8 +218,8 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
   }, []);
 
   useEffect(() => {
-    api.current?.poner({ pose, suena, daniCabecea, verJefa, verDani });
-  }, [pose, suena, daniCabecea, verJefa, verDani]);
+    api.current?.poner({ pose, suena, daniCabecea, verJefa, verDani, hora });
+  }, [pose, suena, daniCabecea, verJefa, verDani, hora]);
 
   return (
     <div className="mesa-escena">

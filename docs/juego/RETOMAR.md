@@ -1,3 +1,6 @@
+## ✅ OFICINA VIVA ANIMADA 09-10
+Oficina viva ANIMADA (hecha, comprobada en navegador con captura): la ventana tiene cielo, estrellas, luna que baja, nube, ciudad con ventanitas que se apagan, y el reloj marca la hora exacta (23:00 al empezar, 23:50 en el Caso 2, 05:30 con primera luz al final). `EscenaPixi.tsx` recibe `hora` desde `Mesa.tsx` (`minutosDeFase`). Cuentas comunes en `src/lib/juego/ambiente-vivo.ts`, perfil del tema en `psicoestadistica/hora-historia.ts`. Falta: retoques de arte del crítico v21 (luna, nube, reloj, contraste de la ciudad) y que Ronald lo vea y lo juegue.
+
 ## ✅ MAPA DE AMBIENTES v20 horas HECHO 09-10 (tarde)
 Escrito por `director-de-juego` en `docs/juego/gdd/aspecto-psicoestadistica-tema1-ambientes.md` (hora por caso 23:00→05:30, amanecer solo en el cierre, lista de capas V1–V7, R1–R2, O1–O9). Falta: crítico sobre el mapa, y que `artista-pixel` dibuje las capas de la oficina (ventana, reloj, estante) antes de animarlas en `EscenaPixi.tsx`.
 

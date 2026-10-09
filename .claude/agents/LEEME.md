@@ -73,6 +73,8 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 
 - **09-10 · La nube pisaba lo jugado sin conexión.** En `EscenaVentanilla` y `EscenaPlanta`, al abrir con cuenta, la partida de la nube reemplazaba a la local aunque la local tuviera más eventos (conexión cortada, o el alumno ya jugando mientras la nube respondía). **Aprendizaje:** toda pantalla nueva que lea de la nube usa `elegirPartida` (nunca reemplaza a ciegas) y su prueba cubre el caso «local más adelantada».
 
+- **09-10 · La noche pasa se vuelve regla común.** Ronald pidió que la ventana, la luna, la ciudad y el reloj se animen con la historia, y que la idea valga para todos los juegos. Cuentas comunes en `src/lib/juego/ambiente-vivo.ts` con perfil por tema; primer perfil `PERFIL_T1`. Pendiente conocido: el crítico v21 pidió retocar luna (píxeles sueltos), nube (se pierde en el cielo), reloj (píxeles fuera del círculo) y el contraste de la ciudad lejana.
+
 Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó con las fichas sin pasar
 por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
 Ronald y se anota en la bitácora.

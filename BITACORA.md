@@ -14,6 +14,8 @@
 
 > **LEER PRIMERO: `docs/juego/RETOMAR.md`** (nota de relevo del 08-10: qué decidió Ronald, el método, dónde está cada archivo, qué sigue y qué no repetir). Lo que está debajo es el detalle histórico.
 >
+> **09-10 (tarde) · Oficina viva ANIMADA (hecha, comprobada en navegador con captura): la ventana tiene cielo, estrellas, luna que baja, nube, ciudad con ventanitas que se apagan, y el reloj marca la hora exacta (23:00 al empezar, 23:50 en el Caso 2, 05:30 con primera luz al final). `EscenaPixi.tsx` recibe `hora` desde `Mesa.tsx` (`minutosDeFase`). Cuentas comunes en `src/lib/juego/ambiente-vivo.ts`, perfil del tema en `psicoestadistica/hora-historia.ts`. Falta: retoques de arte del crítico v21 (luna, nube, reloj, contraste de la ciudad) y que Ronald lo vea y lo juegue.
+>
 > **09-10 (tarde) · REVISIÓN DEL CÓDIGO DEL JUEGO:** Partida en la nube: ya no pisa lo jugado sin conexión. Al abrir con cuenta, `elegirPartida` (`src/lib/juego/partida.ts`) se queda con la que tiene más eventos y la sube; la entregada manda. Aplicado en `EscenaVentanilla` y `EscenaPlanta`, con pruebas. Además la Mesa de Psicoestadística ya recuerda los números propios de la hoja al retomar (evento `p1.respuestas` con `datos`, opcional: las partidas viejas siguen leyéndose y usan los de Dani).
 >
 > **09-10, 09:52 · CIERRE LIMPIO:** sesión cerrada por Ronald. Resumen y pasos en `docs/juego/RETOMAR.md`, bloque «CIERRE LIMPIO 09-10». Nada a medias; todo en GitHub.

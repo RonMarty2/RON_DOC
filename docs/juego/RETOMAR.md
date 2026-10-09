@@ -1,3 +1,6 @@
+## ✅ PASO 2 (mitad) HECHO 09-10: cajas de diálogo con cara
+`Dialogo` en `Mesa.tsx` muestra la cara de quien habla (jefa, Dani, Beto, teléfono de la madre, nota de Dirección); la narración no lleva cara. Comprobado en Chrome. **Falta del paso 2:** las líneas del jugador en caja de otro color y sin cara (unas 6, hay que sacarlas de la narrativa por script, no inventarlas) y su prueba. Falta también un test que compruebe que cada `Quien` tiene su PNG.
+
 ## ✅ PASO 1 HECHO 09-10 (arte conectado a la escena)
 `EscenaPixi.tsx` ya usa `public/juego/psicoestadistica/arte/` (pared y escritorio en mosaico, jefa con 3 gestos, Dani en silueta de fondo, lámpara, teléfono entre lámpara y Dani). Comprobado en Chrome; `npm test` 3948 verdes y `tsc` limpio. Falta: critico-de-jugabilidad sobre la escena con el arte nuevo (aún no lo vio), y los pasos 2 a 5 de la lista de «CIERRE LIMPIO». Solo la luz y el polvo siguen provisionales.
 

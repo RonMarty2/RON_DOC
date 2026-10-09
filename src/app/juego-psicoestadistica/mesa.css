@@ -57,6 +57,8 @@
 /* Diálogo */
 .mesa-dialogo { background: var(--m-panel); border: 2px solid var(--m-borde); padding: 12px 14px; display: grid; gap: 10px; }
 .mesa-dialogo p { font-size: 23px; }
+.mesa-dlg.con-cara { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; }
+.mesa-cara { width: 64px; height: 64px; image-rendering: pixelated; border: 2px solid var(--m-borde); background: #120f26; }
 .mesa-quien { font-family: var(--mesa-pixel), monospace; font-size: 12px; color: var(--m-ambar); }
 .mesa-narra { font-style: italic; color: var(--m-papel); }
 .mesa-jefa-dice { color: var(--m-papel); font-style: italic; }

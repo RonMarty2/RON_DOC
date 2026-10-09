@@ -37,6 +37,7 @@ import { semillaDeAlumno } from "@/lib/juego/psicoestadistica/version";
 import { anotarEn, guardarPartidaDe, leerPartidaDe, partidaNuevaDe, type PartidaDe } from "@/lib/juego/partida";
 import { VERSION_MAXIMA } from "@/lib/juego/planta";
 import { useCuenta } from "../juego-proyectos/CuentaJuego";
+import { conBase } from "@/lib/rutas";
 import { EscenaPixi } from "./EscenaPixi";
 import { BotonSonido, useSonidoT1 } from "./sonido";
 
@@ -75,6 +76,15 @@ function nombreDe(q: Quien, p: PaqueteT1): string {
   return { jefa: "La jefa", dani: p.version.textos.dani, beto: "Beto", madre: "Señora Quiroga (teléfono)", director: "Dirección (nota)", narracion: "" }[q];
 }
 
+// La cara (o el icono) de quien habla, de la línea gráfica propia. La narración no lleva cara.
+const CARA: Record<Exclude<Quien, "narracion">, string> = {
+  jefa: "jefa_retrato",
+  dani: "dani_silueta",
+  beto: "beto_retrato",
+  madre: "icono_telefono",
+  director: "icono_nota",
+};
+
 // ── Piezas chicas ────────────────────────────────────────────────────────────
 
 function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir >" }: { lineas: Linea[]; p: PaqueteT1; onFin: () => void; onLinea?: (l: Linea) => void; fin?: string }) {
@@ -88,10 +98,15 @@ function Dialogo({ lineas, p, onFin, onLinea, fin = "Seguir >" }: { lineas: Line
   const hayMas = i + 1 < lineas.length;
   return (
     <div className="mesa-dialogo" role="group" aria-label="Diálogo">
-      {l.quien !== "narracion" && <div className="mesa-quien">{nombreDe(l.quien, p)}</div>}
-      <p className={l.quien === "narracion" ? "mesa-narra" : undefined} aria-live="polite">
-        {l.texto}
-      </p>
+      <div className={l.quien === "narracion" ? "mesa-dlg" : "mesa-dlg con-cara"}>
+        {l.quien !== "narracion" && <img className="mesa-cara" src={conBase(`/juego/psicoestadistica/arte/${CARA[l.quien]}.png`)} alt="" width={64} height={64} />}
+        <div className="mesa-dlg-texto">
+          {l.quien !== "narracion" && <div className="mesa-quien">{nombreDe(l.quien, p)}</div>}
+          <p className={l.quien === "narracion" ? "mesa-narra" : undefined} aria-live="polite">
+            {l.texto}
+          </p>
+        </div>
+      </div>
       <button type="button" className="mesa-boton" onClick={() => (hayMas ? setI(i + 1) : onFin())}>
         {hayMas ? "Siguiente >" : fin}
       </button>

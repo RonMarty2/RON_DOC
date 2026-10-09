@@ -2,6 +2,25 @@
 
 **Versión 15 · 08-10-2026** (la entrada más nueva, narrativa v3 y sonido v1 del Tema 1 de Psicoestadística, está justo debajo de las decisiones; la v14, simulación del bucle v2, va después; la v14 está antes de la v13; la v13, antes de la v12) · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
+## v21 · capas de la oficina viva (09-10-2026) · ventana, cielos, estrellas, luna, ciudad, nube, reloj, estante del Tema 1 de Psicoestadística
+
+**Qué se revisó:** las 9 capas de `public/juego/psicoestadistica/arte/` ampliadas (montaje en scratchpad sobre magenta), `scripts/verificar_arte.py` (todas OK: solo EDG32, 0 semitransparencias), y los JSON de `ciudad_luces` (16 huecos 2x2, 68x20) y `reloj_cara` (pivote 8,8, 16x16) contra la guía y el mapa «v20 horas».
+
+### Hallazgos (agente que debió evitarlo: `director-de-juego` en medidas, dibujo del artista en el resto)
+
+1. **Bloqueante, tamaños:** `ventana_marco` es 76x60 (ventana actual 72x60) y `estante_libros` 44x44 (el actual `reloj_estante` 42x54; reloj va en pieza aparte de 16x16). Hay que fijar una medida y recortar o recolocar antes de animar, si no los cielos (68x52) no cubren el hueco ni calzan con el marco.
+2. **Bloqueante, cruz del marco** dentro del hueco (ya marcado): con ella las capas de cielo, estrellas y ciudad se ven partidas en cuatro cuadros y la luna puede quedar tapada. Quitarla o pintarla como capa aparte.
+3. **Bloqueante, ciudad de noche** (ya marcado): 262b44 sobre 3a4466 casi no se separa; los 16 huecos de luz no se leerán. Subir el contraste (edificios más oscuros que el horizonte o horizonte más claro).
+4. **No bloqueante, libros** acostados pequeños y oscuros (ya marcado), el contorno casi desaparece contra el estante.
+5. **Nuevo, no bloqueante, nube** 14x5: plana, mismo valor que el cielo (se pierde, parece una mancha); darle un tono más claro y una cima redondeada.
+6. **Nuevo, no bloqueante, luna** 9x9: media luna con píxeles gris azulados sueltos en el borde interior; se lee como ruido. Redibujar el limbo limpio.
+7. **Nuevo, no bloqueante, reloj_cara:** hay píxeles marrones en los costados fuera del círculo (se ven como asas); y la marca de las 12 y las 6 es distinta de las 3 y las 9. Limpiarlos para que las manecillas giren sobre una cara pareja.
+8. **Nuevo, menor:** `cielo_noche` tiene 3 bandas y `cielo_alba` 5; el alba no trae banda intermedia hacia el tono de «primera luz»; la transición se hará por cambio de color en el código, está bien.
+
+**Bien, no tocar:** paleta y 0 semitransparencias; las estrellas (2 colores, dispersas); el cielo de alba con degradado en bandas; el reloj con pivote centrado y manecillas pintadas por código.
+
+**Mejoras a agentes que propongo:** `director-de-juego`: al encargar capas, fijar el tamaño en píxeles de cada una en una tabla y verificarlo con script (hallazgo 1, 1.ª vez).
+
 ## v20 · pantalla jugable con arte propio, caras y líneas del jugador (09-10-2026) · Paso 1 + Caso 2 del Tema 1 de Psicoestadística
 
 **Qué se revisó (sin navegador, por pedido):** `EscenaPixi.tsx`, `Mesa.tsx` (Dialogo, hoja, confirma, reacción), `mesa.css`, `guion-pantalla-t1.ts`, `orientacion-t1.json` (J1 a J6 y los textos vecinos), la guía `ARTE-LINEA-GRAFICA.md` y las imágenes (`montaje-*.png`, retratos). Armé la escena a 1× y 4× con las mismas coordenadas del código y la miré. Scripts guardados: `scripts-t1/contraste_caja_tuya_v20.py` (salida en `salida_contraste_caja_tuya_v20.txt`) y `scripts-t1/listar_textos_v20.py`. `verificar_arte.py public/juego/psicoestadistica/arte`: **44 de 44 cumplen la línea gráfica** (solo EDG32, sin semitransparencias). Papel del jugador: «Eres el psicólogo o la psicóloga del colegio» (A2): oficio de la carrera, ✔.

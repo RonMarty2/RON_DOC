@@ -108,7 +108,7 @@ export interface EstadoParaMusica {
 }
 
 export interface MusicaPedida {
-  escena: "s0" | "s1" | "s2" | null;
+  escena: "s0" | "s1" | "s2" | "s10" | null;
   capa: Capa;
   relativo: number;
 }
@@ -141,6 +141,6 @@ export function musicaDeFase(e: EstadoParaMusica): MusicaPedida {
     case "reaccion":
       return { escena: "s2", capa: e.medidorBajo ? "tension" : "calma", relativo: 0.6 };
     case "fin":
-      return { escena: null, capa: "calma", relativo: 1 };
+      return { escena: "s10", capa: "calma", relativo: 1 };
   }
 }

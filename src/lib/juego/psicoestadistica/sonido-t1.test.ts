@@ -1,3 +1,6 @@
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { MANIFIESTO_VACIO, leerManifiesto, pistaDe } from "../sonido/manifiesto";
 import { duracionDe, problemasDeReceta } from "../sonido/receta";
@@ -41,9 +44,9 @@ describe("Qué música suena en cada fase", () => {
     expect(FASES_T1).toHaveLength(13);
     for (const f of FASES_T1) expect(musicaDeFase(estado(f)), f).toBeTruthy();
   });
-  it("el título y el fin están en silencio (hasta que exista S10)", () => {
+  it("el título está en silencio (el navegador no deja sonar antes del primer toque) y el fin tiene su música (S10)", () => {
     expect(musicaDeFase(estado("titulo")).escena).toBeNull();
-    expect(musicaDeFase(estado("fin")).escena).toBeNull();
+    expect(musicaDeFase(estado("fin"))).toMatchObject({ escena: "s10", capa: "calma" });
   });
   it("sigue lo que se ve: la duda entra con 1 ficha y la tensión con 0 fichas sin haber hallado el papel", () => {
     expect(musicaDeFase(estado("archivo1", { fichas: 3 })).capa).toBe("calma");
@@ -92,5 +95,41 @@ describe("El manifiesto de música", () => {
   });
   it("los volúmenes fuera de 0 a 1 vuelven al de partida", () => {
     expect(leerManifiesto({ volumen: { musica: 5, efectos: -1, avisos: "x" } }).volumen).toEqual({ musica: 0.3, efectos: 0.55, avisos: 0.65 });
+  });
+});
+
+describe("Los archivos de música que de verdad están en public/", () => {
+  const carpeta = resolve(dirname(fileURLToPath(import.meta.url)), "../../../../public/juego/psicoestadistica/audio");
+  const man = leerManifiesto(JSON.parse(readFileSync(resolve(carpeta, "manifiesto.json"), "utf-8")));
+  it("cada pista del manifiesto existe y pesa menos de 400 KB", () => {
+    const ids = Object.keys(man.pistas);
+    expect(ids.length).toBe(11);
+    for (const id of ids) {
+      const f = resolve(carpeta, man.pistas[id].archivo);
+      expect(existsSync(f), id).toBe(true);
+      expect(readFileSync(f).length / 1024, id).toBeLessThan(400);
+    }
+  });
+  it("toda escena que usa la pantalla existe en el manifiesto y tiene al menos su capa de calma", () => {
+    const usadas = new Set(FASES_T1.map((f) => musicaDeFase(estado(f)).escena).filter((e): e is "s0" | "s1" | "s2" | "s10" => e !== null));
+    expect([...usadas].sort()).toEqual(["s0", "s1", "s10", "s2"]);
+    for (const e of usadas) expect(pistaDe(man, e, "calma"), e).not.toBeNull();
+  });
+  it("cada capa que pide la pantalla tiene su propia pista (no cae en la calma por falta de archivo)", () => {
+    const pedidas = new Set<string>();
+    for (const fase of FASES_T1) for (const fichas of [0, 1, 3]) for (const hallado of [false, true]) for (const medidorBajo of [false, true]) for (const linea of [0, 1]) {
+      const m = musicaDeFase({ fase, fichas, hallado, medidorBajo, lineaDeLaJefa: linea });
+      if (m.escena) pedidas.add(`${m.escena}/${m.capa}`);
+    }
+    const sinPropia = [...pedidas].filter((k) => {
+      const [e, c] = k.split("/");
+      const fila = man.escenas[e];
+      return !fila || !fila[c as "calma"];
+    });
+    expect(sinPropia).toEqual([]);
+  });
+  it("las dos pistas que no son de bucle (el remate y la cola) están marcadas así", () => {
+    expect(man.pistas["s1-d"].bucle).toBe(false);
+    expect(man.pistas["s10-cola"].bucle).toBe(false);
   });
 });

@@ -1,0 +1,73 @@
+{
+  "nota": "16 huecos de ventanita de 2x2 en ciudad_siluetas.png (esquina superior izquierda, en pixeles de la pieza 68x20). El codigo pinta 2x2 fee761 o feae34 para encenderlas.",
+  "tamano": [
+    2,
+    2
+  ],
+  "huecos": [
+    {
+      "x": 11,
+      "y": 9
+    },
+    {
+      "x": 11,
+      "y": 13
+    },
+    {
+      "x": 22,
+      "y": 11
+    },
+    {
+      "x": 31,
+      "y": 6
+    },
+    {
+      "x": 35,
+      "y": 10
+    },
+    {
+      "x": 31,
+      "y": 14
+    },
+    {
+      "x": 44,
+      "y": 10
+    },
+    {
+      "x": 53,
+      "y": 8
+    },
+    {
+      "x": 53,
+      "y": 12
+    },
+    {
+      "x": 58,
+      "y": 6
+    },
+    {
+      "x": 63,
+      "y": 10
+    },
+    {
+      "x": 5,
+      "y": 13
+    },
+    {
+      "x": 16,
+      "y": 15
+    },
+    {
+      "x": 27,
+      "y": 14
+    },
+    {
+      "x": 39,
+      "y": 12
+    },
+    {
+      "x": 49,
+      "y": 15
+    }
+  ]
+}

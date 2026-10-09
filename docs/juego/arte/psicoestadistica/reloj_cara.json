@@ -1,0 +1,11 @@
+{
+  "nota": "Pivote de las manecillas en pixeles de la pieza 16x16. Horas: 1x4 px 3e2731; minutos: 1x6 px 181425 (las pinta el codigo).",
+  "tamano": [
+    16,
+    16
+  ],
+  "pivote": {
+    "x": 8,
+    "y": 8
+  }
+}

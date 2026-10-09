@@ -60,8 +60,7 @@
 .mesa-dlg.con-cara { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; }
 .mesa-cara { width: 64px; height: 64px; image-rendering: pixelated; border: 2px solid var(--m-borde); background: #120f26; }
 .mesa-dialogo.tuyo { background: #1c3a34; border-color: #6fd0b4; }
-.mesa-dialogo.tuyo .mesa-tuyo { color: #9fe8d2; font-style: italic; }
-.mesa-quien { color: #9fe8d2; }
+.mesa-dialogo.tuyo .mesa-quien { color: #9fe8d2; }
 .mesa-quien { font-family: var(--mesa-pixel), monospace; font-size: 12px; color: var(--m-ambar); }
 .mesa-narra { font-style: italic; color: var(--m-papel); }
 .mesa-jefa-dice { color: var(--m-papel); font-style: italic; }

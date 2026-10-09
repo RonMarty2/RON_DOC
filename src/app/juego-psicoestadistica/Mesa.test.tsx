@@ -32,7 +32,7 @@ const papel = (caso: 1 | 2, id: string) => papelDe(p, caso, id, { hoy: new Date(
 async function hastaElCaso2() {
   render(<Mesa />);
   await screen.findByRole("heading", { name: /Mesa de verificación/ });
-  hay(G.TITULO.prueba + " Arte provisional.");
+  hay(G.TITULO.prueba + " Luz y polvo provisionales.");
   pulsa(/Empezar/);
 
   hay(G.BIENVENIDA[0]); // quién eres y cuál es tu trabajo: antes del primer toque de juego

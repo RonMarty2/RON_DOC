@@ -468,13 +468,13 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
             <button type="button" className={hayAvance ? "mesa-boton sec" : "mesa-boton"} onClick={empezarDeNuevo}>
               {hayAvance ? "Empezar de nuevo" : "Empezar >"}
             </button>
-            <p className="mesa-prueba">{G.TITULO.prueba} Arte provisional.</p>
+            <p className="mesa-prueba">{G.TITULO.prueba} Luz y polvo provisionales.</p>
           </section>
         )}
 
         {fase === "bienvenida" && <Dialogo key="b" p={p} lineas={[...G.BIENVENIDA.map((texto) => ({ quien: "narracion" as const, texto })), { quien: "tu" as const, texto: G.JUGADOR.bienvenida }]} onFin={() => ir("jefa")} onLinea={alLinea} />}
 
-        {fase === "jefa" && <Dialogo key="j" p={p} lineas={[...[...G.JEFA_LLEGADA, ...G.ENCARGO].map((texto) => ({ quien: "jefa" as const, texto })), { quien: "tu" as const, texto: G.JUGADOR.hoja }]} onFin={() => ir("hoja")} onLinea={alLinea} />}
+        {fase === "jefa" && <Dialogo key="j" p={p} lineas={[...G.JEFA_LLEGADA, ...G.ENCARGO].map((texto) => ({ quien: "jefa" as const, texto }))} onFin={() => ir("hoja")} onLinea={alLinea} />}
 
         {fase === "hoja" && (
           <section className="mesa-bloque">
@@ -504,6 +504,12 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               </div>
             )}
             {modoHoja === "dani" && <Dialogo key="d" p={p} lineas={[...G.daniResponde(p).map((texto) => ({ quien: "dani" as const, texto })), { quien: "tu" as const, texto: G.JUGADOR.archivo1 }]} onFin={() => ir("archivo1")} onLinea={alLinea} />}
+            {modoHoja === "propias" && (
+              <div className="mesa-dialogo tuyo">
+                <div className="mesa-quien">Tú</div>
+                <p>{G.JUGADOR.hoja}</p>
+              </div>
+            )}
             {modoHoja === "propias" && (
               <form
                 className="mesa-form"
@@ -736,7 +742,12 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           <div className="mesa-lector" role="alertdialog" aria-modal="true" aria-label={G.BOTONES_SELLO.confirmaTitulo}>
             <div className="mesa-confirma">
               {carpeta2.abiertos.length === 0 && <p className="mesa-aviso">{G.SIN_PAPELES_AL_FIRMAR}</p>}
-              <p className="mesa-tuyo">{G.JUGADOR.confirma}</p>
+              {carpeta2.abiertos.length > 0 && (
+                <div className="mesa-dialogo tuyo">
+                  <div className="mesa-quien">Tú</div>
+                  <p>{G.JUGADOR.confirma}</p>
+                </div>
+              )}
               <p>{G.BOTONES_SELLO.confirmaTitulo}</p>
               <div className="mesa-acciones">
                 <button type="button" className="mesa-boton" onClick={sellar} autoFocus>

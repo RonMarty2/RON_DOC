@@ -42,7 +42,7 @@ export function EscenaPixi({ pose, suena, daniCabecea }: { pose: PoseJefa; suena
       const app = new PIXI.Application({ width: ESCENA_ANCHO, height: ESCENA_ALTO, backgroundColor: 0x07060d, antialias: false, resolution: 1 });
       const vista = app.view as HTMLCanvasElement;
       vista.setAttribute("role", "img");
-      vista.setAttribute("aria-label", "Oficina del Departamento de Orientación, de noche, con la jefa junto a la puerta y la lámpara sobre el escritorio.");
+      vista.setAttribute("aria-label", "Oficina del Departamento de Orientación, de noche, con la jefa tras el escritorio, Dani en sombra al fondo y la lámpara sobre el escritorio.");
       caja.current.appendChild(vista);
 
       const tex = (n: string) => PIXI.Texture.from(IMG(n));

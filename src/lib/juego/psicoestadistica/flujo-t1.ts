@@ -9,7 +9,7 @@
 import { abrirCarpeta, abrirPapel, estaAbierto, fichasRestantes, type CarpetaAbierta } from "./carpeta";
 import type { PaqueteT1 } from "./cifras";
 import { piezasDePapel, PIEZAS_GENERICAS_CASO2 } from "./papeles-t1";
-import { FICHAS_NORMALES } from "./reglas-t1";
+import { FICHAS_NORMALES, type EventoT1 } from "./reglas-t1";
 import { resolverCaso2, resolverPaso1, type EntradaCaso2, type ResultadoCaso } from "./respuestas";
 
 // ── Paso 1 ───────────────────────────────────────────────────────────────────
@@ -95,4 +95,36 @@ export function resolverDecision2(
 ): ResultadoCaso {
   if (decision === "tal" || decision === "frenar") return resolverCaso2(p, { abiertos, decision });
   return resolverCaso2(p, entradaDeFrase2(p, abiertos, decision.frase));
+}
+
+// ── Retomar una partida guardada ─────────────────────────────────────────────
+
+export interface Avance {
+  /** Dónde se retoma: antes del primer encargo, en el archivo del Paso 1, en la carpeta del Caso 2, o ya cerrado el Caso 2. */
+  fase: "inicio" | "archivo1" | "archivo2" | "fin";
+  /** Si respondió la hoja «Para empezar» con sus propios números (null si todavía no la llenó). */
+  propias: boolean | null;
+  paso1: Paso1Estado;
+  abiertos2: string[];
+  /** Lo que se selló en el Caso 2 (null si todavía no). */
+  entrada2: EntradaCaso2 | null;
+}
+
+/** Reconstruye el avance repitiendo los eventos guardados sobre el paquete de la versión: la partida es el registro, no una foto. */
+export function avanceDeEventos(p: PaqueteT1, eventos: readonly EventoT1[]): Avance {
+  let propias: boolean | null = null;
+  let paso1 = paso1Nuevo(p);
+  const abiertos2: string[] = [];
+  let entra2 = false;
+  let entrada2: EntradaCaso2 | null = null;
+  for (const ev of eventos) {
+    if (ev.tipo === "p1.respuestas") propias = ev.propias;
+    else if (ev.tipo === "p1.abrio") paso1 = abrirEnPaso1(p, paso1, ev.papel).estado;
+    else if (ev.tipo === "caso.entra" && ev.caso === 2) entra2 = true;
+    else if (ev.tipo === "abrir" && ev.caso === 2 && !abiertos2.includes(ev.papel)) abiertos2.push(ev.papel);
+    else if (ev.tipo === "entrada" && ev.caso === 2) entrada2 = ev.entrada as EntradaCaso2;
+  }
+  const empezo = propias !== null || papelesVistosPaso1(paso1).length > 0;
+  const fase = entrada2 ? "fin" : entra2 ? "archivo2" : empezo ? "archivo1" : "inicio";
+  return { fase, propias, paso1, abiertos2, entrada2 };
 }

@@ -1,0 +1,143 @@
+/*
+ * «La mesa de verificación»: el juego vive en su propio mundo, una oficina de noche, igual en modo claro y oscuro
+ * (excepción a «colores solo con los tokens», como la de juego-proyectos). Texto sobre fondo con contraste de 4.5:1 o más.
+ * Mínimo táctil de 44 px en todo lo que se toca; el texto que se lee va en VT323 a 19 px o más.
+ */
+.mesa-fondo {
+  --m-noche: #0c0a1a;
+  --m-panel: #1d1838;
+  --m-borde: #3d3470;
+  --m-ambar: #ffcf7a;
+  --m-papel: #f1e8cf;
+  --m-tinta: #2a2236;
+  --m-texto: #ece7f7;
+  --m-tenue: #b4abd3;
+  --m-rojo: #ff8f8a;
+  --m-verde: #93dc99;
+  background: var(--m-noche);
+  color: var(--m-texto);
+  color-scheme: dark;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  padding: 0 0 32px;
+  font-family: var(--mesa-dialogo), ui-monospace, monospace;
+  font-size: 21px;
+  line-height: 1.35;
+}
+.mesa { width: 100%; max-width: 460px; position: relative; display: flex; flex-direction: column; gap: 10px; }
+.mesa-carga { color: var(--m-texto); text-align: center; padding: 48px 16px; }
+
+.mesa-escena { line-height: 0; background: #07060d; }
+.mesa-escena canvas { width: 100%; height: auto; display: block; image-rendering: pixelated; }
+
+.mesa-panel { padding: 0 16px; display: grid; gap: 12px; }
+.mesa-centro { display: grid; gap: 12px; justify-items: center; text-align: center; padding-top: 6px; }
+.mesa-bloque { display: grid; gap: 12px; }
+.mesa h1, .mesa h2 { font-family: var(--mesa-pixel), monospace; color: var(--m-ambar); font-weight: 400; margin: 0; line-height: 1.6; }
+.mesa h1 { font-size: 15px; }
+.mesa h2 { font-size: 12px; }
+.mesa h3 { font-family: var(--mesa-pixel), monospace; font-weight: 400; font-size: 10px; line-height: 1.6; margin: 0; letter-spacing: .02em; }
+.mesa p { margin: 0; }
+.mesa-pequeno { color: var(--m-tenue); font-size: 19px; }
+.mesa-prueba { color: var(--m-tenue); font-size: 18px; border: 1px dashed var(--m-borde); padding: 2px 10px; }
+
+/* Botones */
+.mesa-boton {
+  font-family: var(--mesa-pixel), monospace; font-size: 11px; line-height: 1.5; letter-spacing: .02em;
+  min-height: 48px; padding: 10px 16px; cursor: pointer; text-align: center; text-decoration: none;
+  color: #1a1410; background: var(--m-ambar); border: 2px solid #fff3d1; border-bottom-width: 4px; border-radius: 2px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.mesa-boton.sec { background: var(--m-panel); color: var(--m-texto); border-color: var(--m-borde); }
+.mesa-boton:disabled { opacity: .45; cursor: not-allowed; }
+.mesa-boton:focus-visible, .mesa-papel:focus-visible, .mesa-pieza:focus-visible, .mesa input:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.mesa-acciones { display: grid; gap: 10px; }
+
+/* Diálogo */
+.mesa-dialogo { background: var(--m-panel); border: 2px solid var(--m-borde); padding: 12px 14px; display: grid; gap: 10px; }
+.mesa-dialogo p { font-size: 23px; }
+.mesa-quien { font-family: var(--mesa-pixel), monospace; font-size: 10px; color: var(--m-ambar); }
+.mesa-narra { font-style: italic; color: var(--m-papel); }
+.mesa-jefa-dice { color: var(--m-papel); font-style: italic; }
+
+/* Tubos */
+.mesa-tubos { display: grid; gap: 8px; padding: 0 16px; }
+.mesa-tubo-nombre { font-size: 20px; display: flex; justify-content: space-between; }
+.mesa-tubo-nombre b { font-weight: 400; color: var(--m-ambar); }
+.mesa-tubo-vidrio { position: relative; height: 18px; border: 2px solid var(--m-borde); background: #120f26; }
+.mesa-tubo-tinta { height: 100%; background: #6f8cff; transition: width .9s ease; }
+.mesa-tubo-tinta.baja { background: var(--m-rojo); }
+.mesa-tubo-tinta.meta { background: var(--m-verde); }
+.mesa-tubo-vidrio i { position: absolute; top: -3px; bottom: -3px; width: 2px; background: #fff; opacity: .7; }
+
+/* Fichas y papeles */
+.mesa-fichas { display: flex; align-items: center; gap: 8px; }
+.mesa-fichas i { width: 18px; height: 18px; border: 2px solid var(--m-ambar); border-radius: 50%; background: transparent; }
+.mesa-fichas i.on { background: var(--m-ambar); }
+.mesa-abanico { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mesa-papel {
+  width: 100%; min-height: 56px; display: flex; gap: 8px; align-items: center; text-align: left; cursor: pointer;
+  font: inherit; font-size: 20px; line-height: 1.15; padding: 6px 10px; color: var(--m-tinta); background: var(--m-papel); border: 2px solid #c9bd98; border-radius: 2px;
+}
+.mesa-papel span { font-size: 22px; flex: none; }
+.mesa-papel.abierto { background: #cfc6a8; border-style: dashed; }
+.mesa-papel:disabled { opacity: .4; cursor: not-allowed; }
+
+.mesa-lector { position: fixed; inset: 0; background: rgba(5, 4, 12, .82); display: flex; align-items: flex-end; justify-content: center; padding: 16px; z-index: 50; }
+.mesa-hoja { width: 100%; max-width: 460px; background: var(--m-papel); color: var(--m-tinta); padding: 16px; display: grid; gap: 12px; border: 2px solid #c9bd98; max-height: 80dvh; overflow: auto; }
+.mesa-hoja h3 { color: #5a3a14; }
+.mesa-hoja p { font-size: 23px; }
+.mesa-hoja .mesa-dialogo { background: transparent; border: none; padding: 0; }
+.mesa-hoja .mesa-quien { color: #5a3a14; }
+.mesa-hoja .mesa-dialogo p { color: var(--m-tinta); }
+
+.mesa-preguntas { margin: 0; padding-left: 24px; display: grid; gap: 4px; }
+.mesa-form { display: grid; gap: 12px; }
+.mesa-form label { display: grid; gap: 4px; }
+.mesa-form input { font: inherit; font-size: 24px; min-height: 48px; padding: 4px 10px; color: var(--m-tinta); background: var(--m-papel); border: 2px solid #c9bd98; }
+.mesa-form input[aria-invalid="true"] { border-color: var(--m-rojo); }
+.mesa-form small { color: var(--m-rojo); font-size: 19px; }
+
+.mesa-tabla { width: 100%; border-collapse: collapse; background: var(--m-papel); color: var(--m-tinta); font-size: 20px; }
+.mesa-tabla th, .mesa-tabla td { border: 1px solid #c9bd98; padding: 6px 8px; text-align: left; }
+.mesa-tabla thead th { font-size: 18px; background: #e3d8b8; }
+
+.mesa-informe { background: var(--m-papel); color: var(--m-tinta); padding: 12px; display: grid; gap: 8px; border: 2px solid #c9bd98; }
+.mesa-informe h3 { color: #7a1f1f; font-size: 11px; }
+.mesa-informe small { font-size: 18px; color: #4a4258; }
+.mesa-grafica { margin: 0; display: grid; gap: 4px; }
+.mesa-grafica figcaption { font-size: 18px; color: var(--m-tenue); }
+.mesa-informe .mesa-grafica figcaption { color: #4a4258; }
+.mesa-barras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; align-items: end; }
+.mesa-barra { display: grid; justify-items: center; gap: 2px; align-content: end; min-height: 100px; }
+.mesa-barra b { font-weight: 400; font-size: 20px; }
+.mesa-barra span { width: 70%; background: #6f8cff; display: block; }
+.mesa-barra em { font-style: normal; font-size: 17px; }
+
+.mesa-corcho { background: #5a4228; border: 2px solid #8b6a3e; padding: 10px 12px; display: grid; gap: 8px; color: #fff4dc; }
+.mesa-corcho h3 { color: #ffe0a0; }
+.mesa-corcho ul { margin: 0; padding-left: 18px; }
+.mesa-corcho .mesa-pequeno { color: #f1dcb4; }
+.mesa-corcho .mesa-grafica figcaption { color: #f1dcb4; }
+
+.mesa-frase { display: grid; gap: 10px; }
+.mesa-frase ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.mesa-pieza { width: 100%; min-height: 48px; text-align: left; font: inherit; font-size: 20px; padding: 6px 12px; cursor: pointer; color: var(--m-texto); background: var(--m-panel); border: 2px solid var(--m-borde); border-radius: 2px; }
+.mesa-pieza.on { background: #35508f; border-color: #a9c0ff; }
+.mesa-pieza:disabled { opacity: .45; cursor: not-allowed; }
+.mesa-vista { color: var(--m-papel); font-style: italic; min-height: 28px; }
+
+.mesa-confirma { background: var(--m-panel); border: 2px solid var(--m-ambar); padding: 12px 14px; display: grid; gap: 10px; }
+.mesa-confirma p { font-size: 24px; }
+
+.mesa-tarjeta { background: var(--m-papel); color: var(--m-tinta); padding: 12px; display: grid; gap: 6px; border: 2px solid #c9bd98; }
+.mesa-tarjeta h3 { color: #5a3a14; }
+.mesa-tarjeta p { font-size: 22px; }
+.mesa-tarjeta.sobre { background: #f3e2b0; }
+
+@media (min-width: 700px) {
+  .mesa-abanico { grid-template-columns: 1fr 1fr 1fr; }
+  .mesa-acciones { grid-auto-flow: column; }
+}
+@media (prefers-reduced-motion: reduce) { .mesa-tubo-tinta { transition: none; } }

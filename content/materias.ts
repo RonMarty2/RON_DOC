@@ -37,6 +37,18 @@ export const MATERIAS: Materia[] = [
     nombre: "Psicoestadística Descriptiva",
     descripcion:
       "Fundamentos de estadística aplicada a las ciencias del comportamiento: organización, descripción y análisis bivariado de datos.",
+    herramientas: [
+      {
+        href: "/juego-psicoestadistica",
+        titulo: "La mesa de verificación: Tema 1",
+        descripcion:
+          "Trabajas de noche en el Departamento de Orientación de un colegio: con una carpeta de papeles por caso, verificas si un dato que todos dan por cierto lo es antes de firmarlo. Cada alumno tiene sus propios números.",
+        tipo: "juego",
+        isla: "psicoestadistica",
+        tema: 1,
+        borrador: true,
+      },
+    ],
     temas: [
       {
         slug: "tipos-de-variables",

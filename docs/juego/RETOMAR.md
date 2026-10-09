@@ -7,6 +7,9 @@
 
 > Este bloque manda sobre todo lo que está más abajo (lo de abajo es historia y detalle). Si algo de abajo lo contradice, vale este bloque.
 
+### ACTUALIZACIÓN 09-10, 07:12: ya hay pantalla (Paso 1 + Caso 2)
+Ronald contestó la pregunta («un solo caso primero», opción B: Paso 1 + Caso 2). Hecho y subido: `src/app/juego-psicoestadistica/` (ver `BITACORA.md` §0, 09-10 07:12). **Falta verla en un navegador real** (esa sesión no tuvo la extensión de Chrome): abrir `npm run dev` y `/juego-psicoestadistica/` en celular y escritorio, mirar la escena de PixiJS y la legibilidad (regla «todo texto se mide»: correr `medir_legibilidad.py` o equivalente). Después: Ronald lo juega y dice qué cambiar; recién entonces se arman los casos 3 a 8 (mismo método: texto por script, lógica con pruebas, pantalla).
+
 ### En una frase
 El Tema 1 de Psicoestadística Descriptiva («La mesa de verificación») tiene **todo lo de adentro hecho y subido a GitHub**, pero **todavía no se puede jugar**: falta la pantalla.
 

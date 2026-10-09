@@ -3,6 +3,7 @@ import { paqueteT1 } from "./cifras";
 import { VERSION_MAXIMA } from "../planta";
 import {
   abrioSuenoPaso1,
+  avanceDeEventos,
   abrirEnPaso1,
   cierreDelPaso1,
   entradaDeFrase2,
@@ -146,5 +147,47 @@ describe("Caso 2: la frase", () => {
   it("una frase de 1 pieza no se sella", () => {
     const p = paqueteT1(3);
     expect(() => entradaDeFrase2(p, [], [{ texto: "x", papel: null }])).toThrow();
+  });
+});
+
+describe("Retomar una partida guardada", () => {
+  const p = paqueteT1(21);
+  const c1 = p.carpetas.porCaso[1];
+  const c2 = p.carpetas.porCaso[2];
+
+  it("sin eventos: al inicio", () => {
+    expect(avanceDeEventos(p, []).fase).toBe("inicio");
+  });
+
+  it("repite los papeles abiertos del Paso 1 y las fichas quedan como estaban", () => {
+    const a = avanceDeEventos(p, [
+      { tipo: "p1.respuestas", propias: false },
+      { tipo: "p1.abrio", papel: c1.papeles[0].id, ficha: 1 },
+      { tipo: "p1.abrio", papel: c1.papeles[1].id, ficha: 2 },
+    ]);
+    expect(a.fase).toBe("archivo1");
+    expect(a.propias).toBe(false);
+    expect(fichasPaso1(a.paso1)).toBe(1);
+  });
+
+  it("si Dani tuvo que abrir el papel, al retomar también se ve (no se pierde la ayuda)", () => {
+    const sin = c1.papeles.filter((q) => !c1.claves.includes(q.id)).map((q) => q.id);
+    const a = avanceDeEventos(p, sin.map((papel, i) => ({ tipo: "p1.abrio" as const, papel, ficha: i + 1 })));
+    expect(a.paso1.ayudado).toBe(c1.claves[0]);
+  });
+
+  it("en el caso 2: los papeles abiertos y, si ya selló, el fin con lo que selló", () => {
+    const enCurso = avanceDeEventos(p, [
+      { tipo: "caso.entra", caso: 2, casoTipo: p.version.tipos[2], fichas: 3, c: 50, voz: 50 },
+      { tipo: "abrir", caso: 2, papel: c2.claves[0], rol: "clave" },
+      { tipo: "abrir", caso: 2, papel: c2.claves[0], rol: "clave" },
+    ]);
+    expect(enCurso).toMatchObject({ fase: "archivo2", abiertos2: [c2.claves[0]], entrada2: null });
+    const fin = avanceDeEventos(p, [
+      { tipo: "caso.entra", caso: 2, casoTipo: p.version.tipos[2], fichas: 3, c: 50, voz: 50 },
+      { tipo: "entrada", caso: 2, entrada: { abiertos: [], decision: "frenar" } },
+    ]);
+    expect(fin.fase).toBe("fin");
+    expect(fin.entrada2).toEqual({ abiertos: [], decision: "frenar" });
   });
 });

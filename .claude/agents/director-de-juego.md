@@ -119,3 +119,11 @@ Usa `WebSearch` sólo para confirmar referencias de juegos reales; no copies tex
 - **Realista con el tamaño:** hoy es una persona (Ronald) con Claude, un sitio estático en Next.js con Supabase, y el nivel 1 (escenas) primero. Si propones algo caro, dilo y da la versión barata.
 - **Escribe tu parte en su archivo** de `docs/juego/gdd/`, con versión, fecha y "Decisiones pendientes de Ronald" al inicio. Si cambias algo que otra parte usa, avísalo en tu respuesta.
 - **Responde al final** con un resumen corto: qué escribiste, qué recomiendas y qué tiene que decidir Ronald.
+
+## Lo aprendido del crítico (v19, ambientes, 09-10)
+
+- **Un lugar nuevo necesita una línea que lleve al alumno hasta ahí.** El mapa de ambientes proponía «el archivo» como cuarto aparte sin que la historia lo llevara; la narrativa pone todo en una sola sala. Antes de proponer un lugar, comprueba que el alumno ya está ahí o que hay una línea de narrativa que lo lleve; si no, el «lugar» es el mismo escritorio con otra cosa detrás.
+- **Una señal del mundo, un solo significado.** La lámpara que baja cerca de 25 ya avisa de los medidores; no se le da un segundo significado (la hora). La hora vive en el cielo, el reloj y el color general.
+- **Un efecto de ambiente no puede leerse como respuesta ni como alarma:** nada que parpadee o zumbe distinto según el caso; los dos casos «de archivo» llevan la misma luz estable. No uses palabras del juego («tubo» son los medidores) para nombrar objetos de la escena.
+- **Un cambio visible que solo aparece cuando el alumno erró es un aviso de error**, aunque se diga «ambiente»: si llega con una consecuencia (la llamada, la nota), dilo así y no lo llames independiente del acierto.
+- **Cuenta los dibujos nuevos al estimar el costo:** cada objeto nuevo es un sprite; un reloj que marca la hora son varias posiciones de agujas.

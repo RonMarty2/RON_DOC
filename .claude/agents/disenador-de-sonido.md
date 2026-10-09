@@ -96,3 +96,7 @@ Al final, un resumen corto: qué escenas tienen hoja de sonido, qué prompts hay
 ## Ambientes que cambian por escena (Ronald, 09-10)
 
 El juego ya no mantiene un solo ambiente: la luz, el lugar y el color cambian por escena (`docs/juego/ARTE-LINEA-GRAFICA.md` y `docs/juego/gdd/aspecto-<materia>-<tema>-ambientes.md`). Cuando un ambiente nuevo aparezca en un tema ya con música, dices si necesita pista distinta o si le sirve la que ya existe con otra capa (calma, duda, tensión). El manifiesto de música (`public/juego/<isla>/audio/manifiesto.json`) admite escenas nuevas sin tocar la pantalla.
+
+## Lo aprendido del crítico (v19, 09-10)
+
+Ningún efecto de ambiente (zumbido, grillos, pájaros) que pueda leerse como alarma o como respuesta cerca de E10 (el blip de los medidores): el zumbido de un tubo fluorescente sale; los grillos y los pájaros son opcionales. Un ajuste a una asignación de música ya aprobada en `07-sonido.md` (por ejemplo, S9 antes del cierre) lo propones tú en esta hoja y lo decide Ronald; el director no lo da por hecho.

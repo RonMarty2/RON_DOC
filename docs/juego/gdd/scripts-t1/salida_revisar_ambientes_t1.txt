@@ -1,0 +1,21 @@
+permutaciones: 120
+pares (caso, hora) distintos: 28
+ caso 1 archivo -> 1 horas: T1 22:00
+ caso 2 oficina+corcho -> 1 horas: T2 23:00
+ caso 3 archivo+tambor -> 5 horas: T3 00:00, T4 01:00, T5 02:00, T6 03:00, T7 04:30
+ caso 4 oficina+2 conos -> 5 horas: T3 00:00, T4 01:00, T5 02:00, T6 03:00, T7 04:30
+ caso 5 oficina recuerdo / hoy -> 5 horas: T3 00:00, T4 01:00, T5 02:00, T6 03:00, T7 04:30
+ caso 6 archivo+pizarra -> 5 horas: T3 00:00, T4 01:00, T5 02:00, T6 03:00, T7 04:30
+ caso 7 oficina+lamina -> 5 horas: T3 00:00, T4 01:00, T5 02:00, T6 03:00, T7 04:30
+ caso 8 direccion -> 1 horas: T8 06:00
+permutaciones donde caso 3 y caso 6 (ambos archivo) quedan seguidos: 48 de 120
+permutaciones con caso 3 o 6 en la ultima posicion (justo antes de la direccion): 48
+permutaciones con caso 5 (flashback 'hace un mes') en cada posicion: [24, 24, 24, 24, 24]
+filas: 14 {'Bajo': 7, 'Medio': 5, 'Alto': 2}
+contraste #e9e7f5 sobre #0e0d16 15.8
+contraste #b9b6cf sobre #0e0d16 9.8
+contraste #e9e7f5 sobre #17152a 14.6
+contraste #b9b6cf sobre #17152a 9.1
+pagina 376: scrollWidth 376 innerWidth 376 | textos <12px: 0 []
+ escenas: 17 alto: [266, 266, 266] | imagenes: 111 rotas: 0 | ancho .hora: [84, 84, 84, 84] desbordan: 0 | chips fuera: 0
+ captura: C:\Users\lmigu\SynologyDrive\12.NUBES\OneDrive\UNIFRANZ\1.MATERIAS\RON_DOC\docs\juego\gdd\scripts-t1\ambientes_376.png

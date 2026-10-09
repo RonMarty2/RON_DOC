@@ -23,15 +23,15 @@ const IMG = (n: string) => conBase(`/juego/psicoestadistica/${n.startsWith("arte
 const POSE: Record<PoseJefa, string> = { brazos: "arte/jefa_neutral", cabeza: "arte/jefa_preocupada", pulgar: "arte/jefa_contenta" };
 
 interface Api {
-  poner: (o: { pose: PoseJefa; suena: boolean; daniCabecea: boolean }) => void;
+  poner: (o: { pose: PoseJefa; suena: boolean; daniCabecea: boolean; verJefa: boolean; verDani: boolean }) => void;
   destruir: () => void;
 }
 
-export function EscenaPixi({ pose, suena, daniCabecea, nombreDani = "Dani" }: { pose: PoseJefa; suena: boolean; daniCabecea: boolean; nombreDani?: string }) {
+export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani = true }: { pose: PoseJefa; suena: boolean; daniCabecea: boolean; verJefa?: boolean; verDani?: boolean }) {
   const caja = useRef<HTMLDivElement>(null);
   const api = useRef<Api | null>(null);
-  const ultimo = useRef({ pose, suena, daniCabecea });
-  ultimo.current = { pose, suena, daniCabecea };
+  const ultimo = useRef({ pose, suena, daniCabecea, verJefa, verDani });
+  ultimo.current = { pose, suena, daniCabecea, verJefa, verDani };
 
   useEffect(() => {
     let vivo = true;
@@ -123,6 +123,8 @@ export function EscenaPixi({ pose, suena, daniCabecea, nombreDani = "Dani" }: { 
       api.current = {
         poner: (o) => {
           jefa.texture = tex(POSE[o.pose]);
+          jefa.visible = o.verJefa;
+          dani.visible = o.verDani;
         },
         destruir: () => {
           app.destroy(true, { children: true });
@@ -140,15 +142,12 @@ export function EscenaPixi({ pose, suena, daniCabecea, nombreDani = "Dani" }: { 
   }, []);
 
   useEffect(() => {
-    api.current?.poner({ pose, suena, daniCabecea });
-  }, [pose, suena, daniCabecea]);
+    api.current?.poner({ pose, suena, daniCabecea, verJefa, verDani });
+  }, [pose, suena, daniCabecea, verJefa, verDani]);
 
   return (
     <div className="mesa-escena">
       <div ref={caja} />
-      {/* Quién es quién: etiquetas con nombre y color sobre cada personaje. Tú no sales: miras la escena desde el escritorio. */}
-      <span className="mesa-etiqueta q-jefa" style={{ left: "80%", top: "36%" }}>Jefa · Ximena</span>
-      <span className="mesa-etiqueta q-dani" style={{ left: "45%", top: "60%" }}>{nombreDani} · practicante</span>
     </div>
   );
 }

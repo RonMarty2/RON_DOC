@@ -486,7 +486,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           )}
         </div>
       )}
-      <EscenaPixi pose={pose} suena={suena} daniCabecea={daniCabecea} nombreDani={p.version.textos.dani} />
+      <EscenaPixi pose={pose} suena={suena} daniCabecea={daniCabecea} verJefa={fase !== "titulo" && fase !== "bienvenida"} verDani={fase !== "titulo" && fase !== "bienvenida" && fase !== "jefa"} />
       {tubos && <Tubos m={med} />}
 
       <div className="mesa-panel">

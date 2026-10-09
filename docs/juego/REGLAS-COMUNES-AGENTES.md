@@ -46,4 +46,4 @@
 - **Realista con el tamaño:** hoy es una persona (Ronald) con Claude, un sitio estático en Next.js con Supabase, y el nivel 1 (escenas) primero. Si propones algo caro, dilo y da la versión barata.
 - **Escribe tu parte en su archivo** de `docs/juego/gdd/`, con versión, fecha y "Decisiones pendientes de Ronald" al inicio. Si cambias algo que otra parte usa, avísalo en tu respuesta.
 - **Responde al final** con un resumen corto: qué escribiste, qué recomiendas y qué tiene que decidir Ronald.
-
+- **09-10 (Ronald):** el nombre de quien habla se muestra solo en la ventana de diálogo, con su color; jamás como etiqueta sobre el personaje. Los personajes entran en la escena cuando entran en la historia.

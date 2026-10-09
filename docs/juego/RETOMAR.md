@@ -1,3 +1,20 @@
+## 🎯 PLAN NUEVO (decidido con Ronald 09-10, tras probar el juego): música completa y botón de empezar de cero
+**Ronald dijo (casi literal):** la música tiene cortes horribles; que corra la pista completa, que empiece como queramos aunque dure 2 a 3 minutos; si cambia de escena y la música debe seguir, que siga; si debe cambiar, que cambie. «El sonido no guía, guiamos nosotros al dar Siguiente.»
+
+**A. Música por escena, pista entera (reemplaza los tramos recortados en capas)**
+1. Una pista completa por escena (no por fase): S0 arranque, S1 caso 1/archivo, S2 caso 2, S10 cierre. Suena desde su segundo 0 y sigue hasta el final; al terminar vuelve a empezar con un fundido largo (no corte) o queda en silencio breve y repite.
+2. Cambia de pista SOLO cuando cambia la escena (ya definido en `sonido-t1.ts`: s0 → s1 → s2 → s10). Entre fases de una misma escena NO cambia nada (se elimina el salto calma/duda/tensión/remate por fase: era lo que producía los cortes). Cambio de pista = fundido cruzado de 2 a 3 s.
+3. Si dos escenas seguidas deben compartir música, el manifiesto lo dice (misma pista) y simplemente continúa.
+4. Las pistas crudas de Flow (2 a 3 min, MP3 ~3 MB) están FUERA del repo (ver `07-sonido.md` S.6, tabla de «Archivo crudo»: `crudo-s0.mp3`, `crudo-s2.mp3`, `crudo-s1.mp3`, `crudo-s10.mp3`). Buscarlas en el disco; si no están, bajarlas otra vez de Flow (nombres: «Restructured 8-Bit Chiptune», «Pixel Pulse», etc.; URL `https://storage.googleapis.com/producer-app-public/clips/<id>.m4a`). Convertir a MP3 96 kbps con ffmpeg SIN recortar el medio; solo un fundido de entrada corto y uno de salida.
+5. Código: `manifiesto.json` pasa a una pista por escena con `bucle: true` y `fundido`; `motor.ts` sin capas por fase (o capas apagadas); `sonido-t1.ts` `musicaDeFase` devuelve solo la escena; actualizar `sonido-t1.test.ts`, `07-sonido.md` S.6 y `disenador-de-sonido.md` (regla: «el sonido acompaña, no guía; pista entera por escena; cortes de capas por fase prohibidos»).
+6. Prueba: Ronald escucha una partida completa y dice si hay cortes. Verificar con `window.__sonido()` que `sonando` no cambia dentro de una escena.
+
+**B. Botón «Empezar de cero»**
+- Recomendado: SÍ, en dos formas. (1) Para ti como probador: botón pequeño siempre visible junto a «Sonido» que borra la partida guardada y vuelve al título, con confirmación («¿Empezar de cero? Se pierde tu avance»). (2) Producto final: queda en un menú, con la misma confirmación, y con dos opciones claras: «Repetir esta versión» y «Jugar otra versión» (ya existen al final de la prueba). Cuidar que no borre el progreso de la nube sin avisar.
+- Código: en `Mesa.tsx` limpiar la clave de partida y la semilla (`CLAVE_SEMILLA` si es versión nueva) y volver a fase «titulo»; prueba nueva en `Mesa.test.tsx`.
+
+**Orden sugerido:** B (rápido, 1 pieza) → A5 código con las pistas actuales como pruebas → A4 pistas completas → que Ronald escuche.
+
 ## ⏸ ÚLTIMO CORTE 09-10 11:25 (cuota por acabarse) — LEER ESTE BLOQUE PRIMERO
 **Estado:** todo subido a GitHub, `git status` limpio, 3955 pruebas verdes, `tsc` limpio, sin agentes corriendo. Arte propio conectado a la escena (paso 1), caras y palabras del jugador (paso 2), crítico v20 pasado (se puede mostrar) y sus 🟠 corregidos.
 **También hecho tras el corte:** recorrido en Chrome hasta el archivo sin trabas (música pedida y cargada; el audio real solo suena con un toque de Ronald); los papeles del archivo ya llevan su dibujo de documento (`docDe` en `Mesa.tsx`). **Recorrido completo comprobado en Chrome (título → fin de la prueba, J5 visible al firmar, medidores 60/60) sin trabas.** Queda solo que Ronald lo juegue y oiga la música (el audio exige su toque).

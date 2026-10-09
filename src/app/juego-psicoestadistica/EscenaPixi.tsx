@@ -5,7 +5,7 @@
  *
  * Es solo lo que se VE y se mueve: la jefa, Dani, la luz de la lámpara con polvo, el teléfono que suena. Todo lo que el alumno
  * lee o toca (diálogos, papeles, botones, tubos) es HTML en `Mesa.tsx`, para que se lea bien, se pueda tocar con el dedo y
- * funcione con el lector de pantalla. El arte es PROVISIONAL (generado por script; ver `docs/juego/bocetos/motores/aspecto-A/`).
+ * funcione con el lector de pantalla. El arte es el de la línea gráfica propia (`public/juego/psicoestadistica/arte/`); solo la luz y el polvo siguen siendo provisionales.
  *
  * PixiJS se carga recién cuando la escena aparece: el resto del sitio no paga su peso.
  */
@@ -19,8 +19,8 @@ export const ESCENA_ALTO = 150;
 
 export type Emote = "alerta" | "duda" | "feliz" | null;
 
-const IMG = (n: string) => conBase(`/juego/psicoestadistica/prov_${n}.png`);
-const POSE: Record<PoseJefa, string> = { brazos: "editora_0", cabeza: "editora_1", pulgar: "editora_2" };
+const IMG = (n: string) => conBase(`/juego/psicoestadistica/${n.startsWith("arte/") ? n : `prov_${n}`}.png`);
+const POSE: Record<PoseJefa, string> = { brazos: "arte/jefa_neutral", cabeza: "arte/jefa_preocupada", pulgar: "arte/jefa_contenta" };
 
 interface Api {
   poner: (o: { pose: PoseJefa; suena: boolean; daniCabecea: boolean }) => void;
@@ -53,20 +53,28 @@ export function EscenaPixi({ pose, suena, daniCabecea }: { pose: PoseJefa; suena
         return s;
       };
 
-      sprite("sala", 0, 0);
-      const dani = sprite("dani", 84, 80);
-      const jefa = sprite(POSE[ultimo.current.pose], 128, 56);
-      sprite("mesa", 0, 118);
-      sprite("taza", 46, 113);
-      const telefono = sprite("telefono", 150, 112);
-      sprite("lampara", 6, 64);
+      // Arte propio (línea gráfica EDG32): pared y escritorio son una pieza repetida; las figuras se dibujan al doble de tamaño.
+      const mosaico = (n: string, y: number, alto: number) => {
+        const m = new PIXI.TilingSprite(tex(n), ESCENA_ANCHO, alto);
+        m.position.set(0, y);
+        app.stage.addChild(m);
+        return m;
+      };
+      mosaico("arte/pared_ladrillo", 0, 120);
+      const dani = sprite("arte/dani_silueta_fondo", 72, 60);
+      dani.scale.set(2);
+      const jefa = sprite(POSE[ultimo.current.pose], 118, 60);
+      jefa.scale.set(2);
+      mosaico("arte/escritorio_madera", 120, ESCENA_ALTO - 120);
+      const telefono = sprite("arte/icono_telefono", 40, 92);
+      sprite("arte/lampara_mesa", 6, 82);
 
       // La noche: un velo oscuro, y la luz de la lámpara y de la ventana por encima.
       const velo = new PIXI.Sprite(PIXI.Texture.WHITE);
       velo.width = ESCENA_ANCHO;
       velo.height = ESCENA_ALTO;
       velo.tint = 0x05040c;
-      velo.alpha = 0.5;
+      velo.alpha = 0.25;
       app.stage.addChild(velo);
       const luz = (n: string, x: number, y: number, escala: number, tinte: number, alfa: number) => {
         const t = tex(n);
@@ -103,9 +111,9 @@ export function EscenaPixi({ pose, suena, daniCabecea }: { pose: PoseJefa; suena
           if (o.m.y < 60) o.m.y = 122;
         }
         const u = ultimo.current;
-        dani.y = u.daniCabecea ? 80 + Math.abs(Math.sin(t0 * 1.2)) * 2.5 : 80;
-        telefono.x = u.suena ? 150 + (Math.sin(t0 * 40) > 0 ? 1 : -1) : 150;
-        telefono.y = u.suena ? 112 + (Math.sin(t0 * 33) > 0 ? -1 : 0) : 112;
+        dani.y = u.daniCabecea ? 60 + Math.abs(Math.sin(t0 * 1.2)) * 2.5 : 60;
+        telefono.x = u.suena ? 40 + (Math.sin(t0 * 40) > 0 ? 1 : -1) : 40;
+        telefono.y = u.suena ? 92 + (Math.sin(t0 * 33) > 0 ? -1 : 0) : 92;
       });
 
       api.current = {

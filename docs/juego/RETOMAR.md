@@ -1,3 +1,6 @@
+## ✅ PASO 1 HECHO 09-10 (arte conectado a la escena)
+`EscenaPixi.tsx` ya usa `public/juego/psicoestadistica/arte/` (pared y escritorio en mosaico, jefa con 3 gestos, Dani en silueta de fondo, lámpara, teléfono entre lámpara y Dani). Comprobado en Chrome; `npm test` 3948 verdes y `tsc` limpio. Falta: critico-de-jugabilidad sobre la escena con el arte nuevo (aún no lo vio), y los pasos 2 a 5 de la lista de «CIERRE LIMPIO». Solo la luz y el polvo siguen provisionales.
+
 # RETOMAR el juego de RON_DOC (nota de relevo, 08-10-2026; actualizada 09-10)
 
 ### ✅ CIERRE LIMPIO 09-10, 09:52: Ronald cerró la sesión. Nada en segundo plano, todo subido. EMPIEZA POR AQUÍ

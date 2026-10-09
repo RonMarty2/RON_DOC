@@ -31,8 +31,8 @@ antes de mostrártelo.
 >
 > **Estado:** entrega de la etapa de narrativa, para el crítico. Autor: diseñador narrativo. **Sin nota** en este tema.
 > **Parte de:** las 8 ideas APROBADAS, la ficha ELEGIDA (`00-tema1-forma1-ficha.md`), el aprendizaje (`04`, «Tema 1 · aprendizaje v2.1», T1.3 y T1.7), el bucle (`02`, «Tema 1 · bucle y mecánicas v2», reglas G, P, R2 a R8, V, secc. 8 y 15) y el aspecto A «La redacción de noche» (luz de lámpara, pixel art a color, cara solo para la jefa y 3 a 4 principales). **El aspecto no cambia; solo el lugar y los oficios:** la sala sigue siendo una sala larga de noche con lámpara, ahora el Departamento de Orientación. Nada de eso se reabre.
-> **Decisiones pendientes de Ronald (2, de gusto; esta versión NO las resuelve, deja los textos como estaban y marca cada lugar con «pendiente Ronald»):**
-> 1. **La jefa se parece a Doña Teresa de AIEF** (la figura tras el vidrio, frases cortas que preguntan, aparece en cada entrada y cierre, sello). *Pendiente Ronald, recomendado A:* sacarle el vidrio y el sello. La jefa está en la sala, junto a la puerta con un termo; habla en frases más largas y de oficio («mira, con los chicos de 4.º pasó esto el año pasado…»); el cierre del informe es una firma a lapicera con el timbre del colegio, no un sello (el sonido E04 pasaría a pluma y timbre). Cuesta solo textos y un dibujo. B: que el sobre lo deje el propio colegio (un oficio, una nota de la secretaria) y que la jefa aparezca solo al arranque y al cierre. C: dejarlo así y avisar. Atenuante: AIEF es de Administración y este juego es de Psicología.
+> **Decisiones de Ronald:** la 1 quedó **decidida (A, 08-10)** y está aplicada en NT1.1, NT1.3 y NT1.5; la 2 sigue pendiente (de gusto; esta versión NO la resuelve, deja los textos como estaban y marca cada lugar con «pendiente Ronald»):
+> 1. **DECIDIDO A (Ronald, 08-10): la jefa ya no se parece a Doña Teresa de AIEF.** Se le sacó el vidrio y el sello. La jefa está en la sala, junto a la puerta, con un termo; habla con frases más largas y de oficio («mira, con los chicos de 4.º pasó esto el año pasado…»); el cierre del informe es una firma a lapicera con el timbre del colegio, no un sello. El sonido del gesto pasa a pluma y timbre (ver `07` punto 4). Cuesta solo textos y un dibujo.
 > 2. **Caso 5, turno 1: ¿quién aprueba (a) y (b)?** Hoy la jefa levanta el pulgar y dice «Los que más lo necesitan. Bien.», que es la trampa; pero el pulgar significa «va al informe» en los otros siete casos. *Pendiente Ronald, recomendado:* mantener la trampa y que la aprobación venga de Beto («Son los que más lo necesitaban. A ojo se ve.») o del director Ugarte; la jefa contesta neutra con una pregunta («¿Con quién los vas a comparar?»), sin el sonido de «va»; y en el turno 2, si el alumno eligió (a) o (b), la jefa dice «Yo también dije que sí.» (la vergüenza queda compartida). Alternativa: dejar el pulgar y agregar solo esa frase. Quien lo aplica: `disenador-narrativo`, y `disenador-de-sonido` quita el E08 del turno 1.
 > Hay además tres propuestas de arte (NT1.3) y los ajustes de NT1.11, que el crítico mira.
 > **Cómo se contó (v3):** esta vez sí hubo terminal. Los conteos salen de `scratch/contar_narrativa_t1.py` y de `buscar_voseo.py`, con su salida pegada en la lista de salida; cada ✔ dice si fue **script**, **a mano** o **pendiente** (pendiente cuenta como ✘).
@@ -56,13 +56,13 @@ Cómo se logra que *diga* y no solo *muestre*: (a) **cada afirmación tiene un c
 
 ### NT1.1 El mundo: el Departamento de Orientación, la víspera del consejo
 
-**Dónde estás.** En el Departamento de Orientación de un colegio de barrio, de noche, la víspera del consejo de profesores. Una sala larga con luz de lámpara: la mesa de trabajo (tu escritorio de psicólogo), el panel de acuerdos con hilos, el archivador de expedientes cerrados, el teléfono que suena, una silla al fondo donde cabecea la practicante o el practicante de psicología, y un cubículo de vidrio donde trabaja la jefa del departamento. Afuera, el patio con farolas y un café de la esquina todavía abierto. **El terreno de los casos es el que de verdad pisa un psicólogo de colegio:** sueño, convivencia, ansiedad, un taller de bienestar. Las afirmaciones no vienen de un periódico: las traen el director, las madres, los docentes y las oficinas del distrito, en informes, oficios, actas y frases dichas en reuniones.
+**Dónde estás.** En el Departamento de Orientación de un colegio de barrio, de noche, la víspera del consejo de profesores. Una sala larga con luz de lámpara: la mesa de trabajo (tu escritorio de psicólogo), el panel de acuerdos con hilos, el archivador de expedientes cerrados, el teléfono que suena, una silla al fondo donde cabecea la practicante o el practicante de psicología, y, junto a la puerta, el rincón donde la jefa del departamento deja su termo y su lapicera. Afuera, el patio con farolas y un café de la esquina todavía abierto. **El terreno de los casos es el que de verdad pisa un psicólogo de colegio:** sueño, convivencia, ansiedad, un taller de bienestar. Las afirmaciones no vienen de un periódico: las traen el director, las madres, los docentes y las oficinas del distrito, en informes, oficios, actas y frases dichas en reuniones.
 
 **Por qué estás ahí.** La semana pasada el colegio presentó al distrito un informe con una cifra que nadie había mirado y tuvo que retirarlo en pleno consejo. Desde entonces ninguna afirmación llega al consejo sin pasar por el psicólogo del departamento, y el escritorio estaba vacío. Eres quien lo ocupa. Cada noche llegan afirmaciones con tono de certeza («los estudiantes duermen poco», «subió la ansiedad», «el taller funciona»). Tu trabajo es decir si se firman, cómo se redactan, o si todavía no se sabe.
 
 **Qué tiene de Cochabamba sin copiar nada.** El patio con farolas, un café de la esquina, un colegio de barrio con su kiosco, su patio y su libro de registro, cursos «4.º A», «4.º B», una oficina del distrito que manda oficios. Los nombres de colegios, fuentes y talleres son inventados (pools en NT1.4); ninguna marca real.
 
-**Qué no se parece a otros juegos.** Es un departamento de orientación de noche con papeles, teléfono y panel de acuerdos. No hay ventanilla, mostrador, planta ni clientes con empresa. La jefa **no se asoma a sugerir**: habla desde su vidrio al entrar el caso y al salir el informe, y en medio solo cae su sobre. Nadie dice «Doña» ni «Don».
+**Qué no se parece a otros juegos.** Es un departamento de orientación de noche con papeles, teléfono y panel de acuerdos. No hay ventanilla, mostrador, planta ni clientes con empresa. La jefa **no se asoma a sugerir**: habla desde la sala, de pie junto a la puerta, al entrar el caso y al salir el informe, y en medio solo cae su sobre. Nadie dice «Doña» ni «Don».
 
 ---
 
@@ -78,7 +78,7 @@ Tabla corta; cada personaje tiene su ficha debajo. «Cara» es la propuesta al d
 
 | Personaje | Qué es | Cómo se ve (propuesta) | Aparece en |
 |---|---|---|---|
-| **Lic. Ximena Rocabado**, la jefa | Jefa del Departamento de Orientación (psicóloga con veinte años de colegio) | **Con cara**, 3 poses (brazos cruzados, cabeza entre las manos, pulgar arriba), tras el vidrio | Arranque, todos los casos (entrada y cierre), sobres, cierre del informe |
+| **Lic. Ximena Rocabado**, la jefa | Jefa del Departamento de Orientación (psicóloga con veinte años de colegio) | **Con cara**, 3 poses (brazos cruzados, cabeza entre las manos, pulgar arriba), de pie junto a la puerta con un termo | Arranque, todos los casos (entrada y cierre), sobres, cierre del informe |
 | **Profe Beto Salvatierra**, colega «a ojo» | Docente veterano de educación física y tutor de 4.º | **Con cara**, taza en mano | Arranque (de paso), caso 4 (eco), caso 5 (eco), caso 8 (propone), revelación |
 | **Director Ugarte** | Director del colegio, quien decide el taller | **Con cara**, en el caso 8 (y su voz en el turno 1 del caso 5) | Casos 5 y 8 |
 | **Señora Quiroga**, la madre | Madre de un estudiante del colegio | **Teléfono que suena** con globo, sin rostro | Caso 2 |
@@ -88,11 +88,11 @@ Tabla corta; cada personaje tiene su ficha debajo. «Cara» es la propuesta al d
 #### Lic. Ximena Rocabado, la jefa del departamento
 
 - **Qué es:** psicóloga, jefa del Departamento de Orientación, veinte años de colegio. **Qué le importa:** que el colegio no vuelva a afirmar lo que no mira, y que el escritorio de psicólogo sea de alguien que pregunte. Quiere gente que pregunte, no que sepa.
-- **Cómo habla:** frases de 4 a 10 palabras, en tuteo, de oficio. **Pregunta de vuelta** en vez de corregir. Cuenta en consejos, no en reglas. No elogia: dice «Va al informe.» Nunca nombra un concepto y **no explica**. Una sola muletilla: **«¿En qué papel te apoyas?»**.
+- **Cómo habla:** frases más largas, de 12 a 25 palabras, en tuteo y de oficio: cuenta primero algo que pasó en el colegio («mira, con los chicos de 4.º pasó esto el año pasado…») y recién después pregunta. **Pregunta de vuelta** en vez de corregir. Cuenta en consejos, no en reglas. No elogia: dice «Va al informe.» Nunca nombra un concepto y **no explica**. Una sola muletilla: **«¿En qué papel te apoyas?»**.
 - **Voz según pose:** brazos cruzados cuando algo cae mal, cabeza entre las manos cuando hay que retirar un informe, pulgar arriba cuando va al informe.
 - **Lo que no dice nunca:** «sesgo», «muestra», «regresión», «eje», «control». Esos nombres solo salen en las cartas del final.
 - **Aparece en:** arranque, entrada y cierre de cada caso, sobres, puerta de las tandas, «¿firmar?», cierre del informe.
-- **Pendiente Ronald (I2, recomendado A):** el parecido con la jefa de AIEF (vidrio, frases cortas, sello). Ver las decisiones pendientes de arriba; hasta que decida, esta ficha queda como está.
+- **Decidido A, 08-10 (I2):** sin vidrio y sin sello. Está en la sala, junto a la puerta, con un termo; habla con frases más largas; firma el informe con lapicera y el timbre del colegio. Dibujo: termo y lapicera en lugar del cubículo; el timbre es un objeto de la mesa. Nota para el crítico: los globos cortos de la jefa que siguen más abajo (entradas, sobres) se revisan contra esta voz en la próxima ronda.
 
 #### Profe Beto Salvatierra, el colega «a ojo»
 
@@ -168,7 +168,7 @@ El generador de la versión llena los huecos; ninguno se escribe a mano. Los poo
 2. «La semana pasada el colegio retiró un informe en pleno consejo. Desde entonces nada llega al consejo sin pasar por esta mesa.»
 3. «El escritorio estaba vacío. Hoy lo ocupas tú.»
 
-**Jefa** (pose brazos cruzados, desde el vidrio):
+**Jefa** (pose brazos cruzados, junto a la puerta, con el termo):
 - **«Llegaste al escritorio. Sin papeles no hay informe.»** *(sin marca de género, para que sirva a cualquier alumno.)*
 - «Primer encargo de la noche. Un dato corto, sin apuro.»
 
@@ -754,13 +754,13 @@ Cierre C8 (F8a, F8b, F8c, F8d, F8e, F8f, F8g): «Los datos bien recogidos y bien
 | 22 | **v3.1 · B1:** F3a solo dice «se pudo presentar» si el rango llevó la pieza del clave; el `ok` sin pieza va a F3b («quedó en un anexo»), que cuadra con la reacción y el sobre `S-E3f`. | v15 B1 |
 | 23 | **v3.1 · B2:** F5h dice «Abriste con qué comparar y escribiste 0. La cuenta bien hecha daba {rho}.» y ya no afirma que el taller cambió algo (distingue ρ del efecto real); `S-E5d` solo sale con ρ > 1. | v15 B2 |
 | 24 | **v3.1 · Códigos y hábitos:** la tabla de sobres usa los 29 códigos de `02` 8.1 con su hábito; los expedientes nombran los hábitos como `02` 8.2. | v15 I1 |
-| 25 | **v3.1 · I2 e I7 quedan como «pendiente Ronald»** (la jefa parecida a la de AIEF; quién aprueba (a) y (b) en el turno 1 del caso 5), con el valor recomendado escrito; los textos no cambian hasta que decida. | v15 I2, I7; decisión de Ronald |
+| 25 | **v3.1 · I2 decidida A (Ronald, 08-10)**: la jefa sin vidrio ni sello, con termo, frases más largas y cierre con firma a lapicera y timbre. **I7 sigue como «pendiente Ronald»** (quién aprueba (a) y (b) en el turno 1 del caso 5), con el valor recomendado escrito; esos textos no cambian hasta que decida. | v15 I2, I7; decisión de Ronald |
 | 26 | **v3.1 · I3 (caso 6):** C6-2 en P dice que las respuestas de la lista son de {curso}; la pieza `grupo` del tipo A es una por papel (y las dos juntas si abrió los dos). | v15 I3; `02` 5.5 |
 | 27 | **v3.1 · I5:** (a) 480 es el colegio y el caso 3 habla de «los estudiantes del colegio»; (b) el encargo del paso 1 es «¿el colegio tiene algún dato…?», la hoja «Para empezar» tiene motivo y la fila del archivo usa `{horasAnt}` y `{col2Ant}`; (c) la jefa presenta a Horizonte y Beto pasa con su taza en el arranque; (d) tarjetas «Hace un mes, otra noche como esta» y «Hoy» en el caso 5; (e) «Ugarte te espera en dirección». | v15 I5 |
 | 28 | **v3.1 · Textos:** puerta de las tandas «Para redactar un rango necesitas 2 tandas» y Ugarte con 2 fichas «Hoy hay menos tiempo en la reunión» (C6); R8.4/R8.5 y R8.6/R8.7 con frases distintas (C5); `{fuente}` por caso (C9); `{hechoClave}` en tres frases (C3); globos de la madre y de la entrada del caso 3 partidos (C2); `S-E6b` sin el 480 (C4); `S-P1` «sin que nadie lo usara» (C10); caso 7 «¿A cuál le recomendarías recortar?» (retoque de oficio de v15); jefa del caso 2 «número redondo» (I4, 4). | v15 C2 a C10 |
 | 29 | **v3.1 · Títulos (C1):** caso 4 «Dos estudios, una sola cita» (antes «Dos encuestas, un titular») y caso 6 «Los 480 de la frase» (antes «El titular de los 480»). Los ids de los casos no cambian. | v15 C1 |
 
-**Avisos a otras partes.** *Crítico:* mirar los 29 ajustes de arriba, el ajuste 1 contra la ficha, y la pregunta de la regla del oficio: *¿este papel lo haría un profesional de la carrera del alumno?* *Sonido:* sale de `07-sonido.md`; aquí solo quedan los gestos (teléfono que suena, sello, taza que se apoya). *Bucle y aprendizaje:* `02` v2 y `04` v2.1 ya usan «Firmar tal cual», «Voz», «cartas» y «jefa»; «publicar», «Lectores», «portada» y «editora» quedan solo en sus tablas de equivalencia (v15 C1). Aprendizaje debe copiar los dos títulos nuevos (casos 4 y 6) y la puerta del rango. *Construcción:* `guion-t1.ts` lleva estas cadenas como datos, con las llaves de NT1.4; `problemasDeTexto` debe pasar sobre cada una.
+**Avisos a otras partes.** *Crítico:* mirar los 29 ajustes de arriba, el ajuste 1 contra la ficha, y la pregunta de la regla del oficio: *¿este papel lo haría un profesional de la carrera del alumno?* *Sonido:* sale de `07-sonido.md`; aquí solo quedan los gestos (teléfono que suena, firma a lapicera y timbre, taza que se apoya). *Bucle y aprendizaje:* `02` v2 y `04` v2.1 ya usan «Firmar tal cual», «Voz», «cartas» y «jefa»; «publicar», «Lectores», «portada» y «editora» quedan solo en sus tablas de equivalencia (v15 C1). Aprendizaje debe copiar los dos títulos nuevos (casos 4 y 6) y la puerta del rango. *Construcción:* `guion-t1.ts` lleva estas cadenas como datos, con las llaves de NT1.4; `problemasDeTexto` debe pasar sobre cada una.
 
 ---
 
@@ -796,7 +796,8 @@ bytes de control en la seccion: 0
 | Revelación = textos de `04` v2.1 T1.7b, 72 ramas con F3k y F6k, F3a y F5h corregidas | ✔ | script | `aplicar_narrativa_v31.py` copia el bloque `GEN:T17B`; 72 ramas en 05, los mismos 72 ids de `04` T1.7a en el mismo orden, bloque idéntico; F3a, F5h, F3k y F6k impresas por el script con el texto de `04` |
 | Todas las líneas de 25 palabras o menos | ✔ | script | 0 frases entre « » con más de 25 palabras (los huecos `{…}` cuentan como una) |
 | Las ramas del caso 2 tipo B existen en `04` | ✔ | script | F2f a F2j están en `04` T1.7a (ids comparados por el script: 72 de 72) |
-| I2 (jefa parecida a la de AIEF) e I7 (caso 5, turno 1) | **✘** | pendiente | **Decisiones de gusto de Ronald**, no se resuelven aquí; quedan escritas con valor recomendado al inicio de la sección y en NT1.3 y NT1.6. Cuentan como ✘ hasta que decida |
+| I2 (jefa parecida a la de AIEF) | ✔ | a mano | Decidido A por Ronald (08-10) y aplicado en NT1.1, NT1.3 y NT1.5 (sin vidrio ni sello, termo, frases más largas, firma y timbre) |
+| I7 (caso 5, turno 1) | **✘** | pendiente | **Decisión de gusto de Ronald**, no se resuelve aquí; queda escrita con valor recomendado al inicio de la sección y en NT1.6. Cuenta como ✘ hasta que decida |
 | Los supuestos del generador (Q1 a Q9 de `04` T1.8; K1 a K3 de NT1.4) los cumple el generador | **✘** | pendiente | Se prueban en construcción (`.test.ts` de cada caso); aquí solo se dejó dicho en NT1.4 qué huecos tienen límite de palabras y que `{rho}`, `{hechosA}`, `{horasAnt}` y `{col2Ant}` son nuevos |
 | Ningún cálculo aparece de la nada | ✔ | a mano | Cada caso empieza con su documento o frase de reunión y la jefa que dice de dónde viene |
 | Sin cifras inventadas | ✔ | a mano | Los números escritos salen de la ficha, del bucle o de `04` (480, 60, 12, 13, 26, 47, 10, 150, 9, 40 contra 40, 6 horas, ocho cursos, 2,5, 25, 65, 3); el resto son `{llaves}`. Las cifras «cerca de 40 %» y «0,2 %» del caso 8 son del crítico (bucle 15) y están en una nota del equipo |
@@ -810,7 +811,7 @@ bytes de control en la seccion: 0
 | Texto que se lee, medido (12 px a 375 px, 4,5 a 1) | **✘** | pendiente | No hay pantalla en esta etapa; queda para construcción con `medir_legibilidad.py`. Solo se fijó la paleta ya medida por el bucle |
 | Lo aprobado no se reabre; archivos tocados | ✔ | a mano | Solo `05-mundo-y-narrativa.md` (sección del Tema 1) y los scripts nuevos de `scripts-t1/`; no se tocaron `02`, `04` ni `07`; `PIEZAS-COMUNES.md` §4 no cambia (los personajes y lugares son los mismos) |
 
-**Resumen:** hay **4 ✘ pendientes** (I2 e I7 que decide Ronald; los supuestos del generador Q1 a Q9 de `04` T1.8, que se prueban en construcción; y la legibilidad en pantalla). Ninguno es un error del texto; son cosas que otra etapa o Ronald deben cerrar.
+**Resumen:** hay **3 ✘ pendientes** (I7 que decide Ronald; los supuestos del generador Q1 a Q9 de `04` T1.8, que se prueban en construcción; y la legibilidad en pantalla). Ninguno es un error del texto; son cosas que otra etapa o Ronald deben cerrar.
 
 ---
 

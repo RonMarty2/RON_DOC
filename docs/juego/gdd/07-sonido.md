@@ -15,7 +15,7 @@
 1. **Licencia de Flow Music** (ver arriba). Es suya; bloquea toda integración.
 2. **Efectos chicos: ¿por código o por Flow?** Recomendado: **sintetizarlos por código** los 9 efectos más simples (E01 a E05 y E10 a E13: clics, teclas, ticks, campanilla de ayuda, notas de las fichas), porque no gastan créditos, pesan casi nada y no dependen de la licencia; y pedir a Flow solo los 4 con carácter (teléfono, pulgar arriba, cabeza entre las manos, sobre). Alternativa: todo en Flow (más créditos, más peso, más dependencia de la licencia).
 3. **Orden de generación para cuidar créditos.** Cada pedido devuelve 2 versiones y gasta 2 generaciones del plan gratuito. Recomendado: primero **3 pedidos** (Arranque, Caso 2 y Revelación = 6 generaciones), Ronald los escucha, y recién después se piden los demás. Si no le gusta el rumbo, no se gastó el resto.
-4. **Condicional, no aplicado: ¿qué elige Ronald para la jefa (`06` I2)?** Si elige la opción A (la jefa en la sala, sin vidrio ni sello; el cierre es una firma a lapicera con el timbre del colegio), **E04 pasa a pluma y timbre**: el rasgueo de la pluma y el golpe de un timbre, con el mismo timbre para los tres botones y un tono neutro distinto cada uno (como ya dice E04 desde la v2). Hasta que decida, E04 queda como está en el kit.
+4. **Decidida A, 08-10: la jefa del Tema 1 (`06` I2).** Ronald eligió la opción A (la jefa en la sala, sin vidrio ni sello; el cierre es una firma a lapicera con el timbre del colegio), así que **E04 pasa a pluma y timbre**: el rasgueo de la pluma y el golpe de un timbre, con el mismo timbre para los tres botones y un tono neutro distinto cada uno (como ya decía E04 desde la v2). Ya no hay golpe de sello de la jefa en ninguna hoja ni en el kit.
 5. **Condicional, no aplicado: ¿qué elige Ronald en el caso 5 (`06` I7)?** Si elige lo recomendado (la aprobación del turno 1 pasa a Beto o a Ugarte y la jefa contesta con una pregunta), **se quita E08 del turno 1 de S5** y la excepción de S.0 sobre el pulgar del caso 5 desaparece. Hasta que decida, S5 queda como está.
 
 ---
@@ -79,7 +79,7 @@ Un efecto igual para toda situación equivalente. Marca de origen: **[C]** = sin
 | E01 | Abrir un papel | Roce de papel corto (ruido seco de ~80 ms) con un tono bajo suave; **idéntico para todo papel**. | [C] |
 | E02 | Gastar una ficha | Un «tick» doble grave y seco, como sellar una casilla. | [C] |
 | E03 | Escribir un número | Un blip de onda cuadrada por dígito, **siempre el mismo tono** (que no suene a más ni a menos). | [C] |
-| E04 | Sellar | Los tres botones con **el mismo timbre** (un clic corto de onda de pulso) y un **tono neutro distinto** cada uno (Firmar tal cual = grave, Redactar = medio, Frenar = agudo); **iguales en toda versión**, sin carga de «bueno» ni de «malo» (`06` I4.1). *Condicional (Decisión 4): con la opción A en la jefa pasaría a pluma y timbre.* | [C] |
+| E04 | Sellar | Los tres botones con **el mismo timbre** (un clic corto de onda de pulso) y un **tono neutro distinto** cada uno (Firmar tal cual = grave, Redactar = medio, Frenar = agudo); **iguales en toda versión**, sin carga de «bueno» ni de «malo» (`06` I4.1). *Decisión 4 (decidida A, 08-10): suena a pluma y timbre; el rasgueo de la pluma y luego el golpe de un timbre, sin sello.* | [C] |
 | E05 | «¿Firmar? Después no hay vuelta» | Una nota baja sostenida de ~1 s que se corta cuando respondes. | [C] |
 | E06 | Cae el sobre de la jefa | Deslizar de papel y golpe suave sobre la mesa; **idéntico para todo sobre**, diga lo que diga, y solo cuando el sobre se ve caer. | [F] |
 | E07 | Teléfono que suena | Doble tono clásico de teléfono en 8 bits, un timbre por quien llama; solo suena **junto a la llamada visible**. | [F] |
@@ -239,11 +239,11 @@ Un efecto igual para toda situación equivalente. Marca de origen: **[C]** = sin
 2. **Si el bucle empalma** (el final con el inicio de A) y si Flow respeta las secciones en la línea de tiempo.
 3. **La Decisión 2** (efectos por código o por Flow).
 4. **La licencia de Flow Music** (suya). Hasta entonces: solo pruebas, nada se integra.
-5. **Las dos decisiones condicionales** (Decisiones 4 y 5): la jefa de `06` I2 (si elige A, E04 pasa a pluma y timbre) y el caso 5 de `06` I7 (si elige lo recomendado, se quita E08 del turno 1). No están aplicadas.
+5. **Dos decisiones** (Decisiones 4 y 5): la jefa de `06` I2, **decidida A el 08-10 y aplicada** (E04 pasa a pluma y timbre), y el caso 5 de `06` I7 (si elige lo recomendado, se quita E08 del turno 1), que sigue **pendiente y sin aplicar**.
 
 ## S.5 Avisos a otras partes
 
-- *Narrativa:* los gestos de sonido de NT1.11 (teléfono, sello, taza) están en el kit (E04, E07, S10). No se tocó ningún texto del alumno. *Narrativa (v15 I4.4):* el ánimo del caso 2 pasó a curioso y neutro; encaja con la jefa que dice «número redondo» (ajuste 28 de NT1.11).
+- *Narrativa:* los gestos de sonido de NT1.11 (teléfono, pluma y timbre, taza) están en el kit (E04, E07, S10). No se tocó ningún texto del alumno. *Narrativa (v15 I4.4):* el ánimo del caso 2 pasó a curioso y neutro; encaja con la jefa que dice «número redondo» (ajuste 28 de NT1.11).
 - *Construcción:* un módulo de audio propio (`src/lib/juego/` según la regla de motor común), que (a) no suene hasta el primer toque, (b) tenga botón de silenciar visible con estado guardado en una clave nueva, (c) cargue solo la pista de la escena y la corte con fundido, (d) tenga los efectos [C] como funciones de Web Audio con pruebas. Un cambio nativo en la app no hace falta (el sitio carga igual). **No se escribió código.**
 - *Crítico:* revisar la regla de oro (S.0) contra las 11 hojas y que ningún efecto marque correcto o incorrecto antes del mundo.
 
@@ -267,7 +267,7 @@ Los conteos salen de búsquedas sobre este archivo con la herramienta Grep (sin 
 | Web y app por igual, primer toque, pistas cortas con bucle | S.0 («Web y app por igual», «Peso») | ✔ |
 | Ajustes del crítico v15: I4 (cinco sonidos que juzgan) y C8 (huecos y descuidos) | I4.1 en E04; I4.2 en S0; I4.3 en S5; I4.4 en S1 y S2; I4.5 en S3; C8a en Decisión 2; C8b en «Peso»; C8c en S1 a S8 y E06/E07; C8d y C8e en S2 y S.0; C8f en S7; C8g en S4; C8h en S10; C8i en cabeceras. Búsqueda con Grep de cada cambio | ✔ (a mano; el crítico recuenta con script) |
 | C6 (dos líneas de la jefa y de Ugarte) | **No toca al sonido:** `07` no cita ninguna de las dos frases (Grep de las dos frases fuera de esta fila: 0); las corrige `disenador-narrativo` | ✔ (no aplica) |
-| Decisiones de Ronald sin resolver (jefa `06` I2; caso 5 `06` I7) | Decisiones 4 y 5 de este archivo, marcadas «condicional, no aplicado» | ✘ pendiente de Ronald |
+| Decisiones de Ronald (jefa `06` I2: decidida A, 08-10, aplicada; caso 5 `06` I7: sin resolver) | Decisión 4 aplicada; Decisión 5 sigue «condicional, no aplicado» | ✘ pendiente de Ronald (solo la Decisión 5) |
 | Licencia pendiente de Ronald, dicha en el documento | sección «⚠ Licencia» al principio | ✔ |
 | Cada escena, su propia música; ninguna copiada de otra materia | tabla S.1: 11 filas; 9 BPM distintos (66, 84, 76, 108, 92, 72, 96, 88, 80) más 60 repetido en S9 y S10, y tonalidades distintas salvo Sol mayor en S1, S9 y S10; la paleta general se declara propia del Tema 1 | ✔ (S9 y S10 comparten tempo y tonalidad a propósito, son dos momentos del mismo cierre) |
 | Oficio de la carrera (3 líneas) | Carrera: Psicología. Oficio: psicólogo o psicóloga de colegio que verifica afirmaciones con datos. Papel del jugador: psicólogo del Departamento de Orientación (vigente en `05` NT1.1 a NT1.3). Las 11 hojas usan oficina, papeles, teléfono, sala de dirección | ✔ |

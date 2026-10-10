@@ -51,7 +51,7 @@ async function hastaElCaso2() {
   hay(G.ARCHIVO.jefa);
   pasarDialogo(/^A los papeles/);
   hay(G.OBJETIVO.archivo1);
-  hay(G.PAPELES_MESA.releer);
+  hay(G.ARCHIVO.consigna); // sin papeles leídos, la nota dice cómo se abre uno (no «releer es gratis»)
   const sueno = p.carpetas.porCaso[1].claves[0];
   pulsa(new RegExp(`^${papel(1, sueno)}`));
   expect(screen.getByRole("dialog")).toBeTruthy();
@@ -97,6 +97,7 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
     expect(screen.queryByText(G.ARCHIVO2.sinPapeles)).toBeNull();
     // Un papel ya leído se puede releer gratis y queda marcado.
     expect(screen.getByRole("button", { name: /ya leído, releer es gratis/ })).toBeTruthy();
+    hay(G.PAPELES_MESA.releer);
     pulsa(G.PAPELES_MESA.decidir);
     pulsa("Redactar la frase");
     hay(G.FRASE.instruccion);
@@ -169,6 +170,19 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
     fireEvent.change(campos[0], { target: { value: "7,5" } });
     pulsa(/^Seguir/);
     hay(G.ARCHIVO.jefa); // la jefa abre el archivo
+  });
+  it("sin fichas: los papeles nuevos quedan bloqueados con su aviso y los leídos se pueden releer", async () => {
+    await hastaElCaso2();
+    const ids = p.carpetas.porCaso[2].papeles.map((q) => q.id);
+    for (const id of ids.slice(0, 3)) {
+      pulsa(new RegExp(`^${papel(2, id)}`));
+      pulsa(/^Cerrar/);
+    }
+    hay(G.PAPELES_MESA.sinFichas);
+    expect(screen.queryByText(G.PAPELES_MESA.releer)).toBeNull();
+    expect((screen.getByRole("button", { name: new RegExp(`^${papel(2, ids[3])}.*sin fichas`) }) as HTMLButtonElement).disabled).toBe(true);
+    pulsa(new RegExp(`^${papel(2, ids[0])}.*releer es gratis`)); // releer no cuesta ficha
+    pulsa(/^Cerrar/);
   });
   it("«De cero» pide confirmación, borra el avance y vuelve al título; «No» no toca nada", async () => {
     await hastaElCaso2();

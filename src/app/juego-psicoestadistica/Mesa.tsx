@@ -175,14 +175,14 @@ function Objetivo({ texto }: { texto: string }) {
 }
 
 /** Los papeles, sueltos sobre el escritorio: tarjetas compactas con nombre corto; leído = borde punteado y «✓ leído»; releer es gratis. */
-function PapelesMesa({ ids, nombres, abiertos, fichas, total, sinPapeles, extra, onAbrir }: { ids: string[]; nombres: Record<string, string>; abiertos: readonly string[]; fichas: number; total: number; sinPapeles?: string; extra: ReactNode; onAbrir: (id: string) => void }) {
+function PapelesMesa({ ids, nombres, abiertos, fichas, total, notaInicial, sinPapeles, extra, onAbrir }: { ids: string[]; nombres: Record<string, string>; abiertos: readonly string[]; fichas: number; total: number; notaInicial?: string; sinPapeles?: string; extra: ReactNode; onAbrir: (id: string) => void }) {
   return (
     <div className="mesa-papeles">
       <div className="mesa-papeles-fila">
         <Fichas n={fichas} total={total} corto />
         {extra}
       </div>
-      <p className="mesa-papeles-nota">{sinPapeles ?? G.PAPELES_MESA.releer}</p>
+      <p className="mesa-papeles-nota" aria-live="polite">{sinPapeles ?? (fichas <= 0 && ids.some((id) => !abiertos.includes(id)) ? G.PAPELES_MESA.sinFichas : abiertos.length > 0 ? G.PAPELES_MESA.releer : notaInicial)}</p>
       <ul className="mesa-papeles-lista">
         {ids.map((id) => {
           const abierto = abiertos.includes(id);
@@ -545,6 +545,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           abiertos={papelesVistosPaso1(paso1)}
           fichas={fichas1}
           total={total1}
+          notaInicial={G.ARCHIVO.consigna}
           onAbrir={abrirP1}
           extra={
             asombroVisto ? (
@@ -787,9 +788,8 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
         {intro2 && <Dialogo key="a2" p={p} lineas={[G.ARCHIVO2.consigna].map((texto) => ({ quien: "jefa" as const, texto }))} onFin={() => setIntro2Hecha(true)} onLinea={alLinea} fin="A los papeles >" />}
 
         {((fase === "archivo2" && verDecidir) || fase === "frase" || fase === "confirma") && (
-          <section className="mesa-bloque">
-            <h2>Caso 2 · {G.CASO2.titulo}</h2>
-            <Fichas n={fichasRestantes(carpeta2)} total={carpeta2.fichas} />
+          <section className={`mesa-bloque${fase === "archivo2" ? " decide" : ""}`}>
+            <h2 className={fase === "archivo2" ? "mesa-solo-lector" : undefined}>Caso 2 · {G.CASO2.titulo}</h2>
             <div className="mesa-corcho">
               <h3>Corcho</h3>
               {carpeta2.abiertos.length === 0 ? (
@@ -812,46 +812,25 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
 
             {fase === "archivo2" && carpeta2.abiertos.length === 0 && <Cita texto={G.ARCHIVO2.sinPapeles} />}
             {fase === "archivo2" && (
-              <button type="button" className="mesa-boton sec" onClick={() => setVerDecidir(false)}>
-                {G.PAPELES_MESA.volver}
-              </button>
+              <div className="mesa-acciones decidir" role="group" aria-label="Qué haces con el informe">
+                {(
+                  [
+                    ["tal", G.BOTONES_SELLO.tal, G.ARCHIVO2.explicaTal, () => { setDecision("tal"); setFase("confirma"); }],
+                    ["frase", G.BOTONES_SELLO.frase, G.ARCHIVO2.explicaFrase, () => setFase("frase")],
+                    ["frenar", G.BOTONES_SELLO.frenar, G.ARCHIVO2.explicaFrenar, () => { setDecision("frenar"); setFase("confirma"); }],
+                  ] as const
+                ).map(([id, rotulo, explica, alTocar]) => (
+                  <button key={id} type="button" className="mesa-boton mesa-opcion-boton" aria-label={rotulo} aria-describedby={`explica-${id}`} onClick={alTocar}>
+                    <span id={`explica-${id}`} className="mesa-opcion-txt">{explica}</span>
+                  </button>
+                ))}
+              </div>
             )}
 
             {fase === "archivo2" && (
-              <div className="mesa-acciones" role="group" aria-label="Qué haces con el informe">
-                <div className="mesa-opcion">
-                  <button
-                    type="button"
-                    className="mesa-boton"
-                    onClick={() => {
-                      setDecision("tal");
-                      setFase("confirma");
-                    }}
-                  >
-                    {G.BOTONES_SELLO.tal}
-                  </button>
-                  <p className="mesa-pequeno">{G.ARCHIVO2.explicaTal}</p>
-                </div>
-                <div className="mesa-opcion">
-                  <button type="button" className="mesa-boton" onClick={() => setFase("frase")}>
-                    {G.BOTONES_SELLO.frase}
-                  </button>
-                  <p className="mesa-pequeno">{G.ARCHIVO2.explicaFrase}</p>
-                </div>
-                <div className="mesa-opcion">
-                  <button
-                    type="button"
-                    className="mesa-boton"
-                    onClick={() => {
-                      setDecision("frenar");
-                      setFase("confirma");
-                    }}
-                  >
-                    {G.BOTONES_SELLO.frenar}
-                  </button>
-                  <p className="mesa-pequeno">{G.ARCHIVO2.explicaFrenar}</p>
-                </div>
-              </div>
+              <button type="button" className="mesa-boton sec" onClick={() => setVerDecidir(false)}>
+                {G.PAPELES_MESA.volver}
+              </button>
             )}
 
             {fase === "frase" && (
@@ -908,12 +887,21 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
               )}
               <p>{G.BOTONES_SELLO.confirmaTitulo}</p>
               <div className="mesa-acciones">
-                <button type="button" className="mesa-boton" onClick={sellar} autoFocus>
-                  {G.BOTONES_SELLO.si}
-                </button>
-                <button type="button" className="mesa-boton sec" onClick={() => setFase(decision === "frase" ? "frase" : "archivo2")}>
-                  {G.BOTONES_SELLO.no}
-                </button>
+                {(() => {
+                  // Sin papeles abiertos lo prudente es «Todavía no»: va primero y es el botón principal.
+                  const sinPapeles = carpeta2.abiertos.length === 0;
+                  const si = (
+                    <button key="si" type="button" className={sinPapeles ? "mesa-boton sec" : "mesa-boton"} onClick={sellar} autoFocus={!sinPapeles}>
+                      {G.BOTONES_SELLO.si}
+                    </button>
+                  );
+                  const no = (
+                    <button key="no" type="button" className={sinPapeles ? "mesa-boton" : "mesa-boton sec"} onClick={() => setFase(decision === "frase" ? "frase" : "archivo2")} autoFocus={sinPapeles}>
+                      {G.BOTONES_SELLO.no}
+                    </button>
+                  );
+                  return sinPapeles ? [no, si] : [si, no];
+                })()}
               </div>
             </div>
           </div>
@@ -972,7 +960,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
         )}
       </div>
 
-      {hayMas && (
+      {hayMas && fase !== "confirma" && !leyendo && !extra && (
         <button type="button" className="mesa-mas" onClick={() => panel.current?.scrollBy({ top: 160, behavior: "smooth" })} aria-label="Hay más abajo: desplazar">
           ▾ más
         </button>

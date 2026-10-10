@@ -14,7 +14,7 @@ async function medir(tag){
     const R=s=>{const e=document.querySelector(s); if(!e) return null; const r=e.getBoundingClientRect(); return {t:Math.round(r.top),b:Math.round(r.bottom),h:Math.round(r.height)}};
     const pp=[...document.querySelectorAll('.mesa-pp')].map(e=>{const r=e.getBoundingClientRect();return {w:Math.round(r.width),h:Math.round(r.height)}});
     const small=[...document.querySelectorAll('.mesa *')].filter(e=>e.children.length===0&&e.textContent.trim()&&parseFloat(getComputedStyle(e).fontSize)<12).length;
-    return {vh:innerHeight,tubos:R('.mesa-tubos'),papeles:R('.mesa-papeles'),panel:R('.mesa-panel'),n:pp.length,minw:Math.min(...pp.map(x=>x.w)),minh:Math.min(...pp.map(x=>x.h)),small,obj:document.querySelector('.mesa-objetivo')?.innerText};
+    return {vh:innerHeight,tubos:R('.mesa-tubos'),papeles:R('.mesa-papeles'),panel:R('.mesa-panel'),n:pp.length,minw:Math.min(...pp.map(x=>x.w)),minh:Math.min(...pp.map(x=>x.h)),small,obj:document.querySelector('.mesa-objetivo')?.innerText,btnsDecidir:[...document.querySelectorAll('.mesa-acciones .mesa-boton')].map(e=>{const r=e.getBoundingClientRect();return [Math.round(r.top),Math.round(r.bottom)]})};
   });
   const top=r.tubos?r.tubos.b:60; const bajo=(r.papeles||r.panel)?.t ?? r.vh; 
   console.log(JSON.stringify({tag,W,H,libre_px:bajo-top,libre_pct:Math.round(100*(bajo-top)/r.vh),...r}));

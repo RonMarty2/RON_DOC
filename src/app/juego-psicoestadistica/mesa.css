@@ -234,3 +234,12 @@
 .mesa-tubos.solo { grid-template-columns: 1fr; }
 .mesa-panel:empty { display: none; }
 @media (min-width: 700px) { .mesa-papeles { left: 50%; right: auto; width: min(480px, 100%); transform: translateX(-50%); } }
+.mesa-bloque.decide .mesa-corcho { order: 9; }
+/* Hoja «Decidir»: cada opción es un solo toque con su línea dentro, para que las tres entren sin desplazar (crítico v26) */
+.mesa-acciones.decidir { gap: 8px; }
+.mesa-opcion-boton { flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 3px; text-align: left; min-height: 56px; padding: 6px 12px; }
+.mesa-opcion-txt { font-family: var(--mesa-dialogo), ui-monospace, monospace; font-size: 17px; line-height: 1.25; letter-spacing: 0; }
+.mesa-bloque.decide { gap: 10px; }
+.mesa-bloque.decide .mesa-acciones { order: 1; }
+.mesa-bloque.decide > .mesa-boton.sec { order: 2; }
+.mesa-bloque.decide .mesa-corcho { order: 9; }

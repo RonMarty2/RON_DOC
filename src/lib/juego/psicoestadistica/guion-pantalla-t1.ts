@@ -73,7 +73,7 @@ export const OBJETIVO = {
 } as const;
 
 /** Línea de fichas sobre los papeles de la mesa (releer un papel ya abierto es gratis). */
-export const PAPELES_MESA = { releer: T("B-mesa-1"), decidir: T("B-mesa-2"), volver: T("B-mesa-3"), fichas: T("B-mesa-4") } as const;
+export const PAPELES_MESA = { releer: T("B-mesa-1"), decidir: T("B-mesa-2"), volver: T("B-mesa-3"), fichas: T("B-mesa-4"), sinFichas: T("B-mesa-5") } as const;
 
 /** Nombre corto de cada papel para la mesa (la tarjeta es chica: máx. 20 caracteres, ninguna palabra de más de 10). El nombre completo sigue en el título del papel abierto. */
 const NOMBRES_CORTOS: Record<string, string> = {

@@ -2,6 +2,46 @@
 
 **Versión 15 · 08-10-2026** (la entrada más nueva, narrativa v3 y sonido v1 del Tema 1 de Psicoestadística, está justo debajo de las decisiones; la v14, simulación del bucle v2, va después; la v14 está antes de la v13; la v13, antes de la v12) · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
+## v24 · paso 1 construido de la pantalla inmersiva (10-10-2026) · Tema 1 de Psicoestadística (Psicología)
+
+**Qué se revisó:** commit `adf2405` (`EscenaPixi.tsx`, `mesa.css`) jugado de punta a punta con Playwright + Chromium a 412×860 y 375×667 (capturas en el scratchpad, no en el repo). Script guardado: `scripts-t1/medir_inmersiva_v24.mjs` (por fase: oficina libre sin cabecera del sitio, panel ni medidores; cruces de «De cero»/«Sonido» con medidores; desplazamiento del panel; textos <12 px). El teclado se probó a mano con el visor reducido a 500 px (no hay script). Oficio: sin cambio (psicólogo de colegio): ✔. Los textos no cambian todavía; no se califica lo pendiente (papeles sueltos, «Tu objetivo» por fase, hojas Decidir y Qué pasó).
+
+**Veredicto:** **no se muestra a Ronald todavía** como «ya se ve la oficina»: en archivo, Decidir y fin el panel de 55 % tapa el escritorio entero y a la jefa, y a 375×667 con medidores queda 18 a 20 % de oficina. Es buena base (la oficina es el fondo, no hay cruces, 0 textos <12 px, 0 errores de consola), pero con los hallazgos 1 a 4 corregidos.
+
+### Medición (oficina libre = mesa sin medidores ni panel; % de la mesa)
+| Fase | 412×860 | 375×667 | Jefa tapada por el panel |
+|---|---|---|---|
+| Título / diálogo | 68 / 69 % | 58 / 54 % | no |
+| Archivo (papeles) y lector | 45 % | 45 % | **sí** (queda el pelo) |
+| Medidores aparecen (diálogo) | 48 % | 26 % | no |
+| Decidir (confirma) | **26 %** | **20 %** | **sí** |
+| Reacción | 45 % | 27 % | no |
+| Fin | **26 %** | **20 %** | **sí** |
+Medidores: 95 px de alto (rótulos en 3 renglones); «De cero»/«Sonido» no los tocan ni se pisan entre sí.
+
+### Las tres preguntas por fase (como alumno que no sabe nada)
+| Fase | (a) ¿Qué hago? | (b) ¿Qué cambió y por qué? | (c) ¿Qué me llevo? |
+|---|---|---|---|
+| Diálogo | Leo y toco «Siguiente»: se entiende, la oficina se ve entera | Aparecen los medidores con «25 peligro / 65 meta»: bien | — |
+| Archivo | «Toca un papel…», pero llego con el panel desplazado y no veo el título (hallazgo 2) | Papel abierto cubre todo: ok | — |
+| Decidir | Se entiende el aviso; no se ven escritorio ni jefa (hallazgo 1) | Los medidores quedan bajo el velo de la ventana (hallazgo 6) | — |
+| Reacción | Leo | «Credibilidad baja 20 · Voz sube 10» con los medidores a la vista: causa y efecto coinciden | Sí |
+| Fin | Texto largo con el botón fuera de vista | Medidores arriba, bien | Sí, pero hay que desplazar sin señal |
+
+### Hallazgos (de más a menos grave)
+| # | Gravedad | Qué pasa | Por qué importa | Propuesta | Agente que debió evitarlo |
+|---|---|---|---|---|---|
+| 1 | 🔴 | **El panel al 55 % tapa todo el escritorio y a la jefa** en archivo, Decidir y fin (el escritorio empieza al 56 % del alto; el panel, al 45 %). Con los papeles sueltos del paso 2 no habría dónde ponerlos; a 375×667 con medidores quedan 18 a 20 % de oficina (el plan pedía ≥ 42 %) | Es el pedido de Ronald («mientras más texto, dejo de ver la escena»): la escena desaparece justo donde se decide | Subir el escritorio al 45 % del alto (hoy 56 %), panel máximo 45 % y medidores compactos (rótulos en una línea, ≈ 56 px en vez de 95); medir otra vez con `medir_inmersiva_v24.mjs` hasta ≥ 40 % a 375×667 en Decidir | director-de-juego (2.ª vez: cifra de plan sin medir, v23 #1) |
+| 2 | 🟠 | **El panel llega desplazado de la fase anterior** (scrollTop 194 al abrir «El archivo del colegio», 359 a 375 px de ancho): el alumno no ve el título ni empieza arriba | Pierde el comienzo de cada pantalla | Al cambiar `fase`, `scrollTop = 0` en el panel (efecto en `Mesa.tsx`) | construcción |
+| 3 | 🟠 | **Panel con scroll sin señal**: fin (515 > 327 px) y Decidir (985 > 327 px) cortan el último renglón y el botón sin «▾ más» ni sombra (v23 #1 ya lo pedía) | «Todavía no» o «Volver al título» quedan fuera de vista | Sombra inferior fija o «▾ más» cuando `scrollHeight > clientHeight` | construcción (2.ª vez) |
+| 4 | 🟠 | **Teclado** (visor 500 px): `.mesa` tiene `min-height: 560px` y se sale 125 px de la pantalla; con el campo enfocado el panel visible mide ≈ 190 px y «Seguir» queda bajo el teclado (los campos sí se escriben) | «Poner las mías» es lo primero que se juega | `min-height: min(560px, 100dvh)` y ocultar los medidores con un campo enfocado | construcción |
+| 5 | 🟡 | El lienzo se **recrea entero** cuando cambia el alto (efecto con `[alto]`): rotar o esconderse la barra del navegador reinicia PixiJS | v23 #7 ya lo advertía | Recrear solo si el alto cambia ≥ 12 %, o fijarlo al primer valor | construcción (2.ª vez) |
+| 6 | 🟡 | La ventana de «Decidir» oscurece también los medidores y la oficina | Al firmar el alumno quiere ver los números | Velo solo sobre el panel; se resuelve con la hoja Decidir (paso 4) | construcción |
+
+**Qué está bien y conviene no tocar:** escena de fondo con encuadre por proporción (ventana, reloj, lámpara y jefa, 68 % libre en título y diálogo); medidores en dos columnas con «25 peligro» y «65 meta» legibles; «De cero» y «Sonido» sin cruces; 0 textos <12 px; 0 errores de consola; «Poner las mías» se escribe.
+
+**Mejoras a agentes que propongo:** `director-de-juego`: toda cifra de «oficina libre» en un plan se mide con captura en 375×667 y 412×860, no se resta (2.ª vez). `construcción`: poner el scroll de un panel en 0 al cambiar de fase y probar con el visor reducido a la altura del teclado.
+
 ## v23 · plan y boceto de la pantalla inmersiva (09-10-2026) · Tema 1 de Psicoestadística (Psicología)
 
 **Qué se revisó:** `plan-psicoestadistica-tema1-pantalla-inmersiva.md` y `bocetos/inmersiva/index.html`, abierto con Playwright + Chromium; capturas de las 10 vistas (5 pantallas × 412×860 y 1100×700) en el scratchpad (no en el repo). Script guardado: `scripts-t1/medir_inmersiva_v23.mjs` (mide área libre, figuras tapadas, fuentes <12 px, botones <44 px, cortes). Oficio: las tres líneas están (psicólogo de colegio): ✔. Es un boceto estático de bloques: no prueba PixiJS, teclado ni botón atrás (eso queda por riesgo, no por medición).

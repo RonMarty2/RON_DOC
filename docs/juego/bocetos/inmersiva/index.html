@@ -34,6 +34,15 @@ p.nota{max-width:900px;margin:4px 0 10px;color:var(--tenue)}
 .of .carpeta{position:absolute;left:12%;bottom:12%;width:30%;height:14%;background:#c9a96a;border:3px solid #8b6a3e}
 .w .of .carpeta{left:10%;bottom:10%;width:14%;height:12%}
 .of .tel{position:absolute;right:8%;bottom:14%;width:11%;height:8%;background:#2a2236;border:3px solid #6a5fa0}
+/* Papeles sueltos sobre el escritorio: cada uno es un botón (≥ 44 px) con su nombre debajo */
+.papeles{position:absolute;left:3%;right:3%;bottom:2%;display:grid;gap:8px}
+.w .papeles{left:26%;right:26%}
+.papeles .gr{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.pp{display:grid;justify-items:center;gap:3px;padding:6px 4px;background:rgba(244,236,214,.10);border:2px solid #8b6a3e;color:var(--texto);font:inherit;font-size:14px;line-height:1.15;text-align:center;min-height:84px}
+.pp img{width:40px;height:50px;image-rendering:pixelated}
+.pp.vis{opacity:.5;border-style:dashed}
+.papeles .fich{font-size:15px;color:var(--tenue)}
+.of.libre .carpeta,.of.libre .tel{display:none}
 .sombra{position:absolute;inset:0;background:rgba(5,4,12,.38)}
 
 /* Medidores compactos + objetivo: siempre arriba */
@@ -114,7 +123,12 @@ const cab = (c,v,obj=true)=>`
   </div>
   ${obj?`<div class="obj">${obj===true?"<b>Objetivo:</b> saber cómo se contó el cero":obj}</div>`:""}
 </div>`;
-const ofi = (sombra)=>`<div class="of"><div class="vent"><div class="luna"></div></div><div class="jefa"></div><div class="dani"></div><div class="lampara"></div>
+const IMG="../../../../public/juego/psicoestadistica/arte/";
+const PAPS=[["doc_registro","Libro de registro"],["doc_informe","Informe del orientador"],["doc_correo","Correo de la secretaria"],["doc_acta","Acta del consejo"],["doc_calendario","Calendario de actividades"],["doc_lista","Lista de tutores"]];
+const papelesMesa = (vistos)=>`<div class="papeles"><div class="fich">Fichas: <i class="on" style="display:inline-block;width:12px;height:12px;background:#ffd078;border-radius:50%"></i> <i class="on" style="display:inline-block;width:12px;height:12px;background:#ffd078;border-radius:50%"></i> <i style="display:inline-block;width:12px;height:12px;background:#ffd078;border-radius:50%"></i> · toca un papel para leerlo</div>
+ <div class="gr">${PAPS.map(([f,n],i)=>`<button class="pp${i<vistos?" vis":""}"><img src="${IMG}${f}.png" alt=""><span>${n}</span></button>`).join("")}</div>
+ <button class="bt">Decidir el informe ▸</button></div>`;
+const ofi = (sombra,libre)=>`<div class="of${libre?" libre":""}"><div class="vent"><div class="luna"></div></div><div class="jefa"></div><div class="dani"></div><div class="lampara"></div>
  <span class="rot" style="left:9%;top:42%">ventana</span><span class="rot" style="left:60%;top:50%">jefa</span>
  <div class="mesa"></div><div class="carpeta"></div><div class="tel"></div></div>${sombra?'<div class="sombra"></div>':''}`;
 const hoja=(titulo,cuerpo,barra)=>`<div class="hoja"><div class="tope"><h3>${titulo}</h3><button class="cerrar" aria-label="Cerrar">✕</button></div><div class="cuerpo">${cuerpo}</div>${barra||""}</div>`;
@@ -122,6 +136,7 @@ const S = {
  "1 · Diálogo (la jefa abre el Caso 2)": ()=> ofi(false)+cab(60,60,false)+`
   <div class="dlg"><div class="fila2"><div class="cara">cara</div><div><div class="q">LA JEFA</div><p>El director quiere este informe mañana: "cero denuncias". Antes de firmarlo, averigua cómo se contó ese cero.</p></div></div>
   <button class="bt">Siguiente ▸</button></div>`,
+ "1b · Archivo: los papeles sueltos sobre el escritorio (antes de abrir uno)": ()=> ofi(false,true)+cab(60,60)+papelesMesa(1),
  "2 · Archivo con un papel abierto": ()=> ofi(true)+cab(60,60)+hoja("Correo de la secretaria · papel 2 de 6",
    `<div class="fichas">Fichas: <i class="on"></i><i class="on"></i><i></i> (te quedan 2)</div>
     <p>"Desde marzo, solo anotamos las denuncias firmadas por un adulto."</p>

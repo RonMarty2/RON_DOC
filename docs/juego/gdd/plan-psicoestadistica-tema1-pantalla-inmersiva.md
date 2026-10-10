@@ -167,3 +167,6 @@ El crítico midió el boceto (412×860) y la cifra «la oficina queda visible al
 6. Fichas: 3 (el boceto mostraba 4).
 7. Orden de construcción: mover las figuras en la escena va en el **paso 1**, y el paso 5 se parte en dos. Se anota el orden definitivo al empezar a construir.
 Las cifras definitivas se vuelven a medir en la pantalla real, con capturas, antes de dar cada paso por bueno.
+
+## Papeles sueltos sobre el escritorio (pedido de Ronald 09-10, medido en el boceto «1b»)
+Seis papeles con su ícono (los de `public/juego/psicoestadistica/arte/doc_*.png`) y su nombre debajo, en dos filas de tres sobre la mesa, más un botón «Decidir el informe». Medido a 412×860: cada papel 123×101 px (toque cómodo, mínimo pedido 44 px); la zona de papeles y botón ocupa 293 px (34 %); la cabecera 104 px (12 %); **entre ambas la oficina se ve 443 px (52 %)**, y el escritorio es parte de la escena. Los ya leídos se ven apagados y con borde punteado. Pendiente de medir: casos con 8 o 9 papeles (dos filas de cuatro o una fila que se desliza) y la caja de diálogo cuando habla la jefa (tapa los papeles mientras dura y no hay lectura en ese momento).

@@ -54,3 +54,9 @@
 - **09-10 (Ronald): el crítico juega como el alumno.** Antes de mostrarle algo jugable, se miran capturas en tamaño celular y se responden por escrito sus tres preguntas: ¿qué se supone que hago aquí?, ¿qué cambió después de mi decisión y por qué?, ¿qué me llevo de esto? Cada tramo jugable vale solo, con su objetivo y su causa y efecto a la vista.
 - **09-10 (Ronald): la escena no se pierde.** La ambientación (oficina, ventana, personajes) tiene que seguir a la vista mientras el alumno lee y decide; no puede quedar arriba, fuera de pantalla, por culpa de textos o medidores que crecen.
 - **09-10 (Ronald): pantalla inmersiva y claridad.** La oficina se ve siempre; los papeles están sobre el escritorio y al tocarlos suben como hoja (máx. 45 % de la altura); las conversaciones van en una caja abajo; «Tu objetivo» en una línea por fase. Las cifras de pantalla se miden antes de prometerlas. Cada propuesta de pantalla explica «qué ves · qué haces · qué aparece» por momento, con palabras simples.
+
+## 10-10 · Decisiones de Ronald sobre la pantalla inmersiva
+- Se prueba y se pule **una sola parte** del juego hasta que Ronald esté conforme; recién entonces se pasa a los demás casos.
+- Releer un papel ya leído es **gratis** (no gasta ficha).
+- Botón «atrás» del celular en la pantalla de papeles: aviso «¿Quieres salir?».
+- Papeles: máx. 6 visibles, nombre corto (≤ 18 caracteres), leído = borde punteado y «✓ leído», sin opacidad.

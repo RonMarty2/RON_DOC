@@ -12,7 +12,7 @@ const r=await p.evaluate(({W,H,N,largos,dlg})=>{
   document.body.innerHTML='';document.body.style.padding='0';document.body.appendChild(fr);
   fr.style.width=W+'px';fr.style.height=H+'px';fr.style.border='0';
   const gr=fr.querySelector('.gr'); const base=[...gr.children];
-  const names=largos?["Correo de la dirección a los tutores","Libro de registro de la secretaría","Calendario escolar del año siguiente","Informe de la tallerista Paola","Papel de cómo se obtuvo la afirmación","Segunda medición de los llamados","Composición del colegio por curso","Captura del gráfico original","Acta de la semana de exámenes"]:null;
+  const names=null;
   while(gr.children.length<N) gr.appendChild(base[gr.children.length%6].cloneNode(true));
   while(gr.children.length>N) gr.lastChild.remove();
   if(names)[...gr.children].forEach((b,i)=>b.querySelector('span').textContent=names[i%9]);

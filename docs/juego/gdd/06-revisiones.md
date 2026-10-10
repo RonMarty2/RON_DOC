@@ -2,6 +2,61 @@
 
 **Versión 15 · 08-10-2026** (la entrada más nueva, narrativa v3 y sonido v1 del Tema 1 de Psicoestadística, está justo debajo de las decisiones; la v14, simulación del bucle v2, va después; la v14 está antes de la v13; la v13, antes de la v12) · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
+## v25 · pantalla «1b» (papeles sueltos sobre el escritorio), boceto y plan (10-10-2026) · Tema 1 de Psicoestadística (Psicología)
+
+**Qué se revisó:** `docs/juego/bocetos/inmersiva/index.html` pantalla 1b y la sección «Papeles sueltos sobre el escritorio» del plan de la pantalla inmersiva. Abierto con Playwright + Chromium a 412×860 y 375×667, con 6, 8 y 9 papeles, nombres cortos y largos, y con la caja de la jefa encima. Scripts guardados en `docs/juego/gdd/scripts-t1/`: `medir_1b_v25.mjs` (medición y capturas), `contraste_1b_v25.py` (contraste calculado), `contar_papeles_por_caso.py` (papeles del fondo por caso). Capturas en el scratchpad, no en el repo.
+
+**Veredicto: pasa solo con cambios.** La idea (papeles con ícono y nombre, tocar uno = abrirlo) es mejor que la carpeta y se entiende sola; el toque cumple (tarjetas de 114×101 px mínimo, el botón «Decidir» de 48 px, separación 6 px). Pero **el 1b solo vale con 6 papeles de nombre corto en 412×860**. En el celular chico o con nombres reales rompe lo que el plan promete (oficina a la vista) y los papeles leídos no se leen.
+
+### Mediciones (script)
+| Caso | Cabecera | Zona papeles | Oficina libre entre ambas | Jefa tapada por papeles |
+|---|---|---|---|---|
+| 412×860, 6 papeles, nombres del boceto | 12 % | 36 % | **52 %** | no |
+| 375×667, 6 papeles, nombres del boceto | 19 % (objetivo en 2 líneas) | 52 % | **30 %** | roza (jefa termina en 320, papeles empiezan en 323) |
+| 412×860, 6 papeles, nombres reales largos | 12 % | 40 % | 48 % | no |
+| 375×667, 6 papeles, nombres reales largos | 19 % | 59 % | **23 %** | **sí** |
+| 412×860, 8 o 9 papeles, nombres reales | 12 % | 54 % | **34 %** | **sí** |
+| 375×667, 8 o 9 papeles, nombres reales | 19 % | 77 % | **4 %** (28 px) | **sí, y la oficina desaparece** |
+Texto: 0 textos de menos de 12 px; ningún texto fuera de pantalla. Los nombres reales llegan a 37 caracteres («Correo de la dirección a los tutores») y ocupan 3 o 4 renglones en la tarjeta.
+
+### Hallazgos (de más grave a menos)
+| # | Qué pasa | Por qué importa | Propuesta | Agente que debió evitarlo |
+|---|---|---|---|---|
+| 1 🔴 | La zona de papeles crece con el nombre y con la cantidad. Con nombres reales a 375×667 deja 23 % de oficina; con 8 o 9 papeles a 375×667 deja 4 %. La oficina «siempre a la vista» (decisión de Ronald) se pierde. El plan dijo «pendiente de medir» y se midió solo con nombres cortos. | Los dos celulares que Ronald pidió. Y el plan prometía «al menos 42 % libre». | (a) Cada papel tiene un **nombre corto de pantalla** (máx. 18 caracteres, 2 renglones; el nombre completo va en el título del papel abierto). (b) **Tope de 6 papeles visibles por versión** (es lo que ya reparte `papeles-t1.ts`: 9 es el fondo, 6 por versión; `contar_papeles_por_caso.py` da 9 por caso). Si alguna vez hay más de 6, una sola fila que se desliza de lado, nunca una tercera fila. (c) Tarjeta compacta: ícono 32×40 a la izquierda y nombre a la derecha, alto 64 px; así 2 filas × 3 caben en unos 150 px. | director-de-juego (boceto) |
+| 2 🔴 | Los papeles **leídos** se apagan con `opacity:.5`: el texto baja a **3,4 a 1** sobre la mesa y 3,8 sobre la pared (`contraste_1b_v25.py`). | Incumple 4,5 a 1; y justo ese texto es el que el alumno vuelve a buscar. Además un papel apagado parece desactivado, y el alumno cree que no puede releerlo. | Nada de opacidad: leído = borde punteado + marca «✓ leído» en el borde y el texto con el mismo color. Decir en la línea de fichas si releer cuesta ficha (propuesta: **releer es gratis**). | director-de-juego (2.ª vez: contraste a ojo, como en v22) |
+| 2b 🟠 | No hay estado «sin fichas». Cuando las fichas llegan a 0, los no leídos no pueden verse igual que los leídos ni que los abiertos. | El alumno pulsa un papel y no pasa nada, sin motivo en pantalla («pulsa cualquier cosa»). | Con 0 fichas: papeles no leídos con candado y la línea «Sin fichas: ya no puedes abrir papeles nuevos». | disenador-de-bucle / director-de-juego |
+| 3 🟠 | En 375×667 los papeles **no están sobre el escritorio**: arrancan en y=323 y la mesa del dibujo en y=427; flotan sobre la pared y la jefa. En 412×860 sí coinciden (549 y 550). | El plan los llama «sobre el escritorio»; en el celular chico se ve una cuadrícula puesta encima de la oficina. | La escena real debe **dibujar el escritorio con la altura de la zona de papeles** (la mesa sube hasta donde llegan las tarjetas), no un porcentaje fijo; se mide en las dos pantallas. | director-de-juego |
+| 4 🟠 | La **caja de la jefa** (202 px) se pone encima de los papeles y deja ver sus bordes superiores cortados (captura 412×860: tarjetas asomando sobre el diálogo). Parecen tocables y no lo son; el plan solo dice «tapa los papeles mientras dura». | Se ve roto, y en el celular chico el toque cae sobre el diálogo. | Mientras habla la jefa **no se dibujan los papeles** (ni el botón Decidir); aparecen al tocar «Siguiente» con la línea de fichas. Con eso la oficina queda en 63 % (412) y 50 % (375). | director-de-juego |
+| 5 🟠 | Botón **atrás de Android** en 1b: no hay hoja abierta, así que `AtrasHoja.ts` no tiene qué cerrar y atrás sale del juego o de la materia. Solo se definió para hojas. | Un toque sin querer pierde la pantalla (el avance se guarda, pero el alumno ve que lo sacaron). | En 1b, atrás pide «¿Salir del caso? Tu avance queda guardado» (aviso de dos botones) o no hace nada; se decide al construir y se prueba en el teléfono. | director-de-juego |
+| 6 🟡 | El objetivo de una línea en 412 pasa a dos en 375 y empuja 20 px; la línea «Fichas: … toca un papel para leerlo» pasa a dos renglones. | Cuesta 5 % de oficina en el celular chico. | Objetivo máx. 38 caracteres o letra de 15 px; la línea de fichas: «Fichas ●●○ · toca un papel» (corta). | director-de-juego |
+| 7 🟡 | El plan describe 123×101 px por papel; el script da 125×101 (412) y 114×101 (375). Y los íconos son 9 `doc_*.png` para todos los nombres del fondo: «Lista de quienes respondieron A / B» (caso 4) son idénticos y solo se distinguen por el nombre. | Menor: se distingue por texto, no por dibujo. | Anotar las cifras medidas en el plan; en el caso 4 poner una letra A / B sobre el ícono. | adaptador-de-dossier (íconos), director-de-juego |
+
+### Como Ronald (tres preguntas, 1b)
+- (a) ¿Qué hago? **Se entiende** con el objetivo y la línea de fichas («toca un papel para leerlo»), pero solo si las dos se leen en pantalla chica (hallazgo 6).
+- (b) ¿Qué cambió y por qué? Al tocar un papel se abre la hoja y se gasta una ficha; **falta que el papel leído y el bloqueado se distingan** (2 y 2b).
+- (c) ¿Qué me llevo? No aplica a 1b.
+- «Pulsa cualquier cosa»: con 6 papeles y 3 fichas se puede tocar cualquiera; no queda claro cuál no gasta ficha (releer). Decidirlo.
+- Escena a la vista: 52 % (412×860) cumple; 30 % (375×667) es justo y 4 % con 8 o 9 papeles no cumple.
+- Teclado: el 1b no tiene campo de texto, no aplica; el teclado ocurre en la hoja de la frase (fuera de este alcance).
+
+### Cambios obligatorios antes de construir 1b
+1. Nombre corto de papel (≤ 18 caracteres, 2 renglones) y tope de 6 visibles; tarjeta compacta de 64 px de alto.
+2. Leído sin opacidad (contraste ≥ 4,5) con marca «✓»; estado «sin fichas» propio; decir que releer es gratis.
+3. Mesa dibujada hasta donde llegan los papeles, en cada tamaño de pantalla.
+4. Sin papeles dibujados mientras habla la jefa.
+5. Atrás en 1b definido (aviso o nada).
+6. Objetivo y línea de fichas de una línea en 375 px.
+7. Rehacer el boceto 1b con esto y volver a correr `medir_1b_v25.mjs`: meta, oficina libre ≥ 42 % a 375×667 con 6 papeles de nombre real. Se recheca con el script, sin crítico completo.
+
+### Lo que está bien y no se toca
+Papel con ícono y nombre debajo como objeto tocable; toque de 44 px cumplido; objetivo y medidores arriba; cero textos chicos; la oficina a 412×860 se ve en 52 %.
+
+### Mejoras a agentes que propongo
+- `director-de-juego`: toda medida «pendiente de medir» en un plan (cantidad de elementos, nombres largos) se mide antes de entregar con los textos reales del juego, no con los del boceto; y la opacidad no se usa para estados (calcular contraste del estado también).
+- `disenador-de-bucle`: toda colección de objetos tocables define sus estados (nuevo, leído, bloqueado por fichas) y si volver a abrir cuesta.
+- `adaptador-de-dossier`: cada objeto con nombre del fondo trae un nombre corto de pantalla.
+
+
 ## v24 · paso 1 construido de la pantalla inmersiva (10-10-2026) · Tema 1 de Psicoestadística (Psicología)
 
 **Qué se revisó:** commit `adf2405` (`EscenaPixi.tsx`, `mesa.css`) jugado de punta a punta con Playwright + Chromium a 412×860 y 375×667 (capturas en el scratchpad, no en el repo). Script guardado: `scripts-t1/medir_inmersiva_v24.mjs` (por fase: oficina libre sin cabecera del sitio, panel ni medidores; cruces de «De cero»/«Sonido» con medidores; desplazamiento del panel; textos <12 px). El teclado se probó a mano con el visor reducido a 500 px (no hay script). Oficio: sin cambio (psicólogo de colegio): ✔. Los textos no cambian todavía; no se califica lo pendiente (papeles sueltos, «Tu objetivo» por fase, hojas Decidir y Qué pasó).

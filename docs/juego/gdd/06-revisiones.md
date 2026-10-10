@@ -2,6 +2,69 @@
 
 **Versión 15 · 08-10-2026** (la entrada más nueva, narrativa v3 y sonido v1 del Tema 1 de Psicoestadística, está justo debajo de las decisiones; la v14, simulación del bucle v2, va después; la v14 está antes de la v13; la v13, antes de la v12) · Agente: `critico-de-jugabilidad` · Lo más nuevo arriba.
 
+## v26 · paso 2 construido de la pantalla inmersiva: papeles sueltos, objetivo, intros y hoja «Decidir» (10-10-2026) · Tema 1 de Psicoestadística (Psicología)
+
+**Qué se revisó:** el juego real (`next dev -p 3123`), código de `Mesa.tsx` (PapelesMesa, Objetivo, intro1, intro2, verDecidir), `mesa.css` («Papeles sueltos»), `guion-pantalla-t1.ts` y `orientacion-t1.json`. Jugado con Playwright + Chromium a 412×860, 375×667 y 360×640, con versión de prueba (sin cuenta). Scripts guardados en `docs/juego/gdd/scripts-t1/`: `medir_papeles_paso2.mjs` (el del encargo, se corrió tal cual), `flujo_papeles_paso2_v26.mjs` (nuevo: 0 papeles, Decidir, «Todavía no», «Volver», 0 fichas, soltar un bloqueado, releer, recargar y «Continuar donde quedé», y dónde caen los tres botones), `contraste_papeles_v26.py` (contraste por píxeles de las capturas). Capturas en el scratchpad, no en el repo.
+
+**Veredicto: pasa solo con cambios.** El paso 2 se entiende mucho mejor que el 1b del boceto: intro de la jefa que dice el gesto («toca un papel; cada uno gasta una ficha»), papeles como objetos con nombre corto, ✓ leído sin opacidad, bloqueados con candado, releer gratis, jefa y escritorio a la vista, 0 textos de menos de 12 px, 0 errores de consola, el flujo intro → papeles → leer → Decidir → confirmar → «Todavía no» / «Volver a los papeles» → recargar y retomar funciona sin perderse. Fallan tres cosas: la hoja «Decidir» esconde sus tres botones (🔴), el cierre de 0 fichas no se explica (🟠) y el Caso 2 en celular chico no llega a la meta de oficina libre (🟠).
+
+### Mediciones (scripts)
+| Pantalla | 412×860 | 375×667 | 360×640 |
+|---|---|---|---|
+| Papeles Caso 1, oficina libre (de abajo de los medidores a los papeles) | 59 % | 47 % | 44 % |
+| Papeles Caso 2, oficina libre | **48 %** | **31 %** | **28 %** |
+| Hoja Decidir, oficina libre | 31 % | 24 % | 23 % |
+| Meta del plan (≥ 42 %) | cumple | **no** | **no** |
+| Textos < 12 px / errores de consola | 0 / 0 | 0 / 0 | 0 / 0 |
+| Papeles: ancho × alto mínimo (px) | 127×56 | 115×56 | 110×56 |
+| Botón «Decidir el informe»: alto (CSS min 44; se ve ~57 en captura) | ≥ 44 | ≥ 44 | ≥ 44 |
+Mis cifras coinciden con las del encargo. Ojo: «oficina libre» se mide desde abajo de los medidores; **encima hay 119 px más** (cabecera del sitio 65 px + fila «De cero / Sonido» 54 px), así que en 375×667 la oficina que se ve (de y=233 a y=439) son 206 px de 667, y arriba hay 233 px de marcos y rótulos.
+Contraste calculado (`contraste_papeles_v26.py`): nota «releer es gratis» 7,5 a 1; «Primero abre algún papel» 7,5; objetivo 14; marca «✓ leído» 15; nombre de papel bloqueado 5,2 (4,2 en el peor fondo muestreado, justo). Los textos principales cumplen 4,5.
+
+### Hallazgos (de más grave a menos)
+| # | Qué pasa | Por qué importa | Propuesta | Agente que debió evitarlo |
+|---|---|---|---|---|
+| 1 🔴 | **Hoja «Decidir»: los tres botones (Firmar tal cual / Redactar la frase / Frenar) quedan fuera de pantalla.** Con 3 papeles abiertos arrancan en y=755 (412×860, pantalla de 860, panel que termina en 853) y en y=527 / 638 / 748 (360×640); con 0 papeles en y=1078 a 1299 (375×667). La hoja mide 1000 px con un panel de 256 a 355 px: hay que desplazar entre 1 y 3 pantallas, pasando corcho y gráfica, para llegar a lo único que la hoja pide. Solo avisa una pestaña «▾ más». | Es la decisión del caso. El alumno ve «Decidir el informe >», toca, y ve un corcho y un gráfico, no una decisión: «¿qué hago aquí?». El que quiere terminar rápido no la encuentra; el perezoso la encuentra, el cuidadoso no sabe que hay tres. | Los tres botones primero (o fijos al pie del panel), y corcho y gráfica en una tira compacta (corcho en una línea por papel, gráfica de 64 px) o plegados bajo «Mirar corcho y gráfica». Rematar con una medición: los tres botones visibles sin desplazar en 375×667 con 3 papeles. | director-de-juego (la hoja se dibujó como «contenido» y no como decisión); ya pasó en la v24 («llegaba desplazado y sin señal») |
+| 2 🟠 | **Cero fichas no se explica.** Con 0 fichas la nota sigue diciendo «releer es gratis» y los 3 papeles sin abrir llevan solo un 🔒 (dibujado en CSS, sin texto) y el botón deshabilitado: tocarlo no hace nada. El plan v25 (2b) pedía «Sin fichas: ya no puedes abrir papeles nuevos». Además la nota «releer es gratis» aparece **antes** de leer ningún papel, cuando aún no hay nada que releer. | «Pulsa cualquier cosa»: el alumno toca un papel con candado y no pasa nada ni se dice por qué; con lector de pantalla un botón deshabilitado ni se enfoca, así que ni se entera. | Con 0 fichas, la nota cambia a «Sin fichas: ya no abres papeles nuevos. Relee los leídos o decide» y se anuncia con `aria-live`. Sin ningún papel leído, la nota dice «cada papel nuevo gasta 1 ficha»; «releer es gratis» sale con el primero leído. | disenador-de-bucle (estados de la colección) y director-de-juego; 2.ª vez (2b de la v25 sin cerrar) |
+| 3 🟠 | **Caso 2 en celular chico no llega a la meta.** 31 % (375×667) y 28 % (360×640) de oficina libre contra 42 % de la meta, y 24 % y 23 % en la hoja Decidir. Medidores + objetivo ocupan 114 px en el Caso 2 (en el Caso 1 son 38). | La jefa y el escritorio siguen visibles (la cabeza de la jefa se ve completa, el escritorio también), pero el objetivo toca la ventana y la cabeza queda a 5 px del borde del objetivo: al llegar los papeles a 6, la oficina es una franja. En 412×860 cumple. | Ver «Cómo bajar el costo» abajo. | director-de-juego (la meta del plan solo se midió en 412×860 y con 6 papeles en el boceto) |
+| 4 🟠 | **Confirmar sin papeles: «Todavía no» queda tapado por la pestaña «▾ más»** (captura 375×667): el botón mide 44 px pero la mitad está cubierta; y el botón principal, el primero, es «Sí, al consejo» justo cuando el aviso dice «¿Decides sin mirar?». | Un toque sin querer firma sin mirar; el mismo bloqueo vale con papeles abiertos (hoja con scroll). | Con el aviso de 0 papeles, el botón de volver va primero y es el principal; el aviso de «▾ más» no se pinta sobre un diálogo modal. | construcción (superpone la pestaña a un modal); director-de-juego (orden de botones) |
+| 5 🟠 | **Objetivo del Caso 2 («cómo se contó el cero»)** no dice qué hacer ni de qué cero habla; el cero solo existe en la hoja de la entrada, que **no se muestra al retomar**. Con 0 papeles abiertos, «Continuar donde quedé» repite la intro de la jefa («busca qué respalda ese cero») sin haber visto el cero. | «¿Qué hago?»: es un tema, no una acción. Los objetivos del Caso 1 («ver si ya preguntaron…») y del cierre («decide con lo que averiguaste») sí son acciones. | «Objetivo: ver si el 0 de noviembre es verdad» (acción y dato en una línea, 35 caracteres) y que la intro de la jefa nombre el cero («Noviembre dice cero denuncias»). | disenador-narrativo (texto B-obj-2 y B-arch2-1) |
+| 6 🟡 | La hoja Decidir sigue con «Fichas: papeles que puedes abrir» en 2 renglones y deja volver a los papeles pero no dice cuántas quedan sin leer ni que hay candados. | Pierde un renglón de 30 px y el estado. | Recortar a «Fichas ●●○»; la hoja ya no es lugar de abrir papeles. | director-de-juego |
+| 7 🟡 | El botón «De cero» (tocable aunque haya diálogo modal arriba) y «Sonido» siguen por encima de la hoja de lectura y del aviso de confirmar. | Un toque al azar borra el avance (pide confirmación, bien) pero rompe el modal. | Aceptable por ahora; con el paso 6 (atrás de Android) unificarlo. | construcción |
+| 8 🟡 | `AtrasHoja.ts` no existe en el código (búsqueda: 0 archivos). Atrás en la lista de papeles, en el lector y en la hoja Decidir hoy saca de la página. | Decidido por Ronald (aviso «¿Quieres salir?»); falta el paso 6. | Cuando se haga: atrás en el lector cierra el lector; en Decidir = «Volver a los papeles»; en la lista de papeles = aviso. Se prueba en el celular. | director-de-juego (lo prometido contra lo que existe: sigue sin construir) |
+| 9 🟡 | Papel «Buzón anónimo» (y otros sin ícono) sale con un `▭` genérico; «Lista de A / B» del caso 4 sigue idéntica. | Se distinguen por texto, no por dibujo. | Un ícono por papel o letra A/B. | adaptador-de-dossier (2.ª vez, hallazgo 7 de la v25) |
+
+### Cómo bajar el costo de medidores + objetivo en el Caso 2 (pedido)
+Hoy: 114 px (medidores 86 + objetivo 28), más 54 px de «De cero / Sonido» y 65 px de cabecera del sitio. Opciones, de mejor a peor:
+- **A (recomendada, ya cabe en una pasada):** en las pantallas de papeles y de Decidir, los medidores pasan a **una sola fila compacta** («Credibilidad 50 · Voz 50», barras de 12 px, las marcas 25 y 65 como muescas, **sin la línea de texto «25 peligro / 65 meta»**, que ya se explicó al presentar los medidores) y el objetivo se pega arriba a la derecha de la fila «De cero / Sonido», o reemplaza la nota «releer es gratis». Ahorro estimado: 40 a 50 px (≈ 7 % del celular chico). Estimado, no medido.
+- **B (más ahorro, decide Ronald):** ocultar la cabecera del sitio («Ronald Martínez J. · Materias · Proyectos») dentro de `/juego-*`, con un botón «Salir» en la fila de «De cero / Sonido». Ahorro: 65 px (≈ 10 % en 375×667). Con A + B la oficina libre del Caso 2 en 375×667 sería de ~46 % (estimado: (206 + 45 + 65) / 667). Es lo que más cambia la sensación.
+- **C:** que el objetivo se muestre solo hasta el primer papel leído y luego quede en el título del medidor. Ahorra 28 px pero esconde la meta, desaconsejado.
+Antes de dar por cerrado: correr `medir_papeles_paso2.mjs` en los tres tamaños; meta ≥ 42 % en 375×667 (Caso 2), sin crítico completo.
+
+### Como Ronald (tres preguntas, paso 2)
+- (a) ¿Qué hago? **Se entiende** en papeles (intro + nota + fichas con puntos). En la hoja Decidir **no** (no se ven las tres opciones, hallazgo 1).
+- (b) ¿Qué cambió y por qué? Al abrir un papel gasta una ficha y queda ✓ leído; se ve. Al llegar a 0, los demás se bloquean sin decirlo con texto (hallazgo 2).
+- (c) ¿Qué me llevo? No aplica a este tramo (el resultado llega con la reacción de la jefa).
+- «Pulsa cualquier cosa»: con los papeles, no daña nada (todo cuenta); con 0 fichas, tocar un bloqueado no hace nada ni explica.
+
+### Lo que está bien y no se toca
+Intro de la jefa antes de los papeles con el botón «A los papeles >»; papel = ícono + nombre corto en 2 renglones y 115×56 px como mínimo; ✓ leído sin opacidad; releer gratis (se comprobó: reabre el lector sin gastar ficha); aviso de 0 papeles al confirmar («No abriste ningún papel. ¿Decides sin mirar?»); «Todavía no» vuelve a la hoja Decidir, «Volver a los papeles» a la lista; recargar y «Continuar donde quedé» deja 6 papeles, 3 leídos, 3 bloqueados y el objetivo; aria-label por papel con su estado y su costo; tuteo y sin guiones largos en los textos nuevos; 0 textos < 12 px.
+
+### Cambios obligatorios antes de mostrárselo a Ronald
+1. Hoja «Decidir»: los tres botones visibles sin desplazar en 375×667 (hallazgo 1), medido.
+2. Mensaje y `aria-live` de 0 fichas; «releer es gratis» solo después del primer papel leído (hallazgo 2).
+3. Oficina libre del Caso 2 ≥ 42 % en 375×667 (opción A, con B si Ronald acepta ocultar la cabecera), re-medida (hallazgo 3).
+4. Confirmar: «Todavía no» no tapado por «▾ más» y primero cuando no hay papeles (hallazgo 4).
+5. Objetivo del Caso 2 como acción y cero nombrado en la intro (hallazgo 5).
+Se recheca con `medir_papeles_paso2.mjs` y `flujo_papeles_paso2_v26.mjs`, sin crítico completo, salvo que cambie el diseño.
+
+### Mejoras a agentes que propongo
+- `director-de-juego`: toda hoja o panel que contiene una decisión se mide con «¿los botones de decidir están a la vista sin desplazar en 375×667?» antes de entregar (hallazgo 1); y la meta de oficina libre se mide en 375×667 y 360×640, no solo en 412×860 (hallazgo 3).
+- `disenador-de-bucle`: toda colección con fichas define el mensaje del estado «sin fichas» y el estado «ningún leído» (hallazgo 2, 2.ª vez).
+- `disenador-narrativo`: un objetivo de pantalla es una acción con su dato («ver si el 0 de noviembre es verdad»), y todo texto que dice «ese cero» tiene su antecedente visible también al retomar (hallazgo 5).
+- Construcción (`LEEME.md`, «Aprendido construyendo»): no pintar la pestaña «▾ más» sobre un diálogo modal (hallazgo 4).
+- `adaptador-de-dossier`: un ícono por papel del fondo (hallazgo 9, 2.ª vez).
+
 ## v25 · pantalla «1b» (papeles sueltos sobre el escritorio), boceto y plan (10-10-2026) · Tema 1 de Psicoestadística (Psicología)
 
 **Qué se revisó:** `docs/juego/bocetos/inmersiva/index.html` pantalla 1b y la sección «Papeles sueltos sobre el escritorio» del plan de la pantalla inmersiva. Abierto con Playwright + Chromium a 412×860 y 375×667, con 6, 8 y 9 papeles, nombres cortos y largos, y con la caja de la jefa encima. Scripts guardados en `docs/juego/gdd/scripts-t1/`: `medir_1b_v25.mjs` (medición y capturas), `contraste_1b_v25.py` (contraste calculado), `contar_papeles_por_caso.py` (papeles del fondo por caso). Capturas en el scratchpad, no en el repo.

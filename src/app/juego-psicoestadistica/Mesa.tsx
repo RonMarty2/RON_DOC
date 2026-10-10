@@ -158,7 +158,7 @@ function Tubos({ m }: { m: Medidores }) {
         <span className="peligro" style={{ left: `${MARCA_BAJA}%` }}>{MARCA_BAJA} peligro</span>
         <span className="meta" style={{ left: `${META_CIERRE}%` }}>{META_CIERRE} meta</span>
       </div>
-      <div className="mesa-tubo-rotulo">{rotulo}</div>
+      <span className="mesa-solo-lector">{rotulo}</span>
     </div>
   );
   return (
@@ -294,7 +294,28 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   const [reaccion, setReaccion] = useState<G.ReaccionCaso2 | null>(null);
   const [reaccionFin, setReaccionFin] = useState(false);
   const [dormido, setDormido] = useState(false);
+  const panel = useRef<HTMLDivElement>(null);
+  const [hayMas, setHayMas] = useState(false);
+  const [campoEnfocado, setCampoEnfocado] = useState(false);
+  const medirMas = useCallback(() => {
+    const e = panel.current;
+    setHayMas(Boolean(e && e.scrollHeight - e.scrollTop - e.clientHeight > 12));
+  }, []);
   const [lineaJefa, setLineaJefa] = useState(0);
+
+  // El panel empieza arriba en cada fase, y avisa si hay más abajo (el crítico v24: llegaba desplazado y sin señal).
+  useEffect(() => {
+    if (panel.current) panel.current.scrollTop = 0;
+    medirMas();
+  }, [fase, modoHoja, medirMas]);
+  useEffect(() => {
+    const e = panel.current;
+    if (!e || typeof ResizeObserver === "undefined") return;
+    const o = new ResizeObserver(medirMas);
+    o.observe(e);
+    for (const h of Array.from(e.children)) o.observe(h);
+    return () => o.disconnect();
+  }, [fase, modoHoja, extra, medirMas]);
 
   const ir = (f: Fase) => {
     setFase(f);
@@ -492,7 +513,12 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   });
 
   return (
-    <div className="mesa" onClickCapture={sonido.alApretar}>
+    <div
+      className="mesa"
+      onClickCapture={sonido.alApretar}
+      onFocusCapture={(e) => setCampoEnfocado((e.target as HTMLElement).tagName === "INPUT")}
+      onBlurCapture={() => setCampoEnfocado(false)}
+    >
       <BotonSonido activo={sonido.activo} disponible={sonido.disponible} alternar={sonido.alternar} />
       {fase !== "titulo" && (
         <div className="mesa-reinicio">
@@ -514,9 +540,9 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
         </div>
       )}
       <EscenaPixi hora={minutosDeFase(fase)} pose={pose} suena={suena} daniCabecea={daniCabecea} verJefa={fase !== "titulo" && fase !== "bienvenida"} verDani={fase !== "titulo" && fase !== "bienvenida" && fase !== "jefa"} />
-      {tubos && <Tubos m={med} />}
+      {tubos && !campoEnfocado && <Tubos m={med} />}
 
-      <div className="mesa-panel">
+      <div className="mesa-panel" ref={panel} onScroll={medirMas}>
         {fase === "titulo" && (
           <section className="mesa-centro">
             <h1>{G.TITULO.principal}</h1>
@@ -875,6 +901,11 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
         )}
       </div>
 
+      {hayMas && (
+        <button type="button" className="mesa-mas" onClick={() => panel.current?.scrollBy({ top: 160, behavior: "smooth" })} aria-label="Hay más abajo: desplazar">
+          ▾ más
+        </button>
+      )}
       {lector && <Lector nombre={lector.nombre} texto={lector.texto} onCerrar={cerrarLector} />}
       {extra && (
         <div className="mesa-lector" role="dialog" aria-modal="true">

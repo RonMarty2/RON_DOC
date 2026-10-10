@@ -83,6 +83,8 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 
 - **09-10 · Propuesta con cifra no medida y mezcla de conversación con papel.** El director prometió «42 % de oficina visible» sin medir (el crítico midió 26 %), y Ronald no entendía dónde salen los diálogos y dónde los papeles. **Aprendizaje (`director-de-juego`):** medir antes de prometer, un boceto de la pantalla más difícil antes de programar, tabla «qué ves · qué haces · qué aparece», y dar los riesgos y lo no probado junto con la recomendación. Ver su sección «Lo aprendido del 09-10 sobre pantallas y propuestas».
 
+- **10-10 · Cifra de pantalla otra vez sin medir (2.ª vez).** El plan inmersivo y el paso 1 dejaron la oficina libre en 20 a 26 % (pedido 42 %) porque el panel tapaba el escritorio. **Aprendizaje (constructor y `director-de-juego`):** cada paso de pantalla se mide con `docs/juego/gdd/scripts-t1/medir_inmersiva_v24.mjs` antes de pedir el crítico; un panel que se desplaza vuelve arriba en cada fase y avisa «▾ más»; con teclado abierto se esconden los medidores.
+
 Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó con las fichas sin pasar
 por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
 Ronald y se anota en la bitácora.

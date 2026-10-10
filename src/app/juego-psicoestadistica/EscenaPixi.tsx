@@ -79,12 +79,12 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
         app.stage.addChild(m);
         return m;
       };
-      // Encuadre: en un celular vertical la oficina es alta. El escritorio empieza al 56 % del alto; lo de la pared baja bajo los
+      // Encuadre: en un celular vertical la oficina es alta. El escritorio empieza al 45 % del alto; lo de la pared baja bajo los
       // medidores (franja de arriba); la jefa y lo del escritorio acompañan al escritorio. Con el alto de siempre (150) queda como antes.
       const alta = alto > ESCENA_ALTO;
-      const suelo = alta ? Math.round(alto * 0.56) : 120;
+      const suelo = alta ? Math.round(alto * 0.45) : 120;
       const dy = suelo - 120;
-      const arriba = alta ? 62 : 0;
+      const arriba = alta ? 54 : 0;
       mosaico("arte/pared_ladrillo", 0, suelo);
       // La oficina de noche: ventana con la luna y las luces de la ciudad, reloj con estante de libros, pizarrón.
       // Ventana viva por capas (hueco de 68×52 a 4,4 dentro del marco de 76×60): cielo, estrellas, luna, nube, ciudad con ventanitas.

@@ -130,3 +130,11 @@ Usa `WebSearch` sólo para confirmar referencias de juegos reales; no copies tex
 
 ## Ambiente vivo en todo juego (Ronald, 09-10)
 Cada mapa de ambientes trae su **perfil de ambiente vivo** (hora de inicio, minuto del amanecer y del cierre, ventanitas encendidas, trayecto de la luna) para `src/lib/juego/ambiente-vivo.ts`, y la lista de capas para `artista-pixel`. Ver la regla en `docs/juego/REGLAS-COMUNES-AGENTES.md`.
+
+## Lo aprendido del 09-10 sobre pantallas y propuestas (Ronald)
+- **Nunca prometas una cifra de pantalla que no mediste.** El plan inmersivo dijo «la oficina queda visible al menos el 42 %» «a mano» y el crítico midió 26 % en una pantalla. Todo porcentaje, tamaño o cantidad que entregues se mide en un boceto abierto en tamaño celular (412×860) o se marca «sin medir».
+- **Antes de programar una pantalla nueva, un boceto de la pantalla más difícil**, medido, y solo después el resto. Si no cabe, se cambia la propuesta antes de gastar construcción.
+- **Separa siempre las dos cosas que Ronald confunde:** *conversación* (caja de diálogo abajo, una frase por toque en «Siguiente», habla un personaje) y *papel* (se lee, está sobre el escritorio, sube como hoja, no es diálogo). Cada propuesta de pantalla trae una tabla «qué ves · qué haces · qué aparece» por momento.
+- **Decisión de Ronald (09-10):** pantalla inmersiva: la oficina se ve siempre; papeles sobre el escritorio (a probar: seis papeles con nombre legible y toque ≥ 44 px; si no caben, una carpeta que abre la lista); hojas encima de la oficina con máximo 45 % de la altura; «Tu objetivo» en una línea que cambia con la fase.
+- **Cuando Ronald diga «no entiendo»**, no repitas más largo: resume en 4 líneas con un ejemplo de lo que ve en pantalla, y hazle una sola pregunta.
+- **Al proponer una opción, di sus riesgos y qué no probaste** (p. ej. «no lo probé en un teléfono real»), y ofrece cómo comprobarlo barato.

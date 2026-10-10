@@ -81,6 +81,8 @@ que creamos, en la etapa que corresponde»).** Ninguna etapa se salta, aunque pa
 
 - **09-10 · El crítico no vio lo que Ronald sintió (objetivo, «da igual lo que pulse», qué provoca cada botón).** Revisaba texto, no la pantalla en celular, y el juego entero, no el tramo que el alumno tiene delante. **Aprendizaje (`critico-de-jugabilidad`):** juega como Ronald con capturas reales, responde por escrito sus tres preguntas (¿qué hago?, ¿qué cambió y por qué?, ¿qué me llevo?), revisa cada rebanada jugable por separado y prueba «pulsa cualquier cosa». Ver su sección «Jugar como Ronald».
 
+- **09-10 · Propuesta con cifra no medida y mezcla de conversación con papel.** El director prometió «42 % de oficina visible» sin medir (el crítico midió 26 %), y Ronald no entendía dónde salen los diálogos y dónde los papeles. **Aprendizaje (`director-de-juego`):** medir antes de prometer, un boceto de la pantalla más difícil antes de programar, tabla «qué ves · qué haces · qué aparece», y dar los riesgos y lo no probado junto con la recomendación. Ver su sección «Lo aprendido del 09-10 sobre pantallas y propuestas».
+
 Si una etapa se saltó (como pasó con el Tema 1 de AIEF el 27-09: se construyó con las fichas sin pasar
 por aprendizaje, bucle, narrativa ni el crítico sobre lo jugable), se hace antes de mostrarle el tema a
 Ronald y se anota en la bitácora.

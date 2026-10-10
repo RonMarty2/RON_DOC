@@ -47,8 +47,11 @@ async function hastaElCaso2() {
   pulsa(G.HOJA.botonDani(p));
   pasarDialogo(); // Dani responde
 
-  // Paso 1: el archivo dice qué buscar y qué cuesta abrir; al abrir el papel con sueño aparece el hallazgo.
-  hayCita(G.ARCHIVO.consigna);
+  // Paso 1: la jefa dice qué buscar y qué cuesta abrir; después los papeles quedan sueltos sobre el escritorio.
+  hay(G.ARCHIVO.jefa);
+  pasarDialogo(/^A los papeles/);
+  hay(G.OBJETIVO.archivo1);
+  hay(G.PAPELES_MESA.releer);
   const sueno = p.carpetas.porCaso[1].claves[0];
   pulsa(new RegExp(`^${papel(1, sueno)}`));
   expect(screen.getByRole("dialog")).toBeTruthy();
@@ -65,7 +68,9 @@ async function hastaElCaso2() {
   // Caso 2: el informe y qué hay que comprobar.
   expect(screen.getByText(/CERO DENUNCIAS/)).toBeTruthy();
   pasarDialogo(/^A la carpeta/);
-  hayCita(G.ARCHIVO2.consigna);
+  hay(G.ARCHIVO2.consigna); // la jefa lo dice; después aparecen los papeles
+  pasarDialogo(/^A los papeles/);
+  hay(G.OBJETIVO.archivo2);
 }
 
 beforeEach(() => {
@@ -77,16 +82,22 @@ afterEach(cleanup);
 describe("La mesa de verificación: del título al final del Caso 2", () => {
   it("se puede jugar entera, dice qué hacer en cada paso, se guarda y se retoma", async () => {
     await hastaElCaso2();
-    // Con 0 papeles abiertos la jefa avisa, y cada botón dice lo que hace.
-    hayCita(G.ARCHIVO2.sinPapeles);
+    // Con 0 papeles abiertos la jefa avisa; los botones de decidir están en su hoja y cada uno dice lo que hace.
+    hay(G.ARCHIVO2.sinPapeles);
+    pulsa(G.PAPELES_MESA.decidir);
+    hay(G.OBJETIVO.decide);
     hay(G.ARCHIVO2.explicaTal);
     hay(G.ARCHIVO2.explicaFrase);
     hay(G.ARCHIVO2.explicaFrenar);
+    pulsa(G.PAPELES_MESA.volver);
 
     const clave = p.carpetas.porCaso[2].claves[0];
     pulsa(new RegExp(`^${papel(2, clave)}`));
     pulsa(/^Cerrar/);
-    expect(screen.queryByText(frasesDe(G.ARCHIVO2.sinPapeles)[0])).toBeNull();
+    expect(screen.queryByText(G.ARCHIVO2.sinPapeles)).toBeNull();
+    // Un papel ya leído se puede releer gratis y queda marcado.
+    expect(screen.getByRole("button", { name: /ya leído, releer es gratis/ })).toBeTruthy();
+    pulsa(G.PAPELES_MESA.decidir);
     pulsa("Redactar la frase");
     hay(G.FRASE.instruccion);
     const piezas = piezasDisponibles2(p, [clave]);
@@ -121,6 +132,7 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
 
   it("firmar sin abrir ningún papel avisa, pero no bloquea (la fila R2.1.sin existe)", async () => {
     await hastaElCaso2();
+    pulsa(G.PAPELES_MESA.decidir);
     pulsa("Firmar tal cual");
     hay(G.SIN_PAPELES_AL_FIRMAR);
     hay("¿Firmar? Después no hay vuelta.");
@@ -133,6 +145,7 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
 
   it("«Todavía no» en la confirmación vuelve a la carpeta sin sellar nada", async () => {
     await hastaElCaso2();
+    pulsa(G.PAPELES_MESA.decidir);
     pulsa("Frenar");
     pulsa("Todavía no");
     hay(G.ARCHIVO2.explicaFrenar);
@@ -155,7 +168,7 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
     expect(screen.getAllByRole("alert")).toHaveLength(1);
     fireEvent.change(campos[0], { target: { value: "7,5" } });
     pulsa(/^Seguir/);
-    hay("El archivo del colegio");
+    hay(G.ARCHIVO.jefa); // la jefa abre el archivo
   });
   it("«De cero» pide confirmación, borra el avance y vuelve al título; «No» no toca nada", async () => {
     await hastaElCaso2();
@@ -164,7 +177,7 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
     hay("¿Empezar de cero? Se pierde tu avance.");
     pulsa(/^No$/);
     expect(screen.queryByText("¿Empezar de cero? Se pierde tu avance.")).toBeNull();
-    hayCita(G.ARCHIVO2.consigna); // sigue donde estaba
+    hay(G.OBJETIVO.archivo2); // sigue donde estaba
     pulsa(/Empezar de cero/);
     pulsa(/Sí, de cero/);
     await screen.findByRole("heading", { name: /Mesa de verificación/ });

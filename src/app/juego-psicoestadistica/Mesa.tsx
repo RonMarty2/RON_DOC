@@ -9,7 +9,7 @@
  */
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { sobre } from "@/lib/juego/psicoestadistica/ayuda";
 import { paqueteT1, fechaAnio, type PaqueteT1 } from "@/lib/juego/psicoestadistica/cifras";
 import { abrirCarpeta, abrirPapel, estaAbierto, fichasRestantes, type CarpetaAbierta } from "@/lib/juego/psicoestadistica/carpeta";
@@ -143,7 +143,7 @@ function Cita({ texto }: { texto: string }) {
   );
 }
 
-function Tubos({ m }: { m: Medidores }) {
+function Tubos({ m, objetivo }: { m: Medidores; objetivo?: string }) {
   const tubo = (nombre: string, v: number, rotulo: string) => (
     <div className="mesa-tubo">
       <div className="mesa-tubo-nombre">
@@ -165,14 +165,46 @@ function Tubos({ m }: { m: Medidores }) {
     <div className="mesa-tubos">
       {tubo("Credibilidad", m.c, G.ROTULOS_TUBOS.c)}
       {tubo("Voz", m.voz, G.ROTULOS_TUBOS.voz)}
+      {objetivo && <Objetivo texto={objetivo} />}
     </div>
   );
 }
 
-function Fichas({ n, total }: { n: number; total: number }) {
+function Objetivo({ texto }: { texto: string }) {
+  return <p className="mesa-objetivo">{texto}</p>;
+}
+
+/** Los papeles, sueltos sobre el escritorio: tarjetas compactas con nombre corto; leído = borde punteado y «✓ leído»; releer es gratis. */
+function PapelesMesa({ ids, nombres, abiertos, fichas, total, sinPapeles, extra, onAbrir }: { ids: string[]; nombres: Record<string, string>; abiertos: readonly string[]; fichas: number; total: number; sinPapeles?: string; extra: ReactNode; onAbrir: (id: string) => void }) {
+  return (
+    <div className="mesa-papeles">
+      <div className="mesa-papeles-fila">
+        <Fichas n={fichas} total={total} corto />
+        {extra}
+      </div>
+      <p className="mesa-papeles-nota">{sinPapeles ?? G.PAPELES_MESA.releer}</p>
+      <ul className="mesa-papeles-lista">
+        {ids.map((id) => {
+          const abierto = abiertos.includes(id);
+          const bloqueado = !abierto && fichas <= 0;
+          return (
+            <li key={id}>
+              <button type="button" className={`mesa-pp${abierto ? " leido" : ""}${bloqueado ? " bloq" : ""}`} disabled={bloqueado} onClick={() => onAbrir(id)} aria-label={`${nombres[id]}${abierto ? " (ya leído, releer es gratis)" : bloqueado ? " (sin fichas)" : " (abrir cuesta 1 ficha)"}`}>
+                {docDe(nombres[id]) ? <img src={conBase(`/juego/psicoestadistica/arte/${docDe(nombres[id])}.png`)} alt="" width={24} height={30} /> : <span aria-hidden="true">▭</span>}
+                <span className="mesa-pp-nombre">{G.nombreCorto(nombres[id])}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
+function Fichas({ n, total, corto }: { n: number; total: number; corto?: boolean }) {
   return (
     <div className="mesa-fichas" role="img" aria-label={`${G.ARCHIVO.rotuloFichas}. Te quedan ${n}`}>
-      <span>{G.ARCHIVO.rotuloFichas}</span>
+      <span>{corto ? G.PAPELES_MESA.fichas : G.ARCHIVO.rotuloFichas}</span>
       {Array.from({ length: total }, (_, i) => (
         <i key={i} className={i < n ? "on" : "off"} />
       ))}
@@ -275,6 +307,9 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   const [pose, setPose] = useState<G.PoseJefa>("brazos");
   const [suena, setSuena] = useState(false);
   const [tubos, setTubos] = useState(false);
+  const [intro1Hecha, setIntro1Hecha] = useState(false);
+  const [intro2Hecha, setIntro2Hecha] = useState(false);
+  const [verDecidir, setVerDecidir] = useState(false);
   const [med, setMed] = useState<Medidores>(medidoresIniciales());
   const [paso1, setPaso1] = useState<Paso1Estado>(() => paso1Nuevo(p));
   const [misDatos, setMisDatos] = useState<{ horas: number; minutos: number; animo: number } | null>(null);
@@ -336,6 +371,11 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
     return () => clearTimeout(t);
   }, [fase, leyendo, paso1, carpeta2, elegidas]);
   const daniCabecea = dormido && (fase === "archivo1" || fase === "archivo2" || fase === "frase");
+  // Papeles sueltos sobre el escritorio (paso 2 de la pantalla inmersiva): en `archivo1` y en `archivo2` antes de decidir.
+  const intro1 = fase === "archivo1" && !intro1Hecha && papelesVistosPaso1(paso1).length === 0;
+  const intro2 = fase === "archivo2" && !verDecidir && !intro2Hecha && carpeta2.abiertos.length === 0;
+  const papelesVisibles = (fase === "archivo1" && !intro1) || (fase === "archivo2" && !verDecidir && !intro2);
+  const objetivo = fase === "archivo1" ? G.OBJETIVO.archivo1 : fase === "archivo2" && !verDecidir ? G.OBJETIVO.archivo2 : fase === "archivo2" || fase === "frase" || fase === "confirma" ? G.OBJETIVO.decide : undefined;
 
   // ── retomar / empezar de nuevo ──
   const avance = useMemo(() => avanceDeEventos(p, partida.eventos), [p, partida.eventos]);
@@ -349,6 +389,9 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
     setMisDatos(null);
     setModoHoja("elige");
     setTubos(false);
+    setIntro1Hecha(false);
+    setIntro2Hecha(false);
+    setVerDecidir(false);
     setMed(medidoresIniciales());
     setAsombroVisto(false);
     setAsombroListo(false);
@@ -493,6 +536,41 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
   const total1 = paso1.carpeta.fichas;
   const lector = leyendo ? papelDe(p, leyendo.caso, leyendo.id, { hoy }) : null;
   const sueno1 = papelesVistosPaso1(paso1).find((id) => p.carpetas.porCaso[1].claves.includes(id));
+  const papelesEnMesa =
+    papelesVisibles && !leyendo ? (
+      fase === "archivo1" ? (
+        <PapelesMesa
+          ids={ids1}
+          nombres={nombres}
+          abiertos={papelesVistosPaso1(paso1)}
+          fichas={fichas1}
+          total={total1}
+          onAbrir={abrirP1}
+          extra={
+            asombroVisto ? (
+              <button type="button" className="mesa-boton" onClick={() => ir("asombro")}>
+                Ver lo que encontraste &gt;
+              </button>
+            ) : null
+          }
+        />
+      ) : (
+        <PapelesMesa
+          ids={ids2}
+          nombres={nombres}
+          abiertos={carpeta2.abiertos}
+          fichas={fichasRestantes(carpeta2)}
+          total={carpeta2.fichas}
+          sinPapeles={carpeta2.abiertos.length === 0 ? G.ARCHIVO2.sinPapeles : undefined}
+          onAbrir={abrirP2}
+          extra={
+            <button type="button" className="mesa-boton" onClick={() => setVerDecidir(true)}>
+              {G.PAPELES_MESA.decidir}
+            </button>
+          }
+        />
+      )
+    ) : null;
 
   const sonido = useSonidoT1({
     fase,
@@ -540,7 +618,8 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
         </div>
       )}
       <EscenaPixi hora={minutosDeFase(fase)} pose={pose} suena={suena} daniCabecea={daniCabecea} verJefa={fase !== "titulo" && fase !== "bienvenida"} verDani={fase !== "titulo" && fase !== "bienvenida" && fase !== "jefa"} />
-      {tubos && !campoEnfocado && <Tubos m={med} />}
+      {!campoEnfocado && (tubos ? <Tubos m={med} objetivo={objetivo} /> : objetivo && <div className="mesa-tubos solo"><Objetivo texto={objetivo} /></div>)}
+      {papelesEnMesa}
 
       <div className="mesa-panel" ref={panel} onScroll={medirMas}>
         {fase === "titulo" && (
@@ -638,20 +717,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           </section>
         )}
 
-        {fase === "archivo1" && (
-          <section className="mesa-bloque">
-            <h2>El archivo del colegio</h2>
-            <Cita texto={G.ARCHIVO.jefa} />
-            <Cita texto={G.ARCHIVO.consigna} />
-            <Fichas n={fichas1} total={total1} />
-            <Abanico ids={ids1} nombres={nombres} abiertos={papelesVistosPaso1(paso1)} sinFichas={fichas1 <= 0} onAbrir={abrirP1} />
-            {asombroVisto && (
-              <button type="button" className="mesa-boton" onClick={() => ir("asombro")}>
-                Ver lo que encontraste &gt;
-              </button>
-            )}
-          </section>
-        )}
+        {intro1 && <Dialogo key="a1" p={p} lineas={[G.ARCHIVO.jefa, G.ARCHIVO.consigna].map((texto) => ({ quien: "jefa" as const, texto }))} onFin={() => setIntro1Hecha(true)} onLinea={alLinea} fin="A los papeles >" />}
 
         {fase === "asombro" && sueno1 && (
           <section className="mesa-bloque">
@@ -718,12 +784,12 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
           </section>
         )}
 
-        {(fase === "archivo2" || fase === "frase" || fase === "confirma") && (
+        {intro2 && <Dialogo key="a2" p={p} lineas={[G.ARCHIVO2.consigna].map((texto) => ({ quien: "jefa" as const, texto }))} onFin={() => setIntro2Hecha(true)} onLinea={alLinea} fin="A los papeles >" />}
+
+        {((fase === "archivo2" && verDecidir) || fase === "frase" || fase === "confirma") && (
           <section className="mesa-bloque">
             <h2>Caso 2 · {G.CASO2.titulo}</h2>
-            <Cita texto={G.ARCHIVO2.consigna} />
             <Fichas n={fichasRestantes(carpeta2)} total={carpeta2.fichas} />
-            <Abanico ids={ids2} nombres={nombres} abiertos={carpeta2.abiertos} sinFichas={fichasRestantes(carpeta2) <= 0} onAbrir={abrirP2} />
             <div className="mesa-corcho">
               <h3>Corcho</h3>
               {carpeta2.abiertos.length === 0 ? (
@@ -745,6 +811,11 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
             </div>
 
             {fase === "archivo2" && carpeta2.abiertos.length === 0 && <Cita texto={G.ARCHIVO2.sinPapeles} />}
+            {fase === "archivo2" && (
+              <button type="button" className="mesa-boton sec" onClick={() => setVerDecidir(false)}>
+                {G.PAPELES_MESA.volver}
+              </button>
+            )}
 
             {fase === "archivo2" && (
               <div className="mesa-acciones" role="group" aria-label="Qué haces con el informe">
@@ -815,7 +886,7 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
                   >
                     {G.FRASE.boton.replace("▸", ">")}
                   </button>
-                  <button type="button" className="mesa-boton sec" onClick={() => setFase("archivo2")}>
+                  <button type="button" className="mesa-boton sec" onClick={() => { setVerDecidir(false); setFase("archivo2"); }}>
                     Volver a los papeles
                   </button>
                 </div>

@@ -52,8 +52,8 @@ def main() -> int:
     faltan = sorted(esperados_a - set(salida))
     cantidad_b = sum(1 for k in salida if k.startswith("B-"))
     faltan_j = sorted({f"J{i}" for i in range(1, 7)} - set(salida))
-    if faltan or faltan_j or cantidad_b != 31:
-        print(f"ERROR: faltan {faltan} {faltan_j}; filas B: {cantidad_b} (esperado 31)")
+    if faltan or faltan_j or cantidad_b != 38:
+        print(f"ERROR: faltan {faltan} {faltan_j}; filas B: {cantidad_b} (esperado 38)")
         return 1
     destino = os.path.normpath(SALIDA)
     tmp = destino + ".tmp"

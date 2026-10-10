@@ -834,6 +834,13 @@ Cierre C8 (F8a, F8b, F8c, F8d, F8e, F8f, F8g): «Los datos bien recogidos y bien
 | B-arch2-5 | archivo2 | botón | «Redactar la frase: tú escribes qué se puede afirmar.» | Bajo el segundo botón (H8) |
 | B-arch2-6 | archivo2 | botón | «Frenar: el informe no sale esta noche.» | Bajo el tercer botón (H8) |
 | B-arch2-7 | archivo2 | jefa | «Primero abre algún papel.» | Solo con 0 papeles abiertos; no bloquea ningún botón (H8) |
+| B-obj-1 | archivo1 | objetivo | «Objetivo: ver si ya preguntaron cuánto duermen» | Franja fija bajo los medidores mientras se buscan papeles (pantalla inmersiva, paso 2, 10-10) |
+| B-obj-2 | archivo2 | objetivo | «Objetivo: cómo se contó el cero» | Igual, con los papeles sueltos sobre el escritorio (10-10) |
+| B-obj-3 | decidir | objetivo | «Objetivo: decide con lo que averiguaste» | Igual, en la hoja de decidir, la frase y la confirmación (10-10) |
+| B-mesa-1 | archivo | línea de fichas | «releer es gratis» | Junto a las fichas, sobre los papeles; decidido por Ronald el 10-10 |
+| B-mesa-2 | archivo2 | botón | «Decidir el informe >» | Bajo los papeles, abre la hoja con los tres botones (10-10) |
+| B-mesa-3 | decidir | botón | «Volver a los papeles» | En la hoja de decidir; vuelve a los papeles sueltos (10-10) |
+| B-mesa-4 | archivo | línea de fichas | «Fichas» | Rótulo corto junto a los círculos de fichas, sobre los papeles (el rótulo largo A7 queda para lectores de pantalla) (10-10) |
 | B-frase-1 | frase | jefa | «Cada papel que abres agrega una pieza.» | Bajo A12 (H10) |
 | B-conf-1 | confirma | jefa | «No abriste ningún papel. ¿Decides sin mirar?» | Encima de «¿Firmar? Después no hay vuelta.», solo con 0 papeles abiertos y para cualquiera de las tres decisiones; los botones «Sí, al consejo» y «Todavía no» siguen activos (H8) |
 | B-reac-1 | reaccion | jefa | «Firmar te dio Voz, pero firmar algo que no se sostenía costó Credibilidad.» | Tras la reacción de R2.1 del tipo P (H12) |

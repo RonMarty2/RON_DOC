@@ -3,7 +3,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { paqueteT1 } from "./cifras";
-import { ARCHIVO, ARCHIVO2, ASOMBRO, BIENVENIDA, BOTONES_SELLO, CASO2, CIERRE_PASO1, ENCARGO, FRASE, HOJA, JEFA_LLEGADA, JUGADOR, jugadorReaccion, ROTULOS_TUBOS, SIN_PAPELES_AL_FIRMAR, T, TITULO, cambioDeMedidores, cierreDeLaPrueba, daniResponde, reaccionCaso2 } from "./guion-pantalla-t1";
+import { ARCHIVO, ARCHIVO2, ASOMBRO, BIENVENIDA, BOTONES_SELLO, CASO2, CIERRE_PASO1, ENCARGO, FRASE, HOJA, JEFA_LLEGADA, JUGADOR, OBJETIVO, PAPELES_MESA, jugadorReaccion, ROTULOS_TUBOS, SIN_PAPELES_AL_FIRMAR, T, TITULO, cambioDeMedidores, cierreDeLaPrueba, daniResponde, reaccionCaso2 } from "./guion-pantalla-t1";
 import { resolverDecision2, piezasDisponibles2 } from "./flujo-t1";
 import { VERSION_MAXIMA } from "../planta";
 
@@ -35,6 +35,8 @@ describe("Textos de la pantalla = textos de la narrativa", () => {
     HOJA.jefa,
     ...HOJA.preguntas,
     HOJA.botonPropias,
+    ...Object.values(OBJETIVO),
+    ...Object.values(PAPELES_MESA),
     ARCHIVO.jefa,
     ARCHIVO.consigna,
     ARCHIVO.rotuloFichas,

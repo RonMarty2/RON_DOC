@@ -65,6 +65,36 @@ export const ARCHIVO = {
   daniAbre: "Mira este...",
 } as const;
 
+/** «Tu objetivo»: una línea fija arriba mientras se buscan papeles o se decide (plan de la pantalla inmersiva). */
+export const OBJETIVO = {
+  archivo1: T("B-obj-1"),
+  archivo2: T("B-obj-2"),
+  decide: T("B-obj-3"),
+} as const;
+
+/** Línea de fichas sobre los papeles de la mesa (releer un papel ya abierto es gratis). */
+export const PAPELES_MESA = { releer: T("B-mesa-1"), decidir: T("B-mesa-2"), volver: T("B-mesa-3"), fichas: T("B-mesa-4") } as const;
+
+/** Nombre corto de cada papel para la mesa (la tarjeta es chica: máx. 20 caracteres, ninguna palabra de más de 10). El nombre completo sigue en el título del papel abierto. */
+const NOMBRES_CORTOS: Record<string, string> = {
+  "Acta de la reunión de padres": "Acta de padres",
+  "Calendario de actividades": "Calendario",
+  "Calendario del trimestre": "Calendario",
+  "Cuaderno de la enfermería": "Cuaderno enfermería",
+  "Encuesta anual de la secretaría": "Encuesta anual",
+  "Informe del orientador": "Informe orientador",
+  "Lista de talleres": "Lista talleres",
+  "Lista de tutores": "Lista de tutores",
+  "Planilla de notas": "Planilla de notas",
+  "Registro de tardanzas": "Registro tardanzas",
+  "Buzón anónimo del patio": "Buzón anónimo",
+  "Correo de la dirección a los tutores": "Correo dirección",
+  "Libro de registro de la secretaría": "Libro de registro",
+  "Reglamento de convivencia": "Reglamento",
+};
+/** Si llega un papel nuevo sin nombre corto, se usa el completo (la prueba `nombres-cortos` avisa). */
+export const nombreCorto = (nombre: string): string => NOMBRES_CORTOS[nombre] ?? nombre;
+
 export const ASOMBRO = {
   titulo: T("A8"),
   filaHoy: "Tú, hoy",

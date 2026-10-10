@@ -184,6 +184,12 @@ describe("La mesa de verificación: del título al final del Caso 2", () => {
     pulsa(new RegExp(`^${papel(2, ids[0])}.*releer es gratis`)); // releer no cuesta ficha
     pulsa(/^Cerrar/);
   });
+  it("«Salir» lleva a la materia desde cualquier pantalla (la cabecera del sitio se esconde dentro del juego)", async () => {
+    render(<Mesa />);
+    await screen.findByRole("heading", { name: /Mesa de verificación/ });
+    const salir = screen.getByRole("link", { name: /Salir del juego/ }) as HTMLAnchorElement;
+    expect(salir.getAttribute("href")).toBe("/materias/psicoestadistica");
+  });
   it("«De cero» pide confirmación, borra el avance y vuelve al título; «No» no toca nada", async () => {
     await hastaElCaso2();
     expect(window.localStorage.getItem(CLAVE_PARTIDA)).toBeTruthy();

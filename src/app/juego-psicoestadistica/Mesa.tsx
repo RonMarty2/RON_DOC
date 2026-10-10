@@ -599,6 +599,9 @@ function Juego({ semilla, esPrueba, onOtraVersion }: { semilla: number; esPrueba
       onBlurCapture={() => setCampoEnfocado(false)}
     >
       <BotonSonido activo={sonido.activo} disponible={sonido.disponible} alternar={sonido.alternar} />
+      <Link className="mesa-salir" href="/materias/psicoestadistica" aria-label="Salir del juego y volver a la materia">
+        <span aria-hidden="true">&lsaquo;</span> Salir
+      </Link>
       {fase !== "titulo" && (
         <div className="mesa-reinicio">
           {!pideReinicio ? (

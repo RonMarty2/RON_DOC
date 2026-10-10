@@ -243,3 +243,12 @@
 .mesa-bloque.decide .mesa-acciones { order: 1; }
 .mesa-bloque.decide > .mesa-boton.sec { order: 2; }
 .mesa-bloque.decide .mesa-corcho { order: 9; }
+
+/* Dentro del juego se esconde la cabecera del sitio (gana 65 px de oficina; decidido como opción B tras el crítico v26) y aparece «Salir» arriba al centro. */
+.mesa-salir { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); z-index: 5; min-width: 44px; min-height: 44px; padding: 4px 10px; display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mesa-pixel), monospace; font-size: 12px; color: var(--m-texto); text-decoration: none; background: rgba(12, 10, 26, .82); border: 2px solid var(--m-borde); border-radius: 2px; }
+.mesa-salir:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+@supports selector(:has(*)) {
+  body:has(.mesa) > header, body:has(.mesa) header.sticky { display: none; }
+  .mesa { height: 100dvh; }
+}

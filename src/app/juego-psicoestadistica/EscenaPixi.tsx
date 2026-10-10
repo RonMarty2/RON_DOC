@@ -10,7 +10,7 @@
  * PixiJS se carga recién cuando la escena aparece: el resto del sitio no paga su peso.
  */
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { conBase } from "@/lib/rutas";
 import type { PoseJefa } from "@/lib/juego/psicoestadistica/guion-pantalla-t1";
 import { HUECOS_CIUDAD, ORDEN_VENTANITAS, amanecer, angulosReloj, posicionLuna, ventanitasEncendidas } from "@/lib/juego/psicoestadistica/hora-historia";
@@ -31,17 +31,34 @@ interface Api {
 /** `hora`: minutos desde las 23:00 (0 a 390); ver `hora-historia.ts`. */
 export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani = true, hora = 0 }: { pose: PoseJefa; suena: boolean; daniCabecea: boolean; verJefa?: boolean; verDani?: boolean; hora?: number }) {
   const caja = useRef<HTMLDivElement>(null);
+  const marco = useRef<HTMLDivElement>(null);
   const api = useRef<Api | null>(null);
+  // La oficina llena todo el espacio de la pantalla (no solo una franja): el alto lógico sale de la forma del contenedor.
+  const [alto, setAlto] = useState<number | null>(null);
   const ultimo = useRef({ pose, suena, daniCabecea, verJefa, verDani, hora });
   ultimo.current = { pose, suena, daniCabecea, verJefa, verDani, hora };
 
   useEffect(() => {
+    const medir = () => {
+      const r = marco.current?.getBoundingClientRect();
+      if (!r || r.width === 0) return;
+      const a = Math.max(ESCENA_ALTO, Math.round((ESCENA_ANCHO * r.height) / r.width / 4) * 4);
+      setAlto((antes) => (antes === a ? antes : a));
+    };
+    medir();
+    const o = typeof ResizeObserver !== "undefined" && marco.current ? new ResizeObserver(medir) : null;
+    if (o && marco.current) o.observe(marco.current);
+    return () => o?.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (alto === null) return;
     let vivo = true;
     (async () => {
       const PIXI = await import("pixi.js");
       if (!vivo || !caja.current) return;
       PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
-      const app = new PIXI.Application({ width: ESCENA_ANCHO, height: ESCENA_ALTO, backgroundColor: 0x07060d, antialias: false, resolution: 1 });
+      const app = new PIXI.Application({ width: ESCENA_ANCHO, height: alto, backgroundColor: 0x07060d, antialias: false, resolution: 1 });
       const vista = app.view as HTMLCanvasElement;
       vista.setAttribute("role", "img");
       vista.setAttribute("aria-label", "Oficina del Departamento de Orientación, de noche, con la jefa tras el escritorio, la ventana con la luna y la lámpara sobre el escritorio.");
@@ -62,11 +79,17 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
         app.stage.addChild(m);
         return m;
       };
-      mosaico("arte/pared_ladrillo", 0, 120);
+      // Encuadre: en un celular vertical la oficina es alta. El escritorio empieza al 56 % del alto; lo de la pared baja bajo los
+      // medidores (franja de arriba); la jefa y lo del escritorio acompañan al escritorio. Con el alto de siempre (150) queda como antes.
+      const alta = alto > ESCENA_ALTO;
+      const suelo = alta ? Math.round(alto * 0.56) : 120;
+      const dy = suelo - 120;
+      const arriba = alta ? 62 : 0;
+      mosaico("arte/pared_ladrillo", 0, suelo);
       // La oficina de noche: ventana con la luna y las luces de la ciudad, reloj con estante de libros, pizarrón.
       // Ventana viva por capas (hueco de 68×52 a 4,4 dentro del marco de 76×60): cielo, estrellas, luna, nube, ciudad con ventanitas.
       const VX = 4;
-      const VY = 6;
+      const VY = 6 + arriba;
       const cielo = new PIXI.Container();
       cielo.position.set(VX + 4, VY + 4);
       const recorte = new PIXI.Graphics();
@@ -92,24 +115,24 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
       cielo.addChild(ventanitas);
       sprite("arte/ventana_marco", VX, VY);
       // Reloj con la hora exacta: la cara es un dibujo y las manecillas se pintan con código, pixel a pixel.
-      sprite("arte/estante_libros", 84, 18);
-      sprite("arte/reloj_cara", 98, 6);
+      sprite("arte/estante_libros", 84, 18 + arriba);
+      sprite("arte/reloj_cara", 98, 6 + arriba);
       const manecillas = new PIXI.Graphics();
       app.stage.addChild(manecillas);
       const RX = 98 + 8;
-      const RY = 6 + 8;
+      const RY = 6 + arriba + 8;
       const reducido = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-      sprite("arte/pizarron", 130, 10);
-      const jefa = sprite(POSE[ultimo.current.pose], 118, 60);
+      sprite("arte/pizarron", 130, 10 + arriba);
+      const jefa = sprite(POSE[ultimo.current.pose], 118, 60 + dy);
       jefa.scale.set(2);
-      mosaico("arte/escritorio_madera", 120, ESCENA_ALTO - 120);
-      const telefono = sprite("arte/icono_telefono", 40, 92);
-      sprite("arte/lampara_mesa", 6, 82);
+      mosaico("arte/escritorio_madera", suelo, alto - suelo);
+      const telefono = sprite("arte/icono_telefono", 40, 92 + dy);
+      sprite("arte/lampara_mesa", 6, 82 + dy);
 
       // La noche: un velo oscuro, y la luz de la lámpara y de la ventana por encima.
       const velo = new PIXI.Sprite(PIXI.Texture.WHITE);
       velo.width = ESCENA_ANCHO;
-      velo.height = ESCENA_ALTO;
+      velo.height = alto;
       velo.tint = 0x05040c;
       velo.alpha = 0.25;
       app.stage.addChild(velo);
@@ -126,14 +149,14 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
         app.stage.addChild(s);
         return s;
       };
-      const brillo = luz("luz", 24, 82, 1.2, 0xffc070, 0.55);
-      luz("luz", 40, 30, 0.7, 0x6a86ff, 0.2);
+      const brillo = luz("luz", 24, 82 + dy, 1.2, 0xffc070, 0.55);
+      luz("luz", 40, 30 + arriba, 0.7, 0x6a86ff, 0.2);
       const motas = Array.from({ length: 18 }, (_, i) => {
         const m = new PIXI.Sprite(tex("mota"));
         m.blendMode = PIXI.BLEND_MODES.ADD;
         m.alpha = 0.6;
         m.x = 10 + ((i * 37) % 70);
-        m.y = 70 + ((i * 23) % 50);
+        m.y = 70 + dy + ((i * 23) % 50);
         app.stage.addChild(m);
         return { m, f: i * 0.9, v: 0.03 + (i % 5) * 0.012 };
       });
@@ -189,11 +212,11 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
         for (const o of motas) {
           o.m.y -= o.v * delta;
           o.m.x += Math.sin(t0 * 0.8 + o.f) * 0.05 * delta;
-          if (o.m.y < 60) o.m.y = 122;
+          if (o.m.y < 60 + dy) o.m.y = 122 + dy;
         }
         const u = ultimo.current;
         telefono.x = u.suena ? 40 + (Math.sin(t0 * 40) > 0 ? 1 : -1) : 40;
-        telefono.y = u.suena ? 92 + (Math.sin(t0 * 33) > 0 ? -1 : 0) : 92;
+        telefono.y = u.suena ? 92 + dy + (Math.sin(t0 * 33) > 0 ? -1 : 0) : 92 + dy;
       });
 
       api.current = {
@@ -215,14 +238,14 @@ export function EscenaPixi({ pose, suena, daniCabecea, verJefa = true, verDani =
       api.current?.destruir();
       api.current = null;
     };
-  }, []);
+  }, [alto]);
 
   useEffect(() => {
     api.current?.poner({ pose, suena, daniCabecea, verJefa, verDani, hora });
   }, [pose, suena, daniCabecea, verJefa, verDani, hora]);
 
   return (
-    <div className="mesa-escena">
+    <div className="mesa-escena" ref={marco}>
       <div ref={caja} />
     </div>
   );

@@ -25,13 +25,18 @@
   font-size: 21px;
   line-height: 1.35;
 }
-.mesa { width: 100%; max-width: 460px; position: relative; display: flex; flex-direction: column; gap: 10px; }
+/* Oficina inmersiva (plan 09-10): la escena llena la pantalla y se ve siempre; medidores y textos van encima, no debajo. */
+.mesa { width: 100%; max-width: 460px; position: relative; height: calc(100dvh - 72px); min-height: 560px; max-height: 940px; overflow: hidden; }
 .mesa-carga { color: var(--m-texto); text-align: center; padding: 48px 16px; }
 
-.mesa-escena { line-height: 0; background: #07060d; }
-.mesa-escena canvas { width: 100%; height: auto; display: block; image-rendering: pixelated; }
+.mesa-escena { position: absolute; inset: 0; line-height: 0; background: #07060d; }
+.mesa-escena > div { height: 100%; }
+.mesa-escena canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
 
-.mesa-panel { padding: 0 16px; display: grid; gap: 18px; }
+/* Lo que se lee y se toca sube desde abajo, como máximo hasta el 55 % de la altura, y se desplaza por dentro si es largo. */
+.mesa-panel { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; max-height: 55%; overflow-y: auto; overscroll-behavior: contain;
+  padding: 14px 16px 18px; display: grid; gap: 18px; align-content: start;
+  background: linear-gradient(rgba(12, 10, 26, 0), rgba(12, 10, 26, .9) 22px, rgba(12, 10, 26, .96)); }
 .mesa-centro { display: grid; gap: 12px; justify-items: center; text-align: center; padding-top: 6px; }
 .mesa-bloque { display: grid; gap: 18px; }
 .mesa h1, .mesa h2 { font-family: var(--mesa-pixel), monospace; color: var(--m-ambar); font-weight: 400; margin: 0; line-height: 1.6; }
@@ -72,8 +77,9 @@
 .mesa-preguntas { display: grid; gap: 10px; line-height: 1.5; }
 
 /* Tubos */
-.mesa-tubos { display: grid; gap: 8px; padding: 0 16px; }
-.mesa-tubo-nombre { font-size: 20px; display: flex; justify-content: space-between; }
+.mesa-tubos { position: absolute; top: 54px; left: 0; right: 0; z-index: 3; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 6px 12px 8px;
+  background: linear-gradient(rgba(12, 10, 26, .92), rgba(12, 10, 26, .72)); }
+.mesa-tubo-nombre { font-size: 18px; display: flex; justify-content: space-between; }
 .mesa-tubo-nombre b { font-weight: 400; color: var(--m-ambar); }
 .mesa-tubo-vidrio { position: relative; height: 18px; border: 2px solid var(--m-borde); background: #120f26; }
 .mesa-tubo-tinta { height: 100%; background: #6f8cff; transition: width .9s ease; }
@@ -164,7 +170,7 @@
 /* Orientación v16 */
 .mesa-opcion { display: grid; gap: 4px; align-content: start; }
 .mesa-opcion .mesa-pequeno { font-size: 18px; }
-.mesa-tubo-rotulo { color: var(--m-tenue); font-size: 18px; }
+.mesa-tubo-rotulo { color: var(--m-tenue); font-size: 15px; line-height: 1.1; }
 .mesa-aviso { color: var(--m-ambar); font-size: 23px; }
 .mesa-cambio { color: var(--m-ambar); font-size: 22px; }
 .mesa-lector .mesa-confirma { width: 100%; max-width: 460px; }
@@ -191,7 +197,6 @@
 
 /* Quién habla: un color por personaje, en la etiqueta de la escena, en el nombre y en el borde del cuadro */
 .q-jefa { --q: #ffb86b; } .q-dani { --q: #7fb2ff; } .q-beto { --q: #ff8f8f; } .q-madre { --q: #d4a8ff; } .q-director { --q: #ffd86b; } .q-tu { --q: #9fe8d2; }
-.mesa-escena { position: relative; }
 
 .mesa-dialogo[class*="q-"]:not(.tuyo) { border-left: 6px solid var(--q); }
 .mesa-dialogo[class*="q-"] .mesa-quien { color: var(--q); }
